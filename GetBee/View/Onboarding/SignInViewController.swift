@@ -155,13 +155,7 @@ class SignInViewController: UIViewController {
         //                UIApplication.hideNetworkActivity()
         //                self.showMessage(title: "Error", message: error)
         //        })
-        //        let url = "https://api.apixu.com/v1/current.json?key=9272f3ecd8f94c3c910141120181303&q=\(citiesWorld[i])"
-        //        let token = "abc"
-        //        var request = URLRequest(url:  NSURL(string: url)! as URL)
-        //        request.httpMethod = "POST"
-        //        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //        let values: [String: Any] = ["Authorization": "Bearer \(token)"]
-        //        request.httpBody = try! JSONSerialization.data(withJSONObject: values)
+
         let parameters = [
             "password": "admin",
             "rememberMe": true,
