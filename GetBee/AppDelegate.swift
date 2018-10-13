@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FBSDKCoreKit
+//import FBSDKCoreKit
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
 
     // -Facebook
-    FBSDKSettings.setAppID(ConfigurationManager.getValue(for: "FacebookKey"))
-    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//    FBSDKSettings.setAppID(ConfigurationManager.getValue(for: "FacebookKey"))
+//    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
     IQKeyboardManager.shared.enable = true
     
@@ -38,9 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
-  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-    return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-  }
+//  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//    return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+//  }
   
   func unexpectedLogout() {
     UserDataManager.deleteUser()
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Clear any local data if needed
     //Take user to onboarding if needed, do NOT redirect the user if is already in the landing
     // to avoid losing the current VC stack state.
-    if window?.rootViewController is HomeViewController {
+    if window?.rootViewController is ViewController {
       window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
     }
   }
