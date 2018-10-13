@@ -155,7 +155,7 @@ class SignInViewController: UIViewController {
         //                UIApplication.hideNetworkActivity()
         //                self.showMessage(title: "Error", message: error)
         //        })
-
+//test git
         let parameters = [
             "password": "admin",
             "rememberMe": true,
