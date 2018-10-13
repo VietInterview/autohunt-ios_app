@@ -10,17 +10,16 @@ import UIKit
 
 class UserAPI {
   
-  fileprivate static let usersUrl = "/users/"
+  fileprivate static let usersUrl = "/api/authenticate"
   fileprivate static let currentUserUrl = "/user/"
 
   class func login(_ email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-    let url = usersUrl + "sign_in"
+    let url = usersUrl
     let parameters = [
-      "user": [
-        "email": email,
-        "password": password
-      ]
-    ]
+      "password": password,
+      "rememberMe": true,
+      "username": email
+      ] as [String : Any]
     APIClient.request(.post, url: url, params: parameters, success: { response, headers in
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success()
@@ -100,9 +99,11 @@ class UserAPI {
   
   class func saveUserSession(fromResponse response: [String: Any], headers: [AnyHashable: Any]) {
     UserDataManager.currentUser = try? JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
-    if let headers = headers as? [String: Any] {
-      SessionManager.currentSession = Session(headers: headers)
-    }
+     let login = try? JSONDecoder().decode(Login.self, from: response)
+    print(login!.idToken!)
+//    if let headers = headers as? [String: Any] {
+//      SessionManager.currentSession!.accessToken = login!.idToken!
+//    }
   }
   
   class func logout(_ success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {

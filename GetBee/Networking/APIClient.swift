@@ -46,11 +46,12 @@ class APIClient {
         HTTPHeader.token.rawValue: session.accessToken ?? ""
       ]
     }
+    print(baseHeaders)
     return baseHeaders
   }
   
   fileprivate class func getBaseUrl() -> String {
-    return Bundle.main.object(forInfoDictionaryKey: "Base URL") as? String ?? ""
+    return "http://54.176.149.102:8081"
   }
   
   //Recursively build multipart params to send along with media in upload requests.
@@ -124,6 +125,7 @@ class APIClient {
     let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
     let header = APIClient.getHeader()
     let requestUrl = getBaseUrl() + url
+    print(requestUrl)
     Alamofire.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
       .validate()
       .responseDictionary { response in

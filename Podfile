@@ -5,7 +5,11 @@ inhibit_all_warnings!
 target 'GetBee' do
   pod 'Alamofire', '~> 4.7.2'
   pod 'IQKeyboardManagerSwift', '~> 6.0.1'
-
+  pod 'AlamofireRSSParser', '~> 2.0'
+  pod 'AlamofireImage', '~> 3.3'
+  pod 'AlamofireObjectMapper', '~> 5.0'
+  pod 'ObjectMapper', '~> 3.3'
+  pod 'LGSideMenuController'
   # FB SDK ---
   pod 'FBSDKCoreKit', '~> 4.33.0'
   pod 'FBSDKLoginKit', '~> 4.33.0'

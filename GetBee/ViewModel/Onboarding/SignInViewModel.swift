@@ -23,7 +23,7 @@ class SignInViewModelWithCredentials {
   var onCredentialsChange: (() -> Void)?
   
   var hasValidCredentials: Bool {
-    return email.isEmailFormatted() && !password.isEmpty
+    return !email.isEmpty && !password.isEmpty
   }
   
   func login(success: @escaping () -> Void, failure: @escaping (String) -> Void) {

@@ -144,30 +144,26 @@ class SignInViewController: UIViewController {
         animateInForgotPass()
     }
     @IBAction func tapOnSignInButton(_ sender: Any) {
-        animateIn()
-        //        UIApplication.showNetworkActivity()
-        //
-        //        viewModel.login(success: { [unowned self] in
-        //            UIApplication.hideNetworkActivity()
-        //            let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        //            UIApplication.shared.keyWindow?.rootViewController = homeVC
-        //            }, failure: { [unowned self] error in
-        //                UIApplication.hideNetworkActivity()
-        //                self.showMessage(title: "Error", message: error)
-        //        })
-
-        let parameters = [
-            "password": "admin",
-            "rememberMe": true,
-            "username": "admin"
-            ] as [String : Any]
-//        let headers = [
-//            "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-//            "Content-Type": "application/x-www-form-urlencoded"
-//        ]
-        Alamofire.request("http://54.176.149.102:8081/api/authenticate", method: .post, parameters: parameters, encoding:JSONEncoding.default, headers: nil)
-            .responseJSON { response in
-                print(response)
-        }
+        UIApplication.showNetworkActivity()
+        viewModel.login(success: { [unowned self] in
+            UIApplication.hideNetworkActivity()
+            //            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "StartViewController") as? UINavigationController
+            //            UIApplication.shared.keyWindow?.rootViewController = navigationVC
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+            
+            navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+            
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            mainViewController.rootViewController = navigationController
+            mainViewController.setup(type: UInt(2))
+            
+            let window = UIApplication.shared.delegate!.window!!
+            window.rootViewController = mainViewController
+            
+            }, failure: { [unowned self] error in
+                UIApplication.hideNetworkActivity()
+                self.showMessage(title: "Error", message: error)
+        })
     }
 }
