@@ -1,24 +1,32 @@
 PODS:
   - Alamofire (4.7.3)
+  - GoneVisible (1.2.0)
   - IQKeyboardManagerSwift (6.0.5)
+  - JJFloatingActionButton (0.10.0)
   - LGSideMenuController (2.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7.2)
+  - GoneVisible
   - IQKeyboardManagerSwift (~> 6.0.1)
+  - JJFloatingActionButton
   - LGSideMenuController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - GoneVisible
     - IQKeyboardManagerSwift
+    - JJFloatingActionButton
     - LGSideMenuController
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  GoneVisible: c552940cd9df7548427f6bffd000dcbcc6de187f
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
+  JJFloatingActionButton: 7e9e924d0819ebeb6a566dade9d5dbed63ff8add
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
 
-PODFILE CHECKSUM: d9c3316d4336471bfc2d068b9ec7d7a4fcc7e0a1
+PODFILE CHECKSUM: 9009166800554b2ad2e93d323267ebb41ef5b081
 
 COCOAPODS: 1.5.2

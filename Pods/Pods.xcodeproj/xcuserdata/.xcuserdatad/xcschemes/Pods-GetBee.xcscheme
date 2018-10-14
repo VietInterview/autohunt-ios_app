@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5455C58BDC8DA5A70EF6CAD9DE1043B7"
+               BlueprintIdentifier = "ACA2B51BB2E5A4396C3488AFDAE16017"
                BlueprintName = "Pods-GetBee"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "Pods-GetBee.framework">

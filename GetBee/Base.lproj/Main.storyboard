@@ -42,15 +42,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ShE-Lf-SVh">
-                                <rect key="frame" x="0.0" y="109" width="320" height="459"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ShE-Lf-SVh">
+                                <rect key="frame" x="0.0" y="294" width="320" height="274"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobitemcell" rowHeight="240" id="8V1-BX-2ti">
                                         <rect key="frame" x="0.0" y="28" width="320" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8V1-BX-2ti" id="BnQ-qz-wgr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="239.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1p-9n-pke">
@@ -67,7 +68,7 @@
                                                     <rect key="frame" x="15" y="20" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="saved" translatesAutoresizingMaskIntoConstraints="NO" id="b3n-lL-OAA">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="saved" translatesAutoresizingMaskIntoConstraints="NO" id="b3n-lL-OAA">
                                                     <rect key="frame" x="281" y="20" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -85,12 +86,10 @@
                                                     <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdd-JX-MtS">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdd-JX-MtS">
                                                     <rect key="frame" x="15" y="110" width="290" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="RoV-uh-SYS"/>
-                                                    </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qi-Rr-ZRX">
                                                     <rect key="frame" x="19" y="119" width="88" height="22"/>
@@ -150,12 +149,8 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.92941176470588238" green="0.94509803921568625" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="gdd-JX-MtS" firstAttribute="leading" secondItem="BnQ-qz-wgr" secondAttribute="leadingMargin" id="1Jt-AA-7tJ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gdd-JX-MtS" secondAttribute="trailing" id="X3c-LB-PRo"/>
-                                                <constraint firstItem="gdd-JX-MtS" firstAttribute="top" secondItem="BnQ-qz-wgr" secondAttribute="top" constant="110" id="imA-aJ-uNU"/>
-                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -168,22 +163,123 @@
                                     <outlet property="delegate" destination="QXR-yo-X1J" id="dj7-6Z-RcR"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2300 công việc được tìm thấy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-H1-3D8">
-                                <rect key="frame" x="67.5" y="76" width="185" height="20"/>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq7-dF-wKL">
+                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập từ khóa tìm kiếm" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hiZ-dN-gVU">
+                                        <rect key="frame" x="16" y="15" width="250" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lf-RM-9gZ">
+                                        <rect key="frame" x="281" y="19" width="18" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="filter_gray"/>
+                                        <connections>
+                                            <action selector="filterTouchUp:" destination="QXR-yo-X1J" eventType="touchUpInside" id="YPm-5d-4TJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="KGX-XJ-Fsp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hde-Kf-k9g">
+                                <rect key="frame" x="0.0" y="124" width="320" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC0-Ou-dPI">
+                                        <rect key="frame" x="18" y="15" width="88" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
+                                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Địa điểm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni5-4z-3FH">
+                                        <rect key="frame" x="18" y="80" width="64" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
+                                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IT, Phần mềm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fm1-q5-8jm">
+                                        <rect key="frame" x="181" y="16" width="98" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
+                                        <color key="textColor" red="0.098039215686274508" green="0.094117647058823528" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hà Nội" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diu-SQ-Ys7">
+                                        <rect key="frame" x="213" y="79" width="50" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
+                                        <color key="textColor" red="0.098039215686274508" green="0.094117647058823528" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="JjG-QT-g4I">
+                                        <rect key="frame" x="280" y="15" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="6iA-vb-eUy">
+                                        <rect key="frame" x="280" y="77" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-Hs-VyX">
+                                        <rect key="frame" x="0.0" y="60" width="320" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qua-Ge-INV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTd-65-yxh">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="iGE-00-gyz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQ1-M5-i1x">
+                                <rect key="frame" x="0.0" y="244" width="320" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2300 công việc được tìm thấy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-H1-3D8">
+                                        <rect key="frame" x="67.5" y="15" width="185" height="20"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8cF-Sd-KkW"/>
+                                    <constraint firstItem="8C0-H1-3D8" firstAttribute="centerX" secondItem="JQ1-M5-i1x" secondAttribute="centerX" id="GhR-RZ-zvP"/>
+                                    <constraint firstItem="8C0-H1-3D8" firstAttribute="centerY" secondItem="JQ1-M5-i1x" secondAttribute="centerY" id="PIa-X2-s8e"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92941176470588238" green="0.94509803921568625" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="8C0-H1-3D8" firstAttribute="centerX" secondItem="q5Q-uK-oT9" secondAttribute="centerX" id="9tR-EM-Ilo"/>
-                            <constraint firstAttribute="trailing" secondItem="ShE-Lf-SVh" secondAttribute="trailing" id="BvI-c8-UCF"/>
-                            <constraint firstItem="3BN-XV-aYi" firstAttribute="top" secondItem="ShE-Lf-SVh" secondAttribute="bottom" id="MR5-mS-Xvn"/>
-                            <constraint firstItem="8C0-H1-3D8" firstAttribute="top" secondItem="Qc9-9D-wRy" secondAttribute="bottom" constant="12" id="SDt-Mt-VnM"/>
-                            <constraint firstItem="ShE-Lf-SVh" firstAttribute="leading" secondItem="q5Q-uK-oT9" secondAttribute="leading" id="Umi-rR-EwW"/>
-                            <constraint firstItem="ShE-Lf-SVh" firstAttribute="top" secondItem="8C0-H1-3D8" secondAttribute="bottom" constant="13" id="jJ7-sZ-5aJ"/>
-                            <constraint firstItem="ShE-Lf-SVh" firstAttribute="top" secondItem="8C0-H1-3D8" secondAttribute="bottom" constant="13" id="srK-K9-4IX"/>
+                            <constraint firstAttribute="trailing" secondItem="JQ1-M5-i1x" secondAttribute="trailing" id="0Oo-Nb-pXV"/>
+                            <constraint firstItem="kq7-dF-wKL" firstAttribute="leading" secondItem="q5Q-uK-oT9" secondAttribute="leading" id="24L-JU-whJ"/>
+                            <constraint firstAttribute="trailing" secondItem="hde-Kf-k9g" secondAttribute="trailing" id="Cxe-VP-a5A"/>
+                            <constraint firstItem="3BN-XV-aYi" firstAttribute="top" secondItem="ShE-Lf-SVh" secondAttribute="bottom" id="Ni6-Wr-oAk"/>
+                            <constraint firstItem="hde-Kf-k9g" firstAttribute="top" secondItem="kq7-dF-wKL" secondAttribute="bottom" id="Twh-JE-XSA"/>
+                            <constraint firstItem="ShE-Lf-SVh" firstAttribute="top" secondItem="JQ1-M5-i1x" secondAttribute="bottom" id="TyW-2c-iNa"/>
+                            <constraint firstItem="JQ1-M5-i1x" firstAttribute="leading" secondItem="q5Q-uK-oT9" secondAttribute="leading" id="V2g-Kf-2Oq"/>
+                            <constraint firstItem="kq7-dF-wKL" firstAttribute="top" secondItem="Qc9-9D-wRy" secondAttribute="bottom" id="a6o-zO-MPw"/>
+                            <constraint firstItem="JQ1-M5-i1x" firstAttribute="top" secondItem="hde-Kf-k9g" secondAttribute="bottom" id="hDQ-jD-ff8"/>
+                            <constraint firstAttribute="trailing" secondItem="ShE-Lf-SVh" secondAttribute="trailing" id="lWV-rh-gn6"/>
+                            <constraint firstItem="hde-Kf-k9g" firstAttribute="leading" secondItem="q5Q-uK-oT9" secondAttribute="leading" id="m3o-yw-Ybn"/>
+                            <constraint firstAttribute="trailing" secondItem="kq7-dF-wKL" secondAttribute="trailing" id="oeS-uV-uT9"/>
+                            <constraint firstItem="ShE-Lf-SVh" firstAttribute="leading" secondItem="q5Q-uK-oT9" secondAttribute="leading" id="rjg-0r-RW6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nkg-Dp-ROj">
@@ -195,9 +291,21 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="search" id="XjQ-UX-uHh">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="actionSearch:" destination="QXR-yo-X1J" id="6cK-1N-QZd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="btnFilter" destination="3lf-RM-9gZ" id="pJj-9X-hfK"/>
+                        <outlet property="btnactionSearch" destination="XjQ-UX-uHh" id="ZNt-tF-lGB"/>
+                        <outlet property="conditionView" destination="hde-Kf-k9g" id="Vpi-bt-cVO"/>
+                        <outlet property="labelQuantityJOb" destination="8C0-H1-3D8" id="GWM-C9-I3J"/>
+                        <outlet property="quantityView" destination="JQ1-M5-i1x" id="KkX-xA-aFS"/>
+                        <outlet property="searchView" destination="kq7-dF-wKL" id="BDi-ss-uBO"/>
+                        <outlet property="tableViewJob" destination="ShE-Lf-SVh" id="bQd-de-PQG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqd-Dy-Klc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,7 +488,7 @@
                             <constraint firstItem="oeJ-D0-ol5" firstAttribute="centerX" secondItem="NDI-Z9-Roh" secondAttribute="centerX" id="wxo-It-dAd"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="btnLogin" destination="Ix7-qx-zaS" id="RsT-Pw-Inl"/>
                         <outlet property="emailField" destination="SGW-mB-J78" id="Igq-cd-igL"/>
@@ -782,7 +890,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="SignUpView"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addTextField" destination="IVz-PT-j1D" id="7aa-qE-VKi"/>
                         <outlet property="emailField" destination="xYV-eE-Ila" id="eJu-Ky-1eT"/>
@@ -846,6 +954,8 @@
         <image name="Background" width="360" height="291"/>
         <image name="Logo" width="208" height="58"/>
         <image name="Shape" width="20" height="20"/>
+        <image name="arrow_right" width="8" height="12"/>
+        <image name="filter_gray" width="18" height="18"/>
         <image name="fsoft" width="50" height="50"/>
         <image name="menu" width="18" height="12"/>
         <image name="note" width="20" height="20"/>
