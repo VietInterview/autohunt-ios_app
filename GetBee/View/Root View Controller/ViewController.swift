@@ -90,7 +90,13 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobController") as! DetailJobController
+        vc.title = "Chi tiết công việc"
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobitemcell", for: indexPath)
         return cell

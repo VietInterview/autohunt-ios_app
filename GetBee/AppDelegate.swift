@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // -Facebook
 //    FBSDKSettings.setAppID(ConfigurationManager.getValue(for: "FacebookKey"))
 //    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-    
+    let BarButtonItemAppearance = UIBarButtonItem.appearance()
+    BarButtonItemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
     IQKeyboardManager.shared.enable = true
     
     if SessionManager.validSession {

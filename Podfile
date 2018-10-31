@@ -8,4 +8,5 @@ target 'GetBee' do
   pod 'LGSideMenuController'
   pod 'JJFloatingActionButton'
   pod 'GoneVisible'
+  pod 'CarbonKit'
 end
