@@ -9,5 +9,6 @@
 import Foundation
 
 struct Model {
+    var id: Int
     var title: String
 }

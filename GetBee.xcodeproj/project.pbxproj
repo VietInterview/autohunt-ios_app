@@ -19,6 +19,16 @@
 		7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133321749001000AC5F2 /* StatisticalController.swift */; };
 		7A0C133621749018000AC5F2 /* CVSendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133521749018000AC5F2 /* CVSendController.swift */; };
 		7A121D8D21718A4D001E0B35 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A121D8C21718A4D001E0B35 /* Login.swift */; };
+		7A1D971021990D48007A4200 /* MyChoose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D970F21990D48007A4200 /* MyChoose.swift */; };
+		7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */; };
+		7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D9713219923B0007A4200 /* CarrerList.swift */; };
+		7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A54077421953E7800324167 /* LoadingOverlay.swift */; };
+		7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF12192CD890081862E /* HomeViewModel.swift */; };
+		7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF32192DADE0081862E /* GetMyProfile.swift */; };
+		7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF52192E1050081862E /* JobAPI.swift */; };
+		7A6F9EF82192E6B20081862E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF72192E6B20081862E /* Job.swift */; };
+		7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF92192F1570081862E /* JobTableViewCell.swift */; };
+		7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74594E219990CC007EDB42 /* JobDetail.swift */; };
 		7A99AA572171992800E3B0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA562171992800E3B0DC /* MainViewController.swift */; };
 		7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */; };
 		7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */; };
@@ -27,6 +37,7 @@
 		7AB0AD0821736CF900F576B5 /* InfoAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */; };
 		7AB0AD0A2173817F00F576B5 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */; };
 		7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */; };
+		7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */; };
 		7AFC9F5B216B893C008F6AB1 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC9F41216B890E008F6AB1 /* Nunito-Black.ttf */; };
 		7AFC9F5C216B893C008F6AB1 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC9F43216B890E008F6AB1 /* Nunito-BlackItalic.ttf */; };
 		7AFC9F5D216B893C008F6AB1 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC9F46216B890E008F6AB1 /* Nunito-Bold.ttf */; };
@@ -100,6 +111,16 @@
 		7A0C133321749001000AC5F2 /* StatisticalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticalController.swift; sourceTree = "<group>"; };
 		7A0C133521749018000AC5F2 /* CVSendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSendController.swift; sourceTree = "<group>"; };
 		7A121D8C21718A4D001E0B35 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7A1D970F21990D48007A4200 /* MyChoose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChoose.swift; sourceTree = "<group>"; };
+		7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerCityStatus.swift; sourceTree = "<group>"; };
+		7A1D9713219923B0007A4200 /* CarrerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerList.swift; sourceTree = "<group>"; };
+		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		7A6F9EF12192CD890081862E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7A6F9EF32192DADE0081862E /* GetMyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyProfile.swift; sourceTree = "<group>"; };
+		7A6F9EF52192E1050081862E /* JobAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAPI.swift; sourceTree = "<group>"; };
+		7A6F9EF72192E6B20081862E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		7A6F9EF92192F1570081862E /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		7A74594E219990CC007EDB42 /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
 		7A99AA562171992800E3B0DC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A99AA58217199B100E3B0DC /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +130,7 @@
 		7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAccountController.swift; sourceTree = "<group>"; };
 		7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerOrCityController.swift; sourceTree = "<group>"; };
+		7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemoveJob.swift; sourceTree = "<group>"; };
 		7AFC9F3F216B890E008F6AB1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		7AFC9F40216B890E008F6AB1 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		7AFC9F41216B890E008F6AB1 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
@@ -203,6 +225,11 @@
 			isa = PBXGroup;
 			children = (
 				7A121D8C21718A4D001E0B35 /* Login.swift */,
+				7A6F9EF32192DADE0081862E /* GetMyProfile.swift */,
+				7A6F9EF72192E6B20081862E /* Job.swift */,
+				7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */,
+				7A1D9713219923B0007A4200 /* CarrerList.swift */,
+				7A74594E219990CC007EDB42 /* JobDetail.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -221,6 +248,7 @@
 			children = (
 				7A99AA5F21719B6400E3B0DC /* NavigationController.swift */,
 				7A99AA6121719B6400E3B0DC /* ViewController.swift */,
+				7A6F9EF92192F1570081862E /* JobTableViewCell.swift */,
 			);
 			path = "Root View Controller";
 			sourceTree = "<group>";
@@ -337,6 +365,7 @@
 		9BAFB7BD2114CA9E0099DC61 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7A6F9EF12192CD890081862E /* HomeViewModel.swift */,
 				7A06AD962174261800E3CDAA /* ViewModel.swift */,
 				9BAFB7C02114E39C0099DC61 /* Onboarding */,
 			);
@@ -389,6 +418,8 @@
 				7A06AD982174262300E3CDAA /* Model.swift */,
 				E8FBB1BE1DD21A32000D6740 /* Session.swift */,
 				9B77E0721E2FB6350020E450 /* User.swift */,
+				7A1D970F21990D48007A4200 /* MyChoose.swift */,
+				7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -396,6 +427,7 @@
 		9BFA84EF1C7767DD009F64E4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7A54077421953E7800324167 /* LoadingOverlay.swift */,
 				9B88CC661CAB305900AE60C5 /* Constants.swift */,
 				9BD4090F1CE9F19E005223C9 /* UIHelper.swift */,
 			);
@@ -406,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				9B0C726E1C738D3400BAF3B1 /* UserAPI.swift */,
+				7A6F9EF52192E1050081862E /* JobAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -641,29 +674,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A0C133621749018000AC5F2 /* CVSendController.swift in Sources */,
+				7A6F9EF82192E6B20081862E /* Job.swift in Sources */,
 				E8290BFE1D832D9200599960 /* UIViewExtension.swift in Sources */,
 				9BD409101CE9F19E005223C9 /* UIHelper.swift in Sources */,
+				7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */,
 				E8B30E021E72FF8000131DCF /* UIStoryboardExtension.swift in Sources */,
+				7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */,
 				9B77E0751E2FB66F0020E450 /* UserDataManager.swift in Sources */,
 				9B0C72741C738D3400BAF3B1 /* APIClient.swift in Sources */,
 				9BD01E361F01641E007255E3 /* DictionaryExtension.swift in Sources */,
 				E8290C021D8330A800599960 /* StringExtension.swift in Sources */,
+				7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */,
 				7A121D8D21718A4D001E0B35 /* Login.swift in Sources */,
 				7A06AD9C2174266400E3CDAA /* CustomCell.swift in Sources */,
 				7AB0AD0A2173817F00F576B5 /* ChangePasswordController.swift in Sources */,
 				7A99AA572171992800E3B0DC /* MainViewController.swift in Sources */,
+				7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */,
 				7A06AD972174261800E3CDAA /* ViewModel.swift in Sources */,
 				7A06AD992174262300E3CDAA /* Model.swift in Sources */,
+				7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */,
+				7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */,
 				9B8D307020AB47E90050697F /* JSONEncodingExtension.swift in Sources */,
 				7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */,
 				E81171921DE5EFB7003D3DF5 /* UIViewControllerExtension.swift in Sources */,
 				9B3AA3991ED35007005A4D26 /* SignInViewController.swift in Sources */,
 				E8FBB1BF1DD21A32000D6740 /* Session.swift in Sources */,
 				0A6990351F9F82A300F4BAC7 /* UIApplicationExtension.swift in Sources */,
+				7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */,
+				7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */,
 				9B77E0731E2FB6350020E450 /* User.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
 				FABDC9221EE1EB2B000DDAC3 /* ConfigurationManager.swift in Sources */,
 				9B8574D7212C81950063A3E2 /* SignUpViewModel.swift in Sources */,
+				7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */,
 				9B0C72761C738D3400BAF3B1 /* UserAPI.swift in Sources */,
 				9BE3669D1F101737007CAECD /* MultipartMedia.swift in Sources */,
 				9B8574D9212C84130063A3E2 /* UIImageExtension.swift in Sources */,
@@ -673,6 +716,7 @@
 				7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */,
 				7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */,
 				E8FBB1C11DD21D18000D6740 /* SessionManager.swift in Sources */,
+				7A1D971021990D48007A4200 /* MyChoose.swift in Sources */,
 				9B77E0791E2FCF710020E450 /* Media.swift in Sources */,
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
 				9BAFB7C32114E3CD0099DC61 /* SignInViewModel.swift in Sources */,

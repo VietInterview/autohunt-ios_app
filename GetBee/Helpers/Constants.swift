@@ -12,7 +12,7 @@ import Foundation
 
 struct App {
   static let domain = Bundle.main.bundleIdentifier!
-  
+  static let baseUrl = "https://api.dev.getbee.vn"
   static func error(domain: ErrorDomain = .generic, code: Int? = nil, localizedDescription: String = "") -> NSError {
     return NSError(domain: App.domain + "." + domain.rawValue,
                    code: code ?? 0,

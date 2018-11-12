@@ -55,6 +55,20 @@ class SignInViewController: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
+        
+        if let session = SessionManager.currentSession {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+            
+            navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+            
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            mainViewController.rootViewController = navigationController
+            mainViewController.setup(type: UInt(2))
+            
+            let window = UIApplication.shared.delegate!.window!!
+            window.rootViewController = mainViewController
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,9 +10,9 @@ import UIKit
 
 class CustomCell: UITableViewCell {
     
-    var item: ViewModelItem? {
+    var item: CarrerListElement? {
         didSet {
-            titleLabel?.text = item?.title
+            titleLabel?.text = item?.name
         }
     }
     

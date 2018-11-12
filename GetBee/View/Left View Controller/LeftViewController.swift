@@ -7,7 +7,8 @@ import GoneVisible
 
 class LeftViewController: UITableViewController {
     
-    private let titlesArray = ["",
+    var viewModel = HomeViewModel()
+    private var titlesArray = ["",
                                "",
                                "Xin chào, Tùng!",
                                "",
@@ -24,6 +25,12 @@ class LeftViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_menuleft.png")!)
+        viewModel.loadUserProfile(success: { [unowned self] fullname in
+            self.titlesArray[2] = "Xin chào, \(fullname)"
+            self.tableView.reloadData()
+            }, failure: { error in
+                print("User Profile Error: " + error)
+        })
     }
     
     override var prefersStatusBarHidden: Bool {

@@ -12,6 +12,7 @@ class UserAPI {
   
   fileprivate static let usersUrl = "/api/authenticate"
   fileprivate static let currentUserUrl = "/user/"
+  fileprivate static let collUrl = "/svccollaborator/api"
 
   class func login(_ email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = usersUrl
@@ -70,12 +71,14 @@ class UserAPI {
     })
   }
 
-  class func getMyProfile(_ success: @escaping (_ user: User) -> Void, failure: @escaping (_ error: Error) -> Void) {
-    let url = currentUserUrl + "profile"
+  class func getMyProfile(_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    let url = collUrl + "/getProfiles"
     APIClient.request(.get, url: url, success: { response, _ in
       do {
-        let user = try JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
-        success(user)
+        print(response)
+        let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response)
+//        let user = try JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
+        success(getMyProfile!)
       } catch {
         failure(App.error(domain: .parsing, localizedDescription: "Could not parse a valid user".localized))
       }
@@ -98,9 +101,9 @@ class UserAPI {
   }
   
   class func saveUserSession(fromResponse response: [String: Any], headers: [AnyHashable: Any]) {
-    UserDataManager.currentUser = try? JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
-     let login = try? JSONDecoder().decode(Login.self, from: response)
-    print(login!.idToken!)
+//    UserDataManager.currentUser = try? JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
+      SessionManager.currentSession = try? JSONDecoder().decode(Session.self, from: response)
+    print(SessionManager.currentSession!.accessToken!)
 //    if let headers = headers as? [String: Any] {
 //      SessionManager.currentSession!.accessToken = login!.idToken!
 //    }

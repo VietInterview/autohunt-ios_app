@@ -9,18 +9,20 @@
 import Foundation
 import UIKit
 
-let dataArray = [Model(title: "Swift"), Model(title: "Objective C"), Model(title: "Java"), Model(title: "Kotlin"), Model(title: "Java Script"), Model(title: "Python"), Model(title: "Ruby"), Model(title: "PHP"), Model(title: "Perl"), Model(title: "C#"), Model(title: "C++"), Model(title: "Pascal"), Model(title: "Visual Basic")]
+var dataArray = [CarrerListElement]()
 
 class ViewModelItem {
-    private var item: Model
-    
+    private var item: CarrerListElement
+
     var isSelected = false
-    
-    var title: String {
-        return item.title
+    var id: Int {
+        return item.id!
     }
-    
-    init(item: Model) {
+    var title: String {
+        return item.name!
+    }
+
+    init(item: CarrerListElement) {
         self.item = item
     }
 }
@@ -51,7 +53,8 @@ extension ViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell {
-            cell.item = items[indexPath.row]
+            let carrerListElement = CarrerListElement(id: items[indexPath.row].id,name: items[indexPath.row].title)
+            cell.item = carrerListElement
             
             // select/deselect the cell
             if items[indexPath.row].isSelected {
@@ -72,7 +75,7 @@ extension ViewModel: UITableViewDataSource {
 
 extension ViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- 
+        
         // update ViewModel item
         items[indexPath.row].isSelected = true
         
@@ -83,14 +86,14 @@ extension ViewModel: UITableViewDelegate {
         
         // update ViewModel item
         items[indexPath.row].isSelected = false
-
+        
         didToggleSelection?(!selectedItems.isEmpty)
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if selectedItems.count > 2 {
-//            return nil
-//        }
+        //        if selectedItems.count > 2 {
+        //            return nil
+        //        }
         return indexPath
     }
 }
