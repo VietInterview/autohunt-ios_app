@@ -29,6 +29,9 @@
 		7A6F9EF82192E6B20081862E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF72192E6B20081862E /* Job.swift */; };
 		7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF92192F1570081862E /* JobTableViewCell.swift */; };
 		7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74594E219990CC007EDB42 /* JobDetail.swift */; };
+		7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77298E219A653F00A0CB97 /* DateUtils.swift */; };
+		7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772990219A69CE00A0CB97 /* StringUtils.swift */; };
+		7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */; };
 		7A99AA572171992800E3B0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA562171992800E3B0DC /* MainViewController.swift */; };
 		7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */; };
 		7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */; };
@@ -121,6 +124,9 @@
 		7A6F9EF72192E6B20081862E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		7A6F9EF92192F1570081862E /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
 		7A74594E219990CC007EDB42 /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
+		7A77298E219A653F00A0CB97 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		7A772990219A69CE00A0CB97 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSendTableViewCell.swift; sourceTree = "<group>"; };
 		7A99AA562171992800E3B0DC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A99AA58217199B100E3B0DC /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewCell.swift; sourceTree = "<group>"; };
@@ -232,6 +238,15 @@
 				7A74594E219990CC007EDB42 /* JobDetail.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		7A772992219A89F600A0CB97 /* CVSend */ = {
+			isa = PBXGroup;
+			children = (
+				7A0C133521749018000AC5F2 /* CVSendController.swift */,
+				7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */,
+			);
+			path = CVSend;
 			sourceTree = "<group>";
 		};
 		7A99AA5921719A7B00E3B0DC /* Left View Controller */ = {
@@ -346,6 +361,7 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A772992219A89F600A0CB97 /* CVSend */,
 				7A06AD9A2174264A00E3CDAA /* CarrerOrCity */,
 				7A99AA5E21719B3600E3B0DC /* Root View Controller */,
 				7A99AA5921719A7B00E3B0DC /* Left View Controller */,
@@ -357,7 +373,6 @@
 				7A06ADA0217456AF00E3CDAA /* DetailJobController.swift */,
 				7A0C133121748F90000AC5F2 /* InfoController.swift */,
 				7A0C133321749001000AC5F2 /* StatisticalController.swift */,
-				7A0C133521749018000AC5F2 /* CVSendController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -430,6 +445,8 @@
 				7A54077421953E7800324167 /* LoadingOverlay.swift */,
 				9B88CC661CAB305900AE60C5 /* Constants.swift */,
 				9BD4090F1CE9F19E005223C9 /* UIHelper.swift */,
+				7A77298E219A653F00A0CB97 /* DateUtils.swift */,
+				7A772990219A69CE00A0CB97 /* StringUtils.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -704,6 +721,7 @@
 				7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */,
 				9B77E0731E2FB6350020E450 /* User.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
+				7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */,
 				FABDC9221EE1EB2B000DDAC3 /* ConfigurationManager.swift in Sources */,
 				9B8574D7212C81950063A3E2 /* SignUpViewModel.swift in Sources */,
 				7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */,
@@ -713,6 +731,7 @@
 				7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */,
 				9B3AA39B1ED35013005A4D26 /* SignUpViewController.swift in Sources */,
 				9B0C72711C738D3400BAF3B1 /* AppDelegate.swift in Sources */,
+				7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */,
 				7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */,
 				7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */,
 				E8FBB1C11DD21D18000D6740 /* SessionManager.swift in Sources */,
@@ -721,6 +740,7 @@
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
 				9BAFB7C32114E3CD0099DC61 /* SignInViewModel.swift in Sources */,
 				9B88CC671CAB305900AE60C5 /* Constants.swift in Sources */,
+				7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */,
 				7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */,
 				7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */,
 				9B715A461E28083600C0C039 /* PlaceholderTextView.swift in Sources */,

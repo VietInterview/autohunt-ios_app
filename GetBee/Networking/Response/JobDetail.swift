@@ -20,25 +20,27 @@ import Foundation
 import Alamofire
 
 class JobDetail: Codable {
-    let careerID: Int?
-    let careerName: String?
-    let collStatus: Int?
-    let companyImg, companyName: String?
-    let countColl, countCv, countGotoWork, countInterview: Int?
-    let countOffer, countView, currency: Int?
-    let currencyName: String?
-    let customerID: Int?
-    let expireDate: String?
-    let fee, fromSalary, id, isHotjob: Int?
-    let jobDescription: String?
-    let jobLevel: Int?
-    let jobLevelName, jobRequirements, jobTitle, listcityName: String?
-    let lstJobApply: [LstJobApply]?
-    let myCountCv, myCountGotoWork, myCountInterview, myCountInviteInterview: Int?
-    let myCountOffer, quantity, status: Int?
-    let submitDate: String?
-    let toSalary: Int?
-    
+    var careerID: Int?
+    var careerName: String?
+    var collStatus: Int?
+    var companyImg, companyName: String?
+    var countColl, countCv, countGotoWork, countInterview: Int?
+    var countOffer, countView, currency: Int?
+    var currencyName: String?
+    var customerID: Int?
+    var expireDate: String?
+    var fee, fromSalary, id, isHotjob: Int?
+    var jobDescription: String?
+    var jobLevel: Int?
+    var jobLevelName, jobRequirements, jobTitle, listcityName: String?
+    var lstJobApply: [LstJobApply]?
+    var myCountCv, myCountGotoWork, myCountInterview, myCountInviteInterview: Int?
+    var myCountOffer, quantity, status: Int?
+    var submitDate: String?
+    var toSalary: Int?
+    init() {
+        
+    }
     enum CodingKeys: String, CodingKey {
         case careerID = "careerId"
         case careerName, collStatus, companyImg, companyName, countColl, countCv, countGotoWork, countInterview, countOffer, countView, currency, currencyName
