@@ -9,4 +9,10 @@ target 'GetBee' do
   pod 'JJFloatingActionButton'
   pod 'GoneVisible'
   pod 'CarbonKit'
+  pod 'ExpandableCell'
+  pod 'SwipeCellKit'
+  pod 'AlamofireImage', '~> 3.3'
+  pod 'ACFloatingTextfield-Swift', '~> 1.7'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'Toaster'
 end

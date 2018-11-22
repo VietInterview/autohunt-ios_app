@@ -15,6 +15,7 @@ class JobTableViewCell: UITableViewCell {
     @IBOutlet weak var labelCompany: UILabel!
     @IBOutlet weak var labelJob: UILabel!
     @IBOutlet weak var imgSaveUnSaveJob: UIImageView!
+    @IBOutlet weak var imgCompany: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -5,7 +5,7 @@
  */
 
 import Foundation
-//import UIKit
+import UIKit
 
 class StringUtils:NSObject {
     static let shared = StringUtils()
@@ -30,6 +30,68 @@ class StringUtils:NSObject {
             print("Fallback option")
         }
         return someNumber
+    }
+    func genStringLan(value: Int) -> String {
+        var someNumber = ""
+        switch value {
+        case 1:
+            someNumber="Tốt"
+        case 2:
+            someNumber="Khá"
+        case 3:
+            someNumber="Trung bình"
+        case 4:
+            someNumber="Kém"
+        default:
+            print("Fallback option")
+        }
+        return someNumber
+    }
+    func genColor(valueStatus: Int) -> UIColor {
+        var color: UIColor = .gray
+        switch valueStatus {
+        case 0:
+            color = .gray
+        case 1:
+            color = .yellow
+        case 2:
+            color = .yellow
+        case 3:
+            color = .yellow
+        case 4:
+            color = .gray
+        case 5:
+            color = .red
+        case 6:
+            color = .green
+        case 7:
+            color = .green
+        case 8:
+            color = .green
+        case 9:
+            color = .yellow
+        default:
+            color = .gray
+        }
+        return color
+    }
+    func genStringHumanResource(value: Int) -> String {
+        var statusString = ""
+        switch value {
+        case 1:
+            statusString="Dưới 50 người"
+        case 2:
+            statusString="Từ 50 - 100 người"
+        case 3:
+            statusString="Lớn hơn 100 người"
+        case 4:
+            statusString="Lớn hơn 500 người"
+        case 5:
+            statusString="Trung bình"
+        default:
+            statusString=""
+        }
+        return statusString
     }
     func genStringStatus(valueStatus: Int) -> String {
         var statusString = ""
@@ -68,5 +130,11 @@ class StringUtils:NSObject {
             return formattedTipAmount
         }
         return ""
+    }
+    
+    func prettyPrint(with json: [String:Any]) -> String{
+        let data = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+        return string as! String
     }
 }

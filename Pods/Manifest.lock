@@ -1,36 +1,61 @@
 PODS:
+  - ACFloatingTextfield-Swift (1.7)
   - Alamofire (4.7.3)
+  - AlamofireImage (3.4.1):
+    - Alamofire (~> 4.7)
   - CarbonKit (2.2.2)
+  - ExpandableCell (1.2.3)
   - GoneVisible (1.2.0)
   - IQKeyboardManagerSwift (6.0.5)
   - JJFloatingActionButton (0.10.0)
   - LGSideMenuController (2.1.1)
+  - SwiftyJSON (4.2.0)
+  - SwipeCellKit (2.5.0)
+  - Toaster (2.1.1)
 
 DEPENDENCIES:
+  - ACFloatingTextfield-Swift (~> 1.7)
   - Alamofire (~> 4.7.2)
+  - AlamofireImage (~> 3.3)
   - CarbonKit
+  - ExpandableCell
   - GoneVisible
   - IQKeyboardManagerSwift (~> 6.0.1)
   - JJFloatingActionButton
   - LGSideMenuController
+  - SwiftyJSON (~> 4.0)
+  - SwipeCellKit
+  - Toaster
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - ACFloatingTextfield-Swift
     - Alamofire
+    - AlamofireImage
     - CarbonKit
+    - ExpandableCell
     - GoneVisible
     - IQKeyboardManagerSwift
     - JJFloatingActionButton
     - LGSideMenuController
+    - SwiftyJSON
+    - SwipeCellKit
+    - Toaster
 
 SPEC CHECKSUMS:
+  ACFloatingTextfield-Swift: df075d5ed5d441d8603f985fc106ec7ebe0c673f
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   CarbonKit: 0dec4738fa489b4c043a5f850c27fd0dbefb57cc
+  ExpandableCell: 99a7993b6b61af6a9b5821f67a772d6402ffcda2
   GoneVisible: c552940cd9df7548427f6bffd000dcbcc6de187f
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   JJFloatingActionButton: 7e9e924d0819ebeb6a566dade9d5dbed63ff8add
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 1c21e61560bb7c7447238670833aa629e0b9ee29
+PODFILE CHECKSUM: 4270d44be0690efcb7877e4ae1f4b6240e6a3893
 
 COCOAPODS: 1.5.2

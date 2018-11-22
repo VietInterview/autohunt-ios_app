@@ -6,9 +6,13 @@
 
 import UIKit
 import CarbonKit
+import AlamofireImage
+import Alamofire
 
 class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
     
+    @IBOutlet weak var imgCompany: UIImageView!
+    @IBOutlet weak var btnSaveUnsaveJob: UIButton!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var lblCompany: UILabel!
@@ -19,12 +23,22 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
     var jobDetail = JobDetail()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let yourBackImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     override func viewDidAppear(_ animated: Bool) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         homeViewModel.getDetailJob(jobId: self.jobId, success: {jobDetail in
             LoadingOverlay.shared.hideOverlayView()
             self.jobDetail = jobDetail
+            Alamofire.request("https://dev.getbee.vn/\(self.jobDetail.companyImg!)").responseImage { response in
+                if let image = response.result.value {
+                    self.imgCompany.image = image
+                }
+            }
             self.lblCompany.text = jobDetail.companyName!
             self.lblJobTitle.text = jobDetail.jobTitle!
             if self.jobDetail.status! == 1 {
@@ -33,6 +47,39 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             } else {
                 self.lblStatus.text = "Đã đóng"
                  self.lblStatus.backgroundColor = UIColor.gray;
+            }
+            if self.jobDetail.collStatus! == 0 {
+                self.btnSaveUnsaveJob.backgroundColor = .clear
+                self.btnSaveUnsaveJob.layer.cornerRadius = 5
+                self.btnSaveUnsaveJob.layer.borderWidth = 1
+                self.btnSaveUnsaveJob.layer.borderColor = UIColor.gray.cgColor
+                self.btnSaveUnsaveJob.setTitle("Lưu công việc", for: .normal)
+                self.btnSaveUnsaveJob.setImage(UIImage(named: "save.png"), for: .normal)
+                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
+                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+            } else if self.jobDetail.collStatus! == 1 {
+                self.btnSaveUnsaveJob.backgroundColor = .clear
+                self.btnSaveUnsaveJob.layer.cornerRadius = 5
+                self.btnSaveUnsaveJob.layer.borderWidth = 1
+                self.btnSaveUnsaveJob.layer.borderColor = UIColor.red.cgColor
+                self.btnSaveUnsaveJob.setTitle("Đã lưu việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitleColor(.red, for: .normal)
+                self.btnSaveUnsaveJob.setImage(UIImage(named: "saved.png"), for: .normal)
+                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
+                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+            } else {
+                self.btnSaveUnsaveJob.backgroundColor = .green
+                self.btnSaveUnsaveJob.layer.cornerRadius = 5
+                self.btnSaveUnsaveJob.layer.borderWidth = 1
+                self.btnSaveUnsaveJob.layer.borderColor = UIColor.clear.cgColor
+                self.btnSaveUnsaveJob.setTitle("Đã ứng tuyển", for: .normal)
+                self.btnSaveUnsaveJob.setTitleColor(.white, for: .normal)
+                self.btnSaveUnsaveJob.setImage(UIImage(named: "tickok_white.png"), for: .normal)
+                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
+                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
             }
             let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Thống kê", "CV đã nộp"], delegate: self)
             tabSwipe.setTabExtraWidth(16)
@@ -84,4 +131,20 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             return vc
         }
     }
+    
+    @IBAction func submitCVTouch() {
+        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChooseCVSubmitController") as! ChooseCVSubmitController
+            vc.cvList = myCV.cvList!
+            vc.jobId = self.jobDetail.id!
+            vc.title = "Chọn CV của tôi"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }, failure: {error in
+            
+        })
+    }
+    
+    
 }

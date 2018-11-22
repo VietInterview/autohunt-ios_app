@@ -22,6 +22,7 @@ public enum SwiftBaseErrorCode: Int {
 
 public typealias SuccessCallback = (_ responseObject: [String: Any], _ responseHeaders: [AnyHashable: Any]) -> Void
 public typealias FailureCallback = (_ error: Error) -> Void
+public typealias FailureSubmitCVCallback = (_ errorSubmitCV: String, _ statusCode: Int) -> Void
 
 class APIClient {
     
@@ -41,7 +42,7 @@ class APIClient {
     fileprivate class func getHeader() -> [String: String]? {
         if let session = SessionManager.currentSession {
             return baseHeaders + [
-                 "Authorization":"Bearer \(SessionManager.currentSession!.accessToken!)"
+                "Authorization":"Bearer \(session.accessToken!)"
             ]
         }
         print(baseHeaders)
@@ -112,7 +113,7 @@ class APIClient {
     
     class func defaultEncoding(forMethod method: HTTPMethod) -> ParameterEncoding {
         switch method {
-        case .post, .put, .get:
+        case .post, .put, .delete:
             return JSONEncoding.default
         default:
             return URLEncoding.default
@@ -123,17 +124,44 @@ class APIClient {
         let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
         let header = APIClient.getHeader()
         let requestUrl = getBaseUrl() + url
-        print(requestUrl + " \n\(header!)")
+        if let mParam = params{
+            print("CallRequest: " + requestUrl + "\n \(header!)\n \(mParam)")
+        }else{
+            print("CallRequest: " + requestUrl + "\n \(header!)")
+        }
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 20
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
+                //                if response != nil {
+                //                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))")
+                //                }
                 print(response)
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
-    
+    class func request1(_ method: HTTPMethod, url: String, params: [String: Any]? = nil, paramsEncoding: ParameterEncoding? = nil, success: @escaping SuccessCallback, failure: @escaping FailureSubmitCVCallback) {
+        let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
+        let header = APIClient.getHeader()
+        let requestUrl = getBaseUrl() + url
+        if let mParam = params{
+            print("CallRequest: " + requestUrl + "\n \(header!)\n \(mParam)")
+        }else{
+            print("CallRequest: " + requestUrl + "\n \(header!)")
+        }
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = 20
+        manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
+            .validate()
+            .responseDictionary { response in
+                //                if response != nil {
+                //                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))")
+                //                }
+                print(response)
+                validateResult1(ofResponse: response, success: success, failure: failure)
+        }
+    }
     fileprivate class func validateResult(ofResponse response: DataResponse<[String: Any]>,
                                           success: @escaping SuccessCallback,
                                           failure: @escaping FailureCallback) {
@@ -150,7 +178,25 @@ class APIClient {
             }
         }
     }
-    
+    fileprivate class func validateResult1(ofResponse response: DataResponse<[String: Any]>,
+                                          success: @escaping SuccessCallback,
+                                          failure: @escaping FailureSubmitCVCallback) {
+        switch response.result {
+        case .success(let dictionary):
+            if let urlResponse = response.response {
+                success(dictionary, urlResponse.allHeaderFields)
+            }
+            return
+        case .failure(let error):
+            var dict : Dictionary = response.response!.allHeaderFields
+            let errorString:String = dict["X-svcCollaboratorApp-error"] as? String ?? ""
+            debugLog(object: errorString)
+            failure(errorString, response.response!.statusCode)
+            if (error as NSError).code == 401 { //Unauthorized user
+                AppDelegate.shared.unexpectedLogout()
+            }
+        }
+    }
     //Handle rails-API-base errors if any
     class func handleCustomError(_ code: Int?, dictionary: [String: Any]) -> NSError? {
         if let messageDict = dictionary["errors"] as? [String: [String]] {

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class UserAPI {
   
   fileprivate static let usersUrl = "/api/authenticate"
   fileprivate static let currentUserUrl = "/user/"
   fileprivate static let collUrl = "/svccollaborator/api"
-
+  
   class func login(_ email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = usersUrl
     let parameters = [
@@ -21,14 +22,16 @@ class UserAPI {
       "rememberMe": true,
       "username": email
       ] as [String : Any]
+    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
     APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+      LoadingOverlay.shared.hideOverlayView()
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success()
     }, failure: { error in
       failure(error)
     })
   }
-
+  
   //Example method that uploads an image using multipart-form.
   class func signup(_ email: String, password: String, avatar: UIImage, success: @escaping (_ response: [String: Any]) -> Void, failure: @escaping (_ error: Error) -> Void) {
     let parameters = [
@@ -50,7 +53,7 @@ class UserAPI {
       failure(error)
     })
   }
-
+  
   //Example method that uploads base64 encoded image.
   class func signup(_ email: String, password: String, avatar64: UIImage, success: @escaping (_ response: [String: Any]) -> Void, failure: @escaping (_ error: Error) -> Void) {
     let picData = UIImageJPEGRepresentation(avatar64, 0.75)
@@ -70,23 +73,62 @@ class UserAPI {
       failure(error)
     })
   }
-
+  
   class func getMyProfile(_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = collUrl + "/getProfiles"
     APIClient.request(.get, url: url, success: { response, _ in
-      do {
-        print(response)
-        let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response)
-//        let user = try JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
-        success(getMyProfile!)
-      } catch {
-        failure(App.error(domain: .parsing, localizedDescription: "Could not parse a valid user".localized))
+      if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
+        success(getMyProfile)
       }
     }, failure: { error in
       failure(error)
     })
   }
-
+  class func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [DesideratedCareer]?,_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void){
+    let url = collUrl + "/saveProfile"
+    var arrayList : [String: Any]//one item of array
+    var list = [[String: Any]]()//data array
+    if let mArrCarrerHunt = arrCarrerHunt {
+      for i in 0..<mArrCarrerHunt.count {
+        arrayList = [
+          "id":mArrCarrerHunt[i].id!,
+          "name":mArrCarrerHunt[i].name!,
+          ]
+        list.append(arrayList)//append to your list
+      }
+    }
+    let parameters = [
+      "addressColl": address,
+      "careerColl": carrer,
+      "fullNameColl": fullName,
+      "phoneColl": phone,
+      "desideratedCareer":list
+      ] as [String : Any]
+    APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+      LoadingOverlay.shared.hideOverlayView()
+      if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
+        success(getMyProfile)
+      }
+    }, failure: { error in
+      failure(error)
+    })
+  }
+  class func changePassword(currentPassword: String, newPassword: String, success: @escaping () -> Void, failure: @escaping (_ error: String,_ statusCode: Int) -> Void){
+    let url = "/api/account/change-password"
+    let parameters = [
+      "currentPassword": currentPassword,
+      "newPassword": newPassword
+      ] as [String : Any]
+    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
+      LoadingOverlay.shared.hideOverlayView()
+      debugLog(object: headers)
+      success()
+    }, failure: { error, statusCode  in
+      LoadingOverlay.shared.hideOverlayView()
+      failure(error, statusCode)
+    })
+  }
   class func loginWithFacebook(token: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = currentUserUrl + "facebook"
     let parameters = [
@@ -101,22 +143,23 @@ class UserAPI {
   }
   
   class func saveUserSession(fromResponse response: [String: Any], headers: [AnyHashable: Any]) {
-//    UserDataManager.currentUser = try? JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
-      SessionManager.currentSession = try? JSONDecoder().decode(Session.self, from: response)
+    //    UserDataManager.currentUser = try? JSONDecoder().decode(User.self, from: response["user"] as? [String: Any] ?? [:])
+    SessionManager.currentSession = try? JSONDecoder().decode(Session.self, from: response)
     print(SessionManager.currentSession!.accessToken!)
-//    if let headers = headers as? [String: Any] {
-//      SessionManager.currentSession!.accessToken = login!.idToken!
-//    }
+    //    if let headers = headers as? [String: Any] {
+    //      SessionManager.currentSession!.accessToken = login!.idToken!
+    //    }
   }
   
   class func logout(_ success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-    let url = usersUrl + "sign_out"
-    APIClient.request(.delete, url: url, success: {_, _ in 
+//    let url = usersUrl + "sign_out"
+//    APIClient.request(.delete, url: url, success: {_, _ in
       UserDataManager.deleteUser()
       SessionManager.deleteSession()
-      success()
-    }, failure: { error in
-      failure(error)
-    })
+    success()
+//      success()
+//    }, failure: { error in
+//      failure(error)
+//    })
   }
 }

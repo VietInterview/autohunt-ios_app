@@ -19,9 +19,18 @@
 		7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133321749001000AC5F2 /* StatisticalController.swift */; };
 		7A0C133621749018000AC5F2 /* CVSendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133521749018000AC5F2 /* CVSendController.swift */; };
 		7A121D8D21718A4D001E0B35 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A121D8C21718A4D001E0B35 /* Login.swift */; };
+		7A17F3BA21A396AD000B4D1F /* ListCVSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A17F3B921A396AD000B4D1F /* ListCVSubmit.swift */; };
+		7A17F3BC21A3A9AC000B4D1F /* MyCVTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A17F3BB21A3A9AC000B4D1F /* MyCVTableViewCell.swift */; };
 		7A1D971021990D48007A4200 /* MyChoose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D970F21990D48007A4200 /* MyChoose.swift */; };
 		7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */; };
 		7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D9713219923B0007A4200 /* CarrerList.swift */; };
+		7A2EA49821A0EE2400E61681 /* ExpandableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49521A0EE2300E61681 /* ExpandableCells.swift */; };
+		7A2EA49921A0EE2400E61681 /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2EA49621A0EE2400E61681 /* ExpandableCell.xib */; };
+		7A2EA49A21A0EE2400E61681 /* ExpandedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2EA49721A0EE2400E61681 /* ExpandedCell.xib */; };
+		7A2EA49C21A0FC2200E61681 /* LevelDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49B21A0FC2200E61681 /* LevelDetailCVController.swift */; };
+		7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */; };
+		7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */; };
+		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
 		7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A54077421953E7800324167 /* LoadingOverlay.swift */; };
 		7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF12192CD890081862E /* HomeViewModel.swift */; };
 		7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF32192DADE0081862E /* GetMyProfile.swift */; };
@@ -32,15 +41,40 @@
 		7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77298E219A653F00A0CB97 /* DateUtils.swift */; };
 		7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772990219A69CE00A0CB97 /* StringUtils.swift */; };
 		7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */; };
+		7A78E35321A53433007BA69C /* SwiftLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35221A53433007BA69C /* SwiftLog.swift */; };
+		7A78E35721A5412A007BA69C /* ExpandedLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A78E35621A5412A007BA69C /* ExpandedLevelCell.xib */; };
+		7A78E35921A54A4C007BA69C /* ExpandableLanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A78E35821A54A4C007BA69C /* ExpandableLanCell.xib */; };
+		7A78E35B21A54BD0007BA69C /* ExpandedLanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A78E35A21A54BD0007BA69C /* ExpandedLanCell.xib */; };
+		7A78E35D21A5785C007BA69C /* SubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35C21A5785C007BA69C /* SubmitCV.swift */; };
+		7A78E35F21A57A1A007BA69C /* ErrorSubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */; };
+		7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A882CC1219EC03C009A2518 /* DetailCVController.swift */; };
+		7A8B9BB221A415F900F6E77C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB121A415F900F6E77C /* Shared.swift */; };
+		7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */; };
 		7A99AA572171992800E3B0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA562171992800E3B0DC /* MainViewController.swift */; };
 		7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */; };
 		7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */; };
 		7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5F21719B6400E3B0DC /* NavigationController.swift */; };
 		7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA6121719B6400E3B0DC /* ViewController.swift */; };
+		7AA70218219CFD6300566F43 /* ChooseCVSubmitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */; };
+		7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */; };
+		7AA7021C219CFE8900566F43 /* MyCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7021B219CFE8900566F43 /* MyCV.swift */; };
+		7AA7021E219CFEEE00566F43 /* CvsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7021D219CFEEE00566F43 /* CvsAPI.swift */; };
 		7AB0AD0821736CF900F576B5 /* InfoAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */; };
 		7AB0AD0A2173817F00F576B5 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */; };
 		7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */; };
+		7AC6DA7A21A24A2F00BD5C10 /* DetailCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA7921A24A2F00BD5C10 /* DetailCV.swift */; };
+		7AC6DA7C21A2756000BD5C10 /* ListCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA7B21A2756000BD5C10 /* ListCV.swift */; };
+		7AC6DA7F21A2782C00BD5C10 /* MyCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA7E21A2782C00BD5C10 /* MyCVController.swift */; };
+		7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA8021A2784900BD5C10 /* MyCVSavedController.swift */; };
+		7AC6DA8321A2785B00BD5C10 /* MyCVAppliedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA8221A2785B00BD5C10 /* MyCVAppliedController.swift */; };
+		7ADFA16221A291A0001492F0 /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16121A291A0001492F0 /* ScreenUtils.swift */; };
+		7ADFA16521A2B41F001492F0 /* MyJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16421A2B41F001492F0 /* MyJobController.swift */; };
+		7ADFA16721A2B49B001492F0 /* MyJobSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */; };
+		7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */; };
+		7AF1BD54219FBB20002FDC63 /* InfoDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */; };
+		7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */; };
 		7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */; };
+		7AFB065321A4F3AD0046CB7B /* MyJobSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFB065221A4F3AD0046CB7B /* MyJobSaved.swift */; };
 		7AFC9F5B216B893C008F6AB1 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC9F41216B890E008F6AB1 /* Nunito-Black.ttf */; };
 		7AFC9F5C216B893C008F6AB1 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC9F43216B890E008F6AB1 /* Nunito-BlackItalic.ttf */; };
 		7AFC9F5D216B893C008F6AB1 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AFC9F46216B890E008F6AB1 /* Nunito-Bold.ttf */; };
@@ -114,9 +148,18 @@
 		7A0C133321749001000AC5F2 /* StatisticalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticalController.swift; sourceTree = "<group>"; };
 		7A0C133521749018000AC5F2 /* CVSendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSendController.swift; sourceTree = "<group>"; };
 		7A121D8C21718A4D001E0B35 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7A17F3B921A396AD000B4D1F /* ListCVSubmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCVSubmit.swift; sourceTree = "<group>"; };
+		7A17F3BB21A3A9AC000B4D1F /* MyCVTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVTableViewCell.swift; sourceTree = "<group>"; };
 		7A1D970F21990D48007A4200 /* MyChoose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChoose.swift; sourceTree = "<group>"; };
 		7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerCityStatus.swift; sourceTree = "<group>"; };
 		7A1D9713219923B0007A4200 /* CarrerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerList.swift; sourceTree = "<group>"; };
+		7A2EA49521A0EE2300E61681 /* ExpandableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableCells.swift; sourceTree = "<group>"; };
+		7A2EA49621A0EE2400E61681 /* ExpandableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
+		7A2EA49721A0EE2400E61681 /* ExpandedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpandedCell.xib; sourceTree = "<group>"; };
+		7A2EA49B21A0FC2200E61681 /* LevelDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDetailCVController.swift; sourceTree = "<group>"; };
+		7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanDetailCVController.swift; sourceTree = "<group>"; };
+		7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComDetailCVController.swift; sourceTree = "<group>"; };
+		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
 		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		7A6F9EF12192CD890081862E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7A6F9EF32192DADE0081862E /* GetMyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyProfile.swift; sourceTree = "<group>"; };
@@ -127,16 +170,41 @@
 		7A77298E219A653F00A0CB97 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		7A772990219A69CE00A0CB97 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSendTableViewCell.swift; sourceTree = "<group>"; };
+		7A78E35221A53433007BA69C /* SwiftLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLog.swift; sourceTree = "<group>"; };
+		7A78E35621A5412A007BA69C /* ExpandedLevelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedLevelCell.xib; sourceTree = "<group>"; };
+		7A78E35821A54A4C007BA69C /* ExpandableLanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableLanCell.xib; sourceTree = "<group>"; };
+		7A78E35A21A54BD0007BA69C /* ExpandedLanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedLanCell.xib; sourceTree = "<group>"; };
+		7A78E35C21A5785C007BA69C /* SubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCV.swift; sourceTree = "<group>"; };
+		7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSubmitCV.swift; sourceTree = "<group>"; };
+		7A882CC1219EC03C009A2518 /* DetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCVController.swift; sourceTree = "<group>"; };
+		7A8B9BB121A415F900F6E77C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCV.swift; sourceTree = "<group>"; };
 		7A99AA562171992800E3B0DC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A99AA58217199B100E3B0DC /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewCell.swift; sourceTree = "<group>"; };
 		7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		7A99AA5F21719B6400E3B0DC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7A99AA6121719B6400E3B0DC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCVSubmitController.swift; sourceTree = "<group>"; };
+		7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSubmitTableViewCell.swift; sourceTree = "<group>"; };
+		7AA7021B219CFE8900566F43 /* MyCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCV.swift; sourceTree = "<group>"; };
+		7AA7021D219CFEEE00566F43 /* CvsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvsAPI.swift; sourceTree = "<group>"; };
 		7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAccountController.swift; sourceTree = "<group>"; };
 		7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerOrCityController.swift; sourceTree = "<group>"; };
+		7AC6DA7921A24A2F00BD5C10 /* DetailCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCV.swift; sourceTree = "<group>"; };
+		7AC6DA7B21A2756000BD5C10 /* ListCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCV.swift; sourceTree = "<group>"; };
+		7AC6DA7E21A2782C00BD5C10 /* MyCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVController.swift; sourceTree = "<group>"; };
+		7AC6DA8021A2784900BD5C10 /* MyCVSavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVSavedController.swift; sourceTree = "<group>"; };
+		7AC6DA8221A2785B00BD5C10 /* MyCVAppliedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVAppliedController.swift; sourceTree = "<group>"; };
+		7ADFA16121A291A0001492F0 /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
+		7ADFA16421A2B41F001492F0 /* MyJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobController.swift; sourceTree = "<group>"; };
+		7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobSavedController.swift; sourceTree = "<group>"; };
+		7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobAppliedController.swift; sourceTree = "<group>"; };
+		7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCVController.swift; sourceTree = "<group>"; };
+		7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpDetailCVController.swift; sourceTree = "<group>"; };
 		7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemoveJob.swift; sourceTree = "<group>"; };
+		7AFB065221A4F3AD0046CB7B /* MyJobSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobSaved.swift; sourceTree = "<group>"; };
 		7AFC9F3F216B890E008F6AB1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		7AFC9F40216B890E008F6AB1 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		7AFC9F41216B890E008F6AB1 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
@@ -236,8 +304,29 @@
 				7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */,
 				7A1D9713219923B0007A4200 /* CarrerList.swift */,
 				7A74594E219990CC007EDB42 /* JobDetail.swift */,
+				7AA7021B219CFE8900566F43 /* MyCV.swift */,
+				7AC6DA7921A24A2F00BD5C10 /* DetailCV.swift */,
+				7AC6DA7B21A2756000BD5C10 /* ListCV.swift */,
+				7A17F3B921A396AD000B4D1F /* ListCVSubmit.swift */,
+				7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */,
+				7AFB065221A4F3AD0046CB7B /* MyJobSaved.swift */,
+				7A78E35C21A5785C007BA69C /* SubmitCV.swift */,
+				7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		7A2EA49421A0EDFF00E61681 /* ExpandableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7A2EA49621A0EE2400E61681 /* ExpandableCell.xib */,
+				7A2EA49521A0EE2300E61681 /* ExpandableCells.swift */,
+				7A2EA49721A0EE2400E61681 /* ExpandedCell.xib */,
+				7A78E35621A5412A007BA69C /* ExpandedLevelCell.xib */,
+				7A78E35821A54A4C007BA69C /* ExpandableLanCell.xib */,
+				7A78E35A21A54BD0007BA69C /* ExpandedLanCell.xib */,
+			);
+			path = ExpandableViewCell;
 			sourceTree = "<group>";
 		};
 		7A772992219A89F600A0CB97 /* CVSend */ = {
@@ -247,6 +336,21 @@
 				7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */,
 			);
 			path = CVSend;
+			sourceTree = "<group>";
+		};
+		7A882CC0219EC01A009A2518 /* DetailCV */ = {
+			isa = PBXGroup;
+			children = (
+				7A2EA49421A0EDFF00E61681 /* ExpandableViewCell */,
+				7A882CC1219EC03C009A2518 /* DetailCVController.swift */,
+				7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */,
+				7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */,
+				7A2EA49B21A0FC2200E61681 /* LevelDetailCVController.swift */,
+				7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */,
+				7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */,
+				7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */,
+			);
+			path = DetailCV;
 			sourceTree = "<group>";
 		};
 		7A99AA5921719A7B00E3B0DC /* Left View Controller */ = {
@@ -266,6 +370,36 @@
 				7A6F9EF92192F1570081862E /* JobTableViewCell.swift */,
 			);
 			path = "Root View Controller";
+			sourceTree = "<group>";
+		};
+		7AA70216219CFBBB00566F43 /* ChooseCVSubmit */ = {
+			isa = PBXGroup;
+			children = (
+				7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */,
+				7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */,
+			);
+			path = ChooseCVSubmit;
+			sourceTree = "<group>";
+		};
+		7AC6DA7D21A2781600BD5C10 /* MyCV */ = {
+			isa = PBXGroup;
+			children = (
+				7AC6DA7E21A2782C00BD5C10 /* MyCVController.swift */,
+				7AC6DA8021A2784900BD5C10 /* MyCVSavedController.swift */,
+				7AC6DA8221A2785B00BD5C10 /* MyCVAppliedController.swift */,
+				7A17F3BB21A3A9AC000B4D1F /* MyCVTableViewCell.swift */,
+			);
+			path = MyCV;
+			sourceTree = "<group>";
+		};
+		7ADFA16321A2B408001492F0 /* MyJob */ = {
+			isa = PBXGroup;
+			children = (
+				7ADFA16421A2B41F001492F0 /* MyJobController.swift */,
+				7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */,
+				7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */,
+			);
+			path = MyJob;
 			sourceTree = "<group>";
 		};
 		7AFC9F3E216B88FB008F6AB1 /* fonts */ = {
@@ -361,6 +495,10 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7ADFA16321A2B408001492F0 /* MyJob */,
+				7AC6DA7D21A2781600BD5C10 /* MyCV */,
+				7A882CC0219EC01A009A2518 /* DetailCV */,
+				7AA70216219CFBBB00566F43 /* ChooseCVSubmit */,
 				7A772992219A89F600A0CB97 /* CVSend */,
 				7A06AD9A2174264A00E3CDAA /* CarrerOrCity */,
 				7A99AA5E21719B3600E3B0DC /* Root View Controller */,
@@ -442,11 +580,14 @@
 		9BFA84EF1C7767DD009F64E4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7A8B9BB121A415F900F6E77C /* Shared.swift */,
 				7A54077421953E7800324167 /* LoadingOverlay.swift */,
 				9B88CC661CAB305900AE60C5 /* Constants.swift */,
 				9BD4090F1CE9F19E005223C9 /* UIHelper.swift */,
 				7A77298E219A653F00A0CB97 /* DateUtils.swift */,
 				7A772990219A69CE00A0CB97 /* StringUtils.swift */,
+				7ADFA16121A291A0001492F0 /* ScreenUtils.swift */,
+				7A78E35221A53433007BA69C /* SwiftLog.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -456,6 +597,7 @@
 			children = (
 				9B0C726E1C738D3400BAF3B1 /* UserAPI.swift */,
 				7A6F9EF52192E1050081862E /* JobAPI.swift */,
+				7AA7021D219CFEEE00566F43 /* CvsAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -591,9 +733,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AFC9F5F216B893C008F6AB1 /* Nunito-ExtraBold.ttf in Resources */,
+				7A2EA49921A0EE2400E61681 /* ExpandableCell.xib in Resources */,
 				7AFC9F63216B893C008F6AB1 /* Nunito-Italic.ttf in Resources */,
 				9B9C6BFE20C7160700EB0523 /* README.md in Resources */,
 				7AFC9F65216B893C008F6AB1 /* Nunito-LightItalic.ttf in Resources */,
+				7A2EA49A21A0EE2400E61681 /* ExpandedCell.xib in Resources */,
 				7AFC9F67216B893C008F6AB1 /* Nunito-SemiBold.ttf in Resources */,
 				7AFC9F5B216B893C008F6AB1 /* Nunito-Black.ttf in Resources */,
 				0ABFB8901FA366D90098F751 /* Main.storyboard in Resources */,
@@ -602,6 +746,8 @@
 				7A06AD9E2174266C00E3CDAA /* CustomCell.xib in Resources */,
 				9BFA84F31C776827009F64E4 /* LaunchScreen.storyboard in Resources */,
 				7AFC9F5D216B893C008F6AB1 /* Nunito-Bold.ttf in Resources */,
+				7A78E35B21A54BD0007BA69C /* ExpandedLanCell.xib in Resources */,
+				7A78E35921A54A4C007BA69C /* ExpandableLanCell.xib in Resources */,
 				9B8D306B20AB456C0050697F /* Localization.strings in Resources */,
 				7AFC9F62216B893C008F6AB1 /* Nunito-ExtraLightItalic.ttf in Resources */,
 				7AFC9F5E216B893C008F6AB1 /* Nunito-BoldItalic.ttf in Resources */,
@@ -611,6 +757,7 @@
 				7AFC9F60216B893C008F6AB1 /* Nunito-ExtraBoldItalic.ttf in Resources */,
 				7AFC9F64216B893C008F6AB1 /* Nunito-Light.ttf in Resources */,
 				7AFC9F61216B893C008F6AB1 /* Nunito-ExtraLight.ttf in Resources */,
+				7A78E35721A5412A007BA69C /* ExpandedLevelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,21 +802,33 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GetBee/Pods-GetBee-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ACFloatingTextfield-Swift/ACFloatingTextfield_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ExpandableCell/ExpandableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/GoneVisible/GoneVisible.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JJFloatingActionButton/JJFloatingActionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACFloatingTextfield_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpandableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoneVisible.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JJFloatingActionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -692,15 +851,21 @@
 			files = (
 				7A0C133621749018000AC5F2 /* CVSendController.swift in Sources */,
 				7A6F9EF82192E6B20081862E /* Job.swift in Sources */,
+				7ADFA16521A2B41F001492F0 /* MyJobController.swift in Sources */,
 				E8290BFE1D832D9200599960 /* UIViewExtension.swift in Sources */,
 				9BD409101CE9F19E005223C9 /* UIHelper.swift in Sources */,
 				7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */,
 				E8B30E021E72FF8000131DCF /* UIStoryboardExtension.swift in Sources */,
+				7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */,
 				7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */,
 				9B77E0751E2FB66F0020E450 /* UserDataManager.swift in Sources */,
+				7AC6DA8321A2785B00BD5C10 /* MyCVAppliedController.swift in Sources */,
 				9B0C72741C738D3400BAF3B1 /* APIClient.swift in Sources */,
+				7AF1BD54219FBB20002FDC63 /* InfoDetailCVController.swift in Sources */,
 				9BD01E361F01641E007255E3 /* DictionaryExtension.swift in Sources */,
+				7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */,
 				E8290C021D8330A800599960 /* StringExtension.swift in Sources */,
+				7AC6DA7F21A2782C00BD5C10 /* MyCVController.swift in Sources */,
 				7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */,
 				7A121D8D21718A4D001E0B35 /* Login.swift in Sources */,
 				7A06AD9C2174266400E3CDAA /* CustomCell.swift in Sources */,
@@ -709,19 +874,33 @@
 				7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */,
 				7A06AD972174261800E3CDAA /* ViewModel.swift in Sources */,
 				7A06AD992174262300E3CDAA /* Model.swift in Sources */,
+				7ADFA16221A291A0001492F0 /* ScreenUtils.swift in Sources */,
 				7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */,
+				7A2EA49C21A0FC2200E61681 /* LevelDetailCVController.swift in Sources */,
 				7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */,
+				7A2EA49821A0EE2400E61681 /* ExpandableCells.swift in Sources */,
+				7ADFA16721A2B49B001492F0 /* MyJobSavedController.swift in Sources */,
+				7A8B9BB221A415F900F6E77C /* Shared.swift in Sources */,
 				9B8D307020AB47E90050697F /* JSONEncodingExtension.swift in Sources */,
 				7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */,
 				E81171921DE5EFB7003D3DF5 /* UIViewControllerExtension.swift in Sources */,
+				7A78E35321A53433007BA69C /* SwiftLog.swift in Sources */,
+				7AA7021E219CFEEE00566F43 /* CvsAPI.swift in Sources */,
 				9B3AA3991ED35007005A4D26 /* SignInViewController.swift in Sources */,
+				7A17F3BC21A3A9AC000B4D1F /* MyCVTableViewCell.swift in Sources */,
 				E8FBB1BF1DD21A32000D6740 /* Session.swift in Sources */,
 				0A6990351F9F82A300F4BAC7 /* UIApplicationExtension.swift in Sources */,
 				7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */,
 				7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */,
 				9B77E0731E2FB6350020E450 /* User.swift in Sources */,
+				7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */,
+				7AC6DA7C21A2756000BD5C10 /* ListCV.swift in Sources */,
+				7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */,
+				7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
 				7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */,
+				7A17F3BA21A396AD000B4D1F /* ListCVSubmit.swift in Sources */,
+				7AA70218219CFD6300566F43 /* ChooseCVSubmitController.swift in Sources */,
 				FABDC9221EE1EB2B000DDAC3 /* ConfigurationManager.swift in Sources */,
 				9B8574D7212C81950063A3E2 /* SignUpViewModel.swift in Sources */,
 				7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */,
@@ -730,21 +909,30 @@
 				9B8574D9212C84130063A3E2 /* UIImageExtension.swift in Sources */,
 				7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */,
 				9B3AA39B1ED35013005A4D26 /* SignUpViewController.swift in Sources */,
+				7AFB065321A4F3AD0046CB7B /* MyJobSaved.swift in Sources */,
 				9B0C72711C738D3400BAF3B1 /* AppDelegate.swift in Sources */,
 				7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */,
 				7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */,
+				7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */,
 				7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */,
 				E8FBB1C11DD21D18000D6740 /* SessionManager.swift in Sources */,
 				7A1D971021990D48007A4200 /* MyChoose.swift in Sources */,
 				9B77E0791E2FCF710020E450 /* Media.swift in Sources */,
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
+				7AA7021C219CFE8900566F43 /* MyCV.swift in Sources */,
+				7A78E35F21A57A1A007BA69C /* ErrorSubmitCV.swift in Sources */,
 				9BAFB7C32114E3CD0099DC61 /* SignInViewModel.swift in Sources */,
 				9B88CC671CAB305900AE60C5 /* Constants.swift in Sources */,
+				7AC6DA7A21A24A2F00BD5C10 /* DetailCV.swift in Sources */,
 				7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */,
 				7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */,
 				7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */,
+				7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */,
+				7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */,
+				7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */,
 				9B715A461E28083600C0C039 /* PlaceholderTextView.swift in Sources */,
 				7AB0AD0821736CF900F576B5 /* InfoAccountController.swift in Sources */,
+				7A78E35D21A5785C007BA69C /* SubmitCV.swift in Sources */,
 				7A0C133221748F90000AC5F2 /* InfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

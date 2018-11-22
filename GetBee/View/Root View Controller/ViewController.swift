@@ -5,6 +5,8 @@
 import UIKit
 import JJFloatingActionButton
 import GoneVisible
+import Alamofire
+import AlamofireImage
 
 class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSource ,UIScrollViewDelegate, ChooseDelegate{
     @IBOutlet weak var btnactionSearch: UIBarButtonItem!
@@ -46,7 +48,6 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         if #available(iOS 10.0, *) {
             self.tableViewJob.refreshControl = refreshControl
         } else {
-            // Fallback on earlier versions
         }
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -56,7 +57,6 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     func searchJob(carrerId: Int, cityId: Int, jobtitle: String){
         self.viewModel.getSearchJob(carrerId: carrerId, cityId: cityId, jobTitle: jobtitle,  page: self.page, success:  { [unowned self] job in
-            LoadingOverlay.shared.hideOverlayView()
             self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
             if self.page == 0 {
                 self.jobList = job.jobList!
@@ -79,37 +79,10 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     @objc func sortArray() {
         self.page = 0
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         self.searchJob(carrerId: self.carrerId, cityId: self.cityId, jobtitle: self.textFieldSearch.text!)
-//        self.viewModel.getSearchJob(carrerId: 0, cityId: 0, jobTitle: self.textFieldSearch.text!,  page: self.page, success:  { [unowned self] job in
-//            LoadingOverlay.shared.hideOverlayView()
-//            self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
-//            self.jobList = job.jobList!
-//            self.jobListServer = job.jobList!
-//            self.tableViewJob.reloadData()
-//            self.quantityView.isHidden = false
-//            self.quantityView.visible()
-//            if #available(iOS 10.0, *) {
-//                self.tableViewJob.refreshControl?.endRefreshing()
-//            }
-//            }, failure:  { error in
-//                LoadingOverlay.shared.hideOverlayView()
-//                print("User Profile Error: " + error)
-//        })
     }
     override func viewDidAppear(_ animated: Bool) {
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: self.textFieldSearch.text!)
-//        viewModel.getSearchJob(carrerId: 0, cityId: 0, jobTitle: "",  page: self.page, success:  { [unowned self] job in
-//            LoadingOverlay.shared.hideOverlayView()
-//            self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
-//            self.jobList = job.jobList!
-//            self.jobListServer = job.jobList!
-//            self.tableViewJob.reloadData()
-//            }, failure:  { error in
-//                LoadingOverlay.shared.hideOverlayView()
-//                print("User Profile Error: " + error)
-//        })
     }
     
     @IBAction func goToCarrerOrCity() {
@@ -192,19 +165,6 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             if self.jobListServer.count >= 30 {
                 page = page + 1
                 self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: self.textFieldSearch.text!)
-//                self.viewModel.getSearchJob(carrerId: 0, cityId: 0, jobTitle: "",  page: self.page, success:  { [unowned self] job in
-//                    self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
-//                    self.jobList.append(contentsOf: job.jobList!)
-//                    self.jobListServer = job.jobList!
-//                    self.tableViewJob.reloadData()
-//                    if #available(iOS 10.0, *) {
-//                        self.tableViewJob.refreshControl?.endRefreshing()
-//                    } else {
-//                        // Fallback on earlier versions
-//                    }
-//                    }, failure:  { error in
-//                        print("User Profile Error: " + error)
-//                })
             }
         }
     }
@@ -238,6 +198,11 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedMe(sender: )))
         cell.imgSaveUnSaveJob.addGestureRecognizer(tap)
         cell.imgSaveUnSaveJob.tag = indexPath.row
+        Alamofire.request("https://dev.getbee.vn/\(self.jobList[indexPath.row].companyImg!)").responseImage { response in
+            if let image = response.result.value {
+                cell.imgCompany.image = image
+            }
+        }
         return cell
     }
     
@@ -289,12 +254,9 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         if targetContentOffset.pointee.y < scrollView.contentOffset.y {
             quantityView.isHidden = false
             quantityView.visible()
-            //            self.actionButton.visible()
         } else {
             quantityView.gone()
-            //            self.actionButton.gone()
             quantityView.isHidden = true
         }
-        
     }
 }

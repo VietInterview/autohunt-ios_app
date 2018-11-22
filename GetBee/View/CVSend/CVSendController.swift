@@ -26,9 +26,9 @@ class CVSendController: UIViewController,UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cvsenditemcell", for: indexPath) as! CVSendTableViewCell
         cell.lblName.text = self.lstJobApply[indexPath.row].fullName!
-        print("\(self.lstJobApply[indexPath.row].createdDate!)")
-//        cell.lblCarrer.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate(dateString: self.lstJobApply[indexPath.row].createdDate!))"
+        cell.lblCarrer.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate(dateString: self.lstJobApply[indexPath.row].createdDate!))"
         cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus: self.lstJobApply[indexPath.row].status!) , for: .normal)
+        cell.btnStatus.backgroundColor = StringUtils.shared.genColor(valueStatus: self.lstJobApply[indexPath.row].status!)
         return cell
     }
     

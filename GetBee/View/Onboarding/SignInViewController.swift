@@ -55,7 +55,7 @@ class SignInViewController: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
-        
+        UIApplication.shared.statusBarStyle = .default
         if let session = SessionManager.currentSession {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
@@ -158,12 +158,9 @@ class SignInViewController: UIViewController {
         animateInForgotPass()
     }
     @IBAction func tapOnSignInButton(_ sender: Any) {
-        UIApplication.showNetworkActivity()
+        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         viewModel.login(success: { [unowned self] in
-            UIApplication.hideNetworkActivity()
-            //            let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "StartViewController") as? UINavigationController
-            //            UIApplication.shared.keyWindow?.rootViewController = navigationVC
-            //test git
+            LoadingOverlay.shared.hideOverlayView()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
             
