@@ -102,7 +102,9 @@ class CvsAPI{
             }
         }, failure: { errorSubmitCV, statusCode  in
              LoadingOverlay.shared.hideOverlayView()
-            failure(errorSubmitCV)
+            var dict : Dictionary = errorSubmitCV
+            let errorString:String = dict["X-svcCollaboratorApp-error"] as? String ?? ""
+            failure(errorString)
         })
     }
 }

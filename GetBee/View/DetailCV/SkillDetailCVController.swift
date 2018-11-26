@@ -13,11 +13,15 @@ class SkillDetailCVController: UIViewController {
     var detailCV = DetailCV()
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblPrimarySkill.text = self.detailCV.cvSkill!.primarySkill!
-        var appendString = ""
-        for i in 0...(self.detailCV.cvSkill!.lstOtherSkillName!.count - 1) {
-            appendString.append("\u{2022} \(self.detailCV.cvSkill!.lstOtherSkillName![i])\n")
+        if let cvSkill = self.detailCV.cvSkill{
+        lblPrimarySkill.text = StringUtils.shared.checkEmpty(value: self.detailCV.cvSkill!.primarySkill)
+        if let skillOther = self.detailCV.cvSkill!.lstOtherSkillName{
+            var appendString = ""
+            for i in 0...(self.detailCV.cvSkill!.lstOtherSkillName!.count - 1) {
+                appendString.append("\u{2022} \(self.detailCV.cvSkill!.lstOtherSkillName![i])\n")
+            }
+            lblSkills.text = appendString
         }
-        lblSkills.text = appendString
+        }
     }
 }

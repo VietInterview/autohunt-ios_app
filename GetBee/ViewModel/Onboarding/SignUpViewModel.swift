@@ -32,13 +32,11 @@ class SignUpViewModelWithEmail {
         return email.isEmailFormatted() && !password.isEmpty && password == passwordConfirmation
     }
     
-    func signup(success: @escaping () -> Void, failure: @escaping (String) -> Void) {
-        UserAPI.signup(email, password: password,
-                       avatar64: UIImage.random(),
-                       success: { _ in
-                        success()
-        }, failure: { error in
-            failure(error.localizedDescription)
+    func signup(email: String, address: String, carrer:String, fullName: String, phone:String , success: @escaping () -> Void, failure: @escaping (String) -> Void) {
+        UserAPI.signup(email, address: address, career: carrer, fullName: fullName, phone: phone, success: {
+            success()
+        }, failure: {error in
+            failure(error)
         })
     }
 }

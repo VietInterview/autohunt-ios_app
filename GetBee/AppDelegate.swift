@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     BarButtonItemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
     IQKeyboardManager.shared.enable = true
     if let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView {
-      statusBar.backgroundColor = UIColor.yellow
+      statusBar.backgroundColor = UIColor(red:255/255.0, green: 210/255.0, blue: 21/255.0, alpha: 1.0)
     }
     if SessionManager.validSession {
       let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")

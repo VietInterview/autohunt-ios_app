@@ -78,7 +78,13 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
             return 0
         }
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
+        vc.title = "Chi tiết Hồ sơ"
+        vc.cvId = self.cvListSubmit[indexPath.row].id!
+        navigationController?.pushViewController(vc, animated: true)
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCVTableViewCell", for: indexPath) as! MyCVTableViewCell
         cell.lblName.text = self.listCVSubmit.cvList![indexPath.row].fullName!

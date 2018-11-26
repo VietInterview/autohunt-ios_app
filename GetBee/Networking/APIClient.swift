@@ -22,7 +22,7 @@ public enum SwiftBaseErrorCode: Int {
 
 public typealias SuccessCallback = (_ responseObject: [String: Any], _ responseHeaders: [AnyHashable: Any]) -> Void
 public typealias FailureCallback = (_ error: Error) -> Void
-public typealias FailureSubmitCVCallback = (_ errorSubmitCV: String, _ statusCode: Int) -> Void
+public typealias FailureSubmitCVCallback = (_ errorSubmitCV: [AnyHashable: Any], _ statusCode: Int) -> Void
 
 class APIClient {
     
@@ -119,7 +119,6 @@ class APIClient {
             return URLEncoding.default
         }
     }
-    
     class func request(_ method: HTTPMethod, url: String, params: [String: Any]? = nil, paramsEncoding: ParameterEncoding? = nil, success: @escaping SuccessCallback, failure: @escaping FailureCallback) {
         let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
         let header = APIClient.getHeader()
@@ -134,10 +133,9 @@ class APIClient {
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
-                //                if response != nil {
-                //                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))")
-                //                }
-                print(response)
+                if let value = response.value {
+                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: value))")
+                }
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
@@ -155,10 +153,9 @@ class APIClient {
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
-                //                if response != nil {
-                //                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))")
-                //                }
-                print(response)
+                if let value = response.value {
+                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: value))")
+                }
                 validateResult1(ofResponse: response, success: success, failure: failure)
         }
     }
@@ -179,8 +176,8 @@ class APIClient {
         }
     }
     fileprivate class func validateResult1(ofResponse response: DataResponse<[String: Any]>,
-                                          success: @escaping SuccessCallback,
-                                          failure: @escaping FailureSubmitCVCallback) {
+                                           success: @escaping SuccessCallback,
+                                           failure: @escaping FailureSubmitCVCallback) {
         switch response.result {
         case .success(let dictionary):
             if let urlResponse = response.response {
@@ -188,10 +185,9 @@ class APIClient {
             }
             return
         case .failure(let error):
-            var dict : Dictionary = response.response!.allHeaderFields
-            let errorString:String = dict["X-svcCollaboratorApp-error"] as? String ?? ""
-            debugLog(object: errorString)
-            failure(errorString, response.response!.statusCode)
+            let dict : Dictionary = response.response!.allHeaderFields
+            debugLog(object: response.response!.allHeaderFields)
+            failure(dict, response.response!.statusCode)
             if (error as NSError).code == 401 { //Unauthorized user
                 AppDelegate.shared.unexpectedLogout()
             }

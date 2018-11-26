@@ -19,6 +19,7 @@ class InfoController: UIViewController {
     @IBOutlet weak var lblQuantityHiring: UILabel!
     @IBOutlet weak var lblCollaboratorsReward: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
+    @IBOutlet weak var requireJob: UITextView!
     
     var carrerName: String = ""
     var level: String = ""
@@ -31,6 +32,7 @@ class InfoController: UIViewController {
     var quantityHiring: String = ""
     var quantityCVSend: String = ""
     var jobDescription: String = ""
+    var requireJobContent: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class InfoController: UIViewController {
         self.lblQuantityHiring.text = quantityHiring
         self.lblCVSend.text = quantityCVSend
         self.lblJobDescription.text = jobDescription
+        self.requireJob.text = requireJobContent
     }
     
     

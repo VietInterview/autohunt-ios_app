@@ -178,11 +178,11 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobitemcell", for: indexPath) as! JobTableViewCell
-        cell.labelJob.text = self.jobList[indexPath.row].jobTitle!
+        cell.labelJob.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].jobTitle)
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
-        cell.labelCarrer.text = self.jobList[indexPath.row].careerName!
-        cell.labelCityList.text = self.jobList[indexPath.row].listcityName!
-        cell.labelFee.text = "\(self.jobList[indexPath.row].fee!) \(genString(value: self.jobList[indexPath.row].currency!))"
+        cell.labelCarrer.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].careerName)
+        cell.labelCityList.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].listcityName)
+        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) \(genString(value: self.jobList[indexPath.row].currency!))"
         cell.labelDeadlineDate.text = self.convertToShowFormatDate(dateString: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
@@ -198,7 +198,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedMe(sender: )))
         cell.imgSaveUnSaveJob.addGestureRecognizer(tap)
         cell.imgSaveUnSaveJob.tag = indexPath.row
-        Alamofire.request("https://dev.getbee.vn/\(self.jobList[indexPath.row].companyImg!)").responseImage { response in
+        Alamofire.request("https://dev.getbee.vn/\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.image = image
             }

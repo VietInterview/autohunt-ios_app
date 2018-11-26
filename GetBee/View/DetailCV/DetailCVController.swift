@@ -33,9 +33,14 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     var homeViewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let yourBackImage = UIImage(named: "back")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.navigationController?.view.backgroundColor = .clear
         let rectShape = CAShapeLayer()
         rectShape.bounds = mViewHeader.frame
@@ -148,7 +153,9 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             return vc
         }
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
+    }
     @IBAction func applyCVTouch(_ sender: Any) {
         self.animateIn()
     }
@@ -182,6 +189,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             }
         }, failure: {error in
             debugLog(object: error)
+            self.showMessage(title: "Thông báo", message: error)
         })
     }
     

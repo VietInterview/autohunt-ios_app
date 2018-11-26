@@ -8,29 +8,70 @@ import UIKit
 import GoneVisible
 
 class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
-    var cvList: [CvList]?
+    var cvList = [CvList]()
+    var cvListServer = [CvList]()
     var jobId: Int = 0
+    var page:Int = 0
+    var homeViewModel = HomeViewModel()
     @IBOutlet weak var lblChooseMyCV: UILabel!
     @IBOutlet weak var quantityView: UIView!
+    @IBOutlet weak var mTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lblChooseMyCV.text = "\(self.cvList!.count) hồ sơ được tìm thấy"
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.cvList!.count > 0 {
-            return self.cvList!.count
-        } else {
-            return 0
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
+        if #available(iOS 10.0, *) {
+            self.mTableView.refreshControl = refreshControl
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
+        self.page = 0
+        getMyCV()
+    }
+    @objc func refresh() {
+        self.page = 0
+        getMyCV()
+    }
+    func getMyCV(){
+        self.homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: self.page, success: {myCV in
+            if self.page == 0{
+                self.cvList = myCV.cvList!
+                if #available(iOS 10.0, *) {
+                    self.quantityView.isHidden = false
+                    self.quantityView.visible()
+                    self.mTableView.refreshControl?.endRefreshing()
+                }
+            } else {
+                self.cvList.append(contentsOf: myCV.cvList!)
+            }
+            self.cvListServer = myCV.cvList!
+            self.lblChooseMyCV.text = "\(self.cvList.count) hồ sơ được tìm thấy"
+            self.mTableView.reloadData()
+        }, failure: {error in
+            self.showMessage(title: "Thông báo", message: error.description)
+        })
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = self.cvList.count - 1
+        if  indexPath.row == lastElement {
+            if self.cvListServer.count >= 30 {
+                page = page + 1
+                self.getMyCV()
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.cvList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CVSubmitTableViewCell", for: indexPath) as! CVSubmitTableViewCell
-        cell.lblName.text = self.cvList![indexPath.row].fullName!
-        cell.lblCarrer.text = self.cvList![indexPath.row].careerName!
-       cell.lblDateUpdate.text = DateUtils.shared.convertToShowFormatDate(dateString: self.cvList![indexPath.row].updatedDate!)
+        cell.lblName.text = self.cvList[indexPath.row].fullName!
+        cell.lblCarrer.text = self.cvList[indexPath.row].careerName!
+        cell.lblDateUpdate.text = DateUtils.shared.convertToShowFormatDate(dateString: self.cvList[indexPath.row].updatedDate!)
         return cell
     }
     
@@ -42,7 +83,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
         vc.title = "Chi tiết Hồ sơ"
         vc.jobId = self.jobId
-        vc.cvId = self.cvList![indexPath.row].id!
+        vc.cvId = self.cvList[indexPath.row].id!
         navigationController?.pushViewController(vc, animated: true)
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

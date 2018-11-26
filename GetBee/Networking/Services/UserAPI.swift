@@ -28,29 +28,32 @@ class UserAPI {
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success()
     }, failure: { error in
+      LoadingOverlay.shared.hideOverlayView()
       failure(error)
     })
   }
   
   //Example method that uploads an image using multipart-form.
-  class func signup(_ email: String, password: String, avatar: UIImage, success: @escaping (_ response: [String: Any]) -> Void, failure: @escaping (_ error: Error) -> Void) {
+  class func signup(_ email: String, address: String, career: String, fullName:String, phone: String, success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
+    let url = "/api/register"
     let parameters = [
-      "user": [
-        "email": email,
-        "password": password,
-        "password_confirmation": password
-      ]
+      "email": email,
+      "address": address,
+      "career": career,
+      "fullName": fullName,
+      "phone": phone
     ]
-    
-    let picData = UIImageJPEGRepresentation(avatar, 0.75)!
-    let image = MultipartMedia(key: "user[avatar]", data: picData)
-    //Mixed base64 encoded and multipart images are supported in [MultipartMedia] param:
-    //Example: let image2 = Base64Media(key: "user[image]", data: picData) Then: media [image, image2]
-    APIClient.multipartRequest(url: usersUrl, params: parameters, paramsRootKey: "", media: [image], success: { response, headers in
-      UserAPI.saveUserSession(fromResponse: response, headers: headers)
-      success(response)
-    }, failure: { (error) in
-      failure(error)
+    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
+//      if let errorSubmitCV = try? newJSONDecoder().decode(ErrorSubmitCV.self, from: response){
+        LoadingOverlay.shared.hideOverlayView()
+        success()
+//      }
+    }, failure: { error , statusCode in
+      LoadingOverlay.shared.hideOverlayView()
+      var dict : Dictionary = error
+      let errorString:String = dict["X-gwautohuntApp-error"] as? String ?? ""
+      failure(errorString)
     })
   }
   
@@ -93,7 +96,7 @@ class UserAPI {
         arrayList = [
           "id":mArrCarrerHunt[i].id!,
           "name":mArrCarrerHunt[i].name!,
-          ]
+        ]
         list.append(arrayList)//append to your list
       }
     }
@@ -126,7 +129,9 @@ class UserAPI {
       success()
     }, failure: { error, statusCode  in
       LoadingOverlay.shared.hideOverlayView()
-      failure(error, statusCode)
+      var dict : Dictionary = error
+      let errorString:String = dict["X-svcCollaboratorApp-error"] as? String ?? ""
+      failure(errorString, statusCode)
     })
   }
   class func loginWithFacebook(token: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
@@ -152,14 +157,14 @@ class UserAPI {
   }
   
   class func logout(_ success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
-//    let url = usersUrl + "sign_out"
-//    APIClient.request(.delete, url: url, success: {_, _ in
-      UserDataManager.deleteUser()
-      SessionManager.deleteSession()
+    //    let url = usersUrl + "sign_out"
+    //    APIClient.request(.delete, url: url, success: {_, _ in
+    UserDataManager.deleteUser()
+    SessionManager.deleteSession()
     success()
-//      success()
-//    }, failure: { error in
-//      failure(error)
-//    })
+    //      success()
+    //    }, failure: { error in
+    //      failure(error)
+    //    })
   }
 }

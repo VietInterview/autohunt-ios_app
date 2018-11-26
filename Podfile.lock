@@ -9,6 +9,7 @@ PODS:
   - IQKeyboardManagerSwift (6.0.5)
   - JJFloatingActionButton (0.10.0)
   - LGSideMenuController (2.1.1)
+  - paper-onboarding (5.0.0)
   - SwiftyJSON (4.2.0)
   - SwipeCellKit (2.5.0)
   - Toaster (2.1.1)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 6.0.1)
   - JJFloatingActionButton
   - LGSideMenuController
+  - paper-onboarding
   - SwiftyJSON (~> 4.0)
   - SwipeCellKit
   - Toaster
@@ -38,6 +40,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - JJFloatingActionButton
     - LGSideMenuController
+    - paper-onboarding
     - SwiftyJSON
     - SwipeCellKit
     - Toaster
@@ -52,10 +55,11 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   JJFloatingActionButton: 7e9e924d0819ebeb6a566dade9d5dbed63ff8add
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
+  paper-onboarding: a2e3a710fd27ac0b5635ec5490660e7ec09289b5
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: 4270d44be0690efcb7877e4ae1f4b6240e6a3893
+PODFILE CHECKSUM: 065320bd41f666d5676249d723aee93087efbc7d
 
 COCOAPODS: 1.5.2

@@ -131,10 +131,21 @@ class StringUtils:NSObject {
         }
         return ""
     }
-    
+    func checkEmpty(value: String?) -> String {
+        if let string = value{
+            return string
+        }
+        return ""
+    }
     func prettyPrint(with json: [String:Any]) -> String{
         let data = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-        return string as! String
+        return string! as String
+    }
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
 }

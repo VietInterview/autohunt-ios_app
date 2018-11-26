@@ -26,8 +26,16 @@ class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, Choos
         mViewCondition.isHidden = true
         mViewCondition.gone()
         let tabSwipe = CarbonTabSwipeNavigation(items: ["Công việc đã lưu", "Công việc đã ứng tuyển"], delegate: self)
-        tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
+        if ScreenUtils.shared.getScreenWidth()! == 414 {
+            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
+        } else {
+            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
+        }
+        debugLog(object: ScreenUtils.shared.getScreenWidth()!)
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
+        tabSwipe.setNormalColor(UIColor.gray)
+        tabSwipe.setSelectedColor(UIColor.black)
+        tabSwipe.setIndicatorColor(UIColor.black)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
     }

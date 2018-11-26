@@ -11,9 +11,9 @@ import Alamofire
 
 class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
     
+    @IBOutlet weak var btnStatus: UIButton!
     @IBOutlet weak var imgCompany: UIImageView!
     @IBOutlet weak var btnSaveUnsaveJob: UIButton!
-    @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var lblCompany: UILabel!
     @IBOutlet weak var mViewTab: UIView!
@@ -30,6 +30,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         homeViewModel.getDetailJob(jobId: self.jobId, success: {jobDetail in
             LoadingOverlay.shared.hideOverlayView()
@@ -42,12 +43,15 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             self.lblCompany.text = jobDetail.companyName!
             self.lblJobTitle.text = jobDetail.jobTitle!
             if self.jobDetail.status! == 1 {
-                self.lblStatus.text = "Đang tuyển"
-                self.lblStatus.backgroundColor = UIColor.green;
+                self.btnStatus.setTitle("Đang tuyển", for: .normal)
+                self.btnStatus.backgroundColor = UIColor.green;
             } else {
-                self.lblStatus.text = "Đã đóng"
-                 self.lblStatus.backgroundColor = UIColor.gray;
+                self.btnStatus.setTitle("Đã đóng", for: .normal)
+                 self.btnStatus.backgroundColor = UIColor.gray;
             }
+            self.btnStatus.layer.cornerRadius = 5
+            self.btnStatus.layer.borderWidth = 1
+            self.btnStatus.layer.borderColor = UIColor.clear.cgColor
             if self.jobDetail.collStatus! == 0 {
                 self.btnSaveUnsaveJob.backgroundColor = .clear
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
@@ -82,7 +86,13 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
                 self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
             }
             let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Thống kê", "CV đã nộp"], delegate: self)
-            tabSwipe.setTabExtraWidth(16)
+            
+            if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
+            } else { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
+            }
+            tabSwipe.setNormalColor(UIColor.gray)
+            tabSwipe.setSelectedColor(UIColor.black)
+            tabSwipe.setIndicatorColor(UIColor.clear)
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         }, failure: {error in
             LoadingOverlay.shared.hideOverlayView()
@@ -109,6 +119,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             vc.quantityCVSend = "\(self.jobDetail.countCv!)"
             vc.quantityHiring = "\(self.jobDetail.quantity!)"
             vc.jobDescription = StringUtils.shared.stringFromHtml(string: self.jobDetail.jobDescription!)!
+            vc.requireJobContent = StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: self.jobDetail.jobRequirements))!
             return vc
         } else if index == 1{
             let vc = storyboard.instantiateViewController(withIdentifier: "StatisticalController") as! StatisticalController
@@ -133,17 +144,17 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
     }
     
     @IBAction func submitCVTouch() {
-        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ChooseCVSubmitController") as! ChooseCVSubmitController
-            vc.cvList = myCV.cvList!
-            vc.jobId = self.jobDetail.id!
-            vc.title = "Chọn CV của tôi"
-            self.navigationController?.pushViewController(vc, animated: true)
-        }, failure: {error in
-            
-        })
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ChooseCVSubmitController") as! ChooseCVSubmitController
+        vc.jobId = self.jobDetail.id!
+        vc.title = "Chọn CV của tôi"
+        self.navigationController?.pushViewController(vc, animated: true)
+//        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
+//
+//
+//        }, failure: {error in
+//
+//        })
     }
     
     

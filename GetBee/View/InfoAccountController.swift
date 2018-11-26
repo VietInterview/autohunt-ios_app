@@ -27,6 +27,7 @@ class InfoAccountController: UIViewController, ChooseMultiDelegate {
         
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
         self.mViewCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
+        self.textViewCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
         textfieldFullname.font = UIFont(name: "Nunito-Regular", size: 20)
         textfieldPhone.font = UIFont(name: "Nunito-Regular", size: 20)
         textFieldEmail.font = UIFont(name: "Nunito-Regular", size: 20)
@@ -42,11 +43,11 @@ class InfoAccountController: UIViewController, ChooseMultiDelegate {
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         
         viewModel.loadUserProfile(success: { userProfile in
-            self.textfieldFullname.text = userProfile.fullNameColl!
-            self.textfieldPhone.text = userProfile.phoneColl!
-            self.textFieldEmail.text = userProfile.emailColl!
-            self.textFieldAdd.text = userProfile.addressColl!
-            self.textFieldCarrer.text = userProfile.careerColl!
+            self.textfieldFullname.text = StringUtils.shared.checkEmpty(value: userProfile.fullNameColl)
+            self.textfieldPhone.text = StringUtils.shared.checkEmpty(value: userProfile.phoneColl)
+            self.textFieldEmail.text = StringUtils.shared.checkEmpty(value: userProfile.emailColl)
+            self.textFieldAdd.text = StringUtils.shared.checkEmpty(value: userProfile.addressColl)
+            self.textFieldCarrer.text = StringUtils.shared.checkEmpty(value: userProfile.careerColl)
             var appenString: String = ""
             if let arrCarrer = userProfile.desideratedCareer {
                 self.desideratedCareer = arrCarrer

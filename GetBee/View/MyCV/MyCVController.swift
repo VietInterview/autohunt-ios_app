@@ -41,9 +41,15 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.mViewStatus.gone()
         self.tabSwipe = CarbonTabSwipeNavigation(items: ["Hồ sơ đã lưu", "Hồ sơ đã ứng tuyển"], delegate: self)
         self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/8)
+        self.tabSwipe!.setNormalColor(UIColor.gray)
+        self.tabSwipe!.setSelectedColor(UIColor.black)
+        self.tabSwipe!.setIndicatorColor(UIColor.black)
         self.tabSwipe!.insert(intoRootViewController: self, andTargetView: self.mTabView)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
         self.mPosition = Int(index)

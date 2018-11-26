@@ -35,7 +35,6 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.mCVSavedTableView.refreshControl = refreshControl
-        } else {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: MyCVSavedController.notificationName, object: nil)
     }
@@ -107,6 +106,13 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
+        vc.title = "Chi tiết Hồ sơ"
+        vc.cvId = self.listCV2[indexPath.row].id!
+        navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.listCV2.count > 0 {

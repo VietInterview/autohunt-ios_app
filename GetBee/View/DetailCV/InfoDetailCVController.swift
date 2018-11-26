@@ -26,43 +26,54 @@ class InfoDetailCVController: UIViewController {
     var detailCV = DetailCV()
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblPhone.text = self.detailCV.phone!
-        lblEmail.text = self.detailCV.email!
-        if self.detailCV.sex! == 1 {
-            lblGender.text = "Nam"
-        } else  if self.detailCV.sex! == 0{
-            lblGender.text = "Nữ"
-        } else {
-            lblGender.text = "Khác"
-        }
-        lblAdd.text = self.detailCV.address!
-        lblCity.text = self.detailCV.city!.name!
-        lblMarried.text = self.detailCV.maritalStatus! == 1 ? "Chưa kết hôn" : "Đã kết hôn"
-        lblPositionWish.text = self.detailCV.desiredPosition!
-        lblCurrentLevel.text = self.detailCV.currentLevel!.name!
-        lblWishLevel.text = self.detailCV.desiredLevel!.name!
-        var carrerAppendString = ""
-        for i in 0...self.detailCV.lstCareer!.count-1{
-            if i == self.detailCV.lstCareer!.count-1{
-                carrerAppendString.append(self.detailCV.lstCareer![i].name!)
-            }else{
-                carrerAppendString.append("\(self.detailCV.lstCareer![i].name!),")
-            }
-        }
-        lblCarrer.text = carrerAppendString
-        var appendString = ""
-        for i in 0...self.detailCV.lstJobCity!.count-1 {
-            if i == self.detailCV.lstJobCity!.count-1 {
-                appendString.append("\(self.detailCV.lstJobCity![i].name!)")
+        lblPhone.text = StringUtils.shared.checkEmpty(value: self.detailCV.phone)
+        lblEmail.text = StringUtils.shared.checkEmpty(value: self.detailCV.email)
+        if let sex = self.detailCV.sex {
+            if self.detailCV.sex! == 1 {
+                lblGender.text = "Nam"
+            } else  if self.detailCV.sex! == 0{
+                lblGender.text = "Nữ"
             } else {
-                appendString.append("\(self.detailCV.lstJobCity![i].name!),")
+                lblGender.text = "Khác"
             }
         }
-        lblLocationWork.text = appendString
-        lblEdu.text = self.detailCV.educationLevel!.name!
-        lblExpYear.text = self.detailCV.experienceYear!.name!
-        lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.detailCV.desiredSalary!) ) \(self.detailCV.currencyName!)"
-        textViewJobDes.text = self.detailCV.careerObjectives!
+        lblAdd.text = StringUtils.shared.checkEmpty(value: self.detailCV.address)
+        lblCity.text = StringUtils.shared.checkEmpty(value: self.detailCV.city!.name)
+        if let marialStatus = self.detailCV.maritalStatus{
+            lblMarried.text = self.detailCV.maritalStatus! == 1 ? "Chưa kết hôn" : "Đã kết hôn"
+        }
+        lblPositionWish.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredPosition)
+        lblCurrentLevel.text = StringUtils.shared.checkEmpty(value: self.detailCV.currentLevel!.name)
+        lblWishLevel.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredLevel!.name)
+        if let lstCarrer = self.detailCV.lstCareer {
+            var carrerAppendString = ""
+            for i in 0...self.detailCV.lstCareer!.count-1{
+                if i == self.detailCV.lstCareer!.count-1{
+                    carrerAppendString.append(self.detailCV.lstCareer![i].name!)
+                }else{
+                    carrerAppendString.append("\(self.detailCV.lstCareer![i].name!),")
+                }
+            }
+            lblCarrer.text = carrerAppendString
+        }
+        if let lstJobCity = self.detailCV.lstJobCity {
+            var appendString = ""
+            for i in 0...self.detailCV.lstJobCity!.count-1 {
+                if i == self.detailCV.lstJobCity!.count-1 {
+                    appendString.append("\(self.detailCV.lstJobCity![i].name!)")
+                } else {
+                    appendString.append("\(self.detailCV.lstJobCity![i].name!),")
+                }
+            }
+            
+            lblLocationWork.text = appendString
+        }
+        lblEdu.text = StringUtils.shared.checkEmpty(value: self.detailCV.educationLevel!.name)
+        lblExpYear.text = StringUtils.shared.checkEmpty(value: self.detailCV.experienceYear!.name)
+        if let salary = self.detailCV.desiredSalary{
+            lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.detailCV.desiredSalary!) ) \(self.detailCV.currencyName!)"
+        }
+        textViewJobDes.text = StringUtils.shared.checkEmpty(value: self.detailCV.careerObjectives)
     }
     
     

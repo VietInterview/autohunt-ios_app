@@ -31,7 +31,7 @@ class CarrerOrCityController: UIViewController {
         button.setTitle("Chọn", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action:#selector(self.chon(sender:)), for:.touchUpInside)
-        button.frame = CGRect.init(x: 10, y: 00, width: 80, height: 30) //CGRectMake(0, 0, 30, 30)
+        button.frame = CGRect.init(x: 20, y: 00, width: 40, height: 30) //CGRectMake(0, 0, 30, 30)
         button.titleLabel?.font =  UIFont(name: "Nunito-Bold", size: 18)
         let barButton = UIBarButtonItem.init(customView: button)
         barButton.setTitleTextAttributes([
@@ -52,6 +52,7 @@ class CarrerOrCityController: UIViewController {
         if self.isCarrer == true {
             jobModel.getCarrer(success: {carrers in
                 self.viewModel.items.removeAll()
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Tất cả ngành nghề")))
                 for i in 0...carrers.count-1 {
                     let viewModelItem = ViewModelItem(item: carrers[i])
                     self.viewModel.items.append(viewModelItem)
@@ -76,6 +77,7 @@ class CarrerOrCityController: UIViewController {
         } else {
             jobModel.getCity(success: {cities in
                 self.viewModel.items.removeAll()
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Tất cả thành phố")))
                 for i in 0...cities.count-1 {
                     let viewModelItem = ViewModelItem(item: cities[i])
                     self.viewModel.items.append(viewModelItem)

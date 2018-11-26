@@ -15,4 +15,5 @@ target 'GetBee' do
   pod 'ACFloatingTextfield-Swift', '~> 1.7'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Toaster'
+  pod 'paper-onboarding'
 end

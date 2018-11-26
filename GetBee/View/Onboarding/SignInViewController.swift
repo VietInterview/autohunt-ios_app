@@ -9,12 +9,17 @@
 import UIKit
 import Alamofire
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var verticalPass: UIView!
+    @IBOutlet weak var verticalUser: UIView!
+    
+    @IBOutlet weak var imgNoteUser: UIImageView!
+    @IBOutlet weak var imgNotePass: UIImageView!
+    @IBOutlet weak var passwordField: DesignableUITextField!
+    @IBOutlet weak var emailField: DesignableUITextField!
     @IBOutlet weak var mView: UIView!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var mViewUser: UIView!
@@ -22,6 +27,8 @@ class SignInViewController: UIViewController {
     @IBOutlet var mViewSuccess: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
+    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var imgPass: UIImageView!
     @IBOutlet var mViewContact: UIView!
     var viewModel = SignInViewModelWithCredentials()
     var effect:UIVisualEffect!
@@ -29,23 +36,15 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnLogin.setRoundBorders(22)
-        viewModel.onCredentialsChange = { [unowned self] in
-            self.btnLogin.isEnabled = self.viewModel.hasValidCredentials
-        }
+        btnLogin.setRoundBorders(5)
+        imgNoteUser.isHidden = true
+        imgNotePass.isHidden = true
         mViewSuccess.layer.cornerRadius = 5
         mViewContact.layer.cornerRadius = 5
         visualEffectView.isHidden = true
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-        self.mView.layer.masksToBounds = false
-        self.mView.layer.shadowColor = UIColor.black.cgColor
-        self.mView.layer.shadowOpacity = 0.5
-        self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        self.mView.layer.shadowRadius = 5
-        self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
-        self.mView.layer.shouldRasterize = true
-        self.mView.layer.rasterizationScale = UIScreen.main.scale
+       
         
         mViewUser.layer.borderWidth = 0.5
         mViewUser.layer.borderColor = UIColor.black.cgColor
@@ -56,28 +55,95 @@ class SignInViewController: UIViewController {
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
         UIApplication.shared.statusBarStyle = .default
-        if let session = SessionManager.currentSession {
+        if self.isAppAlreadyLaunchedOnce() {
+            if let session = SessionManager.currentSession {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                
+                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+                
+                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                mainViewController.rootViewController = navigationController
+                mainViewController.setup(type: UInt(2))
+                
+                let window = UIApplication.shared.delegate!.window!!
+                window.rootViewController = mainViewController
+            }
+        }else{
+            //            performSegue(withIdentifier: "gotointro", sender: self)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
             
-            navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+            navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "IntroController")], animated: false)
             
             let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
             mainViewController.rootViewController = navigationController
             mainViewController.setup(type: UInt(2))
-            
+            mainViewController.leftViewWidth = 0
             let window = UIApplication.shared.delegate!.window!!
             window.rootViewController = mainViewController
         }
+        self.emailField.addTarget(self, action: #selector(textFieldEmailDidChange(_:)), for: .editingChanged)
+        self.passwordField.addTarget(self, action: #selector(textFieldPasDidChange(_:)), for: .editingChanged)
+        
+        emailField.delegate = self
+        passwordField.delegate = self
     }
-    
+    @objc func textFieldEmailDidChange(_ textField: UITextField) {
+        imgNoteUser.isHidden = true
+    }
+    @objc func textFieldPasDidChange(_ textField: UITextField) {
+        imgNotePass.isHidden = true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailField.self{
+            imgUser.image = UIImage(named: "Shape_focus")
+            imgPass.image = UIImage(named: "pass")
+            
+            mViewUser.layer.borderWidth = 0.5
+            mViewUser.layer.borderColor = UIColor.yellow.cgColor
+            verticalUser.layer.backgroundColor = UIColor.yellow.cgColor
+            mViewPassword.layer.borderWidth = 0.5
+            mViewPassword.layer.borderColor = UIColor.black.cgColor
+            verticalPass.layer.backgroundColor = UIColor.black.cgColor
+        } else {
+             imgUser.image = UIImage(named: "Shape")
+            imgPass.image = UIImage(named: "pass_focus")
+            mViewUser.layer.borderWidth = 0.5
+            mViewUser.layer.borderColor = UIColor.black.cgColor
+            mViewPassword.layer.borderWidth = 0.5
+            mViewPassword.layer.borderColor = UIColor.yellow.cgColor
+            verticalPass.layer.backgroundColor = UIColor.yellow.cgColor
+            verticalUser.layer.backgroundColor = UIColor.black.cgColor
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.isNavigationBarHidden = true;
         self.navigationController?.isNavigationBarHidden = true
     }
-    
+    func isAppAlreadyLaunchedOnce()->Bool{
+        let defaults = UserDefaults.standard
+        
+        if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+            print("App already launched : \(isAppAlreadyLaunchedOnce)")
+            return true
+        }else{
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("App launched first time")
+            return false
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.mView.layer.masksToBounds = false
+        self.mView.layer.shadowColor = UIColor.black.cgColor
+        self.mView.layer.shadowOpacity = 0.5
+        self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.mView.layer.shadowRadius = 5
+        self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
+        self.mView.layer.shouldRasterize = true
+        self.mView.layer.rasterizationScale = UIScreen.main.scale
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         // Hide the Navigation Bar
@@ -158,24 +224,42 @@ class SignInViewController: UIViewController {
         animateInForgotPass()
     }
     @IBAction func tapOnSignInButton(_ sender: Any) {
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
-        viewModel.login(success: { [unowned self] in
-            LoadingOverlay.shared.hideOverlayView()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+        if self.emailField.text! == ""{
+            self.imgNoteUser.isHidden = false
+            var placeHolder = NSMutableAttributedString()
+            let Name  = "Bạn vui lòng nhập địa chỉ Email"
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
-            navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
-            
-            let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            mainViewController.rootViewController = navigationController
-            mainViewController.setup(type: UInt(2))
-            
-            let window = UIApplication.shared.delegate!.window!!
-            window.rootViewController = mainViewController
-            
-            }, failure: { [unowned self] error in
-                UIApplication.hideNetworkActivity()
-                self.showMessage(title: "Error", message: error)
-        })
+            emailField.attributedPlaceholder = placeHolder
+        }else if self.passwordField.text! == "" {
+            self.imgNotePass.isHidden = false
+            var placeHolder = NSMutableAttributedString()
+            let Name  = "Bạn vui lòng nhập mật khẩu"
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
+            passwordField.attributedPlaceholder = placeHolder
+        }else{
+            LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+            viewModel.login(success: { [unowned self] in
+                LoadingOverlay.shared.hideOverlayView()
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                
+                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+                
+                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                mainViewController.rootViewController = navigationController
+                mainViewController.setup(type: UInt(2))
+                
+                let window = UIApplication.shared.delegate!.window!!
+                window.rootViewController = mainViewController
+                
+                }, failure: { [unowned self] error in
+                    UIApplication.hideNetworkActivity()
+                    self.animateIn()
+                    //                self.showMessage(title: "Thông báo", message: "Thông tin đăng nhập không đúng")
+            })
+        }
     }
 }

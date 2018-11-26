@@ -8,14 +8,11 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
-    
-    // MARK: - Outlets
-    
+class SignUpViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var textFieldPhone: UITextField!
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var textFieldFullname: UITextField!
     @IBOutlet weak var signUp: UIButton!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var passwordConfirmationField: UITextField!
     @IBOutlet weak var mViewEmail: UIView!
     @IBOutlet weak var mViewPassword: UIView!
     @IBOutlet weak var mViewConfirmPass: UIView!
@@ -24,11 +21,18 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var mView: UIView!
     @IBOutlet var mViewPopUp: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var imgEmail: UIImageView!
+    @IBOutlet weak var imgPhone: UIImageView!
+    @IBOutlet weak var imgNoteUser: UIImageView!
+    @IBOutlet weak var imgNoteEMail: UIImageView!
+    @IBOutlet weak var imgNotePhone: UIImageView!
+    @IBOutlet weak var verticalUser: UIView!
+    @IBOutlet weak var verticalEmail: UIView!
+    @IBOutlet weak var verticalPhone: UIView!
     
     var viewModel = SignUpViewModelWithEmail()
     var effect:UIVisualEffect!
-    // MARK: - Lifecycle Events
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         signUp.setRoundBorders(22)
@@ -40,14 +44,6 @@ class SignUpViewController: UIViewController {
         visualEffectView.effect = nil
         
         mViewPopUp.layer.cornerRadius = 5
-        self.mView.layer.masksToBounds = false
-        self.mView.layer.shadowColor = UIColor.black.cgColor
-        self.mView.layer.shadowOpacity = 0.5
-        self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        self.mView.layer.shadowRadius = 5
-        self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
-        self.mView.layer.shouldRasterize = true
-        self.mView.layer.rasterizationScale = UIScreen.main.scale
         
         mViewEmail.layer.borderWidth = 0.5
         mViewEmail.layer.borderColor = UIColor.black.cgColor
@@ -73,8 +69,42 @@ class SignUpViewController: UIViewController {
         
         addTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: addTextField.frame.height))
         addTextField.leftViewMode = .always
+        
+        self.textFieldEmail.delegate = self
+        self.textFieldFullname.delegate = self
+        self.textFieldPhone.delegate = self
+        self.jobTextField.delegate = self
+        self.addTextField.delegate = self
+        
+        self.textFieldEmail.addTarget(self, action: #selector(textFieldEmailDidChange(_:)), for: .editingChanged)
+        self.textFieldFullname.addTarget(self, action: #selector(textFieldFullNameDidChange(_:)), for: .editingChanged)
+        self.textFieldPhone.addTarget(self, action: #selector(textFieldPhoneDidChange(_:)), for: .editingChanged)
     }
-    
+    @objc func textFieldEmailDidChange(_ textField: UITextField) {
+        imgNoteEMail.image = StringUtils.shared.isValidEmail(testStr: self.textFieldEmail.text!) ? UIImage(named: "tickok") : UIImage(named: "note")
+    }
+    @objc func textFieldFullNameDidChange(_ textField: UITextField) {
+        imgNoteUser.isHidden = true
+    }
+    @objc func textFieldPhoneDidChange(_ textField: UITextField) {
+        imgNotePhone.isHidden = true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.imgUser.image = textField == textFieldFullname.self ? UIImage(named: "Shape_focus") : UIImage(named: "Shape")
+        self.imgEmail.image = textField == textFieldEmail.self ? UIImage(named: "mail_focus") : UIImage(named: "mail")
+        self.imgPhone.image = textField == textFieldPhone.self ? UIImage(named: "phone_focus") : UIImage(named: "phone")
+        
+        mViewEmail.layer.borderColor = textField == textFieldFullname.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        mViewPassword.layer.borderColor = textField == textFieldEmail.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        mViewConfirmPass.layer.borderColor = textField == textFieldPhone.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        
+        verticalUser.layer.backgroundColor = textField == textFieldFullname.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        verticalEmail.layer.backgroundColor = textField == textFieldEmail.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        verticalPhone.layer.backgroundColor = textField == textFieldPhone.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        
+        jobTextField.layer.borderColor = textField == jobTextField.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        addTextField.layer.borderColor = textField == addTextField.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -108,33 +138,94 @@ class SignUpViewController: UIViewController {
             self.mViewPopUp.removeFromSuperview()
         }
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.mView.layer.masksToBounds = false
+        self.mView.layer.shadowColor = UIColor.black.cgColor
+        self.mView.layer.shadowOpacity = 0.5
+        self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        self.mView.layer.shadowRadius = 5
+        self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
+        self.mView.layer.shouldRasterize = true
+        self.mView.layer.rasterizationScale = UIScreen.main.scale
+    }
     @IBAction func dismissPopUpTuoch(_ sender: Any) {
         animateOut()
+        performSegue(withIdentifier: "gotosignin", sender: self)
     }
     @IBAction func formEditingChange(_ sender: UITextField) {
         let newValue = sender.text ?? ""
         switch sender {
-        case emailField:
-            viewModel.email = newValue
-        case passwordField:
-            viewModel.password = newValue
-        case passwordConfirmationField:
-            viewModel.passwordConfirmation = newValue
+            //        case textFieldEmail:
+            //            viewModel.email = newValue
+            //        case passwordField:
+            //            viewModel.password = newValue
+            //        case passwordConfirmationField:
+        //            viewModel.passwordConfirmation = newValue
         default: break
         }
     }
     
     @IBAction func tapOnSignUpButton(_ sender: Any) {
-        animateIn()
-        //        UIApplication.showNetworkActivity()
-        //        viewModel.signup(success: { [unowned self] in
-        //            UIApplication.hideNetworkActivity()
-        //            let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        //            UIApplication.shared.keyWindow?.rootViewController = homeVC
-        //            }, failure: { [unowned self] failureReason in
-        //                UIApplication.hideNetworkActivity()
-        //                self.showMessage(title: "Error", message: failureReason)
-        //        })
+        let fullname = textFieldFullname.text!
+        let email = textFieldEmail.text!
+        let phone = textFieldPhone.text!
+        if fullname.count == 0 && email.count == 0 && phone.count == 0 {
+            self.imgNoteUser.isHidden = false
+            var placeHolder = NSMutableAttributedString()
+            let Name  = "Bạn vui lòng nhập họ và tên"
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
+            
+            textFieldFullname.attributedPlaceholder = placeHolder
+            self.imgNotePhone.isHidden = false
+            var placeHolderPhone = NSMutableAttributedString()
+            let sdt  = "Bạn vui lòng nhập số điện thoại"
+            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
+            
+            textFieldPhone.attributedPlaceholder = placeHolderPhone
+            self.imgNoteEMail.isHidden = false
+            var placeHolderMail = NSMutableAttributedString()
+            let Mail  = "Bạn vui lòng nhập Email"
+            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
+            
+            textFieldEmail.attributedPlaceholder = placeHolderMail
+        } else if fullname.count == 0 {
+            self.imgNoteUser.isHidden = false
+            var placeHolder = NSMutableAttributedString()
+            let Name  = "Bạn vui lòng nhập họ và tên"
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
+            
+            textFieldFullname.attributedPlaceholder = placeHolder
+            } else if email.count == 0 {
+            self.imgNoteEMail.isHidden = false
+            var placeHolderMail = NSMutableAttributedString()
+            let Mail  = "Bạn vui lòng nhập Email"
+            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
+            
+            textFieldEmail.attributedPlaceholder = placeHolderMail
+            } else if phone.count == 0 {
+            self.imgNotePhone.isHidden = false
+            var placeHolderPhone = NSMutableAttributedString()
+            let sdt  = "Bạn vui lòng nhập số điện thoại"
+            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
+            
+            textFieldPhone.attributedPlaceholder = placeHolderPhone
+            }else {
+                viewModel.signup(email: self.textFieldEmail.text!, address: self.addTextField.text!, carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!, success: {
+                    self.animateIn()
+                }, failure: {error in
+                    debugLog(object: error)
+                    if error == "error.userexists" {
+                        debugLog(object: "Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+                        self.showMessage(title: "Thông báo", message: "Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+                    }
+                })
+        }
     }
 }

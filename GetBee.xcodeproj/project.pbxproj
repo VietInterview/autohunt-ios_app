@@ -37,6 +37,7 @@
 		7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF52192E1050081862E /* JobAPI.swift */; };
 		7A6F9EF82192E6B20081862E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF72192E6B20081862E /* Job.swift */; };
 		7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF92192F1570081862E /* JobTableViewCell.swift */; };
+		7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */; };
 		7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74594E219990CC007EDB42 /* JobDetail.swift */; };
 		7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77298E219A653F00A0CB97 /* DateUtils.swift */; };
 		7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772990219A69CE00A0CB97 /* StringUtils.swift */; };
@@ -50,6 +51,12 @@
 		7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A882CC1219EC03C009A2518 /* DetailCVController.swift */; };
 		7A8B9BB221A415F900F6E77C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB121A415F900F6E77C /* Shared.swift */; };
 		7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */; };
+		7A955E1E21A7E78A00D402D4 /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E1D21A7E78A00D402D4 /* IntroController.swift */; };
+		7A955E2021A7EB4300D402D4 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E1F21A7EB4300D402D4 /* Images.swift */; };
+		7A955E2321A8011800D402D4 /* IntroOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E2221A8011800D402D4 /* IntroOneController.swift */; };
+		7A955E2521A8012A00D402D4 /* IntroTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E2421A8012A00D402D4 /* IntroTwoController.swift */; };
+		7A955E2721A8013B00D402D4 /* IntroThreeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E2621A8013B00D402D4 /* IntroThreeController.swift */; };
+		7A955E2921A8058200D402D4 /* HelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E2821A8058200D402D4 /* HelperLibrary.swift */; };
 		7A99AA572171992800E3B0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA562171992800E3B0DC /* MainViewController.swift */; };
 		7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */; };
 		7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */; };
@@ -166,6 +173,7 @@
 		7A6F9EF52192E1050081862E /* JobAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAPI.swift; sourceTree = "<group>"; };
 		7A6F9EF72192E6B20081862E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		7A6F9EF92192F1570081862E /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
 		7A74594E219990CC007EDB42 /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
 		7A77298E219A653F00A0CB97 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		7A772990219A69CE00A0CB97 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
@@ -179,6 +187,12 @@
 		7A882CC1219EC03C009A2518 /* DetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCVController.swift; sourceTree = "<group>"; };
 		7A8B9BB121A415F900F6E77C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCV.swift; sourceTree = "<group>"; };
+		7A955E1D21A7E78A00D402D4 /* IntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroController.swift; sourceTree = "<group>"; };
+		7A955E1F21A7EB4300D402D4 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		7A955E2221A8011800D402D4 /* IntroOneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroOneController.swift; sourceTree = "<group>"; };
+		7A955E2421A8012A00D402D4 /* IntroTwoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTwoController.swift; sourceTree = "<group>"; };
+		7A955E2621A8013B00D402D4 /* IntroThreeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroThreeController.swift; sourceTree = "<group>"; };
+		7A955E2821A8058200D402D4 /* HelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLibrary.swift; sourceTree = "<group>"; };
 		7A99AA562171992800E3B0DC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7A99AA58217199B100E3B0DC /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7A99AA5A21719A8B00E3B0DC /* LeftViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewCell.swift; sourceTree = "<group>"; };
@@ -329,6 +343,14 @@
 			path = ExpandableViewCell;
 			sourceTree = "<group>";
 		};
+		7A73F58921A82AB400DC67D2 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		7A772992219A89F600A0CB97 /* CVSend */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +373,17 @@
 				7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */,
 			);
 			path = DetailCV;
+			sourceTree = "<group>";
+		};
+		7A955E2121A800FB00D402D4 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				7A955E1D21A7E78A00D402D4 /* IntroController.swift */,
+				7A955E2221A8011800D402D4 /* IntroOneController.swift */,
+				7A955E2421A8012A00D402D4 /* IntroTwoController.swift */,
+				7A955E2621A8013B00D402D4 /* IntroThreeController.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		7A99AA5921719A7B00E3B0DC /* Left View Controller */ = {
@@ -426,6 +459,7 @@
 		9B0C72511C738C3100BAF3B1 /* GetBee */ = {
 			isa = PBXGroup;
 			children = (
+				7A73F58921A82AB400DC67D2 /* CustomView */,
 				7AFC9F3E216B88FB008F6AB1 /* fonts */,
 				9BFA84EE1C7767D9009F64E4 /* Model */,
 				9BAFB7BC2114CA8D0099DC61 /* View */,
@@ -495,6 +529,7 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A955E2121A800FB00D402D4 /* Intro */,
 				7ADFA16321A2B408001492F0 /* MyJob */,
 				7AC6DA7D21A2781600BD5C10 /* MyCV */,
 				7A882CC0219EC01A009A2518 /* DetailCV */,
@@ -581,6 +616,8 @@
 			isa = PBXGroup;
 			children = (
 				7A8B9BB121A415F900F6E77C /* Shared.swift */,
+				7A955E2821A8058200D402D4 /* HelperLibrary.swift */,
+				7A955E1F21A7EB4300D402D4 /* Images.swift */,
 				7A54077421953E7800324167 /* LoadingOverlay.swift */,
 				9B88CC661CAB305900AE60C5 /* Constants.swift */,
 				9BD4090F1CE9F19E005223C9 /* UIHelper.swift */,
@@ -814,6 +851,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
+				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -829,6 +867,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -859,6 +898,7 @@
 				7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */,
 				7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */,
 				9B77E0751E2FB66F0020E450 /* UserDataManager.swift in Sources */,
+				7A955E2021A7EB4300D402D4 /* Images.swift in Sources */,
 				7AC6DA8321A2785B00BD5C10 /* MyCVAppliedController.swift in Sources */,
 				9B0C72741C738D3400BAF3B1 /* APIClient.swift in Sources */,
 				7AF1BD54219FBB20002FDC63 /* InfoDetailCVController.swift in Sources */,
@@ -895,8 +935,10 @@
 				9B77E0731E2FB6350020E450 /* User.swift in Sources */,
 				7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */,
 				7AC6DA7C21A2756000BD5C10 /* ListCV.swift in Sources */,
+				7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */,
 				7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */,
 				7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */,
+				7A955E1E21A7E78A00D402D4 /* IntroController.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
 				7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */,
 				7A17F3BA21A396AD000B4D1F /* ListCVSubmit.swift in Sources */,
@@ -912,10 +954,13 @@
 				7AFB065321A4F3AD0046CB7B /* MyJobSaved.swift in Sources */,
 				9B0C72711C738D3400BAF3B1 /* AppDelegate.swift in Sources */,
 				7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */,
+				7A955E2921A8058200D402D4 /* HelperLibrary.swift in Sources */,
+				7A955E2521A8012A00D402D4 /* IntroTwoController.swift in Sources */,
 				7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */,
 				7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */,
 				7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */,
 				E8FBB1C11DD21D18000D6740 /* SessionManager.swift in Sources */,
+				7A955E2321A8011800D402D4 /* IntroOneController.swift in Sources */,
 				7A1D971021990D48007A4200 /* MyChoose.swift in Sources */,
 				9B77E0791E2FCF710020E450 /* Media.swift in Sources */,
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
@@ -926,6 +971,7 @@
 				7AC6DA7A21A24A2F00BD5C10 /* DetailCV.swift in Sources */,
 				7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */,
 				7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */,
+				7A955E2721A8013B00D402D4 /* IntroThreeController.swift in Sources */,
 				7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */,
 				7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */,
 				7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */,
