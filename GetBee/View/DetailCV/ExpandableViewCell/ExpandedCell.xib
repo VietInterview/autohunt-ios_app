@@ -23,9 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="587.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-RL-Kft">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="577"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uD-RL-Kft">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tên công ty/Tổ chức" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-gc-5Zj">
                                 <rect key="frame" x="8" y="8" width="161" height="25"/>
@@ -136,9 +135,17 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="577" id="2zk-Rb-Akh"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="8uD-RL-Kft" firstAttribute="top" secondItem="0E9-wZ-z0c" secondAttribute="top" id="Ddk-On-fbq"/>
+                    <constraint firstItem="8uD-RL-Kft" firstAttribute="leading" secondItem="0E9-wZ-z0c" secondAttribute="leading" id="Gx6-wa-Jti"/>
+                    <constraint firstAttribute="trailing" secondItem="8uD-RL-Kft" secondAttribute="trailing" id="pH7-9X-uwr"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="lblCompanyName" destination="ivX-Xa-TgD" id="o9I-qT-OqO"/>

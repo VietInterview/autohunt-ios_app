@@ -70,7 +70,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             tabSwipe.setIndicatorColor(UIColor.yellow)
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.mTabView)
         }, failure: {error in
-            
+            self.showMessage(title: "Thông báo", message: error)
         })
         self.mViewHunt.isHidden = true
         self.mViewHunt.gone()

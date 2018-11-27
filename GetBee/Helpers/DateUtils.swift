@@ -1,11 +1,11 @@
 ///**
 /**
-Created by: Hiep Nguyen Nghia on 11/13/18
-Copyright (c) 2018 Vietinterview. All rights reserved.
-*/
+ Created by: Hiep Nguyen Nghia on 11/13/18
+ Copyright (c) 2018 Vietinterview. All rights reserved.
+ */
 
 import Foundation
- class DateUtils: NSObject {
+class DateUtils: NSObject {
     static let shared = DateUtils()
     public func convertToShowFormatDate(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()
@@ -24,6 +24,18 @@ import Foundation
         dateFormatterString.dateFormat = "dd/MM/yyyy"
         let newDate: String = dateFormatterString.string(from: serverDate)
         return newDate
+    }
+    func UTCToLocal(date:String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let dt = dateFormatter.date(from: date)
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        if let mDate = dt {
+            return dateFormatter.string(from: dt!)
+        } else { return "" }
     }
     public func convertFormatDateFull(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()

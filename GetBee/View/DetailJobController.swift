@@ -107,8 +107,8 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             vc.carrerName = self.jobDetail.careerName!
             vc.level = self.jobDetail.jobLevelName!
             vc.location = self.jobDetail.listcityName!
-            vc.datePublic = DateUtils.shared.convertToShowFormatDate(dateString: self.jobDetail.submitDate!)
-            vc.dateExpiration = DateUtils.shared.convertToShowFormatDate(dateString: self.jobDetail.expireDate!)
+            vc.datePublic = DateUtils.shared.UTCToLocal(date: self.jobDetail.submitDate!)
+            vc.dateExpiration = DateUtils.shared.UTCToLocal(date: self.jobDetail.expireDate!)
             if self.jobDetail.status! == 1 {
                 vc.status = "Đang tuyển"
             } else {

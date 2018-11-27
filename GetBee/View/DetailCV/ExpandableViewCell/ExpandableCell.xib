@@ -23,9 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThC-rb-yXo">
-                        <rect key="frame" x="0.0" y="15" width="250" height="65"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThC-rb-yXo">
+                        <rect key="frame" x="0.0" y="15" width="375" height="65"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expandable Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-gc-5Zj">
                                 <rect key="frame" x="14" y="9" width="190" height="25"/>
@@ -43,8 +42,16 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="65" id="nG4-0V-Dej"/>
+                        </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ThC-rb-yXo" secondAttribute="trailing" id="XiJ-md-ejs"/>
+                    <constraint firstItem="ThC-rb-yXo" firstAttribute="leading" secondItem="0E9-wZ-z0c" secondAttribute="leading" id="Yg4-0s-xS6"/>
+                    <constraint firstItem="ThC-rb-yXo" firstAttribute="top" secondItem="0E9-wZ-z0c" secondAttribute="top" constant="15" id="lmG-3i-Cmw"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>

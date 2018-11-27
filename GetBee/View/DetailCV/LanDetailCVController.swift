@@ -11,7 +11,7 @@
         @IBOutlet weak var mLanTableView: ExpandableTableView!
         var detailCV = DetailCV()
         var cell: UITableViewCell {
-            return mLanTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID)!
+            return mLanTableView.dequeueReusableCell(withIdentifier: ExpandedLanCell.ID)!
         }
         override func viewDidLoad() {
             super.viewDidLoad()

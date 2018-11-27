@@ -40,9 +40,9 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
             if self.page == 0{
                 self.cvList = myCV.cvList!
                 if #available(iOS 10.0, *) {
+                    self.mTableView.refreshControl?.endRefreshing()
                     self.quantityView.isHidden = false
                     self.quantityView.visible()
-                    self.mTableView.refreshControl?.endRefreshing()
                 }
             } else {
                 self.cvList.append(contentsOf: myCV.cvList!)
@@ -71,7 +71,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "CVSubmitTableViewCell", for: indexPath) as! CVSubmitTableViewCell
         cell.lblName.text = self.cvList[indexPath.row].fullName!
         cell.lblCarrer.text = self.cvList[indexPath.row].careerName!
-        cell.lblDateUpdate.text = DateUtils.shared.convertToShowFormatDate(dateString: self.cvList[indexPath.row].updatedDate!)
+        cell.lblDateUpdate.text = DateUtils.shared.UTCToLocal(date: self.cvList[indexPath.row].updatedDate!)
         return cell
     }
     

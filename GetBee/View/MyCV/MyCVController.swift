@@ -40,7 +40,10 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.mViewStatus.isHidden = true
         self.mViewStatus.gone()
         self.tabSwipe = CarbonTabSwipeNavigation(items: ["Hồ sơ đã lưu", "Hồ sơ đã ứng tuyển"], delegate: self)
-        self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/8)
+        
+        if ScreenUtils.shared.getScreenWidth()! == 414 { self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/5)
+        } else { self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/8)
+        }
         self.tabSwipe!.setNormalColor(UIColor.gray)
         self.tabSwipe!.setSelectedColor(UIColor.black)
         self.tabSwipe!.setIndicatorColor(UIColor.black)

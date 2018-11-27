@@ -24,7 +24,18 @@ class LeftViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_menuleft.png")!)
+//                self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_menuleft.png")!)
+//        let background = UIImage(named: "background_menuleft.png")
+//
+//        var imageView : UIImageView!
+//        imageView = UIImageView(frame: view.bounds)
+//        imageView.contentMode =  UIViewContentMode.scaleAspectFill
+//        imageView.clipsToBounds = true
+//        imageView.image = background
+//        imageView.center = view.center
+//        view.addSubview(imageView)
+//        self.view.insertSubview(imageView, at: 0)
+        tableView.contentInset = UIEdgeInsets(top: 44.0, left: 0.0, bottom: 44.0, right: 0.0)
         viewModel.loadUserProfile(success: { userProfile in
             if let fullname = userProfile.fullNameColl {
                 self.titlesArray[2] = "Xin chào, \(fullname)"
@@ -80,10 +91,27 @@ class LeftViewController: UITableViewController {
         cell.titleLabel.text = titlesArray[indexPath.row]
         cell.separatorView.isHidden = (indexPath.row <= 3 || indexPath.row == self.titlesArray.count-1)
         cell.isUserInteractionEnabled = (indexPath.row != 1 && indexPath.row != 3)
-        
+        cell.icon.image = self.setImageMenu(value: indexPath.row)
         return cell
     }
-    
+    func setImageMenu(value: Int) -> UIImage {
+        var image = UIImage()
+        switch value {
+        case 4:
+            image = UIImage(named: "home_menuleft")!
+        case 5:
+            image = UIImage(named: "ic_job_menu")!
+        case 6:
+            image = UIImage(named: "ic_cv_menu")!
+        case 7:
+            image = UIImage(named: "ic_user_menu")!
+        case 12:
+            image = UIImage(named: "ic_shutdown")!
+        default:
+            image = UIImage(named: "home_menuleft")!
+        }
+        return image
+    }
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -148,8 +176,8 @@ class LeftViewController: UITableViewController {
                 let window = UIApplication.shared.delegate!.window!!
                 window.rootViewController = mainViewController
             }else if indexPath.row == 12 {
-                    UserDataManager.deleteUser()
-                    SessionManager.deleteSession()
+                UserDataManager.deleteUser()
+                SessionManager.deleteSession()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
                 

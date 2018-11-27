@@ -23,9 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="410.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoa-Hg-3mI">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="397"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoa-Hg-3mI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tên bằng cấp/chứng chỉ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yF-38-0cG">
                                 <rect key="frame" x="8" y="8" width="190" height="25"/>
@@ -98,9 +97,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="397" id="IU6-nD-7BA"/>
+                        </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="hoa-Hg-3mI" firstAttribute="top" secondItem="SPx-HX-0sB" secondAttribute="top" id="H1a-Br-3L8"/>
+                    <constraint firstItem="hoa-Hg-3mI" firstAttribute="leading" secondItem="SPx-HX-0sB" secondAttribute="leading" id="xXy-xX-lwY"/>
+                    <constraint firstAttribute="trailing" secondItem="hoa-Hg-3mI" secondAttribute="trailing" id="zHV-gj-7zm"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="lblCer" destination="NS6-bd-2Wf" id="oJ1-y4-Tnd"/>

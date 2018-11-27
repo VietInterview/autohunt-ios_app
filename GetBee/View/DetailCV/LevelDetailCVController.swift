@@ -15,13 +15,16 @@ class LevelDetailCVController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
         LevelTableView.expandableDelegate = self
         LevelTableView.animation = .automatic
         
         LevelTableView.register(UINib(nibName: "ExpandedLevelCell", bundle: nil), forCellReuseIdentifier: ExpandedLevelCell.ID)
         LevelTableView.register(UINib(nibName: "ExpandableCell", bundle: nil), forCellReuseIdentifier: ExpandableCell2.ID)
     }
-    
 
 }
 extension LevelDetailCVController: ExpandableDelegate {
@@ -33,7 +36,7 @@ extension LevelDetailCVController: ExpandableDelegate {
         rectShape.bounds = cell1.viewContent.frame
         rectShape.position = cell1.viewContent.center
         rectShape.path = UIBezierPath(roundedRect: cell1.viewContent.bounds, byRoundingCorners: [.bottomRight , .bottomLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
+        cell1.viewContent.layer.borderColor = UIColor.black.cgColor
         cell1.viewContent.layer.borderWidth = 1
         cell1.viewContent.layer.mask = rectShape
         cell1.lblCer.text = self.detailCV.lstEducationHis![indexPath.row].subject!

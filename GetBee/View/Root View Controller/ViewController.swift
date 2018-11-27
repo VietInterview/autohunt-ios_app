@@ -182,8 +182,8 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
         cell.labelCarrer.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].careerName)
         cell.labelCityList.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].listcityName)
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) \(genString(value: self.jobList[indexPath.row].currency!))"
-        cell.labelDeadlineDate.text = self.convertToShowFormatDate(dateString: self.jobList[indexPath.row].expireDate!)
+        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) \(StringUtils.shared.genString(value: self.jobList[indexPath.row].currency!))"
+        cell.labelDeadlineDate.text = DateUtils.shared.UTCToLocal(date: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
             cell.imgSaveUnSaveJob.isUserInteractionEnabled = true
@@ -223,30 +223,6 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
                 print("User Profile Error: " + error)})
     }
     
-    func genString(value: Int) -> String {
-        var someNumber = ""
-        switch value {
-        case 1:
-            someNumber="VND"
-        case 2:
-            someNumber="USD"
-        case 3:
-            someNumber="JPY"
-        default:
-            print("Fallback option")
-        }
-        return someNumber
-    }
-    
-    func convertToShowFormatDate(dateString: String) -> String {
-        let dateFormatterDate = DateFormatter()
-        dateFormatterDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let serverDate: Date = dateFormatterDate.date(from: dateString)!
-        let dateFormatterString = DateFormatter()
-        dateFormatterString.dateFormat = "dd/MM/yyyy"
-        let newDate: String = dateFormatterString.string(from: serverDate)
-        return newDate
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return 240.0;
     }
