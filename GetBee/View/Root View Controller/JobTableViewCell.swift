@@ -8,6 +8,8 @@ import UIKit
 
 class JobTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblQuantity: UILabel!
+    @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var labelFee: UILabel!
     @IBOutlet weak var labelDeadlineDate: UILabel!
     @IBOutlet weak var labelCityList: UILabel!

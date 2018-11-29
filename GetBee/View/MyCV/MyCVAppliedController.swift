@@ -92,6 +92,7 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
        cell.lblCarrer.text = self.listCVSubmit.cvList![indexPath.row].careerName!
         cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!) , for: .normal)
         cell.btnStatus.backgroundColor = StringUtils.shared.genColor(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!)
+        cell.lblJobTitle.text = StringUtils.shared.checkEmpty(value: self.listCVSubmit.cvList![indexPath.row].jobTitle)
         return cell
     }
     

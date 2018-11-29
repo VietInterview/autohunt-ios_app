@@ -9,6 +9,9 @@ import ExpandableCell
 
 class ExpDetailCVController: UIViewController {
     @IBOutlet weak var mExpTableView: ExpandableTableView!
+    @IBOutlet weak var lblNodata: UILabel!
+    
+    
     var detailCV = DetailCV()
     var cell: UITableViewCell {
         return mExpTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID)!
@@ -17,7 +20,17 @@ class ExpDetailCVController: UIViewController {
         super.viewDidLoad()
         mExpTableView.expandableDelegate = self
         mExpTableView.animation = .automatic
-        
+        if detailCV.lstEmploymentHis!.count > 0 {
+            lblNodata.isHidden = true
+            lblNodata.gone()
+            mExpTableView.isHidden = false
+            mExpTableView.visible()
+        } else {
+            lblNodata.isHidden = false
+            lblNodata.visible()
+            mExpTableView.isHidden = true
+            mExpTableView.gone()
+        }
         mExpTableView.register(UINib(nibName: "ExpandedCell", bundle: nil), forCellReuseIdentifier: ExpandedCell.ID)
         mExpTableView.register(UINib(nibName: "ExpandableCell", bundle: nil), forCellReuseIdentifier: ExpandableCell2.ID)
     }
@@ -51,9 +64,9 @@ extension ExpDetailCVController: ExpandableDelegate {
         } else {
             cell1.lblIsCurrentJob.isHidden = true
         }
-        cell1.lblSalary.text = StringUtils.shared.currencyFormat(value: self.detailCV.lstEmploymentHis![indexPath.row].salary!) + StringUtils.shared.genString(value: self.detailCV.lstEmploymentHis![indexPath.row].salaryCurency!)
+        cell1.lblSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salary)) + StringUtils.shared.genString(value:StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salaryCurency))
         cell1.textViewJobDes.text = self.detailCV.lstEmploymentHis![indexPath.row].jobDescription!
-        cell1.textViewTarget.text = self.detailCV.lstEmploymentHis![indexPath.row].achievement!
+        cell1.textViewTarget.text = StringUtils.shared.checkEmpty(value: self.detailCV.lstEmploymentHis![indexPath.row].achievement) 
         return [cell1]
     }
     
@@ -78,9 +91,9 @@ extension ExpDetailCVController: ExpandableDelegate {
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCell: UITableViewCell, didSelectExpandedRowAt indexPath: IndexPath) {
-        if let cell = expandedCell as? ExpandedCell {
-            print("\(cell.titleLabel.text ?? "")")
-        }
+//        if let cell = expandedCell as? ExpandedCell {
+//            print("\(cell.titleLabel.text ?? "")")
+//        }
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

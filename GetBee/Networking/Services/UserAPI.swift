@@ -113,6 +113,7 @@ class UserAPI {
         success(getMyProfile)
       }
     }, failure: { error in
+       LoadingOverlay.shared.hideOverlayView()
       failure(error)
     })
   }

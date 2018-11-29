@@ -12,6 +12,9 @@ import GoneVisible
 
 class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate {
     
+    @IBOutlet weak var mViewBtnSubmitCV: UIView!
+    @IBOutlet weak var lblNotiSendCV: UILabel!
+    @IBOutlet weak var lblNotiHunt: UILabel!
     @IBOutlet weak var mViewSendCVAll: UIView!
     @IBOutlet weak var mViewHuntAll: UIView!
     @IBOutlet weak var imgSendCV: UIImageView!
@@ -28,6 +31,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     var cvId: Int = 0
     var jobId: Int = 0
     var detailCV = DetailCV()
+    var jobDetail = JobDetail()
     var effect:UIVisualEffect!
     @IBOutlet weak var imgAva: UIImageView!
     var homeViewModel = HomeViewModel()
@@ -42,12 +46,16 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         self.navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.navigationController?.view.backgroundColor = .clear
-        let rectShape = CAShapeLayer()
-        rectShape.bounds = mViewHeader.frame
-        rectShape.position = mViewHeader.center
-        rectShape.path = UIBezierPath(roundedRect: mViewHeader.bounds, byRoundingCorners: [.topRight , .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        mViewHeader.layer.backgroundColor = UIColor.white.cgColor
-        mViewHeader.layer.mask = rectShape
+       
+        if let jobdetail = self.jobDetail.fee {
+            lblNotiHunt.text = "Mức thưởng dự kiến mà bạn sẽ nhận được \(StringUtils.shared.currencyFormat(value: self.jobDetail.fee!)) VND"
+            lblNotiSendCV.text = "Mức thưởng dự kiến mà bạn sẽ nhận được \(StringUtils.shared.currencyFormat(value: (self.jobDetail.fee!*47)/68)) VND"
+            self.mViewBtnSubmitCV.isHidden = false
+            self.mViewBtnSubmitCV.visible()
+        } else {
+            self.mViewBtnSubmitCV.isHidden = true
+            self.mViewBtnSubmitCV.gone()
+        }
         visualEffectView.isHidden = true
         effect = visualEffectView.effect
         visualEffectView.effect = nil
@@ -155,13 +163,19 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     }
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
+        let rectShape = CAShapeLayer()
+        rectShape.bounds = mViewHeader.frame
+        rectShape.position = mViewHeader.center
+        rectShape.path = UIBezierPath(roundedRect: mViewHeader.bounds, byRoundingCorners: [.topRight , .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
+        mViewHeader.layer.backgroundColor = UIColor.white.cgColor
+        mViewHeader.layer.mask = rectShape
     }
     @IBAction func applyCVTouch(_ sender: Any) {
         self.animateIn()
     }
     
     @IBAction func huntTouch(_ sender: Any) {
-        self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobId, type: 1, success: {submitCV in
+        self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobDetail.id!, type: 1, success: {submitCV in
             if submitCV.type! == 1 {
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
@@ -173,23 +187,42 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             }
         }, failure: {error in
             debugLog(object: error)
-        })
-    }
-    
-    @IBAction func sendCVTouch(_ sender: Any) {
-        self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobId, type: 0, success: {submitCV in
-            if submitCV.type! == 0 {
+            self.showMessage(title: "Thông báo", message: error == "Email or phone is already in submit job!" ? "Ứng viên này đã được chính bạn hoặc CTV viên khác sử dụng và gửi đi. Bạn vui lòng chọn CV khác":"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
-                    if controller.isKind(of: DetailJobController.self) {
+                    if controller.isKind(of: ChooseCVSubmitController.self) {
                         self.navigationController!.popToViewController(controller, animated: true)
                         break
                     }
                 }
+            })
+        })
+    }
+    
+    @IBAction func sendCVTouch(_ sender: Any) {
+        self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobDetail.id!, type: 0, success: {submitCV in
+            if submitCV.type! == 0 {
+                self.showMessage(title: "Thông báo", message: "Hồ sơ của bạn đã được gửi tới NTD. Vui lòng kiểm tra trạng thái hồ sơ đã gửi trong mục Hồ sơ đã ứng tuyển", handler: { (action: UIAlertAction!) in
+                    self.animateOut()
+                    for controller in self.navigationController!.viewControllers as Array {
+                        if controller.isKind(of: DetailJobController.self) {
+                            self.navigationController!.popToViewController(controller, animated: true)
+                            break
+                        }
+                    }
+                })
             }
         }, failure: {error in
             debugLog(object: error)
-            self.showMessage(title: "Thông báo", message: error)
+            self.showMessage(title: "Thông báo", message: "Hồ sơ của bạn đã được gửi tới NTD. Vui lòng kiểm tra trạng thái hồ sơ đã gửi trong mục Hồ sơ đã ứng tuyển", handler: { (action: UIAlertAction!) in
+                self.animateOut()
+                for controller in self.navigationController!.viewControllers as Array {
+                    if controller.isKind(of: ChooseCVSubmitController.self) {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                        break
+                    }
+                }
+            })
         })
     }
     

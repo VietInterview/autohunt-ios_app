@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-var dataArray = [CarrerListElement]()
+var dataArrayMulti = [CarrerListElement]()
 
-class ViewModelItem {
+class ViewModelItemMulti {
     private var item: CarrerListElement
-
+    
     var isSelected = false
     var id: Int {
         return item.id!
@@ -21,15 +21,15 @@ class ViewModelItem {
     var title: String {
         return item.name!
     }
-
+    
     init(item: CarrerListElement) {
         self.item = item
     }
 }
 
-class ViewModel: NSObject {
+class ViewModelMulti: NSObject {
     var items = [ViewModelItem]()
-    var isMulti = Bool()
+    
     var didToggleSelection: ((_ hasSelection: Bool) -> ())? {
         didSet {
             didToggleSelection?(!selectedItems.isEmpty)
@@ -44,12 +44,9 @@ class ViewModel: NSObject {
         super.init()
         items = dataArray.map { ViewModelItem(item: $0) }
     }
-    init(isMulti: Bool) {
-        self.isMulti = isMulti
-    }
 }
 
-extension ViewModel: UITableViewDataSource {
+extension ViewModelMulti: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -76,18 +73,16 @@ extension ViewModel: UITableViewDataSource {
     }
 }
 
-extension ViewModel: UITableViewDelegate {
+extension ViewModelMulti: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         items[indexPath.row].isSelected = true
-        if isMulti {
-            if indexPath.row == 0 {
-                items[0].isSelected = false
-                for i in 1...items.count-1 {
-                    items[i].isSelected = true
-                }
-            } else {
-                items[0].isSelected = false
+        if indexPath.row == 0 {
+            items[0].isSelected = false
+            for i in 1...items.count-1 {
+                items[i].isSelected = true
             }
+        } else {
+            items[0].isSelected = false
         }
         didToggleSelection?(!selectedItems.isEmpty)
     }

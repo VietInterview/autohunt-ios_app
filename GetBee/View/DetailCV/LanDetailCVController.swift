@@ -9,6 +9,8 @@
     
     class LanDetailCVController: UIViewController {
         @IBOutlet weak var mLanTableView: ExpandableTableView!
+        @IBOutlet weak var lblNodata: UILabel!
+        
         var detailCV = DetailCV()
         var cell: UITableViewCell {
             return mLanTableView.dequeueReusableCell(withIdentifier: ExpandedLanCell.ID)!
@@ -17,7 +19,17 @@
             super.viewDidLoad()
             mLanTableView.expandableDelegate = self
             mLanTableView.animation = .automatic
-            
+            if detailCV.lstLanguage!.count > 0 {
+                lblNodata.isHidden = true
+                lblNodata.gone()
+                mLanTableView.isHidden = false
+                mLanTableView.visible()
+            } else {
+                lblNodata.isHidden = false
+                lblNodata.visible()
+                mLanTableView.isHidden = true
+                mLanTableView.gone()
+            }
             mLanTableView.register(UINib(nibName: "ExpandedLanCell", bundle: nil), forCellReuseIdentifier: ExpandedLanCell.ID)
             mLanTableView.register(UINib(nibName: "ExpandableLanCell", bundle: nil), forCellReuseIdentifier: ExpandableLanCell.ID)
         }

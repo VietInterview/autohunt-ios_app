@@ -12,11 +12,12 @@ class JobAPI {
     fileprivate static let collUrl = "/svccollaborator/api/jobs"
     class func getSearchJob(carrerId: Int, jobTitle: String, cityId: Int, page: Int,_ success: @escaping (_ job: Job) -> Void, failure: @escaping (_ error: Error) -> Void) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
-        let url = collUrl + "/searchJob?carrerId=\(carrerId)&jobtile=\(jobTitle)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
+        let url = collUrl + "/searchJob?careerId=\(carrerId)&jobtile=\(jobTitle)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
         APIClient.request(.get, url: url, success: { response, _ in
             LoadingOverlay.shared.hideOverlayView()
-            let job = try? newJSONDecoder().decode(Job.self, from: response)
-            success(job!)
+            if let job = try? JSONDecoder().decode(Job.self, from: response){
+                success(job)
+            }
         }, failure: { error in
             LoadingOverlay.shared.hideOverlayView()
             failure(error)
@@ -84,6 +85,7 @@ class JobAPI {
                 success(addRemoveJob)
             }
         }, failure: { error in
+             LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }

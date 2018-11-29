@@ -10,6 +10,7 @@ import GoneVisible
 class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     var cvList = [CvList]()
     var cvListServer = [CvList]()
+    var jobDetail = JobDetail()
     var jobId: Int = 0
     var page:Int = 0
     var homeViewModel = HomeViewModel()
@@ -83,6 +84,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
         vc.title = "Chi tiết Hồ sơ"
         vc.jobId = self.jobId
+        vc.jobDetail = self.jobDetail
         vc.cvId = self.cvList[indexPath.row].id!
         navigationController?.pushViewController(vc, animated: true)
     }

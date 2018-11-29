@@ -13,7 +13,7 @@ protocol ChooseDelegate{
 protocol ChooseMultiDelegate{
     func didChooseMulti(mychooseMulti: [MyChoose])
 }
-class CarrerOrCityController: UIViewController {
+class CarrerOrCityController: UIViewController,UITableViewDelegate {
     var viewModel = ViewModel()
     var button = UIButton.init(type: .custom)
     var delegate: ChooseDelegate?
@@ -49,6 +49,7 @@ class CarrerOrCityController: UIViewController {
         tableView?.estimatedRowHeight = 100
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.allowsMultipleSelection = self.isMultiChoice
+        viewModel = ViewModel(isMulti: self.isMultiChoice)
         if self.isCarrer == true {
             jobModel.getCarrer(success: {carrers in
                 self.viewModel.items.removeAll()
@@ -89,6 +90,9 @@ class CarrerOrCityController: UIViewController {
         }
         tableView?.delegate = viewModel
         tableView?.separatorStyle = .singleLine
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        debugLog(object: [indexPath.row])
     }
     @objc func chon(sender: UIBarButtonItem) {
         if viewModel.selectedItems.count > 0 {

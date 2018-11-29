@@ -12,10 +12,8 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     @IBOutlet weak var btnactionSearch: UIBarButtonItem!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var conditionView: UIView!
-    @IBOutlet weak var labelQuantityJOb: UILabel!
     @IBOutlet weak var tableViewJob: UITableView!
     @IBOutlet weak var btnFilter: UIButton!
-    @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var btnChooseCarrer: UIButton!
     @IBOutlet weak var btnChooseCity: UIButton!
@@ -42,12 +40,10 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         searchView.gone()
         conditionView.isHidden=true
         conditionView.gone()
-        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:  #selector(sortArray), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.tableViewJob.refreshControl = refreshControl
-        } else {
         }
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -57,19 +53,19 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     func searchJob(carrerId: Int, cityId: Int, jobtitle: String){
         self.viewModel.getSearchJob(carrerId: carrerId, cityId: cityId, jobTitle: jobtitle,  page: self.page, success:  { [unowned self] job in
-            self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
+            //            self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
             if self.page == 0 {
                 self.jobList = job.jobList!
             } else {
-                 self.jobList.append(contentsOf: job.jobList!)
+                self.jobList.append(contentsOf: job.jobList!)
             }
             self.jobListServer = job.jobList!
             if self.page == 0 {
-                self.quantityView.isHidden = false
-                self.quantityView.visible()
                 if #available(iOS 10.0, *) {
                     self.tableViewJob.refreshControl?.endRefreshing()
                 }
+                //                self.quantityView.isHidden = false
+                //                self.quantityView.visible()
             }
             
             self.tableViewJob.reloadData()
@@ -198,6 +194,14 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedMe(sender: )))
         cell.imgSaveUnSaveJob.addGestureRecognizer(tap)
         cell.imgSaveUnSaveJob.tag = indexPath.row
+        if indexPath.row == 0 {
+            cell.quantityView.isHidden = false
+            cell.quantityView.visible()
+            cell.lblQuantity.text = "\(self.jobList.count) công việc được tìm thấy"
+        } else {
+            cell.quantityView.isHidden = true
+            cell.quantityView.gone()
+        }
         Alamofire.request("https://dev.getbee.vn/\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.image = image
@@ -206,7 +210,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         return cell
     }
     
-    @objc  func tappedMe(sender: UITapGestureRecognizer)
+    @objc func tappedMe(sender: UITapGestureRecognizer)
     {
         var status: Int
         if self.jobList[sender.view!.tag].collStatus == nil || self.jobList[sender.view!.tag].collStatus == 0 {
@@ -224,15 +228,19 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 240.0;
+        if indexPath.row == 0{
+            return 290;
+        } else {
+            return 240
+        }
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-            quantityView.isHidden = false
-            quantityView.visible()
+            //            quantityView.isHidden = false
+            //            quantityView.visible()
         } else {
-            quantityView.gone()
-            quantityView.isHidden = true
+            //            quantityView.gone()
+            //            quantityView.isHidden = true
         }
     }
 }

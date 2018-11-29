@@ -21,8 +21,9 @@ class InfoDetailCVController: UIViewController {
     @IBOutlet weak var lblEdu: UILabel!
     @IBOutlet weak var lblExpYear: UILabel!
     @IBOutlet weak var lblSalary: UILabel!
-    @IBOutlet weak var textViewJobDes: UITextView!
+    @IBOutlet weak var lblTarget: UILabel!
     
+    @IBOutlet weak var lblWorkingForm: UILabel!
     var detailCV = DetailCV()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class InfoDetailCVController: UIViewController {
         if let marialStatus = self.detailCV.maritalStatus{
             lblMarried.text = self.detailCV.maritalStatus! == 1 ? "Chưa kết hôn" : "Đã kết hôn"
         }
+        lblWorkingForm.text = StringUtils.shared.checkEmpty(value: self.detailCV.workingForm!.name)
         lblPositionWish.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredPosition)
         lblCurrentLevel.text = StringUtils.shared.checkEmpty(value: self.detailCV.currentLevel!.name)
         lblWishLevel.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredLevel!.name)
@@ -73,8 +75,13 @@ class InfoDetailCVController: UIViewController {
         if let salary = self.detailCV.desiredSalary{
             lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.detailCV.desiredSalary!) ) \(self.detailCV.currencyName!)"
         }
-        textViewJobDes.text = StringUtils.shared.checkEmpty(value: self.detailCV.careerObjectives)
+        lblTarget.text = StringUtils.shared.checkEmpty(value: self.detailCV.careerObjectives)
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        lblTarget.contentMode = .scaleToFill
+        lblTarget.numberOfLines = 0
+//        lblTarget.leadingMargin(pixel: 10)
+//        lblTarget.trailingMargin(pixel: 10)
+    }
 }

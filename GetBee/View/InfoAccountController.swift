@@ -64,6 +64,11 @@ class InfoAccountController: UIViewController, ChooseMultiDelegate {
             print("User Profile Error: " + error)
         })
     }
+    override func viewDidAppear(_ animated: Bool) {
+        let fixedWidth = textFieldCarrer.frame.size.width
+        let newSize = textFieldCarrer.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        textFieldCarrer.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+    }
     @objc func someAction(_ sender:UITapGestureRecognizer){
         vc.isCarrer = true
         vc.isStatus = false

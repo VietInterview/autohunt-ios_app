@@ -81,6 +81,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.textFieldPhone.addTarget(self, action: #selector(textFieldPhoneDidChange(_:)), for: .editingChanged)
     }
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
+        imgNoteEMail.isHidden = false
+        imgNoteEMail.visible()
         imgNoteEMail.image = StringUtils.shared.isValidEmail(testStr: self.textFieldEmail.text!) ? UIImage(named: "tickok") : UIImage(named: "note")
     }
     @objc func textFieldFullNameDidChange(_ textField: UITextField) {

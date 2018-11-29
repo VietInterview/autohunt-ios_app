@@ -31,6 +31,7 @@
 		7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */; };
 		7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */; };
 		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
+		7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */; };
 		7A51849C21AC08B500BE09F9 /* imageLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A51849B21AC08B300BE09F9 /* imageLeft.png */; };
 		7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A54077421953E7800324167 /* LoadingOverlay.swift */; };
 		7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF12192CD890081862E /* HomeViewModel.swift */; };
@@ -44,11 +45,11 @@
 		7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772990219A69CE00A0CB97 /* StringUtils.swift */; };
 		7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */; };
 		7A78E35321A53433007BA69C /* SwiftLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35221A53433007BA69C /* SwiftLog.swift */; };
-		7A78E35721A5412A007BA69C /* ExpandedLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A78E35621A5412A007BA69C /* ExpandedLevelCell.xib */; };
 		7A78E35921A54A4C007BA69C /* ExpandableLanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A78E35821A54A4C007BA69C /* ExpandableLanCell.xib */; };
 		7A78E35B21A54BD0007BA69C /* ExpandedLanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A78E35A21A54BD0007BA69C /* ExpandedLanCell.xib */; };
 		7A78E35D21A5785C007BA69C /* SubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35C21A5785C007BA69C /* SubmitCV.swift */; };
 		7A78E35F21A57A1A007BA69C /* ErrorSubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */; };
+		7A79709C21AE905E00DC7B4A /* ExpandableLevelCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */; };
 		7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A882CC1219EC03C009A2518 /* DetailCVController.swift */; };
 		7A8B9BB221A415F900F6E77C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB121A415F900F6E77C /* Shared.swift */; };
 		7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */; };
@@ -168,6 +169,7 @@
 		7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
+		7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMulti.swift; sourceTree = "<group>"; };
 		7A51849B21AC08B300BE09F9 /* imageLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageLeft.png; sourceTree = "<group>"; };
 		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		7A6F9EF12192CD890081862E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -181,11 +183,11 @@
 		7A772990219A69CE00A0CB97 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		7A772995219A8A2200A0CB97 /* CVSendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSendTableViewCell.swift; sourceTree = "<group>"; };
 		7A78E35221A53433007BA69C /* SwiftLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLog.swift; sourceTree = "<group>"; };
-		7A78E35621A5412A007BA69C /* ExpandedLevelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedLevelCell.xib; sourceTree = "<group>"; };
 		7A78E35821A54A4C007BA69C /* ExpandableLanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableLanCell.xib; sourceTree = "<group>"; };
 		7A78E35A21A54BD0007BA69C /* ExpandedLanCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandedLanCell.xib; sourceTree = "<group>"; };
 		7A78E35C21A5785C007BA69C /* SubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCV.swift; sourceTree = "<group>"; };
 		7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSubmitCV.swift; sourceTree = "<group>"; };
+		7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableLevelCell2.xib; sourceTree = "<group>"; };
 		7A882CC1219EC03C009A2518 /* DetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCVController.swift; sourceTree = "<group>"; };
 		7A8B9BB121A415F900F6E77C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCV.swift; sourceTree = "<group>"; };
@@ -338,9 +340,9 @@
 				7A2EA49621A0EE2400E61681 /* ExpandableCell.xib */,
 				7A2EA49521A0EE2300E61681 /* ExpandableCells.swift */,
 				7A2EA49721A0EE2400E61681 /* ExpandedCell.xib */,
-				7A78E35621A5412A007BA69C /* ExpandedLevelCell.xib */,
 				7A78E35821A54A4C007BA69C /* ExpandableLanCell.xib */,
 				7A78E35A21A54BD0007BA69C /* ExpandedLanCell.xib */,
+				7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */,
 			);
 			path = ExpandableViewCell;
 			sourceTree = "<group>";
@@ -558,6 +560,7 @@
 			children = (
 				7A6F9EF12192CD890081862E /* HomeViewModel.swift */,
 				7A06AD962174261800E3CDAA /* ViewModel.swift */,
+				7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */,
 				9BAFB7C02114E39C0099DC61 /* Onboarding */,
 			);
 			path = ViewModel;
@@ -795,10 +798,10 @@
 				9B0C72721C738D3400BAF3B1 /* Assets.xcassets in Resources */,
 				9B12AF6C1F269B03005FD465 /* ThirdPartyKeys.example.plist in Resources */,
 				7AFC9F5C216B893C008F6AB1 /* Nunito-BlackItalic.ttf in Resources */,
+				7A79709C21AE905E00DC7B4A /* ExpandableLevelCell2.xib in Resources */,
 				7AFC9F60216B893C008F6AB1 /* Nunito-ExtraBoldItalic.ttf in Resources */,
 				7AFC9F64216B893C008F6AB1 /* Nunito-Light.ttf in Resources */,
 				7AFC9F61216B893C008F6AB1 /* Nunito-ExtraLight.ttf in Resources */,
-				7A78E35721A5412A007BA69C /* ExpandedLevelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +962,7 @@
 				9B0C72711C738D3400BAF3B1 /* AppDelegate.swift in Sources */,
 				7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */,
 				7A955E2921A8058200D402D4 /* HelperLibrary.swift in Sources */,
+				7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */,
 				7A955E2521A8012A00D402D4 /* IntroTwoController.swift in Sources */,
 				7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */,
 				7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */,

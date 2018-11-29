@@ -9,6 +9,9 @@ import ExpandableCell
 
 class ComDetailCVController: UIViewController {
     @IBOutlet weak var mComTableView: ExpandableTableView!
+    
+    @IBOutlet weak var lblNodata: UILabel!
+    
     var detailCV = DetailCV()
     var cell: UITableViewCell {
         return mComTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID)!
@@ -17,11 +20,22 @@ class ComDetailCVController: UIViewController {
         super.viewDidLoad()
         mComTableView.expandableDelegate = self
         mComTableView.animation = .automatic
-        
+        if detailCV.lstComputerSkill!.count > 0 {
+            lblNodata.isHidden = true
+            lblNodata.gone()
+            mComTableView.isHidden = false
+            mComTableView.visible()
+        } else {
+            lblNodata.isHidden = false
+            lblNodata.visible()
+            mComTableView.isHidden = true
+            mComTableView.gone()
+        }
         mComTableView.register(UINib(nibName: "ExpandedLanCell", bundle: nil), forCellReuseIdentifier: ExpandedLanCell.ID)
         mComTableView.register(UINib(nibName: "ExpandableLanCell", bundle: nil), forCellReuseIdentifier: ExpandableLanCell.ID)
     }
 }
+
 extension ComDetailCVController: ExpandableDelegate {
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
         let cell1 = self.mComTableView.dequeueReusableCell(withIdentifier: ExpandedLanCell.ID) as! ExpandedLanCell

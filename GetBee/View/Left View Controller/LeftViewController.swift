@@ -9,7 +9,6 @@ class LeftViewController: UITableViewController {
     
     var viewModel = HomeViewModel()
     private var titlesArray = ["",
-                               "",
                                "Xin chào, Tùng!",
                                "",
                                "Trang chủ",
@@ -24,24 +23,17 @@ class LeftViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//                self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_menuleft.png")!)
-//        let background = UIImage(named: "background_menuleft.png")
-//
-//        var imageView : UIImageView!
-//        imageView = UIImageView(frame: view.bounds)
-//        imageView.contentMode =  UIViewContentMode.scaleAspectFill
-//        imageView.clipsToBounds = true
-//        imageView.image = background
-//        imageView.center = view.center
-//        view.addSubview(imageView)
-//        self.view.insertSubview(imageView, at: 0)
-        tableView.contentInset = UIEdgeInsets(top: 44.0, left: 0.0, bottom: 44.0, right: 0.0)
         viewModel.loadUserProfile(success: { userProfile in
             if let fullname = userProfile.fullNameColl {
-                self.titlesArray[2] = "Xin chào, \(fullname)"
+                if fullname.count <= 4 {
+                    self.titlesArray[1] = "Xin chào, \(fullname)"
+                } else {
+                    self.titlesArray[1] = "Xin chào,"
+                    self.titlesArray[2] = "\(fullname)"
+                }
                 self.tableView.reloadData()
             } else {
-                self.titlesArray[2] = "Xin chào, Unknown"
+                self.titlesArray[1] = "Xin chào, Unknown"
                 self.tableView.reloadData()
             }
         }, failure: { error in
@@ -69,15 +61,14 @@ class LeftViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeftViewCell
-        if titlesArray[indexPath.row] == "" || indexPath.row == 2 {
+        if titlesArray[indexPath.row] == "" || indexPath.row == 1 || indexPath.row == 2 {
             cell.icon.isHidden = true
-            cell.bageLabel.isHidden = true
             cell.icon.gone()
+            cell.bageLabel.isHidden = true
             cell.titleLabel.font = cell.titleLabel.font.withSize(30)
-            //            let maxSize = CGSize(width: 180, height: 30)
-            //            let size = cell.titleLabel.sizeThatFits(maxSize)
-            //            cell.titleLabel.frame = CGRect(origin: CGPoint(x: 24, y: 8), size: size)
-            cell.titleLabel.frame = CGRect(x: 24, y: 8, width:220, height: 30)
+            cell.titleLabel.frame = CGRect(x: 0, y: 8, width:220, height: 60)
+//            cell.titleLabel.lineBreakMode = .byWordWrapping
+//            cell.titleLabel.numberOfLines = 2
         }
         if indexPath.row == (titlesArray.count - 1){
             cell.bageLabel.isHidden = true
@@ -89,23 +80,23 @@ class LeftViewController: UITableViewController {
         cell.bageLabel.layer.masksToBounds = true
         
         cell.titleLabel.text = titlesArray[indexPath.row]
-        cell.separatorView.isHidden = (indexPath.row <= 3 || indexPath.row == self.titlesArray.count-1)
-        cell.isUserInteractionEnabled = (indexPath.row != 1 && indexPath.row != 3)
+        //        cell.separatorView.isHidden = (indexPath.row <= 3 || indexPath.row == self.titlesArray.count-1)
+        //        cell.isUserInteractionEnabled = (indexPath.row != 1 && indexPath.row != 3)
         cell.icon.image = self.setImageMenu(value: indexPath.row)
         return cell
     }
     func setImageMenu(value: Int) -> UIImage {
         var image = UIImage()
         switch value {
-        case 4:
+        case 3:
             image = UIImage(named: "home_menuleft")!
-        case 5:
+        case 4:
             image = UIImage(named: "ic_job_menu")!
-        case 6:
+        case 5:
             image = UIImage(named: "ic_cv_menu")!
-        case 7:
+        case 6:
             image = UIImage(named: "ic_user_menu")!
-        case 12:
+        case 11:
             image = UIImage(named: "ic_shutdown")!
         default:
             image = UIImage(named: "home_menuleft")!
@@ -115,12 +106,10 @@ class LeftViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.row == 1 || indexPath.row == 3) ? 22.0 : 44.0
+        return (indexPath.row == 1) ? 50.0 : 44.0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mainViewController = sideMenuController!
-        
         if indexPath.row == 0 {
             //            if mainViewController.isLeftViewAlwaysVisibleForCurrentOrientation {
             //                mainViewController.showRightView(animated: true, completionHandler: nil)
@@ -131,10 +120,10 @@ class LeftViewController: UITableViewController {
             //                })
             //            }
         }
-        else if indexPath.row == 12 {
+        else if indexPath.row == 11 {
             UserDataManager.deleteUser()
             SessionManager.deleteSession()
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
             
             navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "SignInViewController")], animated: false)
@@ -147,7 +136,7 @@ class LeftViewController: UITableViewController {
             window.rootViewController = mainViewController
         }
         else {
-            if indexPath.row == 7
+            if indexPath.row == 6
             {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
@@ -157,7 +146,7 @@ class LeftViewController: UITableViewController {
                 mainViewController.setup(type: UInt(2))
                 let window = UIApplication.shared.delegate!.window!!
                 window.rootViewController = mainViewController
-            }else if indexPath.row == 6{
+            }else if indexPath.row == 5{
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
                 navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "MyCVController")], animated: false)
@@ -166,7 +155,7 @@ class LeftViewController: UITableViewController {
                 mainViewController.setup(type: UInt(2))
                 let window = UIApplication.shared.delegate!.window!!
                 window.rootViewController = mainViewController
-            }else if indexPath.row == 5{
+            }else if indexPath.row == 4{
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
                 navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "MyJobController")], animated: false)
@@ -175,7 +164,7 @@ class LeftViewController: UITableViewController {
                 mainViewController.setup(type: UInt(2))
                 let window = UIApplication.shared.delegate!.window!!
                 window.rootViewController = mainViewController
-            }else if indexPath.row == 12 {
+            }else if indexPath.row == 11 {
                 UserDataManager.deleteUser()
                 SessionManager.deleteSession()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

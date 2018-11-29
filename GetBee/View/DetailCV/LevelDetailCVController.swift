@@ -9,20 +9,31 @@ import ExpandableCell
 
 class LevelDetailCVController: UIViewController {
     @IBOutlet weak var LevelTableView: ExpandableTableView!
+    @IBOutlet weak var lblNodata: UILabel!
+    
+    
     var detailCV = DetailCV()
     var cell: UITableViewCell {
-        return LevelTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID)!
+        return LevelTableView.dequeueReusableCell(withIdentifier: ExpandedLevelCell.ID)!
     }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     override func viewDidAppear(_ animated: Bool) {
-        
-        
         LevelTableView.expandableDelegate = self
         LevelTableView.animation = .automatic
-        
-        LevelTableView.register(UINib(nibName: "ExpandedLevelCell", bundle: nil), forCellReuseIdentifier: ExpandedLevelCell.ID)
+        if detailCV.lstEducationHis!.count > 0 {
+            lblNodata.isHidden = true
+            lblNodata.gone()
+            LevelTableView.isHidden = false
+            LevelTableView.visible()
+        } else {
+            lblNodata.isHidden = false
+            lblNodata.visible()
+            LevelTableView.isHidden = true
+            LevelTableView.gone()
+        }
+        LevelTableView.register(UINib(nibName: "ExpandableLevelCell2", bundle: nil), forCellReuseIdentifier: ExpandedLevelCell.ID)
         LevelTableView.register(UINib(nibName: "ExpandableCell", bundle: nil), forCellReuseIdentifier: ExpandableCell2.ID)
     }
 
@@ -36,7 +47,7 @@ extension LevelDetailCVController: ExpandableDelegate {
         rectShape.bounds = cell1.viewContent.frame
         rectShape.position = cell1.viewContent.center
         rectShape.path = UIBezierPath(roundedRect: cell1.viewContent.bounds, byRoundingCorners: [.bottomRight , .bottomLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        cell1.viewContent.layer.borderColor = UIColor.black.cgColor
+        cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
         cell1.viewContent.layer.borderWidth = 1
         cell1.viewContent.layer.mask = rectShape
         cell1.lblCer.text = self.detailCV.lstEducationHis![indexPath.row].subject!
@@ -48,7 +59,7 @@ extension LevelDetailCVController: ExpandableDelegate {
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, heightsForExpandedRowAt indexPath: IndexPath) -> [CGFloat]? {
-        return [400]
+        return [450]
     }
     
     func numberOfSections(in tableView: ExpandableTableView) -> Int {
@@ -68,9 +79,9 @@ extension LevelDetailCVController: ExpandableDelegate {
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCell: UITableViewCell, didSelectExpandedRowAt indexPath: IndexPath) {
-        if let cell = expandedCell as? ExpandedCell {
-            print("\(cell.titleLabel.text ?? "")")
-        }
+//        if let cell = expandedCell as? ExpandedCell {
+//            print("\(cell.titleLabel.text ?? "")")
+//        }
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,9 +103,6 @@ extension LevelDetailCVController: ExpandableDelegate {
     }
     
     @objc(expandableTableView:didHighlightRowAt:) func expandableTableView(_ expandableTableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = expandableTableView.cellForRow(at: indexPath)
-        //        cell?.contentView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
-        //        cell?.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
     }
     
     func expandableTableView(_ expandableTableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -102,16 +110,6 @@ extension LevelDetailCVController: ExpandableDelegate {
     }
     
     func expandableTableView(_ expandableTableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        //        let cell = expandableTableView.cellForRow(at: indexPath)
-        //        cell?.contentView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        //        cell?.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
     }
     
-    //    func expandableTableView(_ expandableTableView: ExpandableTableView, titleForHeaderInSection section: Int) -> String? {
-    //        return "Section \(section)"
-    //    }
-    //
-    //    func expandableTableView(_ expandableTableView: ExpandableTableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 33
-    //    }
 }

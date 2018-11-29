@@ -36,8 +36,7 @@ class APIClient {
     }
     
     //Mandatory headers for Rails 5 API
-    static let baseHeaders: [String: String] = [HTTPHeader.accept.rawValue: "application/json",
-                                                HTTPHeader.contentType.rawValue: "application/json"]
+    static let baseHeaders: [String: String] = [HTTPHeader.contentType.rawValue: "application/json"]
     
     fileprivate class func getHeader() -> [String: String]? {
         if let session = SessionManager.currentSession {

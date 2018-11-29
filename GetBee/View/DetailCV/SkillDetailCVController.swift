@@ -8,6 +8,7 @@ import UIKit
 
 class SkillDetailCVController: UIViewController {
     @IBOutlet weak var lblSkills: UILabel!
+    @IBOutlet weak var lblHobby: UILabel!
     
     @IBOutlet weak var lblPrimarySkill: UILabel!
     var detailCV = DetailCV()
@@ -15,6 +16,7 @@ class SkillDetailCVController: UIViewController {
         super.viewDidLoad()
         if let cvSkill = self.detailCV.cvSkill{
         lblPrimarySkill.text = StringUtils.shared.checkEmpty(value: self.detailCV.cvSkill!.primarySkill)
+            lblHobby.text = StringUtils.shared.checkEmpty(value: self.detailCV.cvSkill!.hobby)
         if let skillOther = self.detailCV.cvSkill!.lstOtherSkillName{
             var appendString = ""
             for i in 0...(self.detailCV.cvSkill!.lstOtherSkillName!.count - 1) {

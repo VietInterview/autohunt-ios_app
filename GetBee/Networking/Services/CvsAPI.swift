@@ -19,6 +19,7 @@ class CvsAPI{
                 success(myCV)
             }
         }, failure: { error in
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -31,6 +32,7 @@ class CvsAPI{
                 success(detailCV)
             }
         }, failure: { error in
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -43,6 +45,7 @@ class CvsAPI{
                 success(listCV)
             }
         }, failure: {error in
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -60,6 +63,7 @@ class CvsAPI{
                 success(listCVSubmit)
             }
         }, failure: {error in
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -72,6 +76,7 @@ class CvsAPI{
                 success(listCV)
             }
         }, failure: {error in
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -84,6 +89,7 @@ class CvsAPI{
                 success(deleteCV)
             }
         }, failure: {error in
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -101,7 +107,7 @@ class CvsAPI{
                 success(submitCV)
             }
         }, failure: { errorSubmitCV, statusCode  in
-             LoadingOverlay.shared.hideOverlayView()
+            LoadingOverlay.shared.hideOverlayView()
             var dict : Dictionary = errorSubmitCV
             let errorString:String = dict["X-svcCollaboratorApp-error"] as? String ?? ""
             failure(errorString)

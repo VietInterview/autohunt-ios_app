@@ -84,6 +84,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
                 self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
                 self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.isUserInteractionEnabled = false
             }
             let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Thống kê", "CV đã nộp"], delegate: self)
             
@@ -146,7 +147,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
     @IBAction func submitCVTouch() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ChooseCVSubmitController") as! ChooseCVSubmitController
-        vc.jobId = self.jobDetail.id!
+        vc.jobDetail = self.jobDetail
         vc.title = "Chọn CV của tôi"
         self.navigationController?.pushViewController(vc, animated: true)
 //        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
@@ -157,5 +158,54 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
 //        })
     }
     
+    @IBAction func saveUnSaveJobTouch() {
+        var status: Int
+        if self.jobDetail.collStatus == nil || self.jobDetail.collStatus == 0 {
+            status = 1
+        } else {
+            status = 0
+        }
+        
+        homeViewModel.saveUnsaveJob(jobId: self.jobDetail.id!,status: status, success: {[unowned self] addRemoveJob in
+            print(addRemoveJob.status!)
+            if addRemoveJob.status! == 0{
+                self.btnSaveUnsaveJob.backgroundColor = .clear
+                self.btnSaveUnsaveJob.layer.cornerRadius = 5
+                self.btnSaveUnsaveJob.layer.borderWidth = 1
+                self.btnSaveUnsaveJob.layer.borderColor = UIColor.gray.cgColor
+                self.btnSaveUnsaveJob.setTitle("Lưu công việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitleColor(.gray, for: .normal)
+                self.btnSaveUnsaveJob.setImage(UIImage(named: "save.png"), for: .normal)
+                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
+                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+            } else if addRemoveJob.status! == 1 {
+                self.btnSaveUnsaveJob.backgroundColor = .clear
+                self.btnSaveUnsaveJob.layer.cornerRadius = 5
+                self.btnSaveUnsaveJob.layer.borderWidth = 1
+                self.btnSaveUnsaveJob.layer.borderColor = UIColor.red.cgColor
+                self.btnSaveUnsaveJob.setTitle("Đã lưu việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitleColor(.red, for: .normal)
+                self.btnSaveUnsaveJob.setImage(UIImage(named: "saved.png"), for: .normal)
+                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
+                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+            } else {
+                self.btnSaveUnsaveJob.backgroundColor = .green
+                self.btnSaveUnsaveJob.layer.cornerRadius = 5
+                self.btnSaveUnsaveJob.layer.borderWidth = 1
+                self.btnSaveUnsaveJob.layer.borderColor = UIColor.clear.cgColor
+                self.btnSaveUnsaveJob.setTitle("Đã ứng tuyển", for: .normal)
+                self.btnSaveUnsaveJob.setTitleColor(.white, for: .normal)
+                self.btnSaveUnsaveJob.setImage(UIImage(named: "tickok_white.png"), for: .normal)
+                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
+                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.isUserInteractionEnabled = false
+            }
+            self.jobDetail.collStatus = addRemoveJob.status!
+            }, failure: {error in
+                print("User Profile Error: " + error)})
+    }
     
 }

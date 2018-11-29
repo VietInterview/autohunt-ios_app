@@ -137,6 +137,12 @@ class StringUtils:NSObject {
         }
         return ""
     }
+    func checkEmptyInt(value: Int?) -> Int {
+        if let string = value{
+            return string
+        }
+        return 0
+    }
     func prettyPrint(with json: [String:Any]) -> String{
         let data = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
