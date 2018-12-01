@@ -1,8 +1,8 @@
 ///**
 /**
-Created by: Hiep Nguyen Nghia on 11/19/18
-Copyright (c) 2018 Vietinterview. All rights reserved.
-*/
+ Created by: Hiep Nguyen Nghia on 11/19/18
+ Copyright (c) 2018 Vietinterview. All rights reserved.
+ */
 
 import UIKit
 
@@ -18,9 +18,6 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
     var page: Int = 0
     var homeViewModel = HomeViewModel()
     var vc = CarrerOrCityController()
-    
-    @IBOutlet weak var lblQuantity: UILabel!
-    @IBOutlet weak var mQuantityView: UIView!
     static let notificationName = Notification.Name("myNotificationName")
     @IBOutlet weak var mCVSubmitTableView: UITableView!
     override func viewDidLoad() {
@@ -43,24 +40,23 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
                 self.listCVSubmit = listCVSubmit
                 self.cvListSubmit = listCVSubmit.cvList!
                 if #available(iOS 10.0, *) {
-                    self.mQuantityView.isHidden = false
-                    self.mQuantityView.visible()
                     self.mCVSubmitTableView.refreshControl?.endRefreshing()
                 }
             } else {
                 self.cvListSubmit.append(contentsOf: listCVSubmit.cvList!)
                 self.listCVSubmit.cvList!.append(contentsOf: listCVSubmit.cvList!)
             }
-            self.lblQuantity.text = "\(listCVSubmit.total!) hồ sơ được tìm thấy"
             self.listCVServer = listCVSubmit.cvList!
             self.mCVSubmitTableView.reloadData()
         }, failure: {error in
-            
+            if #available(iOS 10.0, *) {
+                self.mCVSubmitTableView.refreshControl?.endRefreshing()
+            }
         })
     }
     @objc func refresh() {
         self.page = 0
-       self.getCVSubmit()
+        self.getCVSubmit()
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = self.listCVSubmit.cvList!.count - 1
@@ -89,23 +85,26 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCVTableViewCell", for: indexPath) as! MyCVTableViewCell
         cell.lblName.text = self.listCVSubmit.cvList![indexPath.row].fullName!
         cell.lblDateUpdate.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate2(dateString: self.listCVSubmit.cvList![indexPath.row].updatedDate!))"
-       cell.lblCarrer.text = self.listCVSubmit.cvList![indexPath.row].careerName!
+        cell.lblCarrer.text = self.listCVSubmit.cvList![indexPath.row].careerName!
         cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!) , for: .normal)
         cell.btnStatus.backgroundColor = StringUtils.shared.genColor(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!)
         cell.lblJobTitle.text = StringUtils.shared.checkEmpty(value: self.listCVSubmit.cvList![indexPath.row].jobTitle)
+        if indexPath.row == 0 {
+            cell.mQuantityView.isHidden = false
+            cell.mQuantityView.visible()
+            cell.lblQuantityView.text = "\(self.listCVSubmit.total!) hồ sơ được tìm thấy"
+        } else {
+            cell.mQuantityView.isHidden = true
+            cell.mQuantityView.gone()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
-    }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-            mQuantityView.isHidden = false
-            mQuantityView.visible()
+        if indexPath.row == 0 {
+            return 170
         } else {
-            mQuantityView.gone()
-            mQuantityView.isHidden = true
+            return 110
         }
     }
     @objc func onNotification(notification:Notification)

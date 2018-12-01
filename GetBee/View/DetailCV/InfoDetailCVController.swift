@@ -5,7 +5,9 @@
  */
 
 import UIKit
-
+protocol SendHeightViewInfoDetailCV{
+    func sendHeight(height: Int)
+}
 class InfoDetailCVController: UIViewController {
     @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
@@ -25,6 +27,7 @@ class InfoDetailCVController: UIViewController {
     
     @IBOutlet weak var lblWorkingForm: UILabel!
     var detailCV = DetailCV()
+    var delegate:SendHeightViewInfoDetailCV?
     override func viewDidLoad() {
         super.viewDidLoad()
         lblPhone.text = StringUtils.shared.checkEmpty(value: self.detailCV.phone)
@@ -73,7 +76,7 @@ class InfoDetailCVController: UIViewController {
         lblEdu.text = StringUtils.shared.checkEmpty(value: self.detailCV.educationLevel!.name)
         lblExpYear.text = StringUtils.shared.checkEmpty(value: self.detailCV.experienceYear!.name)
         if let salary = self.detailCV.desiredSalary{
-            lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.detailCV.desiredSalary!) ) \(self.detailCV.currencyName!)"
+            lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.detailCV.desiredSalary!) ) \(StringUtils.shared.checkEmpty(value:  self.detailCV.currencyName))"
         }
         lblTarget.text = StringUtils.shared.checkEmpty(value: self.detailCV.careerObjectives)
     }
@@ -81,6 +84,11 @@ class InfoDetailCVController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         lblTarget.contentMode = .scaleToFill
         lblTarget.numberOfLines = 0
+        lblTarget.layoutIfNeeded()
+        lblTarget.setNeedsLayout()
+        if let mDelegate = self.delegate {
+            mDelegate.sendHeight(height: Int(lblTarget.frame.size.height))
+        }
 //        lblTarget.leadingMargin(pixel: 10)
 //        lblTarget.trailingMargin(pixel: 10)
     }

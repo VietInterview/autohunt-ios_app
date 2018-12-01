@@ -10,8 +10,10 @@ import AlamofireImage
 import Alamofire
 import GoneVisible
 
-class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate {
+class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV {
     
+    @IBOutlet weak var spaceTabView: NSLayoutConstraint!
+    @IBOutlet weak var heightTabView: NSLayoutConstraint!
     @IBOutlet weak var mViewBtnSubmitCV: UIView!
     @IBOutlet weak var lblNotiSendCV: UILabel!
     @IBOutlet weak var lblNotiHunt: UILabel!
@@ -46,7 +48,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         self.navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.navigationController?.view.backgroundColor = .clear
-       
+        
         if let jobdetail = self.jobDetail.fee {
             lblNotiHunt.text = "Mức thưởng dự kiến mà bạn sẽ nhận được \(StringUtils.shared.currencyFormat(value: self.jobDetail.fee!)) VND"
             lblNotiSendCV.text = "Mức thưởng dự kiến mà bạn sẽ nhận được \(StringUtils.shared.currencyFormat(value: (self.jobDetail.fee!*47)/68)) VND"
@@ -59,27 +61,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         visualEffectView.isHidden = true
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-        homeViewModel.getDetailCV(cvId: cvId, success: {detailCV in
-            self.detailCV = detailCV
-            if let imgUrl = self.detailCV.pictureURL {
-                Alamofire.request("https://dev.getbee.vn/\(imgUrl)").responseImage { response in
-                    if let image = response.result.value {
-                        self.imgAva.image = image
-                    }
-                }
-            }
-            self.lblName.text = detailCV.fullName!
-            self.lblBirthday.text = DateUtils.shared.convertFormatDateFull(dateString: "\(self.detailCV.birthday!)")
-            let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Kinh nghiệm", "Trình độ","Ngoại ngữ", "Tin học", "Kỹ năng"], delegate: self)
-            tabSwipe.setTabExtraWidth(16)
-            tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Nunito", size: 16)!], for: .normal)
-            tabSwipe.setNormalColor(UIColor.gray)
-            tabSwipe.setSelectedColor(UIColor.black)
-            tabSwipe.setIndicatorColor(UIColor.yellow)
-            tabSwipe.insert(intoRootViewController: self, andTargetView: self.mTabView)
-        }, failure: {error in
-            self.showMessage(title: "Thông báo", message: error)
-        })
+        
         self.mViewHunt.isHidden = true
         self.mViewHunt.gone()
         self.mViewSendCV.isHidden = true
@@ -137,6 +119,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         storyboard = UIStoryboard(name: "Main", bundle: nil)
         if index == 0 {
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailCVController") as! InfoDetailCVController
+            vc.delegate = self
             vc.detailCV = self.detailCV
             return vc
         } else if index == 1{
@@ -169,7 +152,44 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         rectShape.path = UIBezierPath(roundedRect: mViewHeader.bounds, byRoundingCorners: [.topRight , .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         mViewHeader.layer.backgroundColor = UIColor.white.cgColor
         mViewHeader.layer.mask = rectShape
+        homeViewModel.getDetailCV(cvId: cvId, success: {detailCV in
+            self.detailCV = detailCV
+            if let imgUrl = self.detailCV.pictureURL {
+                Alamofire.request("https://dev.getbee.vn/\(imgUrl)").responseImage { response in
+                    if let image = response.result.value {
+                        self.imgAva.layer.masksToBounds = true
+                        self.imgAva.image = image
+                    }
+                }
+            } else {
+                self.imgAva.layer.masksToBounds = true
+                self.imgAva.image = UIImage(named: "ava_null")
+            }
+            self.lblName.text = detailCV.fullName!
+            self.lblBirthday.text = DateUtils.shared.convertFormatDateFull(dateString: "\(self.detailCV.birthday!)")
+            let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Kinh nghiệm", "Trình độ","Ngoại ngữ", "Tin học", "Kỹ năng"], delegate: self)
+            tabSwipe.setTabExtraWidth(16)
+            tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Nunito", size: 16)!], for: .normal)
+            tabSwipe.setNormalColor(UIColor.gray)
+            tabSwipe.setSelectedColor(UIColor.black)
+            tabSwipe.setIndicatorColor(UIColor.yellow)
+            tabSwipe.insert(intoRootViewController: self, andTargetView: self.mTabView)
+            
+            
+        }, failure: {error in
+            self.showMessage(title: "Thông báo", message: error)
+        })
     }
+    var isUpdate:Bool = false
+    func sendHeight(height: Int) {
+        if isUpdate == false {
+            isUpdate = true
+            self.heightTabView.constant = self.heightTabView.constant + CGFloat(height)
+            self.spaceTabView.constant = self.spaceTabView.constant + CGFloat(height)
+        }
+    }
+    
+    
     @IBAction func applyCVTouch(_ sender: Any) {
         self.animateIn()
     }
@@ -177,13 +197,15 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     @IBAction func huntTouch(_ sender: Any) {
         self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobDetail.id!, type: 1, success: {submitCV in
             if submitCV.type! == 1 {
-                self.animateOut()
-                for controller in self.navigationController!.viewControllers as Array {
-                    if controller.isKind(of: DetailJobController.self) {
-                        self.navigationController!.popToViewController(controller, animated: true)
-                        break
+                self.showMessage(title: "Thông báo", message: "Hồ sơ của bạn đã được gửi tới NTD. Vui lòng kiểm tra trạng thái hồ sơ đã gửi trong mục Hồ sơ đã ứng tuyển", handler: { (action: UIAlertAction!) in
+                    self.animateOut()
+                    for controller in self.navigationController!.viewControllers as Array {
+                        if controller.isKind(of: DetailJobController.self) {
+                            self.navigationController!.popToViewController(controller, animated: true)
+                            break
+                        }
                     }
-                }
+                })
             }
         }, failure: {error in
             debugLog(object: error)
@@ -214,7 +236,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             }
         }, failure: {error in
             debugLog(object: error)
-            self.showMessage(title: "Thông báo", message: "Hồ sơ của bạn đã được gửi tới NTD. Vui lòng kiểm tra trạng thái hồ sơ đã gửi trong mục Hồ sơ đã ứng tuyển", handler: { (action: UIAlertAction!) in
+            self.showMessage(title: "Thông báo", message: error == "Email or phone is already in submit job!" ? "Ứng viên này đã được chính bạn hoặc CTV viên khác sử dụng và gửi đi. Bạn vui lòng chọn CV khác":"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: ChooseCVSubmitController.self) {

@@ -9,8 +9,9 @@ import CarbonKit
 import AlamofireImage
 import Alamofire
 
-class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
-    
+class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, SendHeightView {
+    @IBOutlet weak var spaceBottom: NSLayoutConstraint!
+    @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var btnStatus: UIButton!
     @IBOutlet weak var imgCompany: UIImageView!
     @IBOutlet weak var btnSaveUnsaveJob: UIButton!
@@ -18,6 +19,9 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
     @IBOutlet weak var lblCompany: UILabel!
     @IBOutlet weak var mViewTab: UIView!
     @IBOutlet weak var btnSendCV: UIButton!
+    @IBOutlet weak var mViewContent: UIView!
+    
+    
     var homeViewModel = HomeViewModel()
     var jobId: Int = 0;
     var jobDetail = JobDetail()
@@ -37,7 +41,11 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             self.jobDetail = jobDetail
             Alamofire.request("https://dev.getbee.vn/\(self.jobDetail.companyImg!)").responseImage { response in
                 if let image = response.result.value {
+                    self.imgCompany.layer.masksToBounds = true
                     self.imgCompany.image = image
+                }else {
+                    self.imgCompany.layer.masksToBounds = true
+                    self.imgCompany.image = UIImage(named: "job_null")
                 }
             }
             self.lblCompany.text = jobDetail.companyName!
@@ -45,9 +53,13 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             if self.jobDetail.status! == 1 {
                 self.btnStatus.setTitle("Đang tuyển", for: .normal)
                 self.btnStatus.backgroundColor = UIColor.green;
+                self.footerView.isHidden = false
+//                self.footerView.gone()
             } else {
                 self.btnStatus.setTitle("Đã đóng", for: .normal)
                  self.btnStatus.backgroundColor = UIColor.gray;
+                self.footerView.isHidden = true
+//                self.footerView.visible()
             }
             self.btnStatus.layer.cornerRadius = 5
             self.btnStatus.layer.borderWidth = 1
@@ -100,6 +112,18 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             print(error.description)
         })
     }
+    var isUpdate:Bool = false
+    func sendHeight(height: Int) {
+        if isUpdate {
+            
+        } else {
+            isUpdate = true
+            debugLog(object: self.spaceBottom.constant)
+            self.spaceBottom.constant = self.spaceBottom.constant + CGFloat(height)
+            debugLog(object: self.spaceBottom.constant)
+            self.mViewContent.layoutIfNeeded()
+        }
+    }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         guard var storyboard = storyboard else { return UIViewController() }
         storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -108,6 +132,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate {
             vc.carrerName = self.jobDetail.careerName!
             vc.level = self.jobDetail.jobLevelName!
             vc.location = self.jobDetail.listcityName!
+            vc.delegate = self
             vc.datePublic = DateUtils.shared.UTCToLocal(date: self.jobDetail.submitDate!)
             vc.dateExpiration = DateUtils.shared.UTCToLocal(date: self.jobDetail.expireDate!)
             if self.jobDetail.status! == 1 {

@@ -8,10 +8,10 @@ import UIKit
 import ACFloatingTextfield_Swift
 import Toaster
 
-class InfoAccountController: UIViewController, ChooseMultiDelegate {
+class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, ChooseMultiDelegate {
     
+    @IBOutlet weak var lblCarrerHunt: UILabel!
     @IBOutlet weak var mViewCarrerHunt: UIView!
-    @IBOutlet weak var textViewCarrerHunt: UITextView!
     var vc = CarrerOrCityController()
     @IBOutlet weak var textFieldCarrer: ACFloatingTextfield!
     @IBOutlet weak var textFieldAdd: ACFloatingTextfield!
@@ -24,24 +24,18 @@ class InfoAccountController: UIViewController, ChooseMultiDelegate {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.title = "Thông tin cá nhân"
-        
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
-        self.mViewCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
-        self.textViewCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
+        gestureSwift2AndHigher.delegate = self
+        self.lblCarrerHunt.isUserInteractionEnabled = true
+//        self.mViewCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
+        self.lblCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
         textfieldFullname.font = UIFont(name: "Nunito-Regular", size: 20)
         textfieldPhone.font = UIFont(name: "Nunito-Regular", size: 20)
         textFieldEmail.font = UIFont(name: "Nunito-Regular", size: 20)
         textFieldAdd.font = UIFont(name: "Nunito-Regular", size: 20)
         textFieldCarrer.font = UIFont(name: "Nunito-Regular", size: 20)
-        
-        //        textFieldCarrer.rightViewMode = UITextFieldViewMode.always
-        //        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        //        let image = UIImage(named: "note")
-        //        imageView.image = image
-        //        textFieldCarrer.rightView = imageView
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
-        
         viewModel.loadUserProfile(success: { userProfile in
             self.textfieldFullname.text = StringUtils.shared.checkEmpty(value: userProfile.fullNameColl)
             self.textfieldPhone.text = StringUtils.shared.checkEmpty(value: userProfile.phoneColl)
@@ -58,16 +52,27 @@ class InfoAccountController: UIViewController, ChooseMultiDelegate {
                         appenString.append("\(arrCarrer[i].name!), ")
                     }
                 }
-                self.textViewCarrerHunt.text = appenString
+                self.lblCarrerHunt.text = appenString
             }
         }, failure: { error in
             print("User Profile Error: " + error)
         })
     }
     override func viewDidAppear(_ animated: Bool) {
-        let fixedWidth = textFieldCarrer.frame.size.width
-        let newSize = textFieldCarrer.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        textFieldCarrer.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+//        let fixedWidth = textFieldCarrer.frame.size.width
+//        let newSize = textFieldCarrer.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+//        textFieldCarrer.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+    }
+    
+    @IBAction func gotoCarrerTouch(_ sender: Any) {
+        vc.isCarrer = true
+        vc.isStatus = false
+        vc.isCity = false
+        vc.isCity = false
+        vc.isMultiChoice = true
+        vc.title = "Ngành nghề"
+        vc.delegateMulti = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     @objc func someAction(_ sender:UITapGestureRecognizer){
         vc.isCarrer = true
@@ -113,7 +118,37 @@ class InfoAccountController: UIViewController, ChooseMultiDelegate {
                 appenString.append("\(mychooseMulti[i].name), ")
             }
         }
-        self.textViewCarrerHunt.text = appenString
+        self.lblCarrerHunt.text = appenString
     }
     
+}
+extension UILabel {
+    
+    func addImageWith(name: String, behindText: Bool) {
+        
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(named: name)
+        let attachmentString = NSAttributedString(attachment: attachment)
+        
+        guard let txt = self.text else {
+            return
+        }
+        
+        if behindText {
+            let strLabelText = NSMutableAttributedString(string: txt)
+            strLabelText.append(attachmentString)
+            self.attributedText = strLabelText
+        } else {
+            let strLabelText = NSAttributedString(string: txt)
+            let mutableAttachmentString = NSMutableAttributedString(attributedString: attachmentString)
+            mutableAttachmentString.append(strLabelText)
+            self.attributedText = mutableAttachmentString
+        }
+    }
+    
+    func removeImage() {
+        let text = self.text
+        self.attributedText = nil
+        self.text = text
+    }
 }

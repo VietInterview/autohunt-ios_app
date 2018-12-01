@@ -17,7 +17,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var btnChooseCarrer: UIButton!
     @IBOutlet weak var btnChooseCity: UIButton!
-    
+    var job = Job()
     var isSearch = false
     var isFilter = false
     var viewModel = HomeViewModel()
@@ -54,6 +54,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     func searchJob(carrerId: Int, cityId: Int, jobtitle: String){
         self.viewModel.getSearchJob(carrerId: carrerId, cityId: cityId, jobTitle: jobtitle,  page: self.page, success:  { [unowned self] job in
             //            self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
+            self.job = job
             if self.page == 0 {
                 self.jobList = job.jobList!
             } else {
@@ -70,6 +71,9 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             
             self.tableViewJob.reloadData()
             }, failure:  { error in
+                if #available(iOS 10.0, *) {
+                    self.tableViewJob.refreshControl?.endRefreshing()
+                }
                 print("User Profile Error: " + error)
         })
     }
@@ -197,15 +201,21 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         if indexPath.row == 0 {
             cell.quantityView.isHidden = false
             cell.quantityView.visible()
-            cell.lblQuantity.text = "\(self.jobList.count) công việc được tìm thấy"
+            cell.lblQuantity.text = "\(self.job.total!) công việc được tìm thấy"
         } else {
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
         }
+        if let imgUrl = self.jobList[indexPath.row].companyImg{
         Alamofire.request("https://dev.getbee.vn/\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
             if let image = response.result.value {
+                cell.imgCompany.layer.masksToBounds = true
                 cell.imgCompany.image = image
             }
+        }
+        }else {
+            cell.imgCompany.layer.masksToBounds = true
+            cell.imgCompany.image = UIImage(named: "job_null")
         }
         return cell
     }

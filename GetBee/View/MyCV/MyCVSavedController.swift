@@ -24,10 +24,11 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
     var buttonStyle: ButtonStyle = .backgroundColor
     var usesTallCells = false
+    static let notificationName = Notification.Name("myNotificationName")
     
     @IBOutlet weak var lblQuantity: UILabel!
-    @IBOutlet weak var quantityView: UIView!
-    static let notificationName = Notification.Name("myNotificationName")
+    
+    
     @IBOutlet weak var mCVSavedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,19 +53,20 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.listCV = listCV
                 self.listCV2 = listCV.cvList!
                 if #available(iOS 10.0, *) {
-                    self.quantityView.isHidden = false
-                    self.quantityView.visible()
                     self.mCVSavedTableView.refreshControl?.endRefreshing()
                 }
             } else {
                 self.listCV2.append(contentsOf: listCV.cvList!)
                 self.listCV.cvList!.append(contentsOf: listCV.cvList!)
             }
-            self.lblQuantity.text = "\(listCV.total!) hồ sơ được tìm thấy"
+            self.lblQuantity.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
             
+            if #available(iOS 10.0, *) {
+                self.mCVSavedTableView.refreshControl?.endRefreshing()
+            }
         })
     }
     func getMyCVSaved(){
@@ -79,11 +81,14 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.listCV2.append(contentsOf: listCV.cvList!)
                 self.listCV.cvList!.append(contentsOf: listCV.cvList!)
             }
-            self.lblQuantity.text = "\(listCV.total!) hồ sơ được tìm thấy"
+            self.lblQuantity.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
             
+            if #available(iOS 10.0, *) {
+                self.mCVSavedTableView.refreshControl?.endRefreshing()
+            }
         })
     }
     @objc func refresh() {
@@ -128,20 +133,19 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.lblName.text = self.listCV.cvList![indexPath.row].fullName!
         cell.lblDateUpdate.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCV.cvList![indexPath.row].careerName!
+//        if indexPath.row == 0 {
+//            cell.mQuantityView.isHidden = false
+//            cell.mQuantityView.visible()
+//            cell.lblQuantityView.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
+//        } else {
+//            cell.mQuantityView.isHidden = true
+//            cell.mQuantityView.gone()
+//        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
-    }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-            quantityView.isHidden = false
-            quantityView.visible()
-        } else {
-            quantityView.gone()
-            quantityView.isHidden = true
-        }
+            return 104
     }
     @objc func onNotification(notification:Notification)
     {
@@ -158,23 +162,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
 }
 extension MyCVSavedController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        //        let delete = SwipeAction(style: .destructive, title: nil) { action, indexPath in
-        //            self.listCV2.remove(at: indexPath.row)
-        //        }
-        //        self.configure(action: delete, with: .trash)
-        //        self.homeViewModel.deleteCV(cvId: self.listCV2[indexPath.row].id!, success: { deleteCV in
-        //            if deleteCV.count! == 0 {
-        //
-        //            } else {
-        //
-        //            }
-        //        }, failure: {error in
-        //
-        //        })
-        //        return [delete]
-        
         guard orientation == .right else { return nil }
-        
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             let id = self.listCV2[indexPath.row].id!
             self.listCV2.remove(at: indexPath.row)

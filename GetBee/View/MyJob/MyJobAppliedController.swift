@@ -11,13 +11,14 @@ import Alamofire
 class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UIScrollViewDelegate {
     var jobList = [JobListSaved]()
     var jobListServer = [JobListSaved]()
+    var myJob = MyJobSaved()
     var carrerId: Int = 0
     var cityId: Int = 0
-    @IBOutlet weak var lblQuantityJOb: UILabel!
+//    @IBOutlet weak var lblQuantityJOb: UILabel!
     var page = 0
     static let notificationName = Notification.Name("myNotificationName")
     var homeViewModel = HomeViewModel()
-    @IBOutlet weak var quantityView: UIView!
+//    @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var mTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     func searchAppliedJobs(carrerId:Int, cityId: Int, jobTitle: String, page: Int){
         homeViewModel.searchMyAppliedJob(carrerId: carrerId, cityId: cityId, jobTitle: "", page: page, success: {myJobApplied in
-            self.lblQuantityJOb.text = "\(myJobApplied.total!) công việc được tìm thấy"
+            self.myJob = myJobApplied
             if self.page == 0 {
                 self.jobList = myJobApplied.jobList!
             } else {
@@ -46,8 +47,6 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             }
             self.jobListServer = myJobApplied.jobList!
             if self.page == 0 {
-                self.quantityView.isHidden = false
-                self.quantityView.visible()
                 if #available(iOS 10.0, *) {
                     self.mTableView.refreshControl?.endRefreshing()
                 }
@@ -55,7 +54,9 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             
             self.mTableView.reloadData()
         }, failure: {error in
-            
+            if #available(iOS 10.0, *) {
+                self.mTableView.refreshControl?.endRefreshing()
+            }
         })
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,23 +98,29 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             let image: UIImage = UIImage(named: "tickok")!;  cell.imgSaveUnSaveJob.image = image
             cell.imgSaveUnSaveJob.isUserInteractionEnabled = false
         }
+        if indexPath.row == 0 {
+            cell.quantityView.isHidden = false
+            cell.quantityView.visible()
+            cell.lblQuantity.text = "\(self.myJob.total!) công việc được tìm thấy"
+        } else {
+            cell.quantityView.isHidden = true
+            cell.quantityView.gone()
+        }
         Alamofire.request("https://dev.getbee.vn/\(self.jobList[indexPath.row].companyImg!)").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.image = image
+            }else {
+                  cell.imgCompany.layer.masksToBounds = true
+                  cell.imgCompany.image = UIImage(named: "job_null")
             }
         }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 240.0;
-    }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-            quantityView.isHidden = false
-            quantityView.visible()
+        if indexPath.row == 0 {
+            return 290.0;
         } else {
-            quantityView.gone()
-            quantityView.isHidden = true
+            return 240.0;
         }
     }
     @objc func onNotification(notification:Notification)

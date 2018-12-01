@@ -9,6 +9,8 @@ import SwipeCellKit
 
 class MyCVTableViewCell: SwipeTableViewCell {
 
+    @IBOutlet weak var lblQuantityView: UILabel!
+    @IBOutlet weak var mQuantityView: UIView!
     @IBOutlet weak var btnStatus: UIButton!
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var lblDateUpdate: UILabel!

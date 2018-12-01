@@ -26,14 +26,14 @@ class LeftViewController: UITableViewController {
         viewModel.loadUserProfile(success: { userProfile in
             if let fullname = userProfile.fullNameColl {
                 if fullname.count <= 4 {
-                    self.titlesArray[1] = "Xin chào, \(fullname)"
+                    self.titlesArray[1] = "Xin chào, \(fullname)!"
                 } else {
-                    self.titlesArray[1] = "Xin chào,"
-                    self.titlesArray[2] = "\(fullname)"
+                    self.titlesArray[1] = "Xin chào, \(fullname)!"
+//                    self.titlesArray[2] = "\(fullname)"
                 }
                 self.tableView.reloadData()
             } else {
-                self.titlesArray[1] = "Xin chào, Unknown"
+                self.titlesArray[1] = "Xin chào, "
                 self.tableView.reloadData()
             }
         }, failure: { error in
@@ -106,7 +106,7 @@ class LeftViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.row == 1) ? 50.0 : 44.0
+        return (indexPath.row == 1) ? 75.0 : 44.0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
