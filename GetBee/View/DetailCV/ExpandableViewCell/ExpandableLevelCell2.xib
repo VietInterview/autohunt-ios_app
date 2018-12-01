@@ -27,82 +27,127 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tên bằng cấp/chứng chỉ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-be-yHG">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên bằng cấp/chứng chỉ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-be-yHG">
                         <rect key="frame" x="10" y="10" width="190" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="kzU-BY-sIT"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIq-kG-sB2">
-                        <rect key="frame" x="10" y="48" width="216" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIq-kG-sB2">
+                        <rect key="frame" x="10" y="48" width="355" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Io1-4n-0ov"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trường/đơn vị đào tạo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do4-4e-dLR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trường/đơn vị đào tạo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do4-4e-dLR">
                         <rect key="frame" x="10" y="81" width="175" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="9uq-WG-pGt"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHC-58-pgF">
-                        <rect key="frame" x="10" y="119" width="216" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHC-58-pgF">
+                        <rect key="frame" x="10" y="119" width="355" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="TTa-2I-H9U"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thời gian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RU-9t-Skd">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RU-9t-Skd">
                         <rect key="frame" x="10" y="161" width="75" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="GWB-Hy-Zuw"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szf-P2-Sdc">
-                        <rect key="frame" x="10" y="199" width="216" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szf-P2-Sdc">
+                        <rect key="frame" x="10" y="199" width="355" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="x9o-Ig-woo"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chuyên ngành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k94-r6-zns">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyên ngành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k94-r6-zns">
                         <rect key="frame" x="10" y="239" width="117" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="VpJ-R0-oeM"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hm6-GQ-J5o">
-                        <rect key="frame" x="10" y="277" width="216" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hm6-GQ-J5o">
+                        <rect key="frame" x="10" y="277" width="355" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="paX-SA-oZF"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loại tốt nghiệp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ea-0V-pFT">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại tốt nghiệp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ea-0V-pFT">
                         <rect key="frame" x="10" y="316" width="121" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="f1v-5A-xJJ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-Fx-t2E">
-                        <rect key="frame" x="10" y="354" width="216" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-Fx-t2E">
+                        <rect key="frame" x="10" y="354" width="355" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="QQt-Fk-tLX"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="6Ea-0V-pFT" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="0CU-vB-2oQ"/>
+                    <constraint firstItem="6Ea-0V-pFT" firstAttribute="top" secondItem="hm6-GQ-J5o" secondAttribute="bottom" constant="14" id="2fx-zD-gXs"/>
+                    <constraint firstItem="iIq-kG-sB2" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="2jm-Ey-pto"/>
+                    <constraint firstAttribute="trailing" secondItem="BO0-Fx-t2E" secondAttribute="trailing" constant="10" id="6ne-IE-oGc"/>
+                    <constraint firstItem="Szf-P2-Sdc" firstAttribute="top" secondItem="8RU-9t-Skd" secondAttribute="bottom" constant="13" id="6nq-kQ-M1Y"/>
                     <constraint firstAttribute="trailing" secondItem="hub-ix-WPK" secondAttribute="trailing" id="6tY-1V-4tS"/>
+                    <constraint firstItem="k94-r6-zns" firstAttribute="top" secondItem="Szf-P2-Sdc" secondAttribute="bottom" constant="15" id="83X-s7-a6A"/>
                     <constraint firstAttribute="bottom" secondItem="hub-ix-WPK" secondAttribute="bottom" constant="26.5" id="A80-3v-QIb"/>
+                    <constraint firstItem="BO0-Fx-t2E" firstAttribute="top" secondItem="6Ea-0V-pFT" secondAttribute="bottom" constant="13" id="Aye-T0-Agq"/>
+                    <constraint firstAttribute="trailing" secondItem="hm6-GQ-J5o" secondAttribute="trailing" constant="10" id="Mpf-Y1-XTt"/>
+                    <constraint firstItem="aHC-58-pgF" firstAttribute="top" secondItem="Do4-4e-dLR" secondAttribute="bottom" constant="13" id="NA0-jj-McC"/>
+                    <constraint firstItem="Do4-4e-dLR" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="Onk-kB-AnI"/>
+                    <constraint firstItem="aHC-58-pgF" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="VXf-CK-uwW"/>
                     <constraint firstItem="hub-ix-WPK" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" id="Xw9-kX-kfh"/>
+                    <constraint firstItem="hm6-GQ-J5o" firstAttribute="top" secondItem="k94-r6-zns" secondAttribute="bottom" constant="13" id="Zg1-Oi-uSN"/>
+                    <constraint firstItem="Do4-4e-dLR" firstAttribute="top" secondItem="iIq-kG-sB2" secondAttribute="bottom" constant="8" id="bqo-UF-pAx"/>
+                    <constraint firstItem="hm6-GQ-J5o" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="cnr-UX-6bh"/>
+                    <constraint firstItem="8RU-9t-Skd" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="cq6-p3-vQF"/>
+                    <constraint firstItem="k94-r6-zns" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="ekq-9a-9fE"/>
+                    <constraint firstItem="vCL-be-yHG" firstAttribute="top" secondItem="cHk-7v-EG7" secondAttribute="top" constant="10" id="gwV-Qo-Vzu"/>
+                    <constraint firstItem="8RU-9t-Skd" firstAttribute="top" secondItem="aHC-58-pgF" secondAttribute="bottom" constant="17" id="hXB-fT-Zz0"/>
                     <constraint firstItem="hub-ix-WPK" firstAttribute="top" secondItem="cHk-7v-EG7" secondAttribute="top" id="jWJ-RI-Hw4"/>
+                    <constraint firstItem="iIq-kG-sB2" firstAttribute="top" secondItem="vCL-be-yHG" secondAttribute="bottom" constant="13" id="lAV-Qa-Rux"/>
+                    <constraint firstItem="vCL-be-yHG" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="mBu-UE-x74"/>
+                    <constraint firstAttribute="trailing" secondItem="aHC-58-pgF" secondAttribute="trailing" constant="10" id="njL-Re-Gdb"/>
+                    <constraint firstItem="Szf-P2-Sdc" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="pFb-Nx-ef1"/>
+                    <constraint firstAttribute="trailing" secondItem="Szf-P2-Sdc" secondAttribute="trailing" constant="10" id="pqF-Ee-Kg4"/>
+                    <constraint firstItem="BO0-Fx-t2E" firstAttribute="leading" secondItem="cHk-7v-EG7" secondAttribute="leading" constant="10" id="wTU-Ju-68B"/>
+                    <constraint firstAttribute="trailing" secondItem="iIq-kG-sB2" secondAttribute="trailing" constant="10" id="xiO-Fb-g3S"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

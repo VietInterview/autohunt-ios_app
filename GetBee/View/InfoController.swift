@@ -10,6 +10,8 @@ protocol SendHeightView{
 }
 class InfoController: UIViewController {
     
+    @IBOutlet weak var imgArrowRequi: UIImageView!
+    @IBOutlet weak var imgArrowDes: UIImageView!
     @IBOutlet weak var lblRequireJob: UILabel!
     @IBOutlet weak var lblJobDescription: UILabel!
     @IBOutlet weak var lblCarrerName: UILabel!
@@ -19,11 +21,11 @@ class InfoController: UIViewController {
     @IBOutlet weak var lblExpirationDate: UILabel!
     @IBOutlet weak var lblSalaryCandidate: UILabel!
     @IBOutlet weak var lblCVSend: UILabel!
-//    @IBOutlet weak var lblJobDescription: UITextView!
+    //    @IBOutlet weak var lblJobDescription: UITextView!
     @IBOutlet weak var lblQuantityHiring: UILabel!
     @IBOutlet weak var lblCollaboratorsReward: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
-//    @IBOutlet weak var requireJob: UITextView!
+    //    @IBOutlet weak var requireJob: UITextView!
     @IBOutlet weak var mViewDes: UIView!
     @IBOutlet weak var mViewRequi: UIView!
     @IBOutlet weak var lblDesTit: UILabel!
@@ -58,26 +60,45 @@ class InfoController: UIViewController {
         self.lblRequireJob.text = requireJobContent
         
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction))
+         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.mViewDes.isUserInteractionEnabled = true
-        self.lblDesTit.isUserInteractionEnabled = true
-        self.lblDesTit.addGestureRecognizer(gestureSwift2AndHigher)
+        self.mViewRequi.isUserInteractionEnabled = true
+        self.mViewRequi.addGestureRecognizer(gestureSwift2AndHigher2)
         self.mViewDes.addGestureRecognizer(gestureSwift2AndHigher)
-//        self.mViewRequi.addGestureRecognizer(gestureSwift2AndHigher)
- 
-    
     }
-    
+    var isShowDes:Bool = true
+    var isShowRequi:Bool = true
     @objc func someAction(sender:UITapGestureRecognizer){
-       debugLog(object: "Des press")
+        if isShowDes {
+            isShowDes = false
+            lblJobDescription.isHidden = true
+            lblJobDescription.gone()
+        } else {
+            isShowDes = true
+            lblJobDescription.isHidden = false
+            lblJobDescription.visible()
+        }
+        imgArrowDes.image = isShowDes ? UIImage(named: "arrow_down") : UIImage(named: "arrow_right")
+    }
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        if isShowRequi {
+            isShowRequi = false
+            lblRequireJob.isHidden = true
+            lblRequireJob.gone()
+        } else {
+            isShowRequi = true
+            lblRequireJob.isHidden = false
+            lblRequireJob.visible()
+        }
+        imgArrowRequi.image = isShowRequi ? UIImage(named: "arrow_down") : UIImage(named: "arrow_right")
     }
     override func viewDidAppear(_ animated: Bool) {
         self.lblJobDescription.setNeedsLayout()
         self.lblJobDescription.layoutIfNeeded()
         self.lblRequireJob.setNeedsLayout()
         self.lblRequireJob.layoutIfNeeded()
-           debugLog(object: "\(self.lblJobDescription.frame.size.height) \(self.lblRequireJob.frame.size.height)")
         if let delegateSendHeight = self.delegate {
-            delegateSendHeight.sendHeight(height: Int(self.lblJobDescription.frame.size.height + self.lblRequireJob.frame.size.height))
+            delegateSendHeight.sendHeight(height: Int(self.lblJobDescription.frame.size.height + self.lblRequireJob.frame.size.height + 450))
         }
     }
 }

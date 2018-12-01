@@ -26,9 +26,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Sz-jf-Pee">
                         <rect key="frame" x="0.0" y="15" width="375" height="65"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expandable Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi7-Oh-BgQ">
-                                <rect key="frame" x="8" y="20" width="340" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expandable Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi7-Oh-BgQ">
+                                <rect key="frame" x="8" y="20" width="129" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="3UU-Oc-CAo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +38,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Vi7-Oh-BgQ" firstAttribute="top" secondItem="9Sz-jf-Pee" secondAttribute="top" constant="20" id="26N-Z6-o8a"/>
                             <constraint firstAttribute="height" constant="65" id="59B-Hn-nhZ"/>
+                            <constraint firstItem="Vi7-Oh-BgQ" firstAttribute="leading" secondItem="9Sz-jf-Pee" secondAttribute="leading" constant="8" id="OIT-Nc-pv5"/>
                         </constraints>
                     </view>
                 </subviews>

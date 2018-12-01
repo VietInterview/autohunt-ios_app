@@ -20,7 +20,10 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
     @IBOutlet weak var mViewTab: UIView!
     @IBOutlet weak var btnSendCV: UIButton!
     @IBOutlet weak var mViewContent: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var viewParent: UIView!
     
+    @IBOutlet weak var heightContent: NSLayoutConstraint!
     
     var homeViewModel = HomeViewModel()
     var jobId: Int = 0;
@@ -54,12 +57,12 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnStatus.setTitle("Đang tuyển", for: .normal)
                 self.btnStatus.backgroundColor = UIColor.green;
                 self.footerView.isHidden = false
-//                self.footerView.gone()
+                self.footerView.visible()
             } else {
                 self.btnStatus.setTitle("Đã đóng", for: .normal)
-                 self.btnStatus.backgroundColor = UIColor.gray;
+                self.btnStatus.backgroundColor = UIColor.gray;
                 self.footerView.isHidden = true
-//                self.footerView.visible()
+                self.footerView.gone()
             }
             self.btnStatus.layer.cornerRadius = 5
             self.btnStatus.layer.borderWidth = 1
@@ -71,9 +74,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.gray.cgColor
                 self.btnSaveUnsaveJob.setTitle("Lưu công việc", for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "save.png"), for: .normal)
-                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
-                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
-                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
             } else if self.jobDetail.collStatus! == 1 {
                 self.btnSaveUnsaveJob.backgroundColor = .clear
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
@@ -82,9 +83,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.setTitle("Đã lưu việc", for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.red, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "saved.png"), for: .normal)
-                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
-                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
-                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
             } else {
                 self.btnSaveUnsaveJob.backgroundColor = .green
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
@@ -93,9 +92,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.setTitle("Đã ứng tuyển", for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.white, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "tickok_white.png"), for: .normal)
-                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
-                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
-                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
                 self.btnSaveUnsaveJob.isUserInteractionEnabled = false
             }
             let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Thống kê", "CV đã nộp"], delegate: self)
@@ -118,12 +115,22 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             
         } else {
             isUpdate = true
-            debugLog(object: self.spaceBottom.constant)
-            self.spaceBottom.constant = self.spaceBottom.constant + CGFloat(height)
-            debugLog(object: self.spaceBottom.constant)
+            //            self.spaceBottom.constant = self.spaceBottom.constant + CGFloat(height)
+            self.heightContent.constant = self.heightContent.constant + CGFloat(height)
             self.mViewContent.layoutIfNeeded()
         }
     }
+    //    override func viewDidLayoutSubviews() {
+    //        self.scrollView.setupContentViewForViewWithScroll(contentView: self.mViewContent)
+    //
+    //        let lastView : UIView! = self.mViewContent.subviews.last
+    //        let height = lastView.frame.size.height
+    //        let pos = lastView.frame.origin.y
+    //        let sizeOfContent = height + pos + 10
+    //
+    //        scrollView.contentSize.height = sizeOfContent
+    //
+    //    }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         guard var storyboard = storyboard else { return UIViewController() }
         storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -175,12 +182,12 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
         vc.jobDetail = self.jobDetail
         vc.title = "Chọn CV của tôi"
         self.navigationController?.pushViewController(vc, animated: true)
-//        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
-//
-//
-//        }, failure: {error in
-//
-//        })
+        //        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
+        //
+        //
+        //        }, failure: {error in
+        //
+        //        })
     }
     
     @IBAction func saveUnSaveJobTouch() {
@@ -201,9 +208,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.setTitle("Lưu công việc", for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.gray, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "save.png"), for: .normal)
-                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
-                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
-                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
             } else if addRemoveJob.status! == 1 {
                 self.btnSaveUnsaveJob.backgroundColor = .clear
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
@@ -212,9 +217,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.setTitle("Đã lưu việc", for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.red, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "saved.png"), for: .normal)
-                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
-                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
-                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
             } else {
                 self.btnSaveUnsaveJob.backgroundColor = .green
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
@@ -223,9 +226,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.setTitle("Đã ứng tuyển", for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.white, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "tickok_white.png"), for: .normal)
-                self.btnSaveUnsaveJob.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.5, 0.0, 0.0)
-                self.btnSaveUnsaveJob.contentHorizontalAlignment = .left
-                self.btnSaveUnsaveJob.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+                self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
                 self.btnSaveUnsaveJob.isUserInteractionEnabled = false
             }
             self.jobDetail.collStatus = addRemoveJob.status!
