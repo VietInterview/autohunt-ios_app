@@ -14,6 +14,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
     var myJob = MyJobSaved()
     var carrerId: Int = 0
     var cityId: Int = 0
+    let refreshControl = UIRefreshControl()
 //    @IBOutlet weak var lblQuantityJOb: UILabel!
     var page = 0
     static let notificationName = Notification.Name("myNotificationName")
@@ -22,7 +23,6 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var mTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:  #selector(sortArray), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.mTableView.refreshControl = refreshControl
@@ -49,6 +49,8 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             if self.page == 0 {
                 if #available(iOS 10.0, *) {
                     self.mTableView.refreshControl?.endRefreshing()
+                }else {
+                    self.mTableView.willRemoveSubview(self.refreshControl)
                 }
             }
             
@@ -56,6 +58,8 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
         }, failure: {error in
             if #available(iOS 10.0, *) {
                 self.mTableView.refreshControl?.endRefreshing()
+            }else {
+                self.mTableView.willRemoveSubview(self.refreshControl)
             }
         })
     }
@@ -85,7 +89,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
         cell.labelCarrer.text = self.jobList[indexPath.row].careerName!
         cell.labelCityList.text = self.jobList[indexPath.row].listcityName!
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value:  self.jobList[indexPath.row].fee!)) \(StringUtils.shared.genString(value: self.jobList[indexPath.row].currency!))"
+        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value:  self.jobList[indexPath.row].fee!)) \(StringUtils.shared.genStringCurrency(value: self.jobList[indexPath.row].currency!))"
         cell.labelDeadlineDate.text = DateUtils.shared.convertToShowFormatDate(dateString: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
@@ -106,7 +110,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
         }
-        Alamofire.request("https://dev.getbee.vn/\(self.jobList[indexPath.row].companyImg!)").responseImage { response in
+        Alamofire.request("\(App.imgUrl)\(self.jobList[indexPath.row].companyImg!)").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.image = image
             }else {
@@ -114,6 +118,18 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
                   cell.imgCompany.image = UIImage(named: "job_null")
             }
         }
+        cell.viewContentCell.layer.shadowColor = UIColor.gray.cgColor
+        cell.viewContentCell.layer.shadowOpacity = 0.3
+        cell.viewContentCell.layer.shadowOffset = CGSize.zero
+        cell.viewContentCell.layer.shadowRadius = 6
+        cell.imgCompany.layer.masksToBounds = true
+        cell.imgCompany.layer.borderWidth = 1
+        cell.imgCompany.layer.cornerRadius = 5
+        cell.imgCompany.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#979797").cgColor
+        cell.imgCompany.layer.shadowColor = UIColor.gray.cgColor
+        cell.imgCompany.layer.shadowOpacity = 0.3
+        cell.imgCompany.layer.shadowOffset = CGSize.zero
+        cell.imgCompany.layer.shadowRadius = 6
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{

@@ -45,8 +45,9 @@ class ExpandedLanCell: UITableViewCell {
 class ExpandedCell: UITableViewCell {
     static let ID = "ExpandedCell"
     
-    @IBOutlet weak var textViewTarget: UITextView!
-    @IBOutlet weak var textViewJobDes: UITextView!
+    @IBOutlet weak var heightContentView: NSLayoutConstraint!
+    @IBOutlet weak var lblTargetJob: UILabel!
+    @IBOutlet weak var lblJobDes: UILabel!
     @IBOutlet weak var lblSalary: UILabel!
     @IBOutlet weak var lblIsCurrentJob: UILabel!
     @IBOutlet weak var lblTimeWork: UILabel!

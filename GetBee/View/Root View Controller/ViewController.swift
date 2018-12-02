@@ -28,6 +28,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     var isStatus: Bool = false
     var carrerId: Int = 0
     var cityId: Int = 0
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 139, height: 39))
@@ -40,7 +41,6 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         searchView.gone()
         conditionView.isHidden=true
         conditionView.gone()
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:  #selector(sortArray), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.tableViewJob.refreshControl = refreshControl
@@ -64,15 +64,17 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             if self.page == 0 {
                 if #available(iOS 10.0, *) {
                     self.tableViewJob.refreshControl?.endRefreshing()
+                }else {
+                    self.tableViewJob.willRemoveSubview(self.refreshControl)
                 }
-                //                self.quantityView.isHidden = false
-                //                self.quantityView.visible()
             }
             
             self.tableViewJob.reloadData()
             }, failure:  { error in
                 if #available(iOS 10.0, *) {
                     self.tableViewJob.refreshControl?.endRefreshing()
+                }else {
+                    self.tableViewJob.willRemoveSubview(self.refreshControl)
                 }
                 print("User Profile Error: " + error)
         })
@@ -182,7 +184,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
         cell.labelCarrer.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].careerName)
         cell.labelCityList.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].listcityName)
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) \(StringUtils.shared.genString(value: self.jobList[indexPath.row].currency!))"
+        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) \(StringUtils.shared.genStringCurrency(value: self.jobList[indexPath.row].currency!))"
         cell.labelDeadlineDate.text = DateUtils.shared.UTCToLocal(date: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
@@ -207,7 +209,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             cell.quantityView.gone()
         }
         if let imgUrl = self.jobList[indexPath.row].companyImg{
-        Alamofire.request("https://dev.getbee.vn/\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
+        Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.layer.masksToBounds = true
                 cell.imgCompany.image = image
@@ -217,6 +219,18 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             cell.imgCompany.layer.masksToBounds = true
             cell.imgCompany.image = UIImage(named: "job_null")
         }
+        cell.viewContentCell.layer.shadowColor = UIColor.gray.cgColor
+        cell.viewContentCell.layer.shadowOpacity = 0.3
+        cell.viewContentCell.layer.shadowOffset = CGSize.zero
+        cell.viewContentCell.layer.shadowRadius = 6
+        cell.imgCompany.layer.masksToBounds = true
+        cell.imgCompany.layer.borderWidth = 0.5
+        cell.imgCompany.layer.cornerRadius = 5
+        cell.imgCompany.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#979797").cgColor
+        cell.imgCompany.layer.shadowColor = UIColor.gray.cgColor
+        cell.imgCompany.layer.shadowOpacity = 0.7
+        cell.imgCompany.layer.shadowOffset = CGSize.zero
+        cell.imgCompany.layer.shadowRadius = 6
         return cell
     }
     
@@ -252,5 +266,33 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             //            quantityView.gone()
             //            quantityView.isHidden = true
         }
+    }
+}
+extension UIView {
+    
+    // OUTPUT 1
+    func dropShadow(scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = CGSize(width: -1, height: 1)
+        layer.shadowRadius = 1
+        
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+    
+    // OUTPUT 2
+    func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offSet
+        layer.shadowRadius = radius
+        
+        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }

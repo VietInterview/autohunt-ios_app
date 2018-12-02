@@ -1,8 +1,8 @@
 ///**
 /**
-Created by: Hiep Nguyen Nghia on 11/17/18
-Copyright (c) 2018 Vietinterview. All rights reserved.
-*/
+ Created by: Hiep Nguyen Nghia on 11/17/18
+ Copyright (c) 2018 Vietinterview. All rights reserved.
+ */
 
 import UIKit
 import ExpandableCell
@@ -31,24 +31,24 @@ class ExpDetailCVController: UIViewController {
             mExpTableView.isHidden = true
             mExpTableView.gone()
         }
+//        self.myXibView = UINib(nibName: "ExpandedCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UIView
         mExpTableView.register(UINib(nibName: "ExpandedCell", bundle: nil), forCellReuseIdentifier: ExpandedCell.ID)
         mExpTableView.register(UINib(nibName: "ExpandableCell", bundle: nil), forCellReuseIdentifier: ExpandableCell2.ID)
     }
     
-
+    var mCell:ExpandedCell?
+//    var myXibView: UIView!
+//    func resizeXib(height:CGFloat){
+//        var testRect: CGRect = self.myXibView.frame
+//        testRect.size.height = height;
+//        self.myXibView.frame = testRect;
+//    }
 }
 extension ExpDetailCVController: ExpandableDelegate {
     
-    
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
         let cell1 = self.mExpTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID) as! ExpandedCell
-        let rectShape = CAShapeLayer()
-        rectShape.bounds = cell1.viewContent.frame
-        rectShape.position = cell1.viewContent.center
-        rectShape.path = UIBezierPath(roundedRect: cell1.viewContent.bounds, byRoundingCorners: [.bottomRight , .bottomLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
-        cell1.viewContent.layer.borderWidth = 1
-        cell1.viewContent.layer.mask = rectShape
+        self.mCell = cell1
         
         cell1.lblCompanyName.text = self.detailCV.lstEmploymentHis![indexPath.row].companyName
         cell1.lblQuantityEmp.text = StringUtils.shared.genStringHumanResource(value: self.detailCV.lstEmploymentHis![indexPath.row].humanResources!)
@@ -64,14 +64,26 @@ extension ExpDetailCVController: ExpandableDelegate {
         } else {
             cell1.lblIsCurrentJob.isHidden = true
         }
-        cell1.lblSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salary)) + StringUtils.shared.genString(value:StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salaryCurency))
-        cell1.textViewJobDes.text = self.detailCV.lstEmploymentHis![indexPath.row].jobDescription!
-        cell1.textViewTarget.text = StringUtils.shared.checkEmpty(value: self.detailCV.lstEmploymentHis![indexPath.row].achievement) 
+        cell1.lblSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salary)) + StringUtils.shared.genStringCurrency(value:StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salaryCurency))
+        cell1.lblJobDes.text = self.detailCV.lstEmploymentHis![indexPath.row].jobDescription!
+        cell1.lblTargetJob.text = StringUtils.shared.checkEmpty(value: self.detailCV.lstEmploymentHis![indexPath.row].achievement)
+        cell1.contentView.layoutIfNeeded()
+        cell1.lblTargetJob.layoutIfNeeded()
+        cell1.lblTargetJob.setNeedsLayout()
+        cell1.heightContentView.constant = 700 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height
+        cell1.contentView.layoutIfNeeded()
+        let rectShape = CAShapeLayer()
+        rectShape.bounds = cell1.viewContent.frame
+        rectShape.position = cell1.viewContent.center
+        rectShape.path = UIBezierPath(roundedRect: cell1.viewContent.bounds, byRoundingCorners: [.bottomRight , .bottomLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
+        cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
+        cell1.viewContent.layer.borderWidth = 1
+        cell1.viewContent.layer.mask = rectShape
         return [cell1]
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, heightsForExpandedRowAt indexPath: IndexPath) -> [CGFloat]? {
-        return [700]
+        return [self.mCell!.viewContent.frame.size.height]
     }
     
     func numberOfSections(in tableView: ExpandableTableView) -> Int {
@@ -91,9 +103,9 @@ extension ExpDetailCVController: ExpandableDelegate {
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCell: UITableViewCell, didSelectExpandedRowAt indexPath: IndexPath) {
-//        if let cell = expandedCell as? ExpandedCell {
-//            print("\(cell.titleLabel.text ?? "")")
-//        }
+        //        if let cell = expandedCell as? ExpandedCell {
+        //            print("\(cell.titleLabel.text ?? "")")
+        //        }
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -82,14 +82,10 @@ class InfoDetailCVController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        lblTarget.contentMode = .scaleToFill
-        lblTarget.numberOfLines = 0
         lblTarget.layoutIfNeeded()
         lblTarget.setNeedsLayout()
         if let mDelegate = self.delegate {
             mDelegate.sendHeight(height: Int(lblTarget.frame.size.height))
         }
-//        lblTarget.leadingMargin(pixel: 10)
-//        lblTarget.trailingMargin(pixel: 10)
     }
 }

@@ -24,6 +24,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
     var isCity: Bool = false
     var isMultiChoice: Bool = false
     
+    @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var tableView: UITableView?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,21 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    var filterData = ViewModel()
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField.text! != "" {
+            filterData.items = self.viewModel.items.filter {item in
+                return item.title.lowercased().contains(textField.text!.lowercased())
+            }
+            self.tableView?.dataSource = filterData
+            self.tableView?.reloadData()
+        } else {
+            self.filterData.items = self.viewModel.items
+            self.tableView?.dataSource = filterData
+            self.tableView?.reloadData()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         tableView?.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier)
@@ -50,6 +66,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.allowsMultipleSelection = self.isMultiChoice
         viewModel = ViewModel(isMulti: self.isMultiChoice)
+        filterData = ViewModel(isMulti: self.isMultiChoice)
         if self.isCarrer == true {
             jobModel.getCarrer(success: {carrers in
                 self.viewModel.items.removeAll()
@@ -58,7 +75,8 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
                     let viewModelItem = ViewModelItem(item: carrers[i])
                     self.viewModel.items.append(viewModelItem)
                 }
-                self.tableView?.dataSource = self.viewModel
+                self.filterData.items = self.viewModel.items
+                self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
             })
@@ -73,7 +91,8 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
             self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 8, name: "Đi làm")))
             self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 9, name: "Ký hợp đồng")))
             self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: "Mặc định")))
-            self.tableView?.dataSource = self.viewModel
+            self.filterData.items = self.viewModel.items
+            self.tableView?.dataSource = self.filterData
             self.tableView?.reloadData()
         } else {
             jobModel.getCity(success: {cities in
@@ -83,21 +102,22 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
                     let viewModelItem = ViewModelItem(item: cities[i])
                     self.viewModel.items.append(viewModelItem)
                 }
-                self.tableView?.dataSource = self.viewModel
+                self.filterData.items = self.viewModel.items
+                self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
             })
         }
-        tableView?.delegate = viewModel
+        tableView?.delegate = filterData
         tableView?.separatorStyle = .singleLine
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         debugLog(object: [indexPath.row])
     }
     @objc func chon(sender: UIBarButtonItem) {
-        if viewModel.selectedItems.count > 0 {
+        if filterData.selectedItems.count > 0 {
             if self.isMultiChoice == false {
-                let myChoose = MyChoose(id: viewModel.selectedItems.map { $0.id }[0] , name: viewModel.selectedItems.map { $0.title }[0], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
+                let myChoose = MyChoose(id: filterData.selectedItems.map { $0.id }[0] , name: filterData.selectedItems.map { $0.title }[0], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
                 if delegate != nil {
                     delegate?.didChoose(mychoose: myChoose)
                     for controller in self.navigationController!.viewControllers as Array {
@@ -118,8 +138,8 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
                 }
             } else {
                 var arrMyChoose = [MyChoose]()
-                for i in 0...viewModel.selectedItems.count-1{
-                    let myChoose = MyChoose(id: viewModel.selectedItems.map { $0.id }[i] , name: viewModel.selectedItems.map { $0.title }[i], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
+                for i in 0...filterData.selectedItems.count-1{
+                    let myChoose = MyChoose(id: filterData.selectedItems.map { $0.id }[i] , name: filterData.selectedItems.map { $0.title }[i], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
                     arrMyChoose.append(myChoose)
                 }
                 if delegateMulti != nil {

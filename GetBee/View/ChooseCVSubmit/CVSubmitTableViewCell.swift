@@ -10,6 +10,8 @@ class CVSubmitTableViewCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblCarrer: UILabel!
     @IBOutlet weak var lblDateUpdate: UILabel!
+    @IBOutlet weak var mViewQuantity: UIView!
+    @IBOutlet weak var lblQuantity: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

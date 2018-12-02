@@ -12,6 +12,8 @@ import GoneVisible
 
 class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV {
     
+    @IBOutlet weak var heightViewContentConstant: NSLayoutConstraint!
+    @IBOutlet weak var heightViewContent: UIView!
     @IBOutlet weak var spaceTabView: NSLayoutConstraint!
     @IBOutlet weak var heightTabView: NSLayoutConstraint!
     @IBOutlet weak var mViewBtnSubmitCV: UIView!
@@ -155,10 +157,18 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         homeViewModel.getDetailCV(cvId: cvId, success: {detailCV in
             self.detailCV = detailCV
             if let imgUrl = self.detailCV.pictureURL {
-                Alamofire.request("https://dev.getbee.vn/\(imgUrl)").responseImage { response in
+                Alamofire.request("\(App.imgUrl)\(imgUrl)").responseImage { response in
                     if let image = response.result.value {
-                        self.imgAva.layer.masksToBounds = true
                         self.imgAva.image = image
+//                        self.imgAva.layer.shadowColor = UIColor.gray.cgColor
+//                        self.imgAva.layer.shadowOpacity = 0.8
+//                        self.imgAva.layer.shadowOffset = CGSize.zero
+//                        self.imgAva.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF").cgColor
+//                        self.imgAva.layer.borderWidth = 2
+//                        self.imgAva.layer.shadowRadius = 5
+//                        self.imgAva.layer.cornerRadius = 5
+                        self.imgAva.addShadow()
+                        self.imgAva.clipsToBounds = true
                     }
                 }
             } else {
@@ -184,8 +194,10 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     func sendHeight(height: Int) {
         if isUpdate == false {
             isUpdate = true
+            self.heightViewContentConstant.constant = self.heightViewContentConstant.constant + CGFloat(height)
             self.heightTabView.constant = self.heightTabView.constant + CGFloat(height)
             self.spaceTabView.constant = self.spaceTabView.constant + CGFloat(height)
+            self.heightViewContent.layoutIfNeeded()
         }
     }
     
@@ -260,5 +272,14 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             print("down")
         }
         
+    }
+}
+extension UIImageView {
+    func addShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 2, height: 5)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 1.0
+        self.clipsToBounds = false
     }
 }

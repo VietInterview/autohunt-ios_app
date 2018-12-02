@@ -12,9 +12,11 @@ import UIKit
 extension UIApplication {
   class func showNetworkActivity() {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
   }
   
   class func hideNetworkActivity() {
     UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    LoadingOverlay.shared.hideOverlayView()
   }
 }

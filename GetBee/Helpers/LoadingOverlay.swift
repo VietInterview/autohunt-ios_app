@@ -33,7 +33,7 @@ public class LoadingOverlay{
         overlayView.layer.zPosition = 1
         
         mView.frame = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        mView.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        mView.backgroundColor = UIColor(white: 0, alpha: 0.0)
         mView.clipsToBounds = true
         mView.layer.cornerRadius = 0
         mView.layer.zPosition = 1

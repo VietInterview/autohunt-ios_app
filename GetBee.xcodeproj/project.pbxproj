@@ -32,7 +32,6 @@
 		7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */; };
 		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
 		7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */; };
-		7A51849C21AC08B500BE09F9 /* imageLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A51849B21AC08B300BE09F9 /* imageLeft.png */; };
 		7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A54077421953E7800324167 /* LoadingOverlay.swift */; };
 		7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF12192CD890081862E /* HomeViewModel.swift */; };
 		7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF32192DADE0081862E /* GetMyProfile.swift */; };
@@ -170,7 +169,6 @@
 		7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
 		7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMulti.swift; sourceTree = "<group>"; };
-		7A51849B21AC08B300BE09F9 /* imageLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageLeft.png; sourceTree = "<group>"; };
 		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		7A6F9EF12192CD890081862E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7A6F9EF32192DADE0081862E /* GetMyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyProfile.swift; sourceTree = "<group>"; };
@@ -525,7 +523,6 @@
 		9B8D306820AB451E0050697F /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				7A51849B21AC08B300BE09F9 /* imageLeft.png */,
 				9B8D306D20AB456C0050697F /* Localization.strings */,
 			);
 			path = Localization;
@@ -793,7 +790,6 @@
 				7A78E35921A54A4C007BA69C /* ExpandableLanCell.xib in Resources */,
 				9B8D306B20AB456C0050697F /* Localization.strings in Resources */,
 				7AFC9F62216B893C008F6AB1 /* Nunito-ExtraLightItalic.ttf in Resources */,
-				7A51849C21AC08B500BE09F9 /* imageLeft.png in Resources */,
 				7AFC9F5E216B893C008F6AB1 /* Nunito-BoldItalic.ttf in Resources */,
 				9B0C72721C738D3400BAF3B1 /* Assets.xcassets in Resources */,
 				9B12AF6C1F269B03005FD465 /* ThirdPartyKeys.example.plist in Resources */,
@@ -855,10 +851,8 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JJFloatingActionButton/JJFloatingActionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
-				"${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -871,10 +865,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JJFloatingActionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/paper_onboarding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

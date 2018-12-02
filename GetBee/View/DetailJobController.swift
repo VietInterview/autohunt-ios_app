@@ -38,11 +38,11 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isTranslucent = false
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         homeViewModel.getDetailJob(jobId: self.jobId, success: {jobDetail in
-            LoadingOverlay.shared.hideOverlayView()
+           UIApplication.hideNetworkActivity()
             self.jobDetail = jobDetail
-            Alamofire.request("https://dev.getbee.vn/\(self.jobDetail.companyImg!)").responseImage { response in
+            Alamofire.request("\(App.imgUrl)\(self.jobDetail.companyImg!)").responseImage { response in
                 if let image = response.result.value {
                     self.imgCompany.layer.masksToBounds = true
                     self.imgCompany.image = image
@@ -120,17 +120,6 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             self.mViewContent.layoutIfNeeded()
         }
     }
-    //    override func viewDidLayoutSubviews() {
-    //        self.scrollView.setupContentViewForViewWithScroll(contentView: self.mViewContent)
-    //
-    //        let lastView : UIView! = self.mViewContent.subviews.last
-    //        let height = lastView.frame.size.height
-    //        let pos = lastView.frame.origin.y
-    //        let sizeOfContent = height + pos + 10
-    //
-    //        scrollView.contentSize.height = sizeOfContent
-    //
-    //    }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         guard var storyboard = storyboard else { return UIViewController() }
         storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -147,8 +136,8 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             } else {
                 vc.status = "Đã đóng"
             }
-            vc.salaryCandidate = "\(StringUtils.shared.currencyFormat(value: self.jobDetail.fromSalary!)) \(StringUtils.shared.genString(value: self.jobDetail.currency!)) -  \(StringUtils.shared.currencyFormat(value: self.jobDetail.toSalary!)) \(StringUtils.shared.genString(value: self.jobDetail.currency!))"
-            vc.collaboratorsReward = "\(StringUtils.shared.currencyFormat(value:self.jobDetail.fee!)) \(StringUtils.shared.genString(value: self.jobDetail.currency!))"
+            vc.salaryCandidate = "\(StringUtils.shared.currencyFormat(value: self.jobDetail.fromSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!)) -  \(StringUtils.shared.currencyFormat(value: self.jobDetail.toSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
+            vc.collaboratorsReward = "\(StringUtils.shared.currencyFormat(value:self.jobDetail.fee!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
             vc.quantityCVSend = "\(self.jobDetail.countCv!)"
             vc.quantityHiring = "\(self.jobDetail.quantity!)"
             vc.jobDescription = StringUtils.shared.stringFromHtml(string: self.jobDetail.jobDescription!)!

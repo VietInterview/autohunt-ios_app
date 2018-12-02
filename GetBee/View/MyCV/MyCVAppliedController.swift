@@ -17,12 +17,12 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
     var status: Int = 11
     var page: Int = 0
     var homeViewModel = HomeViewModel()
+    let refreshControl = UIRefreshControl()
     var vc = CarrerOrCityController()
     static let notificationName = Notification.Name("myNotificationName")
     @IBOutlet weak var mCVSubmitTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.mCVSubmitTableView.refreshControl = refreshControl
@@ -41,6 +41,8 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
                 self.cvListSubmit = listCVSubmit.cvList!
                 if #available(iOS 10.0, *) {
                     self.mCVSubmitTableView.refreshControl?.endRefreshing()
+                }else {
+                    self.mCVSubmitTableView.willRemoveSubview(self.refreshControl)
                 }
             } else {
                 self.cvListSubmit.append(contentsOf: listCVSubmit.cvList!)
@@ -97,14 +99,19 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mQuantityView.isHidden = true
             cell.mQuantityView.gone()
         }
+        if indexPath.row % 2 != 0 {
+            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
+        } else {
+            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF")
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 170
+            return 190
         } else {
-            return 110
+            return 130
         }
     }
     @objc func onNotification(notification:Notification)

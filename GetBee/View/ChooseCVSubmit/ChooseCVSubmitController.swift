@@ -14,13 +14,11 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
     var jobId: Int = 0
     var page:Int = 0
     var homeViewModel = HomeViewModel()
-    @IBOutlet weak var lblChooseMyCV: UILabel!
-    @IBOutlet weak var quantityView: UIView!
+    let refreshControl = UIRefreshControl()
     @IBOutlet weak var mTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.mTableView.refreshControl = refreshControl
@@ -42,16 +40,20 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
                 self.cvList = myCV.cvList!
                 if #available(iOS 10.0, *) {
                     self.mTableView.refreshControl?.endRefreshing()
-                    self.quantityView.isHidden = false
-                    self.quantityView.visible()
+                }else {
+                    self.mTableView.willRemoveSubview(self.refreshControl)
                 }
             } else {
                 self.cvList.append(contentsOf: myCV.cvList!)
             }
             self.cvListServer = myCV.cvList!
-            self.lblChooseMyCV.text = "\(self.cvList.count) hồ sơ được tìm thấy"
             self.mTableView.reloadData()
         }, failure: {error in
+            if #available(iOS 10.0, *) {
+                self.mTableView.refreshControl?.endRefreshing()
+            }else {
+                self.mTableView.willRemoveSubview(self.refreshControl)
+            }
             self.showMessage(title: "Thông báo", message: error.description)
         })
     }
@@ -73,11 +75,28 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         cell.lblName.text = self.cvList[indexPath.row].fullName!
         cell.lblCarrer.text = self.cvList[indexPath.row].careerName!
         cell.lblDateUpdate.text = DateUtils.shared.UTCToLocal(date: self.cvList[indexPath.row].updatedDate!)
+        if indexPath.row == 0 {
+            cell.mViewQuantity.isHidden = false
+            cell.mViewQuantity.visible()
+            cell.lblQuantity.text = "\(self.cvList.count) hồ sơ được tìm thấy"
+        } else {
+            cell.mViewQuantity.isHidden = true
+            cell.mViewQuantity.gone()
+        }
+        if indexPath.row % 2 != 0 {
+            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
+        } else {
+            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF")
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
+        if indexPath.row == 0 {
+            return 180
+        } else {
+            return 128
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -87,16 +106,5 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         vc.jobDetail = self.jobDetail
         vc.cvId = self.cvList[indexPath.row].id!
         navigationController?.pushViewController(vc, animated: true)
-    }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-            quantityView.isHidden = false
-            quantityView.visible()
-            //            self.actionButton.visible()
-        } else {
-            quantityView.gone()
-            //            self.actionButton.gone()
-            quantityView.isHidden = true
-        }
     }
 }

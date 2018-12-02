@@ -8,8 +8,8 @@
 
 import UIKit
 import Alamofire
-
-class SignInViewController: UIViewController, UITextFieldDelegate {
+import MessageUI
+class SignInViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate  {
     
     // MARK: - Outlets
     
@@ -44,7 +44,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         visualEffectView.isHidden = true
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-       
+        if !MFMailComposeViewController.canSendMail() {
+            print("Mail services are not available")
+//            return
+        }
         
         mViewUser.layer.borderWidth = 0.5
         mViewUser.layer.borderColor = UIColor.black.cgColor
@@ -107,7 +110,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             mViewPassword.layer.borderColor = UIColor.black.cgColor
             verticalPass.layer.backgroundColor = UIColor.black.cgColor
         } else {
-             imgUser.image = UIImage(named: "Shape")
+            imgUser.image = UIImage(named: "Shape")
             imgPass.image = UIImage(named: "pass_focus")
             mViewUser.layer.borderWidth = 0.5
             mViewUser.layer.borderColor = UIColor.black.cgColor
@@ -205,7 +208,22 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     // MARK: - Actions
+    @IBAction func makePhoneCallTouch(_ sender: Any) {
+        "0989421150".makeAColl()
+    }
     
+    @IBAction func sendEmailTouch(_ sender: Any) {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["getbee@vietinterview.com"])
+        composeVC.setSubject("Message Subject")
+        composeVC.setMessageBody("Message content.", isHTML: false)
+        
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+    }
     @IBAction func dismissSuccessPopup(_ sender: Any) {
         animateOut()
     }
@@ -260,6 +278,38 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     self.animateIn()
                     //                self.showMessage(title: "Thông báo", message: "Thông tin đăng nhập không đúng")
             })
+        }
+    }
+}
+extension String {
+    
+    enum RegularExpressions: String {
+        case phone = "^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$"
+    }
+    
+    func isValid(regex: RegularExpressions) -> Bool {
+        return isValid(regex: regex.rawValue)
+    }
+    
+    func isValid(regex: String) -> Bool {
+        let matches = range(of: regex, options: .regularExpression)
+        return matches != nil
+    }
+    
+    func onlyDigits() -> String {
+        let filtredUnicodeScalars = unicodeScalars.filter{CharacterSet.decimalDigits.contains($0)}
+        return String(String.UnicodeScalarView(filtredUnicodeScalars))
+    }
+    
+    func makeAColl() {
+        if isValid(regex: .phone) {
+            if let url = URL(string: "tel://\(self.onlyDigits())"), UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
         }
     }
 }

@@ -24,18 +24,18 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
     var buttonStyle: ButtonStyle = .backgroundColor
     var usesTallCells = false
+    let refreshControl = UIRefreshControl()
     static let notificationName = Notification.Name("myNotificationName")
-    
+    @IBOutlet weak var viewQuantity: UIView!
     @IBOutlet weak var lblQuantity: UILabel!
-    
-    
     @IBOutlet weak var mCVSavedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.mCVSavedTableView.refreshControl = refreshControl
+        }else {
+            mCVSavedTableView.addSubview(refreshControl)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: MyCVSavedController.notificationName, object: nil)
     }
@@ -54,7 +54,11 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.listCV2 = listCV.cvList!
                 if #available(iOS 10.0, *) {
                     self.mCVSavedTableView.refreshControl?.endRefreshing()
+                }else {
+                    self.mCVSavedTableView.willRemoveSubview(self.refreshControl)
                 }
+                self.viewQuantity.isHidden = false
+                self.viewQuantity.visible()
             } else {
                 self.listCV2.append(contentsOf: listCV.cvList!)
                 self.listCV.cvList!.append(contentsOf: listCV.cvList!)
@@ -66,6 +70,8 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if #available(iOS 10.0, *) {
                 self.mCVSavedTableView.refreshControl?.endRefreshing()
+            }else {
+                self.mCVSavedTableView.willRemoveSubview(self.refreshControl)
             }
         })
     }
@@ -76,12 +82,20 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.listCV2 = listCV.cvList!
                 if #available(iOS 10.0, *) {
                     self.mCVSavedTableView.refreshControl?.endRefreshing()
+                }else {
+                    self.mCVSavedTableView.willRemoveSubview(self.refreshControl)
                 }
+                self.viewQuantity.isHidden = false
+                self.viewQuantity.visible()
             } else {
                 self.listCV2.append(contentsOf: listCV.cvList!)
                 self.listCV.cvList!.append(contentsOf: listCV.cvList!)
             }
+            if listCV.total! > 0 {
             self.lblQuantity.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
+            } else {
+                self.lblQuantity.text = "Bạn chưa có hồ sơ ứng viên. Hãy nhanh tay tạo Hồ sơ ứng viên để kiếm thêm thu nhập"
+            }
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
@@ -101,7 +115,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = self.listCV.cvList!.count - 1
-        if  indexPath.row == lastElement {
+        if indexPath.row == lastElement {
             if self.listCVServer.count >= 30 {
                 page = page + 1
                 if carrerId != -1 && cityId != -1{
@@ -133,19 +147,16 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.lblName.text = self.listCV.cvList![indexPath.row].fullName!
         cell.lblDateUpdate.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCV.cvList![indexPath.row].careerName!
-//        if indexPath.row == 0 {
-//            cell.mQuantityView.isHidden = false
-//            cell.mQuantityView.visible()
-//            cell.lblQuantityView.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
-//        } else {
-//            cell.mQuantityView.isHidden = true
-//            cell.mQuantityView.gone()
-//        }
+        if indexPath.row % 2 != 0 {
+            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
+        } else {
+            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF")
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 104
+        return 104
     }
     @objc func onNotification(notification:Notification)
     {
@@ -206,6 +217,20 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         }
         
         return options
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        if self.refreshControl.isRefreshing == false {
+//            if targetContentOffset.pointee.y < scrollView.contentOffset.y {
+//                viewQuantity.isHidden = false
+//                viewQuantity.visible()
+//            } else {
+//                viewQuantity.gone()
+//                viewQuantity.isHidden = true
+//            }
+//        }else{
+//            viewQuantity.isHidden = false
+//            viewQuantity.visible()
+//        }
     }
     
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {

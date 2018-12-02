@@ -13,7 +13,5 @@ target 'GetBee' do
   pod 'SwipeCellKit'
   pod 'AlamofireImage', '~> 3.3'
   pod 'ACFloatingTextfield-Swift', '~> 1.7'
-  pod 'SwiftyJSON', '~> 4.0'
   pod 'Toaster'
-  pod 'paper-onboarding'
 end
