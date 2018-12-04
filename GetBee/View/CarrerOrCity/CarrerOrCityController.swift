@@ -29,7 +29,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        button.setTitle("Chọn", for: .normal)
+        button.setTitle(NSLocalizedString("choose", comment: ""), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action:#selector(self.chon(sender:)), for:.touchUpInside)
         button.frame = CGRect.init(x: 20, y: 00, width: 40, height: 30) //CGRectMake(0, 0, 30, 30)
@@ -70,7 +70,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
         if self.isCarrer == true {
             jobModel.getCarrer(success: {carrers in
                 self.viewModel.items.removeAll()
-                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Tất cả ngành nghề")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
                 for i in 0...carrers.count-1 {
                     let viewModelItem = ViewModelItem(item: carrers[i])
                     self.viewModel.items.append(viewModelItem)
@@ -82,22 +82,22 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
             })
         } else if self.isStatus == true {
             self.viewModel.items.removeAll()
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: "Đã gửi")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 3, name: "Đã xem")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 4, name: "Từ chối")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 5, name: "Mời phỏng vấn")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 6, name: "Đã phỏng vấn")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 7, name: "Được tuyển dụng")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 8, name: "Đi làm")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 9, name: "Ký hợp đồng")))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: "Mặc định")))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: NSLocalizedString("sent", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 3, name: NSLocalizedString("seen", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 4, name: NSLocalizedString("not_accept", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 5, name: NSLocalizedString("invite_interview", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 6, name: NSLocalizedString("interviewd", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 7, name: NSLocalizedString("offered", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 8, name: NSLocalizedString("go_to_work", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 9, name: NSLocalizedString("contract", comment: ""))))
+            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: NSLocalizedString("default_key", comment: ""))))
             self.filterData.items = self.viewModel.items
             self.tableView?.dataSource = self.filterData
             self.tableView?.reloadData()
         } else {
             jobModel.getCity(success: {cities in
                 self.viewModel.items.removeAll()
-                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Tất cả thành phố")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_city", comment: ""))))
                 for i in 0...cities.count-1 {
                     let viewModelItem = ViewModelItem(item: cities[i])
                     self.viewModel.items.append(viewModelItem)

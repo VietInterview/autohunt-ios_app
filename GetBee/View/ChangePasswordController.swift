@@ -46,13 +46,13 @@ class ChangePasswordController: UIViewController {
         let oldpass = self.textFieldOldPass.text!
         let retypepass = self.textFieldRetypePass.text!
         if oldpass.count < 6 || newpass.count < 6 || retypepass.count < 6{
-            let toast = Toast(text: "Mật khẩu hợp lệ từ 6 ký tự trở lên")
+            let toast = Toast(text: NSLocalizedString("min_6_character", comment: ""))
             toast.show()
         } else if oldpass == newpass {
-            let toast = Toast(text: "Mật khẩu mới không được trùng với mật khẩu cũ")
+            let toast = Toast(text: NSLocalizedString("compare_old_new_pass", comment: ""))
             toast.show()
         } else if newpass != retypepass {
-            let toast = Toast(text: "Mật khẩu mới không trùng, vui lòng nhập lại")
+            let toast = Toast(text: NSLocalizedString("compare_new_retype_pass", comment: ""))
             toast.show()
         } else {
             self.changePassword()
@@ -63,7 +63,7 @@ class ChangePasswordController: UIViewController {
             
             }, failure: {error, statusCode in
                 if statusCode == 200 {
-                    let toast = Toast(text: "Thay đổi mật khẩu thành công")
+                    let toast = Toast(text: NSLocalizedString("change_password_success", comment: ""))
                     toast.show()
                     for controller in self.navigationController!.viewControllers as Array {
                         if controller.isKind(of: InfoAccountController.self) {
@@ -72,7 +72,7 @@ class ChangePasswordController: UIViewController {
                         }
                     }
                 } else {
-                    let toast = Toast(text: "Mật khẩu không đúng vui lòng thử lại")
+                    let toast = Toast(text: NSLocalizedString("incorrect_password", comment: ""))
                     toast.show()
                 }
         })

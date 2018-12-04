@@ -8,6 +8,9 @@ import UIKit
 import GoneVisible
 
 class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+    
+    @IBOutlet weak var lblNoCV: UILabel!
+    
     var cvList = [CvList]()
     var cvListServer = [CvList]()
     var jobDetail = JobDetail()
@@ -46,6 +49,17 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
             } else {
                 self.cvList.append(contentsOf: myCV.cvList!)
             }
+            if myCV.total! == 0{
+                self.lblNoCV.isHidden = false
+                self.lblNoCV.visible()
+                self.mTableView.isHidden = true
+                self.mTableView.gone()
+            } else {
+                self.lblNoCV.isHidden = true
+                self.lblNoCV.gone()
+                self.mTableView.isHidden = false
+                self.mTableView.visible()
+            }
             self.cvListServer = myCV.cvList!
             self.mTableView.reloadData()
         }, failure: {error in
@@ -54,7 +68,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
             }else {
                 self.mTableView.willRemoveSubview(self.refreshControl)
             }
-            self.showMessage(title: "Thông báo", message: error.description)
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error.description)
         })
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -78,7 +92,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         if indexPath.row == 0 {
             cell.mViewQuantity.isHidden = false
             cell.mViewQuantity.visible()
-            cell.lblQuantity.text = "\(self.cvList.count) hồ sơ được tìm thấy"
+            cell.lblQuantity.text = "\(self.cvList.count) \(NSLocalizedString("SuffixesCv", comment: ""))"
         } else {
             cell.mViewQuantity.isHidden = true
             cell.mViewQuantity.gone()
@@ -101,7 +115,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
-        vc.title = "Chi tiết Hồ sơ"
+        vc.title = ""
         vc.jobId = self.jobId
         vc.jobDetail = self.jobDetail
         vc.cvId = self.cvList[indexPath.row].id!

@@ -9,11 +9,12 @@ class LeftViewCell: UITableViewCell {
     @IBOutlet var separatorView: UIView!
     @IBOutlet var bageLabel: UILabel!
     @IBOutlet var icon: UIImageView!
+    @IBOutlet weak var viewBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = .clear
+//        backgroundColor = .clear
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

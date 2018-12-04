@@ -92,7 +92,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         self.isStatus = false
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
-        vc.title = "Ngành Nghề"
+        vc.title = NSLocalizedString("carrer", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.delegate = self
@@ -106,7 +106,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
-        vc.title = "Thành Phố"
+        vc.title = NSLocalizedString("city", comment: "")
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -174,7 +174,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobController") as! DetailJobController
         vc.jobId = self.jobList[indexPath.row].id!
-        vc.title = "Chi tiết công việc"
+        vc.title = NSLocalizedString("detail_job", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -203,7 +203,8 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         if indexPath.row == 0 {
             cell.quantityView.isHidden = false
             cell.quantityView.visible()
-            cell.lblQuantity.text = "\(self.job.total!) công việc được tìm thấy"
+            let suffixesJob = NSLocalizedString("SuffixesJob", comment: "")
+            cell.lblQuantity.text = "\(self.job.total!) \(suffixesJob)"
         } else {
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
@@ -253,9 +254,9 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0{
-            return 290;
+            return 245;
         } else {
-            return 240
+            return 200
         }
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

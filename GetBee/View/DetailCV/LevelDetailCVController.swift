@@ -6,12 +6,15 @@ Copyright (c) 2018 Vietinterview. All rights reserved.
 
 import UIKit
 import ExpandableCell
-
+protocol SendHeightViewLevelDetailCV{
+    func sendHeightLevelDetailCV(height: Int)
+}
 class LevelDetailCVController: UIViewController {
     @IBOutlet weak var LevelTableView: ExpandableTableView!
     @IBOutlet weak var lblNodata: UILabel!
     
-    
+    @IBOutlet var viewParent: UIView!
+    var delegate:SendHeightViewLevelDetailCV?
     var detailCV = DetailCV()
     var cell: UITableViewCell {
         return LevelTableView.dequeueReusableCell(withIdentifier: ExpandedLevelCell.ID)!
@@ -35,6 +38,11 @@ class LevelDetailCVController: UIViewController {
         }
         LevelTableView.register(UINib(nibName: "ExpandableLevelCell2", bundle: nil), forCellReuseIdentifier: ExpandedLevelCell.ID)
         LevelTableView.register(UINib(nibName: "ExpandableCell", bundle: nil), forCellReuseIdentifier: ExpandableCell2.ID)
+        if let mDelegate = self.delegate {
+            self.LevelTableView.layoutIfNeeded()
+            self.LevelTableView.setNeedsDisplay()
+            mDelegate.sendHeightLevelDetailCV(height: Int(self.LevelTableView.frame.size.height))
+        }
     }
 
 }

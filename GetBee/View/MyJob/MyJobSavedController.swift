@@ -79,7 +79,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobController") as! DetailJobController
         vc.jobId = self.jobList[indexPath.row].id!
-        vc.title = "Chi tiết công việc"
+        vc.title = NSLocalizedString("detail_job", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -108,7 +108,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         if indexPath.row == 0 {
             cell.quantityView.isHidden = false
             cell.quantityView.visible()
-            cell.lblQuantity.text = "\(self.myJobSaved.total!) công việc được tìm thấy"
+            cell.lblQuantity.text = "\(self.myJobSaved.total!) \(NSLocalizedString("SuffixesJob", comment: ""))"
         } else {
             cell.quantityView.isHidden = true
             cell.quantityView.gone()

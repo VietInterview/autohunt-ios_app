@@ -33,13 +33,13 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
     @IBOutlet weak var btnStatus: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Hồ sơ của tôi"
+        self.title = NSLocalizedString("mycv", comment: "")
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         mViewCondition.isHidden = true
         mViewCondition.gone()
         self.mViewStatus.isHidden = true
         self.mViewStatus.gone()
-        self.tabSwipe = CarbonTabSwipeNavigation(items: ["Hồ sơ đã lưu", "Hồ sơ đã ứng tuyển"], delegate: self)
+        self.tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("cv_saved", comment: ""),NSLocalizedString("cv_submited", comment: "")], delegate: self)
         
         if ScreenUtils.shared.getScreenWidth()! == 414 { self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/5)
         } else { self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/8)
@@ -122,7 +122,7 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.isCity = false
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
-        vc.title = "Ngành Nghề"
+        vc.title = NSLocalizedString("carrer", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.isCity = self.isCity
@@ -136,7 +136,7 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.isCity = false
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
-        vc.title = "Trạng thái"
+        vc.title = NSLocalizedString("status", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.isCity = self.isCity
@@ -149,7 +149,7 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.isCity = true
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
-        vc.title = "Thành phố"
+        vc.title = NSLocalizedString("city", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.isCity = self.isCity

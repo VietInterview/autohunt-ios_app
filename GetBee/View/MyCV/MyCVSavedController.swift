@@ -63,7 +63,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.listCV2.append(contentsOf: listCV.cvList!)
                 self.listCV.cvList!.append(contentsOf: listCV.cvList!)
             }
-            self.lblQuantity.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
+            self.lblQuantity.text = "\(self.listCV.total!) \(NSLocalizedString("SuffixesJob", comment: ""))"
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
@@ -92,9 +92,9 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.listCV.cvList!.append(contentsOf: listCV.cvList!)
             }
             if listCV.total! > 0 {
-            self.lblQuantity.text = "\(self.listCV.total!) hồ sơ được tìm thấy"
+            self.lblQuantity.text = "\(self.listCV.total!) \(NSLocalizedString("SuffixesCv", comment: ""))"
             } else {
-                self.lblQuantity.text = "Bạn chưa có hồ sơ ứng viên. Hãy nhanh tay tạo Hồ sơ ứng viên để kiếm thêm thu nhập"
+                self.lblQuantity.text = NSLocalizedString("no_cv_upload", comment: "")
             }
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
@@ -129,7 +129,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
-        vc.title = "Chi tiết Hồ sơ"
+        vc.title = ""
         vc.cvId = self.listCV2[indexPath.row].id!
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -145,7 +145,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCVTableViewCell", for: indexPath) as! MyCVTableViewCell
         cell.delegate = self 
         cell.lblName.text = self.listCV.cvList![indexPath.row].fullName!
-        cell.lblDateUpdate.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
+        cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.shared.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCV.cvList![indexPath.row].careerName!
         if indexPath.row % 2 != 0 {
             cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
@@ -179,10 +179,10 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
             self.listCV2.remove(at: indexPath.row)
             self.homeViewModel.deleteCV(cvId: id, success: { deleteCV in
                 if deleteCV.count! > 0 {
-                    let toast = Toast(text: "Xóa thành công")
+                    let toast = Toast(text: NSLocalizedString("delete_cv_success", comment: ""))
                     toast.show()
                 } else {
-                    let toast = Toast(text: "Không thể xóa")
+                    let toast = Toast(text: NSLocalizedString("delete_cv_fail", comment: ""))
                     toast.show()
                     self.page = 0
                     if self.carrerId != -1 || self.cityId != -1{

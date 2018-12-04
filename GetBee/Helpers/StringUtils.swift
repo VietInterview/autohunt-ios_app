@@ -56,13 +56,13 @@ class StringUtils:NSObject {
         var someNumber = ""
         switch value {
         case 1:
-            someNumber="Tốt"
+            someNumber=NSLocalizedString("good", comment: "")
         case 2:
-            someNumber="Khá"
+            someNumber=NSLocalizedString("rather", comment: "")
         case 3:
-            someNumber="Trung bình"
+            someNumber=NSLocalizedString("medium", comment: "")
         case 4:
-            someNumber="Kém"
+            someNumber=NSLocalizedString("least", comment: "")
         default:
             print("Fallback option")
         }
@@ -72,27 +72,27 @@ class StringUtils:NSObject {
         var color: UIColor = .gray
         switch valueStatus {
         case 0:
-            color = .gray
+            color = hexStringToUIColor(hex: "#ADADAD")
         case 1:
-            color = .yellow
+            color = hexStringToUIColor(hex: "#E8C21F")
         case 2:
-            color = .yellow
+            color = hexStringToUIColor(hex: "#E8C21F")
         case 3:
-            color = .yellow
+            color = hexStringToUIColor(hex: "#E8C21F")
         case 4:
-            color = .gray
+            color = hexStringToUIColor(hex: "#ADADAD")
         case 5:
-            color = .red
+            color = hexStringToUIColor(hex: "#DB4443")
         case 6:
-            color = .green
+            color = hexStringToUIColor(hex: "#54CE4E")
         case 7:
-            color = .green
+            color = hexStringToUIColor(hex: "#54CE4E")
         case 8:
-            color = .green
+            color = hexStringToUIColor(hex: "#54CE4E")
         case 9:
-            color = .yellow
+            color = hexStringToUIColor(hex: "#E8C21F")
         default:
-            color = .gray
+            color = hexStringToUIColor(hex: "#ADADAD")
         }
         return color
     }
@@ -100,15 +100,15 @@ class StringUtils:NSObject {
         var statusString = ""
         switch value {
         case 1:
-            statusString="Dưới 50 người"
+            statusString=NSLocalizedString("below_50", comment: "")
         case 2:
-            statusString="Từ 50 - 100 người"
+            statusString=NSLocalizedString("from_50_to_100", comment: "")
         case 3:
-            statusString="Lớn hơn 100 người"
+            statusString=NSLocalizedString("above_100", comment: "")
         case 4:
-            statusString="Lớn hơn 500 người"
+            statusString=NSLocalizedString("above_500", comment: "")
         case 5:
-            statusString="Trung bình"
+            statusString=NSLocalizedString("average", comment: "")
         default:
             statusString=""
         }
@@ -118,27 +118,27 @@ class StringUtils:NSObject {
         var statusString = ""
         switch valueStatus {
         case 0:
-            statusString="Chưa gửi"
+            statusString=NSLocalizedString("not_send", comment: "")
         case 1:
-            statusString="Đã gửi"
+            statusString=NSLocalizedString("sent", comment: "")
         case 2:
-            statusString="Đã gửi"
+            statusString=NSLocalizedString("sent", comment: "")
         case 3:
-            statusString="Đã xem"
+            statusString=NSLocalizedString("seen", comment: "")
         case 4:
-            statusString="Từ chối"
+            statusString=NSLocalizedString("not_accept", comment: "")
         case 5:
-            statusString="Mời phỏng vấn"
+            statusString=NSLocalizedString("invite_interview", comment: "")
         case 6:
-            statusString="Đã phỏng vấn"
+            statusString=NSLocalizedString("interviewd", comment: "")
         case 7:
-            statusString="Được tuyển dụng"
+            statusString=NSLocalizedString("offered", comment: "")
         case 8:
-            statusString="Đi làm"
+            statusString=NSLocalizedString("go_to_work", comment: "")
         case 9:
-            statusString="Ký hợp đồng"
+            statusString=NSLocalizedString("contract", comment: "")
         default:
-             statusString="Từ chối"
+             statusString=NSLocalizedString("not_accept", comment: "")
         }
         return statusString
     }

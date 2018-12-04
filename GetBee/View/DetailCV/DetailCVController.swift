@@ -10,7 +10,7 @@ import AlamofireImage
 import Alamofire
 import GoneVisible
 
-class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV {
+class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV, SendHeightViewSkillDetailCV, SendHeightViewExpDetailCV, SendHeightViewLevelDetailCV, SendHeightViewLanDetailCV, SendHeightViewComDetailCV {
     
     @IBOutlet weak var heightViewContentConstant: NSLayoutConstraint!
     @IBOutlet weak var heightViewContent: UIView!
@@ -32,6 +32,10 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     @IBOutlet weak var mScrollView: UIScrollView!
     @IBOutlet weak var mViewHeader: UIView!
     @IBOutlet weak var mTabView: UIView!
+    
+    @IBOutlet weak var heightViewHeader: NSLayoutConstraint!
+    
+    
     var cvId: Int = 0
     var jobId: Int = 0
     var detailCV = DetailCV()
@@ -52,8 +56,8 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         self.navigationController?.view.backgroundColor = .clear
         
         if let jobdetail = self.jobDetail.fee {
-            lblNotiHunt.text = "Mức thưởng dự kiến mà bạn sẽ nhận được \(StringUtils.shared.currencyFormat(value: self.jobDetail.fee!)) VND"
-            lblNotiSendCV.text = "Mức thưởng dự kiến mà bạn sẽ nhận được \(StringUtils.shared.currencyFormat(value: (self.jobDetail.fee!*47)/68)) VND"
+            lblNotiHunt.text = "\(NSLocalizedString("hunt_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: self.jobDetail.fee!)) VND"
+            lblNotiSendCV.text = "\(NSLocalizedString("cv_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: (self.jobDetail.fee!*47)/68)) VND"
             self.mViewBtnSubmitCV.isHidden = false
             self.mViewBtnSubmitCV.visible()
         } else {
@@ -127,46 +131,45 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         } else if index == 1{
             let vc = storyboard.instantiateViewController(withIdentifier: "ExpDetailCVController") as! ExpDetailCVController
             vc.detailCV = self.detailCV
+            vc.delegate = self
             return vc
         } else if index == 2{
             let vc = storyboard.instantiateViewController(withIdentifier: "LevelDetailCVController") as! LevelDetailCVController
             vc.detailCV = self.detailCV
+            vc.delegate = self
             return vc
         }else if index == 3{
             let vc = storyboard.instantiateViewController(withIdentifier: "LanDetailCVController") as! LanDetailCVController
             vc.detailCV = self.detailCV
+            vc.delegate = self
             return vc
         }else if index == 4{
             let vc = storyboard.instantiateViewController(withIdentifier: "ComDetailCVController") as! ComDetailCVController
             vc.detailCV = self.detailCV
+            vc.delegate = self
             return vc
         }else {
             let vc = storyboard.instantiateViewController(withIdentifier: "SkillDetailCVController") as! SkillDetailCVController
+            vc.delegate = self
             vc.detailCV = self.detailCV
             return vc
         }
     }
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
-        let rectShape = CAShapeLayer()
-        rectShape.bounds = mViewHeader.frame
-        rectShape.position = mViewHeader.center
-        rectShape.path = UIBezierPath(roundedRect: mViewHeader.bounds, byRoundingCorners: [.topRight , .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        mViewHeader.layer.backgroundColor = UIColor.white.cgColor
-        mViewHeader.layer.mask = rectShape
         homeViewModel.getDetailCV(cvId: cvId, success: {detailCV in
             self.detailCV = detailCV
             if let imgUrl = self.detailCV.pictureURL {
                 Alamofire.request("\(App.imgUrl)\(imgUrl)").responseImage { response in
                     if let image = response.result.value {
                         self.imgAva.image = image
-//                        self.imgAva.layer.shadowColor = UIColor.gray.cgColor
-//                        self.imgAva.layer.shadowOpacity = 0.8
-//                        self.imgAva.layer.shadowOffset = CGSize.zero
-//                        self.imgAva.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF").cgColor
-//                        self.imgAva.layer.borderWidth = 2
-//                        self.imgAva.layer.shadowRadius = 5
-//                        self.imgAva.layer.cornerRadius = 5
+                        //                        self.imgAva.layer.shadowColor = UIColor.gray.cgColor
+                        //                        self.imgAva.layer.shadowOpacity = 0.8
+                        //                        self.imgAva.layer.shadowOffset = CGSize.zero
+                        //                        self.imgAva.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF").cgColor
+                        //                        self.imgAva.layer.borderWidth = 2
+                        //                        self.imgAva.layer.shadowRadius = 5
+                        //                        self.imgAva.layer.cornerRadius = 5
                         self.imgAva.addShadow()
                         self.imgAva.clipsToBounds = true
                     }
@@ -177,7 +180,17 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             }
             self.lblName.text = detailCV.fullName!
             self.lblBirthday.text = DateUtils.shared.convertFormatDateFull(dateString: "\(self.detailCV.birthday!)")
-            let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Kinh nghiệm", "Trình độ","Ngoại ngữ", "Tin học", "Kỹ năng"], delegate: self)
+            let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("info", comment: ""), NSLocalizedString("exp", comment: ""), NSLocalizedString("level", comment: ""),NSLocalizedString("language", comment: ""), NSLocalizedString("conputer_skill_tit", comment: ""), NSLocalizedString("skill", comment: "")], delegate: self)
+            //            self.lblName.layoutIfNeeded()
+            //            self.heightViewHeader.constant = self.heightViewHeader.constant + self.lblName.frame.size.height
+            //            self.mViewHeader.layoutIfNeeded()
+            
+            let rectShape = CAShapeLayer()
+            rectShape.bounds = self.mViewHeader.frame
+            rectShape.position = self.mViewHeader.center
+            rectShape.path = UIBezierPath(roundedRect: self.mViewHeader.bounds, byRoundingCorners: [.topRight , .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
+            self.mViewHeader.layer.backgroundColor = UIColor.white.cgColor
+            self.mViewHeader.layer.mask = rectShape
             tabSwipe.setTabExtraWidth(16)
             tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Nunito", size: 16)!], for: .normal)
             tabSwipe.setNormalColor(UIColor.gray)
@@ -191,17 +204,65 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         })
     }
     var isUpdate:Bool = false
-    func sendHeight(height: Int) {
-        if isUpdate == false {
-            isUpdate = true
-            self.heightViewContentConstant.constant = self.heightViewContentConstant.constant + CGFloat(height)
-            self.heightTabView.constant = self.heightTabView.constant + CGFloat(height)
-            self.spaceTabView.constant = self.spaceTabView.constant + CGFloat(height)
-            self.heightViewContent.layoutIfNeeded()
+    func sendHeightInfoDetailCV(height: Int) {
+        debugLog(object: height)
+        DispatchQueue.main.async {
+            if ScreenUtils.shared.getScreenWidth() == 414 {
+                self.heightViewContentConstant.constant = 800 + CGFloat(height)
+            } else {
+                self.heightViewContentConstant.constant = 1000 + CGFloat(height)
+            }
+            self.heightTabView.constant = 1400 + CGFloat(height)
+            self.mTabView.layoutIfNeeded()
+            self.mViewHeader.layoutIfNeeded()
+        }
+    }
+    func sendHeightSkillDetailCV(height: Int) {
+        debugLog(object: height)
+        DispatchQueue.main.async {
+            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height) - 400 : CGFloat(height) - 200
+            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.mTabView.layoutIfNeeded()
+            self.mViewHeader.layoutIfNeeded()
+        }
+    }
+    func sendHeightExpDetailCV(height: Int) {
+        debugLog(object: height)
+        DispatchQueue.main.async {
+            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height) - 200
+            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.mTabView.layoutIfNeeded()
+            self.mViewHeader.layoutIfNeeded()
         }
     }
     
+    func sendHeightLevelDetailCV(height: Int) {
+        debugLog(object: height)
+        DispatchQueue.main.async {
+            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
+            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.mTabView.layoutIfNeeded()
+            self.mViewHeader.layoutIfNeeded()
+        }
+    }
     
+    func sendHeightLanDetailCV(height: Int) {
+        DispatchQueue.main.async {
+            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
+            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.mTabView.layoutIfNeeded()
+            self.mViewHeader.layoutIfNeeded()
+        }
+    }
+    
+    func sendHeightComDetailCV(height: Int) {
+        DispatchQueue.main.async {
+            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
+            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.mTabView.layoutIfNeeded()
+            self.mViewHeader.layoutIfNeeded()
+        }
+    }
     @IBAction func applyCVTouch(_ sender: Any) {
         self.animateIn()
     }
@@ -209,7 +270,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     @IBAction func huntTouch(_ sender: Any) {
         self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobDetail.id!, type: 1, success: {submitCV in
             if submitCV.type! == 1 {
-                self.showMessage(title: "Thông báo", message: "Hồ sơ của bạn đã được gửi tới NTD. Vui lòng kiểm tra trạng thái hồ sơ đã gửi trong mục Hồ sơ đã ứng tuyển", handler: { (action: UIAlertAction!) in
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("hunt_send_cv_noti", comment: ""), handler: { (action: UIAlertAction!) in
                     self.animateOut()
                     for controller in self.navigationController!.viewControllers as Array {
                         if controller.isKind(of: DetailJobController.self) {
@@ -221,7 +282,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             }
         }, failure: {error in
             debugLog(object: error)
-            self.showMessage(title: "Thông báo", message: error == "Email or phone is already in submit job!" ? "Ứng viên này đã được chính bạn hoặc CTV viên khác sử dụng và gửi đi. Bạn vui lòng chọn CV khác":"", handler: { (action: UIAlertAction!) in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: ChooseCVSubmitController.self) {
@@ -236,7 +297,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     @IBAction func sendCVTouch(_ sender: Any) {
         self.homeViewModel.submitCV(cvId: self.detailCV.id!, jobId: self.jobDetail.id!, type: 0, success: {submitCV in
             if submitCV.type! == 0 {
-                self.showMessage(title: "Thông báo", message: "Hồ sơ của bạn đã được gửi tới NTD. Vui lòng kiểm tra trạng thái hồ sơ đã gửi trong mục Hồ sơ đã ứng tuyển", handler: { (action: UIAlertAction!) in
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("hunt_send_cv_noti", comment: ""), handler: { (action: UIAlertAction!) in
                     self.animateOut()
                     for controller in self.navigationController!.viewControllers as Array {
                         if controller.isKind(of: DetailJobController.self) {
@@ -248,7 +309,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             }
         }, failure: {error in
             debugLog(object: error)
-            self.showMessage(title: "Thông báo", message: error == "Email or phone is already in submit job!" ? "Ứng viên này đã được chính bạn hoặc CTV viên khác sử dụng và gửi đi. Bạn vui lòng chọn CV khác":"", handler: { (action: UIAlertAction!) in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: ChooseCVSubmitController.self) {

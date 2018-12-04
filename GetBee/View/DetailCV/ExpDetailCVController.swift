@@ -6,12 +6,17 @@
 
 import UIKit
 import ExpandableCell
-
+protocol SendHeightViewExpDetailCV{
+    func sendHeightExpDetailCV(height: Int)
+}
 class ExpDetailCVController: UIViewController {
     @IBOutlet weak var mExpTableView: ExpandableTableView!
     @IBOutlet weak var lblNodata: UILabel!
     
-    
+    @IBOutlet var viewParent: UIView!
+    var delegate:SendHeightViewExpDetailCV?
+    var mCell:ExpandedCell?
+    var lastIndexPath:IndexPath?
     var detailCV = DetailCV()
     var cell: UITableViewCell {
         return mExpTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID)!
@@ -31,25 +36,26 @@ class ExpDetailCVController: UIViewController {
             mExpTableView.isHidden = true
             mExpTableView.gone()
         }
-//        self.myXibView = UINib(nibName: "ExpandedCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UIView
         mExpTableView.register(UINib(nibName: "ExpandedCell", bundle: nil), forCellReuseIdentifier: ExpandedCell.ID)
         mExpTableView.register(UINib(nibName: "ExpandableCell", bundle: nil), forCellReuseIdentifier: ExpandableCell2.ID)
     }
-    
-    var mCell:ExpandedCell?
-//    var myXibView: UIView!
-//    func resizeXib(height:CGFloat){
-//        var testRect: CGRect = self.myXibView.frame
-//        testRect.size.height = height;
-//        self.myXibView.frame = testRect;
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        if let mDelegate = self.delegate {
+            self.viewParent.setNeedsLayout()
+            self.viewParent.layoutIfNeeded()
+            if let mCell = self.mCell {
+                mDelegate.sendHeightExpDetailCV(height: Int(80 + self.mCell!.heightContentView.constant))
+            } else {
+                mDelegate.sendHeightExpDetailCV(height: Int(100 * self.detailCV.lstEmploymentHis!.count))
+            }
+        }
+    }
 }
 extension ExpDetailCVController: ExpandableDelegate {
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
         let cell1 = self.mExpTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID) as! ExpandedCell
-        self.mCell = cell1
-        
+        debugLog(object: indexPath.row)
         cell1.lblCompanyName.text = self.detailCV.lstEmploymentHis![indexPath.row].companyName
         cell1.lblQuantityEmp.text = StringUtils.shared.genStringHumanResource(value: self.detailCV.lstEmploymentHis![indexPath.row].humanResources!)
         cell1.lblJobTitle.text = self.detailCV.lstEmploymentHis![indexPath.row].title!
@@ -59,7 +65,7 @@ extension ExpDetailCVController: ExpandableDelegate {
                 cell1.lblIsCurrentJob.isHidden = true
             } else {
                 cell1.lblIsCurrentJob.isHidden = false
-                cell1.lblIsCurrentJob.text = "Công việc hiện tại"
+                cell1.lblIsCurrentJob.text = NSLocalizedString("current_job", comment: "")
             }
         } else {
             cell1.lblIsCurrentJob.isHidden = true
@@ -70,7 +76,9 @@ extension ExpDetailCVController: ExpandableDelegate {
         cell1.contentView.layoutIfNeeded()
         cell1.lblTargetJob.layoutIfNeeded()
         cell1.lblTargetJob.setNeedsLayout()
-        cell1.heightContentView.constant = 700 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height
+        cell1.lblJobDes.layoutIfNeeded()
+        cell1.lblJobDes.setNeedsLayout()
+        cell1.heightContentView.constant = ScreenUtils.shared.getScreenWidth() == 414 ?  500 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height : 750 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height
         cell1.contentView.layoutIfNeeded()
         let rectShape = CAShapeLayer()
         rectShape.bounds = cell1.viewContent.frame
@@ -79,6 +87,11 @@ extension ExpDetailCVController: ExpandableDelegate {
         cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
         cell1.viewContent.layer.borderWidth = 1
         cell1.viewContent.layer.mask = rectShape
+        self.mCell = cell1
+        debugLog(object: cell1.contentView.frame.size.height)
+        if let mDelegate = self.delegate {
+            mDelegate.sendHeightExpDetailCV(height: Int(80 + self.mCell!.heightContentView.constant))
+        }
         return [cell1]
     }
     
@@ -93,19 +106,20 @@ extension ExpDetailCVController: ExpandableDelegate {
     func expandableTableView(_ expandableTableView: ExpandableTableView, numberOfRowsInSection section: Int) -> Int {
         return self.detailCV.lstEmploymentHis!.count
     }
-    
     func expandableTableView(_ expandableTableView: ExpandableTableView, didSelectRowAt indexPath: IndexPath) {
-        //        print("didSelectRow:\(indexPath)")
+        debugLog(object: indexPath.row)
+        //        if let lastIndex = self.lastIndexPath {
+        //            if self.lastIndexPath!.row != -1 && indexPath.row != self.lastIndexPath!.row {
+        //                self.mExpTableView.close(at: self.lastIndexPath!)
+        //            }
+        //        }
+        //        self.lastIndexPath = indexPath
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, didSelectExpandedRowAt indexPath: IndexPath) {
-        //        print("didSelectExpandedRowAt:\(indexPath)")
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCell: UITableViewCell, didSelectExpandedRowAt indexPath: IndexPath) {
-        //        if let cell = expandedCell as? ExpandedCell {
-        //            print("\(cell.titleLabel.text ?? "")")
-        //        }
     }
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

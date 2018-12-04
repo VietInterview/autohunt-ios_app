@@ -13,7 +13,7 @@ var dataArray = [CarrerListElement]()
 
 class ViewModelItem {
     private var item: CarrerListElement
-
+    
     var isSelected = false
     var id: Int {
         return item.id!
@@ -21,7 +21,7 @@ class ViewModelItem {
     var title: String {
         return item.name!
     }
-
+    
     init(item: CarrerListElement) {
         self.item = item
     }
@@ -82,8 +82,12 @@ extension ViewModel: UITableViewDelegate {
         if isMulti {
             if indexPath.row == 0 {
                 items[0].isSelected = false
-                for i in 1...items.count-1 {
-                    items[i].isSelected = true
+                if items.count > 1 {
+                    for i in 1...items.count-1 {
+                        items[i].isSelected = true
+                    }
+                } else {
+                    
                 }
             } else {
                 items[0].isSelected = false
