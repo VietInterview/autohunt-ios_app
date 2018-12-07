@@ -33,6 +33,7 @@
 		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
 		7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */; };
 		7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A54077421953E7800324167 /* LoadingOverlay.swift */; };
+		7A5855C621B5451200625635 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5855C521B5451200625635 /* Localizable.swift */; };
 		7A6F9EF22192CD890081862E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF12192CD890081862E /* HomeViewModel.swift */; };
 		7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF32192DADE0081862E /* GetMyProfile.swift */; };
 		7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF52192E1050081862E /* JobAPI.swift */; };
@@ -111,7 +112,7 @@
 		9B8574D7212C81950063A3E2 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8574D6212C81950063A3E2 /* SignUpViewModel.swift */; };
 		9B8574D9212C84130063A3E2 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8574D8212C84130063A3E2 /* UIImageExtension.swift */; };
 		9B88CC671CAB305900AE60C5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B88CC661CAB305900AE60C5 /* Constants.swift */; };
-		9B8D306B20AB456C0050697F /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B8D306D20AB456C0050697F /* Localization.strings */; };
+		9B8D306B20AB456C0050697F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B8D306D20AB456C0050697F /* Localizable.strings */; };
 		9B8D307020AB47E90050697F /* JSONEncodingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D306F20AB47E90050697F /* JSONEncodingExtension.swift */; };
 		9B9C6BFE20C7160700EB0523 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9C6BFD20C7160700EB0523 /* README.md */; };
 		9BAFB7C32114E3CD0099DC61 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFB7C22114E3CD0099DC61 /* SignInViewModel.swift */; };
@@ -142,8 +143,6 @@
 /* Begin PBXFileReference section */
 		0A6990341F9F82A300F4BAC7 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		0ABFB8911FA366D90098F751 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0ABFB8941FA366EA0098F751 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		0ABFB8961FA366EC0098F751 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		1918587FFFAFFE12098B2264 /* Pods_AcceptanceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AcceptanceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB0E9CAF37F0AF64BAC8CB1 /* Pods_GetBee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetBee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FD9AC947C095B4D1F946CC /* Pods-GetBee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetBee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetBee/Pods-GetBee.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +169,7 @@
 		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
 		7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMulti.swift; sourceTree = "<group>"; };
 		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		7A5855C521B5451200625635 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		7A6F9EF12192CD890081862E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7A6F9EF32192DADE0081862E /* GetMyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyProfile.swift; sourceTree = "<group>"; };
 		7A6F9EF52192E1050081862E /* JobAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAPI.swift; sourceTree = "<group>"; };
@@ -186,6 +186,10 @@
 		7A78E35C21A5785C007BA69C /* SubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCV.swift; sourceTree = "<group>"; };
 		7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSubmitCV.swift; sourceTree = "<group>"; };
 		7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableLevelCell2.xib; sourceTree = "<group>"; };
+		7A7A58A021B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		7A7A58A121B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7A7A58A321B4E5F8003D2827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7A7A58A421B4E5F8003D2827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A882CC1219EC03C009A2518 /* DetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCVController.swift; sourceTree = "<group>"; };
 		7A8B9BB121A415F900F6E77C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCV.swift; sourceTree = "<group>"; };
@@ -253,8 +257,6 @@
 		9B8574D6212C81950063A3E2 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9B8574D8212C84130063A3E2 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		9B88CC661CAB305900AE60C5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9B8D306C20AB456C0050697F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
-		9B8D306E20AB456D0050697F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localization.strings; sourceTree = "<group>"; };
 		9B8D306F20AB47E90050697F /* JSONEncodingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingExtension.swift; sourceTree = "<group>"; };
 		9B9C6BFD20C7160700EB0523 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9BAFB7C22114E3CD0099DC61 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -523,7 +525,7 @@
 		9B8D306820AB451E0050697F /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				9B8D306D20AB456C0050697F /* Localization.strings */,
+				9B8D306D20AB456C0050697F /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -622,6 +624,7 @@
 				7A955E2821A8058200D402D4 /* HelperLibrary.swift */,
 				7A955E1F21A7EB4300D402D4 /* Images.swift */,
 				7A54077421953E7800324167 /* LoadingOverlay.swift */,
+				7A5855C521B5451200625635 /* Localizable.swift */,
 				9B88CC661CAB305900AE60C5 /* Constants.swift */,
 				9BD4090F1CE9F19E005223C9 /* UIHelper.swift */,
 				7A77298E219A653F00A0CB97 /* DateUtils.swift */,
@@ -734,7 +737,7 @@
 					};
 					9B5AFAD91C7205EB002347D6 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = UAUCXS4U5U;
+						DevelopmentTeam = HAHZPWB354;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
@@ -745,9 +748,9 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
-				es,
+				vi,
+				en,
 			);
 			mainGroup = 9B5AFAD11C7205EB002347D6;
 			productRefGroup = 9B5AFADB1C7205EC002347D6 /* Products */;
@@ -788,7 +791,7 @@
 				7AFC9F5D216B893C008F6AB1 /* Nunito-Bold.ttf in Resources */,
 				7A78E35B21A54BD0007BA69C /* ExpandedLanCell.xib in Resources */,
 				7A78E35921A54A4C007BA69C /* ExpandableLanCell.xib in Resources */,
-				9B8D306B20AB456C0050697F /* Localization.strings in Resources */,
+				9B8D306B20AB456C0050697F /* Localizable.strings in Resources */,
 				7AFC9F62216B893C008F6AB1 /* Nunito-ExtraLightItalic.ttf in Resources */,
 				7AFC9F5E216B893C008F6AB1 /* Nunito-BoldItalic.ttf in Resources */,
 				9B0C72721C738D3400BAF3B1 /* Assets.xcassets in Resources */,
@@ -961,6 +964,7 @@
 				7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */,
 				E8FBB1C11DD21D18000D6740 /* SessionManager.swift in Sources */,
 				7A955E2321A8011800D402D4 /* IntroOneController.swift in Sources */,
+				7A5855C621B5451200625635 /* Localizable.swift in Sources */,
 				7A1D971021990D48007A4200 /* MyChoose.swift in Sources */,
 				9B77E0791E2FCF710020E450 /* Media.swift in Sources */,
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
@@ -998,19 +1002,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				0ABFB8911FA366D90098F751 /* Base */,
-				0ABFB8941FA366EA0098F751 /* en */,
-				0ABFB8961FA366EC0098F751 /* es */,
+				7A7A58A021B4E037003D2827 /* vi */,
+				7A7A58A321B4E5F8003D2827 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		9B8D306D20AB456C0050697F /* Localization.strings */ = {
+		9B8D306D20AB456C0050697F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9B8D306C20AB456C0050697F /* en */,
-				9B8D306E20AB456D0050697F /* es */,
+				7A7A58A121B4E037003D2827 /* vi */,
+				7A7A58A421B4E5F8003D2827 /* en */,
 			);
-			name = Localization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1100,6 +1104,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1149,6 +1154,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1181,13 +1187,14 @@
 				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UAUCXS4U5U;
+				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbeevn;
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
@@ -1208,13 +1215,14 @@
 				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UAUCXS4U5U;
+				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbeevn;
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
@@ -1245,6 +1253,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1283,13 +1292,14 @@
 				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UAUCXS4U5U;
+				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbeevn;
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";

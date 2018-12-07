@@ -26,9 +26,9 @@ extension String {
     return characters.count
   }
   
-  var localized: String {
-    return self.localize()
-  }
+//  var localized: String {
+//    return self.localize()
+//  }
     
   func localize(comment: String = "") -> String {
     return NSLocalizedString(self, comment: comment)

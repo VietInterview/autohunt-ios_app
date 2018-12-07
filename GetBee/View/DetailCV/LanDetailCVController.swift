@@ -6,11 +6,15 @@
     
     import UIKit
     import ExpandableCell
-    
+    protocol SendHeightViewLanDetailCV{
+        func sendHeightLanDetailCV(height: Int)
+    }
     class LanDetailCVController: UIViewController {
         @IBOutlet weak var mLanTableView: ExpandableTableView!
         @IBOutlet weak var lblNodata: UILabel!
         
+        @IBOutlet var viewParent: UIView!
+        var delegate:SendHeightViewLanDetailCV?
         var detailCV = DetailCV()
         var cell: UITableViewCell {
             return mLanTableView.dequeueReusableCell(withIdentifier: ExpandedLanCell.ID)!
@@ -33,7 +37,15 @@
             mLanTableView.register(UINib(nibName: "ExpandedLanCell", bundle: nil), forCellReuseIdentifier: ExpandedLanCell.ID)
             mLanTableView.register(UINib(nibName: "ExpandableLanCell", bundle: nil), forCellReuseIdentifier: ExpandableLanCell.ID)
         }
+        override func viewDidAppear(_ animated: Bool) {
+            if let mDelegate = self.delegate {
+                self.mLanTableView.layoutIfNeeded()
+                self.mLanTableView.setNeedsDisplay()
+                mDelegate.sendHeightLanDetailCV(height: Int(self.mLanTableView.frame.size.height))
+            }
+        }
     }
+    
     extension LanDetailCVController: ExpandableDelegate {
         func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
             let cell1 = self.mLanTableView.dequeueReusableCell(withIdentifier: ExpandedLanCell.ID) as! ExpandedLanCell

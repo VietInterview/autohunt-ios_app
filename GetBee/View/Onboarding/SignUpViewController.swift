@@ -175,21 +175,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if fullname.count == 0 && email.count == 0 && phone.count == 0 {
             self.imgNoteUser.isHidden = false
             var placeHolder = NSMutableAttributedString()
-            let Name  = "Bạn vui lòng nhập họ và tên"
+            let Name  = NSLocalizedString("input_name", comment: "")
             placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
             textFieldFullname.attributedPlaceholder = placeHolder
             self.imgNotePhone.isHidden = false
             var placeHolderPhone = NSMutableAttributedString()
-            let sdt  = "Bạn vui lòng nhập số điện thoại"
+            let sdt  = NSLocalizedString("input_phone", comment: "")
             placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
             
             textFieldPhone.attributedPlaceholder = placeHolderPhone
             self.imgNoteEMail.isHidden = false
             var placeHolderMail = NSMutableAttributedString()
-            let Mail  = "Bạn vui lòng nhập Email"
+            let Mail  = NSLocalizedString("input_email", comment: "")
             placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
             
@@ -197,7 +197,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         } else if fullname.count == 0 {
             self.imgNoteUser.isHidden = false
             var placeHolder = NSMutableAttributedString()
-            let Name  = "Bạn vui lòng nhập họ và tên"
+            let Name  = NSLocalizedString("input_name", comment: "")
             placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
@@ -205,7 +205,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             } else if email.count == 0 {
             self.imgNoteEMail.isHidden = false
             var placeHolderMail = NSMutableAttributedString()
-            let Mail  = "Bạn vui lòng nhập Email"
+            let Mail  = NSLocalizedString("input_email", comment: "")
             placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
             
@@ -213,7 +213,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             } else if phone.count == 0 {
             self.imgNotePhone.isHidden = false
             var placeHolderPhone = NSMutableAttributedString()
-            let sdt  = "Bạn vui lòng nhập số điện thoại"
+            let sdt  = NSLocalizedString("input_phone", comment: "")
             placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
             
@@ -225,7 +225,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     debugLog(object: error)
                     if error == "error.userexists" {
                         debugLog(object: "Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
-                        self.showMessage(title: "Thông báo", message: "Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+                        self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("email_esxit", comment: ""))
                     }
                 })
         }

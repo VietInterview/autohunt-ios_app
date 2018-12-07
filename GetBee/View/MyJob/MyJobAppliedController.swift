@@ -56,6 +56,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             
             self.mTableView.reloadData()
         }, failure: {error in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             if #available(iOS 10.0, *) {
                 self.mTableView.refreshControl?.endRefreshing()
             }else {
@@ -79,7 +80,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobController") as! DetailJobController
         vc.jobId = self.jobList[indexPath.row].id!
-        vc.title = "Chi tiết công việc"
+        vc.title = NSLocalizedString("detail_job", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -105,7 +106,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
         if indexPath.row == 0 {
             cell.quantityView.isHidden = false
             cell.quantityView.visible()
-            cell.lblQuantity.text = "\(self.myJob.total!) công việc được tìm thấy"
+            cell.lblQuantity.text = "\(self.myJob.total!) \(NSLocalizedString("SuffixesJob", comment: ""))"
         } else {
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
@@ -134,9 +135,9 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0 {
-            return 290.0;
+            return 262.0;
         } else {
-            return 240.0;
+            return 212.0;
         }
     }
     @objc func onNotification(notification:Notification)

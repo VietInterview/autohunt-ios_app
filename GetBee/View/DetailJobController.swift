@@ -54,12 +54,12 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             self.lblCompany.text = jobDetail.companyName!
             self.lblJobTitle.text = jobDetail.jobTitle!
             if self.jobDetail.status! == 1 {
-                self.btnStatus.setTitle("Đang tuyển", for: .normal)
+                self.btnStatus.setTitle(NSLocalizedString("hiring", comment: ""), for: .normal)
                 self.btnStatus.backgroundColor = UIColor.green;
                 self.footerView.isHidden = false
                 self.footerView.visible()
             } else {
-                self.btnStatus.setTitle("Đã đóng", for: .normal)
+                self.btnStatus.setTitle(NSLocalizedString("closed", comment: ""), for: .normal)
                 self.btnStatus.backgroundColor = UIColor.gray;
                 self.footerView.isHidden = true
                 self.footerView.gone()
@@ -72,7 +72,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
                 self.btnSaveUnsaveJob.layer.borderWidth = 1
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.gray.cgColor
-                self.btnSaveUnsaveJob.setTitle("Lưu công việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitle(NSLocalizedString("save_job", comment: ""), for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "save.png"), for: .normal)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
             } else if self.jobDetail.collStatus! == 1 {
@@ -80,7 +80,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
                 self.btnSaveUnsaveJob.layer.borderWidth = 1
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.red.cgColor
-                self.btnSaveUnsaveJob.setTitle("Đã lưu việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitle(NSLocalizedString("saved_job", comment: ""), for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.red, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "saved.png"), for: .normal)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
@@ -89,13 +89,13 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
                 self.btnSaveUnsaveJob.layer.borderWidth = 1
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.clear.cgColor
-                self.btnSaveUnsaveJob.setTitle("Đã ứng tuyển", for: .normal)
+                self.btnSaveUnsaveJob.setTitle(NSLocalizedString("cv_applyed_tit", comment: ""), for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.white, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "tickok_white.png"), for: .normal)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
                 self.btnSaveUnsaveJob.isUserInteractionEnabled = false
             }
-            let tabSwipe = CarbonTabSwipeNavigation(items: ["Thông tin", "Thống kê", "CV đã nộp"], delegate: self)
+            let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("info", comment: ""), NSLocalizedString("statistic", comment: ""), NSLocalizedString("cv_submited", comment: "")], delegate: self)
             
             if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
             } else { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
@@ -132,9 +132,9 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             vc.datePublic = DateUtils.shared.UTCToLocal(date: self.jobDetail.submitDate!)
             vc.dateExpiration = DateUtils.shared.UTCToLocal(date: self.jobDetail.expireDate!)
             if self.jobDetail.status! == 1 {
-                vc.status = "Đang tuyển"
+                vc.status = NSLocalizedString("hiring", comment: "")
             } else {
-                vc.status = "Đã đóng"
+                vc.status = NSLocalizedString("closed", comment: "")
             }
             vc.salaryCandidate = "\(StringUtils.shared.currencyFormat(value: self.jobDetail.fromSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!)) -  \(StringUtils.shared.currencyFormat(value: self.jobDetail.toSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
             vc.collaboratorsReward = "\(StringUtils.shared.currencyFormat(value:self.jobDetail.fee!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
@@ -169,7 +169,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ChooseCVSubmitController") as! ChooseCVSubmitController
         vc.jobDetail = self.jobDetail
-        vc.title = "Chọn CV của tôi"
+        vc.title = NSLocalizedString("choice_cv", comment: "")
         self.navigationController?.pushViewController(vc, animated: true)
         //        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
         //
@@ -194,7 +194,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
                 self.btnSaveUnsaveJob.layer.borderWidth = 1
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.gray.cgColor
-                self.btnSaveUnsaveJob.setTitle("Lưu công việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitle(NSLocalizedString("save_job", comment: ""), for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.gray, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "save.png"), for: .normal)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
@@ -203,7 +203,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
                 self.btnSaveUnsaveJob.layer.borderWidth = 1
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.red.cgColor
-                self.btnSaveUnsaveJob.setTitle("Đã lưu việc", for: .normal)
+                self.btnSaveUnsaveJob.setTitle(NSLocalizedString("saved_job", comment: ""), for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.red, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "saved.png"), for: .normal)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
@@ -212,7 +212,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 self.btnSaveUnsaveJob.layer.cornerRadius = 5
                 self.btnSaveUnsaveJob.layer.borderWidth = 1
                 self.btnSaveUnsaveJob.layer.borderColor = UIColor.clear.cgColor
-                self.btnSaveUnsaveJob.setTitle("Đã ứng tuyển", for: .normal)
+                self.btnSaveUnsaveJob.setTitle(NSLocalizedString("cv_applyed_tit", comment: ""), for: .normal)
                 self.btnSaveUnsaveJob.setTitleColor(.white, for: .normal)
                 self.btnSaveUnsaveJob.setImage(UIImage(named: "tickok_white.png"), for: .normal)
                 self.btnSaveUnsaveJob.contentHorizontalAlignment = .center
@@ -220,7 +220,8 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             }
             self.jobDetail.collStatus = addRemoveJob.status!
             }, failure: {error in
-                print("User Profile Error: " + error)})
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+        })
     }
     
 }

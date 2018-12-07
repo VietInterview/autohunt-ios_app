@@ -1,18 +1,18 @@
 
 /* Class = "UIButton"; normalTitle = "Bạn quên mật khẩu"; ObjectID = "0GK-zT-bcm"; */
-"0GK-zT-bcm.normalTitle" = "Forgot your password?";
+"0GK-zT-bcm.normalTitle" = "Bạn quên mật khẩu?";
 
 /* Class = "UILabel"; text = "Không có thông tin"; ObjectID = "0LG-0U-dwc"; */
 "0LG-0U-dwc.text" = "Không có thông tin";
 
 /* Class = "UILabel"; text = "Số cộng tác viên đã quan tâm"; ObjectID = "0kn-jW-py2"; */
-"0kn-jW-py2.text" = "Interested";
+"0kn-jW-py2.text" = "Số cộng tác viên đã quan tâm";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "0xN-Nj-aEi"; */
 "0xN-Nj-aEi.text" = "13";
 
 /* Class = "UILabel"; text = "Tiền thưởng"; ObjectID = "1RL-KN-3ek"; */
-"1RL-KN-3ek.text" = "Reward";
+"1RL-KN-3ek.text" = "Tiền thưởng";
 
 /* Class = "UIButton"; normalTitle = "Lưu công việc"; ObjectID = "1fh-cH-fgE"; */
 "1fh-cH-fgE.normalTitle" = "Lưu công việc";
@@ -24,40 +24,40 @@
 "2FP-8e-41p.text" = "Nhân viên hành chính";
 
 /* Class = "UITextField"; placeholder = "Nhập mật khẩu cũ"; ObjectID = "2QU-G5-95w"; */
-"2QU-G5-95w.placeholder" = "Enter current password";
+"2QU-G5-95w.placeholder" = "Nhập mật khẩu cũ";
 
 /* Class = "UILabel"; text = "Ứng viên đã ứng tuyển"; ObjectID = "2fO-FZ-Sbx"; */
-"2fO-FZ-Sbx.text" = "Submissions";
+"2fO-FZ-Sbx.text" = "Ứng viên đã ứng tuyển";
 
 /* Class = "UILabel"; text = "CV đã gửi"; ObjectID = "3kd-Mz-ZHW"; */
-"3kd-Mz-ZHW.text" = "Submitted resume";
+"3kd-Mz-ZHW.text" = "Hồ sơ đã gửi";
 
 /* Class = "UIButton"; normalTitle = "Đăng Nhập"; ObjectID = "40x-yq-pH6"; */
 "40x-yq-pH6.normalTitle" = "Đăng Nhập";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "41N-vp-j2u"; */
-"41N-vp-j2u.text" = "Location";
+"41N-vp-j2u.text" = "Địa điểm";
 
 /* Class = "UITextField"; placeholder = "Số điện thoại"; ObjectID = "4Lo-iM-2Uk"; */
-"4Lo-iM-2Uk.placeholder" = "Phone number";
+"4Lo-iM-2Uk.placeholder" = "Số điện thoại";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "4qi-Rr-ZRX"; */
-"4qi-Rr-ZRX.text" = "Categories";
+"4qi-Rr-ZRX.text" = "Ngành nghề";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "52s-FM-zFc"; */
-"52s-FM-zFc.text" = "Location";
+"52s-FM-zFc.text" = "Địa điểm";
 
 /* Class = "UILabel"; text = "Không có thông tin"; ObjectID = "57G-bA-Wgs"; */
 "57G-bA-Wgs.text" = "Không có thông tin";
 
 /* Class = "UILabel"; text = "Ngày đăng tuyển"; ObjectID = "5md-1i-V45"; */
-"5md-1i-V45.text" = "Posted on";
+"5md-1i-V45.text" = "Ngày đăng tuyển";
 
 /* Class = "UILabel"; text = "Hồ Chí Minh"; ObjectID = "5vH-Rq-AUI"; */
 "5vH-Rq-AUI.text" = "Hồ Chí Minh";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "63J-NY-KQ1"; */
-"63J-NY-KQ1.text" = "Categories";
+"63J-NY-KQ1.text" = "Ngành nghề";
 
 /* Class = "UITextField"; text = "sdasdsads"; ObjectID = "6B2-Q7-Taz"; */
 "6B2-Q7-Taz.text" = "sdasdsads";
@@ -69,67 +69,67 @@
 "6Mo-t4-4FV.normalTitle" = "Đăng Ký";
 
 /* Class = "UILabel"; text = "Cấp bậc"; ObjectID = "7Qq-3H-4Ge"; */
-"7Qq-3H-4Ge.text" = "Level";
+"7Qq-3H-4Ge.text" = "Cấp bậc";
 
 /* Class = "UILabel"; text = "Vui lòng liên hệ hotline: 024 666 29448 hoặc getbee@vietinterview.com để được trợ giúp"; ObjectID = "7lb-Dq-TBj"; */
-"7lb-Dq-TBj.text" = "Please call hotline: 024 666 29448 or getbee@vietinterview.com for further support";
+"7lb-Dq-TBj.text" = "Vui lòng liên hệ hotline: 024 666 29448 hoặc getbee@vietinterview.com để được trợ giúp";
 
 /* Class = "UILabel"; text = "Tài khoản đăng nhập hoặc mật khẩu của bạn không đúng. Xin vui lòng nhập lại!"; ObjectID = "86X-3O-SVV"; */
-"86X-3O-SVV.text" = "Invalid account or password. Please try again!";
+"86X-3O-SVV.text" = "Tài khoản đăng nhập hoặc mật khẩu của bạn không đúng. Xin vui lòng nhập lại!";
 
 /* Class = "UILabel"; text = "Chỉ gửi CV"; ObjectID = "98I-nT-4SO"; */
-"98I-nT-4SO.text" = "Sent resume";
+"98I-nT-4SO.text" = "Chỉ gửi hồ sơ";
 
 /* Class = "UIButton"; normalTitle = "Đăng nhập"; ObjectID = "98w-IX-Hjd"; */
-"98w-IX-Hjd.normalTitle" = "Login";
+"98w-IX-Hjd.normalTitle" = "Đăng nhập";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "990-tE-VIj"; */
-"990-tE-VIj.text" = "Categories";
+"990-tE-VIj.text" = "Ngành nghề";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "9Pa-N6-ptm"; */
 "9Pa-N6-ptm.text" = "13";
 
 /* Class = "UILabel"; text = "Vị trí mong muốn"; ObjectID = "9uA-Sg-TA3"; */
-"9uA-Sg-TA3.text" = "Expected position";
+"9uA-Sg-TA3.text" = "Vị trí mong muốn";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "AAx-GM-NaH"; */
-"AAx-GM-NaH.text" = "Location";
+"AAx-GM-NaH.text" = "Địa điểm";
 
 /* Class = "UILabel"; text = "Unkonwn"; ObjectID = "AC7-dn-6Yp"; */
 "AC7-dn-6Yp.text" = "Unkonwn";
 
 /* Class = "UILabel"; text = "Sign Up"; ObjectID = "AaK-dC-F7z"; */
-"AaK-dC-F7z.text" = "Register";
+"AaK-dC-F7z.text" = "Đăng ký";
 
 /* Class = "UILabel"; text = "3"; ObjectID = "Ahz-cx-ypi"; */
 "Ahz-cx-ypi.text" = "3";
 
 /* Class = "UILabel"; text = "Thông báo"; ObjectID = "Al8-jz-oef"; */
-"Al8-jz-oef.text" = "Notification";
+"Al8-jz-oef.text" = "Thông báo";
 
 /* Class = "UIButton"; normalTitle = "Tất cả ngành nghề"; ObjectID = "B0r-9I-ZoG"; */
-"B0r-9I-ZoG.normalTitle" = "All job categories";
+"B0r-9I-ZoG.normalTitle" = "Tất cả ngành nghề";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "BV1-Q5-MI1"; */
 "BV1-Q5-MI1.text" = "13";
 
 /* Class = "UILabel"; text = "Địa điểm làm việc"; ObjectID = "BrC-iW-4ic"; */
-"BrC-iW-4ic.text" = "Working location";
+"BrC-iW-4ic.text" = "Địa điểm làm việc";
 
 /* Class = "UILabel"; text = "Thời hạn tuyển"; ObjectID = "BsG-2r-WzD"; */
-"BsG-2r-WzD.text" = "Expired date";
+"BsG-2r-WzD.text" = "Thời hạn tuyển";
 
 /* Class = "UILabel"; text = "Số ứng viên đã phỏng vấn"; ObjectID = "CHe-J1-4J9"; */
-"CHe-J1-4J9.text" = "Interviewed";
+"CHe-J1-4J9.text" = "Số ứng viên đã phỏng vấn";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "DC1-zB-l5K"; */
 "DC1-zB-l5K.text" = "13";
 
 /* Class = "UILabel"; text = "Bạn chưa có tài khoản?"; ObjectID = "DCO-lL-kKn"; */
-"DCO-lL-kKn.text" = "Don't have an account yet?";
+"DCO-lL-kKn.text" = "Bạn chưa có tài khoản?";
 
 /* Class = "UILabel"; text = "Cấp bậc mong muốn"; ObjectID = "DtW-ri-JFO"; */
-"DtW-ri-JFO.text" = "Expected level";
+"DtW-ri-JFO.text" = "Cấp bậc mong muốn";
 
 /* Class = "UILabel"; text = "2,000 USD"; ObjectID = "Dtr-24-dAh"; */
 "Dtr-24-dAh.text" = "2,000 USD";
@@ -147,7 +147,7 @@
 "Fdi-YI-gMI.text" = "FPT Software";
 
 /* Class = "UILabel"; text = "Thông báo"; ObjectID = "G2a-ol-yqy"; */
-"G2a-ol-yqy.text" = "Notification";
+"G2a-ol-yqy.text" = "Thông báo";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "GqP-oe-fcZ"; */
 "GqP-oe-fcZ.placeholder" = "Email";
@@ -165,37 +165,37 @@
 "HTI-Ug-U9N.text" = "Lê Thị Khuyên";
 
 /* Class = "UITextField"; placeholder = "Nghề nghiệp"; ObjectID = "IPZ-KE-nUd"; */
-"IPZ-KE-nUd.placeholder" = "Categories";
+"IPZ-KE-nUd.placeholder" = "Nghề nghiệp";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "IQb-xQ-Ypc"; */
-"IQb-xQ-Ypc.normalTitle" = "All location";
+"IQb-xQ-Ypc.normalTitle" = "Tất cả thành phố";
 
 /* Class = "UILabel"; text = "Tiền thưởng"; ObjectID = "IRm-Pm-49F"; */
-"IRm-Pm-49F.text" = "Reward";
+"IRm-Pm-49F.text" = "Tiền thưởng";
 
 /* Class = "UITextField"; placeholder = "Địa chỉ"; ObjectID = "IVz-PT-j1D"; */
-"IVz-PT-j1D.placeholder" = "Address";
+"IVz-PT-j1D.placeholder" = "Địa chỉ";
 
 /* Class = "UILabel"; text = "Số ứng viên được nhận vào làm"; ObjectID = "Icp-4s-8Hc"; */
-"Icp-4s-8Hc.text" = "On board";
+"Icp-4s-8Hc.text" = "Số ứng viên được nhận vào làm";
 
 /* Class = "UILabel"; text = "Mức thưởng dự kiến mà bạn sẽ nhận được: 1,000,000 VNĐ"; ObjectID = "Ie5-jT-4FZ"; */
 "Ie5-jT-4FZ.text" = "Mức thưởng dự kiến mà bạn sẽ nhận được: 1,000,000 VNĐ";
 
 /* Class = "UIButton"; normalTitle = "ĐĂNG NHẬP"; ObjectID = "Ix7-qx-zaS"; */
-"Ix7-qx-zaS.normalTitle" = "LOGIN";
+"Ix7-qx-zaS.normalTitle" = "ĐĂNG NHẬP";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "J2Y-il-Tdn"; */
-"J2Y-il-Tdn.text" = "Categories";
+"J2Y-il-Tdn.text" = "Ngành nghề";
 
 /* Class = "UIButton"; normalTitle = "Tất cả ngành nghề"; ObjectID = "JGy-DS-Qmr"; */
-"JGy-DS-Qmr.normalTitle" = "All job categories";
+"JGy-DS-Qmr.normalTitle" = "Tất cả ngành nghề";
 
 /* Class = "UILabel"; text = "Trạng thái"; ObjectID = "Jto-fA-kEf"; */
-"Jto-fA-kEf.text" = "Status";
+"Jto-fA-kEf.text" = "Trạng thái";
 
 /* Class = "UILabel"; text = "Lương ứng viên"; ObjectID = "K1f-Xy-yfU"; */
-"K1f-Xy-yfU.text" = "Salary";
+"K1f-Xy-yfU.text" = "Lương ứng viên";
 
 /* Class = "UILabel"; text = "Hà Nội"; ObjectID = "KHw-Vg-5VB"; */
 "KHw-Vg-5VB.text" = "Hà Nội";
@@ -204,31 +204,31 @@
 "KIO-3c-m7n.text" = "12/10/2018";
 
 /* Class = "UITextField"; placeholder = "Nghề Nghiệp"; ObjectID = "KNx-1H-WaX"; */
-"KNx-1H-WaX.placeholder" = "Categories";
+"KNx-1H-WaX.placeholder" = "Nghề Nghiệp";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "Kh8-jN-kzv"; */
-"Kh8-jN-kzv.normalTitle" = "All location";
+"Kh8-jN-kzv.normalTitle" = "Tất cả thành phố";
 
 /* Class = "UILabel"; text = "FPT Software"; ObjectID = "Koc-1X-6aN"; */
 "Koc-1X-6aN.text" = "FPT Software";
 
 /* Class = "UILabel"; text = "Số ứng viên đã nhận vào làm"; ObjectID = "L77-XP-IPa"; */
-"L77-XP-IPa.text" = "On board";
+"L77-XP-IPa.text" = "Số ứng viên đã nhận vào làm";
 
 /* Class = "UILabel"; text = "Yêu cầu công việc"; ObjectID = "Lc8-v7-zEd"; */
-"Lc8-v7-zEd.text" = "Job requirements";
+"Lc8-v7-zEd.text" = "Yêu cầu công việc";
 
 /* Class = "UILabel"; text = "Thời hạn đăng tuyển"; ObjectID = "LtL-v9-yOz"; */
-"LtL-v9-yOz.text" = "Expired date";
+"LtL-v9-yOz.text" = "Thời hạn đăng tuyển";
 
 /* Class = "UIButton"; normalTitle = "Nộp CV"; ObjectID = "MIW-wL-EWT"; */
-"MIW-wL-EWT.normalTitle" = "Submit resume";
+"MIW-wL-EWT.normalTitle" = "Nộp hồ sơ";
 
 /* Class = "UILabel"; text = "Tạo một tài khoản mới"; ObjectID = "MO9-20-b3P"; */
-"MO9-20-b3P.text" = "Create new account";
+"MO9-20-b3P.text" = "Tạo một tài khoản mới";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "MUM-vF-eWG"; */
-"MUM-vF-eWG.text" = "Categories";
+"MUM-vF-eWG.text" = "Ngành nghề";
 
 /* Class = "UILabel"; text = "Unkonwn"; ObjectID = "NM3-nd-OUe"; */
 "NM3-nd-OUe.text" = "Unkonwn";
@@ -243,16 +243,16 @@
 "OUE-li-UwU.text" = "5 CV đã được nộp";
 
 /* Class = "UILabel"; text = "Mật khẩu"; ObjectID = "Ova-Wj-UR2"; */
-"Ova-Wj-UR2.text" = "Password";
+"Ova-Wj-UR2.text" = "Mật khẩu";
 
 /* Class = "UIButton"; normalTitle = "OK"; ObjectID = "P1G-LC-ser"; */
 "P1G-LC-ser.normalTitle" = "OK";
 
 /* Class = "UILabel"; text = "Giới tính"; ObjectID = "PAd-fg-6m9"; */
-"PAd-fg-6m9.text" = "Gender";
+"PAd-fg-6m9.text" = "Giới tính";
 
 /* Class = "UIButton"; normalTitle = "Tất cả ngành nghề"; ObjectID = "PXc-zd-trr"; */
-"PXc-zd-trr.normalTitle" = "All job categories";
+"PXc-zd-trr.normalTitle" = "Tất cả ngành nghề";
 
 /* Class = "UILabel"; text = "Senior C/C++"; ObjectID = "Pwk-FT-Lg1"; */
 "Pwk-FT-Lg1.text" = "Senior C/C++";
@@ -264,34 +264,34 @@
 "Qie-gV-Ebb.text" = "12/10/2018";
 
 /* Class = "UILabel"; text = "Mục tiêu nghề nghiệp"; ObjectID = "Qma-Lm-Bjd"; */
-"Qma-Lm-Bjd.text" = "Career objective";
+"Qma-Lm-Bjd.text" = "Mục tiêu nghề nghiệp";
 
 /* Class = "UILabel"; text = "Đăng nhập bằng tài khoản của bạn"; ObjectID = "Qpt-nn-eAh"; */
-"Qpt-nn-eAh.text" = "Login with your account";
+"Qpt-nn-eAh.text" = "Đăng nhập bằng tài khoản của bạn";
 
 /* Class = "UILabel"; text = "Trưởng phòng"; ObjectID = "RLp-Vy-U1b"; */
 "RLp-Vy-U1b.text" = "Trưởng phòng";
 
 /* Class = "UITextField"; placeholder = "Nhập từ khóa tìm kiếm"; ObjectID = "RTM-NJ-lyG"; */
-"RTM-NJ-lyG.placeholder" = "Job title or keyword";
+"RTM-NJ-lyG.placeholder" = "Nhập từ khóa tìm kiếm";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "Ro4-Ko-aa4"; */
 "Ro4-Ko-aa4.text" = "13";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "SGW-mB-J78"; */
-"SGW-mB-J78.placeholder" = "Email";
+"SGW-mB-J78.placeholder" = "Bạn vui lòng nhập email";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "STB-B6-HKO"; */
 "STB-B6-HKO.text" = "13";
 
 /* Class = "UILabel"; text = "Vietnam's Largest Recruitment Agencies Marketplace"; ObjectID = "U5p-Ue-hw9"; */
-"U5p-Ue-hw9.text" = "Vietnam's Largest Recruitment Agencies Marketplace";
+"U5p-Ue-hw9.text" = "Nền tảng tuyển dụng trực tuyến số 1 Việt Nam";
 
 /* Class = "UILabel"; text = "Cập nhật: 12/10/2018"; ObjectID = "U9r-3j-2Mu"; */
 "U9r-3j-2Mu.text" = "Cập nhật: 12/10/2018";
 
 /* Class = "UITextField"; placeholder = "Nhập mật khẩu mới"; ObjectID = "UCS-VM-H6t"; */
-"UCS-VM-H6t.placeholder" = "Enter new password";
+"UCS-VM-H6t.placeholder" = "Nhập mật khẩu mới";
 
 /* Class = "UILabel"; text = "12/09/2018"; ObjectID = "UJK-pN-m0G"; */
 "UJK-pN-m0G.text" = "12/09/2018";
@@ -300,130 +300,130 @@
 "ULN-Pq-sYp.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "Utg-90-bWw"; */
-"Utg-90-bWw.text" = "Location";
+"Utg-90-bWw.text" = "Địa điểm";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "VXP-E8-PA8"; */
-"VXP-E8-PA8.placeholder" = "Password";
+"VXP-E8-PA8.placeholder" = "Bạn vui lòng nhập mật khẩu";
 
 /* Class = "UILabel"; text = "Senior C/C++"; ObjectID = "VXw-Bv-dEE"; */
 "VXw-Bv-dEE.text" = "Senior C/C++";
 
 /* Class = "UILabel"; text = "Thưởng CTV"; ObjectID = "VcC-sq-0kJ"; */
-"VcC-sq-0kJ.text" = "Reward";
+"VcC-sq-0kJ.text" = "Thưởng CTV";
 
 /* Class = "UILabel"; text = "Kỹ năng chính"; ObjectID = "VmC-Rs-aTi"; */
-"VmC-Rs-aTi.text" = "Key skills";
+"VmC-Rs-aTi.text" = "Kỹ năng chính";
 
 /* Class = "UILabel"; text = "Cấp quản lý điều hành"; ObjectID = "W8q-FA-2ZW"; */
 "W8q-FA-2ZW.text" = "Cấp quản lý điều hành";
 
 /* Class = "UILabel"; text = "Ngành nghề muốn cộng tác"; ObjectID = "Wng-i3-4p1"; */
-"Wng-i3-4p1.text" = "Collaborating categories";
+"Wng-i3-4p1.text" = "Ngành nghề muốn cộng tác";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "XC0-Ou-dPI"; */
-"XC0-Ou-dPI.text" = "Categories";
+"XC0-Ou-dPI.text" = "Ngành nghề";
 
 /* Class = "UILabel"; text = "Hunt"; ObjectID = "Yxa-2U-y1Y"; */
 "Yxa-2U-y1Y.text" = "Hunt";
 
 /* Class = "UITextField"; placeholder = "Nhập lại mật khẩu mới"; ObjectID = "ZNX-lo-MTW"; */
-"ZNX-lo-MTW.placeholder" = "Confirm new password";
+"ZNX-lo-MTW.placeholder" = "Nhập lại mật khẩu mới";
 
 /* Class = "UILabel"; text = "Thời hạn tuyển"; ObjectID = "Zjx-JS-wtq"; */
-"Zjx-JS-wtq.text" = "Expired date";
+"Zjx-JS-wtq.text" = "Thời hạn tuyển";
 
 /* Class = "UILabel"; text = "Số lượng cần tuyển"; ObjectID = "aSQ-Pa-4Cp"; */
-"aSQ-Pa-4Cp.text" = "Quantity";
+"aSQ-Pa-4Cp.text" = "Số lượng cần tuyển";
 
 /* Class = "UILabel"; text = "Nguyễn Sơn Tùng"; ObjectID = "apm-bo-4Yt"; */
 "apm-bo-4Yt.text" = "Nguyễn Sơn Tùng";
 
-/* Class = "UILabel"; text = "Hạn tuyển"; ObjectID = "b0u-zO-uV4"; */
-"b0u-zO-uV4.text" = "Expired date";
+/* Class = "UILabel"; text = "Thời hạn tuyển"; ObjectID = "b0u-zO-uV4"; */
+"b0u-zO-uV4.text" = "Thời hạn tuyển";
 
 /* Class = "UILabel"; text = "Trình độ học vấn cao nhất"; ObjectID = "b7V-MJ-RCU"; */
-"b7V-MJ-RCU.text" = "Level";
+"b7V-MJ-RCU.text" = "Trình độ";
 
 /* Class = "UILabel"; text = "Tỉnh/Thành phố"; ObjectID = "c27-J6-gjt"; */
-"c27-J6-gjt.text" = "Location";
+"c27-J6-gjt.text" = "Tỉnh/Thành phố";
 
 /* Class = "UILabel"; text = "Trạng thái"; ObjectID = "c3s-CN-pWw"; */
-"c3s-CN-pWw.text" = "Status";
+"c3s-CN-pWw.text" = "Trạng thái";
 
 /* Class = "UILabel"; text = "A B2B Marketplace for Employers & Recruitment Agencies\n"; ObjectID = "cNW-zF-7eF"; */
-"cNW-zF-7eF.text" = "A B2B Marketplace for Employers & Recruitment Agencies\n";
+"cNW-zF-7eF.text" = "Nền tảng kết nối dành cho doanh nghiệp và các chuyên gia tuyển dụng\n";
 
 /* Class = "UILabel"; text = "IT, Phần mềm"; ObjectID = "cYS-On-nwQ"; */
 "cYS-On-nwQ.text" = "IT, Phần mềm";
 
 /* Class = "UIButton"; normalTitle = "Nộp hồ sơ"; ObjectID = "d4j-Er-VZJ"; */
-"d4j-Er-VZJ.normalTitle" = "Submit resume";
+"d4j-Er-VZJ.normalTitle" = "Nộp hồ sơ";
 
 /* Class = "UILabel"; text = "Cấp quản lý điều hành"; ObjectID = "d7X-sG-qEv"; */
 "d7X-sG-qEv.text" = "Cấp quản lý điều hành";
 
 /* Class = "UILabel"; text = "Tổng số năm kinh nghiệm"; ObjectID = "dJw-ow-hvj"; */
-"dJw-ow-hvj.text" = "Years of experience";
+"dJw-ow-hvj.text" = "Tổng số năm kinh nghiệm";
 
 /* Class = "UILabel"; text = "1000's of quality recruiters working for you!"; ObjectID = "dM0-sV-Je5"; */
-"dM0-sV-Je5.text" = "1000's of quality recruiters working for you!";
+"dM0-sV-Je5.text" = "1000+ chuyên gia tuyển dụng cao cấp làm việc cho bạn!";
 
 /* Class = "UILabel"; text = "Canon Vietnam"; ObjectID = "da7-vf-c62"; */
 "da7-vf-c62.text" = "Canon Vietnam";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "dee-vk-8e6"; */
-"dee-vk-8e6.text" = "Categories";
+"dee-vk-8e6.text" = "Ngành nghề";
 
 /* Class = "UIButton"; normalTitle = "Chờ duyệt"; ObjectID = "eAG-fa-r5F"; */
 "eAG-fa-r5F.normalTitle" = "Chờ duyệt";
 
 /* Class = "UILabel"; text = "ĐỊa chỉ hiện tại"; ObjectID = "exO-rW-xd9"; */
-"exO-rW-xd9.text" = "Address";
+"exO-rW-xd9.text" = "Địa chỉ";
 
 /* Class = "UILabel"; text = "Đang tuyển"; ObjectID = "f1X-Rp-n1v"; */
 "f1X-Rp-n1v.text" = "Đang tuyển";
 
 /* Class = "UILabel"; text = "Số ứng viên đã gửi"; ObjectID = "fBw-Dq-wi1"; */
-"fBw-Dq-wi1.text" = "Sent";
+"fBw-Dq-wi1.text" = "Số ứng viên đã gửi";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "fJ9-i5-jDi"; */
-"fJ9-i5-jDi.text" = "Location";
+"fJ9-i5-jDi.text" = "Địa điểm";
 
 /* Class = "UILabel"; text = "Hồ Chí Minh"; ObjectID = "fLC-t0-3Vf"; */
 "fLC-t0-3Vf.text" = "Hồ Chí Minh";
 
 /* Class = "UILabel"; text = "Bạn đã có tài khoản?"; ObjectID = "gBB-jR-ohH"; */
-"gBB-jR-ohH.text" = "Have an account already?";
+"gBB-jR-ohH.text" = "Bạn đã có tài khoản?";
 
 /* Class = "UILabel"; text = "FPT Software"; ObjectID = "gYm-oh-JVI"; */
 "gYm-oh-JVI.text" = "FPT Software";
 
 /* Class = "UILabel"; text = "Số ứng viên đã gửi"; ObjectID = "h9K-H5-B21"; */
-"h9K-H5-B21.text" = "Sent";
+"h9K-H5-B21.text" = "Số ứng viên đã gửi";
 
 /* Class = "UILabel"; text = "Thông báo"; ObjectID = "hMt-Ic-yej"; */
 "hMt-Ic-yej.text" = "Thông báo";
 
 /* Class = "UILabel"; text = "Cấp bậc hiện tại"; ObjectID = "hb3-79-9ep"; */
-"hb3-79-9ep.text" = "Current level";
+"hb3-79-9ep.text" = "Cấp bậc hiện tại";
 
 /* Class = "UITextField"; placeholder = "Nhập từ khóa tìm kiếm"; ObjectID = "hiZ-dN-gVU"; */
-"hiZ-dN-gVU.placeholder" = "Job title or keyword";
+"hiZ-dN-gVU.placeholder" = "Nhập từ khóa tìm kiếm";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "hyw-UY-ugD"; */
-"hyw-UY-ugD.normalTitle" = "All location";
+"hyw-UY-ugD.normalTitle" = "Tất cả thành phố";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "j8C-c7-IgN"; */
-"j8C-c7-IgN.text" = "Location";
+"j8C-c7-IgN.text" = "Địa điểm";
 
 /* Class = "UILabel"; text = "Số ứng viên đã Offer"; ObjectID = "j8J-Lr-WoX"; */
-"j8J-Lr-WoX.text" = "Offered";
+"j8J-Lr-WoX.text" = "Số ứng viên đã Offer";
 
 /* Class = "UILabel"; text = "12/09/2018"; ObjectID = "jEo-rf-EFV"; */
 "jEo-rf-EFV.text" = "12/09/2018";
 
 /* Class = "UILabel"; text = "Số ứng viên được mời phỏng vấn"; ObjectID = "jLo-tV-EYo"; */
-"jLo-tV-EYo.text" = "Interviewed";
+"jLo-tV-EYo.text" = "Số ứng viên được mời phỏng vấn";
 
 /* Class = "UILabel"; text = "Hồ Chí Minh"; ObjectID = "kCQ-fY-2lg"; */
 "kCQ-fY-2lg.text" = "Hồ Chí Minh";
@@ -435,64 +435,64 @@
 "lB9-Ht-4li.text" = "Tuyển dụng nhân sự";
 
 /* Class = "UILabel"; text = "Số điện thoại"; ObjectID = "lUK-Ny-nEz"; */
-"lUK-Ny-nEz.text" = "Phone number";
+"lUK-Ny-nEz.text" = "Số điện thoại";
 
 /* Class = "UIButton"; normalTitle = "Mặc định"; ObjectID = "lfo-lO-naq"; */
-"lfo-lO-naq.normalTitle" = "Default";
+"lfo-lO-naq.normalTitle" = "Mặc định";
 
 /* Class = "UILabel"; text = "Kỹ năng khác"; ObjectID = "maN-Xy-0gE"; */
-"maN-Xy-0gE.text" = "Other skills";
+"maN-Xy-0gE.text" = "Kỹ năng khác";
 
 /* Class = "UILabel"; text = "Tiền thưởng"; ObjectID = "mfq-iT-sCx"; */
-"mfq-iT-sCx.text" = "Reward";
+"mfq-iT-sCx.text" = "Tiền thưởng";
 
 /* Class = "UIButton"; normalTitle = "OK"; ObjectID = "mm6-6i-gY8"; */
 "mm6-6i-gY8.normalTitle" = "OK";
 
 /* Class = "UILabel"; text = "Sở thích"; ObjectID = "mr0-ra-no1"; */
-"mr0-ra-no1.text" = "Hobbies";
+"mr0-ra-no1.text" = "Sở thích";
 
 /* Class = "UITextField"; placeholder = "Địa chỉ"; ObjectID = "mvg-4g-Dds"; */
-"mvg-4g-Dds.placeholder" = "Address";
+"mvg-4g-Dds.placeholder" = "Địa chỉ";
 
 /* Class = "UILabel"; text = "Số ứng viên đã phỏng vấn"; ObjectID = "nPw-8l-5Zx"; */
-"nPw-8l-5Zx.text" = "Interviewed";
+"nPw-8l-5Zx.text" = "Số ứng viên đã phỏng vấn";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "ni5-4z-3FH"; */
-"ni5-4z-3FH.text" = "Location";
+"ni5-4z-3FH.text" = "Địa điểm";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "oAm-em-9Ns"; */
 "oAm-em-9Ns.text" = "13";
 
 /* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "oRD-MA-2oV"; */
-"oRD-MA-2oV.normalTitle" = "Register";
+"oRD-MA-2oV.normalTitle" = "ĐĂNG KÝ";
 
 /* Class = "UILabel"; text = "Lê Thị Khuyên"; ObjectID = "oTK-zC-ikI"; */
 "oTK-zC-ikI.text" = "Lê Thị Khuyên";
 
 /* Class = "UILabel"; text = "Hình thức làm việc"; ObjectID = "oVQ-e4-6hY"; */
-"oVQ-e4-6hY.text" = "Working time";
+"oVQ-e4-6hY.text" = "Hình thức làm việc";
 
 /* Class = "UILabel"; text = "Đăng nhập"; ObjectID = "oeJ-D0-ol5"; */
-"oeJ-D0-ol5.text" = "Login";
+"oeJ-D0-ol5.text" = "Đăng nhập";
 
 /* Class = "UILabel"; text = "Cấp quản lý điều hành"; ObjectID = "oeQ-Nd-wEk"; */
 "oeQ-Nd-wEk.text" = "Cấp quản lý điều hành";
 
 /* Class = "UILabel"; text = "Ứng viên của tôi"; ObjectID = "p54-ov-h0I"; */
-"p54-ov-h0I.text" = "My candidates";
+"p54-ov-h0I.text" = "Ứng viên của tôi";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pwP-JB-Nbk"; */
 "pwP-JB-Nbk.normalTitle" = "Button";
 
 /* Class = "UITextField"; placeholder = "Họ và tên"; ObjectID = "q3u-MA-hoQ"; */
-"q3u-MA-hoQ.placeholder" = "Full name";
+"q3u-MA-hoQ.placeholder" = "Họ và tên";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "qMN-hF-dSW"; */
 "qMN-hF-dSW.text" = "Label";
 
 /* Class = "UILabel"; text = "Lựa chọn phương thức"; ObjectID = "re3-5b-3cF"; */
-"re3-5b-3cF.text" = "Choose method";
+"re3-5b-3cF.text" = "Lựa chọn phương thức";
 
 /* Class = "UILabel"; text = "2100 USD"; ObjectID = "sC8-pd-ZeO"; */
 "sC8-pd-ZeO.text" = "2100 USD";
@@ -501,7 +501,7 @@
 "sE0-x7-Dbc.text" = "Không có thông tin";
 
 /* Class = "UILabel"; text = "Tình trạng hôn nhân"; ObjectID = "sIn-5E-EEw"; */
-"sIn-5E-EEw.text" = "Marital status";
+"sIn-5E-EEw.text" = "Tình trạng hôn nhân";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "sJB-xe-vpc"; */
 "sJB-xe-vpc.text" = "13";
@@ -510,13 +510,13 @@
 "sxy-hb-Bij.text" = "1200 USD";
 
 /* Class = "UILabel"; text = "Mô tả công việc"; ObjectID = "tAd-Ra-uOE"; */
-"tAd-Ra-uOE.text" = "Job description";
+"tAd-Ra-uOE.text" = "Mô tả công việc";
 
 /* Class = "UILabel"; text = "IT, Phần mềm"; ObjectID = "tKK-Gp-XG5"; */
 "tKK-Gp-XG5.text" = "IT, Phần mềm";
 
 /* Class = "UILabel"; text = "Mong muốn mức lương tối thiểu"; ObjectID = "tOR-cg-pYW"; */
-"tOR-cg-pYW.text" = "Expected minimum salary";
+"tOR-cg-pYW.text" = "Mong muốn mức lương tối thiểu";
 
 /* Class = "UILabel"; text = "IT, Phần mềm"; ObjectID = "uIt-2f-SN5"; */
 "uIt-2f-SN5.text" = "IT, Phần mềm";
@@ -531,7 +531,7 @@
 "v3x-5a-yZv.normalTitle" = "OK";
 
 /* Class = "UITextField"; placeholder = "Điện thoại"; ObjectID = "v9r-co-4vM"; */
-"v9r-co-4vM.placeholder" = "Phone number";
+"v9r-co-4vM.placeholder" = "Số điện thoại";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "vEW-fi-WO1"; */
 "vEW-fi-WO1.text" = "13";
@@ -549,28 +549,28 @@
 "x9W-8d-rOO.text" = "Lê Thị Khuyên";
 
 /* Class = "UIButton"; normalTitle = "Đăng ký"; ObjectID = "xUN-aP-4Fq"; */
-"xUN-aP-4Fq.normalTitle" = "Register";
+"xUN-aP-4Fq.normalTitle" = "Đăng ký";
 
 /* Class = "UIButton"; normalTitle = "Nộp CV"; ObjectID = "xUn-QP-DrY"; */
-"xUn-QP-DrY.normalTitle" = "Submit resume";
+"xUn-QP-DrY.normalTitle" = "Nộp CV";
 
 /* Class = "UITextField"; placeholder = "Họ và tên"; ObjectID = "xYV-eE-Ila"; */
-"xYV-eE-Ila.placeholder" = "Full name";
+"xYV-eE-Ila.placeholder" = "Họ và tên";
 
 /* Class = "UIButton"; normalTitle = "Nộp CV"; ObjectID = "y7v-TH-rNp"; */
-"y7v-TH-rNp.normalTitle" = "Submit resume";
+"y7v-TH-rNp.normalTitle" = "Nộp CV";
 
 /* Class = "UILabel"; text = "Bạn đã đăng ký tài khoản Cộng tác viên. Chúng tôi sẽ gửi thông tin email và mật khẩu qua hòm thư mà bạn đã đăng ký"; ObjectID = "yI3-ym-zH8"; */
-"yI3-ym-zH8.text" = "You have registered Headhunter account. We will contact you within 24 working hours to confirm.";
+"yI3-ym-zH8.text" = "Bạn đã đăng ký tài khoản Cộng tác viên. Chúng tôi sẽ gửi thông tin email và mật khẩu qua hòm thư mà bạn đã đăng ký";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "yte-a5-P1D"; */
 "yte-a5-P1D.text" = "Label";
 
 /* Class = "UILabel"; text = "Số ứng viên đã Offer"; ObjectID = "zF6-mc-Wzn"; */
-"zF6-mc-Wzn.text" = "Offered";
+"zF6-mc-Wzn.text" = "Số ứng viên đã Offer";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "zdk-jM-ECW"; */
 "zdk-jM-ECW.text" = "Email";
 
 /* Class = "UILabel"; text = "Ngành nghề"; ObjectID = "zxx-sJ-0mv"; */
-"zxx-sJ-0mv.text" = "Categories";
+"zxx-sJ-0mv.text" = "Ngành nghề";

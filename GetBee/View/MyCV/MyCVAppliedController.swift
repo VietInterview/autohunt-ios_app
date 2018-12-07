@@ -79,14 +79,14 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
-        vc.title = "Chi tiết Hồ sơ"
+        vc.title = ""
         vc.cvId = self.cvListSubmit[indexPath.row].id!
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCVTableViewCell", for: indexPath) as! MyCVTableViewCell
         cell.lblName.text = self.listCVSubmit.cvList![indexPath.row].fullName!
-        cell.lblDateUpdate.text = "Ngày nộp: \(DateUtils.shared.convertToShowFormatDate2(dateString: self.listCVSubmit.cvList![indexPath.row].updatedDate!))"
+        cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.shared.convertToShowFormatDate2(dateString: self.listCVSubmit.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCVSubmit.cvList![indexPath.row].careerName!
         cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!) , for: .normal)
         cell.btnStatus.backgroundColor = StringUtils.shared.genColor(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!)
@@ -94,7 +94,7 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPath.row == 0 {
             cell.mQuantityView.isHidden = false
             cell.mQuantityView.visible()
-            cell.lblQuantityView.text = "\(self.listCVSubmit.total!) hồ sơ được tìm thấy"
+            cell.lblQuantityView.text = "\(self.listCVSubmit.total!) \(NSLocalizedString("SuffixesCv", comment: ""))"
         } else {
             cell.mQuantityView.isHidden = true
             cell.mQuantityView.gone()

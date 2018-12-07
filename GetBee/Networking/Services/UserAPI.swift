@@ -80,6 +80,7 @@ class UserAPI {
     let url = collUrl + "/getProfiles"
     APIClient.request(.get, url: url, success: { response, _ in
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
+        UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
       }
     }, failure: { error in
@@ -109,6 +110,7 @@ class UserAPI {
     APIClient.request(.post, url: url, params: parameters, success: { response, headers in
       LoadingOverlay.shared.hideOverlayView()
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
+        UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
       }
     }, failure: { error in

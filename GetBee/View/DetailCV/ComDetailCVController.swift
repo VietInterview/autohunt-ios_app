@@ -6,12 +6,15 @@ Copyright (c) 2018 Vietinterview. All rights reserved.
 
 import UIKit
 import ExpandableCell
-
+protocol SendHeightViewComDetailCV{
+    func sendHeightComDetailCV(height: Int)
+}
 class ComDetailCVController: UIViewController {
     @IBOutlet weak var mComTableView: ExpandableTableView!
-    
     @IBOutlet weak var lblNodata: UILabel!
     
+    @IBOutlet var viewParent: UIView!
+    var delegate:SendHeightViewComDetailCV?
     var detailCV = DetailCV()
     var cell: UITableViewCell {
         return mComTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID)!
@@ -33,6 +36,13 @@ class ComDetailCVController: UIViewController {
         }
         mComTableView.register(UINib(nibName: "ExpandedLanCell", bundle: nil), forCellReuseIdentifier: ExpandedLanCell.ID)
         mComTableView.register(UINib(nibName: "ExpandableLanCell", bundle: nil), forCellReuseIdentifier: ExpandableLanCell.ID)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if let mDelegate = self.delegate {
+            self.mComTableView.layoutIfNeeded()
+            self.mComTableView.setNeedsDisplay()
+            mDelegate.sendHeightComDetailCV(height: Int(self.mComTableView.frame.size.height))
+        }
     }
 }
 
@@ -92,7 +102,7 @@ extension ComDetailCVController: ExpandableDelegate {
         cell.viewHeader.layer.borderColor = UIColor.gray.cgColor
         cell.viewHeader.layer.borderWidth = 1
         cell.viewHeader.layer.mask = rectShape
-        cell.lblTItle.text = "Tin học văn phòng"
+        cell.lblTItle.text = NSLocalizedString("office_information", comment: "")
         return cell
     }
     

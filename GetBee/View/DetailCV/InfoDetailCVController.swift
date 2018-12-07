@@ -6,7 +6,7 @@
 
 import UIKit
 protocol SendHeightViewInfoDetailCV{
-    func sendHeight(height: Int)
+    func sendHeightInfoDetailCV(height: Int)
 }
 class InfoDetailCVController: UIViewController {
     @IBOutlet weak var lblPhone: UILabel!
@@ -24,7 +24,9 @@ class InfoDetailCVController: UIViewController {
     @IBOutlet weak var lblExpYear: UILabel!
     @IBOutlet weak var lblSalary: UILabel!
     @IBOutlet weak var lblTarget: UILabel!
+    @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var heightContentView: NSLayoutConstraint!
     @IBOutlet weak var lblWorkingForm: UILabel!
     var detailCV = DetailCV()
     var delegate:SendHeightViewInfoDetailCV?
@@ -34,17 +36,17 @@ class InfoDetailCVController: UIViewController {
         lblEmail.text = StringUtils.shared.checkEmpty(value: self.detailCV.email)
         if let sex = self.detailCV.sex {
             if self.detailCV.sex! == 1 {
-                lblGender.text = "Nam"
+                lblGender.text = NSLocalizedString("male", comment: "")
             } else  if self.detailCV.sex! == 0{
-                lblGender.text = "Nữ"
+                lblGender.text = NSLocalizedString("female", comment: "")
             } else {
-                lblGender.text = "Khác"
+                lblGender.text = NSLocalizedString("other", comment: "")
             }
         }
         lblAdd.text = StringUtils.shared.checkEmpty(value: self.detailCV.address)
         lblCity.text = StringUtils.shared.checkEmpty(value: self.detailCV.city!.name)
         if let marialStatus = self.detailCV.maritalStatus{
-            lblMarried.text = self.detailCV.maritalStatus! == 1 ? "Chưa kết hôn" : "Đã kết hôn"
+            lblMarried.text = self.detailCV.maritalStatus! == 1 ? NSLocalizedString("have_married", comment: "") : NSLocalizedString("not_have_married", comment: "")
         }
         lblWorkingForm.text = StringUtils.shared.checkEmpty(value: self.detailCV.workingForm!.name)
         lblPositionWish.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredPosition)
@@ -84,8 +86,10 @@ class InfoDetailCVController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         lblTarget.layoutIfNeeded()
         lblTarget.setNeedsLayout()
+        self.heightContentView.constant = self.heightContentView.constant + lblTarget.frame.size.height
+        self.contentView.layoutIfNeeded()
         if let mDelegate = self.delegate {
-            mDelegate.sendHeight(height: Int(lblTarget.frame.size.height))
+            mDelegate.sendHeightInfoDetailCV(height: Int(lblTarget.frame.size.height))
         }
     }
 }

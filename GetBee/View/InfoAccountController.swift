@@ -22,12 +22,12 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
     var viewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
-        self.title = "Thông tin cá nhân"
+        self.title = NSLocalizedString("profile", comment: "")
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
         gestureSwift2AndHigher.delegate = self
         self.lblCarrerHunt.isUserInteractionEnabled = true
-//        self.mViewCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
         self.lblCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
         textfieldFullname.font = UIFont(name: "Nunito-Regular", size: 20)
         textfieldPhone.font = UIFont(name: "Nunito-Regular", size: 20)
@@ -70,7 +70,7 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
         vc.isCity = false
         vc.isCity = false
         vc.isMultiChoice = true
-        vc.title = "Ngành nghề"
+        vc.title = NSLocalizedString("carrer", comment: "")
         vc.delegateMulti = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -80,19 +80,20 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
         vc.isCity = false
         vc.isCity = false
         vc.isMultiChoice = true
-        vc.title = "Ngành nghề"
+        vc.title = NSLocalizedString("carrer", comment: "")
         vc.delegateMulti = self
         navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func changePassTouchup() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordController") as! ChangePasswordController
-        vc.title = "Thay đổi mật khẩu"
+        vc.title = NSLocalizedString("change_pass_tit", comment: "")
         navigationController?.pushViewController(vc,
                                                  animated: true)
     }
     
     @IBAction func saveProfileTouch(_ sender: Any) {
+        view.endEditing(true)
         if self.mychooseMulti.count > 0 {
             self.desideratedCareer.removeAll()
             for i in 0...self.mychooseMulti.count - 1 {
@@ -100,10 +101,10 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
             }
         }
         viewModel.saveMyProfile(fullName: self.textfieldFullname.text!, phone: self.textfieldPhone.text!, address: self.textFieldAdd.text!, carrer: self.textFieldCarrer.text!, arrCaerrerhunt: self.desideratedCareer, success: {user in
-            let toast = Toast(text: "Update success")
+            let toast = Toast(text: NSLocalizedString("update_profile_success", comment: ""))
             toast.show()
         }, failure: {error in
-            let toast = Toast(text: "Update fail")
+            let toast = Toast(text: NSLocalizedString("update_profile_fail", comment: ""))
             toast.show()
         })
     }

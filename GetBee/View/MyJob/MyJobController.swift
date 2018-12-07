@@ -21,11 +21,11 @@ class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, Choos
     @IBOutlet weak var mViewTab: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Công việc của tôi"
+        self.title = NSLocalizedString("my_job", comment: "")
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         mViewCondition.isHidden = true
         mViewCondition.gone()
-        let tabSwipe = CarbonTabSwipeNavigation(items: ["Công việc đã lưu", "Công việc đã ứng tuyển"], delegate: self)
+        let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("job_saved_tit", comment: ""), NSLocalizedString("job_applyed_tit", comment: "")], delegate: self)
         if ScreenUtils.shared.getScreenWidth()! == 414 {
             tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
         } else {
@@ -72,7 +72,7 @@ class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, Choos
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.isCity = true
-        vc.title = "Thành Phố"
+        vc.title = NSLocalizedString("city", comment: "")
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -84,7 +84,7 @@ class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, Choos
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.isCity = false
-        vc.title = "Ngành nghề"
+        vc.title = NSLocalizedString("carrer", comment: "")
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }

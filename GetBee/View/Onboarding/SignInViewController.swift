@@ -60,6 +60,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         UIApplication.shared.statusBarStyle = .default
         if self.isAppAlreadyLaunchedOnce() {
             if let session = SessionManager.currentSession {
+                
+                UserDefaults.standard.set(3, forKey: "position")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
                 
@@ -209,19 +211,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     }
     // MARK: - Actions
     @IBAction func makePhoneCallTouch(_ sender: Any) {
-        "0989421150".makeAColl()
+        "02466629448".makeAColl()
     }
     
     @IBAction func sendEmailTouch(_ sender: Any) {
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
-        
-        // Configure the fields of the interface.
         composeVC.setToRecipients(["getbee@vietinterview.com"])
-        composeVC.setSubject("Message Subject")
-        composeVC.setMessageBody("Message content.", isHTML: false)
-        
-        // Present the view controller modally.
+        composeVC.setSubject("")
+        composeVC.setMessageBody("", isHTML: false)
         self.present(composeVC, animated: true, completion: nil)
     }
     @IBAction func dismissSuccessPopup(_ sender: Any) {
@@ -245,7 +243,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         if self.emailField.text! == ""{
             self.imgNoteUser.isHidden = false
             var placeHolder = NSMutableAttributedString()
-            let Name  = "Bạn vui lòng nhập địa chỉ Email"
+            let Name  = NSLocalizedString("input_email", comment: "")
             placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
@@ -253,7 +251,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         }else if self.passwordField.text! == "" {
             self.imgNotePass.isHidden = false
             var placeHolder = NSMutableAttributedString()
-            let Name  = "Bạn vui lòng nhập mật khẩu"
+            let Name  = NSLocalizedString("input_pass", comment: "")
             placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             passwordField.attributedPlaceholder = placeHolder
@@ -261,6 +259,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
             viewModel.login(success: { [unowned self] in
                 LoadingOverlay.shared.hideOverlayView()
+                UserDefaults.standard.set(3, forKey: "position")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
                 

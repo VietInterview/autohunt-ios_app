@@ -79,7 +79,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobController") as! DetailJobController
         vc.jobId = self.jobList[indexPath.row].id!
-        vc.title = "Chi tiết công việc"
+        vc.title = NSLocalizedString("detail_job", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -108,7 +108,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         if indexPath.row == 0 {
             cell.quantityView.isHidden = false
             cell.quantityView.visible()
-            cell.lblQuantity.text = "\(self.myJobSaved.total!) công việc được tìm thấy"
+            cell.lblQuantity.text = "\(self.myJobSaved.total!) \(NSLocalizedString("SuffixesJob", comment: ""))"
         } else {
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
@@ -149,13 +149,14 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
             self.jobList[sender.view!.tag].collStatus = addRemoveJob.status!
             self.mTableView.reloadData()
             }, failure: {error in
-                print("User Profile Error: " + error)})
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+        })
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0 {
-            return 290.0;
+            return 258.0;
         } else {
-            return 240.0;
+            return 208.0;
         }
     }
     @objc func onNotification(notification:Notification)
