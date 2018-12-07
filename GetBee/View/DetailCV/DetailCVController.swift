@@ -200,7 +200,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             
             
         }, failure: {error in
-            self.showMessage(title: "Thông báo", message: error)
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
         })
     }
     var isUpdate:Bool = false

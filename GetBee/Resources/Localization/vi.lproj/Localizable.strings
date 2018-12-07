@@ -102,3 +102,6 @@
 "qualification"="Loại tốt nghiệp";
 "profile"="Thông tin cá nhân";
 "no_cv_upload"="Bạn chưa có hồ sơ ứng viên. Hãy nhanh tay tạo Hồ sơ ứng viên để kiếm thêm thu nhập";
+"update_profile_success"="Cập nhật thành công";
+"update_profile_fail"="Cập nhật không thành công";
+"error_please_try"="Đã có lỗi xảy ra, xin thử lại sau.";

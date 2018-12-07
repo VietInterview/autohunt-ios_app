@@ -56,6 +56,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             
             self.mTableView.reloadData()
         }, failure: {error in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             if #available(iOS 10.0, *) {
                 self.mTableView.refreshControl?.endRefreshing()
             }else {
@@ -134,9 +135,9 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0 {
-            return 290.0;
+            return 262.0;
         } else {
-            return 240.0;
+            return 212.0;
         }
     }
     @objc func onNotification(notification:Notification)

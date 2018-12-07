@@ -8,12 +8,34 @@
 
 import Foundation
 import UIKit
+import Toaster
 
 extension UIViewController {
   // MARK: - Message Error
   func showMessage(title: String, message: String, handler: ((_ action: UIAlertAction) -> Void)? = nil) {
     let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: handler))
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: handler))
     present(alert, animated: true, completion: nil)
+  }
+  func showToast(title:String){
+    let toast = Toast(text: title)
+    toast.show()
+  }
+  func showHideView(view:UIView, isHidden:Bool){
+    view.isHidden = isHidden
+    if isHidden {
+      view.gone()
+    } else {
+      view.visible()
+    }
+  }
+  func hideKeyboardWhenTappedAround() {
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+  
+  @objc func dismissKeyboard() {
+    view.endEditing(true)
   }
 }

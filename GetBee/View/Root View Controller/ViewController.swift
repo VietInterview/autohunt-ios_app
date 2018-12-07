@@ -31,16 +31,15 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
+        self.hideKeyboardWhenTappedAround()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 139, height: 39))
         imageView.contentMode = .scaleAspectFit
         let logo = UIImage(named: "Logo.png")
         imageView.image = logo
         self.navigationItem.titleView = imageView
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
-        searchView.isHidden=true
-        searchView.gone()
-        conditionView.isHidden=true
-        conditionView.gone()
+        self.showHideView(view: searchView, isHidden: true)
+        self.showHideView(view: conditionView, isHidden: true)
         refreshControl.addTarget(self, action:  #selector(sortArray), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.tableViewJob.refreshControl = refreshControl
@@ -76,7 +75,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
                 }else {
                     self.tableViewJob.willRemoveSubview(self.refreshControl)
                 }
-                print("User Profile Error: " + error)
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
         })
     }
     @objc func sortArray() {
@@ -85,8 +84,13 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     override func viewDidAppear(_ animated: Bool) {
         self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: self.textFieldSearch.text!)
+        
     }
-    
+    override func viewDidLayoutSubviews() {
+        if let cell = self.mCell {
+            cell.labelJob.sizeToFit()
+        }
+    }
     @IBAction func goToCarrerOrCity() {
         self.isCarrer = true
         self.isStatus = false
@@ -177,7 +181,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         vc.title = NSLocalizedString("detail_job", comment: "")
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    var mCell:JobTableViewCell?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobitemcell", for: indexPath) as! JobTableViewCell
         cell.labelJob.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].jobTitle)
@@ -203,35 +207,21 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         if indexPath.row == 0 {
             cell.quantityView.isHidden = false
             cell.quantityView.visible()
-            let suffixesJob = NSLocalizedString("SuffixesJob", comment: "")
-            cell.lblQuantity.text = "\(self.job.total!) \(suffixesJob)"
+            cell.lblQuantity.text = "\(self.job.total!) \(NSLocalizedString("SuffixesJob", comment: ""))"
         } else {
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
         }
         if let imgUrl = self.jobList[indexPath.row].companyImg{
-        Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
-            if let image = response.result.value {
-                cell.imgCompany.layer.masksToBounds = true
-                cell.imgCompany.image = image
-            }
-        }
+            cell.imgCompany.showImage(imgUrl: imgUrl)
         }else {
-            cell.imgCompany.layer.masksToBounds = true
-            cell.imgCompany.image = UIImage(named: "job_null")
+            cell.imgCompany.showImage(img: UIImage(named: "job_null")!, maskToBounds:true)
         }
-        cell.viewContentCell.layer.shadowColor = UIColor.gray.cgColor
-        cell.viewContentCell.layer.shadowOpacity = 0.3
-        cell.viewContentCell.layer.shadowOffset = CGSize.zero
-        cell.viewContentCell.layer.shadowRadius = 6
-        cell.imgCompany.layer.masksToBounds = true
-        cell.imgCompany.layer.borderWidth = 0.5
-        cell.imgCompany.layer.cornerRadius = 5
-        cell.imgCompany.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#979797").cgColor
-        cell.imgCompany.layer.shadowColor = UIColor.gray.cgColor
-        cell.imgCompany.layer.shadowOpacity = 0.7
-        cell.imgCompany.layer.shadowOffset = CGSize.zero
-        cell.imgCompany.layer.shadowRadius = 6
+        cell.viewContentCell.shadowView()
+        cell.imgCompany.addRadius()
+        cell.imgCompany.addBorder(color:  StringUtils.shared.hexStringToUIColor(hex: "#979797"), weight: 1.0)
+        cell.imgCompany.shadowView()
+        self.mCell = cell
         return cell
     }
     
@@ -254,18 +244,9 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0{
-            return 245;
+            return 270;
         } else {
-            return 200
-        }
-    }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-            //            quantityView.isHidden = false
-            //            quantityView.visible()
-        } else {
-            //            quantityView.gone()
-            //            quantityView.isHidden = true
+            return 225
         }
     }
 }

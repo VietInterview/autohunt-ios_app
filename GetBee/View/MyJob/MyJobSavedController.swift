@@ -149,13 +149,14 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
             self.jobList[sender.view!.tag].collStatus = addRemoveJob.status!
             self.mTableView.reloadData()
             }, failure: {error in
-                print("User Profile Error: " + error)})
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+        })
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0 {
-            return 290.0;
+            return 258.0;
         } else {
-            return 240.0;
+            return 208.0;
         }
     }
     @objc func onNotification(notification:Notification)

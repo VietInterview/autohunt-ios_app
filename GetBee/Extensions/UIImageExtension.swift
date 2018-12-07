@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import AlamofireImage
 
-extension UIImage {
+extension UIImageView {
   
   class func random(size: CGSize = CGSize(width: 100, height: 100)) -> UIImage {
     let rr = CGFloat(arc4random_uniform(255))
@@ -25,4 +27,16 @@ extension UIImage {
     UIGraphicsEndImageContext()
     return image!
   }
+    func showImage(imgUrl:String){
+        Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: imgUrl))").responseImage { response in
+            if let image = response.result.value {
+                self.layer.masksToBounds = true
+                self.image = image
+            }
+        }
+    }
+    func showImage(img:UIImage, maskToBounds:Bool){
+        self.layer.masksToBounds = maskToBounds
+         self.image = img
+    }
 }

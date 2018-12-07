@@ -108,7 +108,7 @@
 "Al8-jz-oef.text" = "Notification";
 
 /* Class = "UIButton"; normalTitle = "Tất cả ngành nghề"; ObjectID = "B0r-9I-ZoG"; */
-"B0r-9I-ZoG.normalTitle" = "Tất cả ngành nghề";
+"B0r-9I-ZoG.normalTitle" = "All job categories";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "BV1-Q5-MI1"; */
 "BV1-Q5-MI1.text" = "13";
@@ -168,7 +168,7 @@
 "IPZ-KE-nUd.placeholder" = "Categories";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "IQb-xQ-Ypc"; */
-"IQb-xQ-Ypc.normalTitle" = "Tất cả thành phố";
+"IQb-xQ-Ypc.normalTitle" = "All location";
 
 /* Class = "UILabel"; text = "Tiền thưởng"; ObjectID = "IRm-Pm-49F"; */
 "IRm-Pm-49F.text" = "Reward";
@@ -189,7 +189,7 @@
 "J2Y-il-Tdn.text" = "Categories";
 
 /* Class = "UIButton"; normalTitle = "Tất cả ngành nghề"; ObjectID = "JGy-DS-Qmr"; */
-"JGy-DS-Qmr.normalTitle" = "Tất cả ngành nghề";
+"JGy-DS-Qmr.normalTitle" = "All job categories";
 
 /* Class = "UILabel"; text = "Trạng thái"; ObjectID = "Jto-fA-kEf"; */
 "Jto-fA-kEf.text" = "Status";
@@ -207,7 +207,7 @@
 "KNx-1H-WaX.placeholder" = "Categories";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "Kh8-jN-kzv"; */
-"Kh8-jN-kzv.normalTitle" = "Tất cả thành phố";
+"Kh8-jN-kzv.normalTitle" = "All location";
 
 /* Class = "UILabel"; text = "FPT Software"; ObjectID = "Koc-1X-6aN"; */
 "Koc-1X-6aN.text" = "FPT Software";
@@ -252,7 +252,7 @@
 "PAd-fg-6m9.text" = "Gender";
 
 /* Class = "UIButton"; normalTitle = "Tất cả ngành nghề"; ObjectID = "PXc-zd-trr"; */
-"PXc-zd-trr.normalTitle" = "Tất cả ngành nghề";
+"PXc-zd-trr.normalTitle" = "All job categories";
 
 /* Class = "UILabel"; text = "Senior C/C++"; ObjectID = "Pwk-FT-Lg1"; */
 "Pwk-FT-Lg1.text" = "Senior C/C++";
@@ -411,7 +411,7 @@
 "hiZ-dN-gVU.placeholder" = "Job title or keyword";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "hyw-UY-ugD"; */
-"hyw-UY-ugD.normalTitle" = "Tất cả thành phố";
+"hyw-UY-ugD.normalTitle" = "All location";
 
 /* Class = "UILabel"; text = "Địa điểm"; ObjectID = "j8C-c7-IgN"; */
 "j8C-c7-IgN.text" = "Location";
@@ -438,7 +438,7 @@
 "lUK-Ny-nEz.text" = "Phone number";
 
 /* Class = "UIButton"; normalTitle = "Mặc định"; ObjectID = "lfo-lO-naq"; */
-"lfo-lO-naq.normalTitle" = "Mặc định";
+"lfo-lO-naq.normalTitle" = "Default";
 
 /* Class = "UILabel"; text = "Kỹ năng khác"; ObjectID = "maN-Xy-0gE"; */
 "maN-Xy-0gE.text" = "Other skills";

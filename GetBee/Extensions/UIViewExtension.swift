@@ -16,10 +16,19 @@ extension UIView {
     layer.borderColor = color.cgColor
     layer.borderWidth = weight
   }
-  
+  func addRadius( weight: CGFloat = 5){
+    layer.masksToBounds = true
+    layer.cornerRadius = weight
+  }
   func setRoundBorders(_ cornerRadius: CGFloat = 10.0) {
     clipsToBounds = true
     layer.cornerRadius = cornerRadius
+  }
+  func shadowView(opacity:Float = 0.7, radius: CGFloat = 6){
+    layer.shadowColor = UIColor.gray.cgColor
+    layer.shadowOpacity = opacity
+    layer.shadowOffset = CGSize.zero
+    layer.shadowRadius = radius
   }
 }
 

@@ -46,8 +46,7 @@ class ChangePasswordController: UIViewController {
         let oldpass = self.textFieldOldPass.text!
         let retypepass = self.textFieldRetypePass.text!
         if oldpass.count < 6 || newpass.count < 6 || retypepass.count < 6{
-            let toast = Toast(text: NSLocalizedString("min_6_character", comment: ""))
-            toast.show()
+            self.showToast(title: NSLocalizedString("min_6_character", comment: ""))
         } else if oldpass == newpass {
             let toast = Toast(text: NSLocalizedString("compare_old_new_pass", comment: ""))
             toast.show()
@@ -59,6 +58,7 @@ class ChangePasswordController: UIViewController {
         }
     }
     func changePassword(){
+        view.endEditing(true)
         self.homeViewModel.changePassword(currentPass: self.textFieldOldPass.text!, newPass: self.textFieldNewPass.text!, success: {[unowned self]  in
             
             }, failure: {error, statusCode in

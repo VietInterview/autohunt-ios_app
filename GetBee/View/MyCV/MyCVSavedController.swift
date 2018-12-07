@@ -67,7 +67,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
-            
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             if #available(iOS 10.0, *) {
                 self.mCVSavedTableView.refreshControl?.endRefreshing()
             }else {
@@ -99,7 +99,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
-            
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             if #available(iOS 10.0, *) {
                 self.mCVSavedTableView.refreshControl?.endRefreshing()
             }

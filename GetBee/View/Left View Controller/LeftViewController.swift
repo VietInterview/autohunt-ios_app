@@ -8,24 +8,17 @@ import GoneVisible
 class LeftViewController: UITableViewController {
     
     var viewModel = HomeViewModel()
-    private var titlesArray = ["",
-                               "Xin chào, Tùng!",
-                               "",
+    private var titlesArray = ["", "Xin chào, Tùng!", "",
                                NSLocalizedString("home", comment: ""),
                                NSLocalizedString("my_job", comment: ""),
                                NSLocalizedString("mycv", comment: ""),
-                               NSLocalizedString("info_acc", comment: ""),
-                               "",
-                               "",
-                               "",
-                               "",
+                               NSLocalizedString("info_acc", comment: ""),  "",  "", "",  "",
                                NSLocalizedString("logout", comment: ""),]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        debugLog(object: "position \(self.mPosition)")
-        viewModel.loadUserProfile(success: { userProfile in
-            if let fullname = userProfile.fullNameColl {
+        if let currentUser = UserDataManager.currentUser {
+            if let fullname = currentUser.fullNameColl {
                 if fullname.count <= 4 {
                     self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
                 } else {
@@ -36,9 +29,22 @@ class LeftViewController: UITableViewController {
                 self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) "
                 self.tableView.reloadData()
             }
-        }, failure: { error in
-            print("User Profile Error: " + error)
-        })
+        } else {
+            viewModel.loadUserProfile(success: { userProfile in
+                if let fullname = userProfile.fullNameColl {
+                    if fullname.count <= 4 {
+                        self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
+                    } else {
+                        self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
+                    }
+                    self.tableView.reloadData()
+                } else {
+                    self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) "
+                    self.tableView.reloadData()
+                }
+            }, failure: { error in
+            })
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
     }
@@ -66,7 +72,7 @@ class LeftViewController: UITableViewController {
             cell.icon.isHidden = true
             //            cell.icon.gone()
             cell.bageLabel.isHidden = true
-            cell.titleLabel.font = cell.titleLabel.font.withSize(30)
+            cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.shared.getScreenWidth() == 414 ? 30 : 28)
             cell.titleLabel.frame = CGRect(x: 0, y: 8, width:220, height: 60)
         }
         if indexPath.row == (titlesArray.count - 1){

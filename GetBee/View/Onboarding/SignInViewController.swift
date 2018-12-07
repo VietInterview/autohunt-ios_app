@@ -211,19 +211,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     }
     // MARK: - Actions
     @IBAction func makePhoneCallTouch(_ sender: Any) {
-        "0989421150".makeAColl()
+        "02466629448".makeAColl()
     }
     
     @IBAction func sendEmailTouch(_ sender: Any) {
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
-        
-        // Configure the fields of the interface.
         composeVC.setToRecipients(["getbee@vietinterview.com"])
-        composeVC.setSubject("Message Subject")
-        composeVC.setMessageBody("Message content.", isHTML: false)
-        
-        // Present the view controller modally.
+        composeVC.setSubject("")
+        composeVC.setMessageBody("", isHTML: false)
         self.present(composeVC, animated: true, completion: nil)
     }
     @IBAction func dismissSuccessPopup(_ sender: Any) {

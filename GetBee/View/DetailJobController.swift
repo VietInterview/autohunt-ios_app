@@ -220,7 +220,8 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             }
             self.jobDetail.collStatus = addRemoveJob.status!
             }, failure: {error in
-                print("User Profile Error: " + error)})
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+        })
     }
     
 }

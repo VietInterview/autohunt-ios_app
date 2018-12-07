@@ -102,3 +102,6 @@
 "qualification"="Qualification";
 "profile"="Profile";
 "no_cv_upload"="You haven't got any resume. Let's create new resume to earn more money.";
+"update_profile_success"="Update success";
+"update_profile_fail"="Update fail";
+"error_please_try"="Đã có lỗi xảy ra, xin thử lại sau.";

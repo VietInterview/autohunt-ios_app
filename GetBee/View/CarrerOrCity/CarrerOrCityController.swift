@@ -79,6 +79,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
                 self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             })
         } else if self.isStatus == true {
             self.viewModel.items.removeAll()
@@ -106,6 +107,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
                 self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             })
         }
         tableView?.delegate = filterData

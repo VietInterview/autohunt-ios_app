@@ -63,6 +63,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
             self.cvListServer = myCV.cvList!
             self.mTableView.reloadData()
         }, failure: {error in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             if #available(iOS 10.0, *) {
                 self.mTableView.refreshControl?.endRefreshing()
             }else {

@@ -10,10 +10,10 @@ import UIKit
 
 class UserDataManager: NSObject {
   
-  static var currentUser: User? {
+  static var currentUser: GetMyProfile? {
     get {
       let defaults = UserDefaults.standard
-      if let data = defaults.data(forKey: "ios-base-user"), let user = try? JSONDecoder().decode(User.self, from: data) {
+      if let data = defaults.data(forKey: "getbee-user"), let user = try? JSONDecoder().decode(GetMyProfile.self, from: data) {
         return user
       }
       return nil
@@ -21,12 +21,12 @@ class UserDataManager: NSObject {
     
     set {
       let user = try? JSONEncoder().encode(newValue)
-      UserDefaults.standard.set(user, forKey: "ios-base-user")
+      UserDefaults.standard.set(user, forKey: "getbee-user")
     }
   }
   
   class func deleteUser() {
-    UserDefaults.standard.removeObject(forKey: "ios-base-user")
+    UserDefaults.standard.removeObject(forKey: "getbee-user")
   }
   
   static var isUserLogged: Bool {

@@ -22,6 +22,7 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
     var viewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.title = NSLocalizedString("profile", comment: "")
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
@@ -92,6 +93,7 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
     }
     
     @IBAction func saveProfileTouch(_ sender: Any) {
+        view.endEditing(true)
         if self.mychooseMulti.count > 0 {
             self.desideratedCareer.removeAll()
             for i in 0...self.mychooseMulti.count - 1 {
@@ -99,11 +101,11 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
             }
         }
         viewModel.saveMyProfile(fullName: self.textfieldFullname.text!, phone: self.textfieldPhone.text!, address: self.textFieldAdd.text!, carrer: self.textFieldCarrer.text!, arrCaerrerhunt: self.desideratedCareer, success: {user in
-//            let toast = Toast(text: "Update success")
-//            toast.show()
+            let toast = Toast(text: NSLocalizedString("update_profile_success", comment: ""))
+            toast.show()
         }, failure: {error in
-//            let toast = Toast(text: "Update fail")
-//            toast.show()
+            let toast = Toast(text: NSLocalizedString("update_profile_fail", comment: ""))
+            toast.show()
         })
     }
     var mychooseMulti = [MyChoose]()
