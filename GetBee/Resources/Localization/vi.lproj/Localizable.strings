@@ -105,3 +105,5 @@
 "update_profile_success"="Cập nhật thành công";
 "update_profile_fail"="Cập nhật không thành công";
 "error_please_try"="Đã có lỗi xảy ra, xin thử lại sau.";
+"login"="Đăng nhập";
+"nodata"="Không có thông tin";

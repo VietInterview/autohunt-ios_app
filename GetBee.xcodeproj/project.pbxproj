@@ -76,6 +76,7 @@
 		7AC6DA7F21A2782C00BD5C10 /* MyCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA7E21A2782C00BD5C10 /* MyCVController.swift */; };
 		7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA8021A2784900BD5C10 /* MyCVSavedController.swift */; };
 		7AC6DA8321A2785B00BD5C10 /* MyCVAppliedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA8221A2785B00BD5C10 /* MyCVAppliedController.swift */; };
+		7ADF392021BA1C1C00E962EA /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF391F21BA1C1C00E962EA /* Env.swift */; };
 		7ADFA16221A291A0001492F0 /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16121A291A0001492F0 /* ScreenUtils.swift */; };
 		7ADFA16521A2B41F001492F0 /* MyJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16421A2B41F001492F0 /* MyJobController.swift */; };
 		7ADFA16721A2B49B001492F0 /* MyJobSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */; };
@@ -217,6 +218,7 @@
 		7AC6DA7E21A2782C00BD5C10 /* MyCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVController.swift; sourceTree = "<group>"; };
 		7AC6DA8021A2784900BD5C10 /* MyCVSavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVSavedController.swift; sourceTree = "<group>"; };
 		7AC6DA8221A2785B00BD5C10 /* MyCVAppliedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVAppliedController.swift; sourceTree = "<group>"; };
+		7ADF391F21BA1C1C00E962EA /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		7ADFA16121A291A0001492F0 /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
 		7ADFA16421A2B41F001492F0 /* MyJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobController.swift; sourceTree = "<group>"; };
 		7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobSavedController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,17 @@
 				7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		7A1D0BCD21BB283000262D94 /* DetailJob */ = {
+			isa = PBXGroup;
+			children = (
+				7A06ADA0217456AF00E3CDAA /* DetailJobController.swift */,
+				7A0C133321749001000AC5F2 /* StatisticalController.swift */,
+				7A0C133121748F90000AC5F2 /* InfoController.swift */,
+				7A772992219A89F600A0CB97 /* CVSend */,
+			);
+			path = DetailJob;
 			sourceTree = "<group>";
 		};
 		7A2EA49421A0EDFF00E61681 /* ExpandableViewCell */ = {
@@ -533,12 +546,12 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A1D0BCD21BB283000262D94 /* DetailJob */,
 				7A955E2121A800FB00D402D4 /* Intro */,
 				7ADFA16321A2B408001492F0 /* MyJob */,
 				7AC6DA7D21A2781600BD5C10 /* MyCV */,
 				7A882CC0219EC01A009A2518 /* DetailCV */,
 				7AA70216219CFBBB00566F43 /* ChooseCVSubmit */,
-				7A772992219A89F600A0CB97 /* CVSend */,
 				7A06AD9A2174264A00E3CDAA /* CarrerOrCity */,
 				7A99AA5E21719B3600E3B0DC /* Root View Controller */,
 				7A99AA5921719A7B00E3B0DC /* Left View Controller */,
@@ -547,9 +560,6 @@
 				E8290BFB1D832D4100599960 /* CustomControls */,
 				7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */,
 				7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */,
-				7A06ADA0217456AF00E3CDAA /* DetailJobController.swift */,
-				7A0C133121748F90000AC5F2 /* InfoController.swift */,
-				7A0C133321749001000AC5F2 /* StatisticalController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -631,6 +641,7 @@
 				7A772990219A69CE00A0CB97 /* StringUtils.swift */,
 				7ADFA16121A291A0001492F0 /* ScreenUtils.swift */,
 				7A78E35221A53433007BA69C /* SwiftLog.swift */,
+				7ADF391F21BA1C1C00E962EA /* Env.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -940,6 +951,7 @@
 				7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */,
 				7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */,
 				7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */,
+				7ADF392021BA1C1C00E962EA /* Env.swift in Sources */,
 				7A955E1E21A7E78A00D402D4 /* IntroController.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
 				7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */,
@@ -1194,6 +1206,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbeevn;
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
@@ -1222,6 +1235,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vietinterview.getbeevn;
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";

@@ -96,16 +96,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.imgEmail.image = textField == textFieldEmail.self ? UIImage(named: "mail_focus") : UIImage(named: "mail")
         self.imgPhone.image = textField == textFieldPhone.self ? UIImage(named: "phone_focus") : UIImage(named: "phone")
         
-        mViewEmail.layer.borderColor = textField == textFieldFullname.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
-        mViewPassword.layer.borderColor = textField == textFieldEmail.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
-        mViewConfirmPass.layer.borderColor = textField == textFieldPhone.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        mViewEmail.layer.borderColor = textField == textFieldFullname.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
+        mViewPassword.layer.borderColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
+        mViewConfirmPass.layer.borderColor = textField == textFieldPhone.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
         
-        verticalUser.layer.backgroundColor = textField == textFieldFullname.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
-        verticalEmail.layer.backgroundColor = textField == textFieldEmail.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
-        verticalPhone.layer.backgroundColor = textField == textFieldPhone.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        verticalUser.layer.backgroundColor = textField == textFieldFullname.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
+        verticalEmail.layer.backgroundColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
+        verticalPhone.layer.backgroundColor = textField == textFieldPhone.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
         
-        jobTextField.layer.borderColor = textField == jobTextField.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
-        addTextField.layer.borderColor = textField == addTextField.self ? UIColor.yellow.cgColor : UIColor.black.cgColor
+        jobTextField.layer.borderColor = textField == jobTextField.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
+        addTextField.layer.borderColor = textField == addTextField.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : UIColor.black.cgColor
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

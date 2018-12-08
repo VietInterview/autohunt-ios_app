@@ -111,12 +111,9 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
     }
     var isUpdate:Bool = false
     func sendHeight(height: Int) {
-        if isUpdate {
-            
-        } else {
+        if isUpdate == false{
             isUpdate = true
-            //            self.spaceBottom.constant = self.spaceBottom.constant + CGFloat(height)
-            self.heightContent.constant = self.heightContent.constant + CGFloat(height)
+            self.heightContent.constant = 265 + CGFloat(height)
             self.mViewContent.layoutIfNeeded()
         }
     }
@@ -137,7 +134,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
                 vc.status = NSLocalizedString("closed", comment: "")
             }
             vc.salaryCandidate = "\(StringUtils.shared.currencyFormat(value: self.jobDetail.fromSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!)) -  \(StringUtils.shared.currencyFormat(value: self.jobDetail.toSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
-            vc.collaboratorsReward = "\(StringUtils.shared.currencyFormat(value:self.jobDetail.fee!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
+            vc.collaboratorsReward = "\(StringUtils.shared.currencyFormat(value:self.jobDetail.fee!)) VND"
             vc.quantityCVSend = "\(self.jobDetail.countCv!)"
             vc.quantityHiring = "\(self.jobDetail.quantity!)"
             vc.jobDescription = StringUtils.shared.stringFromHtml(string: self.jobDetail.jobDescription!)!
@@ -171,12 +168,6 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
         vc.jobDetail = self.jobDetail
         vc.title = NSLocalizedString("choice_cv", comment: "")
         self.navigationController?.pushViewController(vc, animated: true)
-        //        homeViewModel.getMyCVSubmit(carrerId: 0, cityId: 0, page: 0, success: {myCV in
-        //
-        //
-        //        }, failure: {error in
-        //
-        //        })
     }
     
     @IBAction func saveUnSaveJobTouch() {

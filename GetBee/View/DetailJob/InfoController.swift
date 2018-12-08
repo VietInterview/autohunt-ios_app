@@ -98,7 +98,7 @@ class InfoController: UIViewController {
         self.lblRequireJob.setNeedsLayout()
         self.lblRequireJob.layoutIfNeeded()
         if let delegateSendHeight = self.delegate {
-            delegateSendHeight.sendHeight(height: Int(self.lblJobDescription.frame.size.height + self.lblRequireJob.frame.size.height + 450))
+            delegateSendHeight.sendHeight(height: Int(self.lblJobDescription.frame.size.height + self.lblRequireJob.frame.size.height + 500))
         }
     }
 }

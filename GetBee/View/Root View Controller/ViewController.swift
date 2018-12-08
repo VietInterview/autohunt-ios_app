@@ -17,6 +17,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var btnChooseCarrer: UIButton!
     @IBOutlet weak var btnChooseCity: UIButton!
+    
     var job = Job()
     var isSearch = false
     var isFilter = false
@@ -45,10 +46,12 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             self.tableViewJob.refreshControl = refreshControl
         }
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        tableViewJob.rowHeight = UITableViewAutomaticDimension
+        tableViewJob.estimatedRowHeight = UITableViewAutomaticDimension
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         self.page = 0
-        self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: textField.text!)
+        self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: "\(textField.text!)")
     }
     func searchJob(carrerId: Int, cityId: Int, jobtitle: String){
         self.viewModel.getSearchJob(carrerId: carrerId, cityId: cityId, jobTitle: jobtitle,  page: self.page, success:  { [unowned self] job in
@@ -83,6 +86,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         self.searchJob(carrerId: self.carrerId, cityId: self.cityId, jobtitle: self.textFieldSearch.text!)
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.page = 0
         self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: self.textFieldSearch.text!)
         
     }
@@ -137,6 +141,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             }
             isSearch=true
         } else {
+            btnFilter.setImage(UIImage(named: "filter_gray.png"), for: .normal)
             btnactionSearch.image = UIImage(named: "search.png")
             searchView.isHidden=true
             searchView.gone()
@@ -188,7 +193,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
         cell.labelCarrer.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].careerName)
         cell.labelCityList.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].listcityName)
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) \(StringUtils.shared.genStringCurrency(value: self.jobList[indexPath.row].currency!))"
+        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) VND"
         cell.labelDeadlineDate.text = DateUtils.shared.UTCToLocal(date: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
@@ -213,7 +218,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             cell.quantityView.gone()
         }
         if let imgUrl = self.jobList[indexPath.row].companyImg{
-            cell.imgCompany.showImage(imgUrl: imgUrl)
+            cell.imgCompany.showImage(imgUrl: imgUrl, imageNullName:"job_null")
         }else {
             cell.imgCompany.showImage(img: UIImage(named: "job_null")!, maskToBounds:true)
         }
@@ -243,11 +248,12 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        if indexPath.row == 0{
-            return 270;
-        } else {
-            return 225
-        }
+         return UITableViewAutomaticDimension
+//        if indexPath.row == 0{
+//            return 270;
+//        } else {
+//            return 230
+//        }
     }
 }
 extension UIView {
