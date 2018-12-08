@@ -27,11 +27,14 @@ extension UIImageView {
     UIGraphicsEndImageContext()
     return image!
   }
-    func showImage(imgUrl:String){
+    func showImage(imgUrl:String, imageNullName:String){
         Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: imgUrl))").responseImage { response in
             if let image = response.result.value {
                 self.layer.masksToBounds = true
                 self.image = image
+            }else {
+                self.layer.masksToBounds = true
+                self.image = UIImage(named: imageNullName)
             }
         }
     }

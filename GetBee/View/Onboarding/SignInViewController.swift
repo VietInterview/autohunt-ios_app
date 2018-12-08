@@ -13,6 +13,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     
     // MARK: - Outlets
     
+    @IBOutlet weak var lblLogin: UILabel!
     @IBOutlet weak var verticalPass: UIView!
     @IBOutlet weak var verticalUser: UIView!
     
@@ -93,6 +94,38 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         
         emailField.delegate = self
         passwordField.delegate = self
+        
+          let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        lblLogin.isUserInteractionEnabled=true
+        lblLogin.addGestureRecognizer(gestureSwift2AndHigher2)
+        
+        if Env.isProduction() == true {
+            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#000000")
+        } else {
+            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
+        }
+    }
+    var dem: Int = 0
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        if dem < 7 {
+            dem = dem + 1
+            App.setBaseUrl()
+            Env.setProductionTrue()
+            debugLog(object: Env.isProduction())
+            debugLog(object: App.baseUrl)
+            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#000000")
+        }else{
+            dem = dem - 1
+            Env.setProductionFalse()
+            App.setBaseUrlDev()
+            debugLog(object: Env.isProduction())
+            debugLog(object: App.baseUrl)
+            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
+        }
     }
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
         imgNoteUser.isHidden = true
@@ -106,8 +139,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             imgPass.image = UIImage(named: "pass")
             
             mViewUser.layer.borderWidth = 0.5
-            mViewUser.layer.borderColor = UIColor.yellow.cgColor
-            verticalUser.layer.backgroundColor = UIColor.yellow.cgColor
+            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
+            verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             mViewPassword.layer.borderWidth = 0.5
             mViewPassword.layer.borderColor = UIColor.black.cgColor
             verticalPass.layer.backgroundColor = UIColor.black.cgColor
@@ -117,8 +150,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             mViewUser.layer.borderWidth = 0.5
             mViewUser.layer.borderColor = UIColor.black.cgColor
             mViewPassword.layer.borderWidth = 0.5
-            mViewPassword.layer.borderColor = UIColor.yellow.cgColor
-            verticalPass.layer.backgroundColor = UIColor.yellow.cgColor
+            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
+            verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = UIColor.black.cgColor
         }
     }

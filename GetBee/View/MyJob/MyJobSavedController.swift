@@ -35,6 +35,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         self.searchSavedJobs(carrerId: self.carrerId,cityId: self.cityId,jobTitle: "",page: self.page)
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.page = 0
         self.searchSavedJobs(carrerId: self.carrerId,cityId: self.cityId,jobTitle: "",page: self.page)
     }
     func searchSavedJobs(carrerId:Int, cityId: Int, jobTitle: String, page: Int){
@@ -89,7 +90,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
         cell.labelCarrer.text = self.jobList[indexPath.row].careerName!
         cell.labelCityList.text = self.jobList[indexPath.row].listcityName!
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value:  self.jobList[indexPath.row].fee!)) \(StringUtils.shared.genStringCurrency(value: self.jobList[indexPath.row].currency!))"
+        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value:  self.jobList[indexPath.row].fee!)) VND"
         cell.labelDeadlineDate.text = DateUtils.shared.convertToShowFormatDate(dateString: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image

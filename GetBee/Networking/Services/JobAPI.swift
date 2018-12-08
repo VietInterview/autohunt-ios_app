@@ -13,7 +13,12 @@ class JobAPI {
     class func getSearchJob(carrerId: Int, jobTitle: String, cityId: Int, page: Int,_ success: @escaping (_ job: Job) -> Void, failure: @escaping (_ error: Error) -> Void) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         let url = collUrl + "/searchJob?careerId=\(carrerId)&jobtile=\(jobTitle)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
-        APIClient.request(.get, url: url, success: { response, _ in
+        guard let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
+            //Invalid URL
+            debugLog(object: url)
+            return
+        }
+        APIClient.request(.get, url: encodedURL, success: { response, _ in
             LoadingOverlay.shared.hideOverlayView()
             if let job = try? JSONDecoder().decode(Job.self, from: response){
                 success(job)

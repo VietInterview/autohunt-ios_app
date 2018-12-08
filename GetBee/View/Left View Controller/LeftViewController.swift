@@ -20,26 +20,28 @@ class LeftViewController: UITableViewController {
         if let currentUser = UserDataManager.currentUser {
             if let fullname = currentUser.fullNameColl {
                 if fullname.count <= 4 {
-                    self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
+                    self.titlesArray[1] = "  \(NSLocalizedString("greeting", comment: "")) \(fullname)!"
                 } else {
-                    self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
+                    self.titlesArray[1] = "  \(NSLocalizedString("greeting", comment: ""))"
+                    self.titlesArray[2] = "  \(fullname)!"
                 }
                 self.tableView.reloadData()
             } else {
-                self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) "
+                self.titlesArray[1] = "  \(NSLocalizedString("greeting", comment: "")) "
                 self.tableView.reloadData()
             }
         } else {
             viewModel.loadUserProfile(success: { userProfile in
                 if let fullname = userProfile.fullNameColl {
                     if fullname.count <= 4 {
-                        self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
+                        self.titlesArray[1] = "  \(NSLocalizedString("greeting", comment: "")) \(fullname)!"
                     } else {
-                        self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) \(fullname)!"
+                        self.titlesArray[1] = "  \(NSLocalizedString("greeting", comment: ""))"
+                        self.titlesArray[2] = "  \(fullname)!"
                     }
                     self.tableView.reloadData()
                 } else {
-                    self.titlesArray[1] = "\(NSLocalizedString("greeting", comment: "")) "
+                    self.titlesArray[1] = "  \(NSLocalizedString("greeting", comment: "")) "
                     self.tableView.reloadData()
                 }
             }, failure: { error in
@@ -70,7 +72,7 @@ class LeftViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeftViewCell
         if titlesArray[indexPath.row] == "" || indexPath.row == 1 || indexPath.row == 2 {
             cell.icon.isHidden = true
-            //            cell.icon.gone()
+                        cell.icon.gone()
             cell.bageLabel.isHidden = true
             cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.shared.getScreenWidth() == 414 ? 30 : 28)
             cell.titleLabel.frame = CGRect(x: 0, y: 8, width:220, height: 60)
@@ -118,7 +120,8 @@ class LeftViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.row == 1) ? 75.0 : 44.0
+        return (ScreenUtils.shared.getScreenHeight()!/12)
+//        return (indexPath.row == 1) ? 75.0 : 44.0
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 {
