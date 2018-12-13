@@ -1,0 +1,145 @@
+///**
+/**
+ Created by: Hiep Nguyen Nghia on 12/10/18
+ Copyright (c) 2018 Vietinterview. All rights reserved.
+ */
+
+import UIKit
+import SwipeCellKit
+
+class JobEmployerController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableViewJob: UITableView!
+    @IBOutlet weak var textFieldSearch: UITextField!
+    @IBOutlet weak var viewSearch: UIView!
+    @IBOutlet weak var btnactionSearch: UIBarButtonItem!
+    let viewModel = HomeViewModel()
+    var isShowViewSearch:Bool = true
+    var mJobList = [JobListCustomer]()
+    var mJobListServer = [JobListCustomer]()
+    var page:Int = 0
+    var status:Int = -1
+    let refreshControl = UIRefreshControl()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = NSLocalizedString("job_list", comment: "")
+        self.showHideView(view: self.viewSearch, isHidden: self.isShowViewSearch)
+        refreshControl.addTarget(self, action:  #selector(sortArray), for: UIControlEvents.valueChanged)
+        if #available(iOS 10.0, *) {
+            self.tableViewJob.refreshControl = refreshControl
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.page = 0
+        self.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status)
+    }
+    @objc func sortArray() {
+        self.page = 0
+        self.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status)
+    }
+    
+    func getJobCustomer(cusName:String, page:Int, status:Int){
+        viewModel.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status, success: {jobCustomer in
+            if page == 0{
+                self.mJobList = jobCustomer.jobList!
+                if #available(iOS 10.0, *) {
+                    self.tableViewJob.refreshControl?.endRefreshing()
+                }else {
+                    self.tableViewJob.willRemoveSubview(self.refreshControl)
+                }
+            } else {
+                self.mJobList.append(contentsOf: jobCustomer.jobList!)
+            }
+            self.mJobListServer = jobCustomer.jobList!
+            self.tableViewJob.reloadData()
+        }, failure: {error in
+            if #available(iOS 10.0, *) {
+                self.tableViewJob.refreshControl?.endRefreshing()
+            }else {
+                self.tableViewJob.willRemoveSubview(self.refreshControl)
+            }
+             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+        })
+    }
+    @IBAction func searchTouch(_ sender: Any) {
+        if self.isShowViewSearch {
+            self.isShowViewSearch = false
+            self.showHideView(view: self.viewSearch, isHidden: false)
+            btnactionSearch.image = UIImage(named: "tick_black.png")
+        } else {
+            self.isShowViewSearch = true
+            self.showHideView(view: self.viewSearch, isHidden: true)
+            btnactionSearch.image = UIImage(named: "search.png")
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ResumesEmployerController") as! ResumesEmployerController
+        vc.mID = self.mJobList[indexPath.row].id!
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = self.mJobList.count - 1
+        if  indexPath.row == lastElement {
+            if self.mJobListServer.count >= 30 {
+                page = page + 1
+                self.getJobCustomer(cusName: self.textFieldSearch.text!, page: page, status: status)
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        if indexPath.row == 0{
+            return 155;
+        } else {
+            return 115
+        }
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mJobList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JobEmployerCell", for: indexPath) as! JobEmployerCell
+        if indexPath.row == 0 {
+            self.showHideView(view: cell.viewQuantity, isHidden: false)
+        } else {
+            self.showHideView(view: cell.viewQuantity, isHidden: true)
+        }
+        cell.lblCountCV.text = "/\(mJobList[indexPath.row].countCv!)"
+        cell.lblCountOffer.text = "\(self.mJobList[indexPath.row].countOffer!)"
+        cell.delegate = self
+        cell.contentView.shadowView(opacity: 8/100, radius: 10)
+        return cell
+    }
+    var defaultOptions = SwipeOptions()
+    var isSwipeRightEnabled = true
+    var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
+    var buttonStyle: ButtonStyle = .backgroundColor
+}
+extension JobEmployerController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        let read = SwipeAction(style: .default, title: nil) { action, indexPath in
+            debugLog(object: "detail")
+        }
+        read.hidesWhenSelected = true
+        let descriptor: ActionDescriptor = .read
+        configure(action: read, with: descriptor)
+        return [read]
+    }
+    
+    func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
+        action.image = UIImage(named: "info_detail_job")
+        switch buttonStyle {
+        case .backgroundColor:
+            action.backgroundColor = descriptor.color
+        case .circular:
+            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+            action.textColor = descriptor.color
+            action.font = .systemFont(ofSize: 13)
+            action.transitionDelegate = ScaleTransition.default
+        }
+    }
+}

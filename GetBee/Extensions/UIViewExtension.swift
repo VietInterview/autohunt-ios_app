@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
   // MARK: - Instance methods
   //Change the default values for params as you wish
-  func addBorder(color: UIColor = UIColor.black, weight: CGFloat = 1.0) {
+  func addBorder(color: UIColor = UIColor.black, weight: CGFloat = 0.5) {
     layer.borderColor = color.cgColor
     layer.borderWidth = weight
   }
@@ -20,12 +20,12 @@ extension UIView {
     layer.masksToBounds = true
     layer.cornerRadius = weight
   }
-  func setRoundBorders(_ cornerRadius: CGFloat = 10.0) {
+  func setRoundBorders(_ cornerRadius: CGFloat = 5.0) {
     clipsToBounds = true
     layer.cornerRadius = cornerRadius
   }
-  func shadowView(opacity:Float = 0.7, radius: CGFloat = 6){
-    layer.shadowColor = UIColor.gray.cgColor
+  func shadowView(opacity:Float = 0.5, radius: CGFloat = 5){
+    layer.shadowColor = StringUtils.shared.hexStringToUIColor(hex: "#191830").cgColor
     layer.shadowOpacity = opacity
     layer.shadowOffset = CGSize.zero
     layer.shadowRadius = radius

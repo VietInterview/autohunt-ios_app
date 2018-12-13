@@ -7,7 +7,7 @@
 import UIKit
 import GoneVisible
 
-class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class ChooseCVSubmitController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var lblNoCV: UILabel!
     
@@ -28,8 +28,8 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.page = 0
         getMyCV()
     }

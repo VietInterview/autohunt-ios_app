@@ -13,7 +13,7 @@ protocol ChooseDelegate{
 protocol ChooseMultiDelegate{
     func didChooseMulti(mychooseMulti: [MyChoose])
 }
-class CarrerOrCityController: UIViewController,UITableViewDelegate {
+class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     var viewModel = ViewModel()
     var button = UIButton.init(type: .custom)
     var delegate: ChooseDelegate?
@@ -28,23 +28,23 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.black
         button.setTitle(NSLocalizedString("choose", comment: ""), for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
         button.addTarget(self, action:#selector(self.chon(sender:)), for:.touchUpInside)
-        button.frame = CGRect.init(x: 20, y: 00, width: 40, height: 30) //CGRectMake(0, 0, 30, 30)
-        button.titleLabel?.font =  UIFont(name: "Nunito-Bold", size: 18)
+        button.frame = CGRect.init(x: 20, y: 00, width: 40, height: 30)
+        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
         let barButton = UIBarButtonItem.init(customView: button)
         barButton.setTitleTextAttributes([
-            NSAttributedStringKey.font: UIFont(name: "Nunito-Bold", size: 18.0)!,
-            NSAttributedStringKey.foregroundColor: UIColor.green], for: .normal)
+            NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 18.0)!,
+            NSAttributedStringKey.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")], for: .normal)
         self.navigationItem.rightBarButtonItem = barButton
         
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
     }
     var filterData = ViewModel()
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -61,6 +61,7 @@ class CarrerOrCityController: UIViewController,UITableViewDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         tableView?.register(CustomCell.nib, forCellReuseIdentifier: CustomCell.identifier)
         tableView?.estimatedRowHeight = 100
         tableView?.rowHeight = UITableViewAutomaticDimension

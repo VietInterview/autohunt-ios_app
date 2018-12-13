@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldPhone: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldFullname: UITextField!
@@ -141,7 +141,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(true)
         self.mView.layer.masksToBounds = false
         self.mView.layer.shadowColor = UIColor.black.cgColor
         self.mView.layer.shadowOpacity = 0.5
@@ -176,21 +176,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.imgNoteUser.isHidden = false
             var placeHolder = NSMutableAttributedString()
             let Name  = NSLocalizedString("input_name", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
             textFieldFullname.attributedPlaceholder = placeHolder
             self.imgNotePhone.isHidden = false
             var placeHolderPhone = NSMutableAttributedString()
             let sdt  = NSLocalizedString("input_phone", comment: "")
-            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
             
             textFieldPhone.attributedPlaceholder = placeHolderPhone
             self.imgNoteEMail.isHidden = false
             var placeHolderMail = NSMutableAttributedString()
             let Mail  = NSLocalizedString("input_email", comment: "")
-            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
             
             textFieldEmail.attributedPlaceholder = placeHolderMail
@@ -198,7 +198,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.imgNoteUser.isHidden = false
             var placeHolder = NSMutableAttributedString()
             let Name  = NSLocalizedString("input_name", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
             textFieldFullname.attributedPlaceholder = placeHolder
@@ -206,7 +206,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.imgNoteEMail.isHidden = false
             var placeHolderMail = NSMutableAttributedString()
             let Mail  = NSLocalizedString("input_email", comment: "")
-            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
             
             textFieldEmail.attributedPlaceholder = placeHolderMail
@@ -214,7 +214,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.imgNotePhone.isHidden = false
             var placeHolderPhone = NSMutableAttributedString()
             let sdt  = NSLocalizedString("input_phone", comment: "")
-            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
             
             textFieldPhone.attributedPlaceholder = placeHolderPhone

@@ -10,13 +10,19 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-  class func showNetworkActivity() {
-    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
-  }
-  
-  class func hideNetworkActivity() {
-    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    LoadingOverlay.shared.hideOverlayView()
-  }
+    class func showNetworkActivity() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    }
+    
+    class func hideNetworkActivity() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        LoadingOverlay.shared.hideOverlayView()
+    }
+    var statusBarView: UIView? {
+        if responds(to: Selector("statusBar")) {
+            return value(forKey: "statusBar") as? UIView
+        }
+        return nil
+    }
 }

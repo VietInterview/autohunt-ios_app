@@ -17,6 +17,13 @@ class HomeViewModel {
             failure(error.localizedDescription)
         })
     }
+    func loadAccount(success: @escaping (Account) -> Void, failure: @escaping (String) -> Void){
+        UserAPI.getAccount({account in
+            success(account)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
     func saveMyProfile(fullName:String, phone: String, address: String, carrer: String, arrCaerrerhunt: [DesideratedCareer],success: @escaping (GetMyProfile) -> Void, failure: @escaping (String) -> Void){
         UserAPI.saveMyProfile(fullName: fullName, phone: phone, address: address, carrer: carrer, arrCarrerHunt: arrCaerrerhunt, {user in
             success(user)
@@ -28,6 +35,13 @@ class HomeViewModel {
         JobAPI.getSearchJob(carrerId: carrerId,jobTitle: jobTitle, cityId: cityId, page: page,{ job in
             success(job)
         }, failure: { error in
+            failure(error.localizedDescription)
+        })
+    }
+    func getJobCustomer(cusName:String, page:Int, status:Int,success: @escaping (JobCustomer) -> Void, failure: @escaping (String) -> Void){
+        JobAPI.getJobCustomer(cusName: cusName, page: page, status: status, success: {jobCustomer in
+            success(jobCustomer)
+        }, failure: {error in
             failure(error.localizedDescription)
         })
     }
@@ -95,6 +109,13 @@ class HomeViewModel {
     func searchMyCV(carrerId: Int, cityId: Int, page: Int,success: @escaping (ListCV) -> Void, failure: @escaping (String) -> Void) {
         CvsAPI.searchMyCV(carrerId: carrerId, cityId: cityId, page: page, {listCV in
             success(listCV)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func getResumesByJobCus(CvName:String, id:Int, page:Int, status:Int,success: @escaping (ResumesByJobCustomer) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.getResumesByJobCustomer(cvName: CvName, id: id, page: page, status: status, {resumesByJobCustomer in
+            success(resumesByJobCustomer)
         }, failure: {error in
             failure(error.localizedDescription)
         })

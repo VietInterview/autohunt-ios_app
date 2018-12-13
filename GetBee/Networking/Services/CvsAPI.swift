@@ -10,6 +10,7 @@ import UIKit
 
 class CvsAPI{
     fileprivate static let cvsUrl = "/svccollaborator/api/cvs"
+    fileprivate static let cvsUrlCus = "/svccustomer/api/"
     class func getMyCV(carrerId: Int, cityId: Int, page: Int,_ success: @escaping (_ myCv: MyCV) -> Void, failure: @escaping (_ error: Error) -> Void) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         let url = cvsUrl + "/searchMyCv?carrerId=\(carrerId)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
@@ -87,6 +88,19 @@ class CvsAPI{
             if let deleteCV = try? newJSONDecoder().decode(DeleteCV.self, from: response){
                 LoadingOverlay.shared.hideOverlayView()
                 success(deleteCV)
+            }
+        }, failure: {error in
+            LoadingOverlay.shared.hideOverlayView()
+            failure(error)
+        })
+    }
+    class func getResumesByJobCustomer(cvName:String, id:Int, page:Int, status:Int,_ success: @escaping (_ resumesByJobCustomer: ResumesByJobCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
+        UIApplication.showNetworkActivity()
+        let url = cvsUrlCus + "searchCusHomeCvByJob?itemPerPage=30&page=\(page)&id=\(id)&cvName=\(cvName)&status=\(status)"
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let resumesByJobCus = try? newJSONDecoder().decode(ResumesByJobCustomer.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(resumesByJobCus)
             }
         }, failure: {error in
             LoadingOverlay.shared.hideOverlayView()

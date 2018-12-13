@@ -219,18 +219,6 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         return options
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        if self.refreshControl.isRefreshing == false {
-//            if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-//                viewQuantity.isHidden = false
-//                viewQuantity.visible()
-//            } else {
-//                viewQuantity.gone()
-//                viewQuantity.isHidden = true
-//            }
-//        }else{
-//            viewQuantity.isHidden = false
-//            viewQuantity.visible()
-//        }
     }
     
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {

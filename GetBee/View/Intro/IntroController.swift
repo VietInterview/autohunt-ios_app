@@ -56,6 +56,13 @@ extension IntroController : UIPageViewControllerDataSource {
             return nil
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        // Sets the status bar to hidden when the view has finished appearing
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.isHidden = true
+        UIApplication.shared.isStatusBarHidden = true
+        statusBar.gone()
+    }
     private func setupPageControl() {
         let appearance = UIPageControl.appearance()
         appearance.pageIndicatorTintColor = UIColor.gray

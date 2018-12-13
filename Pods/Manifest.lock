@@ -5,9 +5,9 @@ PODS:
     - Alamofire (~> 4.7)
   - CarbonKit (2.2.2)
   - ExpandableCell (1.2.3)
+  - ExpandableLabel (0.4.1)
   - GoneVisible (1.2.0)
   - IQKeyboardManagerSwift (6.0.5)
-  - JJFloatingActionButton (0.10.0)
   - LGSideMenuController (2.1.1)
   - SwipeCellKit (2.5.0)
   - Toaster (2.1.1)
@@ -18,9 +18,9 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.3)
   - CarbonKit
   - ExpandableCell
+  - ExpandableLabel
   - GoneVisible
   - IQKeyboardManagerSwift (~> 6.0.1)
-  - JJFloatingActionButton
   - LGSideMenuController
   - SwipeCellKit
   - Toaster
@@ -32,9 +32,9 @@ SPEC REPOS:
     - AlamofireImage
     - CarbonKit
     - ExpandableCell
+    - ExpandableLabel
     - GoneVisible
     - IQKeyboardManagerSwift
-    - JJFloatingActionButton
     - LGSideMenuController
     - SwipeCellKit
     - Toaster
@@ -45,13 +45,13 @@ SPEC CHECKSUMS:
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   CarbonKit: 0dec4738fa489b4c043a5f850c27fd0dbefb57cc
   ExpandableCell: 99a7993b6b61af6a9b5821f67a772d6402ffcda2
+  ExpandableLabel: 1ad99072d1d90f1db5925b8d04d56bf8607e5f9b
   GoneVisible: c552940cd9df7548427f6bffd000dcbcc6de187f
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
-  JJFloatingActionButton: 7e9e924d0819ebeb6a566dade9d5dbed63ff8add
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
   SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: a40917ec44178b24a5ec2b84e47d32d0ef3a6fc1
+PODFILE CHECKSUM: 5daa24818d0d35707bd9465df5ce7cf78adff8f1
 
 COCOAPODS: 1.5.2

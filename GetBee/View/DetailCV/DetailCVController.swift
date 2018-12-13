@@ -10,7 +10,7 @@ import AlamofireImage
 import Alamofire
 import GoneVisible
 
-class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV, SendHeightViewSkillDetailCV, SendHeightViewExpDetailCV, SendHeightViewLevelDetailCV, SendHeightViewLanDetailCV, SendHeightViewComDetailCV {
+class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV, SendHeightViewSkillDetailCV, SendHeightViewExpDetailCV, SendHeightViewLevelDetailCV, SendHeightViewLanDetailCV, SendHeightViewComDetailCV {
     
     @IBOutlet weak var heightViewContentConstant: NSLayoutConstraint!
     @IBOutlet weak var heightViewContent: UIView!
@@ -192,7 +192,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             self.mViewHeader.layer.backgroundColor = UIColor.white.cgColor
             self.mViewHeader.layer.mask = rectShape
             tabSwipe.setTabExtraWidth(16)
-            tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Nunito", size: 16)!], for: .normal)
+            tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Roboto", size: 16)!], for: .normal)
             tabSwipe.setNormalColor(UIColor.gray)
             tabSwipe.setSelectedColor(UIColor.black)
             tabSwipe.setIndicatorColor(UIColor.yellow)

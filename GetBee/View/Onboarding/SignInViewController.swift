@@ -9,10 +9,7 @@
 import UIKit
 import Alamofire
 import MessageUI
-class SignInViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate  {
-    
-    // MARK: - Outlets
-    
+class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate  {
     @IBOutlet weak var lblLogin: UILabel!
     @IBOutlet weak var verticalPass: UIView!
     @IBOutlet weak var verticalUser: UIView!
@@ -33,8 +30,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     @IBOutlet var mViewContact: UIView!
     var viewModel = SignInViewModelWithCredentials()
     var effect:UIVisualEffect!
-    // MARK: - Lifecycle Events
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         btnLogin.setRoundBorders(5)
@@ -47,7 +42,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         visualEffectView.effect = nil
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
-//            return
+            //            return
         }
         
         mViewUser.layer.borderWidth = 0.5
@@ -58,30 +53,22 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
-        UIApplication.shared.statusBarStyle = .default
         if self.isAppAlreadyLaunchedOnce() {
             if let session = SessionManager.currentSession {
-                
                 UserDefaults.standard.set(3, forKey: "position")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-                
                 navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
-                
                 let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
                 mainViewController.rootViewController = navigationController
                 mainViewController.setup(type: UInt(2))
-                
                 let window = UIApplication.shared.delegate!.window!!
                 window.rootViewController = mainViewController
             }
         }else{
-            //            performSegue(withIdentifier: "gotointro", sender: self)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-            
             navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "IntroController")], animated: false)
-            
             let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
             mainViewController.rootViewController = navigationController
             mainViewController.setup(type: UInt(2))
@@ -95,13 +82,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         emailField.delegate = self
         passwordField.delegate = self
         
-          let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         lblLogin.isUserInteractionEnabled=true
         lblLogin.addGestureRecognizer(gestureSwift2AndHigher2)
         
         if Env.isProduction() == true {
             lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#000000")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         } else {
             lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
             lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
@@ -173,9 +160,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.mView.layer.masksToBounds = false
-        self.mView.layer.shadowColor = UIColor.black.cgColor
-        self.mView.layer.shadowOpacity = 0.5
+        self.mView.layer.shadowColor = StringUtils.shared.hexStringToUIColor(hex: "#191830").cgColor
+        self.mView.layer.shadowOpacity = 15/100
         self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.mView.layer.shadowRadius = 5
         self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
@@ -277,7 +265,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             self.imgNoteUser.isHidden = false
             var placeHolder = NSMutableAttributedString()
             let Name  = NSLocalizedString("input_email", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             
             emailField.attributedPlaceholder = placeHolder
@@ -285,7 +273,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             self.imgNotePass.isHidden = false
             var placeHolder = NSMutableAttributedString()
             let Name  = NSLocalizedString("input_pass", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
+            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
             placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
             passwordField.attributedPlaceholder = placeHolder
         }else{

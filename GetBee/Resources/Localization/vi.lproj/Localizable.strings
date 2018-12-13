@@ -107,3 +107,5 @@
 "error_please_try"="Đã có lỗi xảy ra, xin thử lại sau.";
 "login"="Đăng nhập";
 "nodata"="Không có thông tin";
+"input_search_key"="Nhập từ khóa";
+"job_list"="Danh sách công việc";

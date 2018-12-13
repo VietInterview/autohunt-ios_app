@@ -10,6 +10,7 @@ import UIKit
 
 class JobAPI {
     fileprivate static let collUrl = "/svccollaborator/api/jobs"
+    fileprivate static let customerUrl = "/svccustomer/api"
     class func getSearchJob(carrerId: Int, jobTitle: String, cityId: Int, page: Int,_ success: @escaping (_ job: Job) -> Void, failure: @escaping (_ error: Error) -> Void) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         let url = collUrl + "/searchJob?careerId=\(carrerId)&jobtile=\(jobTitle)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
@@ -117,6 +118,19 @@ class JobAPI {
             }
         }, failure: { error in
             LoadingOverlay.shared.hideOverlayView()
+            failure(error)
+        })
+    }
+    class func getJobCustomer(cusName:String, page:Int, status:Int, success: @escaping (_ myJobApplied: JobCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = customerUrl + "/searchCusHome?itemPerPage=30&cusName=\(cusName)&page=\(page)&status=\(status)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let jobCustomer = try? newJSONDecoder().decode(JobCustomer.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(jobCustomer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }

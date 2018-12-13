@@ -8,7 +8,7 @@ import UIKit
 import ACFloatingTextfield_Swift
 import Toaster
 
-class ChangePasswordController: UIViewController {
+class ChangePasswordController: BaseViewController {
 
     @IBOutlet weak var textFieldRetypePass: ACFloatingTextfield!
     @IBOutlet weak var textFieldNewPass: ACFloatingTextfield!
@@ -17,23 +17,24 @@ class ChangePasswordController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "tick_black.png"), for: UIControlState.normal)
+        button.setImage(UIImage.init(named: "tick_blue.png"), for: UIControlState.normal)
         button.addTarget(self, action:#selector(self.tappedMe), for:.touchUpInside)
-        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30) //CGRectMake(0, 0, 30, 30)
+        button.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20) //CGRectMake(0, 0, 30, 30)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.rightBarButtonItem = barButton
         
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
         
-        textFieldOldPass.font = UIFont(name: "Nunito-Regular", size: 20)
-        textFieldNewPass.font = UIFont(name: "Nunito-Regular", size: 20)
-        textFieldRetypePass.font = UIFont(name: "Nunito-Regular", size: 20)
+        textFieldOldPass.font = UIFont(name: "Roboto-Regular", size: 20)
+        textFieldNewPass.font = UIFont(name: "Roboto-Regular", size: 20)
+        textFieldRetypePass.font = UIFont(name: "Roboto-Regular", size: 20)
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         let image = UIImage(named: "note")
         imageView.image = image
+
         textFieldOldPass.rightViewMode = UITextFieldViewMode.never
         textFieldOldPass.rightView = imageView
         textFieldNewPass.rightViewMode = UITextFieldViewMode.never

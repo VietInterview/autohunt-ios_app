@@ -87,6 +87,17 @@ class UserAPI {
       failure(error)
     })
   }
+  class func getAccount(_ success: @escaping (_ user: Account) -> Void, failure: @escaping (_ error: Error) -> Void){
+    let url = "/api/account"
+    APIClient.request(.get, url: url, success: { response, _ in
+      if let account = try? JSONDecoder().decode(Account.self, from: response){
+        AccountManager.currentAccount = account
+        success(account)
+      }
+    }, failure: { error in
+      failure(error)
+    })
+  }
   class func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [DesideratedCareer]?,_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void){
     let url = collUrl + "/saveProfile"
     var arrayList : [String: Any]//one item of array

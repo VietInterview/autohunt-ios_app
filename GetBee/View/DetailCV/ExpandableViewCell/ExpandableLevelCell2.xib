@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Nunito-Regular.ttf">
-            <string>Nunito-Regular</string>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -28,11 +28,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên bằng cấp/chứng chỉ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCL-be-yHG">
-                        <rect key="frame" x="10" y="10" width="190" height="25"/>
+                        <rect key="frame" x="10" y="10" width="194" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="kzU-BY-sIT"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -44,16 +44,16 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="Io1-4n-0ov"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trường/đơn vị đào tạo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Do4-4e-dLR">
-                        <rect key="frame" x="10" y="81" width="175" height="25"/>
+                        <rect key="frame" x="10" y="81" width="179.5" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="9uq-WG-pGt"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -65,16 +65,16 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="TTa-2I-H9U"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RU-9t-Skd">
-                        <rect key="frame" x="10" y="161" width="75" height="25"/>
+                        <rect key="frame" x="10" y="161" width="74" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="GWB-Hy-Zuw"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -86,16 +86,16 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="x9o-Ig-woo"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyên ngành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k94-r6-zns">
-                        <rect key="frame" x="10" y="239" width="117" height="25"/>
+                        <rect key="frame" x="10" y="239" width="114" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="VpJ-R0-oeM"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -107,16 +107,16 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="paX-SA-oZF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại tốt nghiệp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ea-0V-pFT">
-                        <rect key="frame" x="10" y="316" width="121" height="25"/>
+                        <rect key="frame" x="10" y="316" width="119" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="f1v-5A-xJJ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -128,7 +128,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="QQt-Fk-tLX"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

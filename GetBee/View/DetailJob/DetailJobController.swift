@@ -9,7 +9,7 @@ import CarbonKit
 import AlamofireImage
 import Alamofire
 
-class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, SendHeightView {
+class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate, SendHeightView {
     @IBOutlet weak var spaceBottom: NSLayoutConstraint!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var btnStatus: UIButton!
@@ -30,27 +30,18 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
     var jobDetail = JobDetail()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.navigationController?.navigationBar.isTranslucent = false
         UIApplication.showNetworkActivity()
         homeViewModel.getDetailJob(jobId: self.jobId, success: {jobDetail in
            UIApplication.hideNetworkActivity()
             self.jobDetail = jobDetail
-            Alamofire.request("\(App.imgUrl)\(self.jobDetail.companyImg!)").responseImage { response in
-                if let image = response.result.value {
-                    self.imgCompany.layer.masksToBounds = true
-                    self.imgCompany.image = image
-                }else {
-                    self.imgCompany.layer.masksToBounds = true
-                    self.imgCompany.image = UIImage(named: "job_null")
-                }
-            }
+            self.imgCompany.showImage(imgUrl: self.jobDetail.companyImg, imageNullName: "job_null")
             self.lblCompany.text = jobDetail.companyName!
             self.lblJobTitle.text = jobDetail.jobTitle!
             if self.jobDetail.status! == 1 {

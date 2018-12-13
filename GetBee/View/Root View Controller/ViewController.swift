@@ -3,12 +3,11 @@
 //  LGSideMenuControllerDemo
 //
 import UIKit
-import JJFloatingActionButton
 import GoneVisible
 import Alamofire
 import AlamofireImage
 
-class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSource ,UIScrollViewDelegate, ChooseDelegate{
+class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSource ,UIScrollViewDelegate, ChooseDelegate{
     @IBOutlet weak var btnactionSearch: UIBarButtonItem!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var conditionView: UIView!
@@ -32,13 +31,13 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 139, height: 39))
         imageView.contentMode = .scaleAspectFit
-        let logo = UIImage(named: "Logo.png")
+        let logo = UIImage(named: "Logo_yellow.png")
         imageView.image = logo
         self.navigationItem.titleView = imageView
-        navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.showHideView(view: searchView, isHidden: true)
         self.showHideView(view: conditionView, isHidden: true)
         refreshControl.addTarget(self, action:  #selector(sortArray), for: UIControlEvents.valueChanged)
@@ -49,6 +48,7 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
         tableViewJob.rowHeight = UITableViewAutomaticDimension
         tableViewJob.estimatedRowHeight = UITableViewAutomaticDimension
     }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         self.page = 0
         self.searchJob(carrerId: self.carrerId,cityId: self.cityId,jobtitle: "\(textField.text!)")
@@ -217,14 +217,10 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
         }
-        if let imgUrl = self.jobList[indexPath.row].companyImg{
-            cell.imgCompany.showImage(imgUrl: imgUrl, imageNullName:"job_null")
-        }else {
-            cell.imgCompany.showImage(img: UIImage(named: "job_null")!, maskToBounds:true)
-        }
-        cell.viewContentCell.shadowView()
+        cell.imgCompany.showImage(imgUrl: self.jobList[indexPath.row].companyImg, imageNullName:"job_null")
+        cell.viewContentCell.shadowView(opacity:0.05)
         cell.imgCompany.addRadius()
-        cell.imgCompany.addBorder(color:  StringUtils.shared.hexStringToUIColor(hex: "#979797"), weight: 1.0)
+        cell.imgCompany.addBorder(color:  StringUtils.shared.hexStringToUIColor(hex: "#979797"), weight: 0.5)
         cell.imgCompany.shadowView()
         self.mCell = cell
         return cell
@@ -248,12 +244,12 @@ class ViewController : UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-         return UITableViewAutomaticDimension
-//        if indexPath.row == 0{
-//            return 270;
-//        } else {
-//            return 230
-//        }
+        return UITableViewAutomaticDimension
+        //        if indexPath.row == 0{
+        //            return 270;
+        //        } else {
+        //            return 230
+        //        }
     }
 }
 extension UIView {

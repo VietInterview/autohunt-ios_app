@@ -23,16 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-
+    
     // -Facebook
-//    FBSDKSettings.setAppID(ConfigurationManager.getValue(for: "FacebookKey"))
-//    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    //    FBSDKSettings.setAppID(ConfigurationManager.getValue(for: "FacebookKey"))
+    //    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     let BarButtonItemAppearance = UIBarButtonItem.appearance()
     BarButtonItemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
     IQKeyboardManager.shared.enable = true
     if let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView {
-      statusBar.backgroundColor = UIColor(red:255/255.0, green: 210/255.0, blue: 21/255.0, alpha: 1.0)
+      statusBar.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
     }
+    UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
+    //    UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle(rawValue: "Roboto"))
     if SessionManager.validSession {
       let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
       self.window?.rootViewController = vc
@@ -41,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
-//  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//    return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-//  }
+  //  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+  //    return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+  //  }
   
   func unexpectedLogout() {
     UserDataManager.deleteUser()
