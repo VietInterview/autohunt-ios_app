@@ -130,6 +130,11 @@ extension ResumesEmployerController: SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
         let read = SwipeAction(style: .default, title: nil) { action, indexPath in
             debugLog(object: "detail")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "DetailResumeCustomerController") as! DetailResumeCustomerController
+            vc.title = "Chi tiết hồ sơ"
+            vc.cvId = self.cvListByJobCustomer[indexPath.row].id!
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         read.hidesWhenSelected = true
         let descriptor: ActionDescriptor = .read

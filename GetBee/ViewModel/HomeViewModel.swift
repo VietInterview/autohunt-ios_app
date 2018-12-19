@@ -153,4 +153,18 @@ class HomeViewModel {
             failure(error, statusCode)
         })
     }
+    func getJobDetailCustomer(jobId:Int, success: @escaping (JobDetailCustomer) -> Void, failure: @escaping (String) -> Void){
+        JobAPI.getDetailJobCustomer(jobId: jobId, success: {jobDetailCustomer in
+            success(jobDetailCustomer)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func getDetailResumeCustomer(cvId:Int, success: @escaping (ResumeDetailCustomer) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.getDetailResumeCustomer(cvId: cvId, success: {resumeDetailCustomer in
+            success(resumeDetailCustomer)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
 }

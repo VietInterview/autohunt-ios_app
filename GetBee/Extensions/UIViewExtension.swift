@@ -24,11 +24,35 @@ extension UIView {
     clipsToBounds = true
     layer.cornerRadius = cornerRadius
   }
+  func hideWithAnimation(hidden: Bool) {
+    UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
+      self.isHidden = hidden
+    })
+  }
   func shadowView(opacity:Float = 0.5, radius: CGFloat = 5){
     layer.shadowColor = StringUtils.shared.hexStringToUIColor(hex: "#191830").cgColor
     layer.shadowOpacity = opacity
     layer.shadowOffset = CGSize.zero
     layer.shadowRadius = radius
+  }
+  func fadeIn(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
+    self.alpha = 0.0
+    
+    UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+      self.isHidden = false
+      self.alpha = 1.0
+    }, completion: completion)
+  }
+  
+  func fadeOut(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
+    self.alpha = 1.0
+    
+    UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+      self.alpha = 0.0
+    }) { (completed) in
+      self.isHidden = true
+      completion(true)
+    }
   }
 }
 

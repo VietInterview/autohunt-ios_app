@@ -11,11 +11,13 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.view.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
         navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
     }
     override func viewDidAppear(_ animated: Bool) {
         UIApplication.shared.isStatusBarHidden = false
-        navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
+//        navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
         navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
     }

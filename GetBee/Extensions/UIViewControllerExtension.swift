@@ -22,7 +22,13 @@ extension UIViewController {
     toast.show()
   }
   func showHideView(view:UIView, isHidden:Bool){
-    view.isHidden = isHidden
+//    view.isHidden = isHidden
+    UIView.animate(withDuration: 3, animations: {
+      view.alpha = 1
+    }, completion: {
+      finished in
+      view.isHidden = isHidden
+    })
     if isHidden {
       view.gone()
     } else {

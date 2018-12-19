@@ -107,6 +107,18 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
         } else {
             self.showHideView(view: cell.viewQuantity, isHidden: true)
         }
+        let status = self.mJobList[indexPath.row].status!
+        let limit = self.mJobList[indexPath.row].limited!
+        if status == 1 && limit > 0 && limit < 8 {
+            cell.lblStatus.text = "Sắp hết hạn"
+        } else if status == 1 && limit > 7 {
+            cell.lblStatus.text = "Còn " + "\(limit)" + " ngày"
+        } else if status == 1 && limit == 0 {
+            cell.lblStatus.text = "Đã hết hạn"
+        } else if status == 0 {
+            cell.lblStatus.text = "Nháp"
+        }
+        cell.lblJobTitle.text = "hello \n hello"
         cell.lblCountCV.text = "/\(mJobList[indexPath.row].countCv!)"
         cell.lblCountOffer.text = "\(self.mJobList[indexPath.row].countOffer!)"
         cell.delegate = self
@@ -123,6 +135,13 @@ extension JobEmployerController: SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
         let read = SwipeAction(style: .default, title: nil) { action, indexPath in
             debugLog(object: "detail")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobCustomerController") as! DetailJobCustomerController
+            vc.jobId = self.mJobList[indexPath.row].id!
+            vc.limit = self.mJobList[indexPath.row].limited!
+            vc.status = self.mJobList[indexPath.row].status!
+            vc.title = NSLocalizedString("detail_job", comment: "")
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         read.hidesWhenSelected = true
         let descriptor: ActionDescriptor = .read

@@ -11,6 +11,19 @@ import UIKit
 class CvsAPI{
     fileprivate static let cvsUrl = "/svccollaborator/api/cvs"
     fileprivate static let cvsUrlCus = "/svccustomer/api/"
+    class func getDetailResumeCustomer(cvId:Int, success: @escaping (_ resumeDetailCustomer: ResumeDetailCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = cvsUrl + "/getViewCvById/\(cvId)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let resumeDetailCustomer = try? newJSONDecoder().decode(ResumeDetailCustomer.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(resumeDetailCustomer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
     class func getMyCV(carrerId: Int, cityId: Int, page: Int,_ success: @escaping (_ myCv: MyCV) -> Void, failure: @escaping (_ error: Error) -> Void) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         let url = cvsUrl + "/searchMyCv?carrerId=\(carrerId)&itemPerPage=30&cityId=\(cityId)&page=\(page)"

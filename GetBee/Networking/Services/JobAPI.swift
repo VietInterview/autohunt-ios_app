@@ -91,7 +91,7 @@ class JobAPI {
                 success(addRemoveJob)
             }
         }, failure: { error in
-             LoadingOverlay.shared.hideOverlayView()
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -128,6 +128,19 @@ class JobAPI {
             if let jobCustomer = try? newJSONDecoder().decode(JobCustomer.self, from: response){
                 UIApplication.hideNetworkActivity()
                 success(jobCustomer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func getDetailJobCustomer(jobId:Int, success: @escaping (_ myJobApplied: JobDetailCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = customerUrl + "/cusjobs/getJobById/\(jobId)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let jobDetailCustomer = try? newJSONDecoder().decode(JobDetailCustomer.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(jobDetailCustomer)
             }
         }, failure: { error in
             UIApplication.hideNetworkActivity()
