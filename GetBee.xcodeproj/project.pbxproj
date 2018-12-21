@@ -33,6 +33,7 @@
 		7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */; };
 		7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */; };
 		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
+		7A3A07D821CB46640019FC81 /* LanComCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A07D721CB46640019FC81 /* LanComCell.swift */; };
 		7A455AC221BCCA00007F2020 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A455AC121BCCA00007F2020 /* BaseViewController.swift */; };
 		7A455ACF21BCD4C8007F2020 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A455ACE21BCD3BF007F2020 /* Roboto-Medium.ttf */; };
 		7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */; };
@@ -65,7 +66,10 @@
 		7A78E35D21A5785C007BA69C /* SubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35C21A5785C007BA69C /* SubmitCV.swift */; };
 		7A78E35F21A57A1A007BA69C /* ErrorSubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */; };
 		7A79709C21AE905E00DC7B4A /* ExpandableLevelCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */; };
+		7A7B863321CBE4EB00EA10B5 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */; };
 		7A879E9B21C9091D000850D2 /* ExpandableDetailJobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A879E9A21C9091D000850D2 /* ExpandableDetailJobCell.swift */; };
+		7A88263021CB7F2200F491D3 /* ProcessResumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88262F21CB7F2200F491D3 /* ProcessResumeController.swift */; };
+		7A88263221CB8ABB00F491D3 /* InfoProcessResumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88263121CB8ABB00F491D3 /* InfoProcessResumeController.swift */; };
 		7A882CC2219EC03C009A2518 /* DetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A882CC1219EC03C009A2518 /* DetailCVController.swift */; };
 		7A8B9BB221A415F900F6E77C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB121A415F900F6E77C /* Shared.swift */; };
 		7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */; };
@@ -80,6 +84,7 @@
 		7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */; };
 		7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5F21719B6400E3B0DC /* NavigationController.swift */; };
 		7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA6121719B6400E3B0DC /* ViewController.swift */; };
+		7AA1EAAF21CCFB66007A51CC /* InterviewProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */; };
 		7AA70218219CFD6300566F43 /* ChooseCVSubmitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */; };
 		7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */; };
 		7AA7021C219CFE8900566F43 /* MyCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7021B219CFE8900566F43 /* MyCV.swift */; };
@@ -173,6 +178,7 @@
 		7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
+		7A3A07D721CB46640019FC81 /* LanComCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanComCell.swift; sourceTree = "<group>"; };
 		7A455AC121BCCA00007F2020 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7A455AC321BCD3BE007F2020 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		7A455AC421BCD3BE007F2020 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
@@ -220,7 +226,10 @@
 		7A7A58A121B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A7A58A321B4E5F8003D2827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7A7A58A421B4E5F8003D2827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		7A879E9A21C9091D000850D2 /* ExpandableDetailJobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableDetailJobCell.swift; sourceTree = "<group>"; };
+		7A88262F21CB7F2200F491D3 /* ProcessResumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessResumeController.swift; sourceTree = "<group>"; };
+		7A88263121CB8ABB00F491D3 /* InfoProcessResumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoProcessResumeController.swift; sourceTree = "<group>"; };
 		7A882CC1219EC03C009A2518 /* DetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCVController.swift; sourceTree = "<group>"; };
 		7A8B9BB121A415F900F6E77C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCV.swift; sourceTree = "<group>"; };
@@ -236,6 +245,7 @@
 		7A99AA5B21719A8B00E3B0DC /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		7A99AA5F21719B6400E3B0DC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7A99AA6121719B6400E3B0DC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewProcessController.swift; sourceTree = "<group>"; };
 		7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCVSubmitController.swift; sourceTree = "<group>"; };
 		7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSubmitTableViewCell.swift; sourceTree = "<group>"; };
 		7AA7021B219CFE8900566F43 /* MyCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCV.swift; sourceTree = "<group>"; };
@@ -405,6 +415,7 @@
 			children = (
 				7A6CE03821CA382900954ADC /* DetailResumeCustomerController.swift */,
 				7A6CE03A21CA3F0500954ADC /* InfoDetailResumeCustomerController.swift */,
+				7A3A07D721CB46640019FC81 /* LanComCell.swift */,
 			);
 			path = DetailResumeCustomer;
 			sourceTree = "<group>";
@@ -413,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */,
+				7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -434,6 +446,16 @@
 				7AC18E5E21CA06FE00EB47A9 /* NormalTableCell.swift */,
 			);
 			path = DetailJobCustomer;
+			sourceTree = "<group>";
+		};
+		7A88262E21CB7B5300F491D3 /* ProcessResume */ = {
+			isa = PBXGroup;
+			children = (
+				7A88262F21CB7F2200F491D3 /* ProcessResumeController.swift */,
+				7A88263121CB8ABB00F491D3 /* InfoProcessResumeController.swift */,
+				7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */,
+			);
+			path = ProcessResume;
 			sourceTree = "<group>";
 		};
 		7A882CC0219EC01A009A2518 /* DetailCV */ = {
@@ -603,6 +625,7 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A88262E21CB7B5300F491D3 /* ProcessResume */,
 				7A6CE03721CA380800954ADC /* DetailResumeCustomer */,
 				7A879E9921C908F3000850D2 /* DetailJobCustomer */,
 				7A60B02921BF90EF0048F4C4 /* CVEmployer */,
@@ -912,9 +935,11 @@
 				"${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ExpandableCell/ExpandableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/ExpandableLabel/ExpandableLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexibleSteppedProgressBar/FlexibleSteppedProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/GoneVisible/GoneVisible.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/StepIndicator/StepIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
@@ -926,9 +951,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CarbonKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpandableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpandableLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexibleSteppedProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoneVisible.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepIndicator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
@@ -982,6 +1009,7 @@
 				7A06AD992174262300E3CDAA /* Model.swift in Sources */,
 				7ADFA16221A291A0001492F0 /* ScreenUtils.swift in Sources */,
 				7A4D6A0B21BE6DA000EC8BD1 /* JobCustomer.swift in Sources */,
+				7A88263021CB7F2200F491D3 /* ProcessResumeController.swift in Sources */,
 				7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */,
 				7A2EA49C21A0FC2200E61681 /* LevelDetailCVController.swift in Sources */,
 				7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */,
@@ -1003,6 +1031,7 @@
 				9B77E0731E2FB6350020E450 /* User.swift in Sources */,
 				7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */,
 				7AC6DA7C21A2756000BD5C10 /* ListCV.swift in Sources */,
+				7A7B863321CBE4EB00EA10B5 /* SelfSizedTableView.swift in Sources */,
 				7A045FB421BDFB1100BC3B8C /* Account.swift in Sources */,
 				7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */,
 				7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */,
@@ -1020,11 +1049,14 @@
 				9B0C72761C738D3400BAF3B1 /* UserAPI.swift in Sources */,
 				9BE3669D1F101737007CAECD /* MultipartMedia.swift in Sources */,
 				7A60B02F21BFA6ED0048F4C4 /* ResumesByJobCustomer.swift in Sources */,
+				7A3A07D821CB46640019FC81 /* LanComCell.swift in Sources */,
 				7A60B02D21BF9ACF0048F4C4 /* ResumesEmployerCell.swift in Sources */,
 				9B8574D9212C84130063A3E2 /* UIImageExtension.swift in Sources */,
 				7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */,
+				7A88263221CB8ABB00F491D3 /* InfoProcessResumeController.swift in Sources */,
 				9B3AA39B1ED35013005A4D26 /* SignUpViewController.swift in Sources */,
 				7AFB065321A4F3AD0046CB7B /* MyJobSaved.swift in Sources */,
+				7AA1EAAF21CCFB66007A51CC /* InterviewProcessController.swift in Sources */,
 				9B0C72711C738D3400BAF3B1 /* AppDelegate.swift in Sources */,
 				7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */,
 				7A955E2921A8058200D402D4 /* HelperLibrary.swift in Sources */,

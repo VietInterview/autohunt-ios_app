@@ -107,9 +107,9 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ResumesEmployerController") as! ResumesEmployerController
-//        navigationController?.pushViewController(vc, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProcessResumeController") as! ProcessResumeController
+        navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = self.cvListByJobCustomer.count - 1
@@ -129,10 +129,9 @@ extension ResumesEmployerController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         let read = SwipeAction(style: .default, title: nil) { action, indexPath in
-            debugLog(object: "detail")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DetailResumeCustomerController") as! DetailResumeCustomerController
-            vc.title = "Chi tiết hồ sơ"
+            vc.title = "Xem hồ sơ"
             vc.cvId = self.cvListByJobCustomer[indexPath.row].id!
             self.navigationController?.pushViewController(vc, animated: true)
         }

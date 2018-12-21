@@ -14,4 +14,6 @@ target 'GetBee' do
   pod 'ACFloatingTextfield-Swift', '~> 1.7'
   pod 'Toaster'
   pod 'ExpandableLabel'
+  pod 'StepIndicator', '~> 1.0.6’
+  pod 'FlexibleSteppedProgressBar'
 end

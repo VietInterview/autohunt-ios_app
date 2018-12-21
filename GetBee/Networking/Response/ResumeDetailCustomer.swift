@@ -159,7 +159,7 @@ class CvSkillResumeDetailCustomer: Codable {
     var id: Int?
     var lstOtherSkillName: [String]?
     var otherSkill, primarySkill: String?
-    
+    init(){}
     enum CodingKeys: String, CodingKey {
         case cvID = "cvId"
         case hobby, id, lstOtherSkillName, otherSkill, primarySkill
@@ -179,7 +179,7 @@ class LstComputerSkillResumeDetailCustomer: Codable {
     var cvID, id, msExcel, msOutlook: Int?
     var msPowerPoint, msWord: Int?
     var other: String?
-    
+    init(){}
     enum CodingKeys: String, CodingKey {
         case cvID = "cvId"
         case id, msExcel, msOutlook, msPowerPoint, msWord, other
@@ -203,7 +203,7 @@ class LstEducationHiResumeDetailCustomer: Codable {
     var id: Int?
     var note, school, subject: String?
     var toMonth: Int?
-    
+    init(){}
     enum CodingKeys: String, CodingKey {
         case career
         case cvID = "cvId"
@@ -232,7 +232,7 @@ class LstEmploymentHiResumeDetailCustomer: Codable {
     var salary, salaryCurency: Int?
     var title: String?
     var toMonth: Int?
-    
+    init(){}
     enum CodingKeys: String, CodingKey {
         case achievement, companyName, currentJob
         case cvID = "cvId"
@@ -260,7 +260,7 @@ class LstLanguageResumeDetailCustomer: Codable {
     var cvID, id, languageID: Int?
     var languageName: String?
     var listen, read, speak, write: Int?
-    
+    init(){}
     enum CodingKeys: String, CodingKey {
         case cvID = "cvId"
         case id

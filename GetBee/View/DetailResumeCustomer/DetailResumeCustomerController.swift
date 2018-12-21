@@ -13,6 +13,8 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
     @IBOutlet weak var imgResume: UIImageView!
     @IBOutlet weak var btnProcessResume: UIButton!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var lblName: UILabel!
+    
     var cvId:Int = 0
     var viewModel = HomeViewModel()
     var resumeDetailCustomer = ResumeDetailCustomer()
@@ -45,10 +47,14 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
     func getDetailResume(cvId:Int){
         viewModel.getDetailResumeCustomer(cvId: cvId, success: {resumeDetailCustomer in
             self.resumeDetailCustomer = resumeDetailCustomer
+            self.lblName.text = StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.fullName)
+            self.imgResume.showImage(imgUrl: self.resumeDetailCustomer.pictureURL, imageNullName: "ava_null")
             let tabSwipe = CarbonTabSwipeNavigation(items: ["THÔNG TIN", "KINH NGHIỆM", "BẰNG CẤP","NGOẠI NGỮ", "TIN HỌC", "KỸ NĂNG"], delegate: self)
             if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
             } else { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
             }
+//            tabSwipe.carbonSegmentedControl?.frame = CGRect(x:0, y: 0, width:0, height:0)
+//            self.showHideView(view: tabSwipe.carbonSegmentedControl!, isHidden: true)
             tabSwipe.carbonSegmentedControl?.backgroundColor = UIColor.white
             tabSwipe.setNormalColor(StringUtils.shared.hexStringToUIColor(hex: "#677B8D"), font: UIFont(name: "Roboto-Medium", size: 14)!)
             tabSwipe.setSelectedColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)
@@ -67,43 +73,49 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
             self.showHideView(view: viewHeader, isHidden: false)
         }
     }
+    
+    @IBAction func processResumeTouch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProcessResumeController") as! ProcessResumeController
+        navigationController?.pushViewController(vc, animated: true)
+    }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         guard var storyboard = storyboard else { return UIViewController() }
         storyboard = UIStoryboard(name: "Main", bundle: nil)
         if index == 0 {
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailResumeCustomerController") as! InfoDetailResumeCustomerController
             vc.delegate = self
-            vc.positionTab = Int(index)
+            vc.positionTab = 0
             vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         } else if index == 1{
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailResumeCustomerController") as! InfoDetailResumeCustomerController
             vc.delegate = self
-            vc.positionTab = Int(index)
+            vc.positionTab = 1
             vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         } else if index == 2{
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailResumeCustomerController") as! InfoDetailResumeCustomerController
             vc.delegate = self
-            vc.positionTab = Int(index)
+            vc.positionTab = 2
             vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         }else if index == 3{
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailResumeCustomerController") as! InfoDetailResumeCustomerController
             vc.delegate = self
-            vc.positionTab = Int(index)
+            vc.positionTab = 3
             vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         }else if index == 4{
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailResumeCustomerController") as! InfoDetailResumeCustomerController
             vc.delegate = self
-            vc.positionTab = Int(index)
+            vc.positionTab = 4
             vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         }else {
             let vc = storyboard.instantiateViewController(withIdentifier: "InfoDetailResumeCustomerController") as! InfoDetailResumeCustomerController
             vc.delegate = self
-            vc.positionTab = Int(index)
+            vc.positionTab = 5
             vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         }
