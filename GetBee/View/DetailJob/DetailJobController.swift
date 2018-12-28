@@ -28,6 +28,15 @@ class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate
     var homeViewModel = HomeViewModel()
     var jobId: Int = 0;
     var jobDetail = JobDetail()
+    convenience init() {
+        self.init(nibName: "DetailJobController", bundle: nil)
+    }
+    func setArgument(jobId:Int, title:String) -> DetailJobController{
+        let vc = self.assignValueToController(nameController: "DetailJobController") as! DetailJobController
+        vc.jobId = jobId
+        vc.title = title
+        return vc
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let yourBackImage = UIImage(named: "back")

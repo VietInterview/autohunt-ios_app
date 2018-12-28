@@ -22,7 +22,7 @@ extension UIViewController {
     toast.show()
   }
   func showHideView(view:UIView, isHidden:Bool){
-//    view.isHidden = isHidden
+    //    view.isHidden = isHidden
     UIView.animate(withDuration: 3, animations: {
       view.alpha = 1
     }, completion: {
@@ -43,5 +43,13 @@ extension UIViewController {
   
   @objc func dismissKeyboard() {
     view.endEditing(true)
+  }
+  func assignValueToController(nameController:String) -> UIViewController{
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let viewController: UIViewController? = storyboard.instantiateViewController(withIdentifier: nameController)
+    return viewController!
+  }
+  func pushViewController(controller:UIViewController){
+    navigationController?.pushViewController(controller, animated: true)
   }
 }

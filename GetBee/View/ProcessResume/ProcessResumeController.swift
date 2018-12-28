@@ -35,9 +35,10 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         progressBarWithoutLastState.translatesAutoresizingMaskIntoConstraints = false
         self.stepView.addSubview(progressBarWithoutLastState)
         let horizontalConstraint = progressBarWithoutLastState.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        let widthConstraint = progressBarWithoutLastState.widthAnchor.constraint(equalToConstant: 250)
+        let verticalConstraint = progressBarWithoutLastState.centerYAnchor.constraint(equalTo: self.stepView.centerYAnchor)
+        let widthConstraint = progressBarWithoutLastState.widthAnchor.constraint(equalToConstant:ScreenUtils.shared.getScreenWidth() == 414 ? 320 : 250)
         let heightConstraint = progressBarWithoutLastState.heightAnchor.constraint(equalToConstant: 30)
-        NSLayoutConstraint.activate([horizontalConstraint, widthConstraint, heightConstraint])
+        NSLayoutConstraint.activate([horizontalConstraint,verticalConstraint, widthConstraint, heightConstraint])
         
         progressBarWithoutLastState.numberOfPoints = 5
         progressBarWithoutLastState.lineHeight = 2
@@ -99,6 +100,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         tabSwipe.setSelectedColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)
         tabSwipe.setIndicatorColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"))
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.viewTab)
+        tabSwipe.toolbar.clipsToBounds = true
         tabSwipe.pagesScrollView?.isScrollEnabled = false
         tabSwipe.setCurrentTabIndex(pos, withAnimation: true)
     }
@@ -117,25 +119,19 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             //            vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         } else if index == 2{
-            let vc = storyboard.instantiateViewController(withIdentifier: "InfoProcessResumeController") as! InfoProcessResumeController
+            let vc = storyboard.instantiateViewController(withIdentifier: "OfferProcessController") as! OfferProcessController
             //            vc.delegate = self
             //            vc.positionTab = 0
             //            vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
         }else if index == 3{
-            let vc = storyboard.instantiateViewController(withIdentifier: "InfoProcessResumeController") as! InfoProcessResumeController
+            let vc = storyboard.instantiateViewController(withIdentifier: "GoToWorkProcessController") as! GoToWorkProcessController
             //            vc.delegate = self
             //            vc.positionTab = 0
             //            vc.resumeDetailCustomer = self.resumeDetailCustomer
             return vc
-        }else if index == 4{
-            let vc = storyboard.instantiateViewController(withIdentifier: "InfoProcessResumeController") as! InfoProcessResumeController
-            //            vc.delegate = self
-            //            vc.positionTab = 0
-            //            vc.resumeDetailCustomer = self.resumeDetailCustomer
-            return vc
-        }else {
-            let vc = storyboard.instantiateViewController(withIdentifier: "InfoProcessResumeController") as! InfoProcessResumeController
+        }else{
+            let vc = storyboard.instantiateViewController(withIdentifier: "ContractProcessController") as! ContractProcessController
             //            vc.delegate = self
             //            vc.positionTab = 0
             //            vc.resumeDetailCustomer = self.resumeDetailCustomer

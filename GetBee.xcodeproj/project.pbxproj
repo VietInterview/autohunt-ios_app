@@ -17,10 +17,16 @@
 		7A06AD9C2174266400E3CDAA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06AD9B2174266400E3CDAA /* CustomCell.swift */; };
 		7A06AD9E2174266C00E3CDAA /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A06AD9D2174266C00E3CDAA /* CustomCell.xib */; };
 		7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06ADA0217456AF00E3CDAA /* DetailJobController.swift */; };
+		7A0B361821CE766C0092C8E2 /* CreateEditInterviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B361721CE766C0092C8E2 /* CreateEditInterviewController.swift */; };
+		7A0B361A21CE76AF0092C8E2 /* DetailInterviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B361921CE76AF0092C8E2 /* DetailInterviewController.swift */; };
+		7A0B361C21CE76DD0092C8E2 /* CreateEditOfferController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B361B21CE76DD0092C8E2 /* CreateEditOfferController.swift */; };
+		7A0B361E21CE77070092C8E2 /* DetailOfferController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B361D21CE77070092C8E2 /* DetailOfferController.swift */; };
+		7A0B362021CE77200092C8E2 /* CreateEditGoToWorkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B361F21CE77200092C8E2 /* CreateEditGoToWorkController.swift */; };
 		7A0C133221748F90000AC5F2 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133121748F90000AC5F2 /* InfoController.swift */; };
 		7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133321749001000AC5F2 /* StatisticalController.swift */; };
 		7A0C133621749018000AC5F2 /* CVSendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C133521749018000AC5F2 /* CVSendController.swift */; };
 		7A121D8D21718A4D001E0B35 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A121D8C21718A4D001E0B35 /* Login.swift */; };
+		7A144A6C21D104DE001724E5 /* CustomerProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A144A6B21D104DE001724E5 /* CustomerProfileController.swift */; };
 		7A17F3BA21A396AD000B4D1F /* ListCVSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A17F3B921A396AD000B4D1F /* ListCVSubmit.swift */; };
 		7A17F3BC21A3A9AC000B4D1F /* MyCVTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A17F3BB21A3A9AC000B4D1F /* MyCVTableViewCell.swift */; };
 		7A1D971021990D48007A4200 /* MyChoose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D970F21990D48007A4200 /* MyChoose.swift */; };
@@ -85,6 +91,10 @@
 		7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5F21719B6400E3B0DC /* NavigationController.swift */; };
 		7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA6121719B6400E3B0DC /* ViewController.swift */; };
 		7AA1EAAF21CCFB66007A51CC /* InterviewProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */; };
+		7AA530A221CDDF060087B65A /* InterviewOfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A121CDDF060087B65A /* InterviewOfferCell.swift */; };
+		7AA530A421CDEE9E0087B65A /* OfferProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A321CDEE9E0087B65A /* OfferProcessController.swift */; };
+		7AA530A621CDF88D0087B65A /* GoToWorkProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A521CDF88D0087B65A /* GoToWorkProcessController.swift */; };
+		7AA530A821CDFCCC0087B65A /* ContractProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A721CDFCCC0087B65A /* ContractProcessController.swift */; };
 		7AA70218219CFD6300566F43 /* ChooseCVSubmitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */; };
 		7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */; };
 		7AA7021C219CFE8900566F43 /* MyCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7021B219CFE8900566F43 /* MyCV.swift */; };
@@ -162,10 +172,16 @@
 		7A06AD9B2174266400E3CDAA /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		7A06AD9D2174266C00E3CDAA /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		7A06ADA0217456AF00E3CDAA /* DetailJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJobController.swift; sourceTree = "<group>"; };
+		7A0B361721CE766C0092C8E2 /* CreateEditInterviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditInterviewController.swift; sourceTree = "<group>"; };
+		7A0B361921CE76AF0092C8E2 /* DetailInterviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInterviewController.swift; sourceTree = "<group>"; };
+		7A0B361B21CE76DD0092C8E2 /* CreateEditOfferController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditOfferController.swift; sourceTree = "<group>"; };
+		7A0B361D21CE77070092C8E2 /* DetailOfferController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOfferController.swift; sourceTree = "<group>"; };
+		7A0B361F21CE77200092C8E2 /* CreateEditGoToWorkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditGoToWorkController.swift; sourceTree = "<group>"; };
 		7A0C133121748F90000AC5F2 /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		7A0C133321749001000AC5F2 /* StatisticalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticalController.swift; sourceTree = "<group>"; };
 		7A0C133521749018000AC5F2 /* CVSendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSendController.swift; sourceTree = "<group>"; };
 		7A121D8C21718A4D001E0B35 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		7A144A6B21D104DE001724E5 /* CustomerProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerProfileController.swift; sourceTree = "<group>"; };
 		7A17F3B921A396AD000B4D1F /* ListCVSubmit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCVSubmit.swift; sourceTree = "<group>"; };
 		7A17F3BB21A3A9AC000B4D1F /* MyCVTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVTableViewCell.swift; sourceTree = "<group>"; };
 		7A1D970F21990D48007A4200 /* MyChoose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChoose.swift; sourceTree = "<group>"; };
@@ -246,6 +262,10 @@
 		7A99AA5F21719B6400E3B0DC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7A99AA6121719B6400E3B0DC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewProcessController.swift; sourceTree = "<group>"; };
+		7AA530A121CDDF060087B65A /* InterviewOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewOfferCell.swift; sourceTree = "<group>"; };
+		7AA530A321CDEE9E0087B65A /* OfferProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferProcessController.swift; sourceTree = "<group>"; };
+		7AA530A521CDF88D0087B65A /* GoToWorkProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToWorkProcessController.swift; sourceTree = "<group>"; };
+		7AA530A721CDFCCC0087B65A /* ContractProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractProcessController.swift; sourceTree = "<group>"; };
 		7AA70217219CFD6300566F43 /* ChooseCVSubmitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCVSubmitController.swift; sourceTree = "<group>"; };
 		7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSubmitTableViewCell.swift; sourceTree = "<group>"; };
 		7AA7021B219CFE8900566F43 /* MyCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCV.swift; sourceTree = "<group>"; };
@@ -342,6 +362,35 @@
 			path = CarrerOrCity;
 			sourceTree = "<group>";
 		};
+		7A0B361421CE76250092C8E2 /* Interview */ = {
+			isa = PBXGroup;
+			children = (
+				7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */,
+				7A0B361721CE766C0092C8E2 /* CreateEditInterviewController.swift */,
+				7A0B361921CE76AF0092C8E2 /* DetailInterviewController.swift */,
+			);
+			path = Interview;
+			sourceTree = "<group>";
+		};
+		7A0B361521CE762E0092C8E2 /* Offer */ = {
+			isa = PBXGroup;
+			children = (
+				7AA530A321CDEE9E0087B65A /* OfferProcessController.swift */,
+				7A0B361B21CE76DD0092C8E2 /* CreateEditOfferController.swift */,
+				7A0B361D21CE77070092C8E2 /* DetailOfferController.swift */,
+			);
+			path = Offer;
+			sourceTree = "<group>";
+		};
+		7A0B361621CE76360092C8E2 /* Gotowork */ = {
+			isa = PBXGroup;
+			children = (
+				7AA530A521CDF88D0087B65A /* GoToWorkProcessController.swift */,
+				7A0B361F21CE77200092C8E2 /* CreateEditGoToWorkController.swift */,
+			);
+			path = Gotowork;
+			sourceTree = "<group>";
+		};
 		7A121D8B21718A1E001E0B35 /* Response */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +415,14 @@
 				7A6CE03C21CA69EE00954ADC /* ResumeDetailCustomer.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		7A144A6A21D104B4001724E5 /* CustomerProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7A144A6B21D104DE001724E5 /* CustomerProfileController.swift */,
+			);
+			path = CustomerProfile;
 			sourceTree = "<group>";
 		};
 		7A1D0BCD21BB283000262D94 /* DetailJob */ = {
@@ -451,9 +508,13 @@
 		7A88262E21CB7B5300F491D3 /* ProcessResume */ = {
 			isa = PBXGroup;
 			children = (
+				7A0B361621CE76360092C8E2 /* Gotowork */,
+				7A0B361521CE762E0092C8E2 /* Offer */,
+				7A0B361421CE76250092C8E2 /* Interview */,
 				7A88262F21CB7F2200F491D3 /* ProcessResumeController.swift */,
 				7A88263121CB8ABB00F491D3 /* InfoProcessResumeController.swift */,
-				7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */,
+				7AA530A121CDDF060087B65A /* InterviewOfferCell.swift */,
+				7AA530A721CDFCCC0087B65A /* ContractProcessController.swift */,
 			);
 			path = ProcessResume;
 			sourceTree = "<group>";
@@ -625,6 +686,7 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A144A6A21D104B4001724E5 /* CustomerProfile */,
 				7A88262E21CB7B5300F491D3 /* ProcessResume */,
 				7A6CE03721CA380800954ADC /* DetailResumeCustomer */,
 				7A879E9921C908F3000850D2 /* DetailJobCustomer */,
@@ -988,6 +1050,7 @@
 				7A6CE03B21CA3F0500954ADC /* InfoDetailResumeCustomerController.swift in Sources */,
 				7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */,
 				7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */,
+				7A0B361A21CE76AF0092C8E2 /* DetailInterviewController.swift in Sources */,
 				9B77E0751E2FB66F0020E450 /* UserDataManager.swift in Sources */,
 				7A955E2021A7EB4300D402D4 /* Images.swift in Sources */,
 				7AC6DA8321A2785B00BD5C10 /* MyCVAppliedController.swift in Sources */,
@@ -996,6 +1059,9 @@
 				7AF1BD54219FBB20002FDC63 /* InfoDetailCVController.swift in Sources */,
 				9BD01E361F01641E007255E3 /* DictionaryExtension.swift in Sources */,
 				7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */,
+				7A0B361E21CE77070092C8E2 /* DetailOfferController.swift in Sources */,
+				7AA530A221CDDF060087B65A /* InterviewOfferCell.swift in Sources */,
+				7A0B362021CE77200092C8E2 /* CreateEditGoToWorkController.swift in Sources */,
 				E8290C021D8330A800599960 /* StringExtension.swift in Sources */,
 				7AC6DA7F21A2782C00BD5C10 /* MyCVController.swift in Sources */,
 				7A6F9EF42192DADE0081862E /* GetMyProfile.swift in Sources */,
@@ -1021,6 +1087,8 @@
 				7A99AA5C21719A8B00E3B0DC /* LeftViewCell.swift in Sources */,
 				E81171921DE5EFB7003D3DF5 /* UIViewControllerExtension.swift in Sources */,
 				7A78E35321A53433007BA69C /* SwiftLog.swift in Sources */,
+				7A144A6C21D104DE001724E5 /* CustomerProfileController.swift in Sources */,
+				7AA530A621CDF88D0087B65A /* GoToWorkProcessController.swift in Sources */,
 				7AA7021E219CFEEE00566F43 /* CvsAPI.swift in Sources */,
 				9B3AA3991ED35007005A4D26 /* SignInViewController.swift in Sources */,
 				7A17F3BC21A3A9AC000B4D1F /* MyCVTableViewCell.swift in Sources */,
@@ -1034,8 +1102,10 @@
 				7A7B863321CBE4EB00EA10B5 /* SelfSizedTableView.swift in Sources */,
 				7A045FB421BDFB1100BC3B8C /* Account.swift in Sources */,
 				7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */,
+				7A0B361C21CE76DD0092C8E2 /* CreateEditOfferController.swift in Sources */,
 				7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */,
 				7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */,
+				7A0B361821CE766C0092C8E2 /* CreateEditInterviewController.swift in Sources */,
 				7ADF392021BA1C1C00E962EA /* Env.swift in Sources */,
 				7A955E1E21A7E78A00D402D4 /* IntroController.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
@@ -1053,6 +1123,7 @@
 				7A60B02D21BF9ACF0048F4C4 /* ResumesEmployerCell.swift in Sources */,
 				9B8574D9212C84130063A3E2 /* UIImageExtension.swift in Sources */,
 				7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */,
+				7AA530A421CDEE9E0087B65A /* OfferProcessController.swift in Sources */,
 				7A88263221CB8ABB00F491D3 /* InfoProcessResumeController.swift in Sources */,
 				9B3AA39B1ED35013005A4D26 /* SignUpViewController.swift in Sources */,
 				7AFB065321A4F3AD0046CB7B /* MyJobSaved.swift in Sources */,
@@ -1090,6 +1161,7 @@
 				7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */,
 				7A6CE03621CA1FCA00954ADC /* JobDetailCustomer.swift in Sources */,
 				7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */,
+				7AA530A821CDFCCC0087B65A /* ContractProcessController.swift in Sources */,
 				9B715A461E28083600C0C039 /* PlaceholderTextView.swift in Sources */,
 				7AB0AD0821736CF900F576B5 /* InfoAccountController.swift in Sources */,
 				7A78E35D21A5785C007BA69C /* SubmitCV.swift in Sources */,

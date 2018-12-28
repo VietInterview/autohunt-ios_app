@@ -47,6 +47,8 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         tableViewJob.rowHeight = UITableViewAutomaticDimension
         tableViewJob.estimatedRowHeight = UITableViewAutomaticDimension
+        
+        debugLog(object: UIDevice.current.identifierForVendor?.uuidString)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -180,11 +182,7 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobController") as! DetailJobController
-        vc.jobId = self.jobList[indexPath.row].id!
-        vc.title = NSLocalizedString("detail_job", comment: "")
-        navigationController?.pushViewController(vc, animated: true)
+        self.pushViewController(controller: DetailJobController.init().setArgument(jobId: self.jobList[indexPath.row].id!, title: NSLocalizedString("detail_job", comment: "")))
     }
     var mCell:JobTableViewCell?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
