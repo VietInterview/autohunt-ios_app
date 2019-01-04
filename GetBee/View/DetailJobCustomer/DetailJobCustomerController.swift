@@ -67,7 +67,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 }
                 self.arrContent.append(lstCareer)
             }else{
-                 self.arrContent.append("")
+                self.arrContent.append("")
             }
             
             self.arrContent.append(StringUtils.shared.checkEmpty(value: jobDetailCustomer.workExperience))

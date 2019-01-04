@@ -140,4 +140,210 @@ class CvsAPI{
             failure(errorString)
         })
     }
+    class func detailProcessResume(cvId: Int, jobId: Int,_ success: @escaping (_ detailProcessResume: DetailProcessResume) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = cvsUrlCus + "cvProcess/detail?cvId=\(cvId)&jobId=\(jobId)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let detailProcessResume = try? newJSONDecoder().decode(DetailProcessResume.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(detailProcessResume)
+            }
+        }, failure: {error in
+            LoadingOverlay.shared.hideOverlayView()
+            failure(error)
+        })
+    }
+    class func sendReject(cvId: Int,jobId: Int,reasonNote: String,reasonRejectId: Int, rejectStep: Int, success: @escaping (_ sendReject:SendReject) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/reject"
+        let parameters = [
+            "cvId": cvId,
+            "jobId": jobId,
+            "reasonNote": reasonNote,
+            "reasonRejectId": reasonRejectId,
+            "rejectStep": rejectStep
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            if let sendReject = try? newJSONDecoder().decode(SendReject.self, from: response){
+                success(sendReject)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func inviteInterview(cvId: Int,jobId: Int, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/inviteInterview"
+        let parameters = [
+            "cvId": cvId,
+            "jobId": jobId
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            success()
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func offerStatus(cvId: Int,jobId: Int, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/offerStatus"
+        let parameters = [
+            "cvId": cvId,
+            "jobId": jobId
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            success()
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func sendInviteInterview(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping (SendInterviewResponse) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/sendInterview"
+        let parameters = [
+            "cvId": cvId,
+            "id": id == -1 ? nil : id,
+            "interviewAddress": interviewAddress,
+            "interviewDate": interviewDate,
+            "jobId": jobId,
+            "note": note,
+            "round": round,
+            "status": status
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            if let sendInterviewResponse = try? newJSONDecoder().decode(SendInterviewResponse.self, from: response) {
+                success(sendInterviewResponse)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func sendOffer(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping (SendOffer) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/sendOffer"
+        let parameters = [
+            "curency": curency,
+            "cvId": cvId,
+            "id": id == -1 ? nil : id,
+            "jobId": jobId,
+            "note": note,
+            "position": position,
+            "round": round,
+            "salary": salary,
+            "status": status,
+            "workAddress": workAddress,
+            "workTime": workTime
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            if let sendOffer = try? newJSONDecoder().decode(SendOffer.self, from: response) {
+                success(sendOffer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func updateInterviewStatus(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/updateInterviewStatus"
+        let parameters = [
+            "cvId": cvId,
+            "id": id,
+            "interviewAddress": interviewAddress,
+            "interviewDate": interviewDate,
+            "jobId": jobId,
+            "note": note,
+            "round": round,
+            "status": status
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            success()
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func updateOfferStatus(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/updateOfferStatus"
+        let parameters = [
+            "curency": curency,
+            "cvId": cvId,
+            "id": id == -1 ? nil : id,
+            "jobId": jobId,
+            "note": note,
+            "position": position,
+            "round": round,
+            "salary": salary,
+            "status": status,
+            "workAddress": workAddress,
+            "workTime": workTime
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            success()
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func viewEmailInterview(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping (SendInterviewResponse) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/viewEmailInterview"
+        let parameters = [
+            "cvId": cvId,
+            "id": id == -1 ? nil : id,
+            "interviewAddress": interviewAddress,
+            "interviewDate": interviewDate,
+            "jobId": jobId,
+            "note": note,
+            "round": round,
+            "status": status
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            if let viewEmailInterview = try? newJSONDecoder().decode(SendInterviewResponse.self, from: response) {
+                success(viewEmailInterview)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func viewEmailOffer(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping (SendOffer) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/viewEmailOffer"
+        let parameters = [
+            "curency": curency,
+            "cvId": cvId,
+            "id": id == -1 ? nil : id,
+            "jobId": jobId,
+            "note": note,
+            "position": position,
+            "round": round,
+            "salary": salary,
+            "status": status,
+            "workAddress": workAddress,
+            "workTime": workTime
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            if let viewEmailOffer = try? newJSONDecoder().decode(SendOffer.self, from: response) {
+                success(viewEmailOffer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
 }

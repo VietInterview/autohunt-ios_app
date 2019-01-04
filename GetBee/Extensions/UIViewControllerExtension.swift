@@ -17,6 +17,12 @@ extension UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: handler))
     present(alert, animated: true, completion: nil)
   }
+  func showMessageFull(title: String, message: String, handler: ((_ action: UIAlertAction) -> Void)? = nil,handlerCancel: ((_ action: UIAlertAction) -> Void)? = nil) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "Có", style: UIAlertActionStyle.default, handler: handler))
+    alert.addAction(UIAlertAction(title: "Không", style: UIAlertActionStyle.default, handler: handlerCancel))
+    present(alert, animated: true, completion: nil)
+  }
   func showToast(title:String){
     let toast = Toast(text: title)
     toast.show()

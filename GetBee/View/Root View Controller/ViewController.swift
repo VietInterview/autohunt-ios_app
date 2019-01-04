@@ -48,7 +48,7 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
         tableViewJob.rowHeight = UITableViewAutomaticDimension
         tableViewJob.estimatedRowHeight = UITableViewAutomaticDimension
         
-        debugLog(object: UIDevice.current.identifierForVendor?.uuidString)
+        debugLog(object: UIDevice.current.identifierForVendor!.uuidString)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

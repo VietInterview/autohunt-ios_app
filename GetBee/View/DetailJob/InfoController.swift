@@ -60,10 +60,10 @@ class InfoController: UIViewController {
         self.lblRequireJob.text = requireJobContent
         
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction))
-         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
-        self.mViewDes.isUserInteractionEnabled = true
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.mViewRequi.isUserInteractionEnabled = true
         self.mViewRequi.addGestureRecognizer(gestureSwift2AndHigher2)
+        self.mViewDes.isUserInteractionEnabled = true
         self.mViewDes.addGestureRecognizer(gestureSwift2AndHigher)
     }
     var isShowDes:Bool = true

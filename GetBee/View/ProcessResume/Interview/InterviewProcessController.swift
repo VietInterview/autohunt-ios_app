@@ -6,56 +6,234 @@
 
 import UIKit
 
-class InterviewProcessController: BaseViewController{
+class InterviewProcessController: BaseViewController, SendInterviewDelegate{
+    
     @IBOutlet weak var tableView: SelfSizedTableView!
     @IBOutlet weak var heightViewInfo: NSLayoutConstraint!
     @IBOutlet weak var viewInfo: UIView!
+    @IBOutlet weak var viewReject: UIView!
+    @IBOutlet weak var viewButton: UIView!
+    @IBOutlet weak var btnReject: UIButton!
+    @IBOutlet weak var btnOffer: UIButton!
+    @IBOutlet weak var lblReject: UILabel!
     
-    var count: Int = 0
+    var count:Int?
+    var detailProcessResume = DetailProcessResume()
+    var rejectDelegate:RejectDelegate?
+    var nextDelegate:NextDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.maxHeight = CGFloat(self.count * 70)
+        if let LstInterview = self.detailProcessResume.lstInterviewHis {
+            self.count = LstInterview.count
+        }else {
+            self.count = 0
+        }
+        if self.count == 0 {
+            self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.heightViewInfo.constant = 190 + CGFloat(self.count * 70)
+        var status:Int
+        var rejectStep:Int = -1
+        status = self.detailProcessResume.cvProcessInfo!.status!
+        if let rejectstep = self.detailProcessResume.cvProcessInfo!.rejectStep{
+            rejectStep = rejectstep
+        }
+        if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
+            if let lstInterview =  self.detailProcessResume.lstInterviewHis {
+                if lstInterview.count > 0{
+                    if lstInterview[lstInterview.count-1].status == 1{
+                        self.showHideView(view: self.btnReject, isHidden: true)
+                        self.showHideView(view: self.btnOffer, isHidden: false)
+                        self.showHideView(view: self.viewButton, isHidden: false)
+                    } else if lstInterview[lstInterview.count-1].status == 2 {
+                        self.showHideView(view: self.btnReject, isHidden: false)
+                        self.showHideView(view: self.btnOffer, isHidden: true)
+                        self.showHideView(view: self.viewButton, isHidden: false)
+                    }else if lstInterview[lstInterview.count-1].status == 3{
+                        self.showHideView(view: self.btnReject, isHidden: false)
+                        self.showHideView(view: self.btnOffer, isHidden: false)
+                        self.showHideView(view: self.viewButton, isHidden: false)
+                    }else {
+                        self.showHideView(view: self.btnReject, isHidden: true)
+                        self.showHideView(view: self.btnOffer, isHidden: true)
+                        self.showHideView(view: self.viewButton, isHidden: true)
+                    }
+                } else {
+                    self.showHideView(view: self.btnReject, isHidden: false)
+                    self.showHideView(view: self.btnOffer, isHidden: false)
+                    self.showHideView(view: self.viewButton, isHidden: false)
+                }
+            }else{
+                self.showHideView(view: self.btnReject, isHidden: true)
+                self.showHideView(view: self.btnOffer, isHidden: true)
+                self.showHideView(view: self.viewButton, isHidden: true)
+            }
+        }else {
+            self.showHideView(view: self.viewButton, isHidden: true)
+            self.showHideView(view: self.btnReject, isHidden: true)
+            self.showHideView(view: self.btnOffer, isHidden: true)
+        }
+        
+        if self.detailProcessResume.cvProcessInfo!.status! == 4{
+            if self.detailProcessResume.cvProcessInfo!.rejectStep! == 2 {
+                self.showHideView(view: self.viewReject, isHidden: false)
+                self.showHideView(view: self.viewButton, isHidden: true)
+            }else{
+                self.showHideView(view: self.viewReject, isHidden: true)
+            }
+        }else {
+            self.showHideView(view: self.viewReject, isHidden: true)
+        }
+        
+        if let rejectName = self.detailProcessResume.cvProcessInfo!.reasonRejectName {
+            self.lblReject.text = "Ứng viên này đã bị từ chối\nLý do: \(rejectName)"
+            if let rejectNote = self.detailProcessResume.cvProcessInfo!.rejectNote {
+                self.lblReject.text = rejectNote == "" ? "Ứng viên này đã bị từ chối\nLý do: \(rejectName)" : "Ứng viên này đã bị từ chối\nLý do: \(rejectName)\nGhi chú: \(rejectNote)"
+            }
+        }
+        tableView.maxHeight = CGFloat(self.count! * 70)
+        self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
         self.viewInfo.layoutIfNeeded()
         self.viewInfo.setNeedsLayout()
+        self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        tableView.reloadData()
+        if count! > 0 {
+            tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
     @IBAction func addInterview(_ sender: Any) {
-        count = count + 1
-        tableView.maxHeight = CGFloat(self.count * 70)
-        self.heightViewInfo.constant = 190 + CGFloat(self.count * 70)
-        self.viewInfo.layoutIfNeeded()
-        self.viewInfo.setNeedsLayout()
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row:count-1, section:0), at: .bottom, animated: true)
+        if let lstInterview = self.detailProcessResume.lstInterviewHis {
+            if lstInterview.count > 0 {
+                if lstInterview[lstInterview.count-1].status! == 0 {
+                    self.showMessage(title: "Thông báo", message: "Bạn phải cập nhật trạng thái vòng phỏng vấn trước, trước khi tạo vòng phỏng vấn mới", handler: { (action: UIAlertAction!) in
+                        
+                    })
+                } else if lstInterview[lstInterview.count-1].status! == 1 {
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+                }else if lstInterview[lstInterview.count-1].status! == 2 {
+                    self.showMessage(title: "Thông báo", message: "Vòng phỏng vấn gần nhất ứng viên không đạt vì vậy bạn không thể thêm mới vòng phỏng vấn", handler: { (action: UIAlertAction!) in
+                        
+                    })
+                }else {
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+                }
+            } else {
+                self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+            }
+        }
     }
     
     @IBAction func offerTouch(_ sender: Any) {
-        debugLog(object: "Offer")
+        if let lstInterview = self.detailProcessResume.lstInterviewHis {
+            let lastStatus:Int = lstInterview[lstInterview.count - 1].status!
+            if lastStatus == 1 {
+                self.nextDelegate?.onNext(step: 2, cvId: self.detailProcessResume.cvProcessInfo!.cvID!, jobId: self.detailProcessResume.jobID!)
+            }else if lastStatus == 0 {
+                self.showMessage(title: "Thông báo", message: "Bạn phải cập nhật trạng thái vòng phỏng vấn trước, trước khi tạo vòng phỏng vấn mới", handler: { (action: UIAlertAction!) in
+                    
+                })
+            }else{
+                self.showMessage(title: "Thông báo", message: "Vòng phỏng vấn gần nhất ứng viên không đạt vì vậy bạn không thể thêm mới vòng phỏng vấn", handler: { (action: UIAlertAction!) in
+                    
+                })
+            }
+        }
+    }
+    func onSendInterview(lstInterview: LstInterviewHi) {
+        var isDuplicate:Bool = false
+        if self.detailProcessResume.lstInterviewHis!.count > 0 {
+            for i in 0...self.detailProcessResume.lstInterviewHis!.count-1 {
+                if self.detailProcessResume.lstInterviewHis![i].id! == lstInterview.id! {
+                    isDuplicate = true
+                    self.detailProcessResume.lstInterviewHis![i] = lstInterview
+                    break
+                }
+            }
+            if isDuplicate == false {
+                self.detailProcessResume.lstInterviewHis!.append(lstInterview)
+            }
+            self.count = self.detailProcessResume.lstInterviewHis!.count
+            tableView.maxHeight = CGFloat(self.count! * 70)
+            self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
+            self.viewInfo.layoutIfNeeded()
+            self.viewInfo.setNeedsLayout()
+            self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+            self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+            tableView.reloadData()
+            if count! > 0 {
+                tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
+            }
+        }else{
+            self.detailProcessResume.lstInterviewHis!.append(lstInterview)
+            self.count = self.detailProcessResume.lstInterviewHis!.count
+            tableView.maxHeight = CGFloat(self.count! * 70)
+            self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
+            self.viewInfo.layoutIfNeeded()
+            self.viewInfo.setNeedsLayout()
+            self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+            self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+            tableView.reloadData()
+            if count! > 0 {
+                tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
+            }
+        }
     }
     @IBAction func rejectTouch(_ sender: Any) {
-        debugLog(object: "Reject")
+        self.rejectDelegate?.onReject(step: 2, cvId: self.detailProcessResume.cvProcessInfo!.cvID!, jobId: self.detailProcessResume.jobID!)
     }
 }
 extension InterviewProcessController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count
+        return count!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InterviewOfferCell", for: indexPath) as! InterviewOfferCell
-        cell.lblRound.text = "Round\(self.count)"
-        cell.lblDate.text = "28/12/2018"
-        cell.lblStatus.text = "Đạt"
+        cell.lblRound.text = "\(self.detailProcessResume.lstInterviewHis![indexPath.row].round!)"
+        cell.lblDate.text = self.detailProcessResume.lstInterviewHis![indexPath.row].interviewDate! == "" ? "" : "\(self.detailProcessResume.lstInterviewHis![indexPath.row].interviewDate!.substring(with: 0..<10))"
+        cell.lblStatus.text = "\(self.switchStatus(value: self.detailProcessResume.lstInterviewHis![indexPath.row].status!))"
         return cell
     }
+    func switchStatus(value:Int) -> String {
+        var stringStatus:String
+        switch value {
+        case 1:
+            stringStatus = "Đạt"
+        case 2:
+            stringStatus = "Không đạt"
+        case 3:
+            stringStatus = "Ứng viên không đến"
+        default:
+            stringStatus = "Chưa có kết quả"
+        }
+        return stringStatus
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushViewController(controller: CreateEditInterviewController.init().setArgument(id: 1, value: "Thông tin phỏng vấn"))
+        var status:Int
+        var rejectStep:Int = -1
+        status = self.detailProcessResume.cvProcessInfo!.status!
+        if let rejectstep = self.detailProcessResume.cvProcessInfo!.rejectStep{
+            rejectStep = rejectstep
+        }
+        if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
+            if status == 4 {
+                self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
+            } else {
+                if indexPath.row == self.count!-1 {
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row], detailProcessResume: self.detailProcessResume, delegate: self))
+                } else{
+                    self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
+                }
+            }
+        }else{
+            self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
+        }
    }
 }

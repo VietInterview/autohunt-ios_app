@@ -32,7 +32,6 @@ class UserAPI {
     })
   }
   
-  //Example method that uploads an image using multipart-form.
   class func signup(_ email: String, address: String, career: String, fullName:String, phone: String, success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
     let url = "/api/register"
     let parameters = [
@@ -44,10 +43,8 @@ class UserAPI {
     ]
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
     APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
-//      if let errorSubmitCV = try? newJSONDecoder().decode(ErrorSubmitCV.self, from: response){
         LoadingOverlay.shared.hideOverlayView()
         success()
-//      }
     }, failure: { error , statusCode in
       LoadingOverlay.shared.hideOverlayView()
       var dict : Dictionary = error

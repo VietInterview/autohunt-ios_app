@@ -60,6 +60,24 @@ class JobAPI {
             }
         }
     }
+    class func getListRejectReason(_ success: @escaping (_ carrer: ListRejectReason) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let baseUrl = App.baseUrl + "/svccollaborator/api/getListRejectReason"
+        let headers = [
+            "Authorization": "Bearer \(SessionManager.currentSession!.accessToken!)",
+            "Content-Type": "application/json"
+        ]
+        UIApplication.showNetworkActivity()
+        Alamofire.request(baseUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseListRejectReason { response in
+            print(response)
+            if let listRejectReason = response.result.value {
+                UIApplication.hideNetworkActivity()
+                success(listRejectReason)
+            } else {
+                UIApplication.hideNetworkActivity()
+                failure(response.error!)
+            }
+        }
+    }
     class func getCityList(_ success: @escaping (_ carrer: CarrerList) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let baseUrl = App.baseUrl + "/svccollaborator/api/mstCity"
         let headers = [

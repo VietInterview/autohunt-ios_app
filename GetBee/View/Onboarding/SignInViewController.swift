@@ -13,7 +13,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet weak var lblLogin: UILabel!
     @IBOutlet weak var verticalPass: UIView!
     @IBOutlet weak var verticalUser: UIView!
-    
     @IBOutlet weak var imgNoteUser: UIImageView!
     @IBOutlet weak var imgNotePass: UIImageView!
     @IBOutlet weak var passwordField: DesignableUITextField!
@@ -30,6 +29,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet var mViewContact: UIView!
     var viewModel = SignInViewModelWithCredentials()
     var effect:UIVisualEffect!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         btnLogin.setRoundBorders(5)
@@ -41,8 +41,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         if !MFMailComposeViewController.canSendMail() {
-            print("Mail services are not available")
-            //            return
         }
         
         mViewUser.layer.borderWidth = 0.5
@@ -172,22 +170,18 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        // Hide the Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @IBAction func dismissPopUpTouch(_ sender: Any) {
         animateOutForgotPass()
     }
-    // MARK: - Actions
     func animateIn() {
         self.view.addSubview(mViewSuccess)
         mViewSuccess.center = self.view.center
-        
         mViewSuccess.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         mViewSuccess.alpha = 0
         UIView.animate(withDuration: 0.4) {
             self.visualEffectView.effect = self.effect
-            
             self.visualEffectView.isHidden = false
             self.mViewSuccess.alpha = 1
             self.mViewSuccess.transform = CGAffineTransform.identity

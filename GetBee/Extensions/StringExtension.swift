@@ -44,4 +44,23 @@ extension String {
     let predicate = NSPredicate(format: "SELF MATCHES %@", "[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?")
     return predicate.evaluate(with: self)
   }
+  func index(at: Int) -> Index {
+    return self.index(startIndex, offsetBy: at)
+  }
+  
+  func substring(from: Int) -> String {
+    let fromIndex = index(at: from)
+    return substring(from: fromIndex)
+  }
+  
+  func substring(to: Int) -> String {
+    let toIndex = index(at: to)
+    return substring(to: toIndex)
+  }
+  
+  func substring(with r:Range<Int>) -> String {
+    let startIndex  = index(at: r.lowerBound)
+    let endIndex    = index(at: r.upperBound)
+    return substring(with: startIndex..<endIndex)
+  }
 }

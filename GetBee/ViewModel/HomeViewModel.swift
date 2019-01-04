@@ -59,6 +59,13 @@ class HomeViewModel {
             failure(error.localizedDescription)
         })
     }
+    func getListReasonReject(success: @escaping (ListRejectReason) -> Void, failure: @escaping (String) -> Void){
+        JobAPI.getListRejectReason({listRejectReason in
+            success(listRejectReason)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
     func getCity(success: @escaping (CarrerList) -> Void, failure: @escaping (String) -> Void) {
         JobAPI.getCityList({citys in
             success(citys)
@@ -163,6 +170,69 @@ class HomeViewModel {
     func getDetailResumeCustomer(cvId:Int, success: @escaping (ResumeDetailCustomer) -> Void, failure: @escaping (String) -> Void){
         CvsAPI.getDetailResumeCustomer(cvId: cvId, success: {resumeDetailCustomer in
             success(resumeDetailCustomer)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func getDetailProcessResume(cvId:Int, jobId: Int, success: @escaping (DetailProcessResume) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.detailProcessResume(cvId: cvId, jobId: jobId, {detailProcessResume in
+            success(detailProcessResume)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func sendReject(cvId: Int,jobId: Int,reasonNote: String,reasonRejectId: Int, rejectStep: Int, success: @escaping (SendReject) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.sendReject(cvId: cvId, jobId: jobId, reasonNote: reasonNote, reasonRejectId: reasonRejectId, rejectStep: rejectStep, success: {sendReject in
+            success(sendReject)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func inviteInterview(cvId:Int, jobId:Int, success: @escaping () -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.inviteInterview(cvId: cvId, jobId: jobId, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func sendInviteInterview(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping (SendInterviewResponse) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.sendInviteInterview(cvId: cvId, id: id, interviewAddress: interviewAddress, interviewDate: interviewDate, jobId: jobId, note: note, round: round, status: status, success: {sendInterviewResponse in
+            success(sendInterviewResponse)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func updateInterviewStatus(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping () -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.updateInterviewStatus(cvId: cvId, id: id, interviewAddress: interviewAddress, interviewDate: interviewDate, jobId: jobId, note: note, round: round, status: status, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func viewEmailInterview(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping (SendInterviewResponse) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.viewEmailInterview(cvId: cvId, id: id, interviewAddress: interviewAddress, interviewDate: interviewDate, jobId: jobId, note: note, round: round, status: status, success: {viewEmailInterview in
+            success(viewEmailInterview)
+        }, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    
+    func offerStatus(cvId:Int, jobId:Int, success: @escaping () -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.offerStatus(cvId: cvId, jobId: jobId, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func sendOffer(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping (SendOffer) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.sendOffer(curency: curency, cvId: cvId, id: id, jobId: jobId, note: note, position: position, round: round, salary: salary, status: status, workAddress: workAddress, workTime: workTime, success: {sendOffer in
+            success(sendOffer)
+        }, failure: {error in
+             failure(error.localizedDescription)
+        })
+    }
+    func updateOfferStatus(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping () -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.updateOfferStatus(curency: curency, cvId: cvId, id: id, jobId: jobId, note: note, position: position, round: round, salary: salary, status: status, workAddress: workAddress, workTime: workTime, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func viewEmailOffer(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping (SendOffer) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.viewEmailOffer(curency: curency, cvId: cvId, id: id, jobId: jobId, note: note, position: position, round: round, salary: salary, status: status, workAddress: workAddress, workTime: workTime, success: {viewEmail in
+            success(viewEmail)
         }, failure: {error in
             failure(error.localizedDescription)
         })

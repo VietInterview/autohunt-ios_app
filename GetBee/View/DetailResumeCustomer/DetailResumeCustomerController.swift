@@ -77,6 +77,8 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
     @IBAction func processResumeTouch() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ProcessResumeController") as! ProcessResumeController
+        vc.jobId = self.resumeDetailCustomer.jobID!
+        vc.cvId = self.resumeDetailCustomer.id!
         navigationController?.pushViewController(vc, animated: true)
     }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
