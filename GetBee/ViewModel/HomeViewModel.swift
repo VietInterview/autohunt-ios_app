@@ -193,6 +193,16 @@ class HomeViewModel {
             failure(error.localizedDescription)
         })
     }
+    func gotoworkStatus(cvId:Int, jobId:Int, success: @escaping () -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.gotoworkStatus(cvId: cvId, jobId: jobId, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func contractStatus(cvId:Int, jobId:Int, success: @escaping () -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.contractStatus(cvId: cvId, jobId: jobId, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
     func sendInviteInterview(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping (SendInterviewResponse) -> Void, failure: @escaping (String) -> Void){
         CvsAPI.sendInviteInterview(cvId: cvId, id: id, interviewAddress: interviewAddress, interviewDate: interviewDate, jobId: jobId, note: note, round: round, status: status, success: {sendInterviewResponse in
             success(sendInterviewResponse)
@@ -202,6 +212,13 @@ class HomeViewModel {
     }
     func updateInterviewStatus(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping () -> Void, failure: @escaping (String) -> Void){
         CvsAPI.updateInterviewStatus(cvId: cvId, id: id, interviewAddress: interviewAddress, interviewDate: interviewDate, jobId: jobId, note: note, round: round, status: status, success: {success()}, failure: {error in
+            failure(error.localizedDescription)
+        })
+    }
+    func gotoWorkUpdate(cvId:Int, id:Int, countUpdate:Int, jobId:Int, startWorkDate:String,success: @escaping (GotoWorkUpdate) -> Void, failure: @escaping (String) -> Void){
+        CvsAPI.gotoWorkUpdate(cvId: cvId, id: id, countUpdate: countUpdate, jobId: jobId, startWorkDate: startWorkDate, success: {gotoWorkUpdate in
+            success(gotoWorkUpdate)
+        }, failure: {error in
             failure(error.localizedDescription)
         })
     }

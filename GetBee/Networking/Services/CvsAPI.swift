@@ -203,6 +203,36 @@ class CvsAPI{
             failure(error)
         })
     }
+    class func gotoworkStatus(cvId: Int,jobId: Int, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/gotoworkStatus"
+        let parameters = [
+            "cvId": cvId,
+            "jobId": jobId
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            success()
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func contractStatus(cvId: Int,jobId: Int, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/contractStatus"
+        let parameters = [
+            "cvId": cvId,
+            "jobId": jobId
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            success()
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
     class func sendInviteInterview(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping (SendInterviewResponse) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let url = cvsUrlCus + "cvProcess/sendInterview"
         let parameters = [
@@ -252,6 +282,26 @@ class CvsAPI{
             failure(error)
         })
     }
+    class func gotoWorkUpdate(cvId:Int,id:Int,countUpdate:Int, jobId:Int,startWorkDate: String, success: @escaping (GotoWorkUpdate) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let url = cvsUrlCus + "cvProcess/gotoWorkUpdate"
+        let parameters = [
+            "cvId": cvId,
+            "id": id == -1 ? nil : id,
+            "jobId": jobId,
+            "countUpdate": countUpdate,
+            "startWorkDate": startWorkDate,
+            ] as [String : Any]
+        UIApplication.showNetworkActivity()
+        APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+            UIApplication.hideNetworkActivity()
+            if let gotoWorkUpdate = try? newJSONDecoder().decode(GotoWorkUpdate.self, from: response) {
+                success(gotoWorkUpdate)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
     class func updateInterviewStatus(cvId: Int,id:Int,interviewAddress:String,interviewDate:String,jobId: Int,note:String,round:String,status:Int, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
         let url = cvsUrlCus + "cvProcess/updateInterviewStatus"
         let parameters = [
@@ -273,6 +323,7 @@ class CvsAPI{
             failure(error)
         })
     }
+    
     class func updateOfferStatus(curency: Int,cvId:Int,id:Int,jobId:Int,note: String,position:String,round:String,salary:Int,status:Int,workAddress:String,workTime:String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
         let url = cvsUrlCus + "cvProcess/updateOfferStatus"
         let parameters = [

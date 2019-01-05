@@ -39,6 +39,8 @@
 		7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */; };
 		7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */; };
 		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
+		7A33518C21DF58650063BE50 /* GotoWorkUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33518B21DF58650063BE50 /* GotoWorkUpdate.swift */; };
+		7A33518E21DF6B810063BE50 /* SendGoToWorkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33518D21DF6B810063BE50 /* SendGoToWorkDelegate.swift */; };
 		7A39977F21DE05E100F9591F /* SendInterviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A39977E21DE05E100F9591F /* SendInterviewResponse.swift */; };
 		7A39978121DE0FBF00F9591F /* SendInterviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A39978021DE0FBF00F9591F /* SendInterviewDelegate.swift */; };
 		7A3A07D821CB46640019FC81 /* LanComCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A07D721CB46640019FC81 /* LanComCell.swift */; };
@@ -203,6 +205,8 @@
 		7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComDetailCVController.swift; sourceTree = "<group>"; };
 		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
+		7A33518B21DF58650063BE50 /* GotoWorkUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoWorkUpdate.swift; sourceTree = "<group>"; };
+		7A33518D21DF6B810063BE50 /* SendGoToWorkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendGoToWorkDelegate.swift; sourceTree = "<group>"; };
 		7A39977E21DE05E100F9591F /* SendInterviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInterviewResponse.swift; sourceTree = "<group>"; };
 		7A39978021DE0FBF00F9591F /* SendInterviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInterviewDelegate.swift; sourceTree = "<group>"; };
 		7A3A07D721CB46640019FC81 /* LanComCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanComCell.swift; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 				7A836D4D21DCC26400915E1D /* SendReject.swift */,
 				7A39977E21DE05E100F9591F /* SendInterviewResponse.swift */,
 				7A86E13B21DF06CD00707E74 /* SendOffer.swift */,
+				7A33518B21DF58650063BE50 /* GotoWorkUpdate.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				7A836D4921DCA0BA00915E1D /* NextDelegate.swift */,
 				7A39978021DE0FBF00F9591F /* SendInterviewDelegate.swift */,
 				7A86E13D21DF106300707E74 /* SendOfferDelegate.swift */,
+				7A33518D21DF6B810063BE50 /* SendGoToWorkDelegate.swift */,
 			);
 			path = Callback;
 			sourceTree = "<group>";
@@ -1182,6 +1188,7 @@
 				7A955E2321A8011800D402D4 /* IntroOneController.swift in Sources */,
 				7A5855C621B5451200625635 /* Localizable.swift in Sources */,
 				7A1D971021990D48007A4200 /* MyChoose.swift in Sources */,
+				7A33518E21DF6B810063BE50 /* SendGoToWorkDelegate.swift in Sources */,
 				7A455AC221BCCA00007F2020 /* BaseViewController.swift in Sources */,
 				9B77E0791E2FCF710020E450 /* Media.swift in Sources */,
 				7A60B02B21BF91220048F4C4 /* ResumesEmployerController.swift in Sources */,
@@ -1201,6 +1208,7 @@
 				7A955E2721A8013B00D402D4 /* IntroThreeController.swift in Sources */,
 				7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */,
 				7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */,
+				7A33518C21DF58650063BE50 /* GotoWorkUpdate.swift in Sources */,
 				7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */,
 				7A6CE03621CA1FCA00954ADC /* JobDetailCustomer.swift in Sources */,
 				7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */,

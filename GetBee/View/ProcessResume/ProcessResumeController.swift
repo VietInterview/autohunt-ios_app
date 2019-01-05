@@ -307,9 +307,9 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             return vc
         }else if index == 3{
             let vc = storyboard.instantiateViewController(withIdentifier: "GoToWorkProcessController") as! GoToWorkProcessController
-            //            vc.delegate = self
-            //            vc.positionTab = 0
-            //            vc.resumeDetailCustomer = self.resumeDetailCustomer
+            vc.nextDelegate = self
+            vc.rejectDelegate = self
+            vc.detailProcessResume = self.detailProcessResume
             return vc
         }else{
             let vc = storyboard.instantiateViewController(withIdentifier: "ContractProcessController") as! ContractProcessController
@@ -366,6 +366,26 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.detailProcessResume!.cvProcessInfo!.status! = 7
                 self.btnCloseTouch()
             })
+        } else if self.Step == 3 {
+            self.viewModel.gotoworkStatus(cvId: self.cvId, jobId: self.jobId, success: {
+                
+            }, failure: {error in
+                self.position = UInt(self.Step)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.progressBarWithoutLastState.currentIndex = self.Step
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
+                self.detailProcessResume!.cvProcessInfo!.status! = 8
+                self.btnCloseTouch()
+            })
+        } else if self.Step == 4 {
+            self.viewModel.contractStatus(cvId: self.cvId, jobId: self.jobId, success: {}, failure: {error in
+                self.position = UInt(self.Step)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.progressBarWithoutLastState.currentIndex = self.Step
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
+                self.detailProcessResume!.cvProcessInfo!.status! = 9
+                self.btnCloseTouch()
+            })
         }
     }
     @IBAction func sendReject(_ sender: Any) {
@@ -410,6 +430,8 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             self.lblInvite.text = "Bạn có chắc chắn muốn mời ứng viên này đi phỏng vấn?"
         } else if step == 2{
             self.lblInvite.text = "Bạn có chắc chắn gửi offer tới ứng viên này không?"
+        } else if step == 3 {
+            self.lblInvite.text = "Bạn có chắc chắn muốn cập nhật trạng thái đi làm cho ứng viên này không?"
         }
         self.view.addSubview(viewNext)
         viewNext.translatesAutoresizingMaskIntoConstraints = false
