@@ -7,12 +7,14 @@
 import UIKit
 import SwipeCellKit
 
-class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ChooseDelegate {
     
+    @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var tableViewResume: UITableView!
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var btnactionSearch: UIBarButtonItem!
+    
     
     var cvListByJobCustomer = [CvListByJobCustomer]()
     var cvListByJobCustomerServer = [CvListByJobCustomer]()
@@ -22,6 +24,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
     var status:Int = -1
     var mID:Int = 0
     let refreshControl = UIRefreshControl()
+    var resumesByJobCustomer:ResumesByJobCustomer?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Danh sách ứng viên"
@@ -35,18 +38,42 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        
+        self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        self.lblStatus.isUserInteractionEnabled = true
+        self.lblStatus.addGestureRecognizer(gestureSwift2AndHigher2)
+    }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        self.page = 0
+        self.getResumesByJobCus(cvName: self.textFieldSearch.text!, id: self.mID, page: page, status: self.status)
+    }
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
+        vc.title = NSLocalizedString("status", comment: "")
+        vc.isCarrer = false
+        vc.isStatus = true
+        vc.isCity = false
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.page = 0
         self.getResumesByJobCus(cvName: self.textFieldSearch.text!, id: self.mID, page: page, status: self.status)
     }
+    func didChoose(mychoose: MyChoose) {
+        self.status = mychoose.id
+        self.lblStatus.text = mychoose.name
+    }
     @objc func sortArray() {
         self.page = 0
-         self.getResumesByJobCus(cvName: self.textFieldSearch.text!, id: self.mID, page: page, status: self.status)
+        self.getResumesByJobCus(cvName: self.textFieldSearch.text!, id: self.mID, page: page, status: self.status)
     }
     func getResumesByJobCus(cvName:String, id:Int, page:Int, status:Int){
         self.viewModel.getResumesByJobCus(CvName: cvName, id: id, page: page, status: status, success: {resumesByJobCustomer in
+            self.resumesByJobCustomer = resumesByJobCustomer
             if page == 0 {
                 self.cvListByJobCustomer = resumesByJobCustomer.cvList!
                 if #available(iOS 10.0, *) {
@@ -55,7 +82,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
                     self.tableViewResume.willRemoveSubview(self.refreshControl)
                 }
             } else {
-                   self.cvListByJobCustomer.append(contentsOf: resumesByJobCustomer.cvList!)
+                self.cvListByJobCustomer.append(contentsOf: resumesByJobCustomer.cvList!)
             }
             self.cvListByJobCustomerServer = resumesByJobCustomer.cvList!
             self.tableViewResume.reloadData()
@@ -93,7 +120,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResumesEmployerCell", for: indexPath) as! ResumesEmployerCell
         if indexPath.row == 0 {
             self.showHideView(view: cell.viewQuantity, isHidden: false)
-             self.showHideView(view: cell.lblQuantity, isHidden: false)
+            self.showHideView(view: cell.lblQuantity, isHidden: false)
         } else {
             self.showHideView(view: cell.viewQuantity, isHidden: true)
             self.showHideView(view: cell.lblQuantity, isHidden: true)
@@ -101,8 +128,11 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         cell.lblName.text = self.cvListByJobCustomer[indexPath.row].fullName!
         cell.lblDateSubmit.text = "\(self.cvListByJobCustomer[indexPath.row].countDay!) ngày trước"
         cell.delegate = self
-        cell.btnStatus.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#FF5A5A"), weight: 1)
-        cell.btnStatus.addRadius(weight: 10)
+        cell.btnStatus.setTitleColor(StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row].status!), for: .normal)
+        cell.btnStatus.addBorder(color: StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row].status!), weight: 1)
+        cell.lblQuantity.text = "\(self.resumesByJobCustomer!.total!) hồ sơ được tìm thấy"
+        cell.btnStatus.addRadius(weight: 12)
+        cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus:  self.cvListByJobCustomer[indexPath.row].status!), for: .normal)
         cell.contentView.shadowView(opacity: 8/100, radius: 10)
         return cell
     }

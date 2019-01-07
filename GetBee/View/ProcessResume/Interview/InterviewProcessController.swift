@@ -16,13 +16,16 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
     @IBOutlet weak var btnReject: UIButton!
     @IBOutlet weak var btnOffer: UIButton!
     @IBOutlet weak var lblReject: UILabel!
+    @IBOutlet weak var viewAddInterview: UIView!
     
     var count:Int?
     var detailProcessResume = DetailProcessResume()
+    static let onReceiveRejectInterview = Notification.Name("onReceiveRejectInterview")
     var rejectDelegate:RejectDelegate?
     var nextDelegate:NextDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: InterviewProcessController.onReceiveRejectInterview, object: nil)
         if let LstInterview = self.detailProcessResume.lstInterviewHis {
             self.count = LstInterview.count
         }else {
@@ -32,7 +35,13 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
             self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
         }
     }
-    
+    @objc func onNotification(notification:Notification)
+    {
+        self.showHideView(view: self.viewReject, isHidden: false)
+        let reasonNote = notification.userInfo!["reasonNote"] as? NSString
+        let reasonName = notification.userInfo!["reasonName"] as? NSString
+        self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         var status:Int
@@ -70,11 +79,13 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                 self.showHideView(view: self.btnReject, isHidden: true)
                 self.showHideView(view: self.btnOffer, isHidden: true)
                 self.showHideView(view: self.viewButton, isHidden: true)
+                self.showHideView(view: self.viewAddInterview, isHidden: true)
             }
         }else {
             self.showHideView(view: self.viewButton, isHidden: true)
             self.showHideView(view: self.btnReject, isHidden: true)
             self.showHideView(view: self.btnOffer, isHidden: true)
+            self.showHideView(view: self.viewAddInterview, isHidden: true)
         }
         
         if self.detailProcessResume.cvProcessInfo!.status! == 4{
@@ -94,16 +105,9 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                 self.lblReject.text = rejectNote == "" ? "Ứng viên này đã bị từ chối\nLý do: \(rejectName)" : "Ứng viên này đã bị từ chối\nLý do: \(rejectName)\nGhi chú: \(rejectNote)"
             }
         }
-        tableView.maxHeight = CGFloat(self.count! * 70)
-        self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
-        self.viewInfo.layoutIfNeeded()
-        self.viewInfo.setNeedsLayout()
+        self.showList()
         self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
         self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-        tableView.reloadData()
-        if count! > 0 {
-            tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
-        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
@@ -160,33 +164,27 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                 self.detailProcessResume.lstInterviewHis!.append(lstInterview)
             }
             self.count = self.detailProcessResume.lstInterviewHis!.count
-            tableView.maxHeight = CGFloat(self.count! * 70)
-            self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
-            self.viewInfo.layoutIfNeeded()
-            self.viewInfo.setNeedsLayout()
-            self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            tableView.reloadData()
-            if count! > 0 {
-                tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
-            }
+            self.showList()
         }else{
             self.detailProcessResume.lstInterviewHis!.append(lstInterview)
             self.count = self.detailProcessResume.lstInterviewHis!.count
-            tableView.maxHeight = CGFloat(self.count! * 70)
-            self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
-            self.viewInfo.layoutIfNeeded()
-            self.viewInfo.setNeedsLayout()
-            self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            tableView.reloadData()
-            if count! > 0 {
-                tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
-            }
+            self.showList()
         }
     }
     @IBAction func rejectTouch(_ sender: Any) {
         self.rejectDelegate?.onReject(step: 2, cvId: self.detailProcessResume.cvProcessInfo!.cvID!, jobId: self.detailProcessResume.jobID!)
+    }
+    func showList(){
+        self.tableView.maxHeight = CGFloat(self.count! * 70)
+        self.heightViewInfo.constant = self.count! == 1 ? 190 : 110 + CGFloat(self.count! * 70)
+        self.viewInfo.layoutIfNeeded()
+        self.viewInfo.setNeedsLayout()
+        self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        self.tableView.reloadData()
+        if self.count! > 0 {
+            self.tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
+        }
     }
 }
 extension InterviewProcessController: UITableViewDataSource, UITableViewDelegate {

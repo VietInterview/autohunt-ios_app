@@ -13,6 +13,7 @@ class UserAPI {
   fileprivate static let usersUrl = "/api/authenticate"
   fileprivate static let currentUserUrl = "/user/"
   fileprivate static let collUrl = "/svccollaborator/api"
+  fileprivate static let collCusUrl = "/svccustomer/api"
   
   class func login(_ email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = usersUrl
@@ -79,6 +80,17 @@ class UserAPI {
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
         UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
+      }
+    }, failure: { error in
+      failure(error)
+    })
+  }
+  class func getCusProfile(_ success: @escaping (_ user: ProfileCustomer) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    let url = collCusUrl + "/getProfiles"
+    APIClient.request(.get, url: url, success: { response, _ in
+      if let getCusProfile = try? JSONDecoder().decode(ProfileCustomer.self, from: response){
+        CustomerDataManager.currentCustomer = getCusProfile
+        success(getCusProfile)
       }
     }, failure: { error in
       failure(error)

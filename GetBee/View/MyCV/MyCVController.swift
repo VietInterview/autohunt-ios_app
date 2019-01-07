@@ -120,8 +120,6 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.isCarrer = true
         self.isStatus = false
         self.isCity = false
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("carrer", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
@@ -134,8 +132,6 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.isCarrer = false
         self.isStatus = true
         self.isCity = false
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("status", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
@@ -147,8 +143,6 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.isCarrer = false
         self.isStatus = false
         self.isCity = true
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("city", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus

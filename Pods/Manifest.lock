@@ -13,6 +13,7 @@ PODS:
   - StepIndicator (1.0.6.1)
   - SwipeCellKit (2.5.0)
   - Toaster (2.1.1)
+  - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - ACFloatingTextfield-Swift (~> 1.7)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - StepIndicator (~> 1.0.6)
   - SwipeCellKit
   - Toaster
+  - YouTubePlayer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - StepIndicator
     - SwipeCellKit
     - Toaster
+    - YouTubePlayer
 
 SPEC CHECKSUMS:
   ACFloatingTextfield-Swift: df075d5ed5d441d8603f985fc106ec7ebe0c673f
@@ -59,7 +62,8 @@ SPEC CHECKSUMS:
   StepIndicator: 73b4bcc8bcf816cb98479d99ada7e85463252caa
   SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
+  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 0f61fbab7aedccb141032898835984f4a12b875e
+PODFILE CHECKSUM: 9942182d3dd388db2459ee051d6e2c2e9fc0fe8c
 
 COCOAPODS: 1.5.2

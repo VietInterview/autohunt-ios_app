@@ -22,6 +22,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     var isCarrer: Bool = false
     var isStatus: Bool = false
     var isCity: Bool = false
+    var isCustomer:Bool = false
     var isMultiChoice: Bool = false
     
     @IBOutlet weak var textFieldSearch: UITextField!
@@ -83,16 +84,27 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
             })
         } else if self.isStatus == true {
-            self.viewModel.items.removeAll()
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: NSLocalizedString("sent", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 3, name: NSLocalizedString("seen", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 4, name: NSLocalizedString("not_accept", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 5, name: NSLocalizedString("invite_interview", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 6, name: NSLocalizedString("interviewd", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 7, name: NSLocalizedString("offered", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 8, name: NSLocalizedString("go_to_work", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 9, name: NSLocalizedString("contract", comment: ""))))
-            self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: NSLocalizedString("default_key", comment: ""))))
+            if self.isCustomer {
+                self.viewModel.items.removeAll()
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: "Tất cả")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Nháp")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: "Đang tuyển")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 2, name: "Đã ẩn")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 3, name: "Sắp hết hạn trong 7 ngày")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 4, name: "Đã hết hạn")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 6, name: "Ngưng tuyển")))
+            } else {
+                self.viewModel.items.removeAll()
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: NSLocalizedString("sent", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 3, name: NSLocalizedString("seen", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 4, name: NSLocalizedString("not_accept", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 5, name: NSLocalizedString("invite_interview", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 6, name: NSLocalizedString("interviewd", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 7, name: NSLocalizedString("offered", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 8, name: NSLocalizedString("go_to_work", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 9, name: NSLocalizedString("contract", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: NSLocalizedString("default_key", comment: ""))))
+            }
             self.filterData.items = self.viewModel.items
             self.tableView?.dataSource = self.filterData
             self.tableView?.reloadData()
@@ -123,20 +135,27 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 let myChoose = MyChoose(id: filterData.selectedItems.map { $0.id }[0] , name: filterData.selectedItems.map { $0.title }[0], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
                 if delegate != nil {
                     delegate?.didChoose(mychoose: myChoose)
-                    for controller in self.navigationController!.viewControllers as Array {
-                        if controller.isKind(of: ViewController.self) {
+                    for controller in self.navigationController!.viewControllers {
+                        if controller is ViewController {
                             self.navigationController!.popToViewController(controller, animated: true)
                             break
-                        } else if controller.isKind(of: MyCVController.self) {
+                        } else if controller is MyCVController {
                             self.navigationController!.popToViewController(controller, animated: true)
                             break
-                        } else if controller.isKind(of: MyJobController.self) {
+                        } else if controller is MyJobController {
                             self.navigationController!.popToViewController(controller, animated: true)
                             break
-                        } else if controller.isKind(of: InfoAccountController.self) {
+                        } else if controller is InfoAccountController {
                             self.navigationController!.popToViewController(controller, animated: true)
                             break
-                        }
+                        }  else if controller is JobEmployerController {
+                            if self.isCustomer {
+                                self.navigationController?.backToViewController(vc: JobEmployerController.self)
+                            } else {
+                                self.navigationController?.backToViewController(vc: ResumesEmployerController.self)
+                            }
+                            break
+                        } 
                     }
                 }
             } else {
@@ -159,5 +178,18 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     }
     
     
+    
+}
+extension UINavigationController {
+    
+    func backToViewController(vc: Any) {
+        // iterate to find the type of vc
+        for element in viewControllers as Array {
+            if "\(type(of: element)).Type" == "\(type(of: vc))" {
+                self.popToViewController(element, animated: true)
+                break
+            }
+        }
+    }
     
 }

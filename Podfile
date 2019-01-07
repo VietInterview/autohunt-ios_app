@@ -16,4 +16,5 @@ target 'GetBee' do
   pod 'ExpandableLabel'
   pod 'StepIndicator', '~> 1.0.6’
   pod 'FlexibleSteppedProgressBar'
+  pod 'YouTubePlayer'
 end

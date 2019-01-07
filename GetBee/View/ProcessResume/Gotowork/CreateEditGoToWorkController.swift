@@ -48,10 +48,12 @@ class CreateEditGoToWorkController: BaseViewController {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
-            if let date = dateFormatter.date(from: gotowork.startWorkDate!.substring(with: 0..<10)) {
-                let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
-                let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
-                self.textFieldWarranty.text = "\(components.day!) ngày còn lại"
+            if let startWorkDate = gotowork.startWorkDate {
+                if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
+                    let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
+                    let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
+                    self.textFieldWarranty.text = "\(components.day!) ngày còn lại"
+                }
             }
         }
     }
@@ -97,10 +99,17 @@ class CreateEditGoToWorkController: BaseViewController {
         self.toolBar!.isHidden = true
     }
     
-    
     @IBAction func updateGoToWorkTouch() {
-        self.viewModel.gotoWorkUpdate(cvId: self.detailProcessResume!.cvID!, id: self.gotoworkDTO == nil ? -1 : self.gotoworkDTO!.id!, countUpdate: self.gotoworkDTO == nil ? 0 : self.gotoworkDTO!.countUpdate!, jobId: self.detailProcessResume!.jobID!, startWorkDate: self.gotoworkDTO == nil ? self.textFieldDateTime.text! : self.gotoworkDTO!.startWorkDate!, success: {gotoworkDTO in
-            
+        self.viewModel.gotoWorkUpdate(cvId: self.detailProcessResume!.cvID!, id: self.gotoworkDTO == nil ? -1 : self.gotoworkDTO!.id == nil ? -1 : self.gotoworkDTO!.id!, countUpdate: self.gotoworkDTO == nil ? 0 : self.gotoworkDTO!.countUpdate == nil ? 0 : self.gotoworkDTO!.countUpdate!, jobId: self.detailProcessResume!.jobID!, startWorkDate: self.textFieldDateTime.text!, success: {gotoworkDTO in
+            if let delegate = self.sendGoToWorkDelegate {
+                delegate.onSendGotowork(gotoworkDTO: JobCvGotoWorkDto.init(countUpdate: gotoworkDTO.countUpdate!, cvID: gotoworkDTO.cvID!, id: gotoworkDTO.id!, jobID: gotoworkDTO.jobID!, note: StringUtils.shared.checkEmpty(value: gotoworkDTO.note) , numDayWarranty: gotoworkDTO.numDayWarranty!, startWorkDate: gotoworkDTO.startWorkDate!, updateBy: StringUtils.shared.checkEmptyInt(value: gotoworkDTO.updateBy), updateDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.updateDate), warrantyExpireDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.warrantyExpireDate)))
+                for controller in self.navigationController!.viewControllers as Array {
+                    if controller.isKind(of: ProcessResumeController.self) {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                        break
+                    }
+                }
+            }
         }, failure: {error in
             
         })

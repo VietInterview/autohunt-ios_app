@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66505DB9D13678DA6C40F6DC1AD2CC3C"
-               BlueprintName = "Pods-GetBee"
+               BlueprintIdentifier = "3A1333D6472EDF9245A0EFE67973C51D"
+               BlueprintName = "YouTubePlayer"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pods-GetBee.framework">
+               BuildableName = "YouTubePlayer.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

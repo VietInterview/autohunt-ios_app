@@ -1,14 +1,15 @@
 ///**
 /**
-Created by: Hiep Nguyen Nghia on 12/22/18
-Copyright (c) 2018 Vietinterview. All rights reserved.
-*/
+ Created by: Hiep Nguyen Nghia on 12/22/18
+ Copyright (c) 2018 Vietinterview. All rights reserved.
+ */
 
 import UIKit
 
 class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
     
     
+    @IBOutlet weak var viewGotowork: UIView!
     @IBOutlet weak var viewStartWorkDate: UIView!
     @IBOutlet weak var lblStartWorkDate: UILabel!
     @IBOutlet weak var lblWarranty: UILabel!
@@ -22,21 +23,25 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
     var detailProcessResume:DetailProcessResume?
     var rejectDelegate:RejectDelegate?
     var nextDelegate:NextDelegate?
+    static let onReceiveRejectGoToWork = Notification.Name("onReceiveRejectGoToWork")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil)
         if let gotoworkDTO = self.detailProcessResume!.jobCvGotoWorkDto {
             self.lblStartWorkDate.text = StringUtils.shared.checkEmpty(value: gotoworkDTO.startWorkDate)
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
-            if let date = dateFormatter.date(from: gotoworkDTO.startWorkDate!.substring(with: 0..<10)) {
-              let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
-                debugLog(object: date)
-                debugLog(object: tomorrow!)
-                let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
-                 debugLog(object: components.day!)
-                self.lblWarranty.text = "\(components.day!) ngày còn lại"
+            if let startWorkDate = gotoworkDTO.startWorkDate {
+                if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
+                    let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
+                    debugLog(object: date)
+                    debugLog(object: tomorrow!)
+                    let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
+                    debugLog(object: components.day!)
+                    self.lblWarranty.text = "\(components.day!) ngày còn lại"
+                }
             }
         } else {
             self.lblStartWorkDate.text = ""
@@ -46,7 +51,13 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
         self.viewStartWorkDate.isUserInteractionEnabled = true
         self.viewStartWorkDate.addGestureRecognizer(gestureSwift2AndHigher2)
     }
-    
+    @objc func onNotification(notification:Notification)
+    {
+        self.showHideView(view: self.viewReject, isHidden: false)
+        let reasonNote = notification.userInfo!["reasonNote"] as? NSString
+        let reasonName = notification.userInfo!["reasonName"] as? NSString
+        self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         var status:Int
@@ -60,20 +71,32 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
                 self.showHideView(view: self.btnReject, isHidden: false)
                 self.showHideView(view: self.btnContract, isHidden: false)
                 self.showHideView(view: self.viewButton, isHidden: false)
-                if gotoWorkDTO.countUpdate! < 3 {
-                    self.showHideView(view: self.imgArrow, isHidden: false)
-                } else {
-                     self.showHideView(view: self.imgArrow, isHidden: true)
+                if let countUpdate = gotoWorkDTO.countUpdate {
+                    if countUpdate < 3 {
+                        self.showHideView(view: self.imgArrow, isHidden: false)
+                    } else {
+                        self.showHideView(view: self.imgArrow, isHidden: true)
+                    }
                 }
             } else {
                 self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(detailProcessResume: self.detailProcessResume!, delegate: self))
             }
+        } else {
+            self.showHideView(view: self.btnReject, isHidden: true)
+            self.showHideView(view: self.btnContract, isHidden: true)
+            self.showHideView(view: self.viewButton, isHidden: true)
         }
         if status == 4 {
             if rejectStep == 4 {
                 self.showHideView(view: self.viewReject, isHidden: false)
-                 self.showHideView(view: self.viewButton, isHidden: false)
+                self.showHideView(view: self.viewButton, isHidden: false)
+            }else {
+                self.showHideView(view: self.viewReject, isHidden: true)
+                self.showHideView(view: self.viewButton, isHidden: false)
             }
+        } else {
+            self.showHideView(view: self.viewReject, isHidden: true)
+            self.showHideView(view: self.viewButton, isHidden: false)
         }
         if let rejectName = self.detailProcessResume!.cvProcessInfo!.reasonRejectName {
             self.lblReject.text = "Ứng viên này đã bị từ chối\nLý do: \(rejectName)"
@@ -81,12 +104,18 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
                 self.lblReject.text = rejectNote == "" ? "Ứng viên này đã bị từ chối\nLý do: \(rejectName)" : "Ứng viên này đã bị từ chối\nLý do: \(rejectName)\nGhi chú: \(rejectNote)"
             }
         }
+        self.viewGotowork.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
     }
     @objc func someAction2(sender:UITapGestureRecognizer){
-        self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(gotoworkDTO:self.detailProcessResume!.jobCvGotoWorkDto,detailProcessResume: self.detailProcessResume!, delegate: self))
+        if let countUpdate = self.detailProcessResume!.jobCvGotoWorkDto!.countUpdate {
+            if countUpdate < 3 {
+                self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(gotoworkDTO:self.detailProcessResume!.jobCvGotoWorkDto,detailProcessResume: self.detailProcessResume!, delegate: self))
+            }
+        }
     }
     func onSendGotowork(gotoworkDTO: JobCvGotoWorkDto) {
-        
+        self.detailProcessResume!.jobCvGotoWorkDto = gotoworkDTO
         self.lblStartWorkDate.text = StringUtils.shared.checkEmpty(value: gotoworkDTO.startWorkDate)
         
         let dateFormatter = DateFormatter()

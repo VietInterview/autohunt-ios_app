@@ -17,6 +17,13 @@ class HomeViewModel {
             failure(error.localizedDescription)
         })
     }
+    func loadCustomerProfile(success: @escaping (ProfileCustomer) -> Void, failure: @escaping (String) -> Void) {
+        UserAPI.getCusProfile({ user in
+            success(user)
+        }, failure: { error in
+            failure(error.localizedDescription)
+        })
+    }
     func loadAccount(success: @escaping (Account) -> Void, failure: @escaping (String) -> Void){
         UserAPI.getAccount({account in
             success(account)

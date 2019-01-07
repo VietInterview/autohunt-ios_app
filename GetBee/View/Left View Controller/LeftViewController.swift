@@ -74,9 +74,6 @@ class LeftViewController: UITableViewController {
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
     }
-    
-    // MARK: - UITableViewDataSource
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dynamicTitlesArray.count
     }
@@ -176,7 +173,11 @@ class LeftViewController: UITableViewController {
             SessionManager.deleteSession()
             replaceController(nameController: "SignInViewController", isLogout: true)
         case "PROFILE":
-            replaceController(nameController: "InfoAccountController", isLogout: false)
+            if AccountManager.currentAccount!.type! == 2 {
+                replaceController(nameController: "CustomerProfileController", isLogout: false)
+            } else {
+                replaceController(nameController: "InfoAccountController", isLogout: false)
+            }
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         case "CUSTOMER_HOME_PAGE":
             replaceController(nameController: "JobEmployerController", isLogout: false)

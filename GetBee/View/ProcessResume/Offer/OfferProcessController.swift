@@ -20,12 +20,14 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
     @IBOutlet weak var lblReject: UILabel!
     
     var count:Int?
+    static let onReceiveRejectOffer = Notification.Name("onReceiveRejectOffer")
     var detailProcessResume = DetailProcessResume()
     var rejectDelegate:RejectDelegate?
     var nextDelegate:NextDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: OfferProcessController.onReceiveRejectOffer, object: nil)
         if let LstOffer = self.detailProcessResume.lstOfferHis {
             self.count = LstOffer.count
         }else {
@@ -35,7 +37,13 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
             self.pushViewController(controller: CreateEditOfferController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
         }
     }
-    
+    @objc func onNotification(notification:Notification)
+    {
+        self.showHideView(view: self.viewReject, isHidden: false)
+        let reasonNote = notification.userInfo!["reasonNote"] as? NSString
+        let reasonName = notification.userInfo!["reasonName"] as? NSString
+        self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         var status:Int
@@ -74,6 +82,7 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
             self.showHideView(view: self.viewButton, isHidden: true)
             self.showHideView(view: self.btnReject, isHidden: true)
             self.showHideView(view: self.btnGotowork, isHidden: true)
+            self.showHideView(view: self.viewAddOffer, isHidden: true)
         }
         
         if self.detailProcessResume.cvProcessInfo!.status! == 4{
@@ -93,16 +102,9 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                 self.lblReject.text = rejectNote == "" ? "Ứng viên này đã bị từ chối\nLý do: \(rejectName)" : "Ứng viên này đã bị từ chối\nLý do: \(rejectName)\nGhi chú: \(rejectNote)"
             }
         }
-        tableView.maxHeight = CGFloat(self.count! * 70)
-        self.heightOffer.constant = 190 + CGFloat(self.count! * 70)
-        self.viewOffer.layoutIfNeeded()
-        self.viewOffer.setNeedsLayout()
+        self.showList()
         self.viewOffer.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
         self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-        tableView.reloadData()
-        if count! > 0 {
-            tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
-        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
@@ -143,32 +145,25 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                 self.detailProcessResume.lstOfferHis!.append(lstOffer)
             }
             self.count = self.detailProcessResume.lstOfferHis!.count
-            tableView.maxHeight = CGFloat(self.count! * 70)
-            self.heightOffer.constant = 190 + CGFloat(self.count! * 70)
-            self.viewOffer.layoutIfNeeded()
-            self.viewOffer.setNeedsLayout()
-            self.viewOffer.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            tableView.reloadData()
-            if count! > 0 {
-                tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
-            }
+            self.showList()
         } else {
             self.detailProcessResume.lstOfferHis!.append(lstOffer)
             self.count = self.detailProcessResume.lstOfferHis!.count
-            tableView.maxHeight = CGFloat(self.count! * 70)
-            self.heightOffer.constant = 190 + CGFloat(self.count! * 70)
-            self.viewOffer.layoutIfNeeded()
-            self.viewOffer.setNeedsLayout()
-            self.viewOffer.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
-            tableView.reloadData()
-            if count! > 0 {
-                tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
-            }
+           self.showList()
         }
     }
-    
+    func showList(){
+        tableView.maxHeight = CGFloat(self.count! * 70)
+        self.heightOffer.constant = self.count! == 1 ? 190 : 110 + CGFloat(self.count! * 70)
+        self.viewOffer.layoutIfNeeded()
+        self.viewOffer.setNeedsLayout()
+        self.viewOffer.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
+        tableView.reloadData()
+        if count! > 0 {
+            tableView.scrollToRow(at: IndexPath(row:count!-1, section:0), at: .bottom, animated: true)
+        }
+    }
     @IBAction func goToWorkTouch(_ sender: Any) {
         self.nextDelegate?.onNext(step: 3, cvId: self.detailProcessResume.cvProcessInfo!.cvID!, jobId: self.detailProcessResume.jobID!)
     }

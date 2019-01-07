@@ -140,7 +140,7 @@ class JobAPI {
         })
     }
     class func getJobCustomer(cusName:String, page:Int, status:Int, success: @escaping (_ myJobApplied: JobCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
-        let url = customerUrl + "/searchCusHome?itemPerPage=30&cusName=\(cusName)&page=\(page)&status=\(status)"
+        let url = status != -1 ? customerUrl + "/searchCusHome?itemPerPage=30&jobtile=\(cusName)&page=\(page)&status=\(status)" : customerUrl + "/searchCusHome?itemPerPage=30&jobtile=\(cusName)&page=\(page)"
         UIApplication.showNetworkActivity()
         APIClient.request(.get, url: url, success: {response, _ in
             if let jobCustomer = try? newJSONDecoder().decode(JobCustomer.self, from: response){

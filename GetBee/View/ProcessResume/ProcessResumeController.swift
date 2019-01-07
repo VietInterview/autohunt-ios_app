@@ -313,12 +313,17 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             return vc
         }else{
             let vc = storyboard.instantiateViewController(withIdentifier: "ContractProcessController") as! ContractProcessController
-            //            vc.delegate = self
-            //            vc.positionTab = 0
-            //            vc.resumeDetailCustomer = self.resumeDetailCustomer
+            vc.rejectDelegate = self
+            vc.detailProcessResume = self.detailProcessResume
             return vc
         }
     }
+    
+    @IBAction func btnNoTouch(_ sender: Any) {
+        self.btnCloseTouch()
+    }
+    
+    
     @IBAction func btnCloseTouch() {
         if self.isNext == 1 {
             UIView.animate(withDuration: 0.3, animations: {
@@ -393,7 +398,17 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             if sendReject.rejectStep! == self.rejectStepSend {
                 self.position = UInt(self.rejectStepSend-1)
                 self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
-                NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                if self.rejectStepSend == 1 {
+                    NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                } else if self.rejectStepSend == 2{
+                    NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                }else if self.rejectStepSend == 3{
+                    NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                }else if self.rejectStepSend == 4{
+                    NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                }else if self.rejectStepSend == 5{
+                    NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                }
                 self.btnCloseTouch()
             }
         }, failure: {error in
@@ -432,6 +447,8 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             self.lblInvite.text = "Bạn có chắc chắn gửi offer tới ứng viên này không?"
         } else if step == 3 {
             self.lblInvite.text = "Bạn có chắc chắn muốn cập nhật trạng thái đi làm cho ứng viên này không?"
+        } else if step == 4 {
+            self.lblInvite.text = "Bạn có chắc chắn muốn cập nhật trạng thái ký hợp đồng cho ứng viên này không?"
         }
         self.view.addSubview(viewNext)
         viewNext.translatesAutoresizingMaskIntoConstraints = false

@@ -57,7 +57,6 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
     }
     func searchJob(carrerId: Int, cityId: Int, jobtitle: String){
         self.viewModel.getSearchJob(carrerId: carrerId, cityId: cityId, jobTitle: jobtitle,  page: self.page, success:  { [unowned self] job in
-            //            self.labelQuantityJOb.text = "\(job.total!) công việc được tìm thấy"
             self.job = job
             if self.page == 0 {
                 self.jobList = job.jobList!

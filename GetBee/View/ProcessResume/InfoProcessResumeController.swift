@@ -7,6 +7,7 @@ Copyright (c) 2018 Vietinterview. All rights reserved.
 import UIKit
 class InfoProcessResumeController: BaseViewController {
     
+    @IBOutlet weak var imgSeeInfoResume: UIImageView!
     @IBOutlet weak var imgResume: UIImageView!
     @IBOutlet weak var lblFullname: UILabel!
     @IBOutlet weak var lblDateOfBirth: UILabel!
@@ -44,8 +45,18 @@ class InfoProcessResumeController: BaseViewController {
         self.lblFullnameColl.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collName)
         self.lblEmailColl.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collEmail)
         self.lblPhonenumberColl.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collPhone)
+        
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        self.imgSeeInfoResume.isUserInteractionEnabled = true
+        self.imgSeeInfoResume.addGestureRecognizer(gestureSwift2AndHigher2)
     }
-    
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailResumeCustomerController") as! DetailResumeCustomerController
+        vc.title = "Xem hồ sơ"
+        vc.cvId = self.detailProcessResume.cvID!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewInfoCandidate.shadowView(opacity: 8/100, radius: 10)
@@ -83,6 +94,11 @@ class InfoProcessResumeController: BaseViewController {
                 self.lblReject.text = rejectNote == "" ? "Ứng viên này đã bị từ chối\nLý do: \(rejectName)" : "Ứng viên này đã bị từ chối\nLý do: \(rejectName)\nGhi chú: \(rejectNote)"
             }
         }
+        self.imgResume.layer.borderWidth = 0
+        self.imgResume.layer.masksToBounds = false
+        self.imgResume.layer.borderColor = UIColor.black.cgColor
+        self.imgResume.layer.cornerRadius = imgResume.frame.height/2
+        self.imgResume.clipsToBounds = true
     }
     @IBAction func rejectTouch() {
         self.rejectDelegate?.onReject(step: 1, cvId: self.detailProcessResume.cvProcessInfo!.cvID!, jobId: self.detailProcessResume.jobID!)

@@ -7,8 +7,9 @@
 import UIKit
 import SwipeCellKit
 
-class JobEmployerController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class JobEmployerController: BaseViewController, UITableViewDelegate, UITableViewDataSource, ChooseDelegate {
     
+    @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var tableViewJob: UITableView!
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var viewSearch: UIView!
@@ -20,6 +21,7 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
     var page:Int = 0
     var status:Int = -1
     let refreshControl = UIRefreshControl()
+    var jobCustomer:JobCustomer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,34 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
         if #available(iOS 10.0, *) {
             self.tableViewJob.refreshControl = refreshControl
         }
+        self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        self.lblStatus.isUserInteractionEnabled = true
+        self.lblStatus.addGestureRecognizer(gestureSwift2AndHigher2)
+    }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        self.page = 0
+        self.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status)
+    }
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
+        vc.title = NSLocalizedString("status", comment: "")
+        vc.isCarrer = false
+        vc.isStatus = true
+        vc.isCity = false
+        vc.delegate = self
+        vc.isCustomer = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.page = 0
         self.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status)
+    }
+    func didChoose(mychoose: MyChoose) {
+        self.status = mychoose.id
+        self.lblStatus.text = mychoose.name
     }
     @objc func sortArray() {
         self.page = 0
@@ -42,6 +67,7 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
     
     func getJobCustomer(cusName:String, page:Int, status:Int){
         viewModel.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status, success: {jobCustomer in
+            self.jobCustomer = jobCustomer
             if page == 0{
                 self.mJobList = jobCustomer.jobList!
                 if #available(iOS 10.0, *) {
@@ -118,7 +144,8 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
         } else if status == 0 {
             cell.lblStatus.text = "Nháp"
         }
-        cell.lblJobTitle.text = "hello \n hello"
+        cell.lblQuantity.text = "\(self.jobCustomer!.total!) công việc được tìm thấy"
+        cell.lblJobTitle.text = "\(mJobList[indexPath.row].jobTitle!)"
         cell.lblCountCV.text = "/\(mJobList[indexPath.row].countCv!)"
         cell.lblCountOffer.text = "\(self.mJobList[indexPath.row].countOffer!)"
         cell.delegate = self
@@ -134,7 +161,6 @@ extension JobEmployerController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         let read = SwipeAction(style: .default, title: nil) { action, indexPath in
-            debugLog(object: "detail")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobCustomerController") as! DetailJobCustomerController
             vc.jobId = self.mJobList[indexPath.row].id!
@@ -148,7 +174,6 @@ extension JobEmployerController: SwipeTableViewCellDelegate {
         configure(action: read, with: descriptor)
         return [read]
     }
-    
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
         action.image = UIImage(named: "info_detail_job")
         switch buttonStyle {
