@@ -65,6 +65,7 @@ class LeftViewController: UITableViewController {
                     self.viewModel.loadUserProfile(success: { userProfile in
                         self.setFullname(fullname: userProfile.fullNameColl)
                     }, failure: { error in
+                        self.showMessageErrorApi()
                     })
                 } else if account.type! == 2 {
                     self.setFullname(fullname: account.firstName)
@@ -72,11 +73,11 @@ class LeftViewController: UITableViewController {
                     self.viewModel.loadUserProfile(success: { userProfile in
                         self.setFullname(fullname: userProfile.fullNameColl)
                     }, failure: { error in
+                        self.showMessageErrorApi()
                     })
                 }
             }
         }, failure: {error in
-            
         })
     }
     func setFullname(fullname:String?) {

@@ -33,7 +33,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             self.lblCompanyName.text = self.profileCustomer!.companyName!
             for i in 0...self.numberOfCells-1 {
                 if i == 6 {
-                    self.arrContent.append("\(StringUtils.shared.checkEmpty(value: self.profileCustomer!.descripstion))fsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhffsdkjfahdkjfaskfjhasdkjhf")
+                    self.arrContent.append("\(StringUtils.shared.checkEmpty(value: self.profileCustomer!.descripstion))")
                 } else if i == 2 {
                     if let humanresource = self.profileCustomer!.humanResources {
                         if humanresource.count > 0 {
@@ -111,7 +111,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             self.tableviewImage.rowHeight = UITableViewAutomaticDimension
             self.tableviewImage.reloadData()
         }, failure: { error in
-            
+            self.showMessageErrorApi()
         })
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -147,10 +147,14 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             cell?.expandableLabel.sizeToFit()
             cell?.expandableLabel.collapsed = states[indexPath.row]
             cell?.expandableLabel.text = "\(currentSource.text)"
+            if cell!.expandableLabel.numberOfLines < 2 {
+                self.showHideView(view: cell!.lblPre, isHidden: false)
+            }else {
+                 self.showHideView(view: cell!.lblPre, isHidden: true)
+            }
             if currentSource.text.count > 0{
                 cell!.lblPre.text = currentSource.text.substring(with: 0..<currentSource.text.count/2)
             }
-            showHideView(view: cell!.lblPre, isHidden: false)
             cell!.isUserInteractionEnabled = true
             self.mCell = cell
             return cell!
@@ -265,8 +269,13 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
     func willCollapseLabel(_ label: ExpandableLabel) {
          let point = label.convert(CGPoint.zero, to: tableviewImage)
         if let indexPath = tableviewImage.indexPathForRow(at: point) as IndexPath? {
-            self.showHideView(view: self.mCell!.lblPre, isHidden: false)
+            
             if indexPath.row == 6 {
+                if self.mCell!.expandableLabel.numberOfLines < 2 {
+                    self.showHideView(view: self.mCell!.lblPre, isHidden: false)
+                }else {
+                    self.showHideView(view: self.mCell!.lblPre, isHidden: true)
+                }
         tableviewImage.beginUpdates()
             }}
     }
@@ -275,6 +284,11 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
         let point = label.convert(CGPoint.zero, to: tableviewImage)
         if let indexPath = tableviewImage.indexPathForRow(at: point) as IndexPath? {
             if indexPath.row == 6 {
+                if self.mCell!.expandableLabel.numberOfLines < 2 {
+                    self.showHideView(view: self.mCell!.lblPre, isHidden: false)
+                }else {
+                    self.showHideView(view: self.mCell!.lblPre, isHidden: true)
+                }
                 states[indexPath.row] = true
                 DispatchQueue.main.async { [weak self] in
                     self?.tableviewImage.scrollToRow(at: indexPath, at: .top, animated: true)

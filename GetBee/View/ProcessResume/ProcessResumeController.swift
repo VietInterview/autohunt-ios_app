@@ -416,6 +416,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.btnCloseTouch()
             }
         }, failure: {error in
+            self.showMessageErrorApi()
         })
     }
     func onReject(step: Int, cvId: Int, jobId: Int) {
@@ -438,7 +439,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.viewReject.transform = CGAffineTransform.identity
             }
         }, failure: {error in
-            
+            self.showMessageErrorApi()
         })
     }
     

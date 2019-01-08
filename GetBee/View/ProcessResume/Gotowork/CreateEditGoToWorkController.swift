@@ -111,7 +111,7 @@ class CreateEditGoToWorkController: BaseViewController {
                 }
             }
         }, failure: {error in
-            
+            self.showMessageErrorApi()
         })
     }
     

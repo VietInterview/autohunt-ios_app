@@ -253,7 +253,7 @@ class CreateEditInterviewController: BaseViewController {
                         }
                     }
                 }, failure: {error in
-                    
+                    self.showMessageErrorApi()
                 })
             },handlerCancel: {(action: UIAlertAction!) in
                 
@@ -301,7 +301,7 @@ class CreateEditInterviewController: BaseViewController {
                 self.textViewEmail.text = StringUtils.shared.stringFromHtml(string: viewEmail.emailTemplate!)!
                 self.animateIn()
             }, failure: {error in
-                
+                self.showMessageErrorApi()
             })
         }
     }

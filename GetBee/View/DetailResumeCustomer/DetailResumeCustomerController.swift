@@ -61,7 +61,7 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
             tabSwipe.setIndicatorColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"))
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.viewTab)
         }, failure: {error in
-            
+            self.showMessageErrorApi()
         })
     }
     func upDownState(isUp: Bool) {

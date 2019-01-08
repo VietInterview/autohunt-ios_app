@@ -194,7 +194,7 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
                     }
                 }
             }, failure: {error in
-                
+                self.showMessageErrorApi()
             })
             
         }

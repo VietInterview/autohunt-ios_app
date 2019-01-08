@@ -219,7 +219,7 @@ class CreateEditOfferController: BaseViewController {
                 self.textViewEmail.text = StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)
                 self.animateIn()
             }, failure: {error in
-                
+                self.showMessageErrorApi()
             })
         }
     }
@@ -246,7 +246,7 @@ class CreateEditOfferController: BaseViewController {
                         }
                     }
                 }, failure: {error in
-                    
+                    self.showMessageErrorApi()
                 })
             },handlerCancel: {(action: UIAlertAction!) in
                 
