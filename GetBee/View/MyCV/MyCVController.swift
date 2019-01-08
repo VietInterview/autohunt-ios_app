@@ -80,7 +80,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.mPosition = Int(index)
         if index == 0 {
             let vc = storyboard.instantiateViewController(withIdentifier: "MyCVSavedController") as! MyCVSavedController
-           vc.isCarrer = self.isCarrer
+            vc.isCarrer = self.isCarrer
             vc.isStatus = self.isStatus
             vc.vc = self.vc
             return vc
@@ -88,7 +88,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             let vc = storyboard.instantiateViewController(withIdentifier: "MyCVAppliedController") as! MyCVAppliedController
             vc.isCarrer = self.isCarrer
             vc.isStatus = self.isStatus
-             vc.vc = self.vc
+            vc.vc = self.vc
             return vc
         }
     }

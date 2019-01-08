@@ -9,6 +9,7 @@ import ExpandableLabel
 
 class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate {
     
+    @IBOutlet weak var imgListResume: UIImageView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblJobTitle: UILabel!
@@ -28,9 +29,19 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         self.getDetailJobCustomer(jobId: self.jobId)
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        self.imgListResume.isUserInteractionEnabled = true
+        self.imgListResume.addGestureRecognizer(gestureSwift2AndHigher2)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ResumesEmployerController") as! ResumesEmployerController
+        vc.title = "Danh sách ứng viên"
+        vc.mID = self.jobId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     func getDetailJobCustomer(jobId:Int){
         viewModel.getJobDetailCustomer(jobId: jobId, success: {jobDetailCustomer in

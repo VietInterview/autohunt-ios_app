@@ -148,6 +148,8 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 maxIndex = index
                 progressBar.completedTillIndex = maxIndex
                 progressBarWithoutLastState.currentIndex = self.Step
+                
+                return true
             }
         } else {
             if index <= self.StepClick {
@@ -160,9 +162,11 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 maxIndex = index
                 progressBar.completedTillIndex = maxIndex
                 progressBarWithoutLastState.currentIndex = self.Step
+                
+                return true
             }
         }
-        return true
+        return false
     }
     
     func progressBar(_ progressBar: FlexibleSteppedProgressBar, textAtIndex index: Int, position: FlexibleSteppedProgressBarTextLocation) -> String {

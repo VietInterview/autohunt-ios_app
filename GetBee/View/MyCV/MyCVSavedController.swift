@@ -26,6 +26,8 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     var usesTallCells = false
     let refreshControl = UIRefreshControl()
     static let notificationName = Notification.Name("myNotificationName")
+    
+    
     @IBOutlet weak var viewQuantity: UIView!
     @IBOutlet weak var lblQuantity: UILabel!
     @IBOutlet weak var mCVSavedTableView: UITableView!

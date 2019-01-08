@@ -38,6 +38,10 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
     @objc func onNotification(notification:Notification)
     {
         self.showHideView(view: self.viewReject, isHidden: false)
+        self.showHideView(view: self.viewAddInterview, isHidden: true)
+        self.showHideView(view: self.viewButton, isHidden: true)
+        self.showHideView(view: self.btnReject, isHidden: true)
+        self.showHideView(view: self.btnOffer, isHidden: true)
         let reasonNote = notification.userInfo!["reasonNote"] as? NSString
         let reasonName = notification.userInfo!["reasonName"] as? NSString
         self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
@@ -92,6 +96,9 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
             if self.detailProcessResume.cvProcessInfo!.rejectStep! == 2 {
                 self.showHideView(view: self.viewReject, isHidden: false)
                 self.showHideView(view: self.viewButton, isHidden: true)
+                self.showHideView(view: self.viewAddInterview, isHidden: true)
+                self.showHideView(view: self.btnReject, isHidden: true)
+                self.showHideView(view: self.btnOffer, isHidden: true)
             }else{
                 self.showHideView(view: self.viewReject, isHidden: true)
             }
@@ -176,7 +183,7 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
     }
     func showList(){
         self.tableView.maxHeight = CGFloat(self.count! * 70)
-        self.heightViewInfo.constant = self.count! == 1 ? 190 : 110 + CGFloat(self.count! * 70)
+        self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
         self.viewInfo.layoutIfNeeded()
         self.viewInfo.setNeedsLayout()
         self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")

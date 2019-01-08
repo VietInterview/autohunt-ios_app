@@ -137,7 +137,7 @@ open class ExpandableLabel: UILabel {
         self.lineBreakMode = .byClipping
         self.collapsedNumberOfLines = numberOfLines
         self.expandedAttributedLink = nil
-        self.collapsedAttributedLink = NSAttributedString(string: "More", attributes: [.font: UIFont.boldSystemFont(ofSize: font.pointSize)])
+        self.collapsedAttributedLink = NSAttributedString(string: "Xem thêm", attributes: [.font: UIFont.boldSystemFont(ofSize: font.pointSize),NSAttributedStringKey.foregroundColor : UIColor(red: 60/255, green: 132/255, blue: 247/255, alpha: 1)])
         self.ellipsis = NSAttributedString(string: "...")
     }
     

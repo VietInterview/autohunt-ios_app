@@ -10,6 +10,7 @@ import ExpandableLabel
 class ExpandableDetailJobCell: UITableViewCell {
     @IBOutlet weak var expandableLabel: ExpandableLabel!
     
+    @IBOutlet weak var lblPre: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     override func prepareForReuse() {
         super.prepareForReuse()

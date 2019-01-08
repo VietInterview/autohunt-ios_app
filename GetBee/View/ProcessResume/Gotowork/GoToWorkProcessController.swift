@@ -29,21 +29,26 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil)
         if let gotoworkDTO = self.detailProcessResume!.jobCvGotoWorkDto {
-            self.lblStartWorkDate.text = StringUtils.shared.checkEmpty(value: gotoworkDTO.startWorkDate)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            if let startWorkDate = gotoworkDTO.startWorkDate {
-                if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
-                    let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
-                    debugLog(object: date)
-                    debugLog(object: tomorrow!)
-                    let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
-                    debugLog(object: components.day!)
-                    self.lblWarranty.text = "\(components.day!) ngày còn lại"
+            if let id = gotoworkDTO.id {
+                self.lblStartWorkDate.text = StringUtils.shared.checkEmpty(value: gotoworkDTO.startWorkDate)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                if let startWorkDate = gotoworkDTO.startWorkDate {
+                    if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
+                        let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
+                        debugLog(object: date)
+                        debugLog(object: tomorrow!)
+                        let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
+                        debugLog(object: components.day!)
+                        self.lblWarranty.text = "\(components.day!) ngày còn lại"
+                    }
                 }
+            }else {
+                self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(gotoworkDTO:self.detailProcessResume!.jobCvGotoWorkDto,detailProcessResume: self.detailProcessResume!, delegate: self))
             }
         } else {
+            self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(gotoworkDTO:self.detailProcessResume!.jobCvGotoWorkDto,detailProcessResume: self.detailProcessResume!, delegate: self))
             self.lblStartWorkDate.text = ""
             self.lblWarranty.text = "0 ngày còn lại"
         }
@@ -54,6 +59,9 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
     @objc func onNotification(notification:Notification)
     {
         self.showHideView(view: self.viewReject, isHidden: false)
+        self.showHideView(view: self.viewButton, isHidden: true)
+        self.showHideView(view: self.btnContract, isHidden: true)
+        self.showHideView(view: self.btnReject, isHidden: true)
         let reasonNote = notification.userInfo!["reasonNote"] as? NSString
         let reasonName = notification.userInfo!["reasonName"] as? NSString
         self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
@@ -90,19 +98,23 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
             if rejectStep == 4 {
                 self.showHideView(view: self.viewReject, isHidden: false)
                 self.showHideView(view: self.viewButton, isHidden: false)
+                self.showHideView(view: self.btnContract, isHidden: true)
+                self.showHideView(view: self.btnReject, isHidden: true)
+                self.viewStartWorkDate.isUserInteractionEnabled = false
             }else {
                 self.showHideView(view: self.viewReject, isHidden: true)
                 self.showHideView(view: self.viewButton, isHidden: false)
             }
         } else {
             self.showHideView(view: self.viewReject, isHidden: true)
-            self.showHideView(view: self.viewButton, isHidden: false)
+            
         }
         if let rejectName = self.detailProcessResume!.cvProcessInfo!.reasonRejectName {
             self.lblReject.text = "Ứng viên này đã bị từ chối\nLý do: \(rejectName)"
             if let rejectNote = self.detailProcessResume!.cvProcessInfo!.rejectNote {
                 self.lblReject.text = rejectNote == "" ? "Ứng viên này đã bị từ chối\nLý do: \(rejectName)" : "Ứng viên này đã bị từ chối\nLý do: \(rejectName)\nGhi chú: \(rejectNote)"
             }
+            
         }
         self.viewGotowork.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
         self.viewReject.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
@@ -122,10 +134,7 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         if let date = dateFormatter.date(from: gotoworkDTO.startWorkDate!.substring(with: 0..<10)) {
             let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
-            debugLog(object: date)
-            debugLog(object: tomorrow!)
             let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
-            debugLog(object: components.day!)
             self.lblWarranty.text = "\(components.day!) ngày còn lại"
         }
     }

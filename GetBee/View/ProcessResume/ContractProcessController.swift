@@ -25,6 +25,8 @@ class ContractProcessController: BaseViewController {
     @objc func onNotification(notification:Notification)
     {
         self.showHideView(view: self.viewReject, isHidden: false)
+        self.showHideView(view: self.viewContract, isHidden: true)
+        self.showHideView(view: self.viewButton, isHidden: true)
         let reasonNote = notification.userInfo!["reasonNote"] as? NSString
         let reasonName = notification.userInfo!["reasonName"] as? NSString
         self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"

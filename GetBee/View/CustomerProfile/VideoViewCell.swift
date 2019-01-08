@@ -9,6 +9,7 @@ import YouTubePlayer
 
 class VideoViewCell: UITableViewCell {
 
+    @IBOutlet weak var imgReject: UIImageView!
     @IBOutlet weak var videoPlayer: YouTubePlayerView!
     override func awakeFromNib() {
         super.awakeFromNib()

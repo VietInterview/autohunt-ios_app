@@ -27,6 +27,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var imgPass: UIImageView!
     @IBOutlet var mViewContact: UIView!
+    var homeViewModel = HomeViewModel()
     var viewModel = SignInViewModelWithCredentials()
     var effect:UIVisualEffect!
     
@@ -273,22 +274,23 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             viewModel.login(success: { [unowned self] in
                 LoadingOverlay.shared.hideOverlayView()
                 UserDefaults.standard.set(3, forKey: "position")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-                
-                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController" : "ViewController")], animated: false)
-                
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                mainViewController.rootViewController = navigationController
-                mainViewController.setup(type: UInt(2))
-                
-                let window = UIApplication.shared.delegate!.window!!
-                window.rootViewController = mainViewController
+                self.homeViewModel.loadAccount(success: {account in
+                    AccountManager.currentAccount! = account
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                    navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController" : "ViewController")], animated: false)
+                    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                    mainViewController.rootViewController = navigationController
+                    mainViewController.setup(type: UInt(2))
+                    let window = UIApplication.shared.delegate!.window!!
+                    window.rootViewController = mainViewController
+                }, failure: { error in
+                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                })
                 
                 }, failure: { [unowned self] error in
                     UIApplication.hideNetworkActivity()
                     self.animateIn()
-                    //                self.showMessage(title: "Thông báo", message: "Thông tin đăng nhập không đúng")
             })
         }
     }

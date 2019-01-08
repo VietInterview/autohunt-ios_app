@@ -160,10 +160,12 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
                 cell.lblTitle3.text = "Microsoft Power Point:"
                 cell.lblTitle4.text = "Microsoft Outlook:"
                 if let comSkill = self.resumeDetailCustomer.lstComputerSkill {
-                    cell.lblContent1.text = StringUtils.shared.genStringLan(value: comSkill[0].msWord!)
-                    cell.lblContent2.text = StringUtils.shared.genStringLan(value: comSkill[0].msExcel!)
-                    cell.lblContent3.text = StringUtils.shared.genStringLan(value: comSkill[0].msPowerPoint!)
-                    cell.lblContent4.text = StringUtils.shared.genStringLan(value: comSkill[0].msOutlook!)
+                    if comSkill.count > 0 {
+                        cell.lblContent1.text = StringUtils.shared.genStringLan(value: comSkill[0].msWord!)
+                        cell.lblContent2.text = StringUtils.shared.genStringLan(value: comSkill[0].msExcel!)
+                        cell.lblContent3.text = StringUtils.shared.genStringLan(value: comSkill[0].msPowerPoint!)
+                        cell.lblContent4.text = StringUtils.shared.genStringLan(value: comSkill[0].msOutlook!)
+                    }
                 }
                 return cell
             } else {

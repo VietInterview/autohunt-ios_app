@@ -40,6 +40,10 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
     @objc func onNotification(notification:Notification)
     {
         self.showHideView(view: self.viewReject, isHidden: false)
+        self.showHideView(view: self.viewButton, isHidden: true)
+        self.showHideView(view: self.btnReject, isHidden: true)
+        self.showHideView(view: self.btnGotowork, isHidden: true)
+        self.showHideView(view: self.viewAddOffer, isHidden: true)
         let reasonNote = notification.userInfo!["reasonNote"] as? NSString
         let reasonName = notification.userInfo!["reasonName"] as? NSString
         self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
@@ -89,11 +93,15 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
             if self.detailProcessResume.cvProcessInfo!.rejectStep! == 3 {
                 self.showHideView(view: self.viewReject, isHidden: false)
                 self.showHideView(view: self.viewButton, isHidden: true)
+                self.showHideView(view: self.btnReject, isHidden: true)
+                self.showHideView(view: self.btnGotowork, isHidden: true)
+                self.showHideView(view: self.viewAddOffer, isHidden: true)
             }else{
                 self.showHideView(view: self.viewReject, isHidden: true)
             }
         }else {
             self.showHideView(view: self.viewReject, isHidden: true)
+            
         }
         
         if let rejectName = self.detailProcessResume.cvProcessInfo!.reasonRejectName {
@@ -154,7 +162,7 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
     }
     func showList(){
         tableView.maxHeight = CGFloat(self.count! * 70)
-        self.heightOffer.constant = self.count! == 1 ? 190 : 110 + CGFloat(self.count! * 70)
+        self.heightOffer.constant = 190 + CGFloat(self.count! * 70)
         self.viewOffer.layoutIfNeeded()
         self.viewOffer.setNeedsLayout()
         self.viewOffer.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
