@@ -11,9 +11,9 @@ class LeftViewController: UITableViewController {
     private var dynamicTitlesArray = [LstAuthority]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getAccount()
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.getAccount()
     }
     func getAccount(){
         viewModel.loadAccount(success: {account in
@@ -23,27 +23,43 @@ class LeftViewController: UITableViewController {
             let countMenuAvailable:Int = 5
             let countMenuDynamic:Int = account.lstMenuAuthority!.count
             let totalCountMenu = countMenuDynamic + countMenuAvailable
-            for i in 0...totalCountMenu-1 {
+            for i in 0...12-1 {
                 if i == 0 || i == 2 {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
-                } else if i == totalCountMenu-1 {
+                } else if i == 12-1 {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "LOGOUT", id: 0, name: NSLocalizedString("logout", comment: "")))
                 } else if i == 1 {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: "Xin chào, Tùng!"))
-                } else if i == totalCountMenu-2 {
-                    self.dynamicTitlesArray.append(LstAuthority.init(code: "PROFILE", id: 0, name: NSLocalizedString("info_acc", comment: "")))
+                } else if i == 12-2 {
+                    self.dynamicTitlesArray.append(LstAuthority.init(code: "PROFILE", id: 0, name:AccountManager.currentAccount!.type! == 2 ? "Thông tin nhà tuyển dụng": NSLocalizedString("info_acc", comment: "")))
                 } else {
-                    self.dynamicTitlesArray.append(LstAuthority.init(code: account.lstMenuAuthority![i-3].code!, id: 0, name: account.lstMenuAuthority![i-3].name!))
+                    if account.lstMenuAuthority!.count > 0 {
+                        self.dynamicTitlesArray.append(LstAuthority.init(code: account.lstMenuAuthority![i-3].code!, id: 0, name: account.lstMenuAuthority![i-3].name!))
+                    } else {
+                        self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
+                    }
                 }
             }
-            
             if let currentUser = UserDataManager.currentUser {
-                self.setFullname(fullname: currentUser.fullNameColl)
+                if AccountManager.currentAccount!.type! == 2 {
+                    self.setFullname(fullname: AccountManager.currentAccount!.firstName!)
+                } else {
+                    self.setFullname(fullname: currentUser.fullNameColl)
+                }
             } else {
-                self.viewModel.loadUserProfile(success: { userProfile in
-                    self.setFullname(fullname: userProfile.fullNameColl)
-                }, failure: { error in
-                })
+                if account.type! == 7 {
+                    self.viewModel.loadUserProfile(success: { userProfile in
+                        self.setFullname(fullname: userProfile.fullNameColl)
+                    }, failure: { error in
+                    })
+                } else if account.type! == 2 {
+                    self.setFullname(fullname: account.firstName)
+                } else {
+                    self.viewModel.loadUserProfile(success: { userProfile in
+                        self.setFullname(fullname: userProfile.fullNameColl)
+                    }, failure: { error in
+                    })
+                }
             }
         }, failure: {error in
             
@@ -83,6 +99,7 @@ class LeftViewController: UITableViewController {
         if dynamicTitlesArray[indexPath.row].name! == "" || indexPath.row == 1 || indexPath.row == 2 {
             cell.icon.isHidden = true
             cell.icon.gone()
+            cell.isUserInteractionEnabled = false
             cell.bageLabel.isHidden = true
             cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.shared.getScreenWidth() == 414 ? 30 : 28)
             cell.titleLabel.frame = CGRect(x: 0, y: 8, width:220, height: 60)
@@ -132,10 +149,10 @@ class LeftViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0  {
             return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count+30))
-        }else if indexPath.row == self.dynamicTitlesArray.count - 1 {
+        } else if indexPath.row == self.dynamicTitlesArray.count - 1 {
             return 100
         } else {
-            return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
+            return (ScreenUtils.shared.getScreenHeight()!/CGFloat(13))
         }
     }
     func replaceController(nameController:String, isLogout:Bool){
@@ -154,7 +171,7 @@ class LeftViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch self.dynamicTitlesArray[indexPath.row].code {
         case "CTV_HOME_PAGE":
-            replaceController(nameController: "ViewController", isLogout: false)
+            replaceController(nameController: AccountManager.currentAccount!.type! == 2 ? "" : "ViewController", isLogout: false)
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         case "CTV_JOB_SAVE":
             replaceController(nameController: "MyJobController", isLogout: false)

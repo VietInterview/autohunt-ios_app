@@ -128,7 +128,7 @@ class APIClient {
             print("CallRequest: " + requestUrl + "\n \(header!)")
         }
         let manager = Alamofire.SessionManager.default
-        manager.session.configuration.timeoutIntervalForRequest = 20
+        manager.session.configuration.timeoutIntervalForRequest = 5
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
@@ -148,7 +148,7 @@ class APIClient {
             print("CallRequest: " + requestUrl + "\n \(header!)")
         }
         let manager = Alamofire.SessionManager.default
-        manager.session.configuration.timeoutIntervalForRequest = 20
+        manager.session.configuration.timeoutIntervalForRequest = 5
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in

@@ -284,7 +284,7 @@ extension CustomerProfileController: UICollectionViewDelegate, UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? ImageCollectionViewCell
-        cell!.imageCompany.showImage(imgUrl: self.profileCustomer!.customerImg![indexPath.row].imageURL, imageNullName: "ava_null")
+        cell!.imageCompany.showImage(imgUrl: self.profileCustomer!.customerImg![indexPath.row].imageURL, imageNullName: "job_null")
         cell!.imageCompany.addRadius()
         return cell!
     }

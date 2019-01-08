@@ -87,12 +87,15 @@ class UserAPI {
   }
   class func getCusProfile(_ success: @escaping (_ user: ProfileCustomer) -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = collCusUrl + "/getProfiles"
+    UIApplication.showNetworkActivity()
     APIClient.request(.get, url: url, success: { response, _ in
+      UIApplication.hideNetworkActivity()
       if let getCusProfile = try? JSONDecoder().decode(ProfileCustomer.self, from: response){
         CustomerDataManager.currentCustomer = getCusProfile
         success(getCusProfile)
       }
     }, failure: { error in
+      UIApplication.hideNetworkActivity()
       failure(error)
     })
   }

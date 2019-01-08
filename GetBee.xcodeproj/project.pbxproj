@@ -394,6 +394,7 @@
 		7A06AD9A2174264A00E3CDAA /* CarrerOrCity */ = {
 			isa = PBXGroup;
 			children = (
+				7A06AD9D2174266C00E3CDAA /* CustomCell.xib */,
 				7A06AD9B2174266400E3CDAA /* CustomCell.swift */,
 				7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */,
 			);
@@ -695,7 +696,6 @@
 				7A99AA58217199B100E3B0DC /* BridgingHeader.h */,
 				9B0C726D1C738D3400BAF3B1 /* Info.plist */,
 				9BFA84F21C776827009F64E4 /* LaunchScreen.storyboard */,
-				7A06AD9D2174266C00E3CDAA /* CustomCell.xib */,
 				0ABFB8921FA366D90098F751 /* Main.storyboard */,
 			);
 			path = GetBee;

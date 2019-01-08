@@ -56,7 +56,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
                 UserDefaults.standard.set(3, forKey: "position")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController":"ViewController")], animated: false)
                 let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
                 mainViewController.rootViewController = navigationController
                 mainViewController.setup(type: UInt(2))
@@ -190,12 +190,10 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     func animateInForgotPass() {
         self.view.addSubview(mViewContact)
         mViewContact.center = self.view.center
-        
         mViewContact.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         mViewContact.alpha = 0
         UIView.animate(withDuration: 0.4) {
             self.visualEffectView.effect = self.effect
-            
             self.visualEffectView.isHidden = false
             self.mViewContact.alpha = 1
             self.mViewContact.transform = CGAffineTransform.identity
@@ -278,7 +276,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
                 
-                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
+                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController" : "ViewController")], animated: false)
                 
                 let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
                 mainViewController.rootViewController = navigationController

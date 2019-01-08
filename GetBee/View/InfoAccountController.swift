@@ -57,9 +57,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, Cho
         })
     }
     override func viewDidAppear(_ animated: Bool) {
-//        let fixedWidth = textFieldCarrer.frame.size.width
-//        let newSize = textFieldCarrer.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-//        textFieldCarrer.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        super.viewDidAppear(animated)
     }
     
     @IBAction func gotoCarrerTouch(_ sender: Any) {
