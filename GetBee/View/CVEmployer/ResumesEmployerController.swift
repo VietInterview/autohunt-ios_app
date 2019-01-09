@@ -129,7 +129,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ResumesEmployerCell", for: indexPath) as! ResumesEmployerCell
             cell.lblName.text = self.cvListByJobCustomer[indexPath.row-1].fullName!
-            cell.lblDateSubmit.text = "\(self.cvListByJobCustomer[indexPath.row-1].countDay!) ngày trước"
+            cell.lblDateSubmit.text = self.cvListByJobCustomer[indexPath.row-1].countDay! == 0 ? "Vừa gửi" : "\(self.cvListByJobCustomer[indexPath.row-1].countDay!) ngày trước"
             cell.delegate = self
             cell.btnStatus.setTitleColor(StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
             cell.btnStatus.addBorder(color: StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), weight: 1)

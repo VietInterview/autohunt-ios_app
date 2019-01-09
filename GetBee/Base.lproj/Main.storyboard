@@ -1117,7 +1117,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R03-uq-Nxt">
                                                 <rect key="frame" x="46" y="0.0" width="1" height="46"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="XJp-jU-Udx"/>
                                                     <constraint firstAttribute="height" constant="46" id="woB-OM-ds6"/>
@@ -1176,7 +1176,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyY-9n-8wo">
                                                 <rect key="frame" x="46" y="0.0" width="1" height="46"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="NF9-tB-7Nu"/>
                                                     <constraint firstAttribute="height" constant="46" id="aUF-6G-Pvk"/>
@@ -8903,6 +8903,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcj-fk-RsU">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_detail_job_em" translatesAutoresizingMaskIntoConstraints="NO" id="akX-l7-JMB">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Senior System Integration Engineer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfR-Oy-AiL">
                                                 <rect key="frame" x="12" y="15" width="296" height="60"/>
                                                 <constraints>
@@ -8926,17 +8929,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="pfR-Oy-AiL" firstAttribute="leading" secondItem="pcj-fk-RsU" secondAttribute="leading" constant="12" id="6sH-Rg-TL9"/>
                                             <constraint firstItem="6I7-Nm-QvO" firstAttribute="leading" secondItem="pcj-fk-RsU" secondAttribute="leading" constant="12" id="FL6-Lz-7VT"/>
                                             <constraint firstAttribute="height" constant="131" id="FT2-vw-Epb"/>
                                             <constraint firstAttribute="trailing" secondItem="pfR-Oy-AiL" secondAttribute="trailing" constant="12" id="GZk-Vg-5Qt"/>
+                                            <constraint firstItem="akX-l7-JMB" firstAttribute="leading" secondItem="pcj-fk-RsU" secondAttribute="leading" id="IXt-Fc-oWo"/>
+                                            <constraint firstAttribute="bottom" secondItem="akX-l7-JMB" secondAttribute="bottom" id="IxN-nX-o5h"/>
                                             <constraint firstItem="pfR-Oy-AiL" firstAttribute="top" secondItem="pcj-fk-RsU" secondAttribute="top" constant="15" id="LcD-OA-FC7"/>
                                             <constraint firstAttribute="trailing" secondItem="KSK-nq-tSs" secondAttribute="trailing" constant="16" id="Mfd-4B-fKp"/>
+                                            <constraint firstItem="akX-l7-JMB" firstAttribute="top" secondItem="pcj-fk-RsU" secondAttribute="top" id="RRL-9m-oOW"/>
                                             <constraint firstItem="KSK-nq-tSs" firstAttribute="leading" secondItem="6I7-Nm-QvO" secondAttribute="trailing" constant="4" id="ScM-l8-9uR"/>
                                             <constraint firstAttribute="bottom" secondItem="6I7-Nm-QvO" secondAttribute="bottom" constant="19" id="YFq-cY-3V8"/>
                                             <constraint firstAttribute="bottom" secondItem="KSK-nq-tSs" secondAttribute="bottom" constant="21" id="hfv-cX-IZV"/>
+                                            <constraint firstAttribute="trailing" secondItem="akX-l7-JMB" secondAttribute="trailing" id="lJB-qh-xa5"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cv_list" translatesAutoresizingMaskIntoConstraints="NO" id="qcX-Sf-GhI">
@@ -11124,7 +11131,7 @@
                                     <constraint firstAttribute="width" constant="200" id="7gO-Wk-cBp"/>
                                     <constraint firstAttribute="height" constant="38" id="9Fa-EW-bP9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tạo một tài khoản mới" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MO9-20-b3P">
@@ -11162,7 +11169,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-Xu-8Nu">
                                                 <rect key="frame" x="46" y="0.0" width="1" height="46"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="1" id="hhK-mP-L9L"/>
                                                     <constraint firstAttribute="height" constant="46" id="ovm-aA-sr4"/>
@@ -11221,7 +11228,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9O-h2-EYC">
                                                 <rect key="frame" x="46" y="0.0" width="1" height="46"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="C3d-Jf-dSI"/>
                                                     <constraint firstAttribute="width" constant="1" id="E7R-7C-PwB"/>
@@ -11280,7 +11287,7 @@
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2b-eE-SV8">
                                                 <rect key="frame" x="46" y="0.0" width="1" height="46"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="pFE-ru-pYc"/>
                                                     <constraint firstAttribute="width" constant="1" id="ypw-tZ-L64"/>
@@ -11562,6 +11569,7 @@
         <image name="eye_view" width="22" height="15"/>
         <image name="filter_black" width="18" height="18"/>
         <image name="filter_gray" width="18" height="18"/>
+        <image name="header_detail_job_em" width="360" height="131"/>
         <image name="home_menuleft" width="20" height="15"/>
         <image name="ic_cv_list" width="50" height="50"/>
         <image name="ic_menu_blue" width="18" height="12"/>

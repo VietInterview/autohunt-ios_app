@@ -21,7 +21,16 @@ class LeftViewController: UITableViewController {
             if self.dynamicTitlesArray.count > 0 {
                 self.dynamicTitlesArray.removeAll()
             }
-            //            let totalCountMenu = countMenuDynamic + countMenuAvailable
+            var numbers = [String]()
+            var names = [String]()
+            if account.lstMenuAuthority!.count > 0 {
+                for i in 0...account.lstMenuAuthority!.count-1 {
+                    numbers.append(account.lstMenuAuthority![i].code!)
+                    names.append(account.lstMenuAuthority![i].name!)
+                }
+            }
+            let unique = numbers.removingDuplicates()
+            let name = names.removingDuplicates()
             for i in 0...self.totalCountMenu-1 {
                 if i == 0 || i == 2 {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
@@ -29,23 +38,22 @@ class LeftViewController: UITableViewController {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "LOGOUT", id: 0, name: NSLocalizedString("logout", comment: "")))
                 } else if i == 1 {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: "Xin chào, Tùng!"))
-                } else if i == (3+account.lstMenuAuthority!.count) {
+                } else if i == (3+unique.count) {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "PROFILE", id: 0, name:AccountManager.currentAccount!.type! == 2 ? "Thông tin nhà tuyển dụng": NSLocalizedString("info_acc", comment: "")))
-                } else if i >= 3 && i <= (3+account.lstMenuAuthority!.count-1){
-                    if account.lstMenuAuthority!.count > 0 {
-                        debugLog(object: account.lstMenuAuthority![i-3].code!)
-                        if account.lstMenuAuthority![i-3].code! == "CUSTOMER_HOME_PAGE" {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: account.lstMenuAuthority![i-3].code!, id: 0, name: "Quản lý công việc"))
-                        } else if account.lstMenuAuthority![i-3].code! == "CTV_JOB_SAVE" {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: account.lstMenuAuthority![i-3].code!, id: 0, name: "Công việc của tôi"))
-                        }  else if account.lstMenuAuthority![i-3].code! == "CTV_JOB_SENT" {
+                } else if i >= 3 && i <= (3+unique.count-1){
+                    if unique.count > 0 {
+                        if unique[i-3] == "CUSTOMER_HOME_PAGE" {
+                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Quản lý công việc"))
+                        } else if unique[i-3] == "CTV_JOB_SAVE" {
+                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Công việc của tôi"))
+                        }  else if unique[i-3] == "CTV_JOB_SENT" {
                             
-                        }  else if account.lstMenuAuthority![i-3].code! == "CTV_CV_SAVE" {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: account.lstMenuAuthority![i-3].code!, id: 0, name: "Hồ sơ của tôi"))
-                        }  else if account.lstMenuAuthority![i-3].code! == "CTV_CV_SEND" {
+                        }  else if unique[i-3] == "CTV_CV_SAVE" {
+                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Hồ sơ của tôi"))
+                        }  else if unique[i-3] == "CTV_CV_SEND" {
                             
                         } else {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: account.lstMenuAuthority![i-3].code!, id: 0, name: account.lstMenuAuthority![i-3].name!))
+                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: name[i-3]))
                         }
                     } else {
                         self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
@@ -133,8 +141,8 @@ class LeftViewController: UITableViewController {
             cell.bageLabel.gone()
         }
         if UserDefaults.standard.integer(forKey: "position") == indexPath.row {
-            cell.icon.backgroundColor = UIColor.gray
-            cell.titleLabel.backgroundColor = UIColor.gray
+            cell.icon.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#4e6071")
+            cell.titleLabel.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#4e6071")
         } else {
             cell.icon.backgroundColor = UIColor.clear
             cell.titleLabel.backgroundColor = UIColor.clear
@@ -230,4 +238,17 @@ class LeftViewController: UITableViewController {
         }
     }
     
+}
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+        
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }

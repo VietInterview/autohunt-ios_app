@@ -44,10 +44,10 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         if !MFMailComposeViewController.canSendMail() {
         }
         
-        mViewUser.layer.borderWidth = 0.5
-        mViewUser.layer.borderColor = UIColor.black.cgColor
-        mViewPassword.layer.borderWidth = 0.5
-        mViewPassword.layer.borderColor = UIColor.black.cgColor
+        mViewUser.layer.borderWidth = 1
+        mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        mViewPassword.layer.borderWidth = 1
+        mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
@@ -107,7 +107,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         } else {
             lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
         }
     }
     var dem: Int = 0
@@ -119,7 +119,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
             lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#000000")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         }else{
             dem = dem - 1
             Env.setProductionFalse()
@@ -127,7 +127,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
             lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
         }
     }
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
@@ -141,21 +141,21 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             imgUser.image = UIImage(named: "Shape_focus")
             imgPass.image = UIImage(named: "pass")
             
-            mViewUser.layer.borderWidth = 0.5
+            mViewUser.layer.borderWidth = 1
             mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            mViewPassword.layer.borderWidth = 0.5
-            mViewPassword.layer.borderColor = UIColor.black.cgColor
-            verticalPass.layer.backgroundColor = UIColor.black.cgColor
+            mViewPassword.layer.borderWidth = 1
+            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+            verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         } else {
             imgUser.image = UIImage(named: "Shape")
             imgPass.image = UIImage(named: "pass_focus")
-            mViewUser.layer.borderWidth = 0.5
-            mViewUser.layer.borderColor = UIColor.black.cgColor
-            mViewPassword.layer.borderWidth = 0.5
+            mViewUser.layer.borderWidth = 1
+            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+            mViewPassword.layer.borderWidth = 1
             mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            verticalUser.layer.backgroundColor = UIColor.black.cgColor
+            verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         }
     }
     override func viewWillAppear(_ animated: Bool) {
