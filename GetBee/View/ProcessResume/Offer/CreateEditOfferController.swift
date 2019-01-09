@@ -224,33 +224,80 @@ class CreateEditOfferController: BaseViewController {
         }
     }
     @IBAction func sendEmailOfferTouch() {
+        let myColor = UIColor.red
         if self.textFieldSalary.text!.isEmpty {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
+            self.textFieldSalary.layer.borderColor = myColor.cgColor
+            
+            self.textFieldSalary.layer.borderWidth = 1.0
         } else if self.textFieldWorkTime.text!.isEmpty {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
+            self.textFieldWorkTime.layer.borderColor = myColor.cgColor
+            
+            self.textFieldWorkTime.layer.borderWidth = 1.0
         } else if self.textFieldAdd.text!.isEmpty {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
+            self.textFieldAdd.layer.borderColor = myColor.cgColor
+            
+            self.textFieldAdd.layer.borderWidth = 1.0
         } else if self.textFieldPositionWork.text!.isEmpty {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
+            self.textFieldPositionWork.layer.borderColor = myColor.cgColor
+            
+            self.textFieldPositionWork.layer.borderWidth = 1.0
         } else {
-            self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
-                self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: Int(self.textFieldSalary.text!)!, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
-                    if let delegate = self.sendOfferDelegate {
-                        let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
-                        delegate.onSendOffer(lstOffer: lstOffer)
-                        for controller in self.navigationController!.viewControllers as Array {
-                            if controller.isKind(of: ProcessResumeController.self) {
-                                self.navigationController!.popToViewController(controller, animated: true)
-                                break
-                            }
+            if let lstOffer = self.detailProcessResume!.lstOfferHis {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                if lstOffer.count > 0 {
+                    if let lastDate = dateFormatter.date(from: lstOffer[lstOffer.count-1].workTime!.substring(with: 0..<10)) {
+                        let dateNow = dateFormatter.date(from: self.textFieldWorkTime.text!.substring(with: 0..<10))
+                        let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
+                        debugLog(object: components.day!)
+                        if components.day! < 0 {
+                            self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
+                                self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: Int(self.textFieldSalary.text!)!, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
+                                    if let delegate = self.sendOfferDelegate {
+                                        let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
+                                        delegate.onSendOffer(lstOffer: lstOffer)
+                                        for controller in self.navigationController!.viewControllers as Array {
+                                            if controller.isKind(of: ProcessResumeController.self) {
+                                                self.navigationController!.popToViewController(controller, animated: true)
+                                                break
+                                            }
+                                        }
+                                    }
+                                }, failure: {error in
+                                    self.showMessageErrorApi()
+                                })
+                            },handlerCancel: {(action: UIAlertAction!) in
+                                
+                            })
+                        }else{
+                            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn không thể chọn ngày phòng vấn trước hoặc bằng ngày phỏng vấn trước")
                         }
                     }
-                }, failure: {error in
-                    self.showMessageErrorApi()
+                } else {
+                    self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
+                    self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: Int(self.textFieldSalary.text!)!, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
+                        if let delegate = self.sendOfferDelegate {
+                            let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
+                            delegate.onSendOffer(lstOffer: lstOffer)
+                            for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: ProcessResumeController.self) {
+                                    self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
+                        }
+                    }, failure: {error in
+                        self.showMessageErrorApi()
+                    })
+                },handlerCancel: {(action: UIAlertAction!) in
+                    
                 })
-            },handlerCancel: {(action: UIAlertAction!) in
-                
-            })
+                }
+            }
         }
     }
     @IBAction func updateStatusAgreeTouch() {

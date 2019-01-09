@@ -267,12 +267,12 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return UITableViewAutomaticDimension
-        //        if indexPath.row == 0{
-        //            return 270;
-        //        } else {
-        //            return 230
-        //        }
+//        return UITableViewAutomaticDimension
+                if indexPath.row == 0{
+                    return 270;
+                } else {
+                    return 230
+                }
     }
 }
 extension UIView {
