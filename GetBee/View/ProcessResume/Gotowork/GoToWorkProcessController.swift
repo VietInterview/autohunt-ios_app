@@ -93,11 +93,12 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
             self.showHideView(view: self.btnReject, isHidden: true)
             self.showHideView(view: self.btnContract, isHidden: true)
             self.showHideView(view: self.viewButton, isHidden: true)
+            self.viewStartWorkDate.isUserInteractionEnabled = false
         }
         if status == 4 {
             if rejectStep == 4 {
                 self.showHideView(view: self.viewReject, isHidden: false)
-                self.showHideView(view: self.viewButton, isHidden: false)
+                self.showHideView(view: self.viewButton, isHidden: true)
                 self.showHideView(view: self.btnContract, isHidden: true)
                 self.showHideView(view: self.btnReject, isHidden: true)
                 self.viewStartWorkDate.isUserInteractionEnabled = false

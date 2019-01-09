@@ -24,7 +24,7 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         
-        imgResume.layer.borderWidth = 1
+        imgResume.layer.borderWidth = 0
         imgResume.layer.masksToBounds = false
         imgResume.layer.borderColor = UIColor.black.cgColor
         imgResume.layer.cornerRadius = imgResume.frame.height/2
@@ -53,8 +53,6 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
             if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
             } else { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
             }
-//            tabSwipe.carbonSegmentedControl?.frame = CGRect(x:0, y: 0, width:0, height:0)
-//            self.showHideView(view: tabSwipe.carbonSegmentedControl!, isHidden: true)
             tabSwipe.carbonSegmentedControl?.backgroundColor = UIColor.white
             tabSwipe.setNormalColor(StringUtils.shared.hexStringToUIColor(hex: "#677B8D"), font: UIFont(name: "Roboto-Medium", size: 14)!)
             tabSwipe.setSelectedColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)

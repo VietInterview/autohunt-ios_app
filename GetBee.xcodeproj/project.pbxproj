@@ -120,6 +120,7 @@
 		7AB0AD0821736CF900F576B5 /* InfoAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */; };
 		7AB0AD0A2173817F00F576B5 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */; };
 		7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */; };
+		7ABDCD0221E593F000286837 /* SimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDCD0121E593F000286837 /* SimpleCell.swift */; };
 		7AC18E5F21CA06FE00EB47A9 /* NormalTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC18E5E21CA06FE00EB47A9 /* NormalTableCell.swift */; };
 		7AC6DA7A21A24A2F00BD5C10 /* DetailCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA7921A24A2F00BD5C10 /* DetailCV.swift */; };
 		7AC6DA7C21A2756000BD5C10 /* ListCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6DA7B21A2756000BD5C10 /* ListCV.swift */; };
@@ -310,6 +311,7 @@
 		7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAccountController.swift; sourceTree = "<group>"; };
 		7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerOrCityController.swift; sourceTree = "<group>"; };
+		7ABDCD0121E593F000286837 /* SimpleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCell.swift; sourceTree = "<group>"; };
 		7AC18E5E21CA06FE00EB47A9 /* NormalTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalTableCell.swift; sourceTree = "<group>"; };
 		7AC6DA7921A24A2F00BD5C10 /* DetailCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCV.swift; sourceTree = "<group>"; };
 		7AC6DA7B21A2756000BD5C10 /* ListCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCV.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			children = (
 				7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */,
 				7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */,
+				7ABDCD0121E593F000286837 /* SimpleCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1184,6 +1187,7 @@
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
 				7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */,
 				7A17F3BA21A396AD000B4D1F /* ListCVSubmit.swift in Sources */,
+				7ABDCD0221E593F000286837 /* SimpleCell.swift in Sources */,
 				7A879E9B21C9091D000850D2 /* ExpandableDetailJobCell.swift in Sources */,
 				7A836D4A21DCA0BA00915E1D /* NextDelegate.swift in Sources */,
 				7AA70218219CFD6300566F43 /* ChooseCVSubmitController.swift in Sources */,

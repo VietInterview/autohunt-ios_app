@@ -103,7 +103,7 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ResumesEmployerController") as! ResumesEmployerController
-        vc.mID = self.mJobList[indexPath.row].id!
+        vc.mID = self.mJobList[indexPath.row-1].id!
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -117,40 +117,52 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0{
-            return 155;
+            return 44
         } else {
             return 115
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mJobList.count
+        return mJobList.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "JobEmployerCell", for: indexPath) as! JobEmployerCell
         if indexPath.row == 0 {
-            self.showHideView(view: cell.viewQuantity, isHidden: false)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "quantitycell", for: indexPath) as! SimpleCell
+            if let jobCustomer = self.jobCustomer {
+                if let total = jobCustomer.total {
+                    cell.lblQuantity.text = "\(total) công việc được tìm thấy"
+
+                }
+            }
+            cell.isUserInteractionEnabled = false
+            return cell
         } else {
-            self.showHideView(view: cell.viewQuantity, isHidden: true)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JobEmployerCell", for: indexPath) as! JobEmployerCell
+            let status = self.mJobList[indexPath.row-1].status!
+            let limit = self.mJobList[indexPath.row-1].limited!
+            if status == 1 && limit > 0 && limit < 8 {
+                cell.lblStatus.text = "Sắp hết hạn"
+            } else if status == 1 && limit > 7 {
+                cell.lblStatus.text = "Còn " + "\(limit)" + " ngày"
+            } else if status == 1 && limit == 0 {
+                cell.lblStatus.text = "Đã hết hạn"
+            } else if status == 0 {
+                cell.lblStatus.text = "Nháp"
+            } else if status == 5 {
+                cell.lblStatus.text = "Đã khóa"
+            } else if status == 2 {
+                cell.lblStatus.text = "Đã hết hạn"
+            } else if status == 3 {
+                cell.lblStatus.text = "Đã đóng"
+            }
+            cell.lblJobTitle.text = "\(mJobList[indexPath.row-1].jobTitle!)"
+            cell.lblCountCV.text = "/\(mJobList[indexPath.row-1].countCv!)"
+            cell.lblCountOffer.text = "\(self.mJobList[indexPath.row-1].countOffer!)"
+            cell.delegate = self
+            cell.contentView.shadowView(opacity: 8/100, radius: 10)
+            return cell
         }
-        let status = self.mJobList[indexPath.row].status!
-        let limit = self.mJobList[indexPath.row].limited!
-        if status == 1 && limit > 0 && limit < 8 {
-            cell.lblStatus.text = "Sắp hết hạn"
-        } else if status == 1 && limit > 7 {
-            cell.lblStatus.text = "Còn " + "\(limit)" + " ngày"
-        } else if status == 1 && limit == 0 {
-            cell.lblStatus.text = "Đã hết hạn"
-        } else if status == 0 {
-            cell.lblStatus.text = "Nháp"
-        }
-        cell.lblQuantity.text = "\(self.jobCustomer!.total!) công việc được tìm thấy"
-        cell.lblJobTitle.text = "\(mJobList[indexPath.row].jobTitle!)"
-        cell.lblCountCV.text = "/\(mJobList[indexPath.row].countCv!)"
-        cell.lblCountOffer.text = "\(self.mJobList[indexPath.row].countOffer!)"
-        cell.delegate = self
-        cell.contentView.shadowView(opacity: 8/100, radius: 10)
-        return cell
     }
     var defaultOptions = SwipeOptions()
     var isSwipeRightEnabled = true
@@ -163,9 +175,9 @@ extension JobEmployerController: SwipeTableViewCellDelegate {
         let read = SwipeAction(style: .default, title: nil) { action, indexPath in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DetailJobCustomerController") as! DetailJobCustomerController
-            vc.jobId = self.mJobList[indexPath.row].id!
-            vc.limit = self.mJobList[indexPath.row].limited!
-            vc.status = self.mJobList[indexPath.row].status!
+            vc.jobId = self.mJobList[indexPath.row-1].id!
+            vc.limit = self.mJobList[indexPath.row-1].limited!
+            vc.status = self.mJobList[indexPath.row-1].status!
             vc.title = NSLocalizedString("detail_job", comment: "")
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -175,12 +187,12 @@ extension JobEmployerController: SwipeTableViewCellDelegate {
         return [read]
     }
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
-        action.image = UIImage(named: "info_detail_job")
+        action.image = UIImage(named: "job_info")
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = descriptor.color
+            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

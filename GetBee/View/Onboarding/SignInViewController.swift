@@ -53,16 +53,33 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
         if self.isAppAlreadyLaunchedOnce() {
-            if let session = SessionManager.currentSession {
-                UserDefaults.standard.set(3, forKey: "position")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController":"ViewController")], animated: false)
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                mainViewController.rootViewController = navigationController
-                mainViewController.setup(type: UInt(2))
-                let window = UIApplication.shared.delegate!.window!!
-                window.rootViewController = mainViewController
+            if SessionManager.currentSession != nil {
+                if let account = AccountManager.currentAccount {
+                    UserDefaults.standard.set(3, forKey: "position")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                    navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: account.type! == 2 ? "JobEmployerController":"ViewController")], animated: false)
+                    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                    mainViewController.rootViewController = navigationController
+                    mainViewController.setup(type: UInt(2))
+                    let window = UIApplication.shared.delegate!.window!!
+                    window.rootViewController = mainViewController
+                } else {
+                    self.homeViewModel.loadAccount(success: {account in
+                        AccountManager.currentAccount = account
+                        UserDefaults.standard.set(3, forKey: "position")
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                        navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController":"ViewController")], animated: false)
+                        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                        mainViewController.rootViewController = navigationController
+                        mainViewController.setup(type: UInt(2))
+                        let window = UIApplication.shared.delegate!.window!!
+                        window.rootViewController = mainViewController
+                    }, failure: { error in
+//                        self.showMessageErrorApi()
+                    })
+                }
             }
         }else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

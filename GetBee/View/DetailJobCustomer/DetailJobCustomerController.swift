@@ -15,8 +15,8 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var lblDeadline: UILabel!
     
-    var arrTitle = ["Cấp bậc","Hình thức làm việc","Lĩnh vực ngành nghề","Yêu cầu kinh nghiệm","Nơi làm việc","Số lượng tuyển","Bằng cấp","Độ tuổi","Mức lương","Thưởng cộng tác viên","Ngày đăng","Ngày hết hạn","Từ khóa","Nhận hồ sơ bằng ngôn ngữ","Người liên hệ","Email nhận thông báo","Mô tả công việc","Yêu cầu công việc"]
-    let numberOfCells : NSInteger = 18
+    var arrTitle = ["Cấp bậc","Hình thức làm việc","Lĩnh vực ngành nghề","Yêu cầu kinh nghiệm","Yêu cầu giới tính","Nơi làm việc","Số lượng tuyển","Bằng cấp","Độ tuổi","Mức lương","Thưởng cộng tác viên","Ngày đăng","Ngày hết hạn","Từ khóa","Nhận hồ sơ bằng ngôn ngữ","Người liên hệ","Email nhận thông báo","Mô tả công việc","Yêu cầu công việc","Đãi ngộ đặc biệt"]
+    let numberOfCells : NSInteger = 20
     var states : Array<Bool>!
     let viewModel = HomeViewModel()
     var arrContent = [String]()
@@ -54,6 +54,12 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 self.lblDeadline.text = "Đã hết hạn"
             } else if self.status == 0 {
                 self.lblDeadline.text = "Nháp"
+            } else if self.status == 5 {
+                self.lblDeadline.text = "Đã khóa"
+            } else if self.status == 2 {
+                self.lblDeadline.text = "Đã hết hạn"
+            } else if self.status == 3 {
+                self.lblDeadline.text = "Đã đóng"
             }
             if let currentlevel = jobDetailCustomer.currentLevel{
                 self.arrContent.append(StringUtils.shared.checkEmpty(value: currentlevel.name))
@@ -81,20 +87,26 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 self.arrContent.append("")
             }
             
-            self.arrContent.append(StringUtils.shared.checkEmpty(value: jobDetailCustomer.workExperience))
-            
-            if let lstCitys = jobDetailCustomer.lstJobCity {
-                var lstCity:String = ""
-                for i in 0...lstCitys.count-1 {
-                    if i == lstCitys.count-1 {
-                        lstCity.append("\(StringUtils.shared.checkEmpty(value: lstCitys[i].name))")
-                    } else {
-                        lstCity.append("\(StringUtils.shared.checkEmpty(value: lstCitys[i].name)), ")
+            self.arrContent.append(StringUtils.shared.checkEmpty(value: StringUtils.shared.genStringExperience(value: jobDetailCustomer.workExperience!)))
+            self.arrContent.append(StringUtils.shared.genStringSex(value: jobDetailCustomer.sex!))
+            if let lstCountrys = jobDetailCustomer.lstJobCountry {
+                if let lstCitys = jobDetailCustomer.lstJobCity {
+                    var lstCity:String = ""
+                    for j in 0...lstCountrys.count-1 {
+                        for i in 0...lstCitys.count-1 {
+                            if lstCitys[i].countryID! == lstCountrys[j].id!{
+                                if i == lstCitys.count-1 {
+                                    lstCity.append("\(StringUtils.shared.checkEmpty(value: lstCitys[i].name)) - \(StringUtils.shared.checkEmpty(value: lstCountrys[j].name))")
+                                } else {
+                                    lstCity.append("\(StringUtils.shared.checkEmpty(value: lstCitys[i].name)) - \(StringUtils.shared.checkEmpty(value: lstCountrys[j].name)), ")
+                                }
+                            }
+                        }
                     }
+                    self.arrContent.append(lstCity)
+                }else{
+                    self.arrContent.append("")
                 }
-                self.arrContent.append(lstCity)
-            }else{
-                self.arrContent.append("")
             }
             
             self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.quantity))")
@@ -105,11 +117,11 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 self.arrContent.append("")
             }
             
-            self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.age))")
+            self.arrContent.append("\(StringUtils.shared.genStringAge(value: jobDetailCustomer.age!))")
             
-            self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fromSalary)) - \(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.toSalary))")
+            self.arrContent.append("\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fromSalary))) - \(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.toSalary))) \(StringUtils.shared.genStringCurrency(value: jobDetailCustomer.currency!))")
             
-            self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fee))")
+            self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fee)) VND")
             
             self.arrContent.append(DateUtils.shared.convertFormatDateFull(dateString: StringUtils.shared.checkEmpty(value: jobDetailCustomer.submitDate)))
             
@@ -134,6 +146,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             self.arrContent.append(StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: jobDetailCustomer.jobDescription))!)
             
             self.arrContent.append(StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: jobDetailCustomer.jobRequirements))!)
+            self.arrContent.append(StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: jobDetailCustomer.specialTreatment))!)
             self.states = [Bool](repeating: true, count: self.numberOfCells)
             self.tableView.estimatedRowHeight = 76
             self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -143,14 +156,14 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
         })
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row <= 15 {
-            return 76
+        if indexPath.row <= 16 {
+            return 86
         } else {
             return UITableViewAutomaticDimension
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row <= 15 {
+        if indexPath.row <= 16 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell") as! NormalTableCell
             cell.lblTitle.text = self.arrTitle[indexPath.row]
             cell.lblContent.text = self.arrContent[indexPath.row]
@@ -177,8 +190,9 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
     }
     
     func preparedSources() -> [(text: String, textReplacementType: ExpandableLabel.TextReplacementType, numberOfLines: Int, textAlignment: NSTextAlignment)] {
-        return [(self.arrContent[16], .word, 3, .left),
-                (self.arrContent[17], .word, 3, .left)]
+        return [(self.arrContent[17], .word, 3, .left),
+                (self.arrContent[18], .word, 3, .left),
+                (self.arrContent[19], .word, 3, .left)]
     }
     
     func willExpandLabel(_ label: ExpandableLabel) {

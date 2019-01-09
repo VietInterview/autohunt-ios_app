@@ -1,20 +1,15 @@
 ///**
 /**
-Created by: Hiep Nguyen Nghia on 12/10/18
+Created by: Hiep Nguyen Nghia on 1/9/19
 Copyright (c) 2018 Vietinterview. All rights reserved.
 */
 
 import UIKit
-import SwipeCellKit
 
-class JobEmployerCell: SwipeTableViewCell {
+class SimpleCell: UITableViewCell {
 
-    @IBOutlet weak var lblCountOffer: UILabel!
-    @IBOutlet weak var lblCountCV: UILabel!
-    @IBOutlet weak var lblJobTitle: UILabel!
-    @IBOutlet weak var lblStatus: UILabel!
-    @IBOutlet weak var viewContent: UIView!
-    
+    @IBOutlet weak var lblQuantity: UILabel!
+    @IBOutlet weak var viewQuantity: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -107,40 +107,44 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cvListByJobCustomer.count
+        return cvListByJobCustomer.count+1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if indexPath.row == 0{
-            return 120;
+            return 44;
         } else {
-            return 80
+            return 90
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResumesEmployerCell", for: indexPath) as! ResumesEmployerCell
         if indexPath.row == 0 {
-            self.showHideView(view: cell.viewQuantity, isHidden: false)
-            self.showHideView(view: cell.lblQuantity, isHidden: false)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "quantitycell", for: indexPath) as! SimpleCell
+            if let resumesByJobCustomer = self.resumesByJobCustomer {
+                if let total = resumesByJobCustomer.total {
+                    cell.lblQuantity.text = "\(total) hồ sơ được tìm thấy"
+                }
+            }
+            cell.isUserInteractionEnabled = false
+            return cell
         } else {
-            self.showHideView(view: cell.viewQuantity, isHidden: true)
-            self.showHideView(view: cell.lblQuantity, isHidden: true)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ResumesEmployerCell", for: indexPath) as! ResumesEmployerCell
+            cell.lblName.text = self.cvListByJobCustomer[indexPath.row-1].fullName!
+            cell.lblDateSubmit.text = "\(self.cvListByJobCustomer[indexPath.row-1].countDay!) ngày trước"
+            cell.delegate = self
+            cell.btnStatus.setTitleColor(StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
+            cell.btnStatus.addBorder(color: StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), weight: 1)
+            cell.btnStatus.addRadius(weight: 12)
+            cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus:  self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
+            cell.contentView.shadowView(opacity: 8/100, radius: 10)
+            return cell
         }
-        cell.lblName.text = self.cvListByJobCustomer[indexPath.row].fullName!
-        cell.lblDateSubmit.text = "\(self.cvListByJobCustomer[indexPath.row].countDay!) ngày trước"
-        cell.delegate = self
-        cell.btnStatus.setTitleColor(StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row].status!), for: .normal)
-        cell.btnStatus.addBorder(color: StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row].status!), weight: 1)
-        cell.lblQuantity.text = "\(self.resumesByJobCustomer!.total!) hồ sơ được tìm thấy"
-        cell.btnStatus.addRadius(weight: 12)
-        cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus:  self.cvListByJobCustomer[indexPath.row].status!), for: .normal)
-        cell.contentView.shadowView(opacity: 8/100, radius: 10)
-        return cell
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ProcessResumeController") as! ProcessResumeController
         vc.jobId = self.mID
-        vc.cvId = self.cvListByJobCustomer[indexPath.row].id!
+        vc.cvId = self.cvListByJobCustomer[indexPath.row-1].id!
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -164,7 +168,7 @@ extension ResumesEmployerController: SwipeTableViewCellDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "DetailResumeCustomerController") as! DetailResumeCustomerController
             vc.title = "Xem hồ sơ"
-            vc.cvId = self.cvListByJobCustomer[indexPath.row].id!
+            vc.cvId = self.cvListByJobCustomer[indexPath.row-1].id!
             self.navigationController?.pushViewController(vc, animated: true)
         }
         read.hidesWhenSelected = true
@@ -174,12 +178,12 @@ extension ResumesEmployerController: SwipeTableViewCellDelegate {
     }
     
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
-        action.image = UIImage(named: "info_detail_job")
+        action.image = UIImage(named: "view_cv")
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = descriptor.color
+            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

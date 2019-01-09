@@ -54,7 +54,7 @@ class CreateEditInterviewController: BaseViewController {
             self.textFieldRound.text = lstInterview.round!
             self.textFieldDateTime.text = lstInterview.interviewDate!
             self.textFieldAdd.text = lstInterview.interviewAddress!
-            self.textFieldNote.text = lstInterview.note!
+            self.textFieldNote.text = StringUtils.shared.checkEmpty(value: lstInterview.note) 
         } else {
             self.textFieldRound.text = "Vòng \(self.detailProcessResume!.lstInterviewHis!.count + 1)"
         }

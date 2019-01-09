@@ -82,11 +82,20 @@ class LeftViewController: UITableViewController {
     }
     func setFullname(fullname:String?) {
         if let fullname = fullname {
-            if fullname.count <= 12 {
-                self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: "")) \(fullname)!")
+            if ScreenUtils.shared.getScreenWidth() == 414 {
+                if fullname.count <= 12 {
+                    self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: "")) \(fullname)!")
+                } else {
+                    self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: ""))")
+                    self.dynamicTitlesArray[2] = LstAuthority.init(code: "", id: 0, name: "  \(fullname)!")
+                }
             } else {
-                self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: ""))")
-                self.dynamicTitlesArray[2] = LstAuthority.init(code: "", id: 0, name: "  \(fullname)!")
+                if fullname.count <= 7 {
+                    self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: "")) \(fullname)!")
+                } else {
+                    self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: ""))")
+                    self.dynamicTitlesArray[2] = LstAuthority.init(code: "", id: 0, name: "  \(fullname)!")
+                }
             }
             self.tableView.reloadData()
         } else {

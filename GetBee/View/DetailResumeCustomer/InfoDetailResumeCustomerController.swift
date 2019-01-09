@@ -56,14 +56,26 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
             }
             self.arrContent[7] = carrer
         }
-        self.arrContent[8] = StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.jobListcityName)
+        if let lstJobCity = self.resumeDetailCustomer.lstJobCity {
+            var citys:String = ""
+            if lstJobCity.count > 0 {
+                for i in 0...lstJobCity.count-1 {
+                    citys.append(i == lstJobCity.count-1 ? lstJobCity[i].name! : "\(lstJobCity[i].name!), ")
+                }
+                self.arrContent[8] = citys
+            } else {
+                self.arrContent[8] = citys
+            }
+        }else {
+            self.arrContent[8] = ""
+        }
         if let educationLevel = self.resumeDetailCustomer.educationLevel {
             self.arrContent[9] = StringUtils.shared.checkEmpty(value: educationLevel.name)
         }
         if let expYear = self.resumeDetailCustomer.experienceYear{
             self.arrContent[10] = StringUtils.shared.checkEmpty(value: expYear.name)
         }
-        self.arrContent[11] = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.resumeDetailCustomer.desiredSalary))
+        self.arrContent[11] = "\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.resumeDetailCustomer.desiredSalary))) VND"
         self.arrContent[12] = StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.careerObjectives)
         if let lstEmploy = self.resumeDetailCustomer.lstEmploymentHis {
             self.lstEmploymentHis = lstEmploy
@@ -136,7 +148,7 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
         } else if positionTab == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell") as! NormalTableCell
             cell.lblTitle.text = self.lstEducationHi[indexPath.row].subject!
-            cell.lblContent.text = "\(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].school))\nChuyên ngành: \(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].career))\n\(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].graduationTypeName))"
+            cell.lblContent.text = "\(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].school))\nChuyên ngành: \(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].career))\nTốt nghiệp loại: \(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].graduationTypeName))"
             
             return cell
         } else if positionTab == 3 {

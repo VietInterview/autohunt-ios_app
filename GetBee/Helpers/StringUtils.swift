@@ -52,6 +52,20 @@ class StringUtils:NSObject {
             alpha: CGFloat(alpha)
         )
     }
+    func genStringSex(value:Int) -> String {
+        var stringEx = ""
+        switch value {
+        case 0:
+            stringEx = "Không yêu cầu"
+        case 1:
+            stringEx = NSLocalizedString("male", comment: "")
+        case 2:
+            stringEx = NSLocalizedString("female", comment: "")
+        default:
+            print("Fallback option")
+        }
+        return stringEx
+    }
     func genStringLan(value: Int) -> String {
         var someNumber = ""
         switch value {
@@ -67,6 +81,38 @@ class StringUtils:NSObject {
             print("Fallback option")
         }
         return someNumber
+    }
+    func genStringAge(value: Int) -> String {
+        var someNumber = ""
+        switch value {
+        case 1:
+            someNumber="Không giới hạn tuổi"
+        case 2:
+            someNumber="Dưới 25 tuổi"
+        case 3:
+            someNumber="Từ 25 - 30 tuổi"
+        case 4:
+            someNumber="Trên 30 tuổi"
+        default:
+            print("Fallback option")
+        }
+        return someNumber
+    }
+    func genStringExperience(value: String) -> String {
+        var stringEx = ""
+        switch value {
+        case "1":
+            stringEx = "Không yêu cầu"
+        case "2":
+            stringEx = "Dưới 1 năm"
+        case "3":
+            stringEx = "Từ 1 - 3 năm"
+        case "4":
+            stringEx = "Trên 3 năm"
+        default:
+            print("Fallback option")
+        }
+        return stringEx
     }
     func genColor(valueStatus: Int) -> UIColor {
         var color: UIColor = .gray
