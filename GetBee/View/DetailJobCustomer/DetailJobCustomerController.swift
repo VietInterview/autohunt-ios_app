@@ -9,6 +9,9 @@ import ExpandableLabel
 
 class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate {
     
+    @IBOutlet weak var heightViewJobName: NSLayoutConstraint!
+    @IBOutlet weak var viewJobName: UIView!
+    @IBOutlet weak var heightHeader: NSLayoutConstraint!
     @IBOutlet weak var imgListResume: UIImageView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -35,6 +38,13 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.viewJobName.layoutIfNeeded()
+        self.viewJobName.setNeedsLayout()
+        self.headerView.layoutIfNeeded()
+        self.headerView.setNeedsLayout()
+        self.heightHeader.constant = self.viewJobName.frame.size.height + 25
+        self.headerView.layoutIfNeeded()
+        self.headerView.setNeedsLayout()
     }
     @objc func someAction2(sender:UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -59,7 +69,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             } else if self.status == 2 {
                 self.lblDeadline.text = "Đã hết hạn"
             } else if self.status == 3 {
-                self.lblDeadline.text = "Đã đóng"
+                self.lblDeadline.text = "Ngưng tuyển"
             }
             if let currentlevel = jobDetailCustomer.currentLevel{
                 self.arrContent.append(StringUtils.shared.checkEmpty(value: currentlevel.name))
@@ -121,7 +131,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             
             self.arrContent.append("\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fromSalary))) - \(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.toSalary))) \(StringUtils.shared.genStringCurrency(value: jobDetailCustomer.currency!))")
             
-            self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fee)) VND")
+            self.arrContent.append("\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fee))) VND")
             
             self.arrContent.append(DateUtils.shared.convertFormatDateFull(dateString: StringUtils.shared.checkEmpty(value: jobDetailCustomer.submitDate)))
             
@@ -157,7 +167,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row <= 16 {
-            return 86
+            return UITableViewAutomaticDimension
         } else {
             return UITableViewAutomaticDimension
         }
@@ -169,7 +179,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             cell.lblContent.text = self.arrContent[indexPath.row]
             return cell
         } else {
-            let currentSource = preparedSources()[indexPath.row == 16 ? 0 : 1]
+            let currentSource = preparedSources()[indexPath.row == 17 ? 0 : indexPath.row == 18 ? 1 : 2]
             let cell = tableView.dequeueReusableCell(withIdentifier: "expanedCell") as! ExpandableDetailJobCell
             cell.expandableLabel.delegate = self
             cell.expandableLabel.setLessLinkWith(lessLink: "Rút gọn", attributes: [.foregroundColor:UIColor.blue], position: currentSource.textAlignment)
@@ -180,8 +190,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             cell.expandableLabel.numberOfLines = currentSource.numberOfLines
             cell.expandableLabel.collapsed = states[indexPath.row]
             cell.expandableLabel.text = currentSource.text
-            
-            
+            self.showHideView(view: cell, isHidden: currentSource.text == "" ? true : false)
             return cell
         }
     }

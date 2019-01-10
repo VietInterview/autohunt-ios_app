@@ -319,7 +319,7 @@ extension CustomerProfileController: UICollectionViewDelegate, UICollectionViewD
          if indexPath.row == 0{
             return 150
         } else if indexPath.row >= 2 && indexPath.row <= 5{
-                return 76
+                return UITableViewAutomaticDimension
          } else if indexPath.row == 6{
             return UITableViewAutomaticDimension
          } else if indexPath.row == 1{

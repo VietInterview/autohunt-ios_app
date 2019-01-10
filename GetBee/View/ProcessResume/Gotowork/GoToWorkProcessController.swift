@@ -37,10 +37,7 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
                 if let startWorkDate = gotoworkDTO.startWorkDate {
                     if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
                         let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
-                        debugLog(object: date)
-                        debugLog(object: tomorrow!)
                         let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
-                        debugLog(object: components.day!)
                         self.lblWarranty.text = "\(components.day!) ngày còn lại"
                     }
                 }

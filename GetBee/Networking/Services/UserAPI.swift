@@ -150,7 +150,6 @@ class UserAPI {
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
     APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
       LoadingOverlay.shared.hideOverlayView()
-      debugLog(object: headers)
       success()
     }, failure: { error, statusCode  in
       LoadingOverlay.shared.hideOverlayView()

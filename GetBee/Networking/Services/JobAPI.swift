@@ -15,8 +15,6 @@ class JobAPI {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         let url = collUrl + "/searchJob?careerId=\(carrerId)&jobtile=\(jobTitle)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
         guard let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
-            //Invalid URL
-            debugLog(object: url)
             return
         }
         APIClient.request(.get, url: encodedURL, success: { response, _ in

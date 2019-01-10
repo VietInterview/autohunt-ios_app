@@ -27,6 +27,8 @@ class WelfareTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegat
     func setUpTable(){
         tableWelfare.delegate = self
         tableWelfare.dataSource = self
+        self.tableWelfare.estimatedRowHeight = 60
+        self.tableWelfare.rowHeight = UITableViewAutomaticDimension
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -35,8 +37,8 @@ class WelfareTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegat
         self.dataArr = dataArr
         self.tableWelfare.dataSource = self
         tableWelfare.delegate = self
-        tableWelfare.maxHeight = CGFloat(self.dataArr.count * 60)
-        self.heightTableWelfare.constant = CGFloat(self.dataArr.count * 60)
+        tableWelfare.maxHeight = CGFloat(self.dataArr.count * Int(60))
+        self.heightTableWelfare.constant = CGFloat(self.dataArr.count * Int(60))
         self.tableWelfare.layoutIfNeeded()
         self.tableWelfare.setNeedsLayout()
         tableWelfare.scrollToRow(at: IndexPath(row:self.dataArr.count-1, section:0), at: .bottom, animated: true)
@@ -50,7 +52,7 @@ class WelfareTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegat
         return dataArr.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WelfareCell", for: indexPath) as? WelfareCell

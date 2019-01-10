@@ -55,7 +55,6 @@ extension ExpDetailCVController: ExpandableDelegate {
     
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
         let cell1 = self.mExpTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID) as! ExpandedCell
-        debugLog(object: indexPath.row)
         cell1.lblCompanyName.text = self.detailCV.lstEmploymentHis![indexPath.row].companyName
         cell1.lblQuantityEmp.text = StringUtils.shared.genStringHumanResource(value: self.detailCV.lstEmploymentHis![indexPath.row].humanResources!)
         cell1.lblJobTitle.text = self.detailCV.lstEmploymentHis![indexPath.row].title!
@@ -88,7 +87,6 @@ extension ExpDetailCVController: ExpandableDelegate {
         cell1.viewContent.layer.borderWidth = 1
         cell1.viewContent.layer.mask = rectShape
         self.mCell = cell1
-        debugLog(object: cell1.contentView.frame.size.height)
         if let mDelegate = self.delegate {
             mDelegate.sendHeightExpDetailCV(height: Int(80 + self.mCell!.heightContentView.constant))
         }
@@ -107,7 +105,6 @@ extension ExpDetailCVController: ExpandableDelegate {
         return self.detailCV.lstEmploymentHis!.count
     }
     func expandableTableView(_ expandableTableView: ExpandableTableView, didSelectRowAt indexPath: IndexPath) {
-        debugLog(object: indexPath.row)
         //        if let lastIndex = self.lastIndexPath {
         //            if self.lastIndexPath!.row != -1 && indexPath.row != self.lastIndexPath!.row {
         //                self.mExpTableView.close(at: self.lastIndexPath!)

@@ -45,7 +45,7 @@
 "not_accept"="Từ chối";
 "invite_interview"="Mời phỏng vấn";
 "interviewd"="Đã phỏng vấn";
-"offered"="Được tuyển dụng";
+"offered"="Offer";
 "go_to_work"="Đi làm";
 "contract"="Ký hợp đồng";
 "default_key"="Mặc định";
@@ -109,3 +109,4 @@
 "nodata"="Không có thông tin";
 "input_search_key"="Nhập từ khóa";
 "job_list"="Danh sách công việc";
+"not_see"="Chưa xem";

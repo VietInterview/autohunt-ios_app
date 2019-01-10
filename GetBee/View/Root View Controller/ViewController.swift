@@ -47,7 +47,6 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         tableViewJob.rowHeight = UITableViewAutomaticDimension
         tableViewJob.estimatedRowHeight = UITableViewAutomaticDimension
-        
         debugLog(object: UIDevice.current.identifierForVendor!.uuidString)
     }
     
@@ -177,7 +176,6 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
             let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
                 throw VersionError.invalidBundleInfo
         }
-        debugLog(object: currentVersion)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let error = error { throw error }

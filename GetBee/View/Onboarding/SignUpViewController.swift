@@ -156,7 +156,7 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "gotosignin", sender: self)
     }
     @IBAction func formEditingChange(_ sender: UITextField) {
-        let newValue = sender.text ?? ""
+        _ = sender.text ?? ""
         switch sender {
             //        case textFieldEmail:
             //            viewModel.email = newValue
@@ -174,60 +174,34 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         let phone = textFieldPhone.text!
         if fullname.count == 0 && email.count == 0 && phone.count == 0 {
             self.imgNoteUser.isHidden = false
-            var placeHolder = NSMutableAttributedString()
-            let Name  = NSLocalizedString("input_name", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
-            
-            textFieldFullname.attributedPlaceholder = placeHolder
+            textFieldFullname.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
+                                                                         attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
             self.imgNotePhone.isHidden = false
-            var placeHolderPhone = NSMutableAttributedString()
-            let sdt  = NSLocalizedString("input_phone", comment: "")
-            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
-            
-            textFieldPhone.attributedPlaceholder = placeHolderPhone
+            textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""),
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
             self.imgNoteEMail.isHidden = false
-            var placeHolderMail = NSMutableAttributedString()
-            let Mail  = NSLocalizedString("input_email", comment: "")
-            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
-            
-            textFieldEmail.attributedPlaceholder = placeHolderMail
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if fullname.count == 0 {
             self.imgNoteUser.isHidden = false
-            var placeHolder = NSMutableAttributedString()
-            let Name  = NSLocalizedString("input_name", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
-            
-            textFieldFullname.attributedPlaceholder = placeHolder
-            } else if email.count == 0 {
+            textFieldFullname.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
+                                                                         attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+        } else if email.count == 0 {
             self.imgNoteEMail.isHidden = false
-            var placeHolderMail = NSMutableAttributedString()
-            let Mail  = NSLocalizedString("input_email", comment: "")
-            placeHolderMail = NSMutableAttributedString(string:Mail, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolderMail.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Mail.count))
-            
-            textFieldEmail.attributedPlaceholder = placeHolderMail
-            } else if phone.count == 0 {
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+        } else if phone.count == 0 {
             self.imgNotePhone.isHidden = false
-            var placeHolderPhone = NSMutableAttributedString()
-            let sdt  = NSLocalizedString("input_phone", comment: "")
-            placeHolderPhone = NSMutableAttributedString(string:sdt, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolderPhone.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:sdt.count))
-            
-            textFieldPhone.attributedPlaceholder = placeHolderPhone
-            }else {
-                viewModel.signup(email: self.textFieldEmail.text!, address: self.addTextField.text!, carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!, success: {
-                    self.animateIn()
-                }, failure: {error in
-                    debugLog(object: error)
-                    if error == "error.userexists" {
-                        debugLog(object: "Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
-                        self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("email_esxit", comment: ""))
-                    }
-                })
+            textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""),
+                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+        }else {
+            viewModel.signup(email: self.textFieldEmail.text!, address: self.addTextField.text!, carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!, success: {
+                self.animateIn()
+            }, failure: {error in
+                if error == "error.userexists" {
+                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("email_esxit", comment: ""))
+                }
+            })
         }
     }
 }

@@ -30,7 +30,6 @@ class MyJobController: BaseViewController, CarbonTabSwipeNavigationDelegate, Cho
         } else {
             tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
         }
-        debugLog(object: ScreenUtils.shared.getScreenWidth()!)
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         tabSwipe.setNormalColor(UIColor.gray)
         tabSwipe.setSelectedColor(UIColor.black)

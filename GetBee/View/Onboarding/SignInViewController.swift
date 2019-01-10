@@ -273,19 +273,12 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBAction func tapOnSignInButton(_ sender: Any) {
         if self.emailField.text! == ""{
             self.imgNoteUser.isHidden = false
-            var placeHolder = NSMutableAttributedString()
-            let Name  = NSLocalizedString("input_email", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
-            
-            emailField.attributedPlaceholder = placeHolder
+            emailField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         }else if self.passwordField.text! == "" {
             self.imgNotePass.isHidden = false
-            var placeHolder = NSMutableAttributedString()
-            let Name  = NSLocalizedString("input_pass", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Roboto-Regular", size: 18.0)!])
-            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
-            passwordField.attributedPlaceholder = placeHolder
+            passwordField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_pass", comment: ""),
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         }else{
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
             viewModel.login(success: { [unowned self] in

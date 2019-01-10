@@ -255,7 +255,6 @@ class CreateEditInterviewController: BaseViewController {
                     if let lastDate = dateFormatter.date(from: lstInterviewHis[lstInterviewHis.count-1].interviewDate!.substring(with: 0..<10)) {
                         let dateNow = dateFormatter.date(from: self.textFieldDateTime.text!.substring(with: 0..<10))
                         let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
-                        debugLog(object: components.day!)
                         if components.day! < 0 {
                             self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
                             self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: -1, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: 0, success: {sendInterview in

@@ -56,6 +56,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         vc.isStatus = true
         vc.isCity = false
         vc.delegate = self
+        vc.isResumeCustomer = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {

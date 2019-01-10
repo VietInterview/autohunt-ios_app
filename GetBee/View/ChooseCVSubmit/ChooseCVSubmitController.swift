@@ -28,7 +28,7 @@ class ChooseCVSubmitController: BaseViewController, UITableViewDelegate, UITable
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
+        super.viewDidAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = false
         self.page = 0
         getMyCV()

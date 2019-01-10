@@ -14,6 +14,7 @@ class JobEmployerCell: SwipeTableViewCell {
     @IBOutlet weak var lblJobTitle: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var viewContent: UIView!
+    @IBOutlet weak var imgTime: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

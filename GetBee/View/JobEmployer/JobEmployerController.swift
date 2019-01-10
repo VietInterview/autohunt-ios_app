@@ -81,7 +81,6 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
             let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(identifier)") else {
                 throw VersionError.invalidBundleInfo
         }
-        debugLog(object: currentVersion)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 if let error = error { throw error }
@@ -176,18 +175,32 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
             let limit = self.mJobList[indexPath.row-1].limited!
             if status == 1 && limit > 0 && limit < 8 {
                 cell.lblStatus.text = "Sắp hết hạn"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#FF5A5A")
+                cell.imgTime.image = UIImage(named: "time_deadline")
             } else if status == 1 && limit > 7 {
                 cell.lblStatus.text = "Còn " + "\(limit)" + " ngày"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 1 && limit == 0 {
                 cell.lblStatus.text = "Đã hết hạn"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 0 {
                 cell.lblStatus.text = "Nháp"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 5 {
                 cell.lblStatus.text = "Đã khóa"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 2 {
                 cell.lblStatus.text = "Đã hết hạn"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 3 {
-                cell.lblStatus.text = "Đã đóng"
+                cell.lblStatus.text = "Ngưng tuyển"
+                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.imgTime.image = UIImage(named: "time_gray")
             }
             cell.lblJobTitle.text = "\(mJobList[indexPath.row-1].jobTitle!)"
             cell.lblCountCV.text = "/\(mJobList[indexPath.row-1].countCv!)"

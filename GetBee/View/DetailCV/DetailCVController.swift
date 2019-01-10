@@ -48,7 +48,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -205,7 +205,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     }
     var isUpdate:Bool = false
     func sendHeightInfoDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             if ScreenUtils.shared.getScreenWidth() == 414 {
                 self.heightViewContentConstant.constant = 800 + CGFloat(height)
@@ -218,7 +217,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
         }
     }
     func sendHeightSkillDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height) - 400 : CGFloat(height) - 200
             self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
@@ -227,7 +225,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
         }
     }
     func sendHeightExpDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height) - 200
             self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
@@ -237,7 +234,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     }
     
     func sendHeightLevelDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
             self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
@@ -281,7 +277,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
                 })
             }
         }, failure: {error in
-            debugLog(object: error)
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
@@ -308,7 +303,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
                 })
             }
         }, failure: {error in
-            debugLog(object: error)
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {

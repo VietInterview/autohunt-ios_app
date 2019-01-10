@@ -23,6 +23,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     var isStatus: Bool = false
     var isCity: Bool = false
     var isCustomer:Bool = false
+    var isResumeCustomer:Bool = false
     var isMultiChoice: Bool = false
     
     @IBOutlet weak var textFieldSearch: UITextField!
@@ -33,7 +34,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         button.setTitleColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
         button.addTarget(self, action:#selector(self.chon(sender:)), for:.touchUpInside)
         button.frame = CGRect.init(x: 20, y: 00, width: 40, height: 30)
-        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 18)
+        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 16)
         let barButton = UIBarButtonItem.init(customView: button)
         barButton.setTitleTextAttributes([
             NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 18.0)!,
@@ -95,7 +96,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 6, name: "Ngưng tuyển")))
             } else {
                 self.viewModel.items.removeAll()
-                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: NSLocalizedString("sent", comment: ""))))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: self.isResumeCustomer == true ? 2 : 1 , name: self.isResumeCustomer == true ? NSLocalizedString("not_see", comment: "") : NSLocalizedString("sent", comment: ""))))
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 3, name: NSLocalizedString("seen", comment: ""))))
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 4, name: NSLocalizedString("not_accept", comment: ""))))
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 5, name: NSLocalizedString("invite_interview", comment: ""))))
@@ -127,7 +128,6 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         tableView?.separatorStyle = .singleLine
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugLog(object: [indexPath.row])
     }
     @objc func chon(sender: UIBarButtonItem) {
         if filterData.selectedItems.count > 0 {

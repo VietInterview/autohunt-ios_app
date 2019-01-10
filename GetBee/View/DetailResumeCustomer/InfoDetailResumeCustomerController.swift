@@ -277,7 +277,13 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
             if let upDownStateDelegate = self.delegate {
                 upDownStateDelegate.upDownState(isUp: true)
             }
-        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+        }
+//        else if (self.lastContentOffset > scrollView.contentOffset.y) {
+//            if let upDownStateDelegate = self.delegate {
+//                upDownStateDelegate.upDownState(isUp: false)
+//            }
+//        }
+        else if scrollView.contentOffset.y == -1.0 {
             if let upDownStateDelegate = self.delegate {
                 upDownStateDelegate.upDownState(isUp: false)
             }

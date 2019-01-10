@@ -230,7 +230,6 @@ class LeftViewController: UITableViewController {
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         case "CUSTOMER_HOME_PAGE":
             replaceController(nameController: "JobEmployerController", isLogout: false)
-            debugLog(object: indexPath.row)
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         default:
             replaceController(nameController: "ViewController", isLogout: false)

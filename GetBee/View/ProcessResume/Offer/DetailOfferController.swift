@@ -45,7 +45,7 @@ class DetailOfferController: BaseViewController {
         case 1:
             stringStatus = "Đồng ý"
         case 2:
-            stringStatus = "Không đồng ý"
+            stringStatus = "Từ chối"
         default:
             stringStatus = "Chưa có kết quả"
         }

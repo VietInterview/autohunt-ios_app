@@ -32,7 +32,7 @@ class CreateEditOfferController: BaseViewController {
     var sendOfferDelegate:SendOfferDelegate?
     var datePicker : UIDatePicker!
     var toolBar:UIToolbar?
-    var currencyID:Int = 0
+    var currencyID:Int = 1
     
     convenience init() {
         self.init(nibName: "CreateEditOfferController", bundle: nil)
@@ -90,6 +90,7 @@ class CreateEditOfferController: BaseViewController {
                 self.btnNotAgree.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
             }
         } else {
+            self.btnCurrency.setTitle(self.switchCurrency(value: self.currencyID), for: .normal)
             self.showHideView(view: self.viewResult, isHidden: true)
             self.showHideView(view: self.btnAgree, isHidden: true)
             self.showHideView(view: self.btnNotAgree, isHidden: true)
@@ -117,7 +118,7 @@ class CreateEditOfferController: BaseViewController {
         self.viewChooseDateTime.addSubview(toolBar!)
         toolBar!.isHidden = false
     }
-     var somedateString:String = ""
+    var somedateString:String = ""
     @objc func doneClick() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -151,7 +152,7 @@ class CreateEditOfferController: BaseViewController {
         return currencyString
     }
     @IBAction func chooseCurrencyTouch() {
-        let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Lý do từ chối", message: nil, preferredStyle: .actionSheet)
+        let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Chọn đơn vị tiền tệ", message: nil, preferredStyle: .actionSheet)
         let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             print("Cancel")
         }
@@ -243,7 +244,6 @@ class CreateEditOfferController: BaseViewController {
         } else if self.textFieldPositionWork.text!.isEmpty {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
             self.textFieldPositionWork.layer.borderColor = myColor.cgColor
-            
             self.textFieldPositionWork.layer.borderWidth = 1.0
         } else {
             if let lstOffer = self.detailProcessResume!.lstOfferHis {
@@ -253,7 +253,6 @@ class CreateEditOfferController: BaseViewController {
                     if let lastDate = dateFormatter.date(from: lstOffer[lstOffer.count-1].workTime!.substring(with: 0..<10)) {
                         let dateNow = dateFormatter.date(from: self.textFieldWorkTime.text!.substring(with: 0..<10))
                         let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
-                        debugLog(object: components.day!)
                         if components.day! < 0 {
                             self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
                                 self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: Int(self.textFieldSalary.text!)!, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
@@ -279,23 +278,23 @@ class CreateEditOfferController: BaseViewController {
                     }
                 } else {
                     self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
-                    self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: Int(self.textFieldSalary.text!)!, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
-                        if let delegate = self.sendOfferDelegate {
-                            let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
-                            delegate.onSendOffer(lstOffer: lstOffer)
-                            for controller in self.navigationController!.viewControllers as Array {
-                                if controller.isKind(of: ProcessResumeController.self) {
-                                    self.navigationController!.popToViewController(controller, animated: true)
-                                    break
+                        self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: Int(self.textFieldSalary.text!)!, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
+                            if let delegate = self.sendOfferDelegate {
+                                let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
+                                delegate.onSendOffer(lstOffer: lstOffer)
+                                for controller in self.navigationController!.viewControllers as Array {
+                                    if controller.isKind(of: ProcessResumeController.self) {
+                                        self.navigationController!.popToViewController(controller, animated: true)
+                                        break
+                                    }
                                 }
                             }
-                        }
-                    }, failure: {error in
-                        self.showMessageErrorApi()
+                        }, failure: {error in
+                            self.showMessageErrorApi()
+                        })
+                    },handlerCancel: {(action: UIAlertAction!) in
+                        
                     })
-                },handlerCancel: {(action: UIAlertAction!) in
-                    
-                })
                 }
             }
         }

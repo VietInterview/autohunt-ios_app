@@ -12,13 +12,13 @@ class BaseViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.view.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
-        navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
+        self.navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
     }
     override func viewDidAppear(_ animated: Bool) {
         UIApplication.shared.isStatusBarHidden = false
-//        navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
-        navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
+        self.navigationController?.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
+        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
