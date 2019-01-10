@@ -133,7 +133,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             let currentSource = preparedSources()[0]
             let cell = tableView.dequeueReusableCell(withIdentifier: "expanedCell", for: indexPath)as? ExpandableDetailJobCell
             cell?.expandableLabel.delegate = self
-            let greenColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+            let greenColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7") 
             let attributedStringColor = [NSAttributedStringKey.foregroundColor : StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")];
             let attributedString = NSAttributedString(string: "Xem thêm", attributes: attributedStringColor)
             cell?.expandableLabel.collapsedAttributedLink = attributedString

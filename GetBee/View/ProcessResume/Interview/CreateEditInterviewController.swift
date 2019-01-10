@@ -46,7 +46,13 @@ class CreateEditInterviewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Thông tin phỏng vấn"
+        let titleLabel = UILabel()
+        let title = NSMutableAttributedString(string: "Thông tin phỏng vấn", attributes:[
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20.0)!])
+        titleLabel.attributedText = title
+        titleLabel.sizeToFit()
+        self.navigationItem.titleView = titleLabel
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.imgChooseDateTime.isUserInteractionEnabled = true
         self.imgChooseDateTime.addGestureRecognizer(gestureSwift2AndHigher2)
@@ -66,7 +72,7 @@ class CreateEditInterviewController: BaseViewController {
         super.viewDidAppear(animated)
         self.viewResult.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"),weight: 1)
         if let lstInterview = self.lstInterviewHi {
-            self.showHideView(view: self.btnInviteInterview, isHidden: true)
+            self.showHideView(view: self.btnInviteInterview, isHidden: false)
             if lstInterview.status! == 0 {
                 self.btnAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
                 self.btnNotAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")

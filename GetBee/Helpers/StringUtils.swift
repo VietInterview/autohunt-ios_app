@@ -168,7 +168,7 @@ class StringUtils:NSObject {
         case 1:
             statusString=NSLocalizedString("sent", comment: "")
         case 2:
-            statusString=NSLocalizedString("sent", comment: "")
+            statusString=NSLocalizedString("not_see", comment: "")
         case 3:
             statusString=NSLocalizedString("seen", comment: "")
         case 4:

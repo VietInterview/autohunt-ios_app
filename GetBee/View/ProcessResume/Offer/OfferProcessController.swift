@@ -24,6 +24,7 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
     var detailProcessResume = DetailProcessResume()
     var rejectDelegate:RejectDelegate?
     var nextDelegate:NextDelegate?
+    var isAdd:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,10 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
             self.count = 0
         }
         if self.count == 0 {
+            self.isAdd = true
             self.pushViewController(controller: CreateEditOfferController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+        }else {
+            self.isAdd = false
         }
     }
     @objc func onNotification(notification:Notification)
@@ -125,15 +129,18 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                         
                     })
                 } else if lstOffer[lstOffer.count-1].status! == 2 {
+                    self.isAdd = true
                     self.pushViewController(controller: CreateEditOfferController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
                 }else if lstOffer[lstOffer.count-1].status! == 1 {
                     self.showMessage(title: "Thông báo", message: "Lần offer gần nhất ứng viên đã đồng ý vì vậy bạn không thể thêm mới offer", handler: { (action: UIAlertAction!) in
                         
                     })
                 }else {
+                    self.isAdd = true
                     self.pushViewController(controller: CreateEditOfferController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
                 }
             } else {
+                self.isAdd = true
                 self.pushViewController(controller: CreateEditOfferController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
             }
         }
@@ -153,16 +160,28 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                 self.detailProcessResume.lstOfferHis!.append(lstOffer)
             }
             self.count = self.detailProcessResume.lstOfferHis!.count
-            self.showList()
         } else {
             self.detailProcessResume.lstOfferHis!.append(lstOffer)
             self.count = self.detailProcessResume.lstOfferHis!.count
-           self.showList()
         }
     }
     func showList(){
         tableView.maxHeight = CGFloat(self.count! * 70)
-        self.heightOffer.constant = 190 + CGFloat(self.count! * 70)
+        self.viewButton.setNeedsLayout()
+        self.viewButton.layoutIfNeeded()
+        self.viewAddOffer.setNeedsLayout()
+        self.viewAddOffer.layoutIfNeeded()
+        if let lstOffer = self.detailProcessResume.lstOfferHis {
+            if lstOffer.count > 0{
+                if lstOffer[lstOffer.count-1].status == 0{
+                    self.heightOffer.constant = CGFloat(self.count! * 70) + self.viewAddOffer.frame.size.height + 60
+                } else {
+                    self.heightOffer.constant = CGFloat(self.count! * 70) + self.viewAddOffer.frame.size.height + self.viewButton.frame.size.height + 60
+                }
+            } else {
+                self.heightOffer.constant = self.viewAddOffer.frame.size.height + self.viewButton.frame.size.height + 60
+            }
+        }
         self.viewOffer.layoutIfNeeded()
         self.viewOffer.setNeedsLayout()
         self.viewOffer.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
@@ -212,15 +231,19 @@ extension OfferProcessController: UITableViewDataSource, UITableViewDelegate {
         }
         if status == 7 || (status == 4 && rejectStep == 3) {
             if status == 4 {
+                self.isAdd = false
                 self.pushViewController(controller: DetailOfferController.init().setArgument(lstOffer: self.detailProcessResume.lstOfferHis![indexPath.row]))
             } else {
                 if indexPath.row == self.count!-1 {
+                    self.isAdd = false
                     self.pushViewController(controller: CreateEditOfferController.init().setArgument(lstOffer: self.detailProcessResume.lstOfferHis![indexPath.row], detailProcessResume: self.detailProcessResume, delegate: self))
                 } else{
+                    self.isAdd = false
                     self.pushViewController(controller: DetailOfferController.init().setArgument(lstOffer: self.detailProcessResume.lstOfferHis![indexPath.row]))
                 }
             }
         }else{
+            self.isAdd = false
             self.pushViewController(controller: DetailOfferController.init().setArgument(lstOffer: self.detailProcessResume.lstOfferHis![indexPath.row]))
         }
     }

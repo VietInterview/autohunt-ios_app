@@ -70,6 +70,8 @@
 		7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF52192E1050081862E /* JobAPI.swift */; };
 		7A6F9EF82192E6B20081862E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF72192E6B20081862E /* Job.swift */; };
 		7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF92192F1570081862E /* JobTableViewCell.swift */; };
+		7A73770621E72EEF00C57919 /* MyCustomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73770521E72EEF00C57919 /* MyCustomTitleView.swift */; };
+		7A73770821E72EF500C57919 /* MyCustomTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A73770721E72EF500C57919 /* MyCustomTitleView.xib */; };
 		7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */; };
 		7A74594F219990CC007EDB42 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74594E219990CC007EDB42 /* JobDetail.swift */; };
 		7A77298F219A653F00A0CB97 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77298E219A653F00A0CB97 /* DateUtils.swift */; };
@@ -256,6 +258,8 @@
 		7A6F9EF52192E1050081862E /* JobAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAPI.swift; sourceTree = "<group>"; };
 		7A6F9EF72192E6B20081862E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		7A6F9EF92192F1570081862E /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		7A73770521E72EEF00C57919 /* MyCustomTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomTitleView.swift; sourceTree = "<group>"; };
+		7A73770721E72EF500C57919 /* MyCustomTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomTitleView.xib; sourceTree = "<group>"; };
 		7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
 		7A74594E219990CC007EDB42 /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
 		7A77298E219A653F00A0CB97 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
@@ -407,7 +411,9 @@
 			isa = PBXGroup;
 			children = (
 				7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */,
+				7A73770521E72EEF00C57919 /* MyCustomTitleView.swift */,
 				7A0B361721CE766C0092C8E2 /* CreateEditInterviewController.swift */,
+				7A73770721E72EF500C57919 /* MyCustomTitleView.xib */,
 				7A0B361921CE76AF0092C8E2 /* DetailInterviewController.swift */,
 			);
 			path = Interview;
@@ -1014,6 +1020,7 @@
 				9B0C72721C738D3400BAF3B1 /* Assets.xcassets in Resources */,
 				9B12AF6C1F269B03005FD465 /* ThirdPartyKeys.example.plist in Resources */,
 				7A79709C21AE905E00DC7B4A /* ExpandableLevelCell2.xib in Resources */,
+				7A73770821E72EF500C57919 /* MyCustomTitleView.xib in Resources */,
 				7A455ACF21BCD4C8007F2020 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1140,6 +1147,7 @@
 				7A06AD9C2174266400E3CDAA /* CustomCell.swift in Sources */,
 				7AB0AD0A2173817F00F576B5 /* ChangePasswordController.swift in Sources */,
 				7A99AA572171992800E3B0DC /* MainViewController.swift in Sources */,
+				7A73770621E72EEF00C57919 /* MyCustomTitleView.swift in Sources */,
 				7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */,
 				7A6CE03921CA382900954ADC /* DetailResumeCustomerController.swift in Sources */,
 				7A06AD972174261800E3CDAA /* ViewModel.swift in Sources */,

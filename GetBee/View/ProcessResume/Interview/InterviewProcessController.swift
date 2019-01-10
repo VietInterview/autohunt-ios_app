@@ -32,7 +32,10 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
             self.count = 0
         }
         if self.count == 0 {
+            self.isAddInterview = true
             self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+        } else {
+            self.isAddInterview = false
         }
     }
     @objc func onNotification(notification:Notification)
@@ -76,7 +79,7 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                     }
                 } else {
                     self.showHideView(view: self.btnReject, isHidden: false)
-                    self.showHideView(view: self.btnOffer, isHidden: false)
+                    self.showHideView(view: self.btnOffer, isHidden: true)
                     self.showHideView(view: self.viewButton, isHidden: false)
                 }
             }else{
@@ -119,6 +122,7 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    var isAddInterview:Bool = true
     @IBAction func addInterview(_ sender: Any) {
         if let lstInterview = self.detailProcessResume.lstInterviewHis {
             if lstInterview.count > 0 {
@@ -127,15 +131,18 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                         
                     })
                 } else if lstInterview[lstInterview.count-1].status! == 1 {
+                    self.isAddInterview = true
                     self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
                 }else if lstInterview[lstInterview.count-1].status! == 2 {
                     self.showMessage(title: "Thông báo", message: "Vòng phỏng vấn gần nhất ứng viên không đạt vì vậy bạn không thể thêm mới vòng phỏng vấn", handler: { (action: UIAlertAction!) in
                         
                     })
                 }else {
+                    self.isAddInterview = true
                     self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
                 }
             } else {
+                self.isAddInterview = true
                 self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
             }
         }
@@ -171,11 +178,9 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                 self.detailProcessResume.lstInterviewHis!.append(lstInterview)
             }
             self.count = self.detailProcessResume.lstInterviewHis!.count
-            self.showList()
         }else{
             self.detailProcessResume.lstInterviewHis!.append(lstInterview)
             self.count = self.detailProcessResume.lstInterviewHis!.count
-            self.showList()
         }
     }
     @IBAction func rejectTouch(_ sender: Any) {
@@ -183,7 +188,21 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
     }
     func showList(){
         self.tableView.maxHeight = CGFloat(self.count! * 70)
-        self.heightViewInfo.constant = 190 + CGFloat(self.count! * 70)
+        self.viewButton.setNeedsLayout()
+        self.viewButton.layoutIfNeeded()
+        self.viewAddInterview.setNeedsLayout()
+        self.viewAddInterview.layoutIfNeeded()
+        if let lstInterview =  self.detailProcessResume.lstInterviewHis {
+            if lstInterview.count > 0{
+                if lstInterview[lstInterview.count-1].status == 0{
+                    self.heightViewInfo.constant = CGFloat(self.count! * 70) + self.viewAddInterview.frame.size.height + 60
+                } else {
+                    self.heightViewInfo.constant = CGFloat(self.count! * 70) + self.viewAddInterview.frame.size.height + self.viewButton.frame.size.height + 60
+                }
+            }else {
+                self.heightViewInfo.constant = self.viewAddInterview.frame.size.height + self.viewButton.frame.size.height + 60
+            }
+        }
         self.viewInfo.layoutIfNeeded()
         self.viewInfo.setNeedsLayout()
         self.viewInfo.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
@@ -229,15 +248,19 @@ extension InterviewProcessController: UITableViewDataSource, UITableViewDelegate
         }
         if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
             if status == 4 {
+                self.isAddInterview = false
                 self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
             } else {
                 if indexPath.row == self.count!-1 {
+                    self.isAddInterview = false
                     self.pushViewController(controller: CreateEditInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row], detailProcessResume: self.detailProcessResume, delegate: self))
                 } else{
+                    self.isAddInterview = false
                     self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
                 }
             }
         }else{
+            self.isAddInterview = false
             self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
         }
    }

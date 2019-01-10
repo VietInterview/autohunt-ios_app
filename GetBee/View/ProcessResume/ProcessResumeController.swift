@@ -8,7 +8,7 @@ import UIKit
 import CarbonKit
 import FlexibleSteppedProgressBar
 
-class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDelegate, FlexibleSteppedProgressBarDelegate, RejectDelegate, NextDelegate,UIActionSheetDelegate {
+class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDelegate, FlexibleSteppedProgressBarDelegate, RejectDelegate, NextDelegate,UIActionSheetDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var lblReasonReject: UILabel!
     @IBOutlet weak var viewListReasonReject: UIView!
@@ -54,6 +54,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         self.title = "Xử lý hồ sơ"
         setupProgressBarWithoutLastState()
         visualEffectView.isHidden = true
+        self.textfieldReasonNote.delegate = self
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction))
@@ -75,13 +76,24 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                         self.textfieldReasonNote.isUserInteractionEnabled = true
                     } else {
                         self.textfieldReasonNote.text = ""
+                        self.contentLast = ""
                         self.textfieldReasonNote.isUserInteractionEnabled = false
                     }
-                   self.lblReasonReject.text = self.listReasonReject[i].name!
+                    self.reasonRejectId = self.listReasonReject[i].id!
+                    self.lblReasonReject.text = self.listReasonReject[i].name!
                 })
             }
         }
         self.present(actionSheetControllerIOS8, animated: true, completion: nil)
+    }
+    var contentLast:String?
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let contentlast = self.contentLast {
+            textField.text = contentlast
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.contentLast = textField.text
     }
     func setupProgressBarWithoutLastState() {
         progressBarWithoutLastState = FlexibleSteppedProgressBar()
@@ -92,7 +104,6 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         let widthConstraint = progressBarWithoutLastState.widthAnchor.constraint(equalToConstant:ScreenUtils.shared.getScreenWidth() == 414 ? 320 : 250)
         let heightConstraint = progressBarWithoutLastState.heightAnchor.constraint(equalToConstant: 30)
         NSLayoutConstraint.activate([horizontalConstraint,verticalConstraint, widthConstraint, heightConstraint])
-        
         progressBarWithoutLastState.numberOfPoints = 5
         progressBarWithoutLastState.lineHeight = 2
         progressBarWithoutLastState.radius = 10
@@ -108,7 +119,6 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         
     }
     func progressBar(_ progressBar: FlexibleSteppedProgressBar, didSelectItemAtIndex index: Int) {
-        
         if let rejectstep = self.detailProcessResume!.cvProcessInfo!.rejectStep {
             if index <= rejectstep-1 {
                 self.position = UInt(index)
@@ -274,7 +284,8 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     }
     func setupTabSwipe(pos:UInt){
         tabSwipe = CarbonTabSwipeNavigation(items: ["THÔNG TIN", "PHỎNG VẤN", "OFFER","ĐI LÀM", "KÝ HỢP ĐỒNG"], delegate: self)
-        if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
+        if ScreenUtils.shared.getScreenWidth()! == 414 {
+            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
         } else {
             tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
         }
@@ -339,6 +350,8 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.viewNext.removeFromSuperview()
             }
         } else if self.isNext == 2 {
+            self.contentLast = ""
+            self.textfieldReasonNote.text = ""
             UIView.animate(withDuration: 0.3, animations: {
                 self.viewReject.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
                 self.viewReject.alpha = 0
@@ -377,7 +390,6 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             })
         } else if self.Step == 3 {
             self.viewModel.gotoworkStatus(cvId: self.cvId, jobId: self.jobId, success: {
-                
             }, failure: {error in
                 self.position = UInt(self.Step)
                 self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
@@ -398,26 +410,34 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         }
     }
     @IBAction func sendReject(_ sender: Any) {
-        self.viewModel.sendReject(cvId: self.cvId, jobId: self.jobId, reasonNote: self.textfieldReasonNote.text!, reasonRejectId: self.reasonRejectId, rejectStep: self.rejectStepSend, success: {sendReject in
-            if sendReject.rejectStep! == self.rejectStepSend {
-                self.position = UInt(self.rejectStepSend-1)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
-                if self.rejectStepSend == 1 {
-                    NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                } else if self.rejectStepSend == 2{
-                    NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                }else if self.rejectStepSend == 3{
-                    NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                }else if self.rejectStepSend == 4{
-                    NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                }else if self.rejectStepSend == 5{
-                    NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+        if self.reasonRejectId == -1 {
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn phải chọn lý do")
+        }else {
+        self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chăn muốn gửi email và cập nhập trạng thái từ chối cho hồ sơ này", handler: { (action: UIAlertAction!) in
+            self.viewModel.sendReject(cvId: self.cvId, jobId: self.jobId, reasonNote: self.textfieldReasonNote.text!, reasonRejectId: self.reasonRejectId, rejectStep: self.rejectStepSend, success: {sendReject in
+                if sendReject.rejectStep! == self.rejectStepSend {
+                    self.position = UInt(self.rejectStepSend-1)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    if self.rejectStepSend == 1 {
+                        NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                    } else if self.rejectStepSend == 2{
+                        NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                    }else if self.rejectStepSend == 3{
+                        NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                    }else if self.rejectStepSend == 4{
+                        NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                    }else if self.rejectStepSend == 5{
+                        NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                    }
+                    self.btnCloseTouch()
                 }
-                self.btnCloseTouch()
-            }
-        }, failure: {error in
-            self.showMessageErrorApi()
+            }, failure: {error in
+                self.showMessageErrorApi()
+            })
+        }, handlerCancel: {(action: UIAlertAction!) in
+            
         })
+        }
     }
     func onReject(step: Int, cvId: Int, jobId: Int) {
         self.isNext = 2
@@ -425,9 +445,8 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         viewModel.getListReasonReject(success: {listReasonReject in
             self.listReasonReject = listReasonReject
             self.view.addSubview(self.viewReject)
-            self.lblReasonReject.text = self.listReasonReject[0].name!
+            self.lblReasonReject.text = "Lựa chọn lý do"
             self.textfieldReasonNote.isUserInteractionEnabled = false
-            self.reasonRejectId = self.listReasonReject[0].id!
             self.viewReject.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([NSLayoutConstraint(item: self.viewReject, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 25), self.viewReject.centerXAnchor.constraint(equalTo: self.view.centerXAnchor), self.viewReject.heightAnchor.constraint(equalToConstant: 293), self.viewReject.widthAnchor.constraint(equalToConstant: 300)])
             self.viewReject.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
@@ -458,7 +477,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         self.view.addSubview(viewNext)
         viewNext.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: viewNext, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 25),            viewNext.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            NSLayoutConstraint(item: viewNext, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 25), viewNext.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             viewNext.heightAnchor.constraint(equalToConstant: 218),
             viewNext.widthAnchor.constraint(equalToConstant: 300)
             ])

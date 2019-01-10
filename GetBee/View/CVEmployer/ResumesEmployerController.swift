@@ -15,7 +15,6 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var btnactionSearch: UIBarButtonItem!
     
-    
     var cvListByJobCustomer = [CvListByJobCustomer]()
     var cvListByJobCustomerServer = [CvListByJobCustomer]()
     var isShowViewSearch:Bool = true
