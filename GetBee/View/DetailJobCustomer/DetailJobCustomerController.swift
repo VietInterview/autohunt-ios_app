@@ -241,7 +241,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             self.showHideView(view: self.headerView, isHidden: true)
-        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+        }else if scrollView.contentOffset.y == -1.0 {
             self.showHideView(view: self.headerView, isHidden: false)
         } else {
         }

@@ -131,7 +131,7 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                 } else if lstOffer[lstOffer.count-1].status! == 2 {
                     self.isAdd = true
                     self.pushViewController(controller: CreateEditOfferController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
-                }else if lstOffer[lstOffer.count-1].status! == 1 {
+                } else if lstOffer[lstOffer.count-1].status! == 1 {
                     self.showMessage(title: "Thông báo", message: "Lần offer gần nhất ứng viên đã đồng ý vì vậy bạn không thể thêm mới offer", handler: { (action: UIAlertAction!) in
                         
                     })
@@ -160,9 +160,11 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                 self.detailProcessResume.lstOfferHis!.append(lstOffer)
             }
             self.count = self.detailProcessResume.lstOfferHis!.count
+            self.showList()
         } else {
             self.detailProcessResume.lstOfferHis!.append(lstOffer)
             self.count = self.detailProcessResume.lstOfferHis!.count
+            self.showList()
         }
     }
     func showList(){

@@ -198,7 +198,7 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
                 cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 3 {
-                cell.lblStatus.text = "Ngưng tuyển"
+                cell.lblStatus.text = "Ngưng tuyểnđidi"
                 cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             }

@@ -4907,7 +4907,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="39" id="vTh-Cv-arL"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                             <state key="normal" title="Không">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -4927,7 +4927,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="39" id="OL8-7r-0gb"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                             <state key="normal" title="Đồng ý">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -5045,6 +5045,7 @@
                                 <constraint firstAttribute="width" constant="119" id="79O-bQ-rdI"/>
                                 <constraint firstAttribute="height" constant="39" id="IZ5-9z-u08"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                             <state key="normal" title="Gửi từ chối">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -5677,9 +5678,10 @@
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên này đã bị từ chối vì lý do kinh nghiệm chưa đáp ứng!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql1-rs-cK8">
-                                                <rect key="frame" x="-4" y="35" width="308" height="37.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql1-rs-cK8">
+                                                <rect key="frame" x="-4" y="35" width="308" height="48"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="JxP-CA-sLb"/>
                                                     <constraint firstAttribute="width" constant="308" id="SZ9-es-4kJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
@@ -5751,10 +5753,10 @@
             </objects>
             <point key="canvasLocation" x="3765" y="2332"/>
         </scene>
-        <!--Create Edit Interview Controller-->
+        <!--Thông tin tuyển dụng-->
         <scene sceneID="8uO-Zz-PgF">
             <objects>
-                <viewController storyboardIdentifier="CreateEditInterviewController" id="bHl-3G-1vO" customClass="CreateEditInterviewController" customModule="GetBee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateEditInterviewController" title="Thông tin tuyển dụng" id="bHl-3G-1vO" customClass="CreateEditInterviewController" customModule="GetBee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQe-Ne-dgl"/>
                         <viewControllerLayoutGuide type="bottom" id="bg6-9o-4k8"/>
@@ -6190,7 +6192,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-9Y-LA4">
                                                 <rect key="frame" x="257" y="174" width="45" height="23"/>
@@ -6295,9 +6297,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kj-Re-3oH">
                                                         <rect key="frame" x="2" y="2" width="147.5" height="61"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                        <inset key="titleEdgeInsets" minX="-20" minY="30" maxX="0.0" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="25" minY="-20" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Đạt" image="like">
+                                                        <inset key="titleEdgeInsets" minX="-30" minY="30" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="35" minY="-20" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Đồng ý" image="like">
                                                             <color key="titleColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -7043,7 +7045,7 @@
                                 <rect key="frame" x="0.0" y="358" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ví trí làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivJ-cg-HnI">
-                                        <rect key="frame" x="11" y="14" width="97.5" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="298" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7068,6 +7070,7 @@
                                     <constraint firstAttribute="trailing" secondItem="k01-Qe-YPm" secondAttribute="trailing" constant="11" id="M88-xY-I4x"/>
                                     <constraint firstAttribute="height" constant="70" id="WtB-tl-9rY"/>
                                     <constraint firstAttribute="bottom" secondItem="hb9-BS-241" secondAttribute="bottom" id="hSc-yt-0Dn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ivJ-cg-HnI" secondAttribute="trailing" constant="11" id="hnQ-If-GWJ"/>
                                     <constraint firstItem="hb9-BS-241" firstAttribute="leading" secondItem="lKa-ZE-P0f" secondAttribute="leading" id="inC-RW-NK6"/>
                                     <constraint firstAttribute="trailing" secondItem="hb9-BS-241" secondAttribute="trailing" id="lgI-TN-voN"/>
                                     <constraint firstItem="ivJ-cg-HnI" firstAttribute="leading" secondItem="lKa-ZE-P0f" secondAttribute="leading" constant="11" id="oI4-pn-fdT"/>
@@ -7276,7 +7279,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28/12/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bac-UJ-Y18">
-                                                            <rect key="frame" x="10" y="42" width="74.5" height="17"/>
+                                                            <rect key="frame" x="10" y="42" width="280" height="17"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <color key="textColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -7308,6 +7311,7 @@
                                                         <constraint firstItem="dfN-ZZ-v4w" firstAttribute="leading" secondItem="PVs-lP-RE1" secondAttribute="leading" constant="110" id="gI9-P2-wkU"/>
                                                         <constraint firstAttribute="trailing" secondItem="Dd8-8s-KSG" secondAttribute="trailing" constant="11" id="nXy-nL-pPB"/>
                                                         <constraint firstItem="SU8-BU-XsR" firstAttribute="top" secondItem="PVs-lP-RE1" secondAttribute="top" id="udi-5j-V8n"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bac-UJ-Y18" secondAttribute="trailing" constant="10" id="vYk-qA-bFV"/>
                                                         <constraint firstItem="SU8-BU-XsR" firstAttribute="leading" secondItem="PVs-lP-RE1" secondAttribute="leading" id="zcW-tC-oRH"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -7468,7 +7472,7 @@
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên này đã bị từ chối vì lý do kinh nghiệm chưa đáp ứng!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ma-7F-Oq5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ma-7F-Oq5">
                                         <rect key="frame" x="-4" y="35" width="308" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="308" id="TEs-Ki-e3Z"/>
@@ -7733,10 +7737,11 @@
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên này đã bị từ chối vì lý do kinh nghiệm chưa đáp ứng!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ews-Sq-zz4">
-                                        <rect key="frame" x="-4" y="35" width="308" height="37.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ews-Sq-zz4">
+                                        <rect key="frame" x="-4" y="35" width="308" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="308" id="QD6-t9-fGW"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="lGH-ND-BVi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="1" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -7875,10 +7880,11 @@
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên này đã bị từ chối vì lý do kinh nghiệm chưa đáp ứng!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M12-yL-APm">
-                                        <rect key="frame" x="-4" y="50" width="308" height="37.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M12-yL-APm">
+                                        <rect key="frame" x="-4" y="50" width="308" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="308" id="UNY-Zh-cK6"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="pwy-nC-75t"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="1" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -7974,7 +7980,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28/12/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boS-op-Vss">
-                                                            <rect key="frame" x="10" y="42" width="74.5" height="17"/>
+                                                            <rect key="frame" x="10" y="42" width="280" height="17"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <color key="textColor" red="0.40392156862745099" green="0.4823529411764706" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -7998,6 +8004,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="Gcz-7s-Bwt" secondAttribute="trailing" constant="11" id="24B-V2-IJ2"/>
                                                         <constraint firstItem="Gcz-7s-Bwt" firstAttribute="centerY" secondItem="xaR-ui-gRU" secondAttribute="centerY" id="Amr-GO-m1a"/>
                                                         <constraint firstAttribute="trailing" secondItem="omS-tq-V04" secondAttribute="trailing" id="FmB-Gm-4r5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="boS-op-Vss" secondAttribute="trailing" constant="10" id="Fov-Ts-9bR"/>
                                                         <constraint firstItem="Is0-nv-3bH" firstAttribute="leading" secondItem="xaR-ui-gRU" secondAttribute="leading" constant="10" id="GXl-Ex-JHV"/>
                                                         <constraint firstItem="q32-BS-Eif" firstAttribute="leading" secondItem="xaR-ui-gRU" secondAttribute="leading" constant="110" id="RR7-Uz-SZm"/>
                                                         <constraint firstItem="omS-tq-V04" firstAttribute="leading" secondItem="xaR-ui-gRU" secondAttribute="leading" id="UpA-Mz-jlx"/>
@@ -8162,9 +8169,10 @@
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên này đã bị từ chối vì lý do kinh nghiệm chưa đáp ứng!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-tV-qIz">
-                                        <rect key="frame" x="-4" y="41" width="308" height="37.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-tV-qIz">
+                                        <rect key="frame" x="-4" y="41" width="308" height="48"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="Mt6-GO-Udf"/>
                                             <constraint firstAttribute="width" constant="308" id="zvF-Gi-8vZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>

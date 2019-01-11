@@ -122,7 +122,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         if let rejectstep = self.detailProcessResume!.cvProcessInfo!.rejectStep {
             if index <= rejectstep-1 {
                 self.position = UInt(index)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.Step = index
                 self.lblStep.text = "Bước \(self.Step+1)/5"
                 self.lblStepName.text = self.switchStepName(step: self.Step)
@@ -134,7 +134,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         } else {
             if index <= self.StepClick {
                 self.position = UInt(index)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.Step = index
                 self.lblStep.text = "Bước \(self.Step+1)/5"
                 self.lblStepName.text = self.switchStepName(step: self.Step)
@@ -150,7 +150,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         if let rejectstep = self.detailProcessResume!.cvProcessInfo!.rejectStep {
             if index <= rejectstep-1 {
                 self.position = UInt(index)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.Step = index
                 self.lblStep.text = "Bước \(self.Step+1)/5"
                 self.lblStepName.text = self.switchStepName(step: self.Step)
@@ -164,7 +164,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         } else {
             if index <= self.StepClick {
                 self.position = UInt(index)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.Step = index
                 self.lblStep.text = "Bước \(self.Step+1)/5"
                 self.lblStepName.text = self.switchStepName(step: self.Step)
@@ -197,7 +197,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewListReasonReject.addBorder()
+        self.viewListReasonReject.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         self.viewListReasonReject.addRadius()
         if self.detailProcessResume != nil {
         } else {
@@ -215,7 +215,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.lblStep.text = "Bước \(self.Step+1)/5"
                     self.lblStepName.text = self.switchStepName(step: self.Step)
                     self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     self.progressBarWithoutLastState.currentIndex = self.Step
                 } else if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
                     self.Step = 1
@@ -223,7 +223,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.lblStep.text = "Bước \(self.Step+1)/5"
                     self.lblStepName.text = self.switchStepName(step: self.Step)
                     self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     self.progressBarWithoutLastState.currentIndex = self.Step
                 } else if status == 7 || (status == 4 && rejectStep == 3) {
                     self.Step = 2
@@ -231,7 +231,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.lblStep.text = "Bước \(self.Step+1)/5"
                     self.lblStepName.text = self.switchStepName(step: self.Step)
                     self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     self.progressBarWithoutLastState.currentIndex = self.Step
                 } else if status == 8 || (status == 4 && rejectStep == 4) {
                     self.Step = 3
@@ -239,7 +239,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.lblStep.text = "Bước \(self.Step+1)/5"
                     self.lblStepName.text = self.switchStepName(step: self.Step)
                     self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     self.progressBarWithoutLastState.currentIndex = self.Step
                 } else if status == 9 || (status == 4 && rejectStep == 5) {
                     self.Step = 4
@@ -247,7 +247,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.lblStep.text = "Bước \(self.Step+1)/5"
                     self.lblStepName.text = self.switchStepName(step: self.Step)
                     self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     self.progressBarWithoutLastState.currentIndex = self.Step
                 } else if let rejectStep = self.detailProcessResume!.cvProcessInfo!.rejectStep {
                     self.Step = rejectStep
@@ -255,7 +255,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.lblStep.text = "Bước \(self.Step+1)/5"
                     self.lblStepName.text = self.switchStepName(step: self.Step)
                     self.position = UInt(self.Step-1)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     self.progressBarWithoutLastState.currentIndex = self.Step-1
                 }
                 self.setupTabSwipe(pos: self.position)
@@ -297,7 +297,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.viewTab)
         tabSwipe.toolbar.clipsToBounds = true
         tabSwipe.pagesScrollView?.isScrollEnabled = false
-        tabSwipe.setCurrentTabIndex(pos, withAnimation: true)
+        tabSwipe.setCurrentTabIndex(pos, withAnimation: false)
     }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         guard var storyboard = storyboard else { return UIViewController() }
@@ -367,11 +367,11 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         if self.Step == 1 {
             self.viewModel.inviteInterview(cvId: self.cvId, jobId: self.jobId, success: {
                 self.position = UInt(self.Step+1)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.btnCloseTouch()
             }, failure: {error in
                 self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.progressBarWithoutLastState.currentIndex = self.Step
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 5
@@ -382,7 +382,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 
             }, failure: {error in
                 self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.progressBarWithoutLastState.currentIndex = self.Step
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 7
@@ -392,7 +392,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             self.viewModel.gotoworkStatus(cvId: self.cvId, jobId: self.jobId, success: {
             }, failure: {error in
                 self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.progressBarWithoutLastState.currentIndex = self.Step
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 8
@@ -401,7 +401,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         } else if self.Step == 4 {
             self.viewModel.contractStatus(cvId: self.cvId, jobId: self.jobId, success: {}, failure: {error in
                 self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                 self.progressBarWithoutLastState.currentIndex = self.Step
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 9
@@ -417,7 +417,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             self.viewModel.sendReject(cvId: self.cvId, jobId: self.jobId, reasonNote: self.textfieldReasonNote.text!, reasonRejectId: self.reasonRejectId, rejectStep: self.rejectStepSend, success: {sendReject in
                 if sendReject.rejectStep! == self.rejectStepSend {
                     self.position = UInt(self.rejectStepSend-1)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: true)
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
                     if self.rejectStepSend == 1 {
                         NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
                     } else if self.rejectStepSend == 2{

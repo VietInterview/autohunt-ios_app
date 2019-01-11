@@ -35,7 +35,23 @@ class CreateEditGoToWorkController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Thông tin đi làm"
+        if #available(iOS 11, *) {
+            let titleLabel = UILabel()
+            let title = NSMutableAttributedString(string: "Thông tin đi làm", attributes:[
+                NSAttributedStringKey.foregroundColor: UIColor.white,
+                NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20.0)!])
+            titleLabel.attributedText = title
+            titleLabel.sizeToFit()
+            self.navigationItem.titleView = titleLabel
+        } else {
+            if ScreenUtils.shared.getScreenWidth() == 320 {
+                let customTitleView = MyCustomTitleView.instantiateFromNib()
+                customTitleView.setPrimaryTitle("Thông tin đi làm")
+                self.navigationItem.titleView = customTitleView
+            }else {
+                
+            }
+        }
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.imageChooseDateTime.isUserInteractionEnabled = true
         self.imageChooseDateTime.addGestureRecognizer(gestureSwift2AndHigher2)
@@ -100,18 +116,22 @@ class CreateEditGoToWorkController: BaseViewController {
     }
     
     @IBAction func updateGoToWorkTouch() {
-        self.viewModel.gotoWorkUpdate(cvId: self.detailProcessResume!.cvID!, id: self.gotoworkDTO == nil ? -1 : self.gotoworkDTO!.id == nil ? -1 : self.gotoworkDTO!.id!, countUpdate: self.gotoworkDTO == nil ? 0 : self.gotoworkDTO!.countUpdate == nil ? 0 : self.gotoworkDTO!.countUpdate!, jobId: self.detailProcessResume!.jobID!, startWorkDate: self.textFieldDateTime.text!, success: {gotoworkDTO in
-            if let delegate = self.sendGoToWorkDelegate {
-                delegate.onSendGotowork(gotoworkDTO: JobCvGotoWorkDto.init(countUpdate: gotoworkDTO.countUpdate!, cvID: gotoworkDTO.cvID!, id: gotoworkDTO.id!, jobID: gotoworkDTO.jobID!, note: StringUtils.shared.checkEmpty(value: gotoworkDTO.note) , numDayWarranty: gotoworkDTO.numDayWarranty!, startWorkDate: gotoworkDTO.startWorkDate!, updateBy: StringUtils.shared.checkEmptyInt(value: gotoworkDTO.updateBy), updateDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.updateDate), warrantyExpireDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.warrantyExpireDate)))
-                for controller in self.navigationController!.viewControllers as Array {
-                    if controller.isKind(of: ProcessResumeController.self) {
-                        self.navigationController!.popToViewController(controller, animated: true)
-                        break
+        self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn cập nhập bản ghi này", handler: {UIAlertAction in
+            self.viewModel.gotoWorkUpdate(cvId: self.detailProcessResume!.cvID!, id: self.gotoworkDTO == nil ? -1 : self.gotoworkDTO!.id == nil ? -1 : self.gotoworkDTO!.id!, countUpdate: self.gotoworkDTO == nil ? 0 : self.gotoworkDTO!.countUpdate == nil ? 0 : self.gotoworkDTO!.countUpdate!, jobId: self.detailProcessResume!.jobID!, startWorkDate: self.textFieldDateTime.text!, success: {gotoworkDTO in
+                if let delegate = self.sendGoToWorkDelegate {
+                    delegate.onSendGotowork(gotoworkDTO: JobCvGotoWorkDto.init(countUpdate: gotoworkDTO.countUpdate!, cvID: gotoworkDTO.cvID!, id: gotoworkDTO.id!, jobID: gotoworkDTO.jobID!, note: StringUtils.shared.checkEmpty(value: gotoworkDTO.note) , numDayWarranty: gotoworkDTO.numDayWarranty!, startWorkDate: gotoworkDTO.startWorkDate!, updateBy: StringUtils.shared.checkEmptyInt(value: gotoworkDTO.updateBy), updateDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.updateDate), warrantyExpireDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.warrantyExpireDate)))
+                    for controller in self.navigationController!.viewControllers as Array {
+                        if controller.isKind(of: ProcessResumeController.self) {
+                            self.navigationController!.popToViewController(controller, animated: true)
+                            break
+                        }
                     }
                 }
-            }
-        }, failure: {error in
-            self.showMessageErrorApi()
+            }, failure: {error in
+                self.showMessageErrorApi()
+            })
+        }, handlerCancel: {UIAlertAction in
+            
         })
     }
     
