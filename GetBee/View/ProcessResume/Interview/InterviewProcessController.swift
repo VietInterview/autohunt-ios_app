@@ -66,6 +66,7 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
         if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
             if let lstInterview =  self.detailProcessResume.lstInterviewHis {
                 if lstInterview.count > 0{
+                    self.showHideView(view: self.viewAddInterview, isHidden: false)
                     if lstInterview[lstInterview.count-1].status == 1{
                         self.showHideView(view: self.btnReject, isHidden: true)
                         self.showHideView(view: self.btnOffer, isHidden: false)
@@ -74,16 +75,17 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                         self.showHideView(view: self.btnReject, isHidden: false)
                         self.showHideView(view: self.btnOffer, isHidden: true)
                         self.showHideView(view: self.viewButton, isHidden: false)
-                    }else if lstInterview[lstInterview.count-1].status == 3{
+                    } else if lstInterview[lstInterview.count-1].status == 3{
                         self.showHideView(view: self.btnReject, isHidden: false)
                         self.showHideView(view: self.btnOffer, isHidden: false)
                         self.showHideView(view: self.viewButton, isHidden: false)
-                    }else {
+                    } else {
                         self.showHideView(view: self.btnReject, isHidden: true)
                         self.showHideView(view: self.btnOffer, isHidden: true)
                         self.showHideView(view: self.viewButton, isHidden: true)
                     }
                 } else {
+                    self.showHideView(view: self.viewAddInterview, isHidden: false)
                     self.showHideView(view: self.btnReject, isHidden: true)
                     self.showHideView(view: self.btnOffer, isHidden: true)
                     self.showHideView(view: self.viewButton, isHidden: true)

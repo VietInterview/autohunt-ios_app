@@ -46,7 +46,7 @@ class CreateEditInterviewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11, *) {
+//        if #available(iOS 11, *) {
             let titleLabel = UILabel()
             let title = NSMutableAttributedString(string: "Thông tin phỏng vấn", attributes:[
                 NSAttributedStringKey.foregroundColor: UIColor.white,
@@ -54,15 +54,15 @@ class CreateEditInterviewController: BaseViewController {
             titleLabel.attributedText = title
             titleLabel.sizeToFit()
             self.navigationItem.titleView = titleLabel
-        } else {
-            if ScreenUtils.shared.getScreenWidth() == 320 {
-                let customTitleView = MyCustomTitleView.instantiateFromNib()
-                customTitleView.setPrimaryTitle("Thông tin phỏng vấn")
-                self.navigationItem.titleView = customTitleView
-            }else {
-
-            }
-        }
+//        } else {
+//            if ScreenUtils.shared.getScreenWidth() == 320 {
+//                let customTitleView = MyCustomTitleView.instantiateFromNib()
+//                customTitleView.setPrimaryTitle("Thông tin phỏng vấn")
+//                self.navigationItem.titleView = customTitleView
+//            }else {
+//
+//            }
+//        }
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
