@@ -106,7 +106,7 @@ class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         }, failure: {error in
             LoadingOverlay.shared.hideOverlayView()
-            print(error.description)
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     var isUpdate:Bool = false
@@ -211,7 +211,7 @@ class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate
             }
             self.jobDetail.collStatus = addRemoveJob.status!
             }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     

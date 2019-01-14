@@ -92,7 +92,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
             }else {
                 self.tableViewResume.willRemoveSubview(self.refreshControl)
             }
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "error_please_try")
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     @IBAction func searchTouch(_ sender: Any) {

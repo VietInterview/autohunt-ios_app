@@ -162,7 +162,7 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.reloadData()
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

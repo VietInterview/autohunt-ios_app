@@ -260,7 +260,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 }
                 self.setupTabSwipe(pos: self.position)
             }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
     }
@@ -432,7 +432,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                     self.btnCloseTouch()
                 }
             }, failure: {error in
-                self.showMessageErrorApi()
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }, handlerCancel: {(action: UIAlertAction!) in
             
@@ -458,7 +458,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.viewReject.transform = CGAffineTransform.identity
             }
         }, failure: {error in
-            self.showMessageErrorApi()
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     

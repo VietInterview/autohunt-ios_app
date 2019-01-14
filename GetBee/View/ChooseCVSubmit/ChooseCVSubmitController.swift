@@ -69,7 +69,7 @@ class ChooseCVSubmitController: BaseViewController, UITableViewDelegate, UITable
             }else {
                 self.mTableView.willRemoveSubview(self.refreshControl)
             }
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error.description)
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

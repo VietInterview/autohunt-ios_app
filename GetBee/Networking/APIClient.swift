@@ -168,6 +168,7 @@ class APIClient {
             }
             return
         case .failure(let error):
+            debugLog(object: "\((error as NSError).code) - \(error.localizedDescription)")
             failure(error)
             if (error as NSError).code == 401 { //Unauthorized user
                 AppDelegate.shared.unexpectedLogout()
@@ -184,6 +185,7 @@ class APIClient {
             }
             return
         case .failure(let error):
+            debugLog(object: "\((error as NSError).code) - \(error.localizedDescription)")
             let dict : Dictionary = response.response!.allHeaderFields
             debugLog(object: response.response!.allHeaderFields)
             failure(dict, response.response!.statusCode)

@@ -46,23 +46,6 @@ class CreateEditInterviewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if #available(iOS 11, *) {
-            let titleLabel = UILabel()
-            let title = NSMutableAttributedString(string: "Thông tin phỏng vấn", attributes:[
-                NSAttributedStringKey.foregroundColor: UIColor.white,
-                NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20.0)!])
-            titleLabel.attributedText = title
-            titleLabel.sizeToFit()
-            self.navigationItem.titleView = titleLabel
-//        } else {
-//            if ScreenUtils.shared.getScreenWidth() == 320 {
-//                let customTitleView = MyCustomTitleView.instantiateFromNib()
-//                customTitleView.setPrimaryTitle("Thông tin phỏng vấn")
-//                self.navigationItem.titleView = customTitleView
-//            }else {
-//
-//            }
-//        }
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
@@ -83,6 +66,23 @@ class CreateEditInterviewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //        if #available(iOS 11, *) {
+        let titleLabel = UILabel()
+        let title = NSMutableAttributedString(string: "Thông tin phỏng vấn", attributes:[
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20.0)!])
+        titleLabel.attributedText = title
+        titleLabel.sizeToFit()
+        self.navigationItem.titleView = titleLabel
+        //        } else {
+        //            if ScreenUtils.shared.getScreenWidth() == 320 {
+        //                let customTitleView = MyCustomTitleView.instantiateFromNib()
+        //                customTitleView.setPrimaryTitle("Thông tin phỏng vấn")
+        //                self.navigationItem.titleView = customTitleView
+        //            }else {
+        //
+        //            }
+        //        }
         self.viewResult.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"),weight: 1)
         if let lstInterview = self.lstInterviewHi {
             if lstInterview.status! == 0 {
@@ -290,7 +290,7 @@ class CreateEditInterviewController: BaseViewController {
                                                 }
                                             }
                                         }, failure: {error in
-                                            self.showMessageErrorApi()
+                                            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
                                         })
                                     },handlerCancel: {(action: UIAlertAction!) in
                                         
@@ -421,7 +421,7 @@ class CreateEditInterviewController: BaseViewController {
                 self.textViewEmail.text = StringUtils.shared.stringFromHtml(string: viewEmail.emailTemplate!)!
                 self.animateIn()
             }, failure: {error in
-                self.showMessageErrorApi()
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
     }

@@ -82,7 +82,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         } else if self.isStatus == true {
             if self.isCustomer {
@@ -121,7 +121,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
         tableView?.delegate = filterData

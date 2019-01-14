@@ -78,7 +78,7 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
                 }else {
                     self.tableViewJob.willRemoveSubview(self.refreshControl)
                 }
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     @objc func sortArray() {
@@ -261,7 +261,8 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
             self.jobList[sender.view!.tag].collStatus = addRemoveJob.status!
             self.tableViewJob.reloadData()
             }, failure: {error in
-                print("User Profile Error: " + error)})
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+        })
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{

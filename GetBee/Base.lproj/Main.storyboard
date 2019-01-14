@@ -715,7 +715,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="250" id="TPG-OK-ztF"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <color key="textColor" red="0.62352941176470589" green="0.71372549019607845" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>

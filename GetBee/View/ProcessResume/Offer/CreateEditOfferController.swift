@@ -251,7 +251,7 @@ class CreateEditOfferController: BaseViewController {
                 self.textViewEmail.text = StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)
                 self.animateIn()
             }, failure: {error in
-                self.showMessageErrorApi()
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
     }
@@ -298,7 +298,7 @@ class CreateEditOfferController: BaseViewController {
                                         }
                                     }
                                 }, failure: {error in
-                                    self.showMessageErrorApi()
+                                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
                                 })
                             },handlerCancel: {(action: UIAlertAction!) in
                                 

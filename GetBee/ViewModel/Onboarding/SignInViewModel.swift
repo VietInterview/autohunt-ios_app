@@ -28,7 +28,11 @@ class SignInViewModelWithCredentials {
   
   func login(success: @escaping () -> Void, failure: @escaping (String) -> Void) {
     UserAPI.login(email, password: password, success: success, failure: { error in
-      failure(error.localizedDescription)
+        if (error as NSError).code == 0 {
+            failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng.")
+        } else {
+            failure("Không kết nối tới server, bạn vui lòng thử lại.")
+        }
     })
   }
 }

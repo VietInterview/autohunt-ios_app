@@ -200,8 +200,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
             
             
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
-        })
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)        })
     }
     var isUpdate:Bool = false
     func sendHeightInfoDetailCV(height: Int) {

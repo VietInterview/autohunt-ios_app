@@ -118,7 +118,7 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
             }else {
                 self.tableViewJob.willRemoveSubview(self.refreshControl)
             }
-             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     @IBAction func searchTouch(_ sender: Any) {
