@@ -136,7 +136,7 @@
                                             <constraint firstAttribute="height" constant="1" id="jbJ-EJ-pRm"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXc-zd-trr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXc-zd-trr">
                                         <rect key="frame" x="114" y="0.0" width="158" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="1f6-Kc-eh1"/>
@@ -149,7 +149,7 @@
                                             <action selector="goToCarrerOrCity" destination="QXR-yo-X1J" eventType="touchUpInside" id="UlX-LS-txL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQb-xQ-Ypc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQb-xQ-Ypc">
                                         <rect key="frame" x="90" y="75" width="182" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="6uU-3R-5xt"/>
@@ -3493,7 +3493,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-DS-Qmr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-DS-Qmr">
                                         <rect key="frame" x="111" y="15" width="164" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Esj-Wc-RNM"/>
@@ -3507,7 +3507,7 @@
                                             <action selector="goToCarrerOrCity" destination="QXR-yo-X1J" eventType="touchUpInside" id="bay-yz-gvK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kh8-jN-kzv">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kh8-jN-kzv">
                                         <rect key="frame" x="87" y="74" width="188" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7uo-jp-vcr"/>
@@ -3588,7 +3588,7 @@
                                             <constraint firstAttribute="width" constant="24" id="nUT-fg-nqF"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfo-lO-naq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfo-lO-naq">
                                         <rect key="frame" x="93" y="14" width="182" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ud3-2Z-o8D"/>
@@ -3730,7 +3730,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0r-9I-ZoG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0r-9I-ZoG">
                                         <rect key="frame" x="111" y="6" width="175" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="fIu-1q-1g1"/>
@@ -3744,7 +3744,7 @@
                                             <action selector="gotoCarrer:" destination="C2F-yt-omy" eventType="touchUpInside" id="Bga-Eb-IIF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyw-UY-ugD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyw-UY-ugD">
                                         <rect key="frame" x="87" y="74" width="199" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="LyG-rL-A25"/>

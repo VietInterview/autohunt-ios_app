@@ -33,7 +33,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         button.setTitle(NSLocalizedString("choose", comment: ""), for: .normal)
         button.setTitleColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
         button.addTarget(self, action:#selector(self.chon(sender:)), for:.touchUpInside)
-        button.frame = CGRect.init(x: 20, y: 00, width: 40, height: 30)
+        button.frame = CGRect.init(x: 40, y: 00, width: 60, height: 30)
         button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 16)
         let barButton = UIBarButtonItem.init(customView: button)
         barButton.setTitleTextAttributes([
