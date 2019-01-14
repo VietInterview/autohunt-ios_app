@@ -23,12 +23,16 @@ class BaseViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    func setMyTitle(title:String) {
+        self.title = title
+    }
     override func viewWillDisappear(_ animated: Bool) {
         // Sets the status bar to visible when the view is about to disappear
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         statusBar.isHidden = false
         statusBar.visible()
     }
+    
     func embeddedInNavigationController() -> UINavigationController {
         let nav = UINavigationController(rootViewController: self)
 //        nav.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215")

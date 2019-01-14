@@ -48,23 +48,7 @@ class CreateEditOfferController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11, *) {
-            let titleLabel = UILabel()
-            let title = NSMutableAttributedString(string: "Thông tin Offer", attributes:[
-                NSAttributedStringKey.foregroundColor: UIColor.white,
-                NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20.0)!])
-            titleLabel.attributedText = title
-            titleLabel.sizeToFit()
-            self.navigationItem.titleView = titleLabel
-        } else {
-            if ScreenUtils.shared.getScreenWidth() == 320 {
-                let customTitleView = MyCustomTitleView.instantiateFromNib()
-                customTitleView.setPrimaryTitle("Thông tin Offer")
-                self.navigationItem.titleView = customTitleView
-            }else {
-                
-            }
-        }
+        self.title = "Thông tin Offer"
         if let lstOffer = self.lstOffer {
             self.textFieldRound.text = StringUtils.shared.checkEmpty(value: lstOffer.round)
             self.textFieldSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: lstOffer.salary))
@@ -128,6 +112,7 @@ class CreateEditOfferController: BaseViewController {
         }
     }
     @objc func someAction2(sender:UITapGestureRecognizer){
+        view.endEditing(true)
         viewChooseDateTime.isHidden = false
         self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 200))
         self.datePicker?.backgroundColor = UIColor.white

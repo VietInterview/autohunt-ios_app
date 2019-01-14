@@ -5753,10 +5753,10 @@
             </objects>
             <point key="canvasLocation" x="3765" y="2332"/>
         </scene>
-        <!--Thông tin tuyển dụng-->
+        <!--Create Edit Interview Controller-->
         <scene sceneID="8uO-Zz-PgF">
             <objects>
-                <viewController storyboardIdentifier="CreateEditInterviewController" title="Thông tin tuyển dụng" id="bHl-3G-1vO" customClass="CreateEditInterviewController" customModule="GetBee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateEditInterviewController" id="bHl-3G-1vO" customClass="CreateEditInterviewController" customModule="GetBee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQe-Ne-dgl"/>
                         <viewControllerLayoutGuide type="bottom" id="bg6-9o-4k8"/>
@@ -6083,7 +6083,6 @@
                             <constraint firstItem="tQB-SE-0jd" firstAttribute="leading" secondItem="edT-jy-QfE" secondAttribute="leading" id="vEa-2d-Rce"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="320" height="667"/>
                     <connections>
                         <outlet property="btnAchive" destination="BSc-8B-vH0" id="Sit-xj-4VG"/>

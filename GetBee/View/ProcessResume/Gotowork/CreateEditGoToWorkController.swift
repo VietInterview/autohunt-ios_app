@@ -35,23 +35,7 @@ class CreateEditGoToWorkController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11, *) {
-            let titleLabel = UILabel()
-            let title = NSMutableAttributedString(string: "Thông tin đi làm", attributes:[
-                NSAttributedStringKey.foregroundColor: UIColor.white,
-                NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20.0)!])
-            titleLabel.attributedText = title
-            titleLabel.sizeToFit()
-            self.navigationItem.titleView = titleLabel
-        } else {
-            if ScreenUtils.shared.getScreenWidth() == 320 {
-                let customTitleView = MyCustomTitleView.instantiateFromNib()
-                customTitleView.setPrimaryTitle("Thông tin đi làm")
-                self.navigationItem.titleView = customTitleView
-            }else {
-                
-            }
-        }
+        self.title = "Thông tin đi làm"
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.imageChooseDateTime.isUserInteractionEnabled = true
         self.imageChooseDateTime.addGestureRecognizer(gestureSwift2AndHigher2)

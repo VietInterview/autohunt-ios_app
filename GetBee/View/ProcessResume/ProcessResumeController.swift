@@ -48,6 +48,9 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
@@ -324,12 +327,12 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             let vc = storyboard.instantiateViewController(withIdentifier: "GoToWorkProcessController") as! GoToWorkProcessController
             vc.nextDelegate = self
             vc.rejectDelegate = self
-            vc.detailProcessResume = self.detailProcessResume
+            vc.detailProcessResume = self.detailProcessResume!
             return vc
         }else{
             let vc = storyboard.instantiateViewController(withIdentifier: "ContractProcessController") as! ContractProcessController
             vc.rejectDelegate = self
-            vc.detailProcessResume = self.detailProcessResume
+            vc.detailProcessResume = self.detailProcessResume!
             return vc
         }
     }
@@ -381,11 +384,13 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             self.viewModel.offerStatus(cvId: self.cvId, jobId: self.jobId, success: {
                 
             }, failure: {error in
-                self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                self.progressBarWithoutLastState.currentIndex = self.Step
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 7
+                self.position = UInt(self.Step)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)  {
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                    self.progressBarWithoutLastState.currentIndex = self.Step
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
+                }
                 self.btnCloseTouch()
             })
         } else if self.Step == 3 {
@@ -400,11 +405,13 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             })
         } else if self.Step == 4 {
             self.viewModel.contractStatus(cvId: self.cvId, jobId: self.jobId, success: {}, failure: {error in
-                self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                self.progressBarWithoutLastState.currentIndex = self.Step
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 9
+                self.position = UInt(self.Step)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                    self.progressBarWithoutLastState.currentIndex = self.Step
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
+                }
                 self.btnCloseTouch()
             })
         }
@@ -464,14 +471,17 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     
     func onNext(step: Int, cvId: Int, jobId: Int) {
         self.isNext = 1
-        self.Step = step
         if step == 1 {
+            self.Step = step
             self.lblInvite.text = "Bạn có chắc chắn muốn mời ứng viên này đi phỏng vấn?"
         } else if step == 2{
+            self.Step = step
             self.lblInvite.text = "Bạn có chắc chắn gửi offer tới ứng viên này không?"
         } else if step == 3 {
+            self.Step = step
             self.lblInvite.text = "Bạn có chắc chắn muốn cập nhật trạng thái đi làm cho ứng viên này không?"
         } else if step == 4 {
+            self.Step = step
             self.lblInvite.text = "Bạn có chắc chắn muốn cập nhật trạng thái ký hợp đồng cho ứng viên này không?"
         }
         self.view.addSubview(viewNext)

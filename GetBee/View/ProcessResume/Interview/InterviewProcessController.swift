@@ -28,24 +28,18 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: InterviewProcessController.onReceiveRejectInterview, object: nil)
         if let LstInterview = self.detailProcessResume.lstInterviewHis {
             self.count = LstInterview.count
-        }else {
+        } else {
             self.count = 0
         }
-        if self.count == 0 {
-            self.isAddInterview = true
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CreateEditInterviewController") as! CreateEditInterviewController
-            vc.detailProcessResume = self.detailProcessResume
-            vc.sendInterviewDelegate = self
-            vc.title = "Thông tin phỏng vấn"
-            navigationController?.pushViewController(vc, animated: true)
-//            self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
-        } else {
-            self.isAddInterview = false
+        if let count = self.count {
+            if count == 0 {
+                DispatchQueue.main.async {
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+                }
+            }
         }
     }
-    @objc func onNotification(notification:Notification)
-    {
+    @objc func onNotification(notification:Notification) {
         self.showHideView(view: self.viewReject, isHidden: false)
         self.showHideView(view: self.viewAddInterview, isHidden: true)
         self.showHideView(view: self.viewButton, isHidden: true)
@@ -130,7 +124,6 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
-    var isAddInterview:Bool = true
     @IBAction func addInterview(_ sender: Any) {
         if let lstInterview = self.detailProcessResume.lstInterviewHis {
             if lstInterview.count > 0 {
@@ -139,34 +132,16 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                         
                     })
                 } else if lstInterview[lstInterview.count-1].status! == 1 {
-                    self.isAddInterview = true
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "CreateEditInterviewController") as! CreateEditInterviewController
-                    vc.detailProcessResume = self.detailProcessResume
-                    vc.sendInterviewDelegate = self
-                    navigationController?.pushViewController(vc, animated: true)
-//                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
                 }else if lstInterview[lstInterview.count-1].status! == 2 {
                     self.showMessage(title: "Thông báo", message: "Vòng phỏng vấn gần nhất ứng viên không đạt vì vậy bạn không thể thêm mới vòng phỏng vấn", handler: { (action: UIAlertAction!) in
                         
                     })
                 }else {
-                    self.isAddInterview = true
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "CreateEditInterviewController") as! CreateEditInterviewController
-                    vc.detailProcessResume = self.detailProcessResume
-                    vc.sendInterviewDelegate = self
-                    navigationController?.pushViewController(vc, animated: true)
-//                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
                 }
             } else {
-                self.isAddInterview = true
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "CreateEditInterviewController") as! CreateEditInterviewController
-                vc.detailProcessResume = self.detailProcessResume
-                vc.sendInterviewDelegate = self
-                navigationController?.pushViewController(vc, animated: true)
-//                self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
+                self.pushViewController(controller: CreateEditInterviewController.init().setArgument(detailProcessResume: self.detailProcessResume, delegate: self))
             }
         }
     }
@@ -273,25 +248,15 @@ extension InterviewProcessController: UITableViewDataSource, UITableViewDelegate
         }
         if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
             if status == 4 {
-                self.isAddInterview = false
                 self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
             } else {
                 if indexPath.row == self.count!-1 {
-                    self.isAddInterview = false
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "CreateEditInterviewController") as! CreateEditInterviewController
-                    vc.detailProcessResume = self.detailProcessResume
-                    vc.sendInterviewDelegate = self
-                    vc.lstInterviewHi = self.detailProcessResume.lstInterviewHis![indexPath.row]
-                    navigationController?.pushViewController(vc, animated: true)
-//                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row], detailProcessResume: self.detailProcessResume, delegate: self))
+                    self.pushViewController(controller: CreateEditInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row], detailProcessResume: self.detailProcessResume, delegate: self))
                 } else{
-                    self.isAddInterview = false
                     self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
                 }
             }
         }else{
-            self.isAddInterview = false
             self.pushViewController(controller: DetailInterviewController.init().setArgument(lstInterviewHi: self.detailProcessResume.lstInterviewHis![indexPath.row]))
         }
    }
