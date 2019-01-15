@@ -22,7 +22,16 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white,NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        // Sets the status bar to hidden when the view has finished appearing
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.isHidden = false
+        UIApplication.shared.isStatusBarHidden = false
+        statusBar.visible()
+    }
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     func embeddedInNavigationController() -> UINavigationController {
         let nav = UINavigationController(rootViewController: self)
 //        nav.navigationBar.barTintColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215")

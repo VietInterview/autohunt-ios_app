@@ -243,6 +243,8 @@
 		7A4D6A0621BE47FB00EC8BD1 /* JobEmployerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobEmployerController.swift; sourceTree = "<group>"; };
 		7A4D6A0821BE548000EC8BD1 /* JobEmployerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobEmployerCell.swift; sourceTree = "<group>"; };
 		7A4D6A0A21BE6DA000EC8BD1 /* JobCustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCustomer.swift; sourceTree = "<group>"; };
+		7A53847421EDEE10003613F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7A53847521EDEE10003613F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		7A5855C521B5451200625635 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		7A60B02A21BF91220048F4C4 /* ResumesEmployerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumesEmployerController.swift; sourceTree = "<group>"; };
@@ -273,8 +275,6 @@
 		7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableLevelCell2.xib; sourceTree = "<group>"; };
 		7A7A58A021B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		7A7A58A121B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7A7A58A321B4E5F8003D2827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		7A7A58A421B4E5F8003D2827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		7A836D4721DC9F9700915E1D /* RejectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectDelegate.swift; sourceTree = "<group>"; };
 		7A836D4921DCA0BA00915E1D /* NextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextDelegate.swift; sourceTree = "<group>"; };
@@ -1283,7 +1283,7 @@
 			children = (
 				0ABFB8911FA366D90098F751 /* Base */,
 				7A7A58A021B4E037003D2827 /* vi */,
-				7A7A58A321B4E5F8003D2827 /* en */,
+				7A53847421EDEE10003613F2 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1292,7 +1292,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7A7A58A121B4E037003D2827 /* vi */,
-				7A7A58A421B4E5F8003D2827 /* en */,
+				7A53847521EDEE10003613F2 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
