@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       statusBar.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")
     }
     UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
-    //    UILabel.appearance().font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle(rawValue: "Roboto"))
     if SessionManager.validSession {
       let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
       self.window?.rootViewController = vc

@@ -23,10 +23,10 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet weak var mViewPassword: UIView!
     @IBOutlet var mViewSuccess: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var imgPass: UIImageView!
     @IBOutlet var mViewContact: UIView!
+    
     var homeViewModel = HomeViewModel()
     var viewModel = SignInViewModelWithCredentials()
     var effect:UIVisualEffect!
