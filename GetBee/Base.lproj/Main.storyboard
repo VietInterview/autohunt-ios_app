@@ -6584,7 +6584,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="5077.5" y="3409.8591549295775"/>
+            <point key="canvasLocation" x="5078" y="3424"/>
         </scene>
         <!--Create Edit Go To Work Controller-->
         <scene sceneID="Sp7-MU-w4b">
@@ -6658,12 +6658,8 @@
                                     <constraint firstAttribute="height" constant="200" id="X6q-0Y-7eL"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="kcz-YR-j7r">
-                                <rect key="frame" x="272" y="128" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="4hm-aY-tQQ"/>
-                                    <constraint firstAttribute="height" constant="24" id="tPN-bU-9tk"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="kcz-YR-j7r">
+                                <rect key="frame" x="26" y="118" width="270" height="45"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6674,7 +6670,7 @@
                             <constraint firstItem="ZNp-os-2qi" firstAttribute="top" secondItem="Rcc-bB-Y1T" secondAttribute="bottom" constant="14" id="Bgz-F5-MNA"/>
                             <constraint firstItem="bnc-zK-QbX" firstAttribute="top" secondItem="RAJ-vP-Rah" secondAttribute="bottom" constant="14" id="F3B-CB-a2A"/>
                             <constraint firstAttribute="trailing" secondItem="ydH-ck-2bb" secondAttribute="trailing" id="H0h-YP-fbz"/>
-                            <constraint firstItem="kcz-YR-j7r" firstAttribute="top" secondItem="RAJ-vP-Rah" secondAttribute="bottom" constant="25" id="Hai-I4-y32"/>
+                            <constraint firstItem="kcz-YR-j7r" firstAttribute="top" secondItem="RAJ-vP-Rah" secondAttribute="bottom" constant="15" id="Hai-I4-y32"/>
                             <constraint firstItem="ZDT-Zk-6nx" firstAttribute="leading" secondItem="xCn-EY-kWJ" secondAttribute="leadingMargin" id="IFH-yi-IbX"/>
                             <constraint firstItem="Rcc-bB-Y1T" firstAttribute="leading" secondItem="xCn-EY-kWJ" secondAttribute="leading" constant="10" id="No5-3l-B9C"/>
                             <constraint firstItem="Rcc-bB-Y1T" firstAttribute="top" secondItem="bnc-zK-QbX" secondAttribute="bottom" constant="20" id="Ooh-4M-mBT"/>
@@ -6683,8 +6679,10 @@
                             <constraint firstItem="ZNp-os-2qi" firstAttribute="leading" secondItem="xCn-EY-kWJ" secondAttribute="leading" constant="10" id="ZDl-6b-v9J"/>
                             <constraint firstAttribute="trailing" secondItem="bnc-zK-QbX" secondAttribute="trailing" constant="10" id="ZkT-TR-LAu"/>
                             <constraint firstItem="ZDT-Zk-6nx" firstAttribute="top" secondItem="ZNp-os-2qi" secondAttribute="bottom" constant="10" id="elX-VR-dTs"/>
+                            <constraint firstItem="Rcc-bB-Y1T" firstAttribute="top" secondItem="kcz-YR-j7r" secondAttribute="bottom" constant="20" id="gWy-Qg-Ior"/>
                             <constraint firstItem="RAJ-vP-Rah" firstAttribute="leading" secondItem="xCn-EY-kWJ" secondAttribute="leading" constant="10" id="gwi-R3-g1C"/>
                             <constraint firstAttribute="trailing" secondItem="ZNp-os-2qi" secondAttribute="trailing" constant="10" id="lyS-iM-G84"/>
+                            <constraint firstItem="kcz-YR-j7r" firstAttribute="leading" secondItem="xCn-EY-kWJ" secondAttribute="leadingMargin" constant="10" id="r7H-y2-LsR"/>
                             <constraint firstItem="ydH-ck-2bb" firstAttribute="leading" secondItem="xCn-EY-kWJ" secondAttribute="leading" id="rwU-Cb-wCI"/>
                             <constraint firstAttribute="trailing" secondItem="RAJ-vP-Rah" secondAttribute="trailing" constant="10" id="xxY-Bi-iti"/>
                         </constraints>
