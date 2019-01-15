@@ -86,6 +86,21 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
                 self.showHideView(view: self.btnGotowork, isHidden: true)
                 self.showHideView(view: self.viewButton, isHidden: true)
             }
+            
+            if self.detailProcessResume.cvProcessInfo!.status! == 4{
+                if self.detailProcessResume.cvProcessInfo!.rejectStep! == 3 {
+                    self.showHideView(view: self.viewReject, isHidden: false)
+                    self.showHideView(view: self.viewButton, isHidden: true)
+                    self.showHideView(view: self.btnReject, isHidden: true)
+                    self.showHideView(view: self.btnGotowork, isHidden: true)
+                    self.showHideView(view: self.viewAddOffer, isHidden: true)
+                }else{
+                    self.showHideView(view: self.viewReject, isHidden: true)
+                }
+            }else {
+                self.showHideView(view: self.viewReject, isHidden: true)
+                
+            }
         }else {
             self.showHideView(view: self.viewButton, isHidden: true)
             self.showHideView(view: self.btnReject, isHidden: true)

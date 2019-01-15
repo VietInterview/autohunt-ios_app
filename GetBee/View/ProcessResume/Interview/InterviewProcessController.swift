@@ -88,7 +88,21 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
                 self.showHideView(view: self.btnReject, isHidden: true)
                 self.showHideView(view: self.btnOffer, isHidden: true)
                 self.showHideView(view: self.viewButton, isHidden: true)
-                self.showHideView(view: self.viewAddInterview, isHidden: true)
+                self.showHideView(view: self.viewAddInterview, isHidden: false)
+            }
+            
+            if self.detailProcessResume.cvProcessInfo!.status! == 4{
+                if self.detailProcessResume.cvProcessInfo!.rejectStep! == 2 {
+                    self.showHideView(view: self.viewReject, isHidden: false)
+                    self.showHideView(view: self.viewButton, isHidden: true)
+                    self.showHideView(view: self.viewAddInterview, isHidden: true)
+                    self.showHideView(view: self.btnReject, isHidden: true)
+                    self.showHideView(view: self.btnOffer, isHidden: true)
+                }else{
+                    self.showHideView(view: self.viewReject, isHidden: true)
+                }
+            }else {
+                self.showHideView(view: self.viewReject, isHidden: true)
             }
         }else {
             self.showHideView(view: self.viewButton, isHidden: true)

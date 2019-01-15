@@ -83,6 +83,22 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
             } else {
                 self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(detailProcessResume: self.detailProcessResume!, delegate: self))
             }
+            
+            if status == 4 {
+                if rejectStep == 4 {
+                    self.showHideView(view: self.viewReject, isHidden: false)
+                    self.showHideView(view: self.viewButton, isHidden: true)
+                    self.showHideView(view: self.btnContract, isHidden: true)
+                    self.showHideView(view: self.btnReject, isHidden: true)
+                    self.viewStartWorkDate.isUserInteractionEnabled = false
+                }else {
+                    self.showHideView(view: self.viewReject, isHidden: true)
+                    self.showHideView(view: self.viewButton, isHidden: false)
+                }
+            } else {
+                self.showHideView(view: self.viewReject, isHidden: true)
+                
+            }
         } else {
             self.showHideView(view: self.btnReject, isHidden: true)
             self.showHideView(view: self.btnContract, isHidden: true)

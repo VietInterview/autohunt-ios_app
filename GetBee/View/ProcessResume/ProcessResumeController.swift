@@ -48,9 +48,6 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
@@ -374,10 +371,12 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.btnCloseTouch()
             }, failure: {error in
                 self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                self.progressBarWithoutLastState.currentIndex = self.Step
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 5
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)  {
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                    self.progressBarWithoutLastState.currentIndex = self.Step
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
+                }
                 self.btnCloseTouch()
             })
         } else if self.Step == 2 {
@@ -397,10 +396,13 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
             self.viewModel.gotoworkStatus(cvId: self.cvId, jobId: self.jobId, success: {
             }, failure: {error in
                 self.position = UInt(self.Step)
-                self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                self.progressBarWithoutLastState.currentIndex = self.Step
-                self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
                 self.detailProcessResume!.cvProcessInfo!.status! = 8
+                self.detailProcessResume!.jobCvGotoWorkDto!.countUpdate = 0
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)  {
+                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                    self.progressBarWithoutLastState.currentIndex = self.Step
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: -self.scrollView.contentInset.top), animated: true)
+                }
                 self.btnCloseTouch()
             })
         } else if self.Step == 4 {
@@ -420,30 +422,32 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         if self.reasonRejectId == -1 {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn phải chọn lý do")
         }else {
-        self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chăn muốn gửi email và cập nhập trạng thái từ chối cho hồ sơ này", handler: { (action: UIAlertAction!) in
-            self.viewModel.sendReject(cvId: self.cvId, jobId: self.jobId, reasonNote: self.textfieldReasonNote.text!, reasonRejectId: self.reasonRejectId, rejectStep: self.rejectStepSend, success: {sendReject in
-                if sendReject.rejectStep! == self.rejectStepSend {
-                    self.position = UInt(self.rejectStepSend-1)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    if self.rejectStepSend == 1 {
-                        NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                    } else if self.rejectStepSend == 2{
-                        NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                    }else if self.rejectStepSend == 3{
-                        NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                    }else if self.rejectStepSend == 4{
-                        NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
-                    }else if self.rejectStepSend == 5{
-                        NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+            self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chăn muốn gửi email và cập nhập trạng thái từ chối cho hồ sơ này", handler: { (action: UIAlertAction!) in
+                self.viewModel.sendReject(cvId: self.cvId, jobId: self.jobId, reasonNote: self.textfieldReasonNote.text!, reasonRejectId: self.reasonRejectId, rejectStep: self.rejectStepSend, success: {sendReject in
+                    if sendReject.rejectStep! == self.rejectStepSend {
+                        self.position = UInt(self.rejectStepSend-1)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.detailProcessResume!.cvProcessInfo!.status! = 4
+                        self.detailProcessResume!.cvProcessInfo!.rejectStep = self.rejectStepSend
+                        if self.rejectStepSend == 1 {
+                            NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                        } else if self.rejectStepSend == 2{
+                            NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                        }else if self.rejectStepSend == 3{
+                            NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                        }else if self.rejectStepSend == 4{
+                            NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                        }else if self.rejectStepSend == 5{
+                            NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                        }
+                        self.btnCloseTouch()
                     }
-                    self.btnCloseTouch()
-                }
-            }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+                }, failure: {error in
+                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+                })
+            }, handlerCancel: {(action: UIAlertAction!) in
+                
             })
-        }, handlerCancel: {(action: UIAlertAction!) in
-            
-        })
         }
     }
     func onReject(step: Int, cvId: Int, jobId: Int) {

@@ -9,6 +9,9 @@ import UIKit
 class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.view.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#042E51")

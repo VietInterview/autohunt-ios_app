@@ -35,7 +35,7 @@ class CreateEditInterviewController: BaseViewController {
     convenience init() {
         self.init(nibName: "CreateEditInterviewController", bundle: nil)
     }
-
+    
     func setArgument(lstInterviewHi:LstInterviewHi? = nil, detailProcessResume:DetailProcessResume, delegate:SendInterviewDelegate) -> CreateEditInterviewController{
         let vc = self.assignValueToController(nameController: "CreateEditInterviewController") as! CreateEditInterviewController
         vc.lstInterviewHi = lstInterviewHi
@@ -62,7 +62,7 @@ class CreateEditInterviewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    self.title = "Thông tin phỏng vấn"
+        self.title = "Thông tin phỏng vấn"
         self.viewResult.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"),weight: 1)
         if let lstInterview = self.lstInterviewHi {
             if lstInterview.status! == 0 {
@@ -238,7 +238,7 @@ class CreateEditInterviewController: BaseViewController {
     }
     
     @IBAction func sendEmailInterview() {
-         let myColor = UIColor.red
+        let myColor = UIColor.red
         if self.textFieldDateTime.text == "" {
             self.showMessage(title: "Thông báo", message: "Xin hãy điền đủ thông tin")
             self.textFieldDateTime.layer.borderColor = myColor.cgColor
@@ -399,7 +399,7 @@ class CreateEditInterviewController: BaseViewController {
             self.showMessage(title: "Thông báo", message: "Xin hãy điền đủ thông tin")
         } else {
             self.viewModel.viewEmailInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound!.text!, status: self.lstInterviewHi == nil ? 0 : self.lstInterviewHi!.status!, success: {viewEmail in
-                self.textViewEmail.text = StringUtils.shared.stringFromHtml(string: viewEmail.emailTemplate!)!
+                self.textViewEmail.text = "\n\(StringUtils.shared.stringFromHtml(string: viewEmail.emailTemplate!)!)"
                 self.animateIn()
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)

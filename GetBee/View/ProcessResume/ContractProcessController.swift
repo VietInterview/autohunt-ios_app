@@ -43,6 +43,18 @@ class ContractProcessController: BaseViewController {
             self.showHideView(view: self.viewContract, isHidden: false)
             self.showHideView(view: self.viewReject, isHidden: true)
             self.showHideView(view: self.viewButton, isHidden: false)
+            
+            if status == 4 {
+                if rejectStep == 5 {
+                    self.showHideView(view: self.viewContract, isHidden: true)
+                    self.showHideView(view: self.viewReject, isHidden: false)
+                    self.showHideView(view: self.viewButton, isHidden: true)
+                } else {
+                    self.showHideView(view: self.viewContract, isHidden: false)
+                    self.showHideView(view: self.viewReject, isHidden: true)
+                    self.showHideView(view: self.viewButton, isHidden: false)
+                }
+            }
         }else {
             self.showHideView(view: self.viewContract, isHidden: true)
             self.showHideView(view: self.viewReject, isHidden: true)

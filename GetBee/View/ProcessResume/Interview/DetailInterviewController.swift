@@ -28,6 +28,7 @@ class DetailInterviewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Thông tin phỏng vấn"
         self.lblRound.text = self.lstInterviewHi?.round!
         self.lblDateInterview.text = self.lstInterviewHi?.interviewDate!
         self.lblAdd.text = self.lstInterviewHi?.interviewAddress!

@@ -52,6 +52,13 @@ class CreateEditOfferController: BaseViewController {
         if let lstOffer = self.lstOffer {
             self.textFieldRound.text = StringUtils.shared.checkEmpty(value: lstOffer.round)
             self.textFieldSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: lstOffer.salary))
+            if let number = textFieldSalary.text {
+                let number2 = number.replacingOccurrences(of: ".", with: "", options: .literal, range: nil)
+                debugLog(object: number2.replacingOccurrences(of: ",", with: "", options: .literal, range: nil))
+                if let mNumber = Int(number2.replacingOccurrences(of: ",", with: "", options: .literal, range: nil)) {
+                    self.salary = mNumber
+                }
+            }
             self.textFieldWorkTime.text = StringUtils.shared.checkEmpty(value: lstOffer.workTime)
             self.textFieldAdd.text = StringUtils.shared.checkEmpty(value: lstOffer.workAddress)
             self.textFieldPositionWork.text = StringUtils.shared.checkEmpty(value: lstOffer.position)
@@ -232,8 +239,8 @@ class CreateEditOfferController: BaseViewController {
         } else if self.textFieldPositionWork.text!.isEmpty {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
         } else {
-            self.viewModel.viewEmailOffer(curency: currencyID, cvId: self.detailProcessResume!.cvID!, id: lstOffer == nil ? -1 : lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.lstOffer == nil ? Int(self.textFieldSalary.text!)! : self.lstOffer!.salary!, status: lstOffer == nil ? 0 : lstOffer!.status!, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {emailOffer in
-                self.textViewEmail.text = StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)
+            self.viewModel.viewEmailOffer(curency: currencyID, cvId: self.detailProcessResume!.cvID!, id: lstOffer == nil ? -1 : lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.salary, status: lstOffer == nil ? 0 : lstOffer!.status!, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {emailOffer in
+                self.textViewEmail.text = "\n\(StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)!)"
                 self.animateIn()
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
