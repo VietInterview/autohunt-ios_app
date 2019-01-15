@@ -45,6 +45,13 @@ class InterviewProcessController: BaseViewController, SendInterviewDelegate{
         self.showHideView(view: self.viewButton, isHidden: true)
         self.showHideView(view: self.btnReject, isHidden: true)
         self.showHideView(view: self.btnOffer, isHidden: true)
+        self.viewButton.setNeedsLayout()
+        self.viewButton.layoutIfNeeded()
+        self.viewAddInterview.setNeedsLayout()
+        self.viewAddInterview.layoutIfNeeded()
+        self.heightViewInfo.constant = CGFloat(self.count! * 70)  + 60
+        self.viewInfo.layoutIfNeeded()
+        self.viewInfo.setNeedsLayout()
         let reasonNote = notification.userInfo!["reasonNote"] as? NSString
         let reasonName = notification.userInfo!["reasonName"] as? NSString
         self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"

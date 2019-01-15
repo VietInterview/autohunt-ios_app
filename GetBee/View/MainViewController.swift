@@ -38,7 +38,6 @@ class MainViewController: LGSideMenuController {
             if (type == 8) {
                 return UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) && UI_USER_INTERFACE_IDIOM() == .phone
             }
-
             return super.isLeftViewStatusBarHidden
         }
         set {

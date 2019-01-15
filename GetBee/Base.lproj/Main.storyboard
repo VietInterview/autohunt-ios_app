@@ -5873,7 +5873,7 @@
                                                         <rect key="frame" x="100" y="2" width="100" height="61"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                         <inset key="titleEdgeInsets" minX="-20" minY="25" maxX="0.0" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="35" minY="-20" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="40" minY="-20" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Không đạt" image="dislike">
                                                             <color key="titleColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -6301,8 +6301,8 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kj-Re-3oH">
                                                         <rect key="frame" x="2" y="2" width="147.5" height="61"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                        <inset key="titleEdgeInsets" minX="-30" minY="30" maxX="0.0" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="35" minY="-20" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="40" minY="-20" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Đồng ý" image="like">
                                                             <color key="titleColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -6321,7 +6321,7 @@
                                                         <rect key="frame" x="150.5" y="2" width="147.5" height="61"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                         <inset key="titleEdgeInsets" minX="-10" minY="30" maxX="0.0" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="45" minY="-20" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="50" minY="-20" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Từ chối" image="reject_gray">
                                                             <color key="titleColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>

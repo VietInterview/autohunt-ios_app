@@ -180,7 +180,7 @@ class LeftViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0  {
-            return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count+30))
+            return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count+10))
         } else if indexPath.row == (self.totalCountMenu-3) {
              return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
         } else {

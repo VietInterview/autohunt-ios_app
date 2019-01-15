@@ -48,6 +48,13 @@ class OfferProcessController: BaseViewController, SendOfferDelegate {
         self.showHideView(view: self.btnReject, isHidden: true)
         self.showHideView(view: self.btnGotowork, isHidden: true)
         self.showHideView(view: self.viewAddOffer, isHidden: true)
+        self.viewButton.setNeedsLayout()
+        self.viewButton.layoutIfNeeded()
+        self.viewAddOffer.setNeedsLayout()
+        self.viewAddOffer.layoutIfNeeded()
+        self.heightOffer.constant = CGFloat(self.count! * 70) + 60
+        self.viewOffer.layoutIfNeeded()
+        self.viewOffer.setNeedsLayout()
         let reasonNote = notification.userInfo!["reasonNote"] as? NSString
         let reasonName = notification.userInfo!["reasonName"] as? NSString
         self.lblReject.text = reasonNote! == "" ? "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)" : "Ứng viên này đã bị từ chối\nLý do: \(reasonName!)\nGhi chú: \(reasonNote!)"
