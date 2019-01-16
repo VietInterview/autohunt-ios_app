@@ -8,6 +8,7 @@ import UIKit
 
 class CreateEditOfferController: BaseViewController {
     
+    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var btnCurrency: UIButton!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var textFieldRound: UITextField!
@@ -24,6 +25,7 @@ class CreateEditOfferController: BaseViewController {
     @IBOutlet weak var viewChooseDateTime: UIView!
     @IBOutlet var viewEmail: UIView!
     @IBOutlet weak var textViewEmail: UITextView!
+    @IBOutlet weak var lblResult: UILabel!
     
     var viewModel = HomeViewModel()
     var effect:UIVisualEffect!
@@ -72,7 +74,7 @@ class CreateEditOfferController: BaseViewController {
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         textFieldSalary.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
-
+        
     }
     var salary:Int = 0
     @objc func myTextFieldDidChange(_ textField: UITextField) {
@@ -116,6 +118,8 @@ class CreateEditOfferController: BaseViewController {
             self.showHideView(view: self.viewResult, isHidden: true)
             self.showHideView(view: self.btnAgree, isHidden: true)
             self.showHideView(view: self.btnNotAgree, isHidden: true)
+            
+            self.showHideView(view: self.lblResult, isHidden: true)
         }
     }
     @objc func someAction2(sender:UITapGestureRecognizer){
@@ -240,7 +244,8 @@ class CreateEditOfferController: BaseViewController {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
         } else {
             self.viewModel.viewEmailOffer(curency: currencyID, cvId: self.detailProcessResume!.cvID!, id: lstOffer == nil ? -1 : lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.salary, status: lstOffer == nil ? 0 : lstOffer!.status!, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {emailOffer in
-                self.textViewEmail.text = "\n\(StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)!)"
+//                self.textViewEmail.text = "\n\(StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)!)"
+                self.webView.loadHTMLString(emailOffer.emailTemplate!, baseURL: nil)
                 self.animateIn()
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
@@ -273,32 +278,24 @@ class CreateEditOfferController: BaseViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy"
                 if lstOffer.count > 0 {
-                    if let lastDate = dateFormatter.date(from: lstOffer[lstOffer.count-1].workTime!.substring(with: 0..<10)) {
-                        let dateNow = dateFormatter.date(from: self.textFieldWorkTime.text!.substring(with: 0..<10))
-                        let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
-                        if components.day! < 0 {
-                            self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
-                                self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.salary, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
-                                    if let delegate = self.sendOfferDelegate {
-                                        let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
-                                        delegate.onSendOffer(lstOffer: lstOffer)
-                                        for controller in self.navigationController!.viewControllers as Array {
-                                            if controller.isKind(of: ProcessResumeController.self) {
-                                                self.navigationController!.popToViewController(controller, animated: true)
-                                                break
-                                            }
-                                        }
+                    self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
+                        self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.salary, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in
+                            if let delegate = self.sendOfferDelegate {
+                                let lstOffer = LstOfferHi.init(curency: sendOffer.curency!, cvID: sendOffer.cvID!, emailTemplate: "", id: sendOffer.id!, jobID: sendOffer.jobID!, note: sendOffer.note!, position: sendOffer.position!, round: sendOffer.round!, salary: sendOffer.salary!, status: sendOffer.status!, workAddress: sendOffer.workAddress, workTime: sendOffer.workTime!)
+                                delegate.onSendOffer(lstOffer: lstOffer)
+                                for controller in self.navigationController!.viewControllers as Array {
+                                    if controller.isKind(of: ProcessResumeController.self) {
+                                        self.navigationController!.popToViewController(controller, animated: true)
+                                        break
                                     }
-                                }, failure: {error in
-                                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
-                                })
-                            },handlerCancel: {(action: UIAlertAction!) in
-                                
-                            })
-                        }else{
-                            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn không thể chọn ngày phòng vấn trước hoặc bằng ngày phỏng vấn trước")
-                        }
-                    }
+                                }
+                            }
+                        }, failure: {error in
+                            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+                        })
+                    },handlerCancel: {(action: UIAlertAction!) in
+                        
+                    })
                 } else {
                     self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn gửi offer tới ứng viên này không?", handler: { (action: UIAlertAction!) in
                         self.viewModel.sendOffer(curency: self.currencyID, cvId: self.detailProcessResume!.cvID!, id: self.lstOffer == nil ? -1 : self.lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.salary, status: 0, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {sendOffer in

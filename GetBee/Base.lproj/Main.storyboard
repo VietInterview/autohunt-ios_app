@@ -1246,7 +1246,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn chưa có tài khoản?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCO-lL-kKn">
-                                <rect key="frame" x="32" y="522" width="166" height="22"/>
+                                <rect key="frame" x="48" y="522" width="166" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="AzC-UE-Dpa"/>
                                 </constraints>
@@ -1277,7 +1277,7 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUN-aP-4Fq">
-                                <rect key="frame" x="199" y="522" width="89" height="22"/>
+                                <rect key="frame" x="215" y="522" width="73" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="RpT-MZ-8YP"/>
                                 </constraints>
@@ -1304,7 +1304,7 @@
                             <constraint firstItem="uJs-A0-SPi" firstAttribute="top" secondItem="DCO-lL-kKn" secondAttribute="bottom" constant="24" id="2nX-dV-iif"/>
                             <constraint firstItem="aaH-1b-Ggz" firstAttribute="top" secondItem="Dm9-Bd-t2A" secondAttribute="bottom" constant="24" id="4Vu-Cz-IEz"/>
                             <constraint firstItem="oeJ-D0-ol5" firstAttribute="top" secondItem="aaH-1b-Ggz" secondAttribute="bottom" constant="18" id="6wr-fV-eZT"/>
-                            <constraint firstItem="DCO-lL-kKn" firstAttribute="leading" secondItem="NDI-Z9-Roh" secondAttribute="leadingMargin" constant="16" id="9so-QG-r3B"/>
+                            <constraint firstItem="DCO-lL-kKn" firstAttribute="leading" secondItem="NDI-Z9-Roh" secondAttribute="leadingMargin" constant="32" id="9so-QG-r3B"/>
                             <constraint firstItem="Ix7-qx-zaS" firstAttribute="centerX" secondItem="NDI-Z9-Roh" secondAttribute="centerX" id="AUv-3X-LSx"/>
                             <constraint firstItem="Ix7-qx-zaS" firstAttribute="top" secondItem="HLJ-gc-DhV" secondAttribute="bottom" constant="24" id="Fqz-JU-7xD"/>
                             <constraint firstItem="oeJ-D0-ol5" firstAttribute="centerX" secondItem="NDI-Z9-Roh" secondAttribute="centerX" id="HrW-2h-1hI"/>
@@ -4701,7 +4701,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="ikN-Yl-89I" firstAttribute="leading" secondItem="cOt-4Q-mgV" secondAttribute="leading" constant="10" id="8sa-Mj-gVh"/>
                                                     <constraint firstItem="PjG-41-cTQ" firstAttribute="top" secondItem="ikN-Yl-89I" secondAttribute="bottom" constant="6" id="9kJ-7x-zUB"/>
@@ -4781,6 +4781,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Xp0-1t-FJH" firstAttribute="top" secondItem="BoH-2o-DPO" secondAttribute="top" id="8f8-gx-o5S"/>
                                     <constraint firstAttribute="trailing" secondItem="Xp0-1t-FJH" secondAttribute="trailing" id="VPl-zk-NEM"/>
@@ -4928,7 +4929,7 @@
                                 <constraint firstAttribute="height" constant="39" id="OL8-7r-0gb"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
-                            <state key="normal" title="Đồng ý">
+                            <state key="normal" title="Có">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -6100,6 +6101,7 @@
                         <outlet property="viewEmail" destination="PuN-Aw-nLR" id="MSd-Lt-ujg"/>
                         <outlet property="viewResult" destination="x5u-Qm-wyi" id="pEm-bK-Ll4"/>
                         <outlet property="visualEffectView" destination="tQB-SE-0jd" id="IWN-aX-dFo"/>
+                        <outlet property="webView" destination="Ib7-Xx-EVx" id="cJ7-Cy-s9X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGI-vx-m6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6107,13 +6109,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="300" height="436"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="agY-NN-WsU">
+                        <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="agY-NN-WsU">
                             <rect key="frame" x="0.0" y="67" width="300" height="369"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <string key="text">Thân gửi, Nguyễn Sơn Tùng Thời gian: 28/12/2018, 8:00 PM
-Địa điểm: Tòa Báo Nông Thôn Ngày Ngay, Dương Đình Nghệ, Cầu Giấy, Hà Nội But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</string>
                             <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -6121,6 +6121,10 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textView>
+                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-Xx-EVx">
+                            <rect key="frame" x="0.0" y="67" width="300" height="369"/>
+                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </webView>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_yellow-1" translatesAutoresizingMaskIntoConstraints="NO" id="yWO-a1-dfc">
                             <rect key="frame" x="0.0" y="10" width="300" height="67"/>
                             <color key="backgroundColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -6136,6 +6140,10 @@
                         <constraint firstAttribute="trailing" secondItem="yWO-a1-dfc" secondAttribute="trailing" id="The-2d-aMm"/>
                         <constraint firstItem="agY-NN-WsU" firstAttribute="leading" secondItem="PuN-Aw-nLR" secondAttribute="leading" id="YtT-vb-ebR"/>
                         <constraint firstItem="yWO-a1-dfc" firstAttribute="leading" secondItem="PuN-Aw-nLR" secondAttribute="leading" id="ZFx-dC-MA4"/>
+                        <constraint firstItem="Ib7-Xx-EVx" firstAttribute="leading" secondItem="PuN-Aw-nLR" secondAttribute="leading" id="cyR-Xq-kGN"/>
+                        <constraint firstAttribute="bottom" secondItem="Ib7-Xx-EVx" secondAttribute="bottom" id="e4u-2e-OqF"/>
+                        <constraint firstItem="Ib7-Xx-EVx" firstAttribute="top" secondItem="yWO-a1-dfc" secondAttribute="bottom" constant="-10" id="fiQ-Vb-vnt"/>
+                        <constraint firstAttribute="trailing" secondItem="Ib7-Xx-EVx" secondAttribute="trailing" id="iOc-Ki-EHP"/>
                         <constraint firstItem="agY-NN-WsU" firstAttribute="top" secondItem="yWO-a1-dfc" secondAttribute="bottom" constant="-10" id="m90-LX-Gty"/>
                         <constraint firstAttribute="trailing" secondItem="agY-NN-WsU" secondAttribute="trailing" id="wno-6s-bbG"/>
                     </constraints>
@@ -6526,6 +6534,7 @@
                         <outlet property="btnInviteOffer" destination="uec-Ae-xdl" id="lwt-rB-jWj"/>
                         <outlet property="btnNotAgree" destination="w0i-D1-Vub" id="eZw-qN-OyT"/>
                         <outlet property="imgCalendar" destination="84R-kQ-YJP" id="rxg-Cq-v6e"/>
+                        <outlet property="lblResult" destination="a75-PS-sqD" id="Kxp-O7-g6K"/>
                         <outlet property="textFieldAdd" destination="If9-oA-bMw" id="1DY-ad-n5c"/>
                         <outlet property="textFieldNote" destination="Fk5-dN-0sV" id="qFR-X8-AMp"/>
                         <outlet property="textFieldPositionWork" destination="sS3-MJ-HMm" id="MUn-fj-vkg"/>
@@ -6537,6 +6546,7 @@
                         <outlet property="viewEmail" destination="i4s-Wv-7pv" id="BYg-0U-teE"/>
                         <outlet property="viewResult" destination="V9z-dz-7D5" id="J5l-sN-9x3"/>
                         <outlet property="visualEffectView" destination="Eto-OM-Kbk" id="6gX-zf-Y2E"/>
+                        <outlet property="webView" destination="OPS-dE-qcH" id="mcA-P4-zzk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTe-aG-Scg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6545,13 +6555,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="300" height="436"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ASx-jk-Jmx">
+                        <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ASx-jk-Jmx">
                             <rect key="frame" x="0.0" y="72" width="300" height="364"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <string key="text">Thân gửi, Nguyễn Sơn Tùng Thời gian: 28/12/2018, 8:00 PM
-Địa điểm: Tòa Báo Nông Thôn Ngày Ngay, Dương Đình Nghệ, Cầu Giấy, Hà Nội But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</string>
                             <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -6559,6 +6567,10 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textView>
+                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPS-dE-qcH">
+                            <rect key="frame" x="0.0" y="72" width="300" height="364"/>
+                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </webView>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_yellow-1" translatesAutoresizingMaskIntoConstraints="NO" id="oDF-jj-jsG">
                             <rect key="frame" x="0.0" y="15" width="300" height="67"/>
                             <color key="backgroundColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -6569,12 +6581,16 @@
                     </subviews>
                     <color key="backgroundColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="OPS-dE-qcH" firstAttribute="leading" secondItem="i4s-Wv-7pv" secondAttribute="leading" id="1Yr-dk-uZ5"/>
                         <constraint firstAttribute="trailing" secondItem="oDF-jj-jsG" secondAttribute="trailing" id="88n-ro-17Q"/>
                         <constraint firstItem="oDF-jj-jsG" firstAttribute="top" secondItem="i4s-Wv-7pv" secondAttribute="top" constant="15" id="C8C-wG-Haj"/>
                         <constraint firstAttribute="bottom" secondItem="ASx-jk-Jmx" secondAttribute="bottom" id="DlO-rX-zxo"/>
+                        <constraint firstAttribute="bottom" secondItem="OPS-dE-qcH" secondAttribute="bottom" id="NF7-eI-FNi"/>
                         <constraint firstItem="oDF-jj-jsG" firstAttribute="leading" secondItem="i4s-Wv-7pv" secondAttribute="leading" id="eNR-Y4-jJR"/>
                         <constraint firstAttribute="trailing" secondItem="ASx-jk-Jmx" secondAttribute="trailing" id="eOd-vx-FVk"/>
                         <constraint firstItem="ASx-jk-Jmx" firstAttribute="leading" secondItem="i4s-Wv-7pv" secondAttribute="leading" id="lXl-WS-s4P"/>
+                        <constraint firstItem="OPS-dE-qcH" firstAttribute="top" secondItem="oDF-jj-jsG" secondAttribute="bottom" constant="-10" id="p6V-eo-FlR"/>
+                        <constraint firstAttribute="trailing" secondItem="OPS-dE-qcH" secondAttribute="trailing" id="pz3-tA-ZTb"/>
                         <constraint firstItem="ASx-jk-Jmx" firstAttribute="top" secondItem="oDF-jj-jsG" secondAttribute="bottom" constant="-10" id="veY-G4-jIK"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -9389,6 +9405,11 @@
                                                             <constraint firstAttribute="width" constant="70" id="Mwz-jJ-stR"/>
                                                             <constraint firstAttribute="height" constant="70" id="ZcD-r6-s5Y"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-oX-t3S">
                                                         <rect key="frame" x="10" y="93" width="300" height="0.0"/>
@@ -11369,7 +11390,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn đã có tài khoản?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBB-jR-ohH">
-                                        <rect key="frame" x="20" y="338" width="148.5" height="22"/>
+                                        <rect key="frame" x="32" y="338" width="148.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="JDQ-pu-Wi5"/>
                                         </constraints>
@@ -11378,7 +11399,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98w-IX-Hjd">
-                                        <rect key="frame" x="169.5" y="338" width="95.5" height="22"/>
+                                        <rect key="frame" x="181.5" y="338" width="83.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="Aw5-AF-83Y"/>
                                         </constraints>
@@ -11413,7 +11434,7 @@
                                     <constraint firstItem="IVz-PT-j1D" firstAttribute="leading" secondItem="IdX-9A-577" secondAttribute="leading" constant="16" id="qTN-DH-sZJ"/>
                                     <constraint firstItem="jD4-vR-f1R" firstAttribute="top" secondItem="66t-Ym-ua2" secondAttribute="bottom" constant="16" id="tzi-q1-gch"/>
                                     <constraint firstAttribute="trailing" secondItem="98w-IX-Hjd" secondAttribute="trailing" constant="23" id="yBx-sL-LLX"/>
-                                    <constraint firstItem="gBB-jR-ohH" firstAttribute="leading" secondItem="IdX-9A-577" secondAttribute="leading" constant="20" id="yxP-dc-JGZ"/>
+                                    <constraint firstItem="gBB-jR-ohH" firstAttribute="leading" secondItem="IdX-9A-577" secondAttribute="leading" constant="32" id="yxP-dc-JGZ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

@@ -8,6 +8,7 @@ import UIKit
 
 class CreateEditInterviewController: BaseViewController {
     
+    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var viewResult: UIView!
     @IBOutlet weak var imgChooseDateTime: UIImageView!
     @IBOutlet weak var viewChooseDateTime: UIView!
@@ -254,88 +255,64 @@ class CreateEditInterviewController: BaseViewController {
                 if lstInterviewHis.count > 0 {
                     if self.lstInterviewHi != nil {
                         if lstInterviewHis.count > 1{
-                            if let lastDate = dateFormatter.date(from: lstInterviewHis[lstInterviewHis.count-2].interviewDate!.substring(with: 0..<10)) {
-                                let dateNow = dateFormatter.date(from: self.textFieldDateTime.text!.substring(with: 0..<10))
-                                let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
-                                if components.day! < 0 {
-                                    self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
-                                        self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: self.lstInterviewHi!.status!, success: {sendInterview in
-                                            if let delegate = self.sendInterviewDelegate {
-                                                let lstInterviewHi = LstInterviewHi.init(cvID: sendInterview.cvID!, emailTemplate: "", id: sendInterview.id!, interviewAddress: sendInterview.interviewAddress!, interviewDate: sendInterview.interviewDate!, jobID: sendInterview.jobID!, note: sendInterview.note!, round: sendInterview.round!, status: sendInterview.status!)
-                                                delegate.onSendInterview(lstInterview: lstInterviewHi)
-                                                for controller in self.navigationController!.viewControllers as Array {
-                                                    if controller.isKind(of: ProcessResumeController.self) {
-                                                        self.navigationController!.popToViewController(controller, animated: true)
-                                                        break
-                                                    }
-                                                }
+                            self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
+                                self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: self.lstInterviewHi!.status!, success: {sendInterview in
+                                    if let delegate = self.sendInterviewDelegate {
+                                        let lstInterviewHi = LstInterviewHi.init(cvID: sendInterview.cvID!, emailTemplate: "", id: sendInterview.id!, interviewAddress: sendInterview.interviewAddress!, interviewDate: sendInterview.interviewDate!, jobID: sendInterview.jobID!, note: sendInterview.note!, round: sendInterview.round!, status: sendInterview.status!)
+                                        delegate.onSendInterview(lstInterview: lstInterviewHi)
+                                        for controller in self.navigationController!.viewControllers as Array {
+                                            if controller.isKind(of: ProcessResumeController.self) {
+                                                self.navigationController!.popToViewController(controller, animated: true)
+                                                break
                                             }
-                                        }, failure: {error in
-                                            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
-                                        })
-                                    },handlerCancel: {(action: UIAlertAction!) in
-                                        
-                                    })
-                                } else {
-                                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn không thể chọn ngày phòng vấn trước hoặc bằng ngày phỏng vấn trước")
-                                }
-                            }
+                                        }
+                                    }
+                                }, failure: {error in
+                                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+                                })
+                            },handlerCancel: {(action: UIAlertAction!) in
+                                
+                            })
                         }else {
-                            if let lastDate = dateFormatter.date(from: lstInterviewHis[lstInterviewHis.count-1].interviewDate!.substring(with: 0..<10)) {
-                                let dateNow = dateFormatter.date(from: self.textFieldDateTime.text!.substring(with: 0..<10))
-                                let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
-                                if components.day! < 0 {
-                                    self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
-                                        self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: self.lstInterviewHi!.status!, success: {sendInterview in
-                                            if let delegate = self.sendInterviewDelegate {
-                                                let lstInterviewHi = LstInterviewHi.init(cvID: sendInterview.cvID!, emailTemplate: "", id: sendInterview.id!, interviewAddress: sendInterview.interviewAddress!, interviewDate: sendInterview.interviewDate!, jobID: sendInterview.jobID!, note: sendInterview.note!, round: sendInterview.round!, status: sendInterview.status!)
-                                                delegate.onSendInterview(lstInterview: lstInterviewHi)
-                                                for controller in self.navigationController!.viewControllers as Array {
-                                                    if controller.isKind(of: ProcessResumeController.self) {
-                                                        self.navigationController!.popToViewController(controller, animated: true)
-                                                        break
-                                                    }
-                                                }
+                            self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
+                                self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: self.lstInterviewHi!.status!, success: {sendInterview in
+                                    if let delegate = self.sendInterviewDelegate {
+                                        let lstInterviewHi = LstInterviewHi.init(cvID: sendInterview.cvID!, emailTemplate: "", id: sendInterview.id!, interviewAddress: sendInterview.interviewAddress!, interviewDate: sendInterview.interviewDate!, jobID: sendInterview.jobID!, note: sendInterview.note!, round: sendInterview.round!, status: sendInterview.status!)
+                                        delegate.onSendInterview(lstInterview: lstInterviewHi)
+                                        for controller in self.navigationController!.viewControllers as Array {
+                                            if controller.isKind(of: ProcessResumeController.self) {
+                                                self.navigationController!.popToViewController(controller, animated: true)
+                                                break
                                             }
-                                        }, failure: {error in
-                                            self.showMessageErrorApi()
-                                        })
-                                    },handlerCancel: {(action: UIAlertAction!) in
-                                        
-                                    })
-                                } else {
-                                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn không thể chọn ngày phòng vấn trước hoặc bằng ngày phỏng vấn trước")
-                                }
-                            }
+                                        }
+                                    }
+                                }, failure: {error in
+                                    self.showMessageErrorApi()
+                                })
+                            },handlerCancel: {(action: UIAlertAction!) in
+                                
+                            })
                         }
                         
                     } else {
-                        if let lastDate = dateFormatter.date(from: lstInterviewHis[lstInterviewHis.count-1].interviewDate!.substring(with: 0..<10)) {
-                            let dateNow = dateFormatter.date(from: self.textFieldDateTime.text!.substring(with: 0..<10))
-                            let components = Calendar.current.dateComponents([.day], from: dateNow!, to: lastDate)
-                            if components.day! < 0 {
-                                self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
-                                    self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: 0, success: {sendInterview in
-                                        if let delegate = self.sendInterviewDelegate {
-                                            let lstInterviewHi = LstInterviewHi.init(cvID: sendInterview.cvID!, emailTemplate: "", id: sendInterview.id!, interviewAddress: sendInterview.interviewAddress!, interviewDate: sendInterview.interviewDate!, jobID: sendInterview.jobID!, note: sendInterview.note!, round: sendInterview.round!, status: sendInterview.status!)
-                                            delegate.onSendInterview(lstInterview: lstInterviewHi)
-                                            for controller in self.navigationController!.viewControllers as Array {
-                                                if controller.isKind(of: ProcessResumeController.self) {
-                                                    self.navigationController!.popToViewController(controller, animated: true)
-                                                    break
-                                                }
-                                            }
+                        self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
+                            self.viewModel.sendInviteInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound.text!, status: 0, success: {sendInterview in
+                                if let delegate = self.sendInterviewDelegate {
+                                    let lstInterviewHi = LstInterviewHi.init(cvID: sendInterview.cvID!, emailTemplate: "", id: sendInterview.id!, interviewAddress: sendInterview.interviewAddress!, interviewDate: sendInterview.interviewDate!, jobID: sendInterview.jobID!, note: sendInterview.note!, round: sendInterview.round!, status: sendInterview.status!)
+                                    delegate.onSendInterview(lstInterview: lstInterviewHi)
+                                    for controller in self.navigationController!.viewControllers as Array {
+                                        if controller.isKind(of: ProcessResumeController.self) {
+                                            self.navigationController!.popToViewController(controller, animated: true)
+                                            break
                                         }
-                                    }, failure: {error in
-                                        self.showMessageErrorApi()
-                                    })
-                                },handlerCancel: {(action: UIAlertAction!) in
-                                    
-                                })
-                            } else {
-                                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn không thể chọn ngày phòng vấn trước hoặc bằng ngày phỏng vấn trước")
-                            }
-                        }
+                                    }
+                                }
+                            }, failure: {error in
+                                self.showMessageErrorApi()
+                            })
+                        },handlerCancel: {(action: UIAlertAction!) in
+                            
+                        })
                     }
                 } else {
                     self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn mời phỏng vấn ứng viên này?", handler: { (action: UIAlertAction!) in
@@ -399,7 +376,8 @@ class CreateEditInterviewController: BaseViewController {
             self.showMessage(title: "Thông báo", message: "Xin hãy điền đủ thông tin")
         } else {
             self.viewModel.viewEmailInterview(cvId: self.detailProcessResume!.cvID!, id: self.lstInterviewHi == nil ? -1 : self.lstInterviewHi!.id!, interviewAddress: self.textFieldAdd.text!, interviewDate: self.textFieldDateTime.text!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, round: self.textFieldRound!.text!, status: self.lstInterviewHi == nil ? 0 : self.lstInterviewHi!.status!, success: {viewEmail in
-                self.textViewEmail.text = "\n\(StringUtils.shared.stringFromHtml(string: viewEmail.emailTemplate!)!)"
+//                self.textViewEmail.text = viewEmail.emailTemplate!.htmlToString
+                self.webView.loadHTMLString(viewEmail.emailTemplate!, baseURL: nil)
                 self.animateIn()
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)

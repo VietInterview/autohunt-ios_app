@@ -33,10 +33,14 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy"
                 if let startWorkDate = gotoworkDTO.startWorkDate {
-                    if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
-                        let tomorrow = Calendar.current.date(byAdding: .day, value: gotoworkDTO.numDayWarranty!, to: date)
-                        let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
-                        self.lblWarranty.text = "\(components.day!) ngày còn lại"
+                    if startWorkDate != "" {
+                        if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
+                            let tomorrow = Calendar.current.date(byAdding: .day, value: gotoworkDTO.numDayWarranty!, to: date)
+                            let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
+                            self.lblWarranty.text = "\(components.day!) ngày còn lại"
+                        }
+                    } else {
+                        self.pushViewController(controller: CreateEditGoToWorkController.init().setArgument(gotoworkDTO:self.detailProcessResume!.jobCvGotoWorkDto,detailProcessResume: self.detailProcessResume!, delegate: self))
                     }
                 }
             }else {

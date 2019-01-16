@@ -109,7 +109,7 @@ class CvsAPI{
     }
     class func getResumesByJobCustomer(cvName:String, id:Int, page:Int, status:Int,_ success: @escaping (_ resumesByJobCustomer: ResumesByJobCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
         UIApplication.showNetworkActivity()
-        let url = cvsUrlCus + "searchCusHomeCvByJob?itemPerPage=30&page=\(page)&id=\(id)&cvName=\(cvName)&status=\(status)"
+        let url = status != 11 ? cvsUrlCus + "searchCusHomeCvByJob?itemPerPage=30&page=\(page)&id=\(id)&cvName=\(cvName)&status=\(status)" : cvsUrlCus + "searchCusHomeCvByJob?itemPerPage=30&page=\(page)&id=\(id)&cvName=\(cvName)"
         APIClient.request(.get, url: url, success: {response, _ in
             if let resumesByJobCus = try? newJSONDecoder().decode(ResumesByJobCustomer.self, from: response){
                 UIApplication.hideNetworkActivity()
