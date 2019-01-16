@@ -3831,7 +3831,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdt-OS-xFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774.375" y="2570.0704225352115"/>
+            <point key="canvasLocation" x="767" y="2574"/>
         </scene>
         <!--My Job Saved Controller-->
         <scene sceneID="bkf-YD-uqp">
@@ -4327,7 +4327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0U-mC-BYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186.25" y="2578.5211267605632"/>
+            <point key="canvasLocation" x="2168" y="2574"/>
         </scene>
         <!--MyCV Saved Controller-->
         <scene sceneID="RPz-UK-46e">
@@ -5751,7 +5751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="US1-k8-Vrm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3765" y="2332"/>
+            <point key="canvasLocation" x="3765" y="2321"/>
         </scene>
         <!--Create Edit Interview Controller-->
         <scene sceneID="8uO-Zz-PgF">
@@ -7530,7 +7530,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wug-io-sI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5078" y="2081"/>
+            <point key="canvasLocation" x="5078" y="2061"/>
         </scene>
         <!--Go To Work Process Controller-->
         <scene sceneID="ZcM-Tw-ifd">
@@ -7795,7 +7795,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNJ-I9-AD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5726" y="2079"/>
+            <point key="canvasLocation" x="5723" y="2061"/>
         </scene>
         <!--Contract Process Controller-->
         <scene sceneID="XAA-TN-4aA">
@@ -7936,7 +7936,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JEo-fX-sjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6364" y="2080"/>
+            <point key="canvasLocation" x="6375" y="2061"/>
         </scene>
         <!--Interview Process Controller-->
         <scene sceneID="ZEe-xV-Ahs">
@@ -8226,7 +8226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nml-sv-2di" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4425" y="2081"/>
+            <point key="canvasLocation" x="4419" y="2061"/>
         </scene>
         <!--Carrer Or City Controller-->
         <scene sceneID="XGO-SG-Yl0">

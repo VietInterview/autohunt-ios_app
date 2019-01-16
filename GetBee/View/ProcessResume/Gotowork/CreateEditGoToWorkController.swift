@@ -50,7 +50,7 @@ class CreateEditGoToWorkController: BaseViewController {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             if let startWorkDate = gotowork.startWorkDate {
                 if let date = dateFormatter.date(from: startWorkDate.substring(with: 0..<10)) {
-                    let tomorrow = Calendar.current.date(byAdding: .day, value: 60, to: date)
+                    let tomorrow = Calendar.current.date(byAdding: .day, value: gotowork.numDayWarranty!, to: date)
                     let components = Calendar.current.dateComponents([.day], from: Date(), to: tomorrow!)
                     self.textFieldWarranty.text = "\(components.day!) ngày còn lại"
                 }
