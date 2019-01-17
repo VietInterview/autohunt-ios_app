@@ -15,6 +15,7 @@ class LeftViewController: UITableViewController {
         self.getAccount()
     }
     override func viewDidAppear(_ animated: Bool) {
+        
     }
     func getAccount(){
         viewModel.loadAccount(success: {account in
@@ -203,7 +204,7 @@ class LeftViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch self.dynamicTitlesArray[indexPath.row].code {
         case "CTV_HOME_PAGE":
-            replaceController(nameController: AccountManager.currentAccount!.type! == 2 ? "" : "ViewController", isLogout: false)
+            replaceController(nameController: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController" : "ViewController", isLogout: false)
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         case "CTV_JOB_SAVE":
             replaceController(nameController: "MyJobController", isLogout: false)

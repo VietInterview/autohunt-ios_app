@@ -17,6 +17,13 @@ extension UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: handler))
     present(alert, animated: true, completion: nil)
   }
+  func showMessageUpdate(title: String, message: String, handler: ((_ action: UIAlertAction) -> Void)? = nil) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: handler))
+    self.dismiss(animated: true){ () -> Void in
+      self.present(alert, animated: true, completion: nil)
+    }
+  }
   func showMessageErrorApi() {
    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
   }
