@@ -88,7 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.onlineVersion = version
         debugLog(object: "\(version)-\(currentVersion)")
-        completion(version != currentVersion, nil)
+        if(Float(version)! > Float(currentVersion)!) {
+          completion(true, nil)
+        }else {
+          completion(false, nil)
+        }
       } catch {
         completion(nil, error)
       }
