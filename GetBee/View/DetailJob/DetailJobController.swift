@@ -9,7 +9,7 @@ import CarbonKit
 import AlamofireImage
 import Alamofire
 
-class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, SendHeightView {
+class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate, SendHeightView {
     @IBOutlet weak var spaceBottom: NSLayoutConstraint!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var btnStatus: UIButton!
@@ -28,29 +28,29 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
     var homeViewModel = HomeViewModel()
     var jobId: Int = 0;
     var jobDetail = JobDetail()
+    convenience init() {
+        self.init(nibName: "DetailJobController", bundle: nil)
+    }
+    func setArgument(jobId:Int, title:String) -> DetailJobController{
+        let vc = self.assignValueToController(nameController: "DetailJobController") as! DetailJobController
+        vc.jobId = jobId
+        vc.title = title
+        return vc
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.navigationController?.navigationBar.isTranslucent = false
         UIApplication.showNetworkActivity()
         homeViewModel.getDetailJob(jobId: self.jobId, success: {jobDetail in
            UIApplication.hideNetworkActivity()
             self.jobDetail = jobDetail
-            Alamofire.request("\(App.imgUrl)\(self.jobDetail.companyImg!)").responseImage { response in
-                if let image = response.result.value {
-                    self.imgCompany.layer.masksToBounds = true
-                    self.imgCompany.image = image
-                }else {
-                    self.imgCompany.layer.masksToBounds = true
-                    self.imgCompany.image = UIImage(named: "job_null")
-                }
-            }
+            self.imgCompany.showImage(imgUrl: self.jobDetail.companyImg, imageNullName: "job_null")
             self.lblCompany.text = jobDetail.companyName!
             self.lblJobTitle.text = jobDetail.jobTitle!
             if self.jobDetail.status! == 1 {
@@ -106,7 +106,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         }, failure: {error in
             LoadingOverlay.shared.hideOverlayView()
-            print(error.description)
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     var isUpdate:Bool = false
@@ -211,7 +211,7 @@ class DetailJobController: UIViewController , CarbonTabSwipeNavigationDelegate, 
             }
             self.jobDetail.collStatus = addRemoveJob.status!
             }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     

@@ -13,6 +13,7 @@ class UserAPI {
   fileprivate static let usersUrl = "/api/authenticate"
   fileprivate static let currentUserUrl = "/user/"
   fileprivate static let collUrl = "/svccollaborator/api"
+  fileprivate static let collCusUrl = "/svccustomer/api"
   
   class func login(_ email: String, password: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = usersUrl
@@ -32,7 +33,6 @@ class UserAPI {
     })
   }
   
-  //Example method that uploads an image using multipart-form.
   class func signup(_ email: String, address: String, career: String, fullName:String, phone: String, success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
     let url = "/api/register"
     let parameters = [
@@ -44,10 +44,8 @@ class UserAPI {
     ]
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
     APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
-//      if let errorSubmitCV = try? newJSONDecoder().decode(ErrorSubmitCV.self, from: response){
         LoadingOverlay.shared.hideOverlayView()
         success()
-//      }
     }, failure: { error , statusCode in
       LoadingOverlay.shared.hideOverlayView()
       var dict : Dictionary = error
@@ -82,6 +80,31 @@ class UserAPI {
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
         UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
+      }
+    }, failure: { error in
+      failure(error)
+    })
+  }
+  class func getCusProfile(_ success: @escaping (_ user: ProfileCustomer) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    let url = collCusUrl + "/getProfiles"
+    UIApplication.showNetworkActivity()
+    APIClient.request(.get, url: url, success: { response, _ in
+      UIApplication.hideNetworkActivity()
+      if let getCusProfile = try? JSONDecoder().decode(ProfileCustomer.self, from: response){
+        CustomerDataManager.currentCustomer = getCusProfile
+        success(getCusProfile)
+      }
+    }, failure: { error in
+      UIApplication.hideNetworkActivity()
+      failure(error)
+    })
+  }
+  class func getAccount(_ success: @escaping (_ user: Account) -> Void, failure: @escaping (_ error: Error) -> Void){
+    let url = "/api/account"
+    APIClient.request(.get, url: url, success: { response, _ in
+      if let account = try? JSONDecoder().decode(Account.self, from: response){
+        AccountManager.currentAccount = account
+        success(account)
       }
     }, failure: { error in
       failure(error)
@@ -127,7 +150,6 @@ class UserAPI {
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
     APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
       LoadingOverlay.shared.hideOverlayView()
-      debugLog(object: headers)
       success()
     }, failure: { error, statusCode  in
       LoadingOverlay.shared.hideOverlayView()

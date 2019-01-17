@@ -10,12 +10,11 @@ import UIKit
 
 class JobAPI {
     fileprivate static let collUrl = "/svccollaborator/api/jobs"
+    fileprivate static let customerUrl = "/svccustomer/api"
     class func getSearchJob(carrerId: Int, jobTitle: String, cityId: Int, page: Int,_ success: @escaping (_ job: Job) -> Void, failure: @escaping (_ error: Error) -> Void) {
         LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         let url = collUrl + "/searchJob?careerId=\(carrerId)&jobtile=\(jobTitle)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
         guard let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
-            //Invalid URL
-            debugLog(object: url)
             return
         }
         APIClient.request(.get, url: encodedURL, success: { response, _ in
@@ -59,6 +58,24 @@ class JobAPI {
             }
         }
     }
+    class func getListRejectReason(_ success: @escaping (_ carrer: ListRejectReason) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let baseUrl = App.baseUrl + "/svccollaborator/api/getListRejectReason"
+        let headers = [
+            "Authorization": "Bearer \(SessionManager.currentSession!.accessToken!)",
+            "Content-Type": "application/json"
+        ]
+        UIApplication.showNetworkActivity()
+        Alamofire.request(baseUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseListRejectReason { response in
+            print(response)
+            if let listRejectReason = response.result.value {
+                UIApplication.hideNetworkActivity()
+                success(listRejectReason)
+            } else {
+                UIApplication.hideNetworkActivity()
+                failure(response.error!)
+            }
+        }
+    }
     class func getCityList(_ success: @escaping (_ carrer: CarrerList) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let baseUrl = App.baseUrl + "/svccollaborator/api/mstCity"
         let headers = [
@@ -90,7 +107,7 @@ class JobAPI {
                 success(addRemoveJob)
             }
         }, failure: { error in
-             LoadingOverlay.shared.hideOverlayView()
+            LoadingOverlay.shared.hideOverlayView()
             failure(error)
         })
     }
@@ -117,6 +134,32 @@ class JobAPI {
             }
         }, failure: { error in
             LoadingOverlay.shared.hideOverlayView()
+            failure(error)
+        })
+    }
+    class func getJobCustomer(cusName:String, page:Int, status:Int, success: @escaping (_ myJobApplied: JobCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = status != -1 ? customerUrl + "/searchCusHome?itemPerPage=30&jobtile=\(cusName)&page=\(page)&status=\(status)" : customerUrl + "/searchCusHome?itemPerPage=30&jobtile=\(cusName)&page=\(page)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let jobCustomer = try? newJSONDecoder().decode(JobCustomer.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(jobCustomer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
+    class func getDetailJobCustomer(jobId:Int, success: @escaping (_ myJobApplied: JobDetailCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = customerUrl + "/cusjobs/getJobById/\(jobId)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _ in
+            if let jobDetailCustomer = try? newJSONDecoder().decode(JobDetailCustomer.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(jobDetailCustomer)
+            }
+        }, failure: { error in
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }

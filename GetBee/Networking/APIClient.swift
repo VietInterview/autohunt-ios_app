@@ -128,7 +128,7 @@ class APIClient {
             print("CallRequest: " + requestUrl + "\n \(header!)")
         }
         let manager = Alamofire.SessionManager.default
-        manager.session.configuration.timeoutIntervalForRequest = 20
+        manager.session.configuration.timeoutIntervalForRequest = 5
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
@@ -148,7 +148,7 @@ class APIClient {
             print("CallRequest: " + requestUrl + "\n \(header!)")
         }
         let manager = Alamofire.SessionManager.default
-        manager.session.configuration.timeoutIntervalForRequest = 20
+        manager.session.configuration.timeoutIntervalForRequest = 5
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
@@ -168,6 +168,7 @@ class APIClient {
             }
             return
         case .failure(let error):
+            debugLog(object: "\((error as NSError).code) - \(error.localizedDescription)")
             failure(error)
             if (error as NSError).code == 401 { //Unauthorized user
                 AppDelegate.shared.unexpectedLogout()
@@ -184,6 +185,7 @@ class APIClient {
             }
             return
         case .failure(let error):
+            debugLog(object: "\((error as NSError).code) - \(error.localizedDescription)")
             let dict : Dictionary = response.response!.allHeaderFields
             debugLog(object: response.response!.allHeaderFields)
             failure(dict, response.response!.statusCode)

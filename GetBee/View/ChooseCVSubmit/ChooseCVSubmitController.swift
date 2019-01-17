@@ -7,7 +7,7 @@
 import UIKit
 import GoneVisible
 
-class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class ChooseCVSubmitController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var lblNoCV: UILabel!
     
@@ -28,8 +28,8 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.page = 0
         getMyCV()
     }
@@ -69,7 +69,7 @@ class ChooseCVSubmitController: UIViewController, UITableViewDelegate, UITableVi
             }else {
                 self.mTableView.willRemoveSubview(self.refreshControl)
             }
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error.description)
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

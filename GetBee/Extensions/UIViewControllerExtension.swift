@@ -17,12 +17,34 @@ extension UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: handler))
     present(alert, animated: true, completion: nil)
   }
+  func showMessageUpdate(title: String, message: String, handler: ((_ action: UIAlertAction) -> Void)? = nil) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: handler))
+    self.dismiss(animated: true){ () -> Void in
+      self.present(alert, animated: true, completion: nil)
+    }
+  }
+  func showMessageErrorApi() {
+   self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+  }
+  func showMessageFull(title: String, message: String, handler: ((_ action: UIAlertAction) -> Void)? = nil,handlerCancel: ((_ action: UIAlertAction) -> Void)? = nil) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "Không", style: UIAlertActionStyle.default, handler: handlerCancel))
+    alert.addAction(UIAlertAction(title: "Có", style: UIAlertActionStyle.default, handler: handler))
+    present(alert, animated: true, completion: nil)
+  }
   func showToast(title:String){
     let toast = Toast(text: title)
     toast.show()
   }
   func showHideView(view:UIView, isHidden:Bool){
-    view.isHidden = isHidden
+    //    view.isHidden = isHidden
+    UIView.animate(withDuration: 3, animations: {
+      view.alpha = 1
+    }, completion: {
+      finished in
+      view.isHidden = isHidden
+    })
     if isHidden {
       view.gone()
     } else {
@@ -37,5 +59,13 @@ extension UIViewController {
   
   @objc func dismissKeyboard() {
     view.endEditing(true)
+  }
+  func assignValueToController(nameController:String) -> UIViewController{
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let viewController: UIViewController? = storyboard.instantiateViewController(withIdentifier: nameController)
+    return viewController!
+  }
+  func pushViewController(controller:UIViewController){
+    navigationController?.pushViewController(controller, animated: true)
   }
 }

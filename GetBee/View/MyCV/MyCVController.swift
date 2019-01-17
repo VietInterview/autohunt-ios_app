@@ -8,7 +8,7 @@ import UIKit
 import CarbonKit
 import GoneVisible
 
-class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, ChooseDelegate {
+class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, ChooseDelegate {
     var isShowCondition: Bool = false
     var isShowStatus: Bool = false
     var mPosition: Int = 0
@@ -34,7 +34,6 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("mycv", comment: "")
-        navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         mViewCondition.isHidden = true
         mViewCondition.gone()
         self.mViewStatus.isHidden = true
@@ -52,6 +51,7 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
         self.navigationController?.navigationBar.isTranslucent = false
     }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
@@ -80,7 +80,7 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.mPosition = Int(index)
         if index == 0 {
             let vc = storyboard.instantiateViewController(withIdentifier: "MyCVSavedController") as! MyCVSavedController
-           vc.isCarrer = self.isCarrer
+            vc.isCarrer = self.isCarrer
             vc.isStatus = self.isStatus
             vc.vc = self.vc
             return vc
@@ -88,7 +88,7 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
             let vc = storyboard.instantiateViewController(withIdentifier: "MyCVAppliedController") as! MyCVAppliedController
             vc.isCarrer = self.isCarrer
             vc.isStatus = self.isStatus
-             vc.vc = self.vc
+            vc.vc = self.vc
             return vc
         }
     }
@@ -120,8 +120,6 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.isCarrer = true
         self.isStatus = false
         self.isCity = false
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("carrer", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
@@ -134,8 +132,6 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.isCarrer = false
         self.isStatus = true
         self.isCity = false
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("status", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
@@ -147,8 +143,6 @@ class MyCVController: UIViewController , CarbonTabSwipeNavigationDelegate, Choos
         self.isCarrer = false
         self.isStatus = false
         self.isCity = true
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("city", comment: "")
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus

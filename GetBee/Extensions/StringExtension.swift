@@ -44,4 +44,66 @@ extension String {
     let predicate = NSPredicate(format: "SELF MATCHES %@", "[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(\\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@([A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?\\.)+[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?")
     return predicate.evaluate(with: self)
   }
+  func index(at: Int) -> Index {
+    return self.index(startIndex, offsetBy: at)
+  }
+  
+  func substring(from: Int) -> String {
+    let fromIndex = index(at: from)
+    return substring(from: fromIndex)
+  }
+  
+  func substring(to: Int) -> String {
+    let toIndex = index(at: to)
+    return substring(to: toIndex)
+  }
+  
+  func substring(with r:Range<Int>) -> String {
+    let startIndex  = index(at: r.lowerBound)
+    let endIndex    = index(at: r.upperBound)
+    return substring(with: startIndex..<endIndex)
+  }
+  func currencyInputFormatting() -> String {
+    var number: NSNumber!
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.locale = Locale.current
+    formatter.usesGroupingSeparator = true
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 2
+    var amountWithPrefix = self
+    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+    let double = (amountWithPrefix as NSString).doubleValue
+    number = NSNumber(value: (double / 100))
+    if let formattedTipAmount = formatter.string(from: number as NSNumber) {
+      return formattedTipAmount
+    }
+    return ""
+  }
+  var html2Attributed: NSAttributedString? {
+    do {
+      guard let data = data(using: String.Encoding.utf8) else {
+        return nil
+      }
+      return try NSAttributedString(data: data,
+                                    options: [.documentType: NSAttributedString.DocumentType.html,
+                                              .characterEncoding: String.Encoding.utf8.rawValue],
+                                    documentAttributes: nil)
+    } catch {
+      print("error: ", error)
+      return nil
+    }
+  }
+  var htmlToAttributedString: NSAttributedString? {
+    guard let data = data(using: .utf8) else { return NSAttributedString() }
+    do {
+      return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+    } catch {
+      return NSAttributedString()
+    }
+  }
+  var htmlToString: String {
+    return htmlToAttributedString?.string ?? ""
+  }
 }

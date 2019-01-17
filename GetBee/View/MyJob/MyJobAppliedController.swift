@@ -57,7 +57,7 @@ class MyJobAppliedController: UIViewController,UITableViewDelegate,UITableViewDa
             
             self.mTableView.reloadData()
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             if #available(iOS 10.0, *) {
                 self.mTableView.refreshControl?.endRefreshing()
             }else {

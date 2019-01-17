@@ -5,12 +5,15 @@ PODS:
     - Alamofire (~> 4.7)
   - CarbonKit (2.2.2)
   - ExpandableCell (1.2.3)
+  - ExpandableLabel (0.4.1)
+  - FlexibleSteppedProgressBar (0.5.0)
   - GoneVisible (1.2.0)
   - IQKeyboardManagerSwift (6.0.5)
-  - JJFloatingActionButton (0.10.0)
   - LGSideMenuController (2.1.1)
+  - StepIndicator (1.0.6.1)
   - SwipeCellKit (2.5.0)
   - Toaster (2.1.1)
+  - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - ACFloatingTextfield-Swift (~> 1.7)
@@ -18,12 +21,15 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.3)
   - CarbonKit
   - ExpandableCell
+  - ExpandableLabel
+  - FlexibleSteppedProgressBar
   - GoneVisible
   - IQKeyboardManagerSwift (~> 6.0.1)
-  - JJFloatingActionButton
   - LGSideMenuController
+  - StepIndicator (~> 1.0.6)
   - SwipeCellKit
   - Toaster
+  - YouTubePlayer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -32,12 +38,15 @@ SPEC REPOS:
     - AlamofireImage
     - CarbonKit
     - ExpandableCell
+    - ExpandableLabel
+    - FlexibleSteppedProgressBar
     - GoneVisible
     - IQKeyboardManagerSwift
-    - JJFloatingActionButton
     - LGSideMenuController
+    - StepIndicator
     - SwipeCellKit
     - Toaster
+    - YouTubePlayer
 
 SPEC CHECKSUMS:
   ACFloatingTextfield-Swift: df075d5ed5d441d8603f985fc106ec7ebe0c673f
@@ -45,13 +54,16 @@ SPEC CHECKSUMS:
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   CarbonKit: 0dec4738fa489b4c043a5f850c27fd0dbefb57cc
   ExpandableCell: 99a7993b6b61af6a9b5821f67a772d6402ffcda2
+  ExpandableLabel: 1ad99072d1d90f1db5925b8d04d56bf8607e5f9b
+  FlexibleSteppedProgressBar: a8894ca4913e34ea2c694be09a7d4d6b1f1bdc74
   GoneVisible: c552940cd9df7548427f6bffd000dcbcc6de187f
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
-  JJFloatingActionButton: 7e9e924d0819ebeb6a566dade9d5dbed63ff8add
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
+  StepIndicator: 73b4bcc8bcf816cb98479d99ada7e85463252caa
   SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
+  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: a40917ec44178b24a5ec2b84e47d32d0ef3a6fc1
+PODFILE CHECKSUM: 9942182d3dd388db2459ee051d6e2c2e9fc0fe8c
 
 COCOAPODS: 1.5.2

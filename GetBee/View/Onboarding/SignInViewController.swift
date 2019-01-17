@@ -9,14 +9,10 @@
 import UIKit
 import Alamofire
 import MessageUI
-class SignInViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate  {
-    
-    // MARK: - Outlets
-    
+class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate  {
     @IBOutlet weak var lblLogin: UILabel!
     @IBOutlet weak var verticalPass: UIView!
     @IBOutlet weak var verticalUser: UIView!
-    
     @IBOutlet weak var imgNoteUser: UIImageView!
     @IBOutlet weak var imgNotePass: UIImageView!
     @IBOutlet weak var passwordField: DesignableUITextField!
@@ -27,13 +23,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     @IBOutlet weak var mViewPassword: UIView!
     @IBOutlet var mViewSuccess: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var imgPass: UIImageView!
     @IBOutlet var mViewContact: UIView!
+    
+    var homeViewModel = HomeViewModel()
     var viewModel = SignInViewModelWithCredentials()
     var effect:UIVisualEffect!
-    // MARK: - Lifecycle Events
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,42 +42,49 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         if !MFMailComposeViewController.canSendMail() {
-            print("Mail services are not available")
-//            return
         }
         
-        mViewUser.layer.borderWidth = 0.5
-        mViewUser.layer.borderColor = UIColor.black.cgColor
-        mViewPassword.layer.borderWidth = 0.5
-        mViewPassword.layer.borderColor = UIColor.black.cgColor
+        mViewUser.layer.borderWidth = 1
+        mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        mViewPassword.layer.borderWidth = 1
+        mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
-        UIApplication.shared.statusBarStyle = .default
         if self.isAppAlreadyLaunchedOnce() {
-            if let session = SessionManager.currentSession {
-                
-                UserDefaults.standard.set(3, forKey: "position")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-                
-                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
-                
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                mainViewController.rootViewController = navigationController
-                mainViewController.setup(type: UInt(2))
-                
-                let window = UIApplication.shared.delegate!.window!!
-                window.rootViewController = mainViewController
+            if SessionManager.currentSession != nil {
+                if let account = AccountManager.currentAccount {
+                    UserDefaults.standard.set(3, forKey: "position")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                    navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: account.type! == 2 ? "JobEmployerController":"ViewController")], animated: false)
+                    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                    mainViewController.rootViewController = navigationController
+                    mainViewController.setup(type: UInt(2))
+                    let window = UIApplication.shared.delegate!.window!!
+                    window.rootViewController = mainViewController
+                } else {
+                    self.homeViewModel.loadAccount(success: {account in
+                        AccountManager.currentAccount = account
+                        UserDefaults.standard.set(3, forKey: "position")
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                        navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController":"ViewController")], animated: false)
+                        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                        mainViewController.rootViewController = navigationController
+                        mainViewController.setup(type: UInt(2))
+                        let window = UIApplication.shared.delegate!.window!!
+                        window.rootViewController = mainViewController
+                    }, failure: { error in
+//                        self.showMessageErrorApi()
+                    })
+                }
             }
         }else{
-            //            performSegue(withIdentifier: "gotointro", sender: self)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-            
             navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "IntroController")], animated: false)
-            
             let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
             mainViewController.rootViewController = navigationController
             mainViewController.setup(type: UInt(2))
@@ -95,16 +98,16 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         emailField.delegate = self
         passwordField.delegate = self
         
-          let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         lblLogin.isUserInteractionEnabled=true
         lblLogin.addGestureRecognizer(gestureSwift2AndHigher2)
         
         if Env.isProduction() == true {
             lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#000000")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         } else {
             lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
         }
     }
     var dem: Int = 0
@@ -116,7 +119,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
             lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#000000")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         }else{
             dem = dem - 1
             Env.setProductionFalse()
@@ -124,7 +127,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
             lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#f97292")
+            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
         }
     }
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
@@ -138,21 +141,21 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
             imgUser.image = UIImage(named: "Shape_focus")
             imgPass.image = UIImage(named: "pass")
             
-            mViewUser.layer.borderWidth = 0.5
+            mViewUser.layer.borderWidth = 1
             mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            mViewPassword.layer.borderWidth = 0.5
-            mViewPassword.layer.borderColor = UIColor.black.cgColor
-            verticalPass.layer.backgroundColor = UIColor.black.cgColor
+            mViewPassword.layer.borderWidth = 1
+            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+            verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         } else {
             imgUser.image = UIImage(named: "Shape")
             imgPass.image = UIImage(named: "pass_focus")
-            mViewUser.layer.borderWidth = 0.5
-            mViewUser.layer.borderColor = UIColor.black.cgColor
-            mViewPassword.layer.borderWidth = 0.5
+            mViewUser.layer.borderWidth = 1
+            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+            mViewPassword.layer.borderWidth = 1
             mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            verticalUser.layer.backgroundColor = UIColor.black.cgColor
+            verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -173,9 +176,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.mView.layer.masksToBounds = false
-        self.mView.layer.shadowColor = UIColor.black.cgColor
-        self.mView.layer.shadowOpacity = 0.5
+        self.mView.layer.shadowColor = StringUtils.shared.hexStringToUIColor(hex: "#191830").cgColor
+        self.mView.layer.shadowOpacity = 15/100
         self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.mView.layer.shadowRadius = 5
         self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
@@ -184,22 +188,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        // Hide the Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     @IBAction func dismissPopUpTouch(_ sender: Any) {
         animateOutForgotPass()
     }
-    // MARK: - Actions
     func animateIn() {
         self.view.addSubview(mViewSuccess)
         mViewSuccess.center = self.view.center
-        
         mViewSuccess.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         mViewSuccess.alpha = 0
         UIView.animate(withDuration: 0.4) {
             self.visualEffectView.effect = self.effect
-            
             self.visualEffectView.isHidden = false
             self.mViewSuccess.alpha = 1
             self.mViewSuccess.transform = CGAffineTransform.identity
@@ -208,12 +208,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     func animateInForgotPass() {
         self.view.addSubview(mViewContact)
         mViewContact.center = self.view.center
-        
         mViewContact.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         mViewContact.alpha = 0
         UIView.animate(withDuration: 0.4) {
             self.visualEffectView.effect = self.effect
-            
             self.visualEffectView.isHidden = false
             self.mViewContact.alpha = 1
             self.mViewContact.transform = CGAffineTransform.identity
@@ -275,40 +273,34 @@ class SignInViewController: UIViewController, UITextFieldDelegate, MFMailCompose
     @IBAction func tapOnSignInButton(_ sender: Any) {
         if self.emailField.text! == ""{
             self.imgNoteUser.isHidden = false
-            var placeHolder = NSMutableAttributedString()
-            let Name  = NSLocalizedString("input_email", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
-            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
-            
-            emailField.attributedPlaceholder = placeHolder
+            emailField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         }else if self.passwordField.text! == "" {
             self.imgNotePass.isHidden = false
-            var placeHolder = NSMutableAttributedString()
-            let Name  = NSLocalizedString("input_pass", comment: "")
-            placeHolder = NSMutableAttributedString(string:Name, attributes: [NSAttributedStringKey.font:UIFont(name: "Nunito-Regular", size: 18.0)!])
-            placeHolder.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range:NSRange(location:0,length:Name.count))
-            passwordField.attributedPlaceholder = placeHolder
+            passwordField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_pass", comment: ""),
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         }else{
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
             viewModel.login(success: { [unowned self] in
                 LoadingOverlay.shared.hideOverlayView()
                 UserDefaults.standard.set(3, forKey: "position")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-                
-                navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "ViewController")], animated: false)
-                
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                mainViewController.rootViewController = navigationController
-                mainViewController.setup(type: UInt(2))
-                
-                let window = UIApplication.shared.delegate!.window!!
-                window.rootViewController = mainViewController
+                self.homeViewModel.loadAccount(success: {account in
+                    AccountManager.currentAccount! = account
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+                    navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: AccountManager.currentAccount!.type! == 2 ? "JobEmployerController" : "ViewController")], animated: false)
+                    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                    mainViewController.rootViewController = navigationController
+                    mainViewController.setup(type: UInt(2))
+                    let window = UIApplication.shared.delegate!.window!!
+                    window.rootViewController = mainViewController
+                }, failure: { error in
+                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+                })
                 
                 }, failure: { [unowned self] error in
                     UIApplication.hideNetworkActivity()
                     self.animateIn()
-                    //                self.showMessage(title: "Thông báo", message: "Thông tin đăng nhập không đúng")
             })
         }
     }

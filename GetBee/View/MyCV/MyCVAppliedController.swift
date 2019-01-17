@@ -54,6 +54,7 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
             if #available(iOS 10.0, *) {
                 self.mCVSubmitTableView.refreshControl?.endRefreshing()
             }
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
     @objc func refresh() {

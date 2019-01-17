@@ -8,7 +8,7 @@ import UIKit
 import ACFloatingTextfield_Swift
 import Toaster
 
-class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, ChooseMultiDelegate {
+class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, ChooseMultiDelegate {
     
     @IBOutlet weak var lblCarrerHunt: UILabel!
     @IBOutlet weak var mViewCarrerHunt: UIView!
@@ -22,18 +22,16 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
     var viewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
-        navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         self.title = NSLocalizedString("profile", comment: "")
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
         gestureSwift2AndHigher.delegate = self
         self.lblCarrerHunt.isUserInteractionEnabled = true
         self.lblCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
-        textfieldFullname.font = UIFont(name: "Nunito-Regular", size: 20)
-        textfieldPhone.font = UIFont(name: "Nunito-Regular", size: 20)
-        textFieldEmail.font = UIFont(name: "Nunito-Regular", size: 20)
-        textFieldAdd.font = UIFont(name: "Nunito-Regular", size: 20)
-        textFieldCarrer.font = UIFont(name: "Nunito-Regular", size: 20)
+        textfieldFullname.font = UIFont(name: "Roboto-Regular", size: 20)
+        textfieldPhone.font = UIFont(name: "Roboto-Regular", size: 20)
+        textFieldEmail.font = UIFont(name: "Roboto-Regular", size: 20)
+        textFieldAdd.font = UIFont(name: "Roboto-Regular", size: 20)
+        textFieldCarrer.font = UIFont(name: "Roboto-Regular", size: 20)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         viewModel.loadUserProfile(success: { userProfile in
@@ -59,9 +57,7 @@ class InfoAccountController: UIViewController,UIGestureRecognizerDelegate, Choos
         })
     }
     override func viewDidAppear(_ animated: Bool) {
-//        let fixedWidth = textFieldCarrer.frame.size.width
-//        let newSize = textFieldCarrer.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-//        textFieldCarrer.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        super.viewDidAppear(animated)
     }
     
     @IBAction func gotoCarrerTouch(_ sender: Any) {

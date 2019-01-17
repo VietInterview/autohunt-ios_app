@@ -26,6 +26,8 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     var usesTallCells = false
     let refreshControl = UIRefreshControl()
     static let notificationName = Notification.Name("myNotificationName")
+    
+    
     @IBOutlet weak var viewQuantity: UIView!
     @IBOutlet weak var lblQuantity: UILabel!
     @IBOutlet weak var mCVSavedTableView: UITableView!
@@ -67,7 +69,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             if #available(iOS 10.0, *) {
                 self.mCVSavedTableView.refreshControl?.endRefreshing()
             }else {
@@ -99,7 +101,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
             self.listCVServer = listCV.cvList!
             self.mCVSavedTableView.reloadData()
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             if #available(iOS 10.0, *) {
                 self.mCVSavedTableView.refreshControl?.endRefreshing()
             }
@@ -192,7 +194,7 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
                     }
                 }
             }, failure: {error in
-                
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
             
         }
@@ -219,18 +221,6 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         return options
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        if self.refreshControl.isRefreshing == false {
-//            if targetContentOffset.pointee.y < scrollView.contentOffset.y {
-//                viewQuantity.isHidden = false
-//                viewQuantity.visible()
-//            } else {
-//                viewQuantity.gone()
-//                viewQuantity.isHidden = true
-//            }
-//        }else{
-//            viewQuantity.isHidden = false
-//            viewQuantity.visible()
-//        }
     }
     
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {

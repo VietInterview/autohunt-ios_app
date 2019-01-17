@@ -8,7 +8,7 @@ import UIKit
 import CarbonKit
 import GoneVisible
 
-class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, ChooseDelegate {
+class MyJobController: BaseViewController, CarbonTabSwipeNavigationDelegate, ChooseDelegate {
     var isShowCondition: Bool = false
     var isCarrer: Bool = false
     var isStatus: Bool = false
@@ -22,7 +22,6 @@ class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, Choos
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("my_job", comment: "")
-        navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 210.0/255.0, blue: 21.0/255.0, alpha: 1.0)
         mViewCondition.isHidden = true
         mViewCondition.gone()
         let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("job_saved_tit", comment: ""), NSLocalizedString("job_applyed_tit", comment: "")], delegate: self)
@@ -31,7 +30,6 @@ class MyJobController: UIViewController, CarbonTabSwipeNavigationDelegate, Choos
         } else {
             tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
         }
-        debugLog(object: ScreenUtils.shared.getScreenWidth()!)
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         tabSwipe.setNormalColor(UIColor.gray)
         tabSwipe.setSelectedColor(UIColor.black)

@@ -10,7 +10,7 @@ import AlamofireImage
 import Alamofire
 import GoneVisible
 
-class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV, SendHeightViewSkillDetailCV, SendHeightViewExpDetailCV, SendHeightViewLevelDetailCV, SendHeightViewLanDetailCV, SendHeightViewComDetailCV {
+class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwipeNavigationDelegate , SendHeightViewInfoDetailCV, SendHeightViewSkillDetailCV, SendHeightViewExpDetailCV, SendHeightViewLevelDetailCV, SendHeightViewLanDetailCV, SendHeightViewComDetailCV {
     
     @IBOutlet weak var heightViewContentConstant: NSLayoutConstraint!
     @IBOutlet weak var heightViewContent: UIView!
@@ -48,7 +48,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -192,7 +192,7 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             self.mViewHeader.layer.backgroundColor = UIColor.white.cgColor
             self.mViewHeader.layer.mask = rectShape
             tabSwipe.setTabExtraWidth(16)
-            tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Nunito", size: 16)!], for: .normal)
+            tabSwipe.carbonSegmentedControl?.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Roboto", size: 16)!], for: .normal)
             tabSwipe.setNormalColor(UIColor.gray)
             tabSwipe.setSelectedColor(UIColor.black)
             tabSwipe.setIndicatorColor(UIColor.yellow)
@@ -200,12 +200,10 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
             
             
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("error_please_try", comment: ""))
-        })
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)        })
     }
     var isUpdate:Bool = false
     func sendHeightInfoDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             if ScreenUtils.shared.getScreenWidth() == 414 {
                 self.heightViewContentConstant.constant = 800 + CGFloat(height)
@@ -218,7 +216,6 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         }
     }
     func sendHeightSkillDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height) - 400 : CGFloat(height) - 200
             self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
@@ -227,7 +224,6 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
         }
     }
     func sendHeightExpDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height) - 200
             self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
@@ -237,7 +233,6 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
     }
     
     func sendHeightLevelDetailCV(height: Int) {
-        debugLog(object: height)
         DispatchQueue.main.async {
             self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
             self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
@@ -281,7 +276,6 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
                 })
             }
         }, failure: {error in
-            debugLog(object: error)
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
@@ -308,7 +302,6 @@ class DetailCVController: UIViewController, UIScrollViewDelegate, CarbonTabSwipe
                 })
             }
         }, failure: {error in
-            debugLog(object: error)
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
