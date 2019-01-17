@@ -128,7 +128,7 @@ class StringUtils:NSObject {
         case 4:
             color = hexStringToUIColor(hex: "#ADADAD")
         case 5:
-            color = hexStringToUIColor(hex: "#DB4443")
+            color = hexStringToUIColor(hex: "#FF5A5A")
         case 6:
             color = hexStringToUIColor(hex: "#54CE4E")
         case 7:

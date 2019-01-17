@@ -5851,11 +5851,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5u-Qm-wyi">
                                                 <rect key="frame" x="10" y="467" width="300" height="65"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSc-8B-vH0">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSc-8B-vH0" customClass="ButtonWithImage" customModule="GetBee" customModuleProvider="target">
                                                         <rect key="frame" x="2" y="2" width="100" height="61"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                        <inset key="titleEdgeInsets" minX="-20" minY="25" maxX="0.0" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="25" minY="-30" maxX="0.0" maxY="0.0"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                         <state key="normal" title="Đạt" image="like">
                                                             <color key="titleColor" red="0.40392156862745099" green="0.4823529411764706" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -5870,9 +5868,9 @@
                                                             <constraint firstAttribute="width" constant="1" id="jDN-yc-30E"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzo-Se-vpW">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzo-Se-vpW" customClass="ButtonWithImage" customModule="GetBee" customModuleProvider="target">
                                                         <rect key="frame" x="100" y="2" width="100" height="61"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                         <inset key="titleEdgeInsets" minX="-20" minY="25" maxX="0.0" maxY="0.0"/>
                                                         <inset key="imageEdgeInsets" minX="40" minY="-20" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Không đạt" image="dislike">
@@ -5889,9 +5887,9 @@
                                                             <constraint firstAttribute="width" constant="1" id="dX6-Fi-jPQ"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pto-rN-tGm">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pto-rN-tGm" customClass="ButtonWithImage" customModule="GetBee" customModuleProvider="target">
                                                         <rect key="frame" x="198" y="2" width="100" height="61"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                         <inset key="titleEdgeInsets" minX="-10" minY="20" maxX="0.0" maxY="0.0"/>
                                                         <inset key="imageEdgeInsets" minX="40" minY="-30" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Ứng viên không đi" image="reject_gray">

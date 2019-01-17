@@ -99,6 +99,7 @@ class CreateEditInterviewController: BaseViewController {
                 self.btnCandidateNotCome.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
                 self.btnCandidateNotCome.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
             }
+            self.btnCandidateNotCome.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
         } else {
             self.showHideView(view: self.viewResult, isHidden: true)
             self.showHideView(view: self.lblResultInterview, isHidden: true)

@@ -111,6 +111,7 @@
 		7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA5F21719B6400E3B0DC /* NavigationController.swift */; };
 		7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99AA6121719B6400E3B0DC /* ViewController.swift */; };
 		7AA1EAAF21CCFB66007A51CC /* InterviewProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */; };
+		7AA2360821F0196D002C04BE /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA2360721F0196D002C04BE /* ButtonWithImage.swift */; };
 		7AA530A221CDDF060087B65A /* InterviewOfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A121CDDF060087B65A /* InterviewOfferCell.swift */; };
 		7AA530A421CDEE9E0087B65A /* OfferProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A321CDEE9E0087B65A /* OfferProcessController.swift */; };
 		7AA530A621CDF88D0087B65A /* GoToWorkProcessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA530A521CDF88D0087B65A /* GoToWorkProcessController.swift */; };
@@ -304,6 +305,7 @@
 		7A99AA5F21719B6400E3B0DC /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7A99AA6121719B6400E3B0DC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7AA1EAAE21CCFB66007A51CC /* InterviewProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewProcessController.swift; sourceTree = "<group>"; };
+		7AA2360721F0196D002C04BE /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		7AA530A121CDDF060087B65A /* InterviewOfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewOfferCell.swift; sourceTree = "<group>"; };
 		7AA530A321CDEE9E0087B65A /* OfferProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferProcessController.swift; sourceTree = "<group>"; };
 		7AA530A521CDF88D0087B65A /* GoToWorkProcessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToWorkProcessController.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */,
 				7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */,
 				7ABDCD0121E593F000286837 /* SimpleCell.swift */,
+				7AA2360721F0196D002C04BE /* ButtonWithImage.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				7ADFA16221A291A0001492F0 /* ScreenUtils.swift in Sources */,
 				7A4D6A0B21BE6DA000EC8BD1 /* JobCustomer.swift in Sources */,
 				7A88263021CB7F2200F491D3 /* ProcessResumeController.swift in Sources */,
+				7AA2360821F0196D002C04BE /* ButtonWithImage.swift in Sources */,
 				7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */,
 				7A2EA49C21A0FC2200E61681 /* LevelDetailCVController.swift in Sources */,
 				7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */,

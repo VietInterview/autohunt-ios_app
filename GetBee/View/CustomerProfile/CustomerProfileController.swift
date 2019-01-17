@@ -16,7 +16,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
     @IBOutlet weak var tableviewImage: UITableView!
     
     var profileCustomer:ProfileCustomer?
-    var arrTitle = ["","","Quy mô công ty","Lĩnh vực ngành nghề","Địa chỉ công ty","Thời gian làm việc","Thông tin công ty","",""]
+    var arrTitle = ["","","Quy mô công ty","Lĩnh vực/ngành nghề","Địa chỉ công ty","Thời gian làm việc","Thông tin công ty","",""]
     let numberOfCells : NSInteger = 9
     var mCount:Int?
     var states : Array<Bool>!
@@ -148,9 +148,9 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             cell?.expandableLabel.collapsed = states[indexPath.row]
             cell?.expandableLabel.text = "\(currentSource.text)"
             if cell!.expandableLabel.numberOfLines < 2 {
-                self.showHideView(view: cell!.lblPre, isHidden: false)
+                self.showHideView(view: cell!.lblPre, isHidden: true)
             }else {
-                 self.showHideView(view: cell!.lblPre, isHidden: true)
+                self.showHideView(view: cell!.lblPre, isHidden: true)
             }
             if currentSource.text.count > 0{
                 cell!.lblPre.text = currentSource.text.substring(with: 0..<currentSource.text.count/2)
@@ -325,7 +325,11 @@ extension CustomerProfileController: UICollectionViewDelegate, UICollectionViewD
          } else if indexPath.row == 1{
              return 219
          } else if indexPath.row == 7{
-            return CGFloat(self.profileCustomer!.customerWelfare!.count * 60 + 40)
+            if let customerWelfare = self.profileCustomer!.customerWelfare {
+                return CGFloat(customerWelfare.count * 60 + 40)
+            }else {
+                return 0
+            }
          } else {
             return 76
         }

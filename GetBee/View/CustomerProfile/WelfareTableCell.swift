@@ -41,7 +41,9 @@ class WelfareTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegat
         self.heightTableWelfare.constant = CGFloat(self.dataArr.count * Int(60))
         self.tableWelfare.layoutIfNeeded()
         self.tableWelfare.setNeedsLayout()
-        tableWelfare.scrollToRow(at: IndexPath(row:self.dataArr.count-1, section:0), at: .bottom, animated: true)
+        if self.dataArr.count>0 {
+            tableWelfare.scrollToRow(at: IndexPath(row:self.dataArr.count-1, section:0), at: .bottom, animated: true)
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
