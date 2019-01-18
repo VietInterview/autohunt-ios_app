@@ -8,38 +8,54 @@ import UIKit
 import ACFloatingTextfield_Swift
 import Toaster
 
-class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, ChooseMultiDelegate {
+class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource, ChooseMultiDelegate {
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var lblCarrerHunt: UILabel!
-    @IBOutlet weak var mViewCarrerHunt: UIView!
-    var vc = CarrerOrCityController()
-    @IBOutlet weak var textFieldCarrer: ACFloatingTextfield!
-    @IBOutlet weak var textFieldAdd: ACFloatingTextfield!
-    @IBOutlet weak var textFieldEmail: ACFloatingTextfield!
-    @IBOutlet weak var textfieldPhone: ACFloatingTextfield!
-    @IBOutlet weak var textfieldFullname: ACFloatingTextfield!
     var desideratedCareer = [DesideratedCareer]()
+    var vc = CarrerOrCityController()
     var viewModel = HomeViewModel()
+    var arrTitle = ["","Mã nhân viên","Số điện thoại","Ngày sinh","Địa chỉ","Quốc gia","Tỉnh/Thành","Tên công ty hiện tại","Ngaanhf nghề muốn hợp tác","Ngày ký hợp đồng","Đổi mật khẩu"]
+    let numberOfCells : NSInteger = 11
+    var arrContent = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("profile", comment: "")
         let gestureSwift2AndHigher = UITapGestureRecognizer(target: self, action:  #selector (self.someAction (_:)))
         gestureSwift2AndHigher.delegate = self
-        self.lblCarrerHunt.isUserInteractionEnabled = true
-        self.lblCarrerHunt.addGestureRecognizer(gestureSwift2AndHigher)
-        textfieldFullname.font = UIFont(name: "Roboto-Regular", size: 20)
-        textfieldPhone.font = UIFont(name: "Roboto-Regular", size: 20)
-        textFieldEmail.font = UIFont(name: "Roboto-Regular", size: 20)
-        textFieldAdd.font = UIFont(name: "Roboto-Regular", size: 20)
-        textFieldCarrer.font = UIFont(name: "Roboto-Regular", size: 20)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         viewModel.loadUserProfile(success: { userProfile in
-            self.textfieldFullname.text = StringUtils.shared.checkEmpty(value: userProfile.fullNameColl)
-            self.textfieldPhone.text = StringUtils.shared.checkEmpty(value: userProfile.phoneColl)
-            self.textFieldEmail.text = StringUtils.shared.checkEmpty(value: userProfile.emailColl)
-            self.textFieldAdd.text = StringUtils.shared.checkEmpty(value: userProfile.addressColl)
-            self.textFieldCarrer.text = StringUtils.shared.checkEmpty(value: userProfile.careerColl)
+            if let fullName = userProfile.fullNameColl {
+                self.arrContent.append(fullName)
+            } else {
+                 self.arrContent.append("")
+            }
+            if let email = userProfile.emailColl {
+                self.arrContent.append(email)
+            } else {
+                self.arrContent.append("")
+            }
+            if let code = userProfile.idColl {
+                self.arrContent.append("\(code)")
+            } else {
+                self.arrContent.append("")
+            }
+            if let phone = userProfile.phoneColl {
+                self.arrContent.append("\(phone)")
+            } else {
+                self.arrContent.append("")
+            }
+            self.arrContent.append("12/08/1991")
+            if let address = userProfile.addressColl {
+                self.arrContent.append("\(address)")
+            } else {
+                self.arrContent.append("")
+            }
+            self.arrContent.append("Việt Nam")
+            self.arrContent.append("Hà Nội")
+             self.arrContent.append("IIST")
             var appenString: String = ""
             if let arrCarrer = userProfile.desideratedCareer {
                 self.desideratedCareer = arrCarrer
@@ -50,8 +66,15 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, Cho
                         appenString.append("\(arrCarrer[i].name!), ")
                     }
                 }
-                self.lblCarrerHunt.text = appenString
+                self.arrContent.append(appenString)
+            } else {
+                self.arrContent.append("")
             }
+            self.arrContent.append("Hà Nội")
+            self.arrContent.append("IIST")
+            self.tableView.estimatedRowHeight = 76
+            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.reloadData()
         }, failure: { error in
             print("User Profile Error: " + error)
         })
@@ -59,7 +82,31 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, Cho
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "headercell") as! HeaderCell
+            cell.lblName.text = self.arrContent[indexPath.row]
+            cell.lblEmail.text = self.arrContent[indexPath.row+1]
+            return cell
+        } else if indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7 || indexPath.row == 8 || indexPath.row == 9 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "iseditcell") as! IsEditCell
+            cell.lblTitle.text = self.arrTitle[indexPath.row]
+            cell.lblContent.text = self.arrContent[indexPath.row+1]
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "gotocell") as! GoToCell
+            cell.lblTitle.text = self.arrTitle[indexPath.row]
+            cell.lblContent.text = self.arrContent[indexPath.row+1]
+            return cell
+        }
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (arrContent.count-1)
+    }
     @IBAction func gotoCarrerTouch(_ sender: Any) {
         vc.isCarrer = true
         vc.isStatus = false
@@ -96,13 +143,13 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, Cho
                 self.desideratedCareer.append(DesideratedCareer(id: mychooseMulti[i].id,name: mychooseMulti[i].name))
             }
         }
-        viewModel.saveMyProfile(fullName: self.textfieldFullname.text!, phone: self.textfieldPhone.text!, address: self.textFieldAdd.text!, carrer: self.textFieldCarrer.text!, arrCaerrerhunt: self.desideratedCareer, success: {user in
-            let toast = Toast(text: NSLocalizedString("update_profile_success", comment: ""))
-            toast.show()
-        }, failure: {error in
-            let toast = Toast(text: NSLocalizedString("update_profile_fail", comment: ""))
-            toast.show()
-        })
+//        viewModel.saveMyProfile(fullName: self.textfieldFullname.text!, phone: self.textfieldPhone.text!, address: self.textFieldAdd.text!, carrer: self.textFieldCarrer.text!, arrCaerrerhunt: self.desideratedCareer, success: {user in
+//            let toast = Toast(text: NSLocalizedString("update_profile_success", comment: ""))
+//            toast.show()
+//        }, failure: {error in
+//            let toast = Toast(text: NSLocalizedString("update_profile_fail", comment: ""))
+//            toast.show()
+//        })
     }
     var mychooseMulti = [MyChoose]()
     func didChooseMulti(mychooseMulti: [MyChoose]) {
@@ -115,7 +162,6 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate, Cho
                 appenString.append("\(mychooseMulti[i].name), ")
             }
         }
-        self.lblCarrerHunt.text = appenString
     }
     
 }

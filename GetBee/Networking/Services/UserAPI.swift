@@ -33,15 +33,20 @@ class UserAPI {
     })
   }
   
-  class func signup(_ email: String, address: String, career: String, fullName:String, phone: String, success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
+  class func signup(_ email: String, address: String, career: String, fullName:String, phone: String,companyName:String,mType:Int,contact:String,birthday:Int , success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
     let url = "/api/register"
     let parameters = [
       "email": email,
       "address": address,
       "career": career,
       "fullName": fullName,
-      "phone": phone
-    ]
+      "phone": phone,
+      "os": "IOS",
+      "companyName": companyName,
+      "type": mType,
+      "contact": contact,
+      "birthday": birthday
+      ] as [String : Any]
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
     APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
         LoadingOverlay.shared.hideOverlayView()
