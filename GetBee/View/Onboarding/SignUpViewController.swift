@@ -9,6 +9,9 @@
 import UIKit
 
 class SignUpViewController: BaseViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var textFieldCompanyName: UITextField!
+    @IBOutlet weak var textFieldBirthday: UITextField!
     @IBOutlet weak var textFieldPhone: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldFullname: UITextField!
@@ -185,7 +188,7 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
             textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""),
                                                                       attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         }else {
-            viewModel.signup(email: self.textFieldEmail.text!, address: "self.addTextField.text!", carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!,companyName: "companyName:String",mType: 2,contact: "contact:String",birthday: 19910812 , success: {
+            viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 7,contact: "",birthday: 19910812 , success: {
                 self.animateIn()
             }, failure: {error in
                 if error == "error.userexists" {

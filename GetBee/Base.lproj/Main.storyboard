@@ -11439,7 +11439,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSignupCustomer" destination="naV-RC-lAS" id="r8t-7n-IZ3"/>
+                        <outlet property="textFieldCompanyName" destination="YFc-oG-saW" id="xlY-Nw-QJQ"/>
+                        <outlet property="textFieldContact" destination="PzU-Bn-bBw" id="nBG-lr-uee"/>
+                        <outlet property="textFieldEmail" destination="rAh-SB-BAi" id="qFe-Zy-3lG"/>
+                        <outlet property="textFieldPhonenumber" destination="3ik-zZ-hZt" id="7D8-zK-gez"/>
                         <outlet property="viewInput" destination="3Wf-NB-i7g" id="472-ha-8FM"/>
+                        <outlet property="viewPolicy" destination="82s-cm-1VJ" id="nLN-6k-MW6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mtk-Io-gH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -12021,6 +12027,8 @@
                         <outlet property="mView" destination="IdX-9A-577" id="7Zx-ed-4WA"/>
                         <outlet property="mViewPopUp" destination="tMh-px-8dY" id="kd0-9H-WDD"/>
                         <outlet property="signUp" destination="oRD-MA-2oV" id="FVU-88-BaX"/>
+                        <outlet property="textFieldBirthday" destination="22j-fS-t26" id="8XJ-Ud-f2k"/>
+                        <outlet property="textFieldCompanyName" destination="IVz-PT-j1D" id="xcQ-SO-SVE"/>
                         <outlet property="textFieldEmail" destination="GqP-oe-fcZ" id="Na6-q3-Ec4"/>
                         <outlet property="textFieldFullname" destination="xYV-eE-Ila" id="ScF-Y6-nHa"/>
                         <outlet property="textFieldPhone" destination="v9r-co-4vM" id="Jwx-9O-FGk"/>
