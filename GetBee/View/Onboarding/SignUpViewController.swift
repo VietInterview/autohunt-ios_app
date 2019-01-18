@@ -13,11 +13,7 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldFullname: UITextField!
     @IBOutlet weak var signUp: UIButton!
-    @IBOutlet weak var mViewEmail: UIView!
-    @IBOutlet weak var mViewPassword: UIView!
-    @IBOutlet weak var mViewConfirmPass: UIView!
     @IBOutlet weak var jobTextField: UITextField!
-    @IBOutlet weak var addTextField: UITextField!
     @IBOutlet weak var mView: UIView!
     @IBOutlet var mViewPopUp: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
@@ -45,36 +41,30 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         
         mViewPopUp.layer.cornerRadius = 5
         
-        mViewEmail.layer.borderWidth = 1
-        mViewEmail.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        mViewPassword.layer.borderWidth = 1
-        mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        mViewConfirmPass.layer.borderWidth = 1
-        mViewConfirmPass.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
         signUp.layer.cornerRadius = 5
         signUp.layer.borderWidth = 1
         signUp.layer.borderColor = UIColor.clear.cgColor
         
-        jobTextField.layer.cornerRadius = 5.0
-        jobTextField.layer.borderWidth = 1
-        jobTextField.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        jobTextField.layer.cornerRadius = 5.0
+//        jobTextField.layer.borderWidth = 1
+//        jobTextField.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
-        addTextField.layer.cornerRadius = 5.0
-        addTextField.layer.borderWidth = 1
-        addTextField.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        addTextField.layer.cornerRadius = 5.0
+//        addTextField.layer.borderWidth = 1
+//        addTextField.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
-        jobTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: jobTextField.frame.height))
-        jobTextField.leftViewMode = .always
+//        jobTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: jobTextField.frame.height))
+//        jobTextField.leftViewMode = .always
         
-        addTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: addTextField.frame.height))
-        addTextField.leftViewMode = .always
+//        addTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: addTextField.frame.height))
+//        addTextField.leftViewMode = .always
         
         self.textFieldEmail.delegate = self
         self.textFieldFullname.delegate = self
         self.textFieldPhone.delegate = self
         self.jobTextField.delegate = self
-        self.addTextField.delegate = self
+//        self.addTextField.delegate = self
         
         self.textFieldEmail.addTarget(self, action: #selector(textFieldEmailDidChange(_:)), for: .editingChanged)
         self.textFieldFullname.addTarget(self, action: #selector(textFieldFullNameDidChange(_:)), for: .editingChanged)
@@ -96,16 +86,16 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         self.imgEmail.image = textField == textFieldEmail.self ? UIImage(named: "mail_focus") : UIImage(named: "mail")
         self.imgPhone.image = textField == textFieldPhone.self ? UIImage(named: "phone_focus") : UIImage(named: "phone")
         
-        mViewEmail.layer.borderColor = textField == textFieldFullname.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        mViewPassword.layer.borderColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        mViewConfirmPass.layer.borderColor = textField == textFieldPhone.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        mViewEmail.layer.borderColor = textField == textFieldFullname.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        mViewPassword.layer.borderColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        mViewConfirmPass.layer.borderColor = textField == textFieldPhone.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
         verticalUser.layer.backgroundColor = textField == textFieldFullname.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         verticalEmail.layer.backgroundColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         verticalPhone.layer.backgroundColor = textField == textFieldPhone.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
-        jobTextField.layer.borderColor = textField == jobTextField.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        addTextField.layer.borderColor = textField == addTextField.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        jobTextField.layer.borderColor = textField == jobTextField.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        addTextField.layer.borderColor = textField == addTextField.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -195,7 +185,7 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
             textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""),
                                                                       attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         }else {
-            viewModel.signup(email: self.textFieldEmail.text!, address: self.addTextField.text!, carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!,companyName: "companyName:String",mType: 2,contact: "contact:String",birthday: 19910812 , success: {
+            viewModel.signup(email: self.textFieldEmail.text!, address: "self.addTextField.text!", carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!,companyName: "companyName:String",mType: 2,contact: "contact:String",birthday: 19910812 , success: {
                 self.animateIn()
             }, failure: {error in
                 if error == "error.userexists" {

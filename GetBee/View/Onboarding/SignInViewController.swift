@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import MessageUI
 class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate  {
-    @IBOutlet weak var lblLogin: UILabel!
     @IBOutlet weak var verticalPass: UIView!
     @IBOutlet weak var verticalUser: UIView!
     @IBOutlet weak var imgNoteUser: UIImageView!
@@ -19,8 +18,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet weak var emailField: DesignableUITextField!
     @IBOutlet weak var mView: UIView!
     @IBOutlet weak var btnLogin: UIButton!
-    @IBOutlet weak var mViewUser: UIView!
-    @IBOutlet weak var mViewPassword: UIView!
     @IBOutlet var mViewSuccess: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var imgUser: UIImageView!
@@ -44,10 +41,10 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         if !MFMailComposeViewController.canSendMail() {
         }
         
-        mViewUser.layer.borderWidth = 1
-        mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        mViewPassword.layer.borderWidth = 1
-        mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        mViewUser.layer.borderWidth = 1
+//        mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//        mViewPassword.layer.borderWidth = 1
+//        mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
@@ -99,15 +96,15 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         passwordField.delegate = self
         
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
-        lblLogin.isUserInteractionEnabled=true
-        lblLogin.addGestureRecognizer(gestureSwift2AndHigher2)
+//        lblLogin.isUserInteractionEnabled=true
+//        lblLogin.addGestureRecognizer(gestureSwift2AndHigher2)
         
         if Env.isProduction() == true {
-            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
+//            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
+//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         } else {
-            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
+//            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
+//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
         }
     }
     var dem: Int = 0
@@ -118,16 +115,16 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             Env.setProductionTrue()
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
-            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
+//            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
+//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
         }else{
             dem = dem - 1
             Env.setProductionFalse()
             App.setBaseUrlDev()
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
-            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
+//            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
+//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
         }
     }
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
@@ -141,19 +138,19 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             imgUser.image = UIImage(named: "Shape_focus")
             imgPass.image = UIImage(named: "pass")
             
-            mViewUser.layer.borderWidth = 1
-            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
+//            mViewUser.layer.borderWidth = 1
+//            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            mViewPassword.layer.borderWidth = 1
-            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//            mViewPassword.layer.borderWidth = 1
+//            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
             verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         } else {
             imgUser.image = UIImage(named: "Shape")
             imgPass.image = UIImage(named: "pass_focus")
-            mViewUser.layer.borderWidth = 1
-            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-            mViewPassword.layer.borderWidth = 1
-            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
+//            mViewUser.layer.borderWidth = 1
+//            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+//            mViewPassword.layer.borderWidth = 1
+//            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         }

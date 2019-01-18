@@ -174,7 +174,7 @@
 "IRm-Pm-49F.text" = "Tiền thưởng";
 
 /* Class = "UITextField"; placeholder = "Địa chỉ"; ObjectID = "IVz-PT-j1D"; */
-"IVz-PT-j1D.placeholder" = "Địa chỉ";
+"IVz-PT-j1D.placeholder" = "Tên công ty đang làm";
 
 /* Class = "UILabel"; text = "Số ứng viên được nhận vào làm"; ObjectID = "Icp-4s-8Hc"; */
 "Icp-4s-8Hc.text" = "Số ứng viên được nhận vào làm";
@@ -549,7 +549,7 @@
 "x9W-8d-rOO.text" = "Lê Thị Khuyên";
 
 /* Class = "UIButton"; normalTitle = "Đăng ký"; ObjectID = "xUN-aP-4Fq"; */
-"xUN-aP-4Fq.normalTitle" = "Đăng ký";
+"xUN-aP-4Fq.normalTitle" = "HeadHunter";
 
 /* Class = "UIButton"; normalTitle = "Nộp CV"; ObjectID = "xUn-QP-DrY"; */
 "xUn-QP-DrY.normalTitle" = "Nộp CV";

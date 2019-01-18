@@ -138,6 +138,7 @@
 		7ADFA16521A2B41F001492F0 /* MyJobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16421A2B41F001492F0 /* MyJobController.swift */; };
 		7ADFA16721A2B49B001492F0 /* MyJobSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */; };
 		7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */; };
+		7AE4137F21F1C97500D11FA3 /* SignUpCustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE4137E21F1C97500D11FA3 /* SignUpCustomerController.swift */; };
 		7AEC5ADD21DC4AFD0086CD6C /* DetailProcessResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC5ADC21DC4AFD0086CD6C /* DetailProcessResume.swift */; };
 		7AF1BD54219FBB20002FDC63 /* InfoDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */; };
 		7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */; };
@@ -335,6 +336,7 @@
 		7ADFA16421A2B41F001492F0 /* MyJobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobController.swift; sourceTree = "<group>"; };
 		7ADFA16621A2B49B001492F0 /* MyJobSavedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobSavedController.swift; sourceTree = "<group>"; };
 		7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobAppliedController.swift; sourceTree = "<group>"; };
+		7AE4137E21F1C97500D11FA3 /* SignUpCustomerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCustomerController.swift; sourceTree = "<group>"; };
 		7AEC5ADC21DC4AFD0086CD6C /* DetailProcessResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProcessResume.swift; sourceTree = "<group>"; };
 		7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCVController.swift; sourceTree = "<group>"; };
 		7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpDetailCVController.swift; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 			children = (
 				9B3AA3981ED35007005A4D26 /* SignInViewController.swift */,
 				9B3AA39A1ED35013005A4D26 /* SignUpViewController.swift */,
+				7AE4137E21F1C97500D11FA3 /* SignUpCustomerController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				9BD01E361F01641E007255E3 /* DictionaryExtension.swift in Sources */,
 				7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */,
 				7A0B361E21CE77070092C8E2 /* DetailOfferController.swift in Sources */,
+				7AE4137F21F1C97500D11FA3 /* SignUpCustomerController.swift in Sources */,
 				7AA530A221CDDF060087B65A /* InterviewOfferCell.swift in Sources */,
 				7A0B362021CE77200092C8E2 /* CreateEditGoToWorkController.swift in Sources */,
 				E8290C021D8330A800599960 /* StringExtension.swift in Sources */,
