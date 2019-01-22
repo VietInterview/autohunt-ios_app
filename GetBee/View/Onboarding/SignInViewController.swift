@@ -23,6 +23,8 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var imgPass: UIImageView!
     @IBOutlet var mViewContact: UIView!
+    @IBOutlet weak var btnCustomer: UIButton!
+    @IBOutlet weak var btnHeadhunter: UIButton!
     
     var homeViewModel = HomeViewModel()
     var viewModel = SignInViewModelWithCredentials()
@@ -172,6 +174,13 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             return false
         }
     }
+    var attrs = [
+        NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14.0),
+        NSAttributedStringKey.foregroundColor : UIColor.black,
+        NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
+    var attributedString2 = NSMutableAttributedString(string:"")
+
+    var attributedString = NSMutableAttributedString(string:"")
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.mView.layer.masksToBounds = false
@@ -182,6 +191,14 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
         self.mView.layer.shouldRasterize = true
         self.mView.layer.rasterizationScale = UIScreen.main.scale
+        
+        let buttonTitleStr = NSMutableAttributedString(string:"Doanh nghiệp", attributes:attrs)
+        attributedString.append(buttonTitleStr)
+        self.btnCustomer.setAttributedTitle(attributedString, for: .normal)
+        
+        let buttonTitleStr2 = NSMutableAttributedString(string:"Headhunter", attributes:attrs)
+        attributedString2.append(buttonTitleStr2)
+        self.btnHeadhunter.setAttributedTitle(attributedString2, for: .normal)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)

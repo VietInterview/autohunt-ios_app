@@ -322,7 +322,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hạn tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0u-zO-uV4">
-                                                                    <rect key="frame" x="5" y="59" width="72.5" height="22"/>
+                                                                    <rect key="frame" x="5" y="59" width="74" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="v8m-Af-90a"/>
                                                                     </constraints>
@@ -331,7 +331,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/10/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qie-gV-Ebb">
-                                                                    <rect key="frame" x="209.5" y="59" width="85.5" height="22"/>
+                                                                    <rect key="frame" x="213" y="59" width="82" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Wjp-0E-KG2"/>
                                                                         <constraint firstAttribute="height" constant="22" id="hUQ-Jf-tdp"/>
@@ -1256,7 +1256,7 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUN-aP-4Fq">
-                                <rect key="frame" x="177" y="522" width="100" height="29"/>
+                                <rect key="frame" x="175" y="522" width="100" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="gta-4o-wUk"/>
                                 </constraints>
@@ -1282,7 +1282,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="hoặc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiV-tk-Imy">
-                                <rect key="frame" x="135" y="529" width="50" height="17"/>
+                                <rect key="frame" x="135" y="528" width="50" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="V6U-VK-AZd"/>
                                 </constraints>
@@ -1305,7 +1305,7 @@
                             <constraint firstItem="0GK-zT-bcm" firstAttribute="top" secondItem="Ix7-qx-zaS" secondAttribute="bottom" constant="16" id="3Py-cV-YCz"/>
                             <constraint firstItem="aaH-1b-Ggz" firstAttribute="top" secondItem="Dm9-Bd-t2A" secondAttribute="bottom" constant="12" id="4Vu-Cz-IEz"/>
                             <constraint firstItem="Ix7-qx-zaS" firstAttribute="centerX" secondItem="NDI-Z9-Roh" secondAttribute="centerX" id="AUv-3X-LSx"/>
-                            <constraint firstItem="xUN-aP-4Fq" firstAttribute="leading" secondItem="XiV-tk-Imy" secondAttribute="trailing" constant="-8" id="CeO-cd-dw5"/>
+                            <constraint firstItem="xUN-aP-4Fq" firstAttribute="leading" secondItem="XiV-tk-Imy" secondAttribute="trailing" constant="-10" id="CeO-cd-dw5"/>
                             <constraint firstItem="Ix7-qx-zaS" firstAttribute="top" secondItem="HLJ-gc-DhV" secondAttribute="bottom" constant="48" id="Fqz-JU-7xD"/>
                             <constraint firstItem="jac-S9-Uoe" firstAttribute="top" secondItem="Dm9-Bd-t2A" secondAttribute="bottom" id="Kgs-ee-dKs"/>
                             <constraint firstItem="e0A-fj-H12" firstAttribute="top" secondItem="DCO-lL-kKn" secondAttribute="bottom" id="Myl-X1-Z8F"/>
@@ -1319,7 +1319,7 @@
                             <constraint firstItem="HLJ-gc-DhV" firstAttribute="leading" secondItem="NDI-Z9-Roh" secondAttribute="leading" constant="16" id="dpr-s5-E1W"/>
                             <constraint firstAttribute="trailing" secondItem="jac-S9-Uoe" secondAttribute="trailing" id="ffg-5I-Cey"/>
                             <constraint firstItem="HLJ-gc-DhV" firstAttribute="top" secondItem="aaH-1b-Ggz" secondAttribute="bottom" constant="26" id="jCc-eE-sJG"/>
-                            <constraint firstItem="XiV-tk-Imy" firstAttribute="top" secondItem="DCO-lL-kKn" secondAttribute="bottom" constant="7" id="jQj-Th-bu6"/>
+                            <constraint firstItem="XiV-tk-Imy" firstAttribute="top" secondItem="DCO-lL-kKn" secondAttribute="bottom" constant="6" id="jQj-Th-bu6"/>
                             <constraint firstItem="uJs-A0-SPi" firstAttribute="top" secondItem="1cw-yt-0Bg" secondAttribute="bottom" id="kBJ-DL-kkh"/>
                             <constraint firstItem="aaH-1b-Ggz" firstAttribute="centerX" secondItem="NDI-Z9-Roh" secondAttribute="centerX" id="kZb-bh-HXu"/>
                             <constraint firstItem="Ix7-qx-zaS" firstAttribute="leading" secondItem="NDI-Z9-Roh" secondAttribute="leadingMargin" id="m5y-TV-blk"/>
@@ -1332,6 +1332,8 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnCustomer" destination="e0A-fj-H12" id="ljH-c7-rf7"/>
+                        <outlet property="btnHeadhunter" destination="xUN-aP-4Fq" id="nvC-Jm-KYj"/>
                         <outlet property="btnLogin" destination="Ix7-qx-zaS" id="RsT-Pw-Inl"/>
                         <outlet property="emailField" destination="SGW-mB-J78" id="Idr-kq-TAu"/>
                         <outlet property="imgNotePass" destination="Hac-qu-CyV" id="Qbh-IM-zM8"/>
@@ -2301,7 +2303,7 @@
                                         <rect key="frame" x="0.0" y="200" width="320" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Thời hạn đăng tuyển" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtL-v9-yOz">
-                                                <rect key="frame" x="8" y="14" width="144.5" height="22"/>
+                                                <rect key="frame" x="8" y="14" width="148.5" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="2gk-31-n89"/>
                                                 </constraints>
@@ -2317,7 +2319,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/09/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEo-rf-EFV">
-                                                <rect key="frame" x="157.5" y="14" width="146.5" height="22"/>
+                                                <rect key="frame" x="161.5" y="14" width="142.5" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="1W3-Wg-CLt"/>
                                                 </constraints>
@@ -2757,7 +2759,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên đã ứng tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fO-FZ-Sbx">
-                                        <rect key="frame" x="8" y="14" width="162" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="166" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="Nxz-86-usE"/>
                                         </constraints>
@@ -2787,7 +2789,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên của tôi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p54-ov-h0I">
-                                        <rect key="frame" x="8" y="14" width="116" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="118.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="XFX-f9-5Ka"/>
                                         </constraints>
@@ -2826,7 +2828,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã gửi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-H5-B21">
-                                        <rect key="frame" x="8" y="14" width="132.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="137.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="G89-xX-anq"/>
                                         </constraints>
@@ -2867,7 +2869,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số cộng tác viên đã quan tâm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kn-jW-py2">
-                                        <rect key="frame" x="8" y="14" width="211" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="214.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="p0H-Qj-v69"/>
                                         </constraints>
@@ -2908,7 +2910,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-8l-5Zx">
-                                        <rect key="frame" x="8" y="14" width="183.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="189.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="xcC-by-adc"/>
                                         </constraints>
@@ -2949,7 +2951,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-Lr-WoX">
-                                        <rect key="frame" x="8" y="14" width="145.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="149" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="kb9-1O-Urp"/>
                                         </constraints>
@@ -2990,7 +2992,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã nhận vào làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L77-XP-IPa">
-                                        <rect key="frame" x="8" y="14" width="205" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="210" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="O7v-WY-LNA"/>
                                         </constraints>
@@ -3031,7 +3033,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã gửi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBw-Dq-wi1">
-                                        <rect key="frame" x="8" y="14" width="132.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="137.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="2wi-WX-2Vt"/>
                                         </constraints>
@@ -3072,7 +3074,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên được mời phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLo-tV-EYo">
-                                        <rect key="frame" x="8" y="14" width="233" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="244" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="0l5-PP-oSc"/>
                                         </constraints>
@@ -3113,7 +3115,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHe-J1-4J9">
-                                        <rect key="frame" x="8" y="14" width="183.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="189.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="dMs-iW-YxH"/>
                                         </constraints>
@@ -3154,7 +3156,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zF6-mc-Wzn">
-                                        <rect key="frame" x="8" y="14" width="145.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="149" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="wE9-a4-ZF0"/>
                                         </constraints>
@@ -3195,7 +3197,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên được nhận vào làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-4s-8Hc">
-                                        <rect key="frame" x="8" y="14" width="223.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="232" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="aKT-7m-zAl"/>
                                         </constraints>
@@ -3298,7 +3300,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 CV đã được nộp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUE-li-UwU">
-                                        <rect key="frame" x="8" y="15" width="112" height="20"/>
+                                        <rect key="frame" x="8" y="15" width="117" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="H4X-By-HIP"/>
                                         </constraints>
@@ -3919,7 +3921,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/10/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIO-3c-m7n">
-                                                                    <rect key="frame" x="114.5" y="59" width="184.5" height="22"/>
+                                                                    <rect key="frame" x="118" y="59" width="181" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="dZH-Ae-rbQ"/>
                                                                     </constraints>
@@ -3928,7 +3930,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Tiền thưởng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfq-iT-sCx">
-                                                                    <rect key="frame" x="5" y="86" width="86" height="22"/>
+                                                                    <rect key="frame" x="5" y="86" width="89" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="9Tl-yb-BMi"/>
                                                                     </constraints>
@@ -3937,7 +3939,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-sJ-0mv">
-                                                                    <rect key="frame" x="5" y="5" width="86" height="22"/>
+                                                                    <rect key="frame" x="5" y="5" width="87.5" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="J9q-0R-o1p"/>
                                                                     </constraints>
@@ -3955,7 +3957,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cấp quản lý điều hành" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8q-FA-2ZW">
-                                                                    <rect key="frame" x="96" y="5" width="203" height="22"/>
+                                                                    <rect key="frame" x="97.5" y="5" width="201.5" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="wyg-T8-J6h"/>
                                                                     </constraints>
@@ -3964,7 +3966,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Thời hạn tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsG-2r-WzD">
-                                                                    <rect key="frame" x="5" y="59" width="104.5" height="22"/>
+                                                                    <rect key="frame" x="5" y="59" width="108" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="qYY-qY-ddt"/>
                                                                     </constraints>
@@ -3973,7 +3975,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,000 USD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-24-dAh">
-                                                                    <rect key="frame" x="96" y="86" width="203" height="25"/>
+                                                                    <rect key="frame" x="99" y="86" width="200" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="lwA-2b-Afs"/>
                                                                     </constraints>
@@ -4160,7 +4162,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Tiền thưởng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRm-Pm-49F">
-                                                                    <rect key="frame" x="5" y="86" width="86" height="22"/>
+                                                                    <rect key="frame" x="5" y="86" width="89" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="J39-51-w4a"/>
                                                                     </constraints>
@@ -4197,7 +4199,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Thời hạn tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjx-JS-wtq">
-                                                                    <rect key="frame" x="5" y="59" width="104.5" height="22"/>
+                                                                    <rect key="frame" x="5" y="59" width="108" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="EXk-K7-DuC"/>
                                                                     </constraints>
@@ -4206,7 +4208,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,000 USD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVQ-Ab-OO5">
-                                                                    <rect key="frame" x="96" y="86" width="203" height="25"/>
+                                                                    <rect key="frame" x="99" y="86" width="200" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="kUm-2s-qaw"/>
                                                                     </constraints>
@@ -4215,7 +4217,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/10/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPW-aN-zTg">
-                                                                    <rect key="frame" x="114.5" y="59" width="184.5" height="22"/>
+                                                                    <rect key="frame" x="118" y="59" width="181" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="5mY-6n-DVA"/>
                                                                     </constraints>
@@ -4394,7 +4396,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-uv-yYy">
-                                                            <rect key="frame" x="282" y="40" width="30" height="24"/>
+                                                            <rect key="frame" x="281" y="40" width="31" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="6Qm-fA-SZh"/>
                                                             </constraints>
@@ -4985,7 +4987,7 @@
                             <rect key="frame" x="0.0" y="15" width="300" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lý do từ chối" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-Eb-d0o">
-                                    <rect key="frame" x="98.5" y="5" width="103" height="21"/>
+                                    <rect key="frame" x="96.5" y="5" width="107" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="g3W-G7-rd3"/>
                                     </constraints>
@@ -5104,7 +5106,7 @@
                                         <rect key="frame" x="10" y="20" width="300" height="640"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin ứng viên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLJ-z0-hBd">
-                                                <rect key="frame" x="10" y="16" width="117" height="17"/>
+                                                <rect key="frame" x="10" y="16" width="118" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="huF-w1-eZt"/>
                                                 </constraints>
@@ -5172,7 +5174,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04/10/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk9-JP-DAA">
-                                                        <rect key="frame" x="14" y="41" width="85.5" height="19"/>
+                                                        <rect key="frame" x="14" y="41" width="82" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="qNf-Gs-jfV"/>
                                                         </constraints>
@@ -5214,7 +5216,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đại học" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fj5-tO-1By">
-                                                        <rect key="frame" x="14" y="41" width="54" height="19"/>
+                                                        <rect key="frame" x="14" y="41" width="55" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="sdK-Sy-BNG"/>
                                                         </constraints>
@@ -5387,7 +5389,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lef-lW-dtK">
-                                                        <rect key="frame" x="14" y="41" width="64" height="19"/>
+                                                        <rect key="frame" x="14" y="41" width="62.5" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="Wgc-Rf-03X"/>
                                                         </constraints>
@@ -5584,7 +5586,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxQ-Pb-vy6">
-                                                        <rect key="frame" x="14" y="11" width="81.5" height="17"/>
+                                                        <rect key="frame" x="14" y="11" width="83" height="17"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                         <color key="textColor" red="0.40392156862745099" green="0.4823529411764706" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -5771,7 +5773,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vòng phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI9-Gs-pQP">
-                                                <rect key="frame" x="10" y="20" width="115.5" height="19"/>
+                                                <rect key="frame" x="10" y="20" width="117.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5787,7 +5789,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1T-2M-GMJ">
-                                                <rect key="frame" x="10" y="119" width="115.5" height="19"/>
+                                                <rect key="frame" x="10" y="119" width="117.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5825,7 +5827,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYu-dc-TKJ">
-                                                <rect key="frame" x="10" y="329" width="54" height="19"/>
+                                                <rect key="frame" x="10" y="329" width="55.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -5841,7 +5843,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLC-Gz-jOT">
-                                                <rect key="frame" x="10" y="434" width="133" height="19"/>
+                                                <rect key="frame" x="10" y="434" width="136.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6187,7 +6189,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức lương" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMq-mJ-NrE">
-                                                <rect key="frame" x="10" y="125" width="77.5" height="19"/>
+                                                <rect key="frame" x="10" y="125" width="82" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6246,7 +6248,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Z-5W-LcY">
-                                                <rect key="frame" x="10" y="335" width="112.5" height="19"/>
+                                                <rect key="frame" x="10" y="335" width="114" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6262,7 +6264,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ví trí làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRq-hY-Bcm">
-                                                <rect key="frame" x="10" y="440" width="97.5" height="19"/>
+                                                <rect key="frame" x="10" y="440" width="95.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6278,7 +6280,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKF-bY-9u4">
-                                                <rect key="frame" x="10" y="545" width="54" height="19"/>
+                                                <rect key="frame" x="10" y="545" width="55.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6294,7 +6296,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a75-PS-sqD">
-                                                <rect key="frame" x="10" y="650" width="54.5" height="19"/>
+                                                <rect key="frame" x="10" y="650" width="56.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6627,7 +6629,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian bảo hành còn lại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-bB-Y1T">
-                                <rect key="frame" x="10" y="183" width="188" height="19"/>
+                                <rect key="frame" x="10" y="183" width="190.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -6728,7 +6730,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vòng phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27e-ed-e2N">
-                                        <rect key="frame" x="11" y="16" width="115.5" height="19"/>
+                                        <rect key="frame" x="11" y="16" width="117.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -6764,7 +6766,7 @@
                                 <rect key="frame" x="0.0" y="148" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yl-3v-aOH">
-                                        <rect key="frame" x="11" y="14" width="145" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="147.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -6800,7 +6802,7 @@
                                 <rect key="frame" x="0.0" y="232" width="320" height="108"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa điểm phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-no-YBa">
-                                        <rect key="frame" x="11" y="16" width="142.5" height="19"/>
+                                        <rect key="frame" x="11" y="16" width="144" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -6839,7 +6841,7 @@
                                 <rect key="frame" x="0.0" y="340" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLO-Gc-DoC">
-                                        <rect key="frame" x="11" y="14" width="54" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="55.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -6875,7 +6877,7 @@
                                 <rect key="frame" x="0.0" y="424" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUc-jd-T7c">
-                                        <rect key="frame" x="11" y="14" width="133" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="136.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -6992,7 +6994,7 @@
                                 <rect key="frame" x="0.0" y="134" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức lương" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-fX-xVd">
-                                        <rect key="frame" x="11" y="14" width="77.5" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="82" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7028,7 +7030,7 @@
                                 <rect key="frame" x="0.0" y="274" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-qs-wWM">
-                                        <rect key="frame" x="11" y="14" width="112.5" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="114" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7140,7 +7142,7 @@
                                 <rect key="frame" x="0.0" y="428" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h43-np-JnD">
-                                        <rect key="frame" x="11" y="14" width="54" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="55.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7176,7 +7178,7 @@
                                 <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rT-4H-Tb7">
-                                        <rect key="frame" x="11" y="12" width="54.5" height="19"/>
+                                        <rect key="frame" x="11" y="12" width="56.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7265,7 +7267,7 @@
                                 <rect key="frame" x="10" y="20" width="300" height="386"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFb-Cd-Qfg">
-                                        <rect key="frame" x="10" y="16" width="95" height="17"/>
+                                        <rect key="frame" x="10" y="16" width="94" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="T92-4M-Zom"/>
                                         </constraints>
@@ -7560,7 +7562,7 @@
                                 <rect key="frame" x="10" y="20" width="300" height="259"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin đi làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efp-Kf-W2o">
-                                        <rect key="frame" x="10" y="16" width="102" height="17"/>
+                                        <rect key="frame" x="10" y="16" width="101" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="77u-hc-DZK"/>
                                         </constraints>
@@ -7579,7 +7581,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày bắt đầu đi làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92B-c6-1oI">
-                                                <rect key="frame" x="10" y="11" width="144" height="19"/>
+                                                <rect key="frame" x="10" y="11" width="145" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -7624,7 +7626,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian bảo hành còn lại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyM-TX-E2l">
-                                                <rect key="frame" x="10" y="11" width="188" height="19"/>
+                                                <rect key="frame" x="10" y="11" width="190.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -7966,7 +7968,7 @@
                                 <rect key="frame" x="10" y="20" width="300" height="386"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbm-rT-rYO">
-                                        <rect key="frame" x="10" y="16" width="128" height="17"/>
+                                        <rect key="frame" x="10" y="16" width="129" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="RGu-bo-RLS"/>
                                         </constraints>
@@ -8796,7 +8798,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả công việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrB-sH-q3F">
-                                                    <rect key="frame" x="15" y="11" width="113.5" height="19"/>
+                                                    <rect key="frame" x="15" y="11" width="115.5" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="KXH-qK-ufX"/>
                                                     </constraints>
@@ -9345,7 +9347,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hình ảnh công ty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5f-Xf-wd1">
-                                                                    <rect key="frame" x="11" y="8" width="120.5" height="19"/>
+                                                                    <rect key="frame" x="11" y="8" width="122" height="19"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                     <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -9631,7 +9633,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phúc lợi công ty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rne-zG-rpM">
-                                                                    <rect key="frame" x="15" y="0.0" width="114.5" height="34"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="117" height="34"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                     <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -10076,7 +10078,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUK-Ny-nEz">
-                                                        <rect key="frame" x="8" y="13" width="105" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="106.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="dG9-Al-2ji"/>
                                                         </constraints>
@@ -10141,7 +10143,7 @@
                                                 <rect key="frame" x="0.0" y="160" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAd-fg-6m9">
-                                                        <rect key="frame" x="8" y="13" width="66" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="69" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="VhE-SY-h42"/>
                                                         </constraints>
@@ -10173,7 +10175,7 @@
                                                 <rect key="frame" x="0.0" y="260" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ĐỊa chỉ hiện tại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exO-rW-xd9">
-                                                        <rect key="frame" x="8" y="0.0" width="118" height="27"/>
+                                                        <rect key="frame" x="8" y="0.0" width="121" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="4HH-Bt-Fye"/>
                                                         </constraints>
@@ -10238,7 +10240,7 @@
                                                 <rect key="frame" x="0.0" y="420" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tình trạng hôn nhân" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIn-5E-EEw">
-                                                        <rect key="frame" x="8" y="13" width="160" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="161.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="gRn-8a-VIT"/>
                                                         </constraints>
@@ -10302,7 +10304,7 @@
                                                 <rect key="frame" x="0.0" y="580" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cấp bậc hiện tại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hb3-79-9ep">
-                                                        <rect key="frame" x="8" y="13" width="128.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="133" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="cMA-da-tg9"/>
                                                         </constraints>
@@ -10334,7 +10336,7 @@
                                                 <rect key="frame" x="0.0" y="660" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cấp bậc mong muốn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtW-ri-JFO">
-                                                        <rect key="frame" x="8" y="13" width="166.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="170.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="WWN-Qt-y7J"/>
                                                         </constraints>
@@ -10366,7 +10368,7 @@
                                                 <rect key="frame" x="0.0" y="740" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63J-NY-KQ1">
-                                                        <rect key="frame" x="8" y="13" width="97" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="98.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="XxH-ek-3CB"/>
                                                         </constraints>
@@ -10398,7 +10400,7 @@
                                                 <rect key="frame" x="0.0" y="820" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa điểm làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrC-iW-4ic">
-                                                        <rect key="frame" x="8" y="13" width="142.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="143.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="q9d-HM-wcO"/>
                                                         </constraints>
@@ -10430,7 +10432,7 @@
                                                 <rect key="frame" x="0.0" y="900" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trình độ học vấn cao nhất" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7V-MJ-RCU">
-                                                        <rect key="frame" x="8" y="13" width="207" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="209" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="gRs-Dc-i5g"/>
                                                         </constraints>
@@ -10462,7 +10464,7 @@
                                                 <rect key="frame" x="0.0" y="980" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng số năm kinh nghiệm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJw-ow-hvj">
-                                                        <rect key="frame" x="8" y="13" width="206" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="208" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="xsY-Sj-6B5"/>
                                                         </constraints>
@@ -10493,7 +10495,7 @@
                                                 <rect key="frame" x="0.0" y="1060" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hình thức làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVQ-e4-6hY">
-                                                        <rect key="frame" x="8" y="13" width="149" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="152" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="wHG-21-17h"/>
                                                         </constraints>
@@ -10525,7 +10527,7 @@
                                                 <rect key="frame" x="0.0" y="1140" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mong muốn mức lương tối thiểu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOR-cg-pYW">
-                                                        <rect key="frame" x="8" y="13" width="256.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="263" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="gXn-bn-dQX"/>
                                                         </constraints>
@@ -10557,7 +10559,7 @@
                                                 <rect key="frame" x="0.0" y="1220" width="320" height="130"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mục tiêu nghề nghiệp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qma-Lm-Bjd">
-                                                        <rect key="frame" x="8" y="13" width="172" height="21"/>
+                                                        <rect key="frame" x="8" y="13" width="175.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -10873,7 +10875,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lựa chọn phương thức" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re3-5b-3cF">
-                            <rect key="frame" x="49" y="10" width="202.5" height="28"/>
+                            <rect key="frame" x="44" y="10" width="212" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="w2F-vn-1f2"/>
                             </constraints>
@@ -11084,6 +11086,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="signupCustomerTouch" destination="BY2-sX-jD9" eventType="touchUpInside" id="l0m-T0-r3g"/>
                                     <action selector="tapOnSignUpButton:" destination="1Oa-ww-vdW" eventType="touchUpInside" id="51a-l1-VOg"/>
                                 </connections>
                             </button>
@@ -11277,7 +11280,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-cZ-aEQ">
                                         <rect key="frame" x="8" y="146" width="272" height="46"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birthday" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-aJ-Sio">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contact" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-aJ-Sio">
                                                 <rect key="frame" x="5" y="11" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="2Yn-DD-brH"/>
@@ -11399,7 +11402,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="8qd-iW-5fg" kind="modal" id="OB7-7e-Cwz"/>
+                                            <segue destination="8qd-iW-5fg" kind="modal" identifier="gotosignin" id="OB7-7e-Cwz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -11440,12 +11443,28 @@
                     </view>
                     <connections>
                         <outlet property="btnSignupCustomer" destination="naV-RC-lAS" id="r8t-7n-IZ3"/>
+                        <outlet property="imgBirthday" destination="pBU-aJ-Sio" id="OYN-hE-OqC"/>
+                        <outlet property="imgEmail" destination="Ww7-ZH-dFw" id="BfO-U4-PMA"/>
+                        <outlet property="imgNoteContact" destination="kgU-SF-pWN" id="ADi-lh-kG1"/>
+                        <outlet property="imgNoteEMail" destination="zVu-Hz-X57" id="vU0-i3-Gkc"/>
+                        <outlet property="imgNotePhone" destination="ojt-ZT-3Z5" id="EKr-zy-r9h"/>
+                        <outlet property="imgNoteUser" destination="9Bp-8d-TC4" id="ztL-Qa-KcY"/>
+                        <outlet property="imgPhone" destination="QCS-Dw-H6o" id="XvE-Jd-TPD"/>
+                        <outlet property="imgPolicy" destination="Wf3-jD-1hm" id="gMK-W5-FJE"/>
+                        <outlet property="imgUser" destination="q09-PW-dgd" id="yAq-NJ-NiZ"/>
+                        <outlet property="lblPolicy" destination="NuX-6A-zW1" id="ITX-dI-iOF"/>
+                        <outlet property="lineContact" destination="MjR-Qa-UOd" id="fX7-Yc-6bp"/>
+                        <outlet property="mViewPopup" destination="dgv-3v-aHs" id="TLg-dX-pD7"/>
                         <outlet property="textFieldCompanyName" destination="YFc-oG-saW" id="xlY-Nw-QJQ"/>
                         <outlet property="textFieldContact" destination="PzU-Bn-bBw" id="nBG-lr-uee"/>
                         <outlet property="textFieldEmail" destination="rAh-SB-BAi" id="qFe-Zy-3lG"/>
                         <outlet property="textFieldPhonenumber" destination="3ik-zZ-hZt" id="7D8-zK-gez"/>
+                        <outlet property="verticalEmail" destination="Dhh-Jn-q2n" id="QeL-TP-L3L"/>
+                        <outlet property="verticalPhone" destination="3X0-tI-fhr" id="fck-Ja-sSX"/>
+                        <outlet property="verticalUser" destination="Ryj-Ps-etr" id="Jaa-Nk-bPq"/>
                         <outlet property="viewInput" destination="3Wf-NB-i7g" id="472-ha-8FM"/>
                         <outlet property="viewPolicy" destination="82s-cm-1VJ" id="nLN-6k-MW6"/>
+                        <outlet property="visualEffectView" destination="sBi-Yb-Gxi" id="RrH-OL-4mv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mtk-Io-gH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -11489,6 +11508,7 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="dismissPopUpTuoch:" destination="1Oa-ww-vdW" eventType="touchUpInside" id="Eet-RK-gZd"/>
+                                <action selector="dismissPopUpTuoch:" destination="BY2-sX-jD9" eventType="touchUpInside" id="IGb-0V-odT"/>
                             </connections>
                         </button>
                     </subviews>
@@ -11717,15 +11737,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3i-hM-FoF">
                                         <rect key="frame" x="8" y="146" width="272" height="46"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birthday" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-tY-ivV">
-                                                <rect key="frame" x="5" y="11" width="24" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="ObO-K7-nXF"/>
-                                                    <constraint firstAttribute="width" constant="24" id="vVl-6u-6AK"/>
-                                                </constraints>
-                                            </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày tháng năm sinh" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22j-fS-t26">
-                                                <rect key="frame" x="45" y="0.0" width="195" height="46"/>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ngày tháng năm sinh" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22j-fS-t26">
+                                                <rect key="frame" x="44" y="0.0" width="196" height="46"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ConfirmPasswordTextField"/>
                                                 <constraints>
@@ -11738,6 +11751,12 @@
                                                     <action selector="formEditingChange:" destination="1Oa-ww-vdW" eventType="editingChanged" id="9X8-8Z-tmI"/>
                                                 </connections>
                                             </textField>
+                                            <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birthday" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-tY-ivV">
+                                                <rect key="frame" x="8" y="11" width="254" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="ObO-K7-nXF"/>
+                                                </constraints>
+                                            </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note" translatesAutoresizingMaskIntoConstraints="NO" id="Scr-NS-fc2">
                                                 <rect key="frame" x="237" y="11" width="24" height="24"/>
                                                 <constraints>
@@ -11756,15 +11775,16 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Scr-NS-fc2" firstAttribute="centerY" secondItem="l3i-hM-FoF" secondAttribute="centerY" id="0R5-gP-ADG"/>
+                                            <constraint firstItem="22j-fS-t26" firstAttribute="leading" secondItem="l3i-hM-FoF" secondAttribute="leading" constant="44" id="6Zh-qn-8dw"/>
                                             <constraint firstAttribute="trailing" secondItem="Scr-NS-fc2" secondAttribute="trailing" constant="11" id="FGt-wI-smI"/>
-                                            <constraint firstItem="O2R-tY-ivV" firstAttribute="leading" secondItem="l3i-hM-FoF" secondAttribute="leading" constant="5" id="Jy3-qO-FAs"/>
+                                            <constraint firstItem="O2R-tY-ivV" firstAttribute="leading" secondItem="l3i-hM-FoF" secondAttribute="leading" constant="8" id="Jy3-qO-FAs"/>
                                             <constraint firstAttribute="bottom" secondItem="T72-Tt-yvK" secondAttribute="bottom" id="KoO-UC-k2j"/>
                                             <constraint firstItem="22j-fS-t26" firstAttribute="centerY" secondItem="l3i-hM-FoF" secondAttribute="centerY" id="LYv-TV-QrE"/>
-                                            <constraint firstItem="22j-fS-t26" firstAttribute="leading" secondItem="O2R-tY-ivV" secondAttribute="trailing" constant="16" id="Taf-0Z-aqs"/>
                                             <constraint firstAttribute="height" constant="46" id="hTE-5L-FuN"/>
                                             <constraint firstAttribute="trailing" secondItem="T72-Tt-yvK" secondAttribute="trailing" constant="8" id="kcp-es-T1o"/>
                                             <constraint firstItem="T72-Tt-yvK" firstAttribute="leading" secondItem="l3i-hM-FoF" secondAttribute="leading" constant="8" id="kdh-Lp-Bp9"/>
                                             <constraint firstItem="O2R-tY-ivV" firstAttribute="centerY" secondItem="l3i-hM-FoF" secondAttribute="centerY" id="nAZ-hY-9pz"/>
+                                            <constraint firstAttribute="trailing" secondItem="O2R-tY-ivV" secondAttribute="trailing" constant="10" id="s73-mG-cdZ"/>
                                             <constraint firstAttribute="trailing" secondItem="22j-fS-t26" secondAttribute="trailing" constant="32" id="sjz-U8-Ml0"/>
                                         </constraints>
                                     </view>
@@ -11977,6 +11997,13 @@
                                     <constraint firstAttribute="height" constant="35" id="9Uc-DP-ujV"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQM-Ev-kgY">
+                                <rect key="frame" x="0.0" y="368" width="320" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bG6-5D-arz"/>
+                                </constraints>
+                            </view>
                             <visualEffectView hidden="YES" opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg8-eS-45Q">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6it-k9-KzO">
@@ -11990,12 +12017,14 @@
                         <accessibility key="accessibilityConfiguration" identifier="SignUpView"/>
                         <constraints>
                             <constraint firstItem="tg8-eS-45Q" firstAttribute="top" secondItem="XMA-3Z-CBb" secondAttribute="bottom" id="0uK-Wg-3Ru"/>
+                            <constraint firstAttribute="trailing" secondItem="RQM-Ev-kgY" secondAttribute="trailing" id="1xA-RJ-23b"/>
                             <constraint firstItem="key-Br-RM2" firstAttribute="leading" secondItem="fOd-E6-qfR" secondAttribute="leading" id="2EB-z3-mRC"/>
                             <constraint firstItem="6Tu-JQ-HIM" firstAttribute="top" secondItem="XMA-3Z-CBb" secondAttribute="bottom" constant="14" id="52O-Wf-r4F"/>
                             <constraint firstItem="IdX-9A-577" firstAttribute="centerX" secondItem="fOd-E6-qfR" secondAttribute="centerX" id="6NK-h6-p2Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IdX-9A-577" secondAttribute="trailing" id="7PA-oe-oW0"/>
                             <constraint firstItem="MXa-gm-bli" firstAttribute="top" secondItem="oRD-MA-2oV" secondAttribute="bottom" constant="11" id="BQc-sd-Zar"/>
                             <constraint firstItem="sxg-nY-nv5" firstAttribute="top" secondItem="tg8-eS-45Q" secondAttribute="bottom" id="D3X-CY-4XW"/>
+                            <constraint firstItem="RQM-Ev-kgY" firstAttribute="leading" secondItem="fOd-E6-qfR" secondAttribute="leading" id="HON-Qf-DN1"/>
                             <constraint firstAttribute="trailing" secondItem="MXa-gm-bli" secondAttribute="trailing" constant="20" id="LHy-cv-AuN"/>
                             <constraint firstAttribute="trailing" secondItem="tg8-eS-45Q" secondAttribute="trailing" id="OJf-OT-Rta"/>
                             <constraint firstItem="oRD-MA-2oV" firstAttribute="top" secondItem="IdX-9A-577" secondAttribute="bottom" constant="18" id="QnI-eC-1iC"/>
@@ -12007,6 +12036,7 @@
                             <constraint firstAttribute="trailing" secondItem="tg8-eS-45Q" secondAttribute="trailing" id="bZ0-W0-Q3j"/>
                             <constraint firstItem="tg8-eS-45Q" firstAttribute="leading" secondItem="fOd-E6-qfR" secondAttribute="leading" id="c7R-tZ-VIS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oRD-MA-2oV" secondAttribute="trailing" id="gqP-qs-81A"/>
+                            <constraint firstItem="sxg-nY-nv5" firstAttribute="top" secondItem="RQM-Ev-kgY" secondAttribute="bottom" id="hSW-wI-VVB"/>
                             <constraint firstItem="key-Br-RM2" firstAttribute="top" secondItem="XMA-3Z-CBb" secondAttribute="bottom" id="lln-vj-EE0"/>
                             <constraint firstItem="IdX-9A-577" firstAttribute="leading" secondItem="fOd-E6-qfR" secondAttribute="leadingMargin" id="mL1-ts-O0U"/>
                             <constraint firstItem="6Tu-JQ-HIM" firstAttribute="centerX" secondItem="fOd-E6-qfR" secondAttribute="centerX" id="mYQ-BM-9ct"/>
@@ -12017,13 +12047,16 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="imgBirthday" destination="O2R-tY-ivV" id="UyI-Ad-vP4"/>
                         <outlet property="imgEmail" destination="VNW-W0-LSl" id="LtH-am-dDC"/>
                         <outlet property="imgNoteEMail" destination="Hxz-Gz-ykb" id="n19-cF-Iwc"/>
                         <outlet property="imgNotePhone" destination="9Aj-X0-i0i" id="9NR-iV-Wd2"/>
                         <outlet property="imgNoteUser" destination="VEp-gU-cIJ" id="E1c-vb-bGw"/>
                         <outlet property="imgPhone" destination="7Sh-OM-dH4" id="QaL-mb-fPA"/>
+                        <outlet property="imgPolicy" destination="tTG-P0-Pjn" id="utt-mu-rba"/>
                         <outlet property="imgUser" destination="Gj0-9l-bN0" id="Wc6-5k-EAC"/>
                         <outlet property="jobTextField" destination="KNx-1H-WaX" id="qok-C9-gCC"/>
+                        <outlet property="lblPolicy" destination="a4E-DE-Fxk" id="idI-Yc-Vsc"/>
                         <outlet property="mView" destination="IdX-9A-577" id="7Zx-ed-4WA"/>
                         <outlet property="mViewPopUp" destination="tMh-px-8dY" id="kd0-9H-WDD"/>
                         <outlet property="signUp" destination="oRD-MA-2oV" id="FVU-88-BaX"/>
@@ -12035,6 +12068,8 @@
                         <outlet property="verticalEmail" destination="I9O-h2-EYC" id="4FZ-jO-H4R"/>
                         <outlet property="verticalPhone" destination="j2b-eE-SV8" id="R4z-Ky-94k"/>
                         <outlet property="verticalUser" destination="AOt-Xu-8Nu" id="n3f-y3-54t"/>
+                        <outlet property="viewChooseDateTime" destination="RQM-Ev-kgY" id="8mc-3u-qpB"/>
+                        <outlet property="viewPolicy" destination="v62-Ko-ooq" id="NAV-sB-Mzx"/>
                         <outlet property="visualEffectView" destination="tg8-eS-45Q" id="zF2-SE-ZE5"/>
                     </connections>
                 </viewController>
@@ -12126,6 +12161,7 @@
         <image name="camera" width="32" height="32"/>
         <image name="change_pass" width="18" height="18"/>
         <image name="close_white" width="24" height="24"/>
+        <image name="contact" width="21" height="21"/>
         <image name="dislike" width="22" height="20"/>
         <image name="email_white" width="21" height="17"/>
         <image name="eye_view" width="22" height="15"/>
