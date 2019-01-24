@@ -25,6 +25,8 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     @IBOutlet var mViewContact: UIView!
     @IBOutlet weak var btnCustomer: UIButton!
     @IBOutlet weak var btnHeadhunter: UIButton!
+    @IBOutlet weak var lblDevMode: UILabel!
+    @IBOutlet weak var imgLogo: UIImageView!
     
     var homeViewModel = HomeViewModel()
     var viewModel = SignInViewModelWithCredentials()
@@ -98,15 +100,13 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         passwordField.delegate = self
         
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
-//        lblLogin.isUserInteractionEnabled=true
-//        lblLogin.addGestureRecognizer(gestureSwift2AndHigher2)
+        imgLogo.isUserInteractionEnabled=true
+        imgLogo.addGestureRecognizer(gestureSwift2AndHigher2)
         
         if Env.isProduction() == true {
-//            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
+            self.lblDevMode.isHidden = true
         } else {
-//            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
+            self.lblDevMode.isHidden = false
         }
     }
     var dem: Int = 0
@@ -117,16 +117,14 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
             Env.setProductionTrue()
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
-//            lblLogin.text = "\(NSLocalizedString("login", comment: ""))"
-//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#191830")
+            self.lblDevMode.isHidden = true
         }else{
             dem = dem - 1
             Env.setProductionFalse()
             App.setBaseUrlDev()
             debugLog(object: Env.isProduction())
             debugLog(object: App.baseUrl)
-//            lblLogin.text = "\(NSLocalizedString("login", comment: "")) Dev Mode"
-//            lblLogin.textColor = StringUtils.shared.hexStringToUIColor(hex: "#DC4444")
+            self.lblDevMode.isHidden = false
         }
     }
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
@@ -179,7 +177,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         NSAttributedStringKey.foregroundColor : UIColor.black,
         NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
     var attributedString2 = NSMutableAttributedString(string:"")
-
     var attributedString = NSMutableAttributedString(string:"")
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -282,7 +279,8 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     }
     
     @IBAction func forgetPassTouch(_ sender: Any) {
-        animateInForgotPass()
+//        animateInForgotPass()
+        performSegue(withIdentifier: "resetpass", sender: self)
     }
     @IBAction func tapOnSignInButton(_ sender: Any) {
         if self.emailField.text! == ""{

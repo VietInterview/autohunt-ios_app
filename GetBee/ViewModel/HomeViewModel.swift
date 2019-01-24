@@ -248,11 +248,12 @@ class HomeViewModel {
     }
     func changePassword(currentPass: String, newPass: String,success: @escaping () -> Void, failure: @escaping (String, Int) -> Void){
         UserAPI.changePassword(currentPassword: currentPass, newPassword: newPass, success: success, failure: {error, statusCode  in
-            if statusCode == 0 {
-                failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng." , statusCode)
-            } else {
-                failure("Không kết nối tới server, bạn vui lòng thử lại." , statusCode)
-            }
+//            if statusCode == 0 {
+//                failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng." , statusCode)
+//            } else {
+//                failure("Không kết nối tới server, bạn vui lòng thử lại." , statusCode)
+//            }
+            failure(error , statusCode)
         })
     }
     func getJobDetailCustomer(jobId:Int, success: @escaping (JobDetailCustomer) -> Void, failure: @escaping (String) -> Void){

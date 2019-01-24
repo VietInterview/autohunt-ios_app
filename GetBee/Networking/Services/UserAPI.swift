@@ -23,19 +23,41 @@ class UserAPI {
       "username": email
       ] as [String : Any]
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
-    APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+    APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
       LoadingOverlay.shared.hideOverlayView()
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success()
-    }, failure: { error in
+    }, failure: { error,response,status  in
       LoadingOverlay.shared.hideOverlayView()
       failure(error)
     })
   }
-  
+  class func resetPass(_ email:String,success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
+     let url = "/api/account/reset-password/init"
+    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    APIClient.requestStringParam(.post, url: url, params: email, success: { response, headers, status in
+      LoadingOverlay.shared.hideOverlayView()
+      success()
+    }, failure: { error,response , statusCode in
+      LoadingOverlay.shared.hideOverlayView()
+      if statusCode == 200 {
+        failure("")
+      } else {
+        if let errorResetPass = try? newJSONDecoder().decode(ErrorResetPass.self, from: response){
+          if errorResetPass.title == "email_not_found" {
+            failure("Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+          } else {
+            failure(error.localizedDescription)
+          }
+        } else {
+          failure(error.localizedDescription)
+        }
+      }
+    })
+  }
   class func signup(_ email: String, address: String, career: String, fullName:String, phone: String,companyName:String,mType:Int,contact:String,birthday:Int , success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
     let url = "/api/register"
-    let parameters = [
+    let parameters =  [
       "email": email,
       "address": address,
       "career": career,
@@ -45,17 +67,21 @@ class UserAPI {
       "companyName": companyName,
       "type": mType,
       "contact": contact,
-      "birthday": birthday
+      "birthday": birthday != 0 ? birthday : nil
       ] as [String : Any]
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
-    APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
+    APIClient.request(.post, url: url, params: parameters, success: { response, headers, status in
         LoadingOverlay.shared.hideOverlayView()
         success()
-    }, failure: { error , statusCode in
+    }, failure: { error,response , statusCode in
       LoadingOverlay.shared.hideOverlayView()
-      var dict : Dictionary = error
-      let errorString:String = dict["X-gwautohuntApp-error"] as? String ?? ""
-      failure(errorString)
+      if let errorRegister = try? newJSONDecoder().decode(ErrorRegister.self, from: response){
+        if errorRegister.errorKey! == "userexists" {
+          failure("Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+        }
+      } else {
+        failure(error.localizedDescription)
+      }
     })
   }
   
@@ -71,47 +97,47 @@ class UserAPI {
       ]
     ]
     
-    APIClient.request(.post, url: usersUrl, params: parameters, success: { response, headers in
+    APIClient.request(.post, url: usersUrl, params: parameters, success: { response, headers,status  in
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success(response)
-    }, failure: { error in
+    }, failure: { error,response,status in
       failure(error)
     })
   }
   
   class func getMyProfile(_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = collUrl + "/getProfiles"
-    APIClient.request(.get, url: url, success: { response, _ in
+    APIClient.request(.get, url: url, success: { response, _,status  in
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
         UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
       }
-    }, failure: { error in
+    }, failure: { error, response, status in
       failure(error)
     })
   }
   class func getCusProfile(_ success: @escaping (_ user: ProfileCustomer) -> Void, failure: @escaping (_ error: Error) -> Void) {
     let url = collCusUrl + "/getProfiles"
     UIApplication.showNetworkActivity()
-    APIClient.request(.get, url: url, success: { response, _ in
+    APIClient.request(.get, url: url, success: { response, _,status  in
       UIApplication.hideNetworkActivity()
       if let getCusProfile = try? JSONDecoder().decode(ProfileCustomer.self, from: response){
         CustomerDataManager.currentCustomer = getCusProfile
         success(getCusProfile)
       }
-    }, failure: { error in
+    }, failure: { error,response, status in
       UIApplication.hideNetworkActivity()
       failure(error)
     })
   }
   class func getAccount(_ success: @escaping (_ user: Account) -> Void, failure: @escaping (_ error: Error) -> Void){
     let url = "/api/account"
-    APIClient.request(.get, url: url, success: { response, _ in
+    APIClient.request(.get, url: url, success: { response, _,status in
       if let account = try? JSONDecoder().decode(Account.self, from: response){
         AccountManager.currentAccount = account
         success(account)
       }
-    }, failure: { error in
+    }, failure: { error,response,status in
       failure(error)
     })
   }
@@ -135,13 +161,13 @@ class UserAPI {
       "phoneColl": phone,
       "desideratedCareer":list
       ] as [String : Any]
-    APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+    APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
       LoadingOverlay.shared.hideOverlayView()
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
         UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
       }
-    }, failure: { error in
+    }, failure: { error,response,status in
        LoadingOverlay.shared.hideOverlayView()
       failure(error)
     })
@@ -153,14 +179,22 @@ class UserAPI {
       "newPassword": newPassword
       ] as [String : Any]
     LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
-    APIClient.request1(.post, url: url, params: parameters, success: { response, headers in
+    APIClient.request(.post, url: url, params: parameters, success: { response, headers,status in
       LoadingOverlay.shared.hideOverlayView()
       success()
-    }, failure: { error, statusCode  in
+    }, failure: { error,response, statusCode  in
       LoadingOverlay.shared.hideOverlayView()
-      var dict : Dictionary = error
-      let errorString:String = dict["X-svcCollaboratorApp-error"] as? String ?? ""
-      failure(errorString, statusCode)
+      if statusCode == 200 {
+        failure("Thay đổi mật khẩu thành công", statusCode)
+      } else {
+        if let errorResetPass = try? newJSONDecoder().decode(ErrorResetPass.self, from: response) {
+          if errorResetPass.title == "incorrect_password" {
+            failure("Mật khẩu không đúng, vui lòng thử lại", statusCode)
+          } else {
+            failure(errorResetPass.title!, statusCode)
+          }
+        }
+      }
     })
   }
   class func loginWithFacebook(token: String, success: @escaping () -> Void, failure: @escaping (_ error: Error) -> Void) {
@@ -168,10 +202,10 @@ class UserAPI {
     let parameters = [
       "access_token": token
     ]
-    APIClient.request(.post, url: url, params: parameters, success: { response, headers in
+    APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success()
-    }, failure: { error in
+    }, failure: { error,response,status in
       failure(error)
     })
   }

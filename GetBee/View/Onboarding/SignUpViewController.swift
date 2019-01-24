@@ -242,9 +242,9 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
             viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 7,contact: "",birthday: self.somedateString2 , success: {
                 self.animateIn()
             }, failure: {error in
-                if error == "error.userexists" {
-                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("email_esxit", comment: ""))
-                }
+//                if error == "error.userexists" {
+                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+//                }
             })
         }
     }

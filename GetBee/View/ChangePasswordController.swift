@@ -60,7 +60,7 @@ class ChangePasswordController: BaseViewController {
     }
     func changePassword(){
         view.endEditing(true)
-        self.homeViewModel.changePassword(currentPass: self.textFieldOldPass.text!, newPass: self.textFieldNewPass.text!, success: {[unowned self]  in
+        self.homeViewModel.changePassword(currentPass: self.textFieldOldPass.text!, newPass: self.textFieldNewPass.text!, success: {
             
             }, failure: {error, statusCode in
                 if statusCode == 200 {
@@ -73,8 +73,13 @@ class ChangePasswordController: BaseViewController {
                         }
                     }
                 } else {
-                    let toast = Toast(text: NSLocalizedString("incorrect_password", comment: ""))
-                    toast.show()
+                    if statusCode == 0 {
+                        let toast = Toast(text: "Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng.")
+                        toast.show()
+                    } else {
+                        let toast = Toast(text: error)
+                        toast.show()
+                    }
                 }
         })
     }

@@ -56,8 +56,8 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
         self.navigationController?.view.backgroundColor = .clear
         
         if let jobdetail = self.jobDetail.fee {
-            lblNotiHunt.text = "\(NSLocalizedString("hunt_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: self.jobDetail.fee!)) VND"
-            lblNotiSendCV.text = "\(NSLocalizedString("cv_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: (self.jobDetail.fee!*47)/68)) VND"
+            lblNotiHunt.text = "\(NSLocalizedString("hunt_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: jobdetail)) VND"
+            lblNotiSendCV.text = "\(NSLocalizedString("cv_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: (jobdetail*47)/68)) VND"
             self.mViewBtnSubmitCV.isHidden = false
             self.mViewBtnSubmitCV.visible()
         } else {
@@ -276,7 +276,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
                 })
             }
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error, handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: ChooseCVSubmitController.self) {
@@ -302,7 +302,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
                 })
             }
         }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error == "Email or phone is already in submit job!" ? NSLocalizedString("emailorphoneexist", comment: ""):"", handler: { (action: UIAlertAction!) in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error, handler: { (action: UIAlertAction!) in
                 self.animateOut()
                 for controller in self.navigationController!.viewControllers as Array {
                     if controller.isKind(of: ChooseCVSubmitController.self) {

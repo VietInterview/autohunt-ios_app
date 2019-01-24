@@ -20,9 +20,9 @@ public enum SwiftBaseErrorCode: Int {
     case propertyListSerializationFailed = -6007
 }
 
-public typealias SuccessCallback = (_ responseObject: [String: Any], _ responseHeaders: [AnyHashable: Any]) -> Void
-public typealias FailureCallback = (_ error: Error) -> Void
-public typealias FailureSubmitCVCallback = (_ errorSubmitCV: [AnyHashable: Any], _ statusCode: Int) -> Void
+public typealias SuccessCallback = (_ responseObject: [String: Any],_ responseHeaders: [AnyHashable: Any],_ statusCode: Int) -> Void
+public typealias FailureCallback = (_ error: Error,_ responseObject: [String: Any],_ statusCode: Int) -> Void
+//public typealias FailureSubmitCVCallback = (_ errorSubmitCV: [AnyHashable: Any], _ statusCode: Int) -> Void
 
 class APIClient {
     
@@ -105,7 +105,7 @@ class APIClient {
                         validateResult(ofResponse: response, success: success, failure: failure)
                 }
             case .failure(let encodingError):
-                failure(encodingError)
+                failure(encodingError,[:],(encodingError as NSError).code)
             }
         })
     }
@@ -138,8 +138,7 @@ class APIClient {
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
-    class func request1(_ method: HTTPMethod, url: String, params: [String: Any]? = nil, paramsEncoding: ParameterEncoding? = nil, success: @escaping SuccessCallback, failure: @escaping FailureSubmitCVCallback) {
-        let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
+    class func requestStringParam(_ method: HTTPMethod, url: String, params: String?, paramsEncoding: ParameterEncoding? = nil, success: @escaping SuccessCallback, failure: @escaping FailureCallback) {
         let header = APIClient.getHeader()
         let requestUrl = getBaseUrl() + url
         if let mParam = params{
@@ -149,50 +148,52 @@ class APIClient {
         }
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 5
-        manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
+        manager.request(requestUrl, method: method,  parameters: [:], encoding: params!, headers: header)
             .validate()
             .responseDictionary { response in
                 if let value = response.value {
                     print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: value))")
                 }
-                validateResult1(ofResponse: response, success: success, failure: failure)
+                validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
-    fileprivate class func validateResult(ofResponse response: DataResponse<[String: Any]>,
-                                          success: @escaping SuccessCallback,
-                                          failure: @escaping FailureCallback) {
+    fileprivate class func validateResult(ofResponse response: DataResponse<[String: Any]>, success: @escaping SuccessCallback, failure: @escaping FailureCallback) {
         switch response.result {
         case .success(let dictionary):
             if let urlResponse = response.response {
-                success(dictionary, urlResponse.allHeaderFields)
+                success(dictionary, urlResponse.allHeaderFields,urlResponse.statusCode)
             }
             return
         case .failure(let error):
-            debugLog(object: "\((error as NSError).code) - \(error.localizedDescription)")
-            failure(error)
+            debugLog(object: "\(response.response!.statusCode) - \(error.localizedDescription)")
+            if let data = response.data {
+                if let json = String(data: data, encoding: String.Encoding.utf8){
+                    if  let dict = convertToDictionary(text: json){
+                        print("Response: \(response.request!.url!.absoluteURL.absoluteString) \n\(StringUtils.shared.prettyPrint(with: dict))")
+                        failure(error,dict,response.response!.statusCode)
+                    }else {
+                        failure(error,[:],response.response!.statusCode)
+                    }
+                } else {
+                    failure(error,[:],response.response!.statusCode)
+                }
+            } else {
+                failure(error,[:],response.response!.statusCode)
+            }
             if (error as NSError).code == 401 { //Unauthorized user
                 AppDelegate.shared.unexpectedLogout()
             }
         }
     }
-    fileprivate class func validateResult1(ofResponse response: DataResponse<[String: Any]>,
-                                           success: @escaping SuccessCallback,
-                                           failure: @escaping FailureSubmitCVCallback) {
-        switch response.result {
-        case .success(let dictionary):
-            if let urlResponse = response.response {
-                success(dictionary, urlResponse.allHeaderFields)
-            }
-            return
-        case .failure(let error):
-            debugLog(object: "\((error as NSError).code) - \(error.localizedDescription)")
-            let dict : Dictionary = response.response!.allHeaderFields
-            debugLog(object: response.response!.allHeaderFields)
-            failure(dict, response.response!.statusCode)
-            if (error as NSError).code == 401 { //Unauthorized user
-                AppDelegate.shared.unexpectedLogout()
+    class func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
             }
         }
+        return nil
     }
     //Handle rails-API-base errors if any
     class func handleCustomError(_ code: Int?, dictionary: [String: Any]) -> NSError? {
@@ -253,4 +254,13 @@ extension Data {
     func asBase64Param(withType type: MimeType = .jpeg) -> String {
         return "data:\(type.rawValue);base64,\(self.base64EncodedString())"
     }
+}
+extension String: ParameterEncoding {
+    
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        var request = try urlRequest.asURLRequest()
+        request.httpBody = data(using: .utf8, allowLossyConversion: false)
+        return request
+    }
+    
 }

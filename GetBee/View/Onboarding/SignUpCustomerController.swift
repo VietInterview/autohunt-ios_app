@@ -150,12 +150,12 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
         } else if self.isAgree == false {
             self.showMessage(title: "Thông báo", message: "Bạn phải đồng ý với điều khoản sử dụng của GetBee")
         } else {
-            viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: "", fullName: self.textFieldCompanyName.text!, phone: self.textFieldPhonenumber.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 7,contact: StringUtils.shared.checkEmpty(value: self.textFieldContact.text) ,birthday: 0 , success: {
+            viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: "", fullName: self.textFieldCompanyName.text!, phone: self.textFieldPhonenumber.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 2,contact: StringUtils.shared.checkEmpty(value: self.textFieldContact.text) ,birthday: 0 , success: {
                 self.animateIn()
             }, failure: {error in
-                if error == "error.userexists" {
-                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: NSLocalizedString("email_esxit", comment: ""))
-                }
+//                if error == "error.userexists" {
+                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+//                }
             })
         }
     }

@@ -49,6 +49,7 @@
 		7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */; };
 		7A33518C21DF58650063BE50 /* GotoWorkUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33518B21DF58650063BE50 /* GotoWorkUpdate.swift */; };
 		7A33518E21DF6B810063BE50 /* SendGoToWorkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33518D21DF6B810063BE50 /* SendGoToWorkDelegate.swift */; };
+		7A387BB621F81B1E00885DBB /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A387BB521F81B1E00885DBB /* ResetPasswordController.swift */; };
 		7A39977F21DE05E100F9591F /* SendInterviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A39977E21DE05E100F9591F /* SendInterviewResponse.swift */; };
 		7A39978121DE0FBF00F9591F /* SendInterviewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A39978021DE0FBF00F9591F /* SendInterviewDelegate.swift */; };
 		7A3A07D821CB46640019FC81 /* LanComCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A07D721CB46640019FC81 /* LanComCell.swift */; };
@@ -140,6 +141,10 @@
 		7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */; };
 		7AE4137F21F1C97500D11FA3 /* SignUpCustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE4137E21F1C97500D11FA3 /* SignUpCustomerController.swift */; };
 		7AEC5ADD21DC4AFD0086CD6C /* DetailProcessResume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC5ADC21DC4AFD0086CD6C /* DetailProcessResume.swift */; };
+		7AEDB28E21F8566400723F8D /* ErrorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEDB28D21F8566400723F8D /* ErrorLogin.swift */; };
+		7AEDB29021F857E600723F8D /* ErrorRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEDB28F21F857E600723F8D /* ErrorRegister.swift */; };
+		7AEDB29221F85C1B00723F8D /* ErrorResetPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEDB29121F85C1B00723F8D /* ErrorResetPass.swift */; };
+		7AEDB29621F8804700723F8D /* MyServerTrustPolicyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEDB29521F8804700723F8D /* MyServerTrustPolicyManager.swift */; };
 		7AF1BD54219FBB20002FDC63 /* InfoDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */; };
 		7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */; };
 		7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */; };
@@ -231,6 +236,7 @@
 		7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailCVController.swift; sourceTree = "<group>"; };
 		7A33518B21DF58650063BE50 /* GotoWorkUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoWorkUpdate.swift; sourceTree = "<group>"; };
 		7A33518D21DF6B810063BE50 /* SendGoToWorkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendGoToWorkDelegate.swift; sourceTree = "<group>"; };
+		7A387BB521F81B1E00885DBB /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		7A39977E21DE05E100F9591F /* SendInterviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInterviewResponse.swift; sourceTree = "<group>"; };
 		7A39978021DE0FBF00F9591F /* SendInterviewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendInterviewDelegate.swift; sourceTree = "<group>"; };
 		7A3A07D721CB46640019FC81 /* LanComCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanComCell.swift; sourceTree = "<group>"; };
@@ -338,6 +344,10 @@
 		7ADFA16821A2B4B4001492F0 /* MyJobAppliedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJobAppliedController.swift; sourceTree = "<group>"; };
 		7AE4137E21F1C97500D11FA3 /* SignUpCustomerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCustomerController.swift; sourceTree = "<group>"; };
 		7AEC5ADC21DC4AFD0086CD6C /* DetailProcessResume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProcessResume.swift; sourceTree = "<group>"; };
+		7AEDB28D21F8566400723F8D /* ErrorLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogin.swift; sourceTree = "<group>"; };
+		7AEDB28F21F857E600723F8D /* ErrorRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRegister.swift; sourceTree = "<group>"; };
+		7AEDB29121F85C1B00723F8D /* ErrorResetPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResetPass.swift; sourceTree = "<group>"; };
+		7AEDB29521F8804700723F8D /* MyServerTrustPolicyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServerTrustPolicyManager.swift; sourceTree = "<group>"; };
 		7AF1BD53219FBB20002FDC63 /* InfoDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCVController.swift; sourceTree = "<group>"; };
 		7AF1BD55219FCF98002FDC63 /* ExpDetailCVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpDetailCVController.swift; sourceTree = "<group>"; };
 		7AFA0AEB2194364F00A42267 /* AddRemoveJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemoveJob.swift; sourceTree = "<group>"; };
@@ -488,6 +498,9 @@
 				7A86E13B21DF06CD00707E74 /* SendOffer.swift */,
 				7A33518B21DF58650063BE50 /* GotoWorkUpdate.swift */,
 				7A2E7A7621E36573006DD1BA /* ProfileCustomer.swift */,
+				7AEDB28D21F8566400723F8D /* ErrorLogin.swift */,
+				7AEDB28F21F857E600723F8D /* ErrorRegister.swift */,
+				7AEDB29121F85C1B00723F8D /* ErrorResetPass.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -803,6 +816,7 @@
 				E8290BFB1D832D4100599960 /* CustomControls */,
 				7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */,
 				7A455AC121BCCA00007F2020 /* BaseViewController.swift */,
+				7A387BB521F81B1E00885DBB /* ResetPasswordController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -847,6 +861,7 @@
 				9B77E0741E2FB66F0020E450 /* UserDataManager.swift */,
 				7A045FB521BDFFF400BC3B8C /* AccountManager.swift */,
 				7A2E7A7821E36693006DD1BA /* CustomerDataManager.swift */,
+				7AEDB29521F8804700723F8D /* MyServerTrustPolicyManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1176,6 +1191,7 @@
 				7AFA0AEC2194364F00A42267 /* AddRemoveJob.swift in Sources */,
 				7A6CE03921CA382900954ADC /* DetailResumeCustomerController.swift in Sources */,
 				7A06AD972174261800E3CDAA /* ViewModel.swift in Sources */,
+				7AEDB28E21F8566400723F8D /* ErrorLogin.swift in Sources */,
 				7A06AD992174262300E3CDAA /* Model.swift in Sources */,
 				7A2E7A7521E36037006DD1BA /* EmailCell.swift in Sources */,
 				7ADFA16221A291A0001492F0 /* ScreenUtils.swift in Sources */,
@@ -1205,6 +1221,7 @@
 				E8FBB1BF1DD21A32000D6740 /* Session.swift in Sources */,
 				0A6990351F9F82A300F4BAC7 /* UIApplicationExtension.swift in Sources */,
 				7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */,
+				7A387BB621F81B1E00885DBB /* ResetPasswordController.swift in Sources */,
 				7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */,
 				9B77E0731E2FB6350020E450 /* User.swift in Sources */,
 				7A2EA4A021A0FC5400E61681 /* ComDetailCVController.swift in Sources */,
@@ -1212,6 +1229,7 @@
 				7A7B863321CBE4EB00EA10B5 /* SelfSizedTableView.swift in Sources */,
 				7A045FB421BDFB1100BC3B8C /* Account.swift in Sources */,
 				7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */,
+				7AEDB29621F8804700723F8D /* MyServerTrustPolicyManager.swift in Sources */,
 				7A0B361C21CE76DD0092C8E2 /* CreateEditOfferController.swift in Sources */,
 				7A2EA49E21A0FC3A00E61681 /* LanDetailCVController.swift in Sources */,
 				7ADFA16921A2B4B4001492F0 /* MyJobAppliedController.swift in Sources */,
@@ -1258,6 +1276,7 @@
 				7A99AA6421719B6400E3B0DC /* ViewController.swift in Sources */,
 				E8FBB1C11DD21D18000D6740 /* SessionManager.swift in Sources */,
 				7A2E7A6F21E343FF006DD1BA /* WelfareTableCell.swift in Sources */,
+				7AEDB29021F857E600723F8D /* ErrorRegister.swift in Sources */,
 				7A955E2321A8011800D402D4 /* IntroOneController.swift in Sources */,
 				7A8A479021E2EE1600ED3865 /* ImageCollectionViewCell.swift in Sources */,
 				7A5855C621B5451200625635 /* Localizable.swift in Sources */,
@@ -1276,6 +1295,7 @@
 				9B88CC671CAB305900AE60C5 /* Constants.swift in Sources */,
 				7A045FB621BDFFF400BC3B8C /* AccountManager.swift in Sources */,
 				7A60B03121BFAFBE0048F4C4 /* DetailJobCustomerController.swift in Sources */,
+				7AEDB29221F85C1B00723F8D /* ErrorResetPass.swift in Sources */,
 				7AC6DA7A21A24A2F00BD5C10 /* DetailCV.swift in Sources */,
 				7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */,
 				7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */,
