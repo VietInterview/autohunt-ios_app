@@ -145,6 +145,8 @@ class CvsAPI{
                 } else {
                     failure(error.message!)
                 }
+            } else {
+                failure(errorSubmitCV.localizedDescription)
             }
         })
     }

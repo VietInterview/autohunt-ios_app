@@ -22,10 +22,8 @@ public enum SwiftBaseErrorCode: Int {
 
 public typealias SuccessCallback = (_ responseObject: [String: Any],_ responseHeaders: [AnyHashable: Any],_ statusCode: Int) -> Void
 public typealias FailureCallback = (_ error: Error,_ responseObject: [String: Any],_ statusCode: Int) -> Void
-//public typealias FailureSubmitCVCallback = (_ errorSubmitCV: [AnyHashable: Any], _ statusCode: Int) -> Void
 
 class APIClient {
-    
     enum HTTPHeader: String {
         case uid = "uid"
         case client = "client"
@@ -77,18 +75,9 @@ class APIClient {
     //Multipart-form base request. Used to upload media along with desired params.
     //Note: Multipart request does not support Content-Type = application/json.
     //If your API requires this header do not use this method or change backend to skip this validation.
-    class func multipartRequest(_ method: HTTPMethod = .post,
-                                url: String,
-                                headers: [String: String]? = nil,
-                                params: [String: Any]?,
-                                paramsRootKey: String,
-                                media: [MultipartMedia],
-                                success: @escaping SuccessCallback,
-                                failure: @escaping FailureCallback) {
-        
+    class func multipartRequest(_ method: HTTPMethod = .post, url: String, headers: [String: String]? = nil, params: [String: Any]?, paramsRootKey: String, media: [MultipartMedia], success: @escaping SuccessCallback, failure: @escaping FailureCallback) {
         let header = APIClient.getHeader()
         let requestUrl = getBaseUrl() + url
-        
         Alamofire.upload(multipartFormData: { (multipartForm) -> Void in
             if let parameters = params {
                 multipartFormData(multipartForm, params: parameters, rootKey: paramsRootKey)
@@ -96,12 +85,10 @@ class APIClient {
             for elem in media {
                 elem.embed(inForm: multipartForm)
             }
-            
         }, to: requestUrl, method: method, headers: header, encodingCompletion: { (encodingResult) -> Void in
             switch encodingResult {
             case .success(let upload, _, _):
-                upload.validate()
-                    .responseDictionary { response in
+                upload.validate() .responseDictionary { response in
                         validateResult(ofResponse: response, success: success, failure: failure)
                 }
             case .failure(let encodingError):
@@ -122,38 +109,26 @@ class APIClient {
         let encoding = paramsEncoding ?? defaultEncoding(forMethod: method)
         let header = APIClient.getHeader()
         let requestUrl = getBaseUrl() + url
-        if let mParam = params{
-            print("CallRequest: " + requestUrl + "\n \(header!)\n \(mParam)")
-        }else{
-            print("CallRequest: " + requestUrl + "\n \(header!)")
-        }
+        print(params != nil ? "CallRequest: " + requestUrl + "\n \(header!)\n \(params!)":"CallRequest: " + requestUrl + "\n \(header!)")
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 5
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
-                if let value = response.value {
-                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: value))")
-                }
+                print(response.value != nil ? "Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))" : "")
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
     class func requestStringParam(_ method: HTTPMethod, url: String, params: String?, paramsEncoding: ParameterEncoding? = nil, success: @escaping SuccessCallback, failure: @escaping FailureCallback) {
         let header = APIClient.getHeader()
         let requestUrl = getBaseUrl() + url
-        if let mParam = params{
-            print("CallRequest: " + requestUrl + "\n \(header!)\n \(mParam)")
-        }else{
-            print("CallRequest: " + requestUrl + "\n \(header!)")
-        }
+        print(params != nil ? "CallRequest: " + requestUrl + "\n \(header!)\n \(params!)":"CallRequest: " + requestUrl + "\n \(header!)")
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 5
         manager.request(requestUrl, method: method,  parameters: [:], encoding: params!, headers: header)
             .validate()
             .responseDictionary { response in
-                if let value = response.value {
-                    print("Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: value))")
-                }
+                print(response.value != nil ? "Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))" : "")
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
@@ -168,7 +143,7 @@ class APIClient {
             debugLog(object: "\(response.response!.statusCode) - \(error.localizedDescription)")
             if let data = response.data {
                 if let json = String(data: data, encoding: String.Encoding.utf8){
-                    if  let dict = convertToDictionary(text: json){
+                    if let dict = convertToDictionary(text: json){
                         print("Response: \(response.request!.url!.absoluteURL.absoluteString) \n\(StringUtils.shared.prettyPrint(with: dict))")
                         failure(error,dict,response.response!.statusCode)
                     }else {
@@ -180,7 +155,7 @@ class APIClient {
             } else {
                 failure(error,[:],response.response!.statusCode)
             }
-            if (error as NSError).code == 401 { //Unauthorized user
+            if (error as NSError).code == 401 {
                 AppDelegate.shared.unexpectedLogout()
             }
         }
@@ -256,7 +231,6 @@ extension Data {
     }
 }
 extension String: ParameterEncoding {
-    
     public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var request = try urlRequest.asURLRequest()
         request.httpBody = data(using: .utf8, allowLossyConversion: false)

@@ -42,14 +42,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         visualEffectView.isHidden = true
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-        if !MFMailComposeViewController.canSendMail() {
-        }
-        
-//        mViewUser.layer.borderWidth = 1
-//        mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-//        mViewPassword.layer.borderWidth = 1
-//        mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        
+        if !MFMailComposeViewController.canSendMail() {}
         btnLogin.layer.cornerRadius = 5
         btnLogin.layer.borderWidth = 1
         btnLogin.layer.borderColor = UIColor.clear.cgColor
@@ -108,6 +101,14 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         } else {
             self.lblDevMode.isHidden = false
         }
+        
+        let buttonTitleStr = NSMutableAttributedString(string:"Doanh nghiệp", attributes:attrs)
+        attributedString.append(buttonTitleStr)
+        self.btnCustomer.setAttributedTitle(attributedString, for: .normal)
+        
+        let buttonTitleStr2 = NSMutableAttributedString(string:"Headhunter", attributes:attrs)
+        attributedString2.append(buttonTitleStr2)
+        self.btnHeadhunter.setAttributedTitle(attributedString2, for: .normal)
     }
     var dem: Int = 0
     @objc func someAction2(sender:UITapGestureRecognizer){
@@ -137,20 +138,11 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         if textField == emailField.self{
             imgUser.image = UIImage(named: "Shape_focus")
             imgPass.image = UIImage(named: "pass")
-            
-//            mViewUser.layer.borderWidth = 1
-//            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-//            mViewPassword.layer.borderWidth = 1
-//            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
             verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         } else {
             imgUser.image = UIImage(named: "Shape")
             imgPass.image = UIImage(named: "pass_focus")
-//            mViewUser.layer.borderWidth = 1
-//            mViewUser.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-//            mViewPassword.layer.borderWidth = 1
-//            mViewPassword.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
             verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
         }
@@ -162,7 +154,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     }
     func isAppAlreadyLaunchedOnce()->Bool{
         let defaults = UserDefaults.standard
-        
         if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
             print("App already launched : \(isAppAlreadyLaunchedOnce)")
             return true
@@ -188,14 +179,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
         self.mView.layer.shouldRasterize = true
         self.mView.layer.rasterizationScale = UIScreen.main.scale
-        
-        let buttonTitleStr = NSMutableAttributedString(string:"Doanh nghiệp", attributes:attrs)
-        attributedString.append(buttonTitleStr)
-        self.btnCustomer.setAttributedTitle(attributedString, for: .normal)
-        
-        let buttonTitleStr2 = NSMutableAttributedString(string:"Headhunter", attributes:attrs)
-        attributedString2.append(buttonTitleStr2)
-        self.btnHeadhunter.setAttributedTitle(attributedString2, for: .normal)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -233,7 +216,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         UIView.animate(withDuration: 0.3, animations: {
             self.mViewSuccess.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.mViewSuccess.alpha = 0
-            
             self.visualEffectView.effect = nil
             self.visualEffectView.isHidden = true
         }) { (success:Bool) in
@@ -244,7 +226,6 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         UIView.animate(withDuration: 0.3, animations: {
             self.mViewContact.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.mViewContact.alpha = 0
-            
             self.visualEffectView.effect = nil
             self.visualEffectView.isHidden = true
         }) { (success:Bool) in
@@ -280,7 +261,11 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     
     @IBAction func forgetPassTouch(_ sender: Any) {
 //        animateInForgotPass()
-        performSegue(withIdentifier: "resetpass", sender: self)
+//        performSegue(withIdentifier: "resetpass", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ResetPasswordController") as! ResetPasswordController
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
     @IBAction func tapOnSignInButton(_ sender: Any) {
         if self.emailField.text! == ""{

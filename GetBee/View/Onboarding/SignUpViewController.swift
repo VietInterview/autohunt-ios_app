@@ -181,7 +181,6 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         self.mView.layer.shadowPath = UIBezierPath(rect: self.mView.bounds).cgPath
         self.mView.layer.shouldRasterize = true
         self.mView.layer.rasterizationScale = UIScreen.main.scale
-        
         let string = "Đồng ý với điều khoản sử dụng của Getbee"
         let range = (string as NSString).range(of: "điều khoản")
         let attributedString = NSMutableAttributedString(string: string)
@@ -214,37 +213,31 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         let phone = textFieldPhone.text!
         if fullname.count == 0 && email.count == 0 && phone.count == 0 {
             self.imgNoteUser.isHidden = false
-            textFieldFullname.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
-                                                                         attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldFullname.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
             self.imgNotePhone.isHidden = false
-            textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""),
-                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
             self.imgNoteEMail.isHidden = false
-            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
-                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if fullname.count == 0 {
             self.imgNoteUser.isHidden = false
-            textFieldFullname.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
-                                                                         attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldFullname.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if email.count == 0 {
             self.imgNoteEMail.isHidden = false
-            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
-                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if phone.count == 0 {
             self.imgNotePhone.isHidden = false
-            textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""),
-                                                                      attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if self.somedateString2 == 0 {
             self.showMessage(title: "Thông báo", message: "Hãy chọn ngày sinh nhật")
         } else if self.isAgree == false {
             self.showMessage(title: "Thông báo", message: "Bạn phải đồng ý với điều khoản")
+        }else if self.textFieldEmail.text?.isEmailFormatted() == false {
+            self.showMessage(title: "Thông báo", message: "Xin nhập đúng định dạng Email")
         } else {
             viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: self.jobTextField.text!, fullName: self.textFieldFullname.text!, phone: self.textFieldPhone.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 7,contact: "",birthday: self.somedateString2 , success: {
                 self.animateIn()
             }, failure: {error in
-//                if error == "error.userexists" {
-                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
-//                }
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
     }

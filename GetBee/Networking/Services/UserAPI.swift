@@ -45,7 +45,7 @@ class UserAPI {
       } else {
         if let errorResetPass = try? newJSONDecoder().decode(ErrorResetPass.self, from: response){
           if errorResetPass.title == "email_not_found" {
-            failure("Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+            failure("Không tìm thấy địa chỉ email này.")
           } else {
             failure(error.localizedDescription)
           }
@@ -76,8 +76,12 @@ class UserAPI {
     }, failure: { error,response , statusCode in
       LoadingOverlay.shared.hideOverlayView()
       if let errorRegister = try? newJSONDecoder().decode(ErrorRegister.self, from: response){
-        if errorRegister.errorKey! == "userexists" {
-          failure("Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+        if let errorKey = errorRegister.errorKey {
+          if errorKey == "userexists" {
+            failure("Địa chỉ email này đã tồn tại trong hệ thống, vui lòng đăng ký e-mail khác")
+          }
+        }else {
+          failure("Đã có lỗi xảy ra, vui lòng thử lại")
         }
       } else {
         failure(error.localizedDescription)

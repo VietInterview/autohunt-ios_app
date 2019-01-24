@@ -1,13 +1,13 @@
 ///**
 /**
-Created by: Hiep Nguyen Nghia on 1/18/19
-Copyright (c) 2018 Vietinterview. All rights reserved.
-*/
+ Created by: Hiep Nguyen Nghia on 1/18/19
+ Copyright (c) 2018 Vietinterview. All rights reserved.
+ */
 
 import UIKit
 
 class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
-
+    
     @IBOutlet weak var viewInput: UIView!
     @IBOutlet weak var textFieldCompanyName: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
@@ -48,7 +48,7 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
         self.textFieldEmail.addTarget(self, action: #selector(textFieldEmailDidChange(_:)), for: .editingChanged)
         self.textFieldCompanyName.addTarget(self, action: #selector(textFieldCompanyNameDidChange(_:)), for: .editingChanged)
         self.textFieldPhonenumber.addTarget(self, action: #selector(textFieldPhoneDidChange(_:)), for: .editingChanged)
-         self.textFieldContact.addTarget(self, action: #selector(textFieldContactDidChange(_:)), for: .editingChanged)
+        self.textFieldContact.addTarget(self, action: #selector(textFieldContactDidChange(_:)), for: .editingChanged)
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.viewPolicy.isUserInteractionEnabled = true
         self.viewPolicy.addGestureRecognizer(gestureSwift2AndHigher2)
@@ -89,7 +89,6 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewInput.shadowView(opacity: 15/100, radius: 5, color: "#191830")
-        
         let string = "Đồng ý với điều khoản sử dụng của Getbee"
         let range = (string as NSString).range(of: "điều khoản")
         let attributedString = NSMutableAttributedString(string: string)
@@ -133,29 +132,25 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
     @IBAction func signupCustomerTouch() {
         if self.textFieldCompanyName.text == "" {
             self.imgNoteUser.isHidden = false
-            textFieldCompanyName.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
-                                                                         attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldCompanyName.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if self.textFieldEmail.text == "" {
             self.imgNoteEMail.isHidden = false
-            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
-                                                                            attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if self.textFieldPhonenumber.text == "" {
             self.imgNotePhone.isHidden = false
-            textFieldPhonenumber.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""),
-                                                                            attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldPhonenumber.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if self.textFieldContact.text == "" {
             self.imgNoteContact.isHidden = false
-            textFieldContact.attributedPlaceholder = NSAttributedString(string: "Xin hãy nhập người liên hệ",
-                                                                            attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldContact.attributedPlaceholder = NSAttributedString(string: "Xin hãy nhập người liên hệ", attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
         } else if self.isAgree == false {
             self.showMessage(title: "Thông báo", message: "Bạn phải đồng ý với điều khoản sử dụng của GetBee")
+        }else if self.textFieldEmail.text?.isEmailFormatted() == false {
+            self.showMessage(title: "Thông báo", message: "Xin nhập đúng định dạng Email")
         } else {
             viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: "", fullName: self.textFieldCompanyName.text!, phone: self.textFieldPhonenumber.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 2,contact: StringUtils.shared.checkEmpty(value: self.textFieldContact.text) ,birthday: 0 , success: {
                 self.animateIn()
             }, failure: {error in
-//                if error == "error.userexists" {
-                    self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
-//                }
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
     }

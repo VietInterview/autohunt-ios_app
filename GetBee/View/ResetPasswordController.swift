@@ -26,6 +26,8 @@ class ResetPasswordController: BaseViewController, UITextFieldDelegate {
         visualEffectView.effect = nil
         self.textFieldEmail.delegate = self
         self.textFieldEmail.addTarget(self, action: #selector(textFieldEmailDidChange(_:)), for: .editingChanged)
+        view.isOpaque = false
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,8 +71,14 @@ class ResetPasswordController: BaseViewController, UITextFieldDelegate {
     }
     @IBAction func closePopupTouch() {
         animateOut()
-        performSegue(withIdentifier: "gotosignin", sender: self)
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)    }
+    
+    @IBAction func dismissControllerTouch(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func resetPassTouch() {
         if self.textFieldEmail.text == "" {
             self.imgNoteEmail.isHidden = false
