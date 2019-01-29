@@ -27,6 +27,13 @@ extension UIImageView {
         UIGraphicsEndImageContext()
         return image!
     }
+    func circleImage(color:UIColor = UIColor.black, borderWidth:CGFloat = 0) {
+        self.layer.borderWidth = borderWidth
+        self.layer.masksToBounds = false
+        self.layer.borderColor = color.cgColor
+        self.layer.cornerRadius = self.frame.height/2
+        self.clipsToBounds = true
+    }
     func showImage(imgUrl:String?, imageNullName:String){
         if let imgurl = imgUrl {
             Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: imgurl))").responseImage { response in
@@ -42,9 +49,5 @@ extension UIImageView {
             self.layer.masksToBounds = true
             self.image = UIImage(named: imageNullName)
         }
-    }
-    func showImage(img:UIImage, maskToBounds:Bool){
-        self.layer.masksToBounds = maskToBounds
-        self.image = img
     }
 }

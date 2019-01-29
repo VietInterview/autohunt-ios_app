@@ -124,6 +124,7 @@
 		7AA7021A219CFD8500566F43 /* CVSubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */; };
 		7AA7021C219CFE8900566F43 /* MyCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7021B219CFE8900566F43 /* MyCV.swift */; };
 		7AA7021E219CFEEE00566F43 /* CvsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7021D219CFEEE00566F43 /* CvsAPI.swift */; };
+		7AA941C322001090001E61AF /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA941C222001090001E61AF /* ImagePickerManager.swift */; };
 		7AB0AD0821736CF900F576B5 /* InfoAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */; };
 		7AB0AD0A2173817F00F576B5 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */; };
 		7AB0AD0C2173876300F576B5 /* CarrerOrCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */; };
@@ -327,6 +328,7 @@
 		7AA70219219CFD8500566F43 /* CVSubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSubmitTableViewCell.swift; sourceTree = "<group>"; };
 		7AA7021B219CFE8900566F43 /* MyCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCV.swift; sourceTree = "<group>"; };
 		7AA7021D219CFEEE00566F43 /* CvsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvsAPI.swift; sourceTree = "<group>"; };
+		7AA941C222001090001E61AF /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		7AB0AD0721736CF900F576B5 /* InfoAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAccountController.swift; sourceTree = "<group>"; };
 		7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		7AB0AD0B2173876300F576B5 /* CarrerOrCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerOrCityController.swift; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 				7A045FB521BDFFF400BC3B8C /* AccountManager.swift */,
 				7A2E7A7821E36693006DD1BA /* CustomerDataManager.swift */,
 				7AEDB29521F8804700723F8D /* MyServerTrustPolicyManager.swift */,
+				7AA941C222001090001E61AF /* ImagePickerManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				7ABDCD0221E593F000286837 /* SimpleCell.swift in Sources */,
 				7A879E9B21C9091D000850D2 /* ExpandableDetailJobCell.swift in Sources */,
 				7A836D4A21DCA0BA00915E1D /* NextDelegate.swift in Sources */,
+				7AA941C322001090001E61AF /* ImagePickerManager.swift in Sources */,
 				7AA70218219CFD6300566F43 /* ChooseCVSubmitController.swift in Sources */,
 				FABDC9221EE1EB2B000DDAC3 /* ConfigurationManager.swift in Sources */,
 				9B8574D7212C81950063A3E2 /* SignUpViewModel.swift in Sources */,

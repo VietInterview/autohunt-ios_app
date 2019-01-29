@@ -43,7 +43,7 @@ class HomeViewModel {
             }
         })
     }
-    func saveMyProfile(fullName:String, phone: String, address: String, carrer: String, arrCaerrerhunt: [DesideratedCareer],success: @escaping (GetMyProfile) -> Void, failure: @escaping (String) -> Void){
+    func saveMyProfile(fullName:String, phone: String, address: String, carrer: String, arrCaerrerhunt: [CountryMyProfile],success: @escaping (GetMyProfile) -> Void, failure: @escaping (String) -> Void){
         UserAPI.saveMyProfile(fullName: fullName, phone: phone, address: address, carrer: carrer, arrCarrerHunt: arrCaerrerhunt, {user in
             success(user)
         }, failure: {error in

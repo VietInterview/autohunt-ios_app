@@ -12,82 +12,90 @@ class LeftViewController: UITableViewController {
     let totalCountMenu = 13
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getAccount()
+        if let account = AccountManager.currentAccount {
+            self.setMenu(account: account)
+        } else {
+            self.getAccount()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         
     }
     func getAccount(){
         viewModel.loadAccount(success: {account in
-            if self.dynamicTitlesArray.count > 0 {
-                self.dynamicTitlesArray.removeAll()
+            AccountManager.currentAccount = account
+            self.setMenu(account: account)
+        }, failure: {error in
+        })
+    }
+    func setMenu(account:Account){
+        if self.dynamicTitlesArray.count > 0 {
+            self.dynamicTitlesArray.removeAll()
+        }
+        var numbers = [String]()
+        var names = [String]()
+        if account.lstMenuAuthority!.count > 0 {
+            for i in 0...account.lstMenuAuthority!.count-1 {
+                numbers.append(account.lstMenuAuthority![i].code!)
+                names.append(account.lstMenuAuthority![i].name!)
             }
-            var numbers = [String]()
-            var names = [String]()
-            if account.lstMenuAuthority!.count > 0 {
-                for i in 0...account.lstMenuAuthority!.count-1 {
-                    numbers.append(account.lstMenuAuthority![i].code!)
-                    names.append(account.lstMenuAuthority![i].name!)
-                }
-            }
-            let unique = numbers.removingDuplicates()
-            let name = names.removingDuplicates()
-            for i in 0...self.totalCountMenu-1 {
-                if i == 0 || i == 2 {
-                    self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
-                } else if i == self.totalCountMenu-1 {
-                    self.dynamicTitlesArray.append(LstAuthority.init(code: "LOGOUT", id: 0, name: NSLocalizedString("logout", comment: "")))
-                } else if i == 1 {
-                    self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: "Xin chào, Tùng!"))
-                } else if i == (3+unique.count) {
-                    self.dynamicTitlesArray.append(LstAuthority.init(code: "PROFILE", id: 0, name:AccountManager.currentAccount!.type! == 2 ? "Thông tin nhà tuyển dụng": NSLocalizedString("info_acc", comment: "")))
-                } else if i >= 3 && i <= (3+unique.count-1){
-                    if unique.count > 0 {
-                        if unique[i-3] == "CUSTOMER_HOME_PAGE" {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Quản lý công việc"))
-                        } else if unique[i-3] == "CTV_JOB_SAVE" {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Công việc của tôi"))
-                        }  else if unique[i-3] == "CTV_JOB_SENT" {
-                            
-                        }  else if unique[i-3] == "CTV_CV_SAVE" {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Hồ sơ của tôi"))
-                        }  else if unique[i-3] == "CTV_CV_SEND" {
-                            
-                        } else {
-                            self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: name[i-3]))
-                        }
+        }
+        let unique = numbers.removingDuplicates()
+        let name = names.removingDuplicates()
+        for i in 0...self.totalCountMenu-1 {
+            if i == 0 || i == 2 {
+                self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
+            } else if i == self.totalCountMenu-1 {
+                self.dynamicTitlesArray.append(LstAuthority.init(code: "LOGOUT", id: 0, name: NSLocalizedString("logout", comment: "")))
+            } else if i == 1 {
+                self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: "Xin chào, Tùng!"))
+            } else if i == (3+unique.count) {
+                self.dynamicTitlesArray.append(LstAuthority.init(code: "PROFILE", id: 0, name:AccountManager.currentAccount!.type! == 2 ? "Thông tin nhà tuyển dụng": NSLocalizedString("info_acc", comment: "")))
+            } else if i >= 3 && i <= (3+unique.count-1){
+                if unique.count > 0 {
+                    if unique[i-3] == "CUSTOMER_HOME_PAGE" {
+                        self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Quản lý công việc"))
+                    } else if unique[i-3] == "CTV_JOB_SAVE" {
+                        self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Công việc của tôi"))
+                    }  else if unique[i-3] == "CTV_JOB_SENT" {
+                        
+                    }  else if unique[i-3] == "CTV_CV_SAVE" {
+                        self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: "Hồ sơ của tôi"))
+                    }  else if unique[i-3] == "CTV_CV_SEND" {
+                        
                     } else {
-                        self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
+                        self.dynamicTitlesArray.append(LstAuthority.init(code: unique[i-3], id: 0, name: name[i-3]))
                     }
                 } else {
                     self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
                 }
-            }
-            if let currentUser = UserDataManager.currentUser {
-                if AccountManager.currentAccount!.type! == 2 {
-                    self.setFullname(fullname: AccountManager.currentAccount!.firstName!)
-                } else {
-                    self.setFullname(fullname: currentUser.fullNameColl)
-                }
             } else {
-                if account.type! == 7 {
-                    self.viewModel.loadUserProfile(success: { userProfile in
-                        self.setFullname(fullname: userProfile.fullNameColl)
-                    }, failure: { error in
-                        self.showMessageErrorApi()
-                    })
-                } else if account.type! == 2 {
-                    self.setFullname(fullname: account.firstName)
-                } else {
-                    self.viewModel.loadUserProfile(success: { userProfile in
-                        self.setFullname(fullname: userProfile.fullNameColl)
-                    }, failure: { error in
-                        self.showMessageErrorApi()
-                    })
-                }
+                self.dynamicTitlesArray.append(LstAuthority.init(code: "", id: 0, name: ""))
             }
-        }, failure: {error in
-        })
+        }
+        if let currentUser = UserDataManager.currentUser {
+            if AccountManager.currentAccount!.type! == 2 {
+                self.setFullname(fullname: AccountManager.currentAccount!.firstName!)
+            } else {
+                self.setFullname(fullname: currentUser.fullNameColl)
+            }
+        } else {
+            if account.type! == 7 {
+                self.viewModel.loadUserProfile(success: { userProfile in
+                    self.setFullname(fullname: userProfile.fullNameColl)
+                }, failure: { error in
+                    self.showMessageErrorApi()
+                })
+            } else if account.type! == 2 {
+                self.setFullname(fullname: account.firstName)
+            } else {
+                self.viewModel.loadUserProfile(success: { userProfile in
+                    self.setFullname(fullname: userProfile.fullNameColl)
+                }, failure: { error in
+                    self.showMessageErrorApi()
+                })
+            }
+        }
     }
     func setFullname(fullname:String?) {
         if let fullname = fullname {
@@ -174,7 +182,7 @@ class LeftViewController: UITableViewController {
         case "PROFILE":
             image = UIImage(named: "ic_user_menu")!
         default:
-            image = UIImage(named: "home_menuleft")!
+            image = UIImage(named: "ic_question")!
         }
         return image
     }
@@ -219,9 +227,10 @@ class LeftViewController: UITableViewController {
             replaceController(nameController: "MyCVController", isLogout: false)
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         case "LOGOUT":
+            replaceController(nameController: "SignInViewController", isLogout: true)
             UserDataManager.deleteUser()
             SessionManager.deleteSession()
-            replaceController(nameController: "SignInViewController", isLogout: true)
+            AccountManager.deleteUser()
         case "PROFILE":
             if AccountManager.currentAccount!.type! == 2 {
                 replaceController(nameController: "CustomerProfileController", isLogout: false)
@@ -233,7 +242,8 @@ class LeftViewController: UITableViewController {
             replaceController(nameController: "JobEmployerController", isLogout: false)
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         default:
-            replaceController(nameController: "ViewController", isLogout: false)
+            self.showMessage(title: "Thông báo", message: "Chức năng này đang phát triển, mời bạn quay lại sau")
+//            replaceController(nameController: "ViewController", isLogout: false)
             UserDefaults.standard.set(indexPath.row, forKey: "position")
         }
     }

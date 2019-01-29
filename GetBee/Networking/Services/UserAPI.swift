@@ -145,7 +145,7 @@ class UserAPI {
       failure(error)
     })
   }
-  class func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [DesideratedCareer]?,_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void){
+  class func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [CountryMyProfile]?,_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void){
     let url = collUrl + "/saveProfile"
     var arrayList : [String: Any]//one item of array
     var list = [[String: Any]]()//data array
