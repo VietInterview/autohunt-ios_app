@@ -9,8 +9,8 @@ import UIKit
 class IsEditCell: UITableViewCell {
 
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblContent: UILabel!
     @IBOutlet weak var imgEdit: UIImageView!
+    @IBOutlet weak var textViewContent: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

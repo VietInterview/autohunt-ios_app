@@ -76,8 +76,26 @@ class JobAPI {
             }
         }
     }
-    class func getCityList(_ success: @escaping (_ carrer: CarrerList) -> Void, failure: @escaping (_ error: Error) -> Void) {
+    class func getCityList(_ success: @escaping (_ carrer: CityList) -> Void, failure: @escaping (_ error: Error) -> Void) {
         let baseUrl = App.baseUrl + "/svccollaborator/api/mstCity"
+        let headers = [
+            "Authorization": "Bearer \(SessionManager.currentSession!.accessToken!)",
+            "Content-Type": "application/json"
+        ]
+        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        Alamofire.request(baseUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseCityList { response in
+            print(response)
+            if let cityList = response.result.value {
+                LoadingOverlay.shared.hideOverlayView()
+                success(cityList)
+            } else {
+                LoadingOverlay.shared.hideOverlayView()
+                failure(response.error!)
+            }
+        }
+    }
+    class func getCountryList(_ success: @escaping (_ carrer: CarrerList) -> Void, failure: @escaping (_ error: Error) -> Void) {
+        let baseUrl = App.baseUrl + "/svccollaborator/api/mstCountry"
         let headers = [
             "Authorization": "Bearer \(SessionManager.currentSession!.accessToken!)",
             "Content-Type": "application/json"

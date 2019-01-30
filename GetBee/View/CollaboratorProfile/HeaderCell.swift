@@ -9,8 +9,9 @@ import UIKit
 class HeaderCell: UITableViewCell {
 
     @IBOutlet weak var imgAva: UIImageView!
-    @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var imgEditName: UIImageView!
+    @IBOutlet weak var textViewName: UITextView!
     
     
     override func awakeFromNib() {

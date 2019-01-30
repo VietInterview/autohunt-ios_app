@@ -23,6 +23,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     var isStatus: Bool = false
     var isCity: Bool = false
     var isCustomer:Bool = false
+    var isCountry: Bool = false
     var isResumeCustomer:Bool = false
     var isMultiChoice: Bool = false
     
@@ -70,16 +71,30 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         tableView?.allowsMultipleSelection = self.isMultiChoice
         viewModel = ViewModel(isMulti: self.isMultiChoice)
         filterData = ViewModel(isMulti: self.isMultiChoice)
-        if self.isCarrer == true {
-            jobModel.getCarrer(success: {carrers in
+        if self.isCountry == true {
+            jobModel.getCountry(success: {cities in
                 self.viewModel.items.removeAll()
-                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
-                for i in 0...carrers.count-1 {
-                    let viewModelItem = ViewModelItem(item: carrers[i])
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Tất cả đất nước")))
+                for i in 0...cities.count-1 {
+                    let viewModelItem = ViewModelItem(item: cities[i])
                     self.viewModel.items.append(viewModelItem)
                 }
                 self.filterData.items = self.viewModel.items
                 self.tableView?.dataSource = self.filterData
+                self.tableView?.reloadData()
+            }, failure: {error in
+                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+            })
+        } else if self.isCarrer == true {
+                jobModel.getCarrer(success: {carrers in
+                    self.viewModel.items.removeAll()
+                    self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
+                    for i in 0...carrers.count-1 {
+                        let viewModelItem = ViewModelItem(item: carrers[i])
+                        self.viewModel.items.append(viewModelItem)
+                    }
+                    self.filterData.items = self.viewModel.items
+                    self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
@@ -111,10 +126,11 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
             self.tableView?.reloadData()
         } else {
             jobModel.getCity(success: {cities in
+                self.mCities = cities
                 self.viewModel.items.removeAll()
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_city", comment: ""))))
                 for i in 0...cities.count-1 {
-                    let viewModelItem = ViewModelItem(item: cities[i])
+                    let viewModelItem = ViewModelItem(item:CarrerListElement(id: cities[i].id!, name: cities[i].name!))
                     self.viewModel.items.append(viewModelItem)
                 }
                 self.filterData.items = self.viewModel.items
@@ -127,12 +143,13 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         tableView?.delegate = filterData
         tableView?.separatorStyle = .singleLine
     }
+    var mCities:CityList?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     @objc func chon(sender: UIBarButtonItem) {
         if filterData.selectedItems.count > 0 {
             if self.isMultiChoice == false {
-                let myChoose = MyChoose(id: filterData.selectedItems.map { $0.id }[0] , name: filterData.selectedItems.map { $0.title }[0], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
+                let myChoose = self.isCity ? MyChoose(id: filterData.selectedItems.map { $0.id }[0] , name: filterData.selectedItems.map { $0.title }[0], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity, countryID: self.mCities![0].countryID!) : MyChoose(id: filterData.selectedItems.map { $0.id }[0] , name: filterData.selectedItems.map { $0.title }[0], isStatus: self.isStatus, isCarrer: self.isCarrer, isCity: self.isCity )
                 if delegate != nil {
                     delegate?.didChoose(mychoose: myChoose)
                     for controller in self.navigationController!.viewControllers {

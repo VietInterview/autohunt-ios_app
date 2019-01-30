@@ -115,7 +115,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
         }
-        Alamofire.request("\(App.imgUrl)\(self.jobList[indexPath.row].companyImg!)").responseImage { response in
+        Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.image = image
             }else {

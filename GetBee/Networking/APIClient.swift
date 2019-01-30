@@ -140,7 +140,9 @@ class APIClient {
             }
             return
         case .failure(let error):
-            debugLog(object: "\(response.response!.statusCode) - \(error.localizedDescription)")
+            if response.response != nil {
+                debugLog(object: "\(response.response!.statusCode) - \(error.localizedDescription)")
+            }
             if let data = response.data {
                 if let json = String(data: data, encoding: String.Encoding.utf8){
                     if let dict = convertToDictionary(text: json){

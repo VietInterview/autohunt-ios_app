@@ -11,12 +11,21 @@ class MyChoose: Codable {
     var isStatus: Bool
     var isCarrer: Bool
     var isCity: Bool
-    
+    var countryID: Int
     init(id: Int, name: String, isStatus: Bool, isCarrer: Bool, isCity: Bool) {
         self.id = id
         self.name = name
         self.isStatus = isStatus
         self.isCarrer = isCarrer
         self.isCity = isCity
+        self.countryID = 0
+    }
+    init(id: Int, name: String, isStatus: Bool, isCarrer: Bool, isCity: Bool, countryID:Int) {
+        self.id = id
+        self.name = name
+        self.isStatus = isStatus
+        self.isCarrer = isCarrer
+        self.isCity = isCity
+        self.countryID = countryID
     }
 }

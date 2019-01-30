@@ -43,8 +43,8 @@ class HomeViewModel {
             }
         })
     }
-    func saveMyProfile(fullName:String, phone: String, address: String, carrer: String, arrCaerrerhunt: [CountryMyProfile],success: @escaping (GetMyProfile) -> Void, failure: @escaping (String) -> Void){
-        UserAPI.saveMyProfile(fullName: fullName, phone: phone, address: address, carrer: carrer, arrCarrerHunt: arrCaerrerhunt, {user in
+    func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [CountryMyProfile],arrCity:[CityMyProfile],arrCountry: [CountryMyProfile],companyName:String,birthday:Int,contractDate:Int,success: @escaping (GetMyProfile) -> Void, failure: @escaping (String) -> Void){
+        UserAPI.saveMyProfile(fullName: fullName, phone: phone, address: address, carrer: carrer, arrCarrerHunt: arrCarrerHunt,arrCity: arrCity,arrCountry: arrCountry,companyName: companyName,birthday: birthday,contractDate: contractDate, {user in
             success(user)
         }, failure: {error in
             if (error as NSError).code == 0 {
@@ -109,8 +109,19 @@ class HomeViewModel {
             }
         })
     }
-    func getCity(success: @escaping (CarrerList) -> Void, failure: @escaping (String) -> Void) {
+    func getCity(success: @escaping (CityList) -> Void, failure: @escaping (String) -> Void) {
         JobAPI.getCityList({citys in
+            success(citys)
+        }, failure: {error in
+            if (error as NSError).code == 0 {
+                failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng.")
+            } else {
+                failure("Không kết nối tới server, bạn vui lòng thử lại.")
+            }
+        })
+    }
+    func getCountry(success: @escaping (CarrerList) -> Void, failure: @escaping (String) -> Void) {
+        JobAPI.getCountryList({citys in
             success(citys)
         }, failure: {error in
             if (error as NSError).code == 0 {
@@ -248,11 +259,11 @@ class HomeViewModel {
     }
     func changePassword(currentPass: String, newPass: String,success: @escaping () -> Void, failure: @escaping (String, Int) -> Void){
         UserAPI.changePassword(currentPassword: currentPass, newPassword: newPass, success: success, failure: {error, statusCode  in
-//            if statusCode == 0 {
-//                failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng." , statusCode)
-//            } else {
-//                failure("Không kết nối tới server, bạn vui lòng thử lại." , statusCode)
-//            }
+            //            if statusCode == 0 {
+            //                failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng." , statusCode)
+            //            } else {
+            //                failure("Không kết nối tới server, bạn vui lòng thử lại." , statusCode)
+            //            }
             failure(error , statusCode)
         })
     }

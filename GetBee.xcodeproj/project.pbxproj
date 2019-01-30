@@ -61,6 +61,7 @@
 		7A4D6A0B21BE6DA000EC8BD1 /* JobCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D6A0A21BE6DA000EC8BD1 /* JobCustomer.swift */; };
 		7A54077521953E7800324167 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A54077421953E7800324167 /* LoadingOverlay.swift */; };
 		7A5855C621B5451200625635 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5855C521B5451200625635 /* Localizable.swift */; };
+		7A59FCDE2201CB520074319B /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59FCDD2201CB520074319B /* CityList.swift */; };
 		7A60B02B21BF91220048F4C4 /* ResumesEmployerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60B02A21BF91220048F4C4 /* ResumesEmployerController.swift */; };
 		7A60B02D21BF9ACF0048F4C4 /* ResumesEmployerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60B02C21BF9ACF0048F4C4 /* ResumesEmployerCell.swift */; };
 		7A60B02F21BFA6ED0048F4C4 /* ResumesByJobCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60B02E21BFA6ED0048F4C4 /* ResumesByJobCustomer.swift */; };
@@ -262,6 +263,7 @@
 		7A53847521EDEE10003613F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A54077421953E7800324167 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		7A5855C521B5451200625635 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		7A59FCDD2201CB520074319B /* CityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
 		7A60B02A21BF91220048F4C4 /* ResumesEmployerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumesEmployerController.swift; sourceTree = "<group>"; };
 		7A60B02C21BF9ACF0048F4C4 /* ResumesEmployerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumesEmployerCell.swift; sourceTree = "<group>"; };
 		7A60B02E21BFA6ED0048F4C4 /* ResumesByJobCustomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumesByJobCustomer.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 				7AEDB28D21F8566400723F8D /* ErrorLogin.swift */,
 				7AEDB28F21F857E600723F8D /* ErrorRegister.swift */,
 				7AEDB29121F85C1B00723F8D /* ErrorResetPass.swift */,
+				7A59FCDD2201CB520074319B /* CityList.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1267,6 +1270,7 @@
 				7AA1EAAF21CCFB66007A51CC /* InterviewProcessController.swift in Sources */,
 				7A39978121DE0FBF00F9591F /* SendInterviewDelegate.swift in Sources */,
 				9B0C72711C738D3400BAF3B1 /* AppDelegate.swift in Sources */,
+				7A59FCDE2201CB520074319B /* CityList.swift in Sources */,
 				7A836D4E21DCC26400915E1D /* SendReject.swift in Sources */,
 				7A836D4821DC9F9700915E1D /* RejectDelegate.swift in Sources */,
 				7A772991219A69CE00A0CB97 /* StringUtils.swift in Sources */,

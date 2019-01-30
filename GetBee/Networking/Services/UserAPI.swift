@@ -145,25 +145,56 @@ class UserAPI {
       failure(error)
     })
   }
-  class func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [CountryMyProfile]?,_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void){
+  class func saveMyProfile(fullName: String, phone: String, address: String, carrer: String, arrCarrerHunt: [CountryMyProfile]?,arrCity:[CityMyProfile]?,arrCountry: [CountryMyProfile]?,companyName:String,birthday:Int,contractDate:Int,_ success: @escaping (_ user: GetMyProfile) -> Void, failure: @escaping (_ error: Error) -> Void){
     let url = collUrl + "/saveProfile"
-    var arrayList : [String: Any]//one item of array
-    var list = [[String: Any]]()//data array
+    var arrayList : [String: Any]
+    var list = [[String: Any]]()
     if let mArrCarrerHunt = arrCarrerHunt {
       for i in 0..<mArrCarrerHunt.count {
         arrayList = [
           "id":mArrCarrerHunt[i].id!,
           "name":mArrCarrerHunt[i].name!,
         ]
-        list.append(arrayList)//append to your list
+        list.append(arrayList)
       }
     }
+    
+    var arrayListCity : [String: Any]
+    var listCity = [[String: Any]]()
+    if let mArrCity = arrCity {
+      for i in 0..<mArrCity.count {
+        arrayListCity = [
+          "id":mArrCity[i].id!,
+          "name":mArrCity[i].name!,
+          "countryId":mArrCity[i].countryID!
+        ]
+        listCity.append(arrayListCity)
+      }
+    }
+    
+    var arrayListCountry : [String: Any]
+    var listCountry = [[String: Any]]()
+    if let mArrCountry = arrCountry {
+      for i in 0..<mArrCountry.count {
+        arrayListCountry = [
+          "id":mArrCountry[i].id!,
+          "name":mArrCountry[i].name!,
+        ]
+        listCountry.append(arrayListCountry)
+      }
+    }
+    
     let parameters = [
       "addressColl": address,
       "careerColl": carrer,
       "fullNameColl": fullName,
       "phoneColl": phone,
-      "desideratedCareer":list
+      "desideratedCareer":list,
+      "cities":listCity,
+      "countries":listCountry,
+      "companyName":companyName,
+      "birthday":birthday == 0 ? nil : birthday,
+      "contractDate":contractDate == 0 ? nil : contractDate
       ] as [String : Any]
     APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
       LoadingOverlay.shared.hideOverlayView()

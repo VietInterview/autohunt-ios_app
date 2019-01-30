@@ -5,22 +5,22 @@ Copyright (c) 2018 Vietinterview. All rights reserved.
 */
 // To parse the JSON, add this file to your project and do:
 //
-//   let getMyProfile = try? newJSONDecoder().decode(GetMyProfile.self, from: jsonData)
+//   var getMyProfile = try? newJSONDecoder().decode(GetMyProfile.self, from: jsonData)
 
 import Foundation
 
 class GetMyProfile: Codable {
-    let addressColl: String?
-    let birthday: Int?
-    let careerColl: String?
-    let cities: [CityMyProfile]?
-    let code, companyName: String?
-    let contractDate: Int?
-    let countries, desideratedCareer: [CountryMyProfile]?
-    let emailColl, fullNameColl: String?
-    let idColl: Int?
-    let imageURL, phoneColl: String?
-    
+    var addressColl: String?
+    var birthday: Int?
+    var careerColl: String?
+    var cities: [CityMyProfile]?
+    var code, companyName: String?
+    var contractDate: Int?
+    var countries, desideratedCareer: [CountryMyProfile]?
+    var emailColl, fullNameColl: String?
+    var idColl: Int?
+    var imageURL, phoneColl: String?
+    init(){}
     enum CodingKeys: String, CodingKey {
         case addressColl, birthday, careerColl, cities, code, companyName, contractDate, countries, desideratedCareer, emailColl, fullNameColl, idColl
         case imageURL = "imageUrl"
@@ -46,11 +46,11 @@ class GetMyProfile: Codable {
 }
 
 class CityMyProfile: Codable {
-    let countryID: Int?
-    let enName: String?
-    let id: Int?
-    let name: String?
-    
+    var countryID: Int?
+    var enName: String?
+    var id: Int?
+    var name: String?
+    init(){}
     enum CodingKeys: String, CodingKey {
         case countryID = "countryId"
         case enName, id, name
@@ -65,9 +65,9 @@ class CityMyProfile: Codable {
 }
 
 class CountryMyProfile: Codable {
-    let id: Int?
-    let name: String?
-    
+    var id: Int?
+    var name: String?
+    init(){}
     init(id: Int?, name: String?) {
         self.id = id
         self.name = name
