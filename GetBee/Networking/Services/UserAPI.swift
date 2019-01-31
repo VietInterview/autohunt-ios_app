@@ -196,6 +196,7 @@ class UserAPI {
       "birthday":birthday == 0 ? nil : birthday,
       "contractDate":contractDate == 0 ? nil : contractDate
       ] as [String : Any]
+    UIApplication.showNetworkActivity()
     APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
       LoadingOverlay.shared.hideOverlayView()
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){

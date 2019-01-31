@@ -38,7 +38,6 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
        
     }
     override func viewWillAppear(_ animated: Bool) {
-        debugLog(object: "resume job")
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         self.page = 0

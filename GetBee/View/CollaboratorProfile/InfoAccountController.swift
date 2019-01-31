@@ -94,6 +94,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
             cell.imgEditName.isUserInteractionEnabled = true
             cell.imgEditName.addGestureRecognizer(tapEditName)
             cell.imgEditName.tag = indexPath.row
+            cell.selectionStyle = .none
             self.cellHeader = cell
             return cell
         } else if indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7 || indexPath.row == 8 || indexPath.row == 9 {
@@ -160,6 +161,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
             cell.lblTitle.text = self.arrTitle[indexPath.row]
             cell.lblContent.text = self.arrContent[indexPath.row+1]
             self.showHideView(view: cell.lblContent, isHidden: indexPath.row == 10 ? true : false)
+            cell.selectionStyle = .none
             self.cellEditGo.append(cell)
             return cell
         }

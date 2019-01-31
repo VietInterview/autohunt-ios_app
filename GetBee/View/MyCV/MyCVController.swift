@@ -9,6 +9,14 @@ import CarbonKit
 import GoneVisible
 
 class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, ChooseDelegate {
+    @IBOutlet weak var mViewCondition: UIView!
+    @IBOutlet weak var mViewStatus: UIView!
+    @IBOutlet weak var mTabView: UIView!
+    @IBOutlet weak var btnCarrer: UIButton!
+    @IBOutlet weak var btnCity: UIButton!
+    @IBOutlet weak var btnStatus: UIButton!
+    @IBOutlet weak var imgAttachFile: UIImageView!
+    
     var isShowCondition: Bool = false
     var isShowStatus: Bool = false
     var mPosition: Int = 0
@@ -25,23 +33,21 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     var positionTab = UInt()
     var tabSwipe: CarbonTabSwipeNavigation? = nil
     var vc = CarrerOrCityController()
-    @IBOutlet weak var mViewCondition: UIView!
-    @IBOutlet weak var mViewStatus: UIView!
-    @IBOutlet weak var mTabView: UIView!
-    @IBOutlet weak var btnCarrer: UIButton!
-    @IBOutlet weak var btnCity: UIButton!
-    @IBOutlet weak var btnStatus: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("mycv", comment: "")
+        self.showHideView(view: self.imgAttachFile, isHidden: true)
         mViewCondition.isHidden = true
         mViewCondition.gone()
         self.mViewStatus.isHidden = true
         self.mViewStatus.gone()
-        self.tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("cv_saved", comment: ""),NSLocalizedString("cv_submited", comment: "")], delegate: self)
+        self.tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("cv_saved", comment: ""),NSLocalizedString("cv_submited", comment: ""),"Danh sách file attached"], delegate: self)
         
-        if ScreenUtils.shared.getScreenWidth()! == 414 { self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/5)
-        } else { self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/8)
+        if ScreenUtils.shared.getScreenWidth()! == 414 {
+            self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/10)
+        } else {
+            self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
         }
         self.tabSwipe!.setNormalColor(UIColor.gray)
         self.tabSwipe!.setSelectedColor(UIColor.black)
@@ -59,10 +65,12 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.positionTab = index
         print("positionTab1 \(self.positionTab)")
         if index == 0 {
+            self.showHideView(view: self.imgAttachFile, isHidden: true)
             self.isShowStatus = false
             self.mViewStatus.isHidden = true
             self.mViewStatus.gone()
-        } else {
+        } else if index == 1{
+            self.showHideView(view: self.imgAttachFile, isHidden: true)
             if self.isShowCondition == true {
                 self.isShowStatus = true
                 self.mViewStatus.isHidden = false
@@ -71,6 +79,18 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
                 self.isShowStatus = false
                 self.mViewStatus.isHidden = true
                 self.mViewStatus.gone()
+            }
+        } else {
+            if self.isShowCondition == true {
+                self.isShowStatus = true
+                self.mViewStatus.isHidden = false
+                self.mViewStatus.visible()
+                self.showHideView(view: self.imgAttachFile, isHidden: true)
+            } else {
+                self.isShowStatus = false
+                self.mViewStatus.isHidden = true
+                self.mViewStatus.gone()
+                self.showHideView(view: self.imgAttachFile, isHidden: false)
             }
         }
     }
@@ -84,8 +104,14 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             vc.isStatus = self.isStatus
             vc.vc = self.vc
             return vc
-        } else {
+        } else if index == 1{
             let vc = storyboard.instantiateViewController(withIdentifier: "MyCVAppliedController") as! MyCVAppliedController
+            vc.isCarrer = self.isCarrer
+            vc.isStatus = self.isStatus
+            vc.vc = self.vc
+            return vc
+        } else {
+            let vc = storyboard.instantiateViewController(withIdentifier: "MyCVSavedController") as! MyCVSavedController
             vc.isCarrer = self.isCarrer
             vc.isStatus = self.isStatus
             vc.vc = self.vc
@@ -107,6 +133,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             }
             self.mViewCondition.isHidden = false
             self.mViewCondition.visible()
+            self.showHideView(view: self.imgAttachFile, isHidden: true)
         } else {
             self.isShowCondition = false
             self.isShowStatus = false
@@ -114,6 +141,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             self.mViewCondition.gone()
             self.mViewStatus.isHidden = true
             self.mViewStatus.gone()
+            self.showHideView(view: self.imgAttachFile, isHidden: self.mPosition == 2 ? false : true)
         }
     }
     @IBAction func chooseCarrerTouch() {

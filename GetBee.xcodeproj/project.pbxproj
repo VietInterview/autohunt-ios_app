@@ -55,6 +55,7 @@
 		7A3A07D821CB46640019FC81 /* LanComCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A07D721CB46640019FC81 /* LanComCell.swift */; };
 		7A455AC221BCCA00007F2020 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A455AC121BCCA00007F2020 /* BaseViewController.swift */; };
 		7A455ACF21BCD4C8007F2020 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A455ACE21BCD3BF007F2020 /* Roboto-Medium.ttf */; };
+		7A471AAC2202E61F007DB5FD /* DetailResumeOriginalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A471AAB2202E61F007DB5FD /* DetailResumeOriginalController.swift */; };
 		7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */; };
 		7A4D6A0721BE47FB00EC8BD1 /* JobEmployerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D6A0621BE47FB00EC8BD1 /* JobEmployerController.swift */; };
 		7A4D6A0921BE548000EC8BD1 /* JobEmployerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D6A0821BE548000EC8BD1 /* JobEmployerCell.swift */; };
@@ -88,6 +89,8 @@
 		7A78E35D21A5785C007BA69C /* SubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35C21A5785C007BA69C /* SubmitCV.swift */; };
 		7A78E35F21A57A1A007BA69C /* ErrorSubmitCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */; };
 		7A79709C21AE905E00DC7B4A /* ExpandableLevelCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */; };
+		7A7A3D012202ABE40064621D /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A3D002202ABE40064621D /* iOSDevCenters+GIF.swift */; };
+		7A7A3D032202B11A0064621D /* loading_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7A7A3D022202B1190064621D /* loading_gif.gif */; };
 		7A7B863321CBE4EB00EA10B5 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */; };
 		7A836D4821DC9F9700915E1D /* RejectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A836D4721DC9F9700915E1D /* RejectDelegate.swift */; };
 		7A836D4A21DCA0BA00915E1D /* NextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A836D4921DCA0BA00915E1D /* NextDelegate.swift */; };
@@ -255,6 +258,7 @@
 		7A455ACC21BCD3BF007F2020 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		7A455ACD21BCD3BF007F2020 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7A455ACE21BCD3BF007F2020 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		7A471AAB2202E61F007DB5FD /* DetailResumeOriginalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResumeOriginalController.swift; sourceTree = "<group>"; };
 		7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMulti.swift; sourceTree = "<group>"; };
 		7A4D6A0621BE47FB00EC8BD1 /* JobEmployerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobEmployerController.swift; sourceTree = "<group>"; };
 		7A4D6A0821BE548000EC8BD1 /* JobEmployerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobEmployerCell.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 		7A78E35C21A5785C007BA69C /* SubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitCV.swift; sourceTree = "<group>"; };
 		7A78E35E21A57A1A007BA69C /* ErrorSubmitCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSubmitCV.swift; sourceTree = "<group>"; };
 		7A79709B21AE905E00DC7B4A /* ExpandableLevelCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableLevelCell2.xib; sourceTree = "<group>"; };
+		7A7A3D002202ABE40064621D /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		7A7A3D022202B1190064621D /* loading_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_gif.gif; sourceTree = "<group>"; };
 		7A7A58A021B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		7A7A58A121B4E037003D2827 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A7B863221CBE4EB00EA10B5 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
@@ -643,6 +649,7 @@
 				7A2EA49D21A0FC3A00E61681 /* LanDetailCVController.swift */,
 				7A2EA49F21A0FC5400E61681 /* ComDetailCVController.swift */,
 				7A2EA4A121A0FC6300E61681 /* SkillDetailCVController.swift */,
+				7A471AAB2202E61F007DB5FD /* DetailResumeOriginalController.swift */,
 			);
 			path = DetailCV;
 			sourceTree = "<group>";
@@ -743,6 +750,7 @@
 				9B0C72691C738D3400BAF3B1 /* AppDelegate.swift */,
 				9B0C726A1C738D3400BAF3B1 /* Assets.xcassets */,
 				7A99AA58217199B100E3B0DC /* BridgingHeader.h */,
+				7A7A3D022202B1190064621D /* loading_gif.gif */,
 				9B0C726D1C738D3400BAF3B1 /* Info.plist */,
 				9BFA84F21C776827009F64E4 /* LaunchScreen.storyboard */,
 				0ABFB8921FA366D90098F751 /* Main.storyboard */,
@@ -941,6 +949,7 @@
 				0A6990341F9F82A300F4BAC7 /* UIApplicationExtension.swift */,
 				9B8D306F20AB47E90050697F /* JSONEncodingExtension.swift */,
 				9B8574D8212C84130063A3E2 /* UIImageExtension.swift */,
+				7A7A3D002202ABE40064621D /* iOSDevCenters+GIF.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1054,6 +1063,7 @@
 			files = (
 				7A2EA49921A0EE2400E61681 /* ExpandableCell.xib in Resources */,
 				9B9C6BFE20C7160700EB0523 /* README.md in Resources */,
+				7A7A3D032202B11A0064621D /* loading_gif.gif in Resources */,
 				7A2EA49A21A0EE2400E61681 /* ExpandedCell.xib in Resources */,
 				0ABFB8901FA366D90098F751 /* Main.storyboard in Resources */,
 				7A06AD9E2174266C00E3CDAA /* CustomCell.xib in Resources */,
@@ -1242,6 +1252,7 @@
 				7A86E13E21DF106300707E74 /* SendOfferDelegate.swift in Sources */,
 				7A0B361821CE766C0092C8E2 /* CreateEditInterviewController.swift in Sources */,
 				7A05296B21F098DC00A3C784 /* IsEditCell.swift in Sources */,
+				7A7A3D012202ABE40064621D /* iOSDevCenters+GIF.swift in Sources */,
 				7ADF392021BA1C1C00E962EA /* Env.swift in Sources */,
 				7A955E1E21A7E78A00D402D4 /* IntroController.swift in Sources */,
 				7A0C133421749001000AC5F2 /* StatisticalController.swift in Sources */,
@@ -1292,6 +1303,7 @@
 				7A33518E21DF6B810063BE50 /* SendGoToWorkDelegate.swift in Sources */,
 				7A455AC221BCCA00007F2020 /* BaseViewController.swift in Sources */,
 				9B77E0791E2FCF710020E450 /* Media.swift in Sources */,
+				7A471AAC2202E61F007DB5FD /* DetailResumeOriginalController.swift in Sources */,
 				7A60B02B21BF91220048F4C4 /* ResumesEmployerController.swift in Sources */,
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
 				7A39977F21DE05E100F9591F /* SendInterviewResponse.swift in Sources */,

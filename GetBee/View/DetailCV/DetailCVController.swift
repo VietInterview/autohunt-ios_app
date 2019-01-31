@@ -163,13 +163,6 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
                 Alamofire.request("\(App.imgUrl)\(imgUrl)").responseImage { response in
                     if let image = response.result.value {
                         self.imgAva.image = image
-                        //                        self.imgAva.layer.shadowColor = UIColor.gray.cgColor
-                        //                        self.imgAva.layer.shadowOpacity = 0.8
-                        //                        self.imgAva.layer.shadowOffset = CGSize.zero
-                        //                        self.imgAva.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF").cgColor
-                        //                        self.imgAva.layer.borderWidth = 2
-                        //                        self.imgAva.layer.shadowRadius = 5
-                        //                        self.imgAva.layer.cornerRadius = 5
                         self.imgAva.addShadow()
                         self.imgAva.clipsToBounds = true
                     }
