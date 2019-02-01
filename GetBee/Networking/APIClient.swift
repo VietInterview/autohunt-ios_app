@@ -147,15 +147,15 @@ class APIClient {
                 if let json = String(data: data, encoding: String.Encoding.utf8){
                     if let dict = convertToDictionary(text: json){
                         print("Response: \(response.request!.url!.absoluteURL.absoluteString) \n\(StringUtils.shared.prettyPrint(with: dict))")
-                        failure(error,dict,response.response!.statusCode)
+                        failure(error,dict,response.response != nil ? response.response!.statusCode : 0)
                     }else {
-                        failure(error,[:],response.response!.statusCode)
+                        failure(error,[:],response.response != nil ? response.response!.statusCode : 0)
                     }
                 } else {
-                    failure(error,[:],response.response!.statusCode)
+                    failure(error,[:],response.response != nil ? response.response!.statusCode : 0)
                 }
             } else {
-                failure(error,[:],response.response!.statusCode)
+                failure(error,[:],response.response != nil ? response.response!.statusCode : 0)
             }
             if (error as NSError).code == 401 {
                 AppDelegate.shared.unexpectedLogout()

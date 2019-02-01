@@ -16,6 +16,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     @IBOutlet weak var btnCity: UIButton!
     @IBOutlet weak var btnStatus: UIButton!
     @IBOutlet weak var imgAttachFile: UIImageView!
+    @IBOutlet weak var viewChooseDateTime: UIView!
     
     var isShowCondition: Bool = false
     var isShowStatus: Bool = false
@@ -33,6 +34,8 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     var positionTab = UInt()
     var tabSwipe: CarbonTabSwipeNavigation? = nil
     var vc = CarrerOrCityController()
+    var datePicker : UIDatePicker!
+    var toolBar:UIToolbar?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +58,12 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.tabSwipe!.insert(intoRootViewController: self, andTargetView: self.mTabView)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        self.imgAttachFile.isUserInteractionEnabled = true
+        self.imgAttachFile.addGestureRecognizer(gestureSwift2AndHigher2)
+    }
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        self.pushViewController(controller: AttachFileController.init().setArgument())
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
@@ -167,16 +176,62 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
-    @IBAction func chooseCityTouch(_ sender: Any) {
-        self.isCarrer = false
-        self.isStatus = false
-        self.isCity = true
-        vc.title = NSLocalizedString("city", comment: "")
-        vc.isCarrer = self.isCarrer
-        vc.isStatus = self.isStatus
-        vc.isCity = self.isCity
-        vc.delegate = self
-        navigationController?.pushViewController(vc, animated: true)
+    @IBAction func chooseCityTouch(_ sender: Any) {view.endEditing(true)
+        self.showChooseDateTime()
+        self.somedateString = ""
+        self.somedateString2 = ""
+    }
+    var somedateString:String = ""
+    var somedateString2:String = ""
+    @objc func doneClick() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en-EN")
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        if self.somedateString == "" {
+            somedateString = dateFormatter.string(from: self.datePicker.date)
+            self.btnCity.setTitle("\(somedateString) - dd/MM/yyyy", for: .normal)
+            datePicker.isHidden = true
+            viewChooseDateTime.isHidden = true
+            self.toolBar!.isHidden = true
+            self.showChooseDateTime()
+        } else {
+            somedateString2 = dateFormatter.string(from: self.datePicker.date)
+            self.btnCity.setTitle("\(somedateString) - \(somedateString2)", for: .normal)
+            datePicker.isHidden = true
+            viewChooseDateTime.isHidden = true
+            self.toolBar!.isHidden = true
+        }
+    }
+    
+    @objc func cancelClick() {
+        datePicker.isHidden = true
+        viewChooseDateTime.isHidden = true
+        self.toolBar!.isHidden = true
+    }
+    func showChooseDateTime(){
+        view.endEditing(true)
+        viewChooseDateTime.isHidden = false
+        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 20, width: self.view.frame.size.width, height: 200))
+        self.datePicker?.backgroundColor = UIColor.white
+        self.datePicker?.locale! = Locale(identifier: "vi-VI")
+        self.datePicker?.datePickerMode = UIDatePickerMode.dateAndTime
+        viewChooseDateTime.addSubview(self.datePicker)
+        toolBar = UIToolbar()
+        toolBar!.barStyle = .default
+        toolBar!.isTranslucent = true
+        toolBar!.tintColor = UIColor.black
+        toolBar!.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(CreateEditInterviewController.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(CreateEditInterviewController.cancelClick))
+        toolBar!.setItems([cancelButton, spaceButton, doneButton], animated: true)
+        toolBar!.items![0].setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray], for: .normal)
+        toolBar!.items![2].setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray], for: .normal)
+        toolBar!.isUserInteractionEnabled = true
+        self.viewChooseDateTime.addSubview(toolBar!)
+        toolBar!.isHidden = false
     }
     func didChoose(mychoose: MyChoose) {
         NotificationCenter.default.post(name: MyCVAppliedController.notificationName, object: nil,userInfo: ["id": mychoose.id, "name":mychoose.name, "isCarrer": mychoose.isCarrer, "isStatus":mychoose.isStatus, "isCity":mychoose.isCity])

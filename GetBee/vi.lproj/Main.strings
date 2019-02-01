@@ -207,7 +207,7 @@
 "KNx-1H-WaX.placeholder" = "Nghề Nghiệp";
 
 /* Class = "UIButton"; normalTitle = "Tất cả thành phố"; ObjectID = "Kh8-jN-kzv"; */
-"Kh8-jN-kzv.normalTitle" = "Tất cả thành phố";
+"Kh8-jN-kzv.normalTitle" = "dd/MM/yyyy - dd/MM/yyyy";
 
 /* Class = "UILabel"; text = "FPT Software"; ObjectID = "Koc-1X-6aN"; */
 "Koc-1X-6aN.text" = "FPT Software";

@@ -8,7 +8,8 @@ import UIKit
 import SwipeCellKit
 import Toaster
 
-class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDataSource ,UIScrollViewDelegate{
+class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDataSource ,UIScrollViewDelegate, NotifyConfirmAlertDelegate{
+    
     var listCV = ListCV()
     var listCVServer = [CvList2]()
     var listCV2 = [CvList2]()
@@ -177,26 +178,15 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         let deleteAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-            let id = self.listCV2[indexPath.row].id!
-            self.listCV2.remove(at: indexPath.row)
-            self.homeViewModel.deleteCV(cvId: id, success: { deleteCV in
-                if deleteCV.count! > 0 {
-                    let toast = Toast(text: NSLocalizedString("delete_cv_success", comment: ""))
-                    toast.show()
-                } else {
-                    let toast = Toast(text: NSLocalizedString("delete_cv_fail", comment: ""))
-                    toast.show()
-                    self.page = 0
-                    if self.carrerId != -1 || self.cityId != -1{
-                        self.searchMyCV(carrerId: self.carrerId, cityId: self.cityId)
-                    } else {
-                        self.getMyCVSaved()
-                    }
-                }
-            }, failure: {error in
-                self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
-            })
-            
+            let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "NotifyConfirmAlert") as! NotifyConfirmAlert
+            customAlert.id = self.listCV2[indexPath.row].id!
+            customAlert.position = indexPath.row
+            customAlert.providesPresentationContextTransitionStyle = true
+            customAlert.definesPresentationContext = true
+            customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            customAlert.delegate = self
+            self.present(customAlert, animated: true, completion: nil)
         }
         let descriptor: ActionDescriptor = .trash
         configure(action: deleteAction, with: descriptor)
@@ -208,21 +198,31 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         return [deleteAction,copy]
     }
     
-//    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-//        var options = SwipeOptions()
-//        options.expansionStyle = orientation == .left ? .selection : .destructive
-//        options.transitionStyle = defaultOptions.transitionStyle
-//        
-//        switch buttonStyle {
-//        case .backgroundColor:
-//            options.buttonSpacing = 0
-//        case .circular:
-//            options.buttonSpacing = 0
-//            options.backgroundColor = #colorLiteral(red: 0.9467939734, green: 0.9468161464, blue: 0.9468042254, alpha: 1)
-//        }
-//        
-//        return options
-//    }
+    
+    func okButtonTapped(id: Int, position: Int) {
+        self.homeViewModel.deleteCV(cvId: id, success: { deleteCV in
+            if deleteCV.count! > 0 {
+                self.listCV2.remove(at: position)
+                let toast = Toast(text: NSLocalizedString("delete_cv_success", comment: ""))
+                toast.show()
+            } else {
+                let toast = Toast(text: NSLocalizedString("delete_cv_fail", comment: ""))
+                toast.show()
+                self.page = 0
+                if self.carrerId != -1 || self.cityId != -1{
+                    self.searchMyCV(carrerId: self.carrerId, cityId: self.cityId)
+                } else {
+                    self.getMyCVSaved()
+                }
+            }
+        }, failure: {error in
+            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+        })
+    }
+    
+    func cancelButtonTapped() {
+        
+    }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     }
     func configureCopy(action: SwipeAction, with descriptor: ActionDescriptor) {

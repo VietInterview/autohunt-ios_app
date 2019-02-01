@@ -56,6 +56,7 @@
 		7A455AC221BCCA00007F2020 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A455AC121BCCA00007F2020 /* BaseViewController.swift */; };
 		7A455ACF21BCD4C8007F2020 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A455ACE21BCD3BF007F2020 /* Roboto-Medium.ttf */; };
 		7A471AAC2202E61F007DB5FD /* DetailResumeOriginalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A471AAB2202E61F007DB5FD /* DetailResumeOriginalController.swift */; };
+		7A47BB512204239E001D1530 /* AttachFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47BB502204239E001D1530 /* AttachFileController.swift */; };
 		7A4BF5B221AFBE4D009895DF /* ViewModelMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */; };
 		7A4D6A0721BE47FB00EC8BD1 /* JobEmployerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D6A0621BE47FB00EC8BD1 /* JobEmployerController.swift */; };
 		7A4D6A0921BE548000EC8BD1 /* JobEmployerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D6A0821BE548000EC8BD1 /* JobEmployerCell.swift */; };
@@ -107,6 +108,8 @@
 		7A8A479221E3040100ED3865 /* WelfareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A479121E3040100ED3865 /* WelfareCell.swift */; };
 		7A8B9BB221A415F900F6E77C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB121A415F900F6E77C /* Shared.swift */; };
 		7A8B9BB421A41D4C00F6E77C /* DeleteCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */; };
+		7A9060232203DD4D00986F0B /* NotifyConfirmAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9060222203DD4D00986F0B /* NotifyConfirmAlert.swift */; };
+		7A9060252203DD9600986F0B /* NotifyConfirmAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9060242203DD9600986F0B /* NotifyConfirmAlertDelegate.swift */; };
 		7A955E1E21A7E78A00D402D4 /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E1D21A7E78A00D402D4 /* IntroController.swift */; };
 		7A955E2021A7EB4300D402D4 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E1F21A7EB4300D402D4 /* Images.swift */; };
 		7A955E2321A8011800D402D4 /* IntroOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A955E2221A8011800D402D4 /* IntroOneController.swift */; };
@@ -259,6 +262,7 @@
 		7A455ACD21BCD3BF007F2020 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		7A455ACE21BCD3BF007F2020 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		7A471AAB2202E61F007DB5FD /* DetailResumeOriginalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResumeOriginalController.swift; sourceTree = "<group>"; };
+		7A47BB502204239E001D1530 /* AttachFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachFileController.swift; sourceTree = "<group>"; };
 		7A4BF5B121AFBE4D009895DF /* ViewModelMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelMulti.swift; sourceTree = "<group>"; };
 		7A4D6A0621BE47FB00EC8BD1 /* JobEmployerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobEmployerController.swift; sourceTree = "<group>"; };
 		7A4D6A0821BE548000EC8BD1 /* JobEmployerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobEmployerCell.swift; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		7A8A479121E3040100ED3865 /* WelfareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelfareCell.swift; sourceTree = "<group>"; };
 		7A8B9BB121A415F900F6E77C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		7A8B9BB321A41D4C00F6E77C /* DeleteCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCV.swift; sourceTree = "<group>"; };
+		7A9060222203DD4D00986F0B /* NotifyConfirmAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyConfirmAlert.swift; sourceTree = "<group>"; };
+		7A9060242203DD9600986F0B /* NotifyConfirmAlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyConfirmAlertDelegate.swift; sourceTree = "<group>"; };
 		7A955E1D21A7E78A00D402D4 /* IntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroController.swift; sourceTree = "<group>"; };
 		7A955E1F21A7EB4300D402D4 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		7A955E2221A8011800D402D4 /* IntroOneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroOneController.swift; sourceTree = "<group>"; };
@@ -654,6 +660,15 @@
 			path = DetailCV;
 			sourceTree = "<group>";
 		};
+		7A9060212203DBAF00986F0B /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				7A9060222203DD4D00986F0B /* NotifyConfirmAlert.swift */,
+				7A9060242203DD9600986F0B /* NotifyConfirmAlertDelegate.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
 		7A955E2121A800FB00D402D4 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,6 +823,7 @@
 		9BAFB7BC2114CA8D0099DC61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A9060212203DBAF00986F0B /* CustomAlert */,
 				7A05296721F0982C00A3C784 /* CollaboratorProfile */,
 				7A144A6A21D104B4001724E5 /* CustomerProfile */,
 				7A88262E21CB7B5300F491D3 /* ProcessResume */,
@@ -830,6 +846,7 @@
 				7AB0AD092173817F00F576B5 /* ChangePasswordController.swift */,
 				7A455AC121BCCA00007F2020 /* BaseViewController.swift */,
 				7A387BB521F81B1E00885DBB /* ResetPasswordController.swift */,
+				7A47BB502204239E001D1530 /* AttachFileController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1275,6 +1292,7 @@
 				9B8574D9212C84130063A3E2 /* UIImageExtension.swift in Sources */,
 				7A99AA6221719B6400E3B0DC /* NavigationController.swift in Sources */,
 				7AA530A421CDEE9E0087B65A /* OfferProcessController.swift in Sources */,
+				7A9060232203DD4D00986F0B /* NotifyConfirmAlert.swift in Sources */,
 				7A88263221CB8ABB00F491D3 /* InfoProcessResumeController.swift in Sources */,
 				9B3AA39B1ED35013005A4D26 /* SignUpViewController.swift in Sources */,
 				7AFB065321A4F3AD0046CB7B /* MyJobSaved.swift in Sources */,
@@ -1320,11 +1338,13 @@
 				7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */,
 				7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */,
 				7A955E2721A8013B00D402D4 /* IntroThreeController.swift in Sources */,
+				7A47BB512204239E001D1530 /* AttachFileController.swift in Sources */,
 				7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */,
 				7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */,
 				7A33518C21DF58650063BE50 /* GotoWorkUpdate.swift in Sources */,
 				7A2EA4A221A0FC6300E61681 /* SkillDetailCVController.swift in Sources */,
 				7A6CE03621CA1FCA00954ADC /* JobDetailCustomer.swift in Sources */,
+				7A9060252203DD9600986F0B /* NotifyConfirmAlertDelegate.swift in Sources */,
 				7AF1BD56219FCF98002FDC63 /* ExpDetailCVController.swift in Sources */,
 				7AA530A821CDFCCC0087B65A /* ContractProcessController.swift in Sources */,
 				9B715A461E28083600C0C039 /* PlaceholderTextView.swift in Sources */,
