@@ -49,7 +49,7 @@ class UserAPI {
     }, failure: { error , statusCode in
       LoadingOverlay.shared.hideOverlayView()
       var dict : Dictionary = error
-      let errorString:String = dict["X-gwautohuntApp-error"] as? String ?? ""
+      let errorString:String = dict["x-gwautohuntapp-error"] as? String ?? ""
       failure(errorString)
     })
   }
