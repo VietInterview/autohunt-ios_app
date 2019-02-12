@@ -1487,9 +1487,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = HAHZPWB354;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1537,9 +1538,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = HAHZPWB354;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1570,8 +1572,8 @@
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thang Tran (VCLS7534WY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1600,8 +1602,8 @@
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thang Tran (VCLS7534WY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1640,9 +1642,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = HAHZPWB354;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1679,8 +1682,8 @@
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thang Tran (VCLS7534WY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
