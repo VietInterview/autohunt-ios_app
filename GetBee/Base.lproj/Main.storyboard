@@ -322,7 +322,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hạn tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0u-zO-uV4">
-                                                                    <rect key="frame" x="5" y="59" width="72.5" height="22"/>
+                                                                    <rect key="frame" x="5" y="59" width="74" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="v8m-Af-90a"/>
                                                                     </constraints>
@@ -331,7 +331,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/10/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qie-gV-Ebb">
-                                                                    <rect key="frame" x="209.5" y="59" width="85.5" height="22"/>
+                                                                    <rect key="frame" x="213" y="59" width="82" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Wjp-0E-KG2"/>
                                                                         <constraint firstAttribute="height" constant="22" id="hUQ-Jf-tdp"/>
@@ -590,7 +590,7 @@
                                 <rect key="frame" x="0.0" y="164" width="320" height="404"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.97647058823529409" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobEmployerCell" rowHeight="125" id="2jg-66-ubb" customClass="JobEmployerCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JobEmployerCell" rowHeight="125" id="2jg-66-ubb" customClass="JobEmployerCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2jg-66-ubb" id="g8v-jV-lt8">
@@ -703,7 +703,7 @@
                                             <outlet property="viewContent" destination="f1I-u3-lYH" id="TRm-be-9vb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quantitycell" id="XjM-ai-6d8" customClass="SimpleCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quantitycell" id="XjM-ai-6d8" customClass="SimpleCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="153" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XjM-ai-6d8" id="OgT-HE-ZhD">
@@ -895,7 +895,7 @@
                                 <rect key="frame" x="0.0" y="164" width="320" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResumesEmployerCell" rowHeight="100" id="woJ-XE-ppH" customClass="ResumesEmployerCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResumesEmployerCell" rowHeight="100" id="woJ-XE-ppH" customClass="ResumesEmployerCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="woJ-XE-ppH" id="J14-au-5ng">
@@ -977,7 +977,7 @@
                                             <outlet property="viewContent" destination="Q1u-eU-oPp" id="nOt-v8-JV5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quantitycell" id="LrB-GU-fFu" customClass="SimpleCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quantitycell" id="LrB-GU-fFu" customClass="SimpleCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LrB-GU-fFu" id="kT7-zQ-Q9M">
@@ -1784,7 +1784,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="CVSubmitTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CVSubmitTableViewCell" rowHeight="180" id="IgR-B0-Hw3" customClass="CVSubmitTableViewCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CVSubmitTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CVSubmitTableViewCell" rowHeight="180" id="IgR-B0-Hw3" customClass="CVSubmitTableViewCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IgR-B0-Hw3" id="peC-kE-rHB">
@@ -2316,7 +2316,7 @@
                                         <rect key="frame" x="0.0" y="200" width="320" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Thời hạn đăng tuyển" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtL-v9-yOz">
-                                                <rect key="frame" x="8" y="14" width="144.5" height="22"/>
+                                                <rect key="frame" x="8" y="14" width="148.5" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="2gk-31-n89"/>
                                                 </constraints>
@@ -2332,7 +2332,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/09/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEo-rf-EFV">
-                                                <rect key="frame" x="157.5" y="14" width="146.5" height="22"/>
+                                                <rect key="frame" x="161.5" y="14" width="142.5" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="1W3-Wg-CLt"/>
                                                 </constraints>
@@ -2772,7 +2772,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên đã ứng tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fO-FZ-Sbx">
-                                        <rect key="frame" x="8" y="14" width="162" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="166" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="Nxz-86-usE"/>
                                         </constraints>
@@ -2802,7 +2802,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ứng viên của tôi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p54-ov-h0I">
-                                        <rect key="frame" x="8" y="14" width="116" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="118.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="XFX-f9-5Ka"/>
                                         </constraints>
@@ -2841,7 +2841,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã gửi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-H5-B21">
-                                        <rect key="frame" x="8" y="14" width="132.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="137.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="G89-xX-anq"/>
                                         </constraints>
@@ -2882,7 +2882,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số cộng tác viên đã quan tâm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kn-jW-py2">
-                                        <rect key="frame" x="8" y="14" width="211" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="214.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="p0H-Qj-v69"/>
                                         </constraints>
@@ -2923,7 +2923,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-8l-5Zx">
-                                        <rect key="frame" x="8" y="14" width="183.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="189.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="xcC-by-adc"/>
                                         </constraints>
@@ -2964,7 +2964,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-Lr-WoX">
-                                        <rect key="frame" x="8" y="14" width="145.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="149" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="kb9-1O-Urp"/>
                                         </constraints>
@@ -3005,7 +3005,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã nhận vào làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L77-XP-IPa">
-                                        <rect key="frame" x="8" y="14" width="205" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="210" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="O7v-WY-LNA"/>
                                         </constraints>
@@ -3046,7 +3046,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã gửi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBw-Dq-wi1">
-                                        <rect key="frame" x="8" y="14" width="132.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="137.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="2wi-WX-2Vt"/>
                                         </constraints>
@@ -3087,7 +3087,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên được mời phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLo-tV-EYo">
-                                        <rect key="frame" x="8" y="14" width="233" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="244" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="0l5-PP-oSc"/>
                                         </constraints>
@@ -3128,7 +3128,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHe-J1-4J9">
-                                        <rect key="frame" x="8" y="14" width="183.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="189.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="dMs-iW-YxH"/>
                                         </constraints>
@@ -3169,7 +3169,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên đã Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zF6-mc-Wzn">
-                                        <rect key="frame" x="8" y="14" width="145.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="149" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="wE9-a4-ZF0"/>
                                         </constraints>
@@ -3210,7 +3210,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số ứng viên được nhận vào làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-4s-8Hc">
-                                        <rect key="frame" x="8" y="14" width="223.5" height="22"/>
+                                        <rect key="frame" x="8" y="14" width="232" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="aKT-7m-zAl"/>
                                         </constraints>
@@ -3313,7 +3313,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 CV đã được nộp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUE-li-UwU">
-                                        <rect key="frame" x="8" y="15" width="112" height="20"/>
+                                        <rect key="frame" x="8" y="15" width="117" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="H4X-By-HIP"/>
                                         </constraints>
@@ -3464,7 +3464,7 @@
                                         <rect key="frame" x="0.0" y="48" width="266" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn có chắc chắn muốn xoá hồ sơ này?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzc-lb-7iE">
-                                                <rect key="frame" x="10.5" y="30" width="245" height="16.5"/>
+                                                <rect key="frame" x="6" y="30" width="254" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <color key="textColor" red="0.4068455696105957" green="0.48848849534988403" blue="0.5487932562828064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -3586,7 +3586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CUJ-2X-w44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="1869"/>
+            <point key="canvasLocation" x="23" y="3247"/>
         </scene>
         <!--MyCV Controller-->
         <scene sceneID="su6-S4-7ob">
@@ -3600,17 +3600,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attached_file" translatesAutoresizingMaskIntoConstraints="NO" id="Dns-jd-in6">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attached_file" translatesAutoresizingMaskIntoConstraints="NO" id="Dns-jd-in6">
                                 <rect key="frame" x="0.0" y="64" width="320" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="kL1-jS-jmY"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deC-Zq-ON6">
-                                <rect key="frame" x="0.0" y="105" width="320" height="120"/>
+                                <rect key="frame" x="0.0" y="105" width="320" height="180"/>
                                 <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tìm kiếm tên, mã. sdt..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cuc-bb-nLw" customClass="DesignableUITextField" customModule="GetBee" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="OtT-c4-WNS"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.4068455696105957" green="0.48848849534988403" blue="0.5487932562828064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="search_gray"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Y-il-Tdn">
-                                        <rect key="frame" x="18" y="19" width="88" height="22"/>
+                                        <rect key="frame" x="18" y="79" width="88" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="88" id="Jyh-14-I10"/>
                                             <constraint firstAttribute="height" constant="22" id="QZ0-3e-55w"/>
@@ -3620,7 +3638,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAx-GM-NaH">
-                                        <rect key="frame" x="18" y="79" width="64" height="22"/>
+                                        <rect key="frame" x="18" y="139" width="64" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="DIz-pp-xrV"/>
                                             <constraint firstAttribute="height" constant="22" id="ccI-Ye-HDZ"/>
@@ -3630,33 +3648,28 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="l2y-mr-DDE">
-                                        <rect key="frame" x="280" y="77" width="24" height="24"/>
+                                        <rect key="frame" x="280" y="137" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="Uoy-xn-emZ"/>
                                             <constraint firstAttribute="height" constant="24" id="gGz-iD-sIw"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voJ-hW-3Y0">
-                                        <rect key="frame" x="0.0" y="60" width="320" height="1"/>
+                                        <rect key="frame" x="0.0" y="120" width="320" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Y8d-XD-SLe"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUA-Gf-72F">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <rect key="frame" x="0.0" y="60" width="320" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="R3l-A8-5Sm"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ai5-0K-Knf">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-DS-Qmr">
-                                        <rect key="frame" x="111" y="15" width="164" height="30"/>
+                                        <rect key="frame" x="111" y="75" width="164" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Esj-Wc-RNM"/>
                                         </constraints>
@@ -3670,7 +3683,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kh8-jN-kzv">
-                                        <rect key="frame" x="87" y="74" width="188" height="30"/>
+                                        <rect key="frame" x="87" y="134" width="188" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7uo-jp-vcr"/>
                                         </constraints>
@@ -3684,7 +3697,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="pop-ro-oQN">
-                                        <rect key="frame" x="280" y="19" width="24" height="24"/>
+                                        <rect key="frame" x="280" y="79" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="I3a-4c-Xa9"/>
                                             <constraint firstAttribute="width" constant="24" id="zAw-8h-TAt"/>
@@ -3696,16 +3709,19 @@
                                     <constraint firstItem="pop-ro-oQN" firstAttribute="top" secondItem="oUA-Gf-72F" secondAttribute="bottom" constant="18" id="1Is-ay-eaD"/>
                                     <constraint firstItem="voJ-hW-3Y0" firstAttribute="leading" secondItem="deC-Zq-ON6" secondAttribute="leading" id="2rq-7D-6nP"/>
                                     <constraint firstItem="Kh8-jN-kzv" firstAttribute="top" secondItem="voJ-hW-3Y0" secondAttribute="bottom" constant="13" id="3gd-lX-vwf"/>
-                                    <constraint firstItem="oUA-Gf-72F" firstAttribute="top" secondItem="deC-Zq-ON6" secondAttribute="top" id="EGo-fZ-idf"/>
+                                    <constraint firstAttribute="trailing" secondItem="cuc-bb-nLw" secondAttribute="trailing" id="EY3-c9-Y5h"/>
                                     <constraint firstItem="oUA-Gf-72F" firstAttribute="leading" secondItem="deC-Zq-ON6" secondAttribute="leading" id="Fy3-cs-vHw"/>
                                     <constraint firstItem="l2y-mr-DDE" firstAttribute="top" secondItem="voJ-hW-3Y0" secondAttribute="bottom" constant="16" id="Mb7-SN-sqw"/>
                                     <constraint firstItem="AAx-GM-NaH" firstAttribute="leading" secondItem="deC-Zq-ON6" secondAttribute="leading" constant="18" id="PLv-7J-8W1"/>
                                     <constraint firstItem="Kh8-jN-kzv" firstAttribute="leading" secondItem="AAx-GM-NaH" secondAttribute="trailing" constant="5" id="Pri-e7-BU4"/>
-                                    <constraint firstAttribute="height" constant="120" id="UNx-yJ-sdT"/>
+                                    <constraint firstAttribute="height" constant="180" id="UNx-yJ-sdT"/>
                                     <constraint firstItem="AAx-GM-NaH" firstAttribute="top" secondItem="voJ-hW-3Y0" secondAttribute="bottom" constant="18" id="UpU-OY-QW8"/>
                                     <constraint firstItem="J2Y-il-Tdn" firstAttribute="leading" secondItem="deC-Zq-ON6" secondAttribute="leading" constant="18" id="WzS-VH-5iL"/>
+                                    <constraint firstItem="oUA-Gf-72F" firstAttribute="top" secondItem="cuc-bb-nLw" secondAttribute="bottom" id="YNR-3s-GCk"/>
                                     <constraint firstItem="l2y-mr-DDE" firstAttribute="leading" secondItem="Kh8-jN-kzv" secondAttribute="trailing" constant="5" id="eYC-It-bGe"/>
                                     <constraint firstItem="J2Y-il-Tdn" firstAttribute="top" secondItem="oUA-Gf-72F" secondAttribute="bottom" constant="18" id="fNf-Fs-f3Y"/>
+                                    <constraint firstItem="cuc-bb-nLw" firstAttribute="leading" secondItem="deC-Zq-ON6" secondAttribute="leading" id="iZB-nJ-vAl"/>
+                                    <constraint firstItem="cuc-bb-nLw" firstAttribute="top" secondItem="deC-Zq-ON6" secondAttribute="top" id="kGX-0v-hxx"/>
                                     <constraint firstAttribute="trailing" secondItem="pop-ro-oQN" secondAttribute="trailing" constant="16" id="nF3-NB-eDs"/>
                                     <constraint firstItem="voJ-hW-3Y0" firstAttribute="top" secondItem="JGy-DS-Qmr" secondAttribute="bottom" constant="15" id="oKY-0f-2E5"/>
                                     <constraint firstAttribute="trailing" secondItem="oUA-Gf-72F" secondAttribute="trailing" id="pBM-hz-pQ1"/>
@@ -3717,7 +3733,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAq-It-lM3">
-                                <rect key="frame" x="0.0" y="224" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="284" width="320" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIX-Iu-8R6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
@@ -3784,7 +3800,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpK-yK-Qbg">
-                                <rect key="frame" x="0.0" y="284" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="344" width="320" height="224"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zs8-Sm-viR">
@@ -3844,7 +3860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQg-g5-wfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766.875" y="1868.661971830986"/>
+            <point key="canvasLocation" x="23" y="1869"/>
         </scene>
         <!--Detail Resume Original Controller-->
         <scene sceneID="dDL-kv-Rha">
@@ -3862,7 +3878,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalcell" rowHeight="67" id="jCB-kU-RCM" customClass="NormalTableCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalcell" rowHeight="67" id="jCB-kU-RCM" customClass="NormalTableCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jCB-kU-RCM" id="1bH-IU-9ws">
@@ -3906,7 +3922,7 @@
                                             <outlet property="lblTitle" destination="41y-7C-0hB" id="Jkf-Ch-Fwp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headercell" rowHeight="160" id="ac1-Vd-l7D" customClass="HeaderCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headercell" rowHeight="160" id="ac1-Vd-l7D" customClass="HeaderCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="95" width="320" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ac1-Vd-l7D" id="YIE-UO-FpD">
@@ -4142,7 +4158,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobitemcell" rowHeight="258" id="HLq-ph-2zF" customClass="JobTableViewCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobitemcell" rowHeight="258" id="HLq-ph-2zF" customClass="JobTableViewCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="258"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HLq-ph-2zF" id="P2A-NP-fuQ">
@@ -4214,7 +4230,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/10/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIO-3c-m7n">
-                                                                    <rect key="frame" x="114.5" y="59" width="184.5" height="22"/>
+                                                                    <rect key="frame" x="118" y="59" width="181" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="dZH-Ae-rbQ"/>
                                                                     </constraints>
@@ -4223,7 +4239,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Tiền thưởng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfq-iT-sCx">
-                                                                    <rect key="frame" x="5" y="86" width="86" height="22"/>
+                                                                    <rect key="frame" x="5" y="86" width="89" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="9Tl-yb-BMi"/>
                                                                     </constraints>
@@ -4232,7 +4248,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-sJ-0mv">
-                                                                    <rect key="frame" x="5" y="5" width="86" height="22"/>
+                                                                    <rect key="frame" x="5" y="5" width="87.5" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="J9q-0R-o1p"/>
                                                                     </constraints>
@@ -4250,7 +4266,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cấp quản lý điều hành" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8q-FA-2ZW">
-                                                                    <rect key="frame" x="96" y="5" width="203" height="22"/>
+                                                                    <rect key="frame" x="97.5" y="5" width="201.5" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="wyg-T8-J6h"/>
                                                                     </constraints>
@@ -4259,7 +4275,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Thời hạn tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsG-2r-WzD">
-                                                                    <rect key="frame" x="5" y="59" width="104.5" height="22"/>
+                                                                    <rect key="frame" x="5" y="59" width="108" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="qYY-qY-ddt"/>
                                                                     </constraints>
@@ -4268,7 +4284,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,000 USD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-24-dAh">
-                                                                    <rect key="frame" x="96" y="86" width="203" height="25"/>
+                                                                    <rect key="frame" x="99" y="86" width="200" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="lwA-2b-Afs"/>
                                                                     </constraints>
@@ -4391,7 +4407,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobitemcell" rowHeight="262" id="X4U-Dr-08k" customClass="JobTableViewCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jobitemcell" rowHeight="262" id="X4U-Dr-08k" customClass="JobTableViewCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="262"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4U-Dr-08k" id="M80-9p-Ubj">
@@ -4455,7 +4471,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Tiền thưởng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRm-Pm-49F">
-                                                                    <rect key="frame" x="5" y="86" width="86" height="22"/>
+                                                                    <rect key="frame" x="5" y="86" width="89" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="J39-51-w4a"/>
                                                                     </constraints>
@@ -4492,7 +4508,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Thời hạn tuyển" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjx-JS-wtq">
-                                                                    <rect key="frame" x="5" y="59" width="104.5" height="22"/>
+                                                                    <rect key="frame" x="5" y="59" width="108" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="EXk-K7-DuC"/>
                                                                     </constraints>
@@ -4501,7 +4517,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,000 USD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVQ-Ab-OO5">
-                                                                    <rect key="frame" x="96" y="86" width="203" height="25"/>
+                                                                    <rect key="frame" x="99" y="86" width="200" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="kUm-2s-qaw"/>
                                                                     </constraints>
@@ -4510,7 +4526,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/10/2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPW-aN-zTg">
-                                                                    <rect key="frame" x="114.5" y="59" width="184.5" height="22"/>
+                                                                    <rect key="frame" x="118" y="59" width="181" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="22" id="5mY-6n-DVA"/>
                                                                     </constraints>
@@ -4622,6 +4638,175 @@
             </objects>
             <point key="canvasLocation" x="2168" y="2574"/>
         </scene>
+        <!--MyCV Attached Controller-->
+        <scene sceneID="kpd-fQ-SZ5">
+            <objects>
+                <viewController storyboardIdentifier="MyCVAttachedController" id="IUg-bu-iWQ" customClass="MyCVAttachedController" customModule="GetBee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Bd-Um-uvD"/>
+                        <viewControllerLayoutGuide type="bottom" id="wil-9J-cKs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sWD-ss-1Rg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0CH-sL-dXl">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCVTableViewCell" rowHeight="104" id="5Nz-Lk-FAX" customClass="MyCVTableViewCell" customModule="GetBee" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Nz-Lk-FAX" id="mu0-KS-5gT">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etl-iR-qcM">
+                                                    <rect key="frame" x="8" y="4" width="304" height="96"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lê Thị Khuyên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyc-iN-rq4">
+                                                            <rect key="frame" x="8" y="8" width="288" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="yrG-V4-bAE"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                                            <color key="textColor" red="0.0046832845550000002" green="0.2000065446" blue="0.31182104350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT, Phần mềm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBS-AL-Qje">
+                                                            <rect key="frame" x="8" y="41" width="288" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="22" id="CUI-JP-5nW"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                            <color key="textColor" red="0.40684556960000001" green="0.48848849529999999" blue="0.54879325629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejZ-se-LNr">
+                                                            <rect key="frame" x="217" y="36" width="79" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="79" id="6mf-JO-P0v"/>
+                                                                <constraint firstAttribute="height" constant="24" id="Eba-S2-uEc"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                            <state key="normal" title="Button">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cập nhật: 12/08/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH6-Bb-xAb">
+                                                            <rect key="frame" x="8" y="71" width="288" height="12"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                            <color key="textColor" red="0.62695926430000004" green="0.72068041559999996" blue="0.79113119840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="ejZ-se-LNr" firstAttribute="centerY" secondItem="etl-iR-qcM" secondAttribute="centerY" id="9zR-gZ-hJb"/>
+                                                        <constraint firstItem="sBS-AL-Qje" firstAttribute="top" secondItem="Oyc-iN-rq4" secondAttribute="bottom" constant="8" id="FdM-if-qS6"/>
+                                                        <constraint firstItem="Oyc-iN-rq4" firstAttribute="leading" secondItem="etl-iR-qcM" secondAttribute="leading" constant="8" id="NQU-rN-kzC"/>
+                                                        <constraint firstItem="Oyc-iN-rq4" firstAttribute="top" secondItem="etl-iR-qcM" secondAttribute="top" constant="8" id="Psr-8z-dDr"/>
+                                                        <constraint firstItem="sBS-AL-Qje" firstAttribute="leading" secondItem="etl-iR-qcM" secondAttribute="leading" constant="8" id="Y6F-9J-RSt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="sBS-AL-Qje" secondAttribute="trailing" constant="8" id="bq5-mN-gNg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CH6-Bb-xAb" secondAttribute="trailing" constant="8" id="d7E-T1-Zck"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ejZ-se-LNr" secondAttribute="trailing" constant="8" id="dkb-C9-XYs"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Oyc-iN-rq4" secondAttribute="trailing" constant="8" id="hEa-cd-gNF"/>
+                                                        <constraint firstItem="CH6-Bb-xAb" firstAttribute="top" secondItem="sBS-AL-Qje" secondAttribute="bottom" constant="8" id="k8r-BM-SmL"/>
+                                                        <constraint firstItem="CH6-Bb-xAb" firstAttribute="leading" secondItem="etl-iR-qcM" secondAttribute="leading" constant="8" id="z1P-2p-2HY"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.95026010270000005" green="0.97813540700000001" blue="0.99834913020000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="etl-iR-qcM" firstAttribute="leading" secondItem="mu0-KS-5gT" secondAttribute="leading" constant="8" id="8pG-Az-0bZ"/>
+                                                <constraint firstItem="etl-iR-qcM" firstAttribute="top" secondItem="mu0-KS-5gT" secondAttribute="top" constant="4" id="Ahf-WT-XCJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="etl-iR-qcM" secondAttribute="bottom" constant="4" id="JzF-tr-u3j"/>
+                                                <constraint firstAttribute="trailing" secondItem="etl-iR-qcM" secondAttribute="trailing" constant="8" id="zIo-i7-OQp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.95026010270000005" green="0.97813540700000001" blue="0.99834913020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="btnStatus" destination="ejZ-se-LNr" id="hU0-xY-Nrf"/>
+                                            <outlet property="lblCarrer" destination="sBS-AL-Qje" id="Pti-lW-SHM"/>
+                                            <outlet property="lblDateUpdate" destination="CH6-Bb-xAb" id="n0Z-zD-HGO"/>
+                                            <outlet property="lblName" destination="Oyc-iN-rq4" id="dik-Ev-s9O"/>
+                                            <outlet property="viewContent" destination="etl-iR-qcM" id="Nk4-wG-BIy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="quantitycell" id="Jdr-YV-LDm" customClass="SimpleCell" customModule="GetBee" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="132" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jdr-YV-LDm" id="MNK-uK-wow">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abS-TK-h2x">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35 Hồ sơ được tìm thấy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkL-VF-Z0f">
+                                                            <rect key="frame" x="20" y="7" width="280" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="6CT-1o-x1d"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                            <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.95026010274887085" green="0.97813540697097778" blue="0.99834913015365601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="NkL-VF-Z0f" firstAttribute="leading" secondItem="abS-TK-h2x" secondAttribute="leading" constant="20" id="26m-s7-fDK"/>
+                                                        <constraint firstItem="NkL-VF-Z0f" firstAttribute="centerY" secondItem="abS-TK-h2x" secondAttribute="centerY" id="cJM-UG-mZ9"/>
+                                                        <constraint firstItem="NkL-VF-Z0f" firstAttribute="centerX" secondItem="abS-TK-h2x" secondAttribute="centerX" id="u0T-sQ-0LU"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NkL-VF-Z0f" secondAttribute="trailing" constant="20" id="yKs-g9-X39"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="abS-TK-h2x" secondAttribute="trailing" id="Eks-cN-DYg"/>
+                                                <constraint firstItem="abS-TK-h2x" firstAttribute="top" secondItem="MNK-uK-wow" secondAttribute="top" id="QTk-2j-iFi"/>
+                                                <constraint firstAttribute="bottom" secondItem="abS-TK-h2x" secondAttribute="bottom" id="p26-0E-fy1"/>
+                                                <constraint firstItem="abS-TK-h2x" firstAttribute="leading" secondItem="MNK-uK-wow" secondAttribute="leading" id="wD6-9B-xvb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblQuantity" destination="NkL-VF-Z0f" id="RxJ-bR-WT7"/>
+                                            <outlet property="viewQuantity" destination="abS-TK-h2x" id="Hxk-Mb-Hsk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IUg-bu-iWQ" id="Vxm-da-dD4"/>
+                                    <outlet property="delegate" destination="IUg-bu-iWQ" id="huY-vk-gbU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0CH-sL-dXl" firstAttribute="top" secondItem="9Bd-Um-uvD" secondAttribute="bottom" id="SYt-0A-iNC"/>
+                            <constraint firstItem="wil-9J-cKs" firstAttribute="top" secondItem="0CH-sL-dXl" secondAttribute="bottom" id="V0m-2G-BI7"/>
+                            <constraint firstAttribute="trailing" secondItem="0CH-sL-dXl" secondAttribute="trailing" id="a3G-w7-gyi"/>
+                            <constraint firstItem="0CH-sL-dXl" firstAttribute="leading" secondItem="sWD-ss-1Rg" secondAttribute="leading" id="vxu-rY-5Wp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="0CH-sL-dXl" id="2Ln-pk-85V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p9k-Ic-QS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="1869"/>
+        </scene>
         <!--MyCV Saved Controller-->
         <scene sceneID="RPz-UK-46e">
             <objects>
@@ -4635,10 +4820,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3QE-gY-3wa">
-                                <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggN-kU-erq">
-                                        <rect key="frame" x="20" y="10" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="2.5" width="280" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ahk-L5-MMH"/>
                                         </constraints>
@@ -4647,20 +4832,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95026010274887085" green="0.97813540697097778" blue="0.99834913015365601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ggN-kU-erq" firstAttribute="centerX" secondItem="3QE-gY-3wa" secondAttribute="centerX" id="1WJ-cZ-2ck"/>
                                     <constraint firstItem="ggN-kU-erq" firstAttribute="leading" secondItem="3QE-gY-3wa" secondAttribute="leading" constant="20" id="8Dj-TC-ge8"/>
-                                    <constraint firstAttribute="height" constant="50" id="LRh-la-sOX"/>
+                                    <constraint firstAttribute="height" constant="35" id="LRh-la-sOX"/>
                                     <constraint firstAttribute="trailing" secondItem="ggN-kU-erq" secondAttribute="trailing" constant="20" id="ZqC-3K-ziI"/>
                                     <constraint firstItem="ggN-kU-erq" firstAttribute="centerY" secondItem="3QE-gY-3wa" secondAttribute="centerY" id="z5Z-wZ-DBc"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ql4-b7-I5G">
-                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="513"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCVTableViewCell" rowHeight="104" id="uh2-tv-mpv" customClass="MyCVTableViewCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCVTableViewCell" rowHeight="104" id="uh2-tv-mpv" customClass="MyCVTableViewCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uh2-tv-mpv" id="smz-Ns-elX">
@@ -4668,28 +4853,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSR-Ve-TQe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+                                                    <rect key="frame" x="8" y="4" width="304" height="96"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lê Thị Khuyên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9W-8d-rOO">
-                                                            <rect key="frame" x="8" y="8" width="304" height="25"/>
+                                                            <rect key="frame" x="8" y="8" width="288" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="ika-Xt-88W"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
-                                                            <color key="textColor" red="0.098039215686274508" green="0.094117647058823528" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                                            <color key="textColor" red="0.004683284554630518" green="0.20000654458999634" blue="0.31182104349136353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT, Phần mềm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYS-On-nwQ">
-                                                            <rect key="frame" x="8" y="41" width="304" height="22"/>
+                                                            <rect key="frame" x="8" y="41" width="288" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="Hx8-nZ-dcX"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                            <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                            <color key="textColor" red="0.4068455696105957" green="0.48848849534988403" blue="0.5487932562828064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-uv-yYy">
-                                                            <rect key="frame" x="282" y="40" width="30" height="24"/>
+                                                            <rect key="frame" x="265" y="36" width="31" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="6Qm-fA-SZh"/>
                                                             </constraints>
@@ -4704,47 +4889,42 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cập nhật: 12/08/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9z-xC-oNT">
-                                                            <rect key="frame" x="8" y="71" width="304" height="19"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                            <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <rect key="frame" x="8" y="71" width="288" height="12"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                            <color key="textColor" red="0.62695926427841187" green="0.72068041563034058" blue="0.79113119840621948" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rri-ZZ-rCg">
-                                                            <rect key="frame" x="0.0" y="103" width="320" height="1"/>
-                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="1" id="1ZJ-I2-JfA"/>
-                                                            </constraints>
-                                                        </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="H9z-xC-oNT" firstAttribute="top" secondItem="cYS-On-nwQ" secondAttribute="bottom" constant="8" id="2ls-MO-uly"/>
                                                         <constraint firstItem="cYS-On-nwQ" firstAttribute="top" secondItem="x9W-8d-rOO" secondAttribute="bottom" constant="8" id="6II-Nt-T1E"/>
                                                         <constraint firstItem="QNZ-uv-yYy" firstAttribute="centerY" secondItem="FSR-Ve-TQe" secondAttribute="centerY" id="8YI-bx-wPq"/>
                                                         <constraint firstAttribute="trailing" secondItem="H9z-xC-oNT" secondAttribute="trailing" constant="8" id="Keh-HD-Wgg"/>
-                                                        <constraint firstAttribute="bottom" secondItem="rri-ZZ-rCg" secondAttribute="bottom" id="SBe-YF-Njz"/>
                                                         <constraint firstItem="x9W-8d-rOO" firstAttribute="top" secondItem="FSR-Ve-TQe" secondAttribute="top" constant="8" id="UQ9-Um-Hws"/>
                                                         <constraint firstItem="H9z-xC-oNT" firstAttribute="leading" secondItem="FSR-Ve-TQe" secondAttribute="leading" constant="8" id="VFo-Nf-60l"/>
-                                                        <constraint firstItem="rri-ZZ-rCg" firstAttribute="leading" secondItem="FSR-Ve-TQe" secondAttribute="leading" id="WFn-xs-9SP"/>
                                                         <constraint firstAttribute="trailing" secondItem="cYS-On-nwQ" secondAttribute="trailing" constant="8" id="XKf-df-c2K"/>
                                                         <constraint firstAttribute="trailing" secondItem="x9W-8d-rOO" secondAttribute="trailing" constant="8" id="coh-cr-a2m"/>
                                                         <constraint firstItem="x9W-8d-rOO" firstAttribute="leading" secondItem="FSR-Ve-TQe" secondAttribute="leading" constant="8" id="eCt-BL-Win"/>
                                                         <constraint firstItem="cYS-On-nwQ" firstAttribute="leading" secondItem="FSR-Ve-TQe" secondAttribute="leading" constant="8" id="ecf-p9-6lX"/>
                                                         <constraint firstAttribute="trailing" secondItem="QNZ-uv-yYy" secondAttribute="trailing" constant="8" id="qlz-9z-rY4"/>
-                                                        <constraint firstAttribute="trailing" secondItem="rri-ZZ-rCg" secondAttribute="trailing" id="vN9-yr-leF"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.95026010274887085" green="0.97813540697097778" blue="0.99834913015365601" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="FSR-Ve-TQe" secondAttribute="bottom" id="52e-yh-mVk"/>
-                                                <constraint firstItem="FSR-Ve-TQe" firstAttribute="top" secondItem="smz-Ns-elX" secondAttribute="top" id="GSO-0C-edj"/>
-                                                <constraint firstItem="FSR-Ve-TQe" firstAttribute="leading" secondItem="smz-Ns-elX" secondAttribute="leading" id="jig-k9-gWV"/>
-                                                <constraint firstAttribute="trailing" secondItem="FSR-Ve-TQe" secondAttribute="trailing" id="mkU-XN-ymP"/>
+                                                <constraint firstAttribute="bottom" secondItem="FSR-Ve-TQe" secondAttribute="bottom" constant="4" id="52e-yh-mVk"/>
+                                                <constraint firstItem="FSR-Ve-TQe" firstAttribute="top" secondItem="smz-Ns-elX" secondAttribute="top" constant="4" id="GSO-0C-edj"/>
+                                                <constraint firstItem="FSR-Ve-TQe" firstAttribute="leading" secondItem="smz-Ns-elX" secondAttribute="leading" constant="8" id="jig-k9-gWV"/>
+                                                <constraint firstAttribute="trailing" secondItem="FSR-Ve-TQe" secondAttribute="trailing" constant="8" id="mkU-XN-ymP"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.95026010274887085" green="0.97813540697097778" blue="0.99834913015365601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="btnStatus" destination="QNZ-uv-yYy" id="grf-1K-krH"/>
                                             <outlet property="lblCarrer" destination="cYS-On-nwQ" id="4ww-7e-L3g"/>
@@ -4752,6 +4932,7 @@
                                             <outlet property="lblName" destination="x9W-8d-rOO" id="0I6-bB-f89"/>
                                             <outlet property="lblQuantityView" destination="ggN-kU-erq" id="WqO-Gr-aeA"/>
                                             <outlet property="mQuantityView" destination="3QE-gY-3wa" id="Flf-QP-mL9"/>
+                                            <outlet property="viewContent" destination="FSR-Ve-TQe" id="DHe-if-gRh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -4798,7 +4979,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCVTableViewCell" rowHeight="190" id="s8p-6L-Wsj" customClass="MyCVTableViewCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCVTableViewCell" rowHeight="190" id="s8p-6L-Wsj" customClass="MyCVTableViewCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s8p-6L-Wsj" id="sFs-NL-okJ">
@@ -5280,7 +5461,7 @@
                             <rect key="frame" x="0.0" y="15" width="300" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lý do từ chối" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIp-Eb-d0o">
-                                    <rect key="frame" x="98.5" y="5" width="103" height="21"/>
+                                    <rect key="frame" x="96.5" y="5" width="107" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="g3W-G7-rd3"/>
                                     </constraints>
@@ -5399,7 +5580,7 @@
                                         <rect key="frame" x="10" y="20" width="300" height="640"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin ứng viên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLJ-z0-hBd">
-                                                <rect key="frame" x="10" y="16" width="117" height="17"/>
+                                                <rect key="frame" x="10" y="16" width="118" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="huF-w1-eZt"/>
                                                 </constraints>
@@ -5467,7 +5648,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04/10/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk9-JP-DAA">
-                                                        <rect key="frame" x="14" y="41" width="85.5" height="19"/>
+                                                        <rect key="frame" x="14" y="41" width="82" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="qNf-Gs-jfV"/>
                                                         </constraints>
@@ -5509,7 +5690,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đại học" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fj5-tO-1By">
-                                                        <rect key="frame" x="14" y="41" width="54" height="19"/>
+                                                        <rect key="frame" x="14" y="41" width="55" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="sdK-Sy-BNG"/>
                                                         </constraints>
@@ -5682,7 +5863,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lef-lW-dtK">
-                                                        <rect key="frame" x="14" y="41" width="64" height="19"/>
+                                                        <rect key="frame" x="14" y="41" width="62.5" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="Wgc-Rf-03X"/>
                                                         </constraints>
@@ -5879,7 +6060,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxQ-Pb-vy6">
-                                                        <rect key="frame" x="14" y="11" width="81.5" height="17"/>
+                                                        <rect key="frame" x="14" y="11" width="83" height="17"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                         <color key="textColor" red="0.40392156862745099" green="0.4823529411764706" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -6066,7 +6247,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vòng phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI9-Gs-pQP">
-                                                <rect key="frame" x="10" y="20" width="115.5" height="19"/>
+                                                <rect key="frame" x="10" y="20" width="117.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6082,7 +6263,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1T-2M-GMJ">
-                                                <rect key="frame" x="10" y="119" width="115.5" height="19"/>
+                                                <rect key="frame" x="10" y="119" width="117.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6120,7 +6301,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYu-dc-TKJ">
-                                                <rect key="frame" x="10" y="329" width="54" height="19"/>
+                                                <rect key="frame" x="10" y="329" width="55.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6136,7 +6317,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLC-Gz-jOT">
-                                                <rect key="frame" x="10" y="434" width="133" height="19"/>
+                                                <rect key="frame" x="10" y="434" width="136.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6482,7 +6663,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức lương" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMq-mJ-NrE">
-                                                <rect key="frame" x="10" y="125" width="77.5" height="19"/>
+                                                <rect key="frame" x="10" y="125" width="82" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6541,7 +6722,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Z-5W-LcY">
-                                                <rect key="frame" x="10" y="335" width="112.5" height="19"/>
+                                                <rect key="frame" x="10" y="335" width="114" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6557,7 +6738,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ví trí làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRq-hY-Bcm">
-                                                <rect key="frame" x="10" y="440" width="97.5" height="19"/>
+                                                <rect key="frame" x="10" y="440" width="95.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6573,7 +6754,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKF-bY-9u4">
-                                                <rect key="frame" x="10" y="545" width="54" height="19"/>
+                                                <rect key="frame" x="10" y="545" width="55.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6589,7 +6770,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a75-PS-sqD">
-                                                <rect key="frame" x="10" y="650" width="54.5" height="19"/>
+                                                <rect key="frame" x="10" y="650" width="56.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -6922,7 +7103,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian bảo hành còn lại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-bB-Y1T">
-                                <rect key="frame" x="10" y="183" width="188" height="19"/>
+                                <rect key="frame" x="10" y="183" width="190.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -7023,7 +7204,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vòng phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27e-ed-e2N">
-                                        <rect key="frame" x="11" y="16" width="115.5" height="19"/>
+                                        <rect key="frame" x="11" y="16" width="117.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7059,7 +7240,7 @@
                                 <rect key="frame" x="0.0" y="148" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yl-3v-aOH">
-                                        <rect key="frame" x="11" y="14" width="145" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="147.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7095,7 +7276,7 @@
                                 <rect key="frame" x="0.0" y="232" width="320" height="108"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa điểm phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-no-YBa">
-                                        <rect key="frame" x="11" y="16" width="142.5" height="19"/>
+                                        <rect key="frame" x="11" y="16" width="144" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7134,7 +7315,7 @@
                                 <rect key="frame" x="0.0" y="340" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLO-Gc-DoC">
-                                        <rect key="frame" x="11" y="14" width="54" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="55.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7170,7 +7351,7 @@
                                 <rect key="frame" x="0.0" y="424" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUc-jd-T7c">
-                                        <rect key="frame" x="11" y="14" width="133" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="136.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7287,7 +7468,7 @@
                                 <rect key="frame" x="0.0" y="134" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mức lương" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-fX-xVd">
-                                        <rect key="frame" x="11" y="14" width="77.5" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="82" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7323,7 +7504,7 @@
                                 <rect key="frame" x="0.0" y="274" width="320" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-qs-wWM">
-                                        <rect key="frame" x="11" y="14" width="112.5" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="114" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7435,7 +7616,7 @@
                                 <rect key="frame" x="0.0" y="428" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h43-np-JnD">
-                                        <rect key="frame" x="11" y="14" width="54" height="19"/>
+                                        <rect key="frame" x="11" y="14" width="55.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7471,7 +7652,7 @@
                                 <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kết quả" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rT-4H-Tb7">
-                                        <rect key="frame" x="11" y="12" width="54.5" height="19"/>
+                                        <rect key="frame" x="11" y="12" width="56.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -7560,7 +7741,7 @@
                                 <rect key="frame" x="10" y="20" width="300" height="386"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFb-Cd-Qfg">
-                                        <rect key="frame" x="10" y="16" width="95" height="17"/>
+                                        <rect key="frame" x="10" y="16" width="94" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="T92-4M-Zom"/>
                                         </constraints>
@@ -7580,32 +7761,32 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SU8-BU-XsR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="580" height="1"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
                                                             <color key="backgroundColor" red="0.90588235294117647" green="0.92549019607843142" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Dxe-Hr-5Te"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N02-8T-8Wj">
-                                                            <rect key="frame" x="10" y="11" width="530" height="19"/>
+                                                            <rect key="frame" x="10" y="11" width="250" height="19"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                             <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28/12/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bac-UJ-Y18">
-                                                            <rect key="frame" x="10" y="42" width="560" height="17"/>
+                                                            <rect key="frame" x="10" y="42" width="280" height="17"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <color key="textColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfN-ZZ-v4w">
-                                                            <rect key="frame" x="110" y="35" width="440" height="0.0"/>
+                                                            <rect key="frame" x="110" y="35" width="160" height="0.0"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                             <color key="textColor" red="0.4039215686" green="0.4823529412" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="Dd8-8s-KSG">
-                                                            <rect key="frame" x="551" y="26" width="18" height="18"/>
+                                                            <rect key="frame" x="271" y="26" width="18" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="18" id="hZO-ti-r5Q"/>
                                                                 <constraint firstAttribute="height" constant="18" id="n2h-2z-WFM"/>
@@ -7855,7 +8036,7 @@
                                 <rect key="frame" x="10" y="20" width="300" height="259"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin đi làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efp-Kf-W2o">
-                                        <rect key="frame" x="10" y="16" width="102" height="17"/>
+                                        <rect key="frame" x="10" y="16" width="101" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="77u-hc-DZK"/>
                                         </constraints>
@@ -7874,7 +8055,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày bắt đầu đi làm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92B-c6-1oI">
-                                                <rect key="frame" x="10" y="11" width="144" height="19"/>
+                                                <rect key="frame" x="10" y="11" width="145" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -7919,7 +8100,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian bảo hành còn lại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyM-TX-E2l">
-                                                <rect key="frame" x="10" y="11" width="188" height="19"/>
+                                                <rect key="frame" x="10" y="11" width="190.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                 <color key="textColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -8261,7 +8442,7 @@
                                 <rect key="frame" x="10" y="20" width="300" height="386"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin phỏng vấn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbm-rT-rYO">
-                                        <rect key="frame" x="10" y="16" width="128" height="17"/>
+                                        <rect key="frame" x="10" y="16" width="129" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="RGu-bo-RLS"/>
                                         </constraints>
@@ -8281,7 +8462,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omS-tq-V04">
-                                                            <rect key="frame" x="0.0" y="0.0" width="580" height="1"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
                                                             <color key="backgroundColor" red="0.90588235294117647" green="0.92549019607843142" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="Knf-uL-Ds3"/>
@@ -8294,19 +8475,19 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28/12/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boS-op-Vss">
-                                                            <rect key="frame" x="10" y="42" width="560" height="17"/>
+                                                            <rect key="frame" x="10" y="42" width="280" height="17"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <color key="textColor" red="0.40392156862745099" green="0.4823529411764706" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thí sinh không đến" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q32-BS-Eif">
-                                                            <rect key="frame" x="110" y="25.5" width="440" height="19"/>
+                                                            <rect key="frame" x="110" y="25.5" width="160" height="19"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                             <color key="textColor" red="0.40392156862745099" green="0.4823529411764706" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="Gcz-7s-Bwt">
-                                                            <rect key="frame" x="551" y="26" width="18" height="18"/>
+                                                            <rect key="frame" x="271" y="26" width="18" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18" id="0eC-aQ-cqH"/>
                                                                 <constraint firstAttribute="width" constant="18" id="L0s-GI-jIn"/>
@@ -8700,7 +8881,7 @@
                                 <color key="backgroundColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.015686274510000001" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headercell" rowHeight="195" id="cVc-JI-ykH" customClass="HeaderCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headercell" rowHeight="195" id="cVc-JI-ykH" customClass="HeaderCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="195"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cVc-JI-ykH" id="5Mt-ck-sTw">
@@ -8787,7 +8968,7 @@
                                             <outlet property="textViewName" destination="D5f-qy-mm9" id="2V7-eh-nBB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="iseditcell" rowHeight="67" id="gjn-DI-sBz" customClass="IsEditCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="iseditcell" rowHeight="67" id="gjn-DI-sBz" customClass="IsEditCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="223" width="320" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gjn-DI-sBz" id="CJW-jJ-VJ2">
@@ -8845,7 +9026,7 @@
                                             <outlet property="textViewContent" destination="TAU-kK-aHw" id="nEn-Kq-gg2"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gotocell" rowHeight="44" id="zNH-0x-ny9" customClass="GoToCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gotocell" rowHeight="44" id="zNH-0x-ny9" customClass="GoToCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="290" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zNH-0x-ny9" id="jTj-8H-oIF">
@@ -9064,7 +9245,7 @@
                                 <rect key="frame" x="0.0" y="195" width="320" height="373"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalCell" rowHeight="76" id="xcU-K7-OEZ" customClass="NormalTableCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalCell" rowHeight="76" id="xcU-K7-OEZ" customClass="NormalTableCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xcU-K7-OEZ" id="kTK-fi-jX4">
@@ -9112,7 +9293,7 @@
                                             <outlet property="lblTitle" destination="mfO-ef-9OH" id="FPS-Z3-med"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expanedCell" rowHeight="196" id="T0W-aS-1kS" customClass="ExpandableDetailJobCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expanedCell" rowHeight="196" id="T0W-aS-1kS" customClass="ExpandableDetailJobCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="104" width="320" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T0W-aS-1kS" id="FOG-aI-UQy">
@@ -9120,7 +9301,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mô tả công việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrB-sH-q3F">
-                                                    <rect key="frame" x="15" y="11" width="113.5" height="19"/>
+                                                    <rect key="frame" x="15" y="11" width="115.5" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="KXH-qK-ufX"/>
                                                     </constraints>
@@ -9373,7 +9554,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalCell" rowHeight="76" id="DOj-5t-E9M" customClass="NormalTableCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalCell" rowHeight="76" id="DOj-5t-E9M" customClass="NormalTableCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DOj-5t-E9M" id="n2G-Y8-FO3">
@@ -9408,7 +9589,7 @@
                                             <outlet property="lblTitle" destination="ViB-hb-zLl" id="EnQ-4z-dU1"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expanedCell" rowHeight="196" id="i0I-Po-axN" customClass="ExpandableDetailJobCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expanedCell" rowHeight="196" id="i0I-Po-axN" customClass="ExpandableDetailJobCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="104" width="320" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0I-Po-axN" id="sJw-dr-pPN">
@@ -9446,7 +9627,7 @@
                                             <outlet property="lblTitle" destination="OyH-Gy-JKD" id="xUU-UD-uYH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LanComCell" rowHeight="199" id="8Dh-rD-78x" customClass="LanComCell" customModule="GetBee" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LanComCell" rowHeight="199" id="8Dh-rD-78x" customClass="LanComCell" customModule="GetBee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="300" width="320" height="199"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Dh-rD-78x" id="MjW-aG-Vfh">
@@ -9743,16 +9924,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1x2-OB-NHO">
-                                        <rect key="frame" x="11.5" y="33.5" width="297" height="109"/>
+                                        <rect key="frame" x="10" y="33.5" width="300" height="109"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-et-bUR">
-                                                <rect key="frame" x="88.5" y="17" width="120" height="35"/>
+                                                <rect key="frame" x="90" y="17" width="120" height="35"/>
                                                 <color key="backgroundColor" red="0.62695926427841187" green="0.72068041563034058" blue="0.79113119840621948" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="6AN-ek-gTt"/>
                                                     <constraint firstAttribute="width" constant="120" id="6wM-Db-wfV"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Chọn hồ sơ" image="choose_resume">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -9761,9 +9943,12 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="chooseFileTouch" destination="eYG-lf-FNo" eventType="touchUpInside" id="h0F-eS-gcj"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIJ-ke-cqC">
-                                                <rect key="frame" x="10" y="62" width="277" height="33"/>
+                                                <rect key="frame" x="10" y="62" width="280" height="37"/>
                                                 <string key="text">Upload file với các định dạng
  .doc, .docx, .xlsx, .pdf. Dung lượng &lt; 1Mb</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
@@ -9773,11 +9958,11 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="FIJ-ke-cqC" secondAttribute="trailing" constant="10" id="2LM-sa-5kB"/>
+                                            <constraint firstAttribute="bottom" secondItem="FIJ-ke-cqC" secondAttribute="bottom" constant="10" id="36K-XV-xst"/>
                                             <constraint firstItem="FIJ-ke-cqC" firstAttribute="leading" secondItem="1x2-OB-NHO" secondAttribute="leading" constant="10" id="T7R-AY-PRn"/>
                                             <constraint firstItem="kXG-et-bUR" firstAttribute="top" secondItem="1x2-OB-NHO" secondAttribute="top" constant="17" id="arT-OT-p24"/>
                                             <constraint firstItem="kXG-et-bUR" firstAttribute="centerX" secondItem="1x2-OB-NHO" secondAttribute="centerX" id="hQP-t2-HiC"/>
                                             <constraint firstAttribute="height" constant="109" id="m9Z-pN-lHe"/>
-                                            <constraint firstAttribute="width" constant="297" id="tmM-8B-AHU"/>
                                             <constraint firstItem="FIJ-ke-cqC" firstAttribute="top" secondItem="kXG-et-bUR" secondAttribute="bottom" constant="10" id="vab-UX-u6u"/>
                                         </constraints>
                                     </view>
@@ -9788,7 +9973,9 @@
                                     <constraint firstItem="1x2-OB-NHO" firstAttribute="centerX" secondItem="Nz9-vz-0iY" secondAttribute="centerX" id="UZS-Iu-5jX"/>
                                     <constraint firstItem="1x2-OB-NHO" firstAttribute="top" secondItem="2Yj-X7-zNB" secondAttribute="bottom" constant="12" id="Wjl-nF-ZDa"/>
                                     <constraint firstItem="2Yj-X7-zNB" firstAttribute="top" secondItem="Nz9-vz-0iY" secondAttribute="top" constant="5" id="Zlb-Ab-O7X"/>
+                                    <constraint firstItem="1x2-OB-NHO" firstAttribute="leading" secondItem="Nz9-vz-0iY" secondAttribute="leading" constant="10" id="dFM-qu-pWO"/>
                                     <constraint firstAttribute="trailing" secondItem="2Yj-X7-zNB" secondAttribute="trailing" constant="10" id="mLb-1K-0Vd"/>
+                                    <constraint firstAttribute="trailing" secondItem="1x2-OB-NHO" secondAttribute="trailing" constant="10" id="wpM-e7-JXs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -9812,6 +9999,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblNameFileUpload" destination="FIJ-ke-cqC" id="XaL-de-gaj"/>
                         <outlet property="viewAttach" destination="1x2-OB-NHO" id="z3H-cP-iMW"/>
                     </connections>
                 </viewController>
@@ -9888,7 +10076,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hình ảnh công ty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5f-Xf-wd1">
-                                                                    <rect key="frame" x="11" y="8" width="120.5" height="19"/>
+                                                                    <rect key="frame" x="11" y="8" width="122" height="19"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                     <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -10174,7 +10362,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phúc lợi công ty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rne-zG-rpM">
-                                                                    <rect key="frame" x="15" y="0.0" width="114.5" height="34"/>
+                                                                    <rect key="frame" x="15" y="0.0" width="117" height="34"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                     <color key="textColor" red="0.015686274509803921" green="0.1803921568627451" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -10619,7 +10807,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số điện thoại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUK-Ny-nEz">
-                                                        <rect key="frame" x="8" y="13" width="105" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="106.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="dG9-Al-2ji"/>
                                                         </constraints>
@@ -10684,7 +10872,7 @@
                                                 <rect key="frame" x="0.0" y="160" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giới tính" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAd-fg-6m9">
-                                                        <rect key="frame" x="8" y="13" width="66" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="69" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="VhE-SY-h42"/>
                                                         </constraints>
@@ -10716,7 +10904,7 @@
                                                 <rect key="frame" x="0.0" y="260" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ĐỊa chỉ hiện tại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exO-rW-xd9">
-                                                        <rect key="frame" x="8" y="0.0" width="118" height="27"/>
+                                                        <rect key="frame" x="8" y="0.0" width="121" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="4HH-Bt-Fye"/>
                                                         </constraints>
@@ -10781,7 +10969,7 @@
                                                 <rect key="frame" x="0.0" y="420" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tình trạng hôn nhân" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIn-5E-EEw">
-                                                        <rect key="frame" x="8" y="13" width="160" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="161.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="gRn-8a-VIT"/>
                                                         </constraints>
@@ -10845,7 +11033,7 @@
                                                 <rect key="frame" x="0.0" y="580" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cấp bậc hiện tại" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hb3-79-9ep">
-                                                        <rect key="frame" x="8" y="13" width="128.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="133" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="cMA-da-tg9"/>
                                                         </constraints>
@@ -10877,7 +11065,7 @@
                                                 <rect key="frame" x="0.0" y="660" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cấp bậc mong muốn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DtW-ri-JFO">
-                                                        <rect key="frame" x="8" y="13" width="166.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="170.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="WWN-Qt-y7J"/>
                                                         </constraints>
@@ -10909,7 +11097,7 @@
                                                 <rect key="frame" x="0.0" y="740" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngành nghề" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63J-NY-KQ1">
-                                                        <rect key="frame" x="8" y="13" width="97" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="98.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="XxH-ek-3CB"/>
                                                         </constraints>
@@ -10941,7 +11129,7 @@
                                                 <rect key="frame" x="0.0" y="820" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa điểm làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrC-iW-4ic">
-                                                        <rect key="frame" x="8" y="13" width="142.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="143.5" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="q9d-HM-wcO"/>
                                                         </constraints>
@@ -10973,7 +11161,7 @@
                                                 <rect key="frame" x="0.0" y="900" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trình độ học vấn cao nhất" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7V-MJ-RCU">
-                                                        <rect key="frame" x="8" y="13" width="207" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="209" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="gRs-Dc-i5g"/>
                                                         </constraints>
@@ -11005,7 +11193,7 @@
                                                 <rect key="frame" x="0.0" y="980" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng số năm kinh nghiệm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJw-ow-hvj">
-                                                        <rect key="frame" x="8" y="13" width="206" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="208" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="xsY-Sj-6B5"/>
                                                         </constraints>
@@ -11036,7 +11224,7 @@
                                                 <rect key="frame" x="0.0" y="1060" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hình thức làm việc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVQ-e4-6hY">
-                                                        <rect key="frame" x="8" y="13" width="149" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="152" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="wHG-21-17h"/>
                                                         </constraints>
@@ -11068,7 +11256,7 @@
                                                 <rect key="frame" x="0.0" y="1140" width="320" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mong muốn mức lương tối thiểu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOR-cg-pYW">
-                                                        <rect key="frame" x="8" y="13" width="256.5" height="27"/>
+                                                        <rect key="frame" x="8" y="13" width="263" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="gXn-bn-dQX"/>
                                                         </constraints>
@@ -11100,7 +11288,7 @@
                                                 <rect key="frame" x="0.0" y="1220" width="320" height="130"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mục tiêu nghề nghiệp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qma-Lm-Bjd">
-                                                        <rect key="frame" x="8" y="13" width="172" height="21"/>
+                                                        <rect key="frame" x="8" y="13" width="175.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                         <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -11416,7 +11604,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lựa chọn phương thức" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re3-5b-3cF">
-                            <rect key="frame" x="49" y="10" width="202.5" height="28"/>
+                            <rect key="frame" x="44" y="10" width="212" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="w2F-vn-1f2"/>
                             </constraints>
@@ -12147,7 +12335,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4up-N3-nbl">
-                                        <rect key="frame" x="14" y="65" width="260" height="49.5"/>
+                                        <rect key="frame" x="14" y="65" width="260" height="49"/>
                                         <string key="text">Nhập email đã đăng ký của bạn. 
 Chúng tôi sẽ gửi email để giúp bạn tạo mật khẩu mới.</string>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
@@ -12155,7 +12343,7 @@ Chúng tôi sẽ gửi email để giúp bạn tạo mật khẩu mới.</string
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFa-7n-DDX">
-                                        <rect key="frame" x="84" y="128.5" width="120" height="35"/>
+                                        <rect key="frame" x="84" y="128" width="120" height="35"/>
                                         <color key="backgroundColor" red="0.14669996499999999" green="0.59509003159999996" blue="0.95175570249999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="SignUpButton"/>
                                         <constraints>

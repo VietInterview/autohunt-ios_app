@@ -45,7 +45,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
             self.arrContent.append(userProfile.emailColl != nil ? userProfile.emailColl! : "")
             self.arrContent.append(userProfile.code != nil ? "\(userProfile.code!)" : "")
             self.arrContent.append(userProfile.phoneColl != nil ? "\(userProfile.phoneColl!)" : "")
-            self.arrContent.append(userProfile.birthday != nil ? DateUtils.shared.convertFormatDateFull(dateString: "\(userProfile.birthday!)") : "")
+            self.arrContent.append(userProfile.birthday != nil ? DateUtils.convertFormatDateFull(dateString: "\(userProfile.birthday!)") : "")
             self.arrContent.append(userProfile.addressColl != nil ? "\(userProfile.addressColl!)" : "")
             self.arrContent.append(userProfile.countries != nil ? userProfile.countries!.count > 0 ? userProfile.countries![0].name! : "" : "")
             self.arrContent.append(userProfile.cities != nil ? userProfile.cities!.count > 0 ? userProfile.cities![0].name! : "" : "")
@@ -58,7 +58,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
                 }
             }
             self.arrContent.append(appenString)
-            self.arrContent.append(userProfile.contractDate != nil ? DateUtils.shared.convertFormatDateFull(dateString: "\(userProfile.contractDate!)") : "")
+            self.arrContent.append(userProfile.contractDate != nil ? DateUtils.convertFormatDateFull(dateString: "\(userProfile.contractDate!)") : "")
             self.arrContent.append("1")
             self.tableView.estimatedRowHeight = 76
             self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -84,7 +84,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
             cell.textViewName.isEditable = false
             cell.textViewName.isScrollEnabled = false
             cell.lblEmail.text = self.arrContent[indexPath.row+1]
-            cell.imgAva.showImage(imgUrl:StringUtils.shared.checkEmpty(value: self.userProfile!.imageURL), imageNullName: "ava_null")
+            cell.imgAva.showImage(imgUrl:StringUtils.checkEmpty(value: self.userProfile!.imageURL), imageNullName: "ava_null")
             cell.imgAva.circleImage()
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedMe(sender: )))
             cell.imgAva.isUserInteractionEnabled = true
@@ -295,7 +295,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
         viewChooseDateTime.isHidden = true
         self.toolBar!.isHidden = true
     }
-    @objc func tappedMe(sender: UITapGestureRecognizer) {
+    @objc override func tappedMe(sender: UITapGestureRecognizer) {
         ImagePickerManager().pickImage(self){ image in
             UIApplication.showNetworkActivity()
             if let cellHeader = self.cellHeader {
@@ -434,7 +434,7 @@ class InfoAccountController: BaseViewController,UIGestureRecognizerDelegate,UITa
             }
         }
         
-        viewModel.saveMyProfile(fullName: self.cellHeader!.textViewName.text!, phone: self.cellEdit[0].textViewContent.text!, address: self.cellEdit[2].textViewContent.text!, carrer: "", arrCarrerHunt: self.desideratedCareer,arrCity: mArrCity,arrCountry: self.mArrCountry,companyName: self.cellEdit.count > 4 ? self.cellEdit[3].textViewContent.text! : StringUtils.shared.checkEmpty(value: self.userProfile?.companyName) ,birthday: self.birthday != 0 ? self.birthday : StringUtils.shared.checkEmptyInt(value: self.userProfile?.birthday) ,contractDate: self.contractDate != 0 ? self.contractDate : StringUtils.shared.checkEmptyInt(value: self.userProfile?.contractDate), success: {user in
+        viewModel.saveMyProfile(fullName: self.cellHeader!.textViewName.text!, phone: self.cellEdit[0].textViewContent.text!, address: self.cellEdit[2].textViewContent.text!, carrer: "", arrCarrerHunt: self.desideratedCareer,arrCity: mArrCity,arrCountry: self.mArrCountry,companyName: self.cellEdit.count > 4 ? self.cellEdit[3].textViewContent.text! : StringUtils.checkEmpty(value: self.userProfile?.companyName) ,birthday: self.birthday != 0 ? self.birthday : StringUtils.checkEmptyInt(value: self.userProfile?.birthday) ,contractDate: self.contractDate != 0 ? self.contractDate : StringUtils.checkEmptyInt(value: self.userProfile?.contractDate), success: {user in
             let toast = Toast(text: NSLocalizedString("update_profile_success", comment: ""))
             toast.show()
         }, failure: {error in

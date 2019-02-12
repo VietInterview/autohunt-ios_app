@@ -184,12 +184,12 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
     var mCell:JobTableViewCell?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobitemcell", for: indexPath) as! JobTableViewCell
-        cell.labelJob.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].jobTitle)
+        cell.labelJob.text = StringUtils.checkEmpty(value: self.jobList[indexPath.row].jobTitle)
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
-        cell.labelCarrer.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].careerName)
-        cell.labelCityList.text = StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].listcityName)
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value: self.jobList[indexPath.row].fee!) ) VND"
-        cell.labelDeadlineDate.text = DateUtils.shared.UTCToLocal(date: self.jobList[indexPath.row].expireDate!)
+        cell.labelCarrer.text = StringUtils.checkEmpty(value: self.jobList[indexPath.row].careerName)
+        cell.labelCityList.text = StringUtils.checkEmpty(value: self.jobList[indexPath.row].listcityName)
+        cell.labelFee.text = "\(StringUtils.currencyFormat(value: self.jobList[indexPath.row].fee!) ) VND"
+        cell.labelDeadlineDate.text = DateUtils.UTCToLocal(date: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
             cell.imgSaveUnSaveJob.isUserInteractionEnabled = true
@@ -215,13 +215,13 @@ class ViewController : BaseViewController, UITableViewDelegate,UITableViewDataSo
         cell.imgCompany.showImage(imgUrl: self.jobList[indexPath.row].companyImg, imageNullName:"job_null")
         cell.viewContentCell.shadowView(opacity:0.05)
         cell.imgCompany.addRadius()
-        cell.imgCompany.addBorder(color:  StringUtils.shared.hexStringToUIColor(hex: "#979797"), weight: 0.5)
+        cell.imgCompany.addBorder(color:  StringUtils.hexStringToUIColor(hex: "#979797"), weight: 0.5)
         cell.imgCompany.shadowView()
         self.mCell = cell
         return cell
     }
     
-    @objc func tappedMe(sender: UITapGestureRecognizer)
+    @objc override func tappedMe(sender: UITapGestureRecognizer)
     {
         var status: Int
         if self.jobList[sender.view!.tag].collStatus == nil || self.jobList[sender.view!.tag].collStatus == 0 {

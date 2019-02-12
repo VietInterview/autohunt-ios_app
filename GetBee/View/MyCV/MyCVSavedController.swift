@@ -131,9 +131,9 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DetailCVController") as! DetailCVController
-        vc.title = ""
-        vc.cvId = self.listCV2[indexPath.row].id!
+        let vc = storyboard.instantiateViewController(withIdentifier: "DetailResumeOriginalController") as! DetailResumeOriginalController
+        vc.title = "Chi tiết hồ sơ gốc"
+//        vc.cvId = self.listCV2[indexPath.row].id!
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -148,13 +148,14 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCVTableViewCell", for: indexPath) as! MyCVTableViewCell
         cell.delegate = self 
         cell.lblName.text = self.listCV.cvList![indexPath.row].fullName!
-        cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.shared.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
+        cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCV.cvList![indexPath.row].careerName!
-        if indexPath.row % 2 != 0 {
-            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
-        } else {
-            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF")
-        }
+//        if indexPath.row % 2 != 0 {
+//            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F7FAFF")
+//        } else {
+//            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFFFFF")
+//        }
+        cell.viewContent.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
         return cell
     }
     
@@ -229,23 +230,21 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         action.image = UIImage(named: "copy_resume")
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default
         }
     }
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
-//        action.title = descriptor.title(forDisplayMode: buttonDisplayMode)
         action.image = UIImage(named: "delete_resume")!
-        
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

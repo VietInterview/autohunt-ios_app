@@ -56,10 +56,10 @@ extension ComDetailCVController: ExpandableDelegate {
         cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
         cell1.viewContent.layer.borderWidth = 1
         cell1.viewContent.layer.mask = rectShape
-        cell1.lblListen.text = StringUtils.shared.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msWord!)
-        cell1.lblSpeak.text = StringUtils.shared.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msExcel!)
-        cell1.lblRead.text = StringUtils.shared.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msPowerPoint!)
-        cell1.lblWrite.text = StringUtils.shared.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msOutlook!)
+        cell1.lblListen.text = StringUtils.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msWord!)
+        cell1.lblSpeak.text = StringUtils.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msExcel!)
+        cell1.lblRead.text = StringUtils.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msPowerPoint!)
+        cell1.lblWrite.text = StringUtils.genStringLan(value: self.detailCV.lstComputerSkill![indexPath.row].msOutlook!)
         cell1.lblTitleListen.text = "MS Word"
         cell1.lblTitleSpeak.text = "MS Excel"
         cell1.lblTitleRead.text = "MS PowerPoint"

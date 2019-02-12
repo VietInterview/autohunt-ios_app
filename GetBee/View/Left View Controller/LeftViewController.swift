@@ -99,7 +99,7 @@ class LeftViewController: UITableViewController {
     }
     func setFullname(fullname:String?) {
         if let fullname = fullname {
-            if ScreenUtils.shared.getScreenWidth() == 414 {
+            if ScreenUtils.getScreenWidth() == 414 {
                 if fullname.count <= 12 {
                     self.dynamicTitlesArray[1] = LstAuthority.init(code: "", id: 0, name: "  \(NSLocalizedString("greeting", comment: "")) \(fullname)!")
                 } else {
@@ -142,7 +142,7 @@ class LeftViewController: UITableViewController {
             cell.icon.gone()
             cell.isUserInteractionEnabled = false
             cell.bageLabel.isHidden = true
-            cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.shared.getScreenWidth() == 414 ? 30 : 28)
+            cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.getScreenWidth() == 414 ? 30 : 28)
             cell.titleLabel.frame = CGRect(x: 0, y: 8, width:220, height: 60)
         }
         if indexPath.row == (self.totalCountMenu-3){
@@ -150,8 +150,8 @@ class LeftViewController: UITableViewController {
             cell.bageLabel.gone()
         }
         if UserDefaults.standard.integer(forKey: "position") == indexPath.row {
-            cell.icon.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#4e6071")
-            cell.titleLabel.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#4e6071")
+            cell.icon.backgroundColor = StringUtils.hexStringToUIColor(hex: "#4e6071")
+            cell.titleLabel.backgroundColor = StringUtils.hexStringToUIColor(hex: "#4e6071")
         } else {
             cell.icon.backgroundColor = UIColor.clear
             cell.titleLabel.backgroundColor = UIColor.clear
@@ -189,11 +189,11 @@ class LeftViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0  {
-            return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count+10))
+            return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count+10))
         } else if indexPath.row == (self.totalCountMenu-3) {
-             return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
+             return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
         } else {
-            return (ScreenUtils.shared.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
+            return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
         }
     }
     func replaceController(nameController:String, isLogout:Bool){

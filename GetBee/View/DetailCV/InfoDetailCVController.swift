@@ -32,8 +32,8 @@ class InfoDetailCVController: UIViewController {
     var delegate:SendHeightViewInfoDetailCV?
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblPhone.text = StringUtils.shared.checkEmpty(value: self.detailCV.phone)
-        lblEmail.text = StringUtils.shared.checkEmpty(value: self.detailCV.email)
+        lblPhone.text = StringUtils.checkEmpty(value: self.detailCV.phone)
+        lblEmail.text = StringUtils.checkEmpty(value: self.detailCV.email)
         if let sex = self.detailCV.sex {
             if self.detailCV.sex! == 1 {
                 lblGender.text = NSLocalizedString("male", comment: "")
@@ -43,15 +43,15 @@ class InfoDetailCVController: UIViewController {
                 lblGender.text = NSLocalizedString("other", comment: "")
             }
         }
-        lblAdd.text = StringUtils.shared.checkEmpty(value: self.detailCV.address)
-        lblCity.text = StringUtils.shared.checkEmpty(value: self.detailCV.city!.name)
+        lblAdd.text = StringUtils.checkEmpty(value: self.detailCV.address)
+        lblCity.text = StringUtils.checkEmpty(value: self.detailCV.city!.name)
         if let marialStatus = self.detailCV.maritalStatus{
             lblMarried.text = self.detailCV.maritalStatus! == 1 ? NSLocalizedString("have_married", comment: "") : NSLocalizedString("not_have_married", comment: "")
         }
-        lblWorkingForm.text = StringUtils.shared.checkEmpty(value: self.detailCV.workingForm!.name)
-        lblPositionWish.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredPosition)
-        lblCurrentLevel.text = StringUtils.shared.checkEmpty(value: self.detailCV.currentLevel!.name)
-        lblWishLevel.text = StringUtils.shared.checkEmpty(value: self.detailCV.desiredLevel!.name)
+        lblWorkingForm.text = StringUtils.checkEmpty(value: self.detailCV.workingForm!.name)
+        lblPositionWish.text = StringUtils.checkEmpty(value: self.detailCV.desiredPosition)
+        lblCurrentLevel.text = StringUtils.checkEmpty(value: self.detailCV.currentLevel!.name)
+        lblWishLevel.text = StringUtils.checkEmpty(value: self.detailCV.desiredLevel!.name)
         if let lstCarrer = self.detailCV.lstCareer {
             var carrerAppendString = ""
             for i in 0...self.detailCV.lstCareer!.count-1{
@@ -75,12 +75,12 @@ class InfoDetailCVController: UIViewController {
             
             lblLocationWork.text = appendString
         }
-        lblEdu.text = StringUtils.shared.checkEmpty(value: self.detailCV.educationLevel!.name)
-        lblExpYear.text = StringUtils.shared.checkEmpty(value: self.detailCV.experienceYear!.name)
+        lblEdu.text = StringUtils.checkEmpty(value: self.detailCV.educationLevel!.name)
+        lblExpYear.text = StringUtils.checkEmpty(value: self.detailCV.experienceYear!.name)
         if let salary = self.detailCV.desiredSalary{
-            lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.detailCV.desiredSalary!) ) \(StringUtils.shared.checkEmpty(value:  self.detailCV.currencyName))"
+            lblSalary.text = "\(StringUtils.currencyFormat(value: self.detailCV.desiredSalary!) ) \(StringUtils.checkEmpty(value:  self.detailCV.currencyName))"
         }
-        lblTarget.text = StringUtils.shared.checkEmpty(value: self.detailCV.careerObjectives)
+        lblTarget.text = StringUtils.checkEmpty(value: self.detailCV.careerObjectives)
     }
     
     override func viewDidAppear(_ animated: Bool) {

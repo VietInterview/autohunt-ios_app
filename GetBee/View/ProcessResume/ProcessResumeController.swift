@@ -101,7 +101,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         self.stepView.addSubview(progressBarWithoutLastState)
         let horizontalConstraint = progressBarWithoutLastState.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         let verticalConstraint = progressBarWithoutLastState.centerYAnchor.constraint(equalTo: self.stepView.centerYAnchor)
-        let widthConstraint = progressBarWithoutLastState.widthAnchor.constraint(equalToConstant:ScreenUtils.shared.getScreenWidth() == 414 ? 320 : 250)
+        let widthConstraint = progressBarWithoutLastState.widthAnchor.constraint(equalToConstant:ScreenUtils.getScreenWidth() == 414 ? 320 : 250)
         let heightConstraint = progressBarWithoutLastState.heightAnchor.constraint(equalToConstant: 30)
         NSLayoutConstraint.activate([horizontalConstraint,verticalConstraint, widthConstraint, heightConstraint])
         progressBarWithoutLastState.numberOfPoints = 5
@@ -110,9 +110,9 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
         progressBarWithoutLastState.progressRadius = 10
         progressBarWithoutLastState.progressLineHeight = 2
         progressBarWithoutLastState.delegate = self
-        progressBarWithoutLastState.selectedBackgoundColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-        progressBarWithoutLastState.selectedOuterCircleStrokeColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-        progressBarWithoutLastState.currentSelectedCenterColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+        progressBarWithoutLastState.selectedBackgoundColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
+        progressBarWithoutLastState.selectedOuterCircleStrokeColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
+        progressBarWithoutLastState.currentSelectedCenterColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
         progressBarWithoutLastState.stepTextColor = textColorHere
         progressBarWithoutLastState.currentSelectedTextColor = progressColor
         progressBarWithoutLastState.currentIndex = 0
@@ -197,7 +197,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewListReasonReject.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
+        self.viewListReasonReject.addBorder(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         self.viewListReasonReject.addRadius()
         if self.detailProcessResume != nil {
         } else {
@@ -284,16 +284,16 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     }
     func setupTabSwipe(pos:UInt){
         tabSwipe = CarbonTabSwipeNavigation(items: ["THÔNG TIN", "PHỎNG VẤN", "OFFER","ĐI LÀM", "KÝ HỢP ĐỒNG"], delegate: self)
-        if ScreenUtils.shared.getScreenWidth()! == 414 {
-            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
+        if ScreenUtils.getScreenWidth()! == 414 {
+            tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/7)
         } else {
-            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
+            tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/20)
         }
         self.showHideView(view: tabSwipe.carbonSegmentedControl!, isHidden: true)
         tabSwipe.carbonSegmentedControl?.backgroundColor = UIColor.clear
-        tabSwipe.setNormalColor(StringUtils.shared.hexStringToUIColor(hex: "#677B8D"), font: UIFont(name: "Roboto-Medium", size: 14)!)
-        tabSwipe.setSelectedColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)
-        tabSwipe.setIndicatorColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"))
+        tabSwipe.setNormalColor(StringUtils.hexStringToUIColor(hex: "#677B8D"), font: UIFont(name: "Roboto-Medium", size: 14)!)
+        tabSwipe.setSelectedColor(StringUtils.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)
+        tabSwipe.setIndicatorColor(StringUtils.hexStringToUIColor(hex: "#3C84F7"))
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.viewTab)
         tabSwipe.toolbar.clipsToBounds = true
         tabSwipe.pagesScrollView?.isScrollEnabled = false
@@ -438,15 +438,15 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                             self.detailProcessResume!.cvProcessInfo!.status! = 4
                             self.detailProcessResume!.cvProcessInfo!.rejectStep = self.rejectStepSend
                             if self.rejectStepSend == 1 {
-                                NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             } else if self.rejectStepSend == 2{
-                                NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }else if self.rejectStepSend == 3{
-                                NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }else if self.rejectStepSend == 4{
-                                NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }else if self.rejectStepSend == 5{
-                                NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }
                             self.btnCloseTouch()
                         }
@@ -467,15 +467,15 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                             self.detailProcessResume!.cvProcessInfo!.status! = 4
                             self.detailProcessResume!.cvProcessInfo!.rejectStep = self.rejectStepSend
                             if self.rejectStepSend == 1 {
-                                NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: InfoProcessResumeController.onReceiveRejectInfo, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             } else if self.rejectStepSend == 2{
-                                NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: InterviewProcessController.onReceiveRejectInterview, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }else if self.rejectStepSend == 3{
-                                NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: OfferProcessController.onReceiveRejectOffer, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }else if self.rejectStepSend == 4{
-                                NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }else if self.rejectStepSend == 5{
-                                NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.shared.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.shared.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.shared.checkEmpty(value: self.lblReasonReject.text)])
+                                NotificationCenter.default.post(name: ContractProcessController.onReceiveRejectContract, object: nil, userInfo:["reasonRejectId": StringUtils.checkEmptyInt(value: sendReject.reasonRejectID), "reasonNote": StringUtils.checkEmpty(value: sendReject.reasonNote),"reasonName": StringUtils.checkEmpty(value: self.lblReasonReject.text)])
                             }
                             self.btnCloseTouch()
                         }

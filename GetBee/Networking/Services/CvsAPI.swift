@@ -25,41 +25,41 @@ class CvsAPI{
         })
     }
     class func getMyCV(carrerId: Int, cityId: Int, page: Int,_ success: @escaping (_ myCv: MyCV) -> Void, failure: @escaping (_ error: Error) -> Void) {
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         let url = cvsUrl + "/searchMyCv?carrerId=\(carrerId)&itemPerPage=30&cityId=\(cityId)&page=\(page)"
         APIClient.request(.get, url: url, success: { response, _,status in
             if let myCV = try? newJSONDecoder().decode(MyCV.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(myCV)
             }
         }, failure: { error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
     class func getDetailCV(cvId: Int,_ success: @escaping (_ detailCV: DetailCV) -> Void, failure: @escaping (_ error: Error) -> Void){
         let url = cvsUrl + "/getCvById/\(cvId)"
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         APIClient.request(.get, url: url, success: {response, _,status in
             if let detailCV = try? newJSONDecoder().decode(DetailCV.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(detailCV)
             }
         }, failure: { error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
     class func getCVSaved(page: Int,_ success: @escaping (_ detailCV: ListCV) -> Void, failure: @escaping (_ error: Error) -> Void){
         let url = cvsUrl + "/searchCvSave?itemPerPage=30&page=\(page)"
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         APIClient.request(.get, url: url, success: {response, _,status in
             if let listCV = try? newJSONDecoder().decode(ListCV.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(listCV)
             }
         }, failure: {error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
@@ -70,40 +70,40 @@ class CvsAPI{
         } else {
             url = cvsUrl + "/searchCvSubmit?careerId=\(carrerID)&cityId=\(cityId)&itemPerPage=30&page=\(page)&status=\(statusId)"
         }
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         APIClient.request(.get, url: url, success: {response, _,status in
             if let listCVSubmit = try? newJSONDecoder().decode(ListCVSubmit.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(listCVSubmit)
             }
         }, failure: {error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
     class func searchMyCV(carrerId: Int, cityId: Int, page: Int,_ success: @escaping (_ detailCV: ListCV) -> Void, failure: @escaping (_ error: Error) -> Void) {
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         let url = cvsUrl + "/searchMyCv?careerId=\(carrerId)&cityId=\(cityId)&itemPerPage=30&page=\(page)"
         APIClient.request(.get, url: url, success: {response, _,status in
             if let listCV = try? newJSONDecoder().decode(ListCV.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(listCV)
             }
         }, failure: {error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
     class func deleteCV(cvId: Int,_ success: @escaping (_ deleteCV: DeleteCV) -> Void, failure: @escaping (_ error: Error) -> Void){
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         let url = cvsUrl + "/delete/\(cvId)"
         APIClient.request(.delete, url: url, success: {response, _,status in
             if let deleteCV = try? newJSONDecoder().decode(DeleteCV.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(deleteCV)
             }
         }, failure: {error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
@@ -116,7 +116,7 @@ class CvsAPI{
                 success(resumesByJobCus)
             }
         }, failure: {error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }
@@ -127,14 +127,14 @@ class CvsAPI{
             "jobId": jobId,
             "type": type
             ] as [String : Any]
-        LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        UIApplication.showNetworkActivity()
         APIClient.request(.post, url: url, params: parameters, success: { response, headers,status in
             if let submitCV = try? newJSONDecoder().decode(SubmitCV.self, from: response){
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 success(submitCV)
             }
         }, failure: { errorSubmitCV,response, statusCode  in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             if let error = try? newJSONDecoder().decode(ErrorSubmitCV.self, from: response){
                 if error.errorKey == "emailOrPhoneExist" {
                     failure("Ứng viên này đã được chính bạn hoặc CTV viên khác sử dụng và gửi đi. Bạn vui lòng chọn Hồ sơ khác")
@@ -159,7 +159,7 @@ class CvsAPI{
                 success(detailProcessResume)
             }
         }, failure: {error,response,status in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             failure(error)
         })
     }

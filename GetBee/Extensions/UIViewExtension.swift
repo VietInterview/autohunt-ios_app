@@ -30,7 +30,7 @@ extension UIView {
     })
   }
   func shadowView(opacity:Float = 0.5, radius: CGFloat = 5, color:String = "#042E51"){
-    layer.shadowColor = StringUtils.shared.hexStringToUIColor(hex: color).cgColor
+    layer.shadowColor = StringUtils.hexStringToUIColor(hex: color).cgColor
     layer.shadowOpacity = opacity
     layer.shadowOffset = CGSize.zero
     layer.shadowRadius = radius

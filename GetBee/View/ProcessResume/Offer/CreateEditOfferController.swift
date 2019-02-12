@@ -52,8 +52,8 @@ class CreateEditOfferController: BaseViewController {
         super.viewDidLoad()
         self.title = "Thông tin Offer"
         if let lstOffer = self.lstOffer {
-            self.textFieldRound.text = StringUtils.shared.checkEmpty(value: lstOffer.round)
-            self.textFieldSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: lstOffer.salary))
+            self.textFieldRound.text = StringUtils.checkEmpty(value: lstOffer.round)
+            self.textFieldSalary.text = StringUtils.currencyFormat(value: StringUtils.checkEmptyInt(value: lstOffer.salary))
             if let number = textFieldSalary.text {
                 let number2 = number.replacingOccurrences(of: ".", with: "", options: .literal, range: nil)
                 debugLog(object: number2.replacingOccurrences(of: ",", with: "", options: .literal, range: nil))
@@ -61,10 +61,10 @@ class CreateEditOfferController: BaseViewController {
                     self.salary = mNumber
                 }
             }
-            self.textFieldWorkTime.text = StringUtils.shared.checkEmpty(value: lstOffer.workTime)
-            self.textFieldAdd.text = StringUtils.shared.checkEmpty(value: lstOffer.workAddress)
-            self.textFieldPositionWork.text = StringUtils.shared.checkEmpty(value: lstOffer.position)
-            self.textFieldNote.text = StringUtils.shared.checkEmpty(value: lstOffer.note)
+            self.textFieldWorkTime.text = StringUtils.checkEmpty(value: lstOffer.workTime)
+            self.textFieldAdd.text = StringUtils.checkEmpty(value: lstOffer.workAddress)
+            self.textFieldPositionWork.text = StringUtils.checkEmpty(value: lstOffer.position)
+            self.textFieldNote.text = StringUtils.checkEmpty(value: lstOffer.note)
         } else {
             self.textFieldRound.text = "Offer \(self.detailProcessResume!.lstOfferHis!.count + 1)"
         }
@@ -83,35 +83,35 @@ class CreateEditOfferController: BaseViewController {
             debugLog(object: number2.replacingOccurrences(of: ",", with: "", options: .literal, range: nil))
             if let mNumber = Int(number2.replacingOccurrences(of: ",", with: "", options: .literal, range: nil)) {
                 self.salary = mNumber
-                let amountString:String = StringUtils.shared.currencyFormat(value: self.salary)
+                let amountString:String = StringUtils.currencyFormat(value: self.salary)
                 textField.text = amountString
             }
         }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewResult.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
+        self.viewResult.addBorder(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         if let lstOffer = self.lstOffer {
             self.currencyID = lstOffer.curency!
             self.btnCurrency.setTitle(self.switchCurrency(value: lstOffer.curency!), for: .normal)
             if lstOffer.status! == 0 {
                 self.showHideView(view: self.btnInviteOffer, isHidden: false)
-                self.btnAgree.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
-                self.btnNotAgree.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                self.btnAgree.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
+                self.btnNotAgree.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
             } else if lstOffer.status! == 1 {
                 self.showHideView(view: self.btnInviteOffer, isHidden: true)
                 let origImage = UIImage(named: "like")
                 let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                 self.btnAgree.setImage(tintedImage, for: .normal)
-                self.btnAgree.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-                self.btnAgree.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
+                self.btnAgree.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
+                self.btnAgree.setTitleColor( StringUtils.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
             } else if lstOffer.status! == 2 {
                 self.showHideView(view: self.btnInviteOffer, isHidden: true)
                 let origImage = UIImage(named: "reject_gray")
                 let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                 self.btnNotAgree.setImage(tintedImage, for: .normal)
-                self.btnNotAgree.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-                self.btnNotAgree.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
+                self.btnNotAgree.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
+                self.btnNotAgree.setTitleColor( StringUtils.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
             }
         } else {
             self.btnCurrency.setTitle(self.switchCurrency(value: self.currencyID), for: .normal)
@@ -244,7 +244,7 @@ class CreateEditOfferController: BaseViewController {
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: "Xin hãy nhập dữ liệu")
         } else {
             self.viewModel.viewEmailOffer(curency: currencyID, cvId: self.detailProcessResume!.cvID!, id: lstOffer == nil ? -1 : lstOffer!.id!, jobId: self.detailProcessResume!.jobID!, note: self.textFieldNote.text!, position: self.textFieldPositionWork.text!, round: self.textFieldRound.text!, salary: self.salary, status: lstOffer == nil ? 0 : lstOffer!.status!, workAddress: self.textFieldAdd.text!, workTime: self.textFieldWorkTime.text!, success: {emailOffer in
-//                self.textViewEmail.text = "\n\(StringUtils.shared.stringFromHtml(string: emailOffer.emailTemplate!)!)"
+//                self.textViewEmail.text = "\n\(StringUtils.stringFromHtml(string: emailOffer.emailTemplate!)!)"
                 self.webView.loadHTMLString(emailOffer.emailTemplate!, baseURL: nil)
                 self.animateIn()
             }, failure: {error in

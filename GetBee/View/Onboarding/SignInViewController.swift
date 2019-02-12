@@ -138,13 +138,13 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         if textField == emailField.self{
             imgUser.image = UIImage(named: "Shape_focus")
             imgPass.image = UIImage(named: "pass")
-            verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+            verticalUser.layer.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor
+            verticalPass.layer.backgroundColor = StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
         } else {
             imgUser.image = UIImage(named: "Shape")
             imgPass.image = UIImage(named: "pass_focus")
-            verticalPass.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor
-            verticalUser.layer.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+            verticalPass.layer.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor
+            verticalUser.layer.backgroundColor = StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -172,7 +172,7 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.mView.layer.masksToBounds = false
-        self.mView.layer.shadowColor = StringUtils.shared.hexStringToUIColor(hex: "#191830").cgColor
+        self.mView.layer.shadowColor = StringUtils.hexStringToUIColor(hex: "#191830").cgColor
         self.mView.layer.shadowOpacity = 15/100
         self.mView.layer.shadowOffset = CGSize(width: -1, height: 1)
         self.mView.layer.shadowRadius = 5
@@ -271,15 +271,15 @@ class SignInViewController: BaseViewController, UITextFieldDelegate, MFMailCompo
         if self.emailField.text! == ""{
             self.imgNoteUser.isHidden = false
             emailField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""),
-                                                                  attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         }else if self.passwordField.text! == "" {
             self.imgNotePass.isHidden = false
             passwordField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_pass", comment: ""),
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         }else{
-            LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+            UIApplication.showNetworkActivity()
             viewModel.login(success: { [unowned self] in
-                LoadingOverlay.shared.hideOverlayView()
+                UIApplication.hideNetworkActivity()
                 UserDefaults.standard.set(3, forKey: "position")
                 self.homeViewModel.loadAccount(success: {account in
                     AccountManager.currentAccount! = account

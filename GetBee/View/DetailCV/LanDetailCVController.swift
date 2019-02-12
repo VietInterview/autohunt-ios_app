@@ -56,10 +56,10 @@
             cell1.viewContent.layer.borderColor = UIColor.gray.cgColor
             cell1.viewContent.layer.borderWidth = 1
             cell1.viewContent.layer.mask = rectShape
-            cell1.lblListen.text = StringUtils.shared.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].listen!)
-            cell1.lblRead.text = StringUtils.shared.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].read!)
-            cell1.lblSpeak.text = StringUtils.shared.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].speak!)
-            cell1.lblWrite.text = StringUtils.shared.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].write!)
+            cell1.lblListen.text = StringUtils.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].listen!)
+            cell1.lblRead.text = StringUtils.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].read!)
+            cell1.lblSpeak.text = StringUtils.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].speak!)
+            cell1.lblWrite.text = StringUtils.genStringLan(value: self.detailCV.lstLanguage![indexPath.row].write!)
             return [cell1]
         }
         

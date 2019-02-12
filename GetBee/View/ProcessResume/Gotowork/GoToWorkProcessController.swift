@@ -29,7 +29,7 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: GoToWorkProcessController.onReceiveRejectGoToWork, object: nil)
         if let gotoworkDTO = self.detailProcessResume!.jobCvGotoWorkDto {
             if gotoworkDTO.id != nil {
-                self.lblStartWorkDate.text = StringUtils.shared.checkEmpty(value: gotoworkDTO.startWorkDate)
+                self.lblStartWorkDate.text = StringUtils.checkEmpty(value: gotoworkDTO.startWorkDate)
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy"
                 if let startWorkDate = gotoworkDTO.startWorkDate {
@@ -143,7 +143,7 @@ class GoToWorkProcessController: BaseViewController, SendGoToWorkDelegate {
     }
     func onSendGotowork(gotoworkDTO: JobCvGotoWorkDto) {
         self.detailProcessResume!.jobCvGotoWorkDto = gotoworkDTO
-        self.lblStartWorkDate.text = StringUtils.shared.checkEmpty(value: gotoworkDTO.startWorkDate)
+        self.lblStartWorkDate.text = StringUtils.checkEmpty(value: gotoworkDTO.startWorkDate)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         if let date = dateFormatter.date(from: gotoworkDTO.startWorkDate!.substring(with: 0..<10)) {

@@ -22,24 +22,24 @@ class UserAPI {
       "rememberMe": true,
       "username": email
       ] as [String : Any]
-    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    UIApplication.showNetworkActivity()
     APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       UserAPI.saveUserSession(fromResponse: response, headers: headers)
       success()
     }, failure: { error,response,status  in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       failure(error)
     })
   }
   class func resetPass(_ email:String,success: @escaping () -> Void, failure: @escaping (_ error: String) -> Void) {
      let url = "/api/account/reset-password/init"
-    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    UIApplication.showNetworkActivity()
     APIClient.requestStringParam(.post, url: url, params: email, success: { response, headers, status in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       success()
     }, failure: { error,response , statusCode in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       if statusCode == 200 {
         failure("")
       } else {
@@ -69,12 +69,12 @@ class UserAPI {
       "contact": contact,
       "birthday": birthday != 0 ? birthday : nil
       ] as [String : Any]
-    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    UIApplication.showNetworkActivity()
     APIClient.request(.post, url: url, params: parameters, success: { response, headers, status in
-        LoadingOverlay.shared.hideOverlayView()
+        UIApplication.hideNetworkActivity()
         success()
     }, failure: { error,response , statusCode in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       if let errorRegister = try? newJSONDecoder().decode(ErrorRegister.self, from: response){
         if let errorKey = errorRegister.errorKey {
           if errorKey == "userexists" {
@@ -198,13 +198,13 @@ class UserAPI {
       ] as [String : Any]
     UIApplication.showNetworkActivity()
     APIClient.request(.post, url: url, params: parameters, success: { response, headers,status  in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       if let getMyProfile = try? JSONDecoder().decode(GetMyProfile.self, from: response){
         UserDataManager.currentUser = getMyProfile
         success(getMyProfile)
       }
     }, failure: { error,response,status in
-       LoadingOverlay.shared.hideOverlayView()
+       UIApplication.hideNetworkActivity()
       failure(error)
     })
   }
@@ -214,12 +214,12 @@ class UserAPI {
       "currentPassword": currentPassword,
       "newPassword": newPassword
       ] as [String : Any]
-    LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+    UIApplication.showNetworkActivity()
     APIClient.request(.post, url: url, params: parameters, success: { response, headers,status in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       success()
     }, failure: { error,response, statusCode  in
-      LoadingOverlay.shared.hideOverlayView()
+      UIApplication.hideNetworkActivity()
       if statusCode == 200 {
         failure("Thay đổi mật khẩu thành công", statusCode)
       } else {

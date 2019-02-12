@@ -7,7 +7,7 @@
 import Foundation
 class DateUtils: NSObject {
     static let shared = DateUtils()
-    public func convertToShowFormatDate(dateString: String) -> String {
+    class public func convertToShowFormatDate(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()
         dateFormatterDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let serverDate: Date = dateFormatterDate.date(from: dateString)!
@@ -16,7 +16,7 @@ class DateUtils: NSObject {
         let newDate: String = dateFormatterString.string(from: serverDate)
         return newDate
     }
-    public func convertToShowFormatDate2(dateString: String) -> String {
+    class public func convertToShowFormatDate2(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()
         dateFormatterDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000+0000"
         let serverDate: Date = dateFormatterDate.date(from: dateString)!
@@ -25,7 +25,7 @@ class DateUtils: NSObject {
         let newDate: String = dateFormatterString.string(from: serverDate)
         return newDate
     }
-    func UTCToLocal(date:String) -> String {
+    class func UTCToLocal(date:String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -37,7 +37,7 @@ class DateUtils: NSObject {
             return dateFormatter.string(from: dt!)
         } else { return "" }
     }
-    public func convertFormatDateFull(dateString: String) -> String {
+    class  func convertFormatDateFull(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()
         dateFormatterDate.dateFormat = "yyyyMMdd"
         let serverDate: Date = dateFormatterDate.date(from: dateString)!
@@ -46,7 +46,7 @@ class DateUtils: NSObject {
         let newDate: String = dateFormatterString.string(from: serverDate)
         return newDate
     }
-    public func convertFormatDateAMPM(dateString: String) -> String {
+    class  func convertFormatDateAMPM(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()
         dateFormatterDate.dateFormat = "dd/MM/yyyy HH:mm a"
         let serverDate: Date = dateFormatterDate.date(from: dateString)!
@@ -55,7 +55,7 @@ class DateUtils: NSObject {
         let newDate: String = dateFormatterString.string(from: serverDate)
         return newDate
     }
-    public func convertFormatDate(dateString: String) -> String {
+    class  func convertFormatDate(dateString: String) -> String {
         let dateFormatterDate = DateFormatter()
         dateFormatterDate.dateFormat = "yyyyMM"
         let serverDate: Date = dateFormatterDate.date(from: dateString)!

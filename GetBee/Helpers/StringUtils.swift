@@ -9,7 +9,7 @@ import UIKit
 
 class StringUtils:NSObject {
     static let shared = StringUtils()
-    func stringFromHtml(string: String) -> String? {
+    class func stringFromHtml(string: String) -> String? {
         let data = string.data(using: String.Encoding.unicode)! // mind "!"
         let attrStr = try? NSAttributedString( // do catch
             data: data,
@@ -17,7 +17,7 @@ class StringUtils:NSObject {
             documentAttributes: nil)
         return attrStr!.string
     }
-    func genStringCurrency(value: Int) -> String {
+    class func genStringCurrency(value: Int) -> String {
         var someNumber = ""
         switch value {
         case 1:
@@ -31,7 +31,7 @@ class StringUtils:NSObject {
         }
         return someNumber
     }
-    func hexStringToUIColor (hex:String, alpha:CGFloat = 1) -> UIColor {
+    class func hexStringToUIColor (hex:String, alpha:CGFloat = 1) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
@@ -52,7 +52,7 @@ class StringUtils:NSObject {
             alpha: CGFloat(alpha)
         )
     }
-    func genStringSex(value:Int) -> String {
+    class func genStringSex(value:Int) -> String {
         var stringEx = ""
         switch value {
         case 0:
@@ -66,7 +66,7 @@ class StringUtils:NSObject {
         }
         return stringEx
     }
-    func genStringLan(value: Int) -> String {
+    class func genStringLan(value: Int) -> String {
         var someNumber = ""
         switch value {
         case 1:
@@ -82,7 +82,7 @@ class StringUtils:NSObject {
         }
         return someNumber
     }
-    func genStringAge(value: Int) -> String {
+    class func genStringAge(value: Int) -> String {
         var someNumber = ""
         switch value {
         case 1:
@@ -98,7 +98,7 @@ class StringUtils:NSObject {
         }
         return someNumber
     }
-    func genStringExperience(value: String) -> String {
+    class func genStringExperience(value: String) -> String {
         var stringEx = ""
         switch value {
         case "1":
@@ -114,7 +114,7 @@ class StringUtils:NSObject {
         }
         return stringEx
     }
-    func genColor(valueStatus: Int) -> UIColor {
+    class func genColor(valueStatus: Int) -> UIColor {
         var color: UIColor = .gray
         switch valueStatus {
         case 0:
@@ -142,7 +142,7 @@ class StringUtils:NSObject {
         }
         return color
     }
-    func genStringHumanResource(value: Int) -> String {
+    class func genStringHumanResource(value: Int) -> String {
         var statusString = ""
         switch value {
         case 1:
@@ -160,7 +160,7 @@ class StringUtils:NSObject {
         }
         return statusString
     }
-    func genStringStatus(valueStatus: Int) -> String {
+    class func genStringStatus(valueStatus: Int) -> String {
         var statusString = ""
         switch valueStatus {
         case 0:
@@ -188,7 +188,7 @@ class StringUtils:NSObject {
         }
         return statusString
     }
-    func currencyFormat(value: Int) -> String {
+    class func currencyFormat(value: Int) -> String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
         formatter.usesGroupingSeparator = true
@@ -198,24 +198,24 @@ class StringUtils:NSObject {
         }
         return ""
     }
-    func checkEmpty(value: String?) -> String {
+    class func checkEmpty(value: String?) -> String {
         if let string = value{
             return string
         }
         return ""
     }
-    func checkEmptyInt(value: Int?) -> Int {
+    class func checkEmptyInt(value: Int?) -> Int {
         if let string = value{
             return string
         }
         return 0
     }
-    func prettyPrint(with json: [String:Any]) -> String{
+    class func prettyPrint(with json: [String:Any]) -> String{
         let data = try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
         let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
         return string! as String
     }
-    func isValidEmail(testStr:String) -> Bool {
+    class func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)

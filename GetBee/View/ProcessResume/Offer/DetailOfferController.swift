@@ -32,11 +32,11 @@ class DetailOfferController: BaseViewController {
         super.viewDidLoad()
         self.title = "Thông tin Offer"
         self.lblRound.text = self.lstOffer!.round!
-        self.lblSalary.text = "\(StringUtils.shared.currencyFormat(value: self.lstOffer!.salary!)) \(self.switchCurrency(value: self.lstOffer!.curency!))"
+        self.lblSalary.text = "\(StringUtils.currencyFormat(value: self.lstOffer!.salary!)) \(self.switchCurrency(value: self.lstOffer!.curency!))"
     self.lblWorkTime.text = self.lstOffer!.workTime!
         self.lblAdd.text = self.lstOffer!.workAddress!
         self.lblPosition.text = self.lstOffer!.position!
-        self.lblNote.text = StringUtils.shared.checkEmpty(value: self.lstOffer!.note) 
+        self.lblNote.text = StringUtils.checkEmpty(value: self.lstOffer!.note) 
         self.lblResult.text = self.switchStatus(value: self.lstOffer!.status!)
     }
     func switchStatus(value:Int) -> String {

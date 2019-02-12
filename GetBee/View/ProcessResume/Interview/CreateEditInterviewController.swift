@@ -54,7 +54,7 @@ class CreateEditInterviewController: BaseViewController {
             self.textFieldRound.text = lstInterview.round!
             self.textFieldDateTime.text = lstInterview.interviewDate!
             self.textFieldAdd.text = lstInterview.interviewAddress!
-            self.textFieldNote.text = StringUtils.shared.checkEmpty(value: lstInterview.note) 
+            self.textFieldNote.text = StringUtils.checkEmpty(value: lstInterview.note) 
         } else {
             self.textFieldRound.text = "Vòng \(self.detailProcessResume!.lstInterviewHis!.count + 1)"
         }
@@ -64,40 +64,40 @@ class CreateEditInterviewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.title = "Thông tin phỏng vấn"
-        self.viewResult.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"),weight: 1)
+        self.viewResult.addBorder(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"),weight: 1)
         if let lstInterview = self.lstInterviewHi {
             if lstInterview.status! == 0 {
                 self.showHideView(view: self.btnInviteInterview, isHidden: false)
-                self.btnAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
-                self.btnNotAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
-                self.btnCandidateNotCome.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                self.btnAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
+                self.btnNotAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
+                self.btnCandidateNotCome.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
             } else if lstInterview.status! == 1 {
                 self.showHideView(view: self.btnInviteInterview, isHidden: true)
                 let origImage = UIImage(named: "like")
                 let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                 self.btnAchive.setImage(tintedImage, for: .normal)
-                self.btnAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-                self.btnAchive.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
-                self.btnNotAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
-                self.btnCandidateNotCome.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                self.btnAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
+                self.btnAchive.setTitleColor( StringUtils.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
+                self.btnNotAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
+                self.btnCandidateNotCome.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
             } else if lstInterview.status! == 2 {
                 self.showHideView(view: self.btnInviteInterview, isHidden: true)
-                self.btnAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                self.btnAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 let origImage = UIImage(named: "dislike")
                 let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                 self.btnNotAchive.setImage(tintedImage, for: .normal)
-                self.btnNotAchive.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
-                self.btnNotAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
-                self.btnCandidateNotCome.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                self.btnNotAchive.setTitleColor( StringUtils.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
+                self.btnNotAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
+                self.btnCandidateNotCome.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
             } else if lstInterview.status! == 3 {
                 self.showHideView(view: self.btnInviteInterview, isHidden: true)
-                self.btnAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
-                self.btnNotAchive.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                self.btnAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
+                self.btnNotAchive.tintColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 let origImage = UIImage(named: "reject_gray")
                 let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
                 self.btnCandidateNotCome.setImage(tintedImage, for: .normal)
-                self.btnCandidateNotCome.setTitleColor( StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
-                self.btnCandidateNotCome.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+                self.btnCandidateNotCome.setTitleColor( StringUtils.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
+                self.btnCandidateNotCome.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
             }
             self.btnCandidateNotCome.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
         } else {

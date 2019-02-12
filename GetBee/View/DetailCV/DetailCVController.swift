@@ -48,7 +48,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+        self.navigationController?.navigationBar.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -56,8 +56,8 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
         self.navigationController?.view.backgroundColor = .clear
         
         if let jobdetail = self.jobDetail.fee {
-            lblNotiHunt.text = "\(NSLocalizedString("hunt_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: jobdetail)) VND"
-            lblNotiSendCV.text = "\(NSLocalizedString("cv_reward", comment: "")) \(StringUtils.shared.currencyFormat(value: (jobdetail*47)/68)) VND"
+            lblNotiHunt.text = "\(NSLocalizedString("hunt_reward", comment: "")) \(StringUtils.currencyFormat(value: jobdetail)) VND"
+            lblNotiSendCV.text = "\(NSLocalizedString("cv_reward", comment: "")) \(StringUtils.currencyFormat(value: (jobdetail*47)/68)) VND"
             self.mViewBtnSubmitCV.isHidden = false
             self.mViewBtnSubmitCV.visible()
         } else {
@@ -172,7 +172,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
                 self.imgAva.image = UIImage(named: "ava_null")
             }
             self.lblName.text = detailCV.fullName!
-            self.lblBirthday.text = DateUtils.shared.convertFormatDateFull(dateString: "\(self.detailCV.birthday!)")
+            self.lblBirthday.text = DateUtils.convertFormatDateFull(dateString: "\(self.detailCV.birthday!)")
             let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("info", comment: ""), NSLocalizedString("exp", comment: ""), NSLocalizedString("level", comment: ""),NSLocalizedString("language", comment: ""), NSLocalizedString("conputer_skill_tit", comment: ""), NSLocalizedString("skill", comment: "")], delegate: self)
             //            self.lblName.layoutIfNeeded()
             //            self.heightViewHeader.constant = self.heightViewHeader.constant + self.lblName.frame.size.height
@@ -198,7 +198,7 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     var isUpdate:Bool = false
     func sendHeightInfoDetailCV(height: Int) {
         DispatchQueue.main.async {
-            if ScreenUtils.shared.getScreenWidth() == 414 {
+            if ScreenUtils.getScreenWidth() == 414 {
                 self.heightViewContentConstant.constant = 800 + CGFloat(height)
             } else {
                 self.heightViewContentConstant.constant = 1000 + CGFloat(height)
@@ -210,16 +210,16 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     }
     func sendHeightSkillDetailCV(height: Int) {
         DispatchQueue.main.async {
-            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height) - 400 : CGFloat(height) - 200
-            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.heightViewContentConstant.constant = ScreenUtils.getScreenWidth() == 414 ? CGFloat(height) - 400 : CGFloat(height) - 200
+            self.heightTabView.constant = ScreenUtils.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
             self.mTabView.layoutIfNeeded()
             self.mViewHeader.layoutIfNeeded()
         }
     }
     func sendHeightExpDetailCV(height: Int) {
         DispatchQueue.main.async {
-            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height) - 200
-            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.heightViewContentConstant.constant = ScreenUtils.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height) - 200
+            self.heightTabView.constant = ScreenUtils.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
             self.mTabView.layoutIfNeeded()
             self.mViewHeader.layoutIfNeeded()
         }
@@ -227,8 +227,8 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     
     func sendHeightLevelDetailCV(height: Int) {
         DispatchQueue.main.async {
-            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
-            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.heightViewContentConstant.constant = ScreenUtils.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
+            self.heightTabView.constant = ScreenUtils.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
             self.mTabView.layoutIfNeeded()
             self.mViewHeader.layoutIfNeeded()
         }
@@ -236,8 +236,8 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     
     func sendHeightLanDetailCV(height: Int) {
         DispatchQueue.main.async {
-            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
-            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.heightViewContentConstant.constant = ScreenUtils.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
+            self.heightTabView.constant = ScreenUtils.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
             self.mTabView.layoutIfNeeded()
             self.mViewHeader.layoutIfNeeded()
         }
@@ -245,8 +245,8 @@ class DetailCVController: BaseViewController, UIScrollViewDelegate, CarbonTabSwi
     
     func sendHeightComDetailCV(height: Int) {
         DispatchQueue.main.async {
-            self.heightViewContentConstant.constant = ScreenUtils.shared.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
-            self.heightTabView.constant = ScreenUtils.shared.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
+            self.heightViewContentConstant.constant = ScreenUtils.getScreenWidth() == 414 ? CGFloat(height)  : CGFloat(height)
+            self.heightTabView.constant = ScreenUtils.getScreenWidth() == 414 ? 200 + CGFloat(height) : 200 + CGFloat(height)
             self.mTabView.layoutIfNeeded()
             self.mViewHeader.layoutIfNeeded()
         }

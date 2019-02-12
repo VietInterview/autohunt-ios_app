@@ -35,6 +35,7 @@
 		7A1D971021990D48007A4200 /* MyChoose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D970F21990D48007A4200 /* MyChoose.swift */; };
 		7A1D9712219921B9007A4200 /* CarrerCityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */; };
 		7A1D9714219923B0007A4200 /* CarrerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D9713219923B0007A4200 /* CarrerList.swift */; };
+		7A288314221276C8004C3484 /* MyCVAttachedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A288313221276C8004C3484 /* MyCVAttachedController.swift */; };
 		7A2E7A6F21E343FF006DD1BA /* WelfareTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E7A6E21E343FF006DD1BA /* WelfareTableCell.swift */; };
 		7A2E7A7321E35FF5006DD1BA /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E7A7221E35FF5006DD1BA /* VideoViewCell.swift */; };
 		7A2E7A7521E36037006DD1BA /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E7A7421E36037006DD1BA /* EmailCell.swift */; };
@@ -230,6 +231,8 @@
 		7A1D970F21990D48007A4200 /* MyChoose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChoose.swift; sourceTree = "<group>"; };
 		7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerCityStatus.swift; sourceTree = "<group>"; };
 		7A1D9713219923B0007A4200 /* CarrerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrerList.swift; sourceTree = "<group>"; };
+		7A28831222125401004C3484 /* GetBee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GetBee.entitlements; sourceTree = "<group>"; };
+		7A288313221276C8004C3484 /* MyCVAttachedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCVAttachedController.swift; sourceTree = "<group>"; };
 		7A2E7A6E21E343FF006DD1BA /* WelfareTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelfareTableCell.swift; sourceTree = "<group>"; };
 		7A2E7A7221E35FF5006DD1BA /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
 		7A2E7A7421E36037006DD1BA /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
@@ -715,6 +718,7 @@
 				7AC6DA8021A2784900BD5C10 /* MyCVSavedController.swift */,
 				7AC6DA8221A2785B00BD5C10 /* MyCVAppliedController.swift */,
 				7A17F3BB21A3A9AC000B4D1F /* MyCVTableViewCell.swift */,
+				7A288313221276C8004C3484 /* MyCVAttachedController.swift */,
 			);
 			path = MyCV;
 			sourceTree = "<group>";
@@ -751,6 +755,7 @@
 		9B0C72511C738C3100BAF3B1 /* GetBee */ = {
 			isa = PBXGroup;
 			children = (
+				7A28831222125401004C3484 /* GetBee.entitlements */,
 				7A836D4621DC9F7E00915E1D /* Callback */,
 				7A73F58921A82AB400DC67D2 /* CustomView */,
 				7AFC9F3E216B88FB008F6AB1 /* fonts */,
@@ -1042,7 +1047,15 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = HAHZPWB354;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1261,6 +1274,7 @@
 				7AC6DA7C21A2756000BD5C10 /* ListCV.swift in Sources */,
 				7A7B863321CBE4EB00EA10B5 /* SelfSizedTableView.swift in Sources */,
 				7A045FB421BDFB1100BC3B8C /* Account.swift in Sources */,
+				7A288314221276C8004C3484 /* MyCVAttachedController.swift in Sources */,
 				7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */,
 				7AEDB29621F8804700723F8D /* MyServerTrustPolicyManager.swift in Sources */,
 				7A0B361C21CE76DD0092C8E2 /* CreateEditOfferController.swift in Sources */,
@@ -1555,9 +1569,10 @@
 				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
@@ -1567,7 +1582,7 @@
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = GetBeeDistribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1584,9 +1599,10 @@
 				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
@@ -1596,7 +1612,7 @@
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = GetBeeDistribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1662,9 +1678,10 @@
 				BASE_URL = "https://rails5-api-base.herokuapp.com/api/v1";
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thang Tran (VCLS7534WY)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
@@ -1673,7 +1690,7 @@
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = GetBeeDistribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

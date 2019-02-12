@@ -29,7 +29,7 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
         imgResume.layer.borderColor = UIColor.black.cgColor
         imgResume.layer.cornerRadius = imgResume.frame.height/2
         imgResume.clipsToBounds = true
-        self.btnProcessResume.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+        self.btnProcessResume.backgroundColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
         self.btnProcessResume.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 16)
         self.btnProcessResume.tintColor = UIColor.white
         self.btnProcessResume.layer.cornerRadius = 5
@@ -47,16 +47,16 @@ class DetailResumeCustomerController: BaseViewController, CarbonTabSwipeNavigati
     func getDetailResume(cvId:Int){
         viewModel.getDetailResumeCustomer(cvId: cvId, success: {resumeDetailCustomer in
             self.resumeDetailCustomer = resumeDetailCustomer
-            self.lblName.text = StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.fullName)
+            self.lblName.text = StringUtils.checkEmpty(value: self.resumeDetailCustomer.fullName)
             self.imgResume.showImage(imgUrl: self.resumeDetailCustomer.pictureURL, imageNullName: "ava_null")
             let tabSwipe = CarbonTabSwipeNavigation(items: ["THÔNG TIN", "KINH NGHIỆM", "BẰNG CẤP","NGOẠI NGỮ", "TIN HỌC", "KỸ NĂNG"], delegate: self)
-            if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
-            } else { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
+            if ScreenUtils.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/7)
+            } else { tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/20)
             }
             tabSwipe.carbonSegmentedControl?.backgroundColor = UIColor.white
-            tabSwipe.setNormalColor(StringUtils.shared.hexStringToUIColor(hex: "#677B8D"), font: UIFont(name: "Roboto-Medium", size: 14)!)
-            tabSwipe.setSelectedColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)
-            tabSwipe.setIndicatorColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"))
+            tabSwipe.setNormalColor(StringUtils.hexStringToUIColor(hex: "#677B8D"), font: UIFont(name: "Roboto-Medium", size: 14)!)
+            tabSwipe.setSelectedColor(StringUtils.hexStringToUIColor(hex: "#3C84F7"), font: UIFont(name: "Roboto-Medium", size: 14)!)
+            tabSwipe.setIndicatorColor(StringUtils.hexStringToUIColor(hex: "#3C84F7"))
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.viewTab)
         }, failure: {error in
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)

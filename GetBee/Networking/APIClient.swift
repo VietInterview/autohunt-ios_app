@@ -115,7 +115,7 @@ class APIClient {
         manager.request(requestUrl, method: method, parameters: params, encoding: encoding, headers: header)
             .validate()
             .responseDictionary { response in
-                print(response.value != nil ? "Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))" : "")
+                print(response.value != nil ? "Response: " + requestUrl + " \n\(StringUtils.prettyPrint(with: response.value!))" : "")
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
@@ -128,7 +128,7 @@ class APIClient {
         manager.request(requestUrl, method: method,  parameters: [:], encoding: params!, headers: header)
             .validate()
             .responseDictionary { response in
-                print(response.value != nil ? "Response: " + requestUrl + " \n\(StringUtils.shared.prettyPrint(with: response.value!))" : "")
+                print(response.value != nil ? "Response: " + requestUrl + " \n\(StringUtils.prettyPrint(with: response.value!))" : "")
                 validateResult(ofResponse: response, success: success, failure: failure)
         }
     }
@@ -141,12 +141,12 @@ class APIClient {
             return
         case .failure(let error):
             if response.response != nil {
-                debugLog(object: "\(response.response!.statusCode) - \(error.localizedDescription)")
+                debugLog(object: "\(response.response != nil ? response.response!.statusCode : 0) - \(error.localizedDescription)")
             }
             if let data = response.data {
                 if let json = String(data: data, encoding: String.Encoding.utf8){
                     if let dict = convertToDictionary(text: json){
-                        print("Response: \(response.request!.url!.absoluteURL.absoluteString) \n\(StringUtils.shared.prettyPrint(with: dict))")
+                        print("Response: \(response.request!.url!.absoluteURL.absoluteString) \n\(StringUtils.prettyPrint(with: dict))")
                         failure(error,dict,response.response != nil ? response.response!.statusCode : 0)
                     }else {
                         failure(error,[:],response.response != nil ? response.response!.statusCode : 0)

@@ -37,8 +37,6 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
         self.lblStatus.addGestureRecognizer(gestureSwift2AndHigher2)
        
     }
-    override func viewWillAppear(_ animated: Bool) {
-    }
     @objc func textFieldDidChange(_ textField: UITextField) {
         self.page = 0
         self.getJobCustomer(cusName: textFieldSearch.text!, page: page, status: status)
@@ -145,31 +143,31 @@ class JobEmployerController: BaseViewController, UITableViewDelegate, UITableVie
             let limit = self.mJobList[indexPath.row-1].limited!
             if status == 1 && limit > 0 && limit < 8 {
                 cell.lblStatus.text = "Sắp hết hạn"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#FF5A5A")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#FF5A5A")
                 cell.imgTime.image = UIImage(named: "time_deadline")
             } else if status == 1 && limit > 7 {
                 cell.lblStatus.text = "Còn " + "\(limit)" + " ngày"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 1 && limit == 0 {
                 cell.lblStatus.text = "Đã hết hạn"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 0 {
                 cell.lblStatus.text = "Nháp"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 5 {
                 cell.lblStatus.text = "Đã khóa"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 2 {
                 cell.lblStatus.text = "Đã hết hạn"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             } else if status == 3 {
                 cell.lblStatus.text = "Ngưng tuyểnđidi"
-                cell.lblStatus.textColor = StringUtils.shared.hexStringToUIColor(hex: "#677B8D")
+                cell.lblStatus.textColor = StringUtils.hexStringToUIColor(hex: "#677B8D")
                 cell.imgTime.image = UIImage(named: "time_gray")
             }
             cell.lblJobTitle.text = "\(mJobList[indexPath.row-1].jobTitle!)"
@@ -206,9 +204,9 @@ extension JobEmployerController: SwipeTableViewCellDelegate {
         action.image = UIImage(named: "job_info")
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

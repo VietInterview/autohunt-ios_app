@@ -91,8 +91,8 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         cell.labelCompany.text = self.jobList[indexPath.row].companyName!
         cell.labelCarrer.text = self.jobList[indexPath.row].careerName!
         cell.labelCityList.text = self.jobList[indexPath.row].listcityName!
-        cell.labelFee.text = "\(StringUtils.shared.currencyFormat(value:  self.jobList[indexPath.row].fee!)) VND"
-        cell.labelDeadlineDate.text = DateUtils.shared.convertToShowFormatDate(dateString: self.jobList[indexPath.row].expireDate!)
+        cell.labelFee.text = "\(StringUtils.currencyFormat(value:  self.jobList[indexPath.row].fee!)) VND"
+        cell.labelDeadlineDate.text = DateUtils.convertToShowFormatDate(dateString: self.jobList[indexPath.row].expireDate!)
         if self.jobList[indexPath.row].collStatus == 0 {
             let image: UIImage = UIImage(named: "save")!;   cell.imgSaveUnSaveJob.image = image
             cell.imgSaveUnSaveJob.isUserInteractionEnabled = true
@@ -115,7 +115,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
             cell.quantityView.isHidden = true
             cell.quantityView.gone()
         }
-        Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
+        Alamofire.request("\(App.imgUrl)\(StringUtils.checkEmpty(value: self.jobList[indexPath.row].companyImg))").responseImage { response in
             if let image = response.result.value {
                 cell.imgCompany.image = image
             }else {
@@ -130,7 +130,7 @@ class MyJobSavedController: UIViewController,UITableViewDelegate,UITableViewData
         cell.imgCompany.layer.masksToBounds = true
         cell.imgCompany.layer.borderWidth = 1
         cell.imgCompany.layer.cornerRadius = 5
-        cell.imgCompany.layer.borderColor = StringUtils.shared.hexStringToUIColor(hex: "#979797").cgColor
+        cell.imgCompany.layer.borderColor = StringUtils.hexStringToUIColor(hex: "#979797").cgColor
         cell.imgCompany.layer.shadowColor = UIColor.gray.cgColor
         cell.imgCompany.layer.shadowOpacity = 0.3
         cell.imgCompany.layer.shadowOffset = CGSize.zero

@@ -87,11 +87,11 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCVTableViewCell", for: indexPath) as! MyCVTableViewCell
         cell.lblName.text = self.listCVSubmit.cvList![indexPath.row].fullName!
-        cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.shared.convertToShowFormatDate2(dateString: self.listCVSubmit.cvList![indexPath.row].updatedDate!))"
+        cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.convertToShowFormatDate2(dateString: self.listCVSubmit.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCVSubmit.cvList![indexPath.row].careerName!
-        cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!) , for: .normal)
-        cell.btnStatus.backgroundColor = StringUtils.shared.genColor(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!)
-        cell.lblJobTitle.text = StringUtils.shared.checkEmpty(value: self.listCVSubmit.cvList![indexPath.row].jobTitle)
+        cell.btnStatus.setTitle(StringUtils.genStringStatus(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!) , for: .normal)
+        cell.btnStatus.backgroundColor = StringUtils.genColor(valueStatus: self.listCVSubmit.cvList![indexPath.row].status!)
+        cell.lblJobTitle.text = StringUtils.checkEmpty(value: self.listCVSubmit.cvList![indexPath.row].jobTitle)
         if indexPath.row == 0 {
             cell.mQuantityView.isHidden = false
             cell.mQuantityView.visible()
@@ -101,9 +101,9 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mQuantityView.gone()
         }
         if indexPath.row % 2 != 0 {
-            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
+            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F7FAFF")
         } else {
-            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF")
+            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFFFFF")
         }
         return cell
     }

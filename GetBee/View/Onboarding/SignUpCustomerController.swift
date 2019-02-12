@@ -65,7 +65,7 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
         imgNoteEMail.isHidden = false
         imgNoteEMail.visible()
-        imgNoteEMail.image = StringUtils.shared.isValidEmail(testStr: self.textFieldEmail.text!) ? UIImage(named: "tickok") : UIImage(named: "note")
+        imgNoteEMail.image = StringUtils.isValidEmail(testStr: self.textFieldEmail.text!) ? UIImage(named: "tickok") : UIImage(named: "note")
     }
     @objc func textFieldCompanyNameDidChange(_ textField: UITextField) {
         imgNoteUser.isHidden = true
@@ -81,10 +81,10 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
         self.imgEmail.image = textField == textFieldEmail.self ? UIImage(named: "mail_focus") : UIImage(named: "mail")
         self.imgPhone.image = textField == textFieldPhonenumber.self ? UIImage(named: "phone_focus") : UIImage(named: "phone")
         self.imgBirthday.image = textField == textFieldContact.self ? UIImage(named: "contact_focus") : UIImage(named: "contact")
-        verticalUser.layer.backgroundColor = textField == textFieldCompanyName.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        verticalEmail.layer.backgroundColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        verticalPhone.layer.backgroundColor = textField == textFieldPhonenumber.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
-        lineContact.layer.backgroundColor = textField == textFieldContact.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        verticalUser.layer.backgroundColor = textField == textFieldCompanyName.self ? StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        verticalEmail.layer.backgroundColor = textField == textFieldEmail.self ? StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        verticalPhone.layer.backgroundColor = textField == textFieldPhonenumber.self ? StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        lineContact.layer.backgroundColor = textField == textFieldContact.self ? StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -92,10 +92,10 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
         let string = "Đồng ý với điều khoản sử dụng của Getbee"
         let range = (string as NSString).range(of: "điều khoản")
         let attributedString = NSMutableAttributedString(string: string)
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), range: range)
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: StringUtils.hexStringToUIColor(hex: "#3C84F7"), range: range)
         attributedString.addAttribute(NSAttributedStringKey.link, value: "http://www.google.fr", range: range)
         attributedString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSNumber(value: 1), range: range)
-        attributedString.addAttribute(NSAttributedStringKey.underlineColor, value: StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), range: range)
+        attributedString.addAttribute(NSAttributedStringKey.underlineColor, value: StringUtils.hexStringToUIColor(hex: "#3C84F7"), range: range)
         self.lblPolicy.attributedText = attributedString
     }
     func animateIn() {
@@ -132,22 +132,22 @@ class SignUpCustomerController: BaseViewController,UITextFieldDelegate {
     @IBAction func signupCustomerTouch() {
         if self.textFieldCompanyName.text == "" {
             self.imgNoteUser.isHidden = false
-            textFieldCompanyName.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldCompanyName.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         } else if self.textFieldEmail.text == "" {
             self.imgNoteEMail.isHidden = false
-            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         } else if self.textFieldPhonenumber.text == "" {
             self.imgNotePhone.isHidden = false
-            textFieldPhonenumber.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldPhonenumber.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_name", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         } else if self.textFieldContact.text == "" {
             self.imgNoteContact.isHidden = false
-            textFieldContact.attributedPlaceholder = NSAttributedString(string: "Xin hãy nhập người liên hệ", attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldContact.attributedPlaceholder = NSAttributedString(string: "Xin hãy nhập người liên hệ", attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         } else if self.isAgree == false {
             self.showMessage(title: "Thông báo", message: "Bạn phải đồng ý với điều khoản sử dụng của GetBee")
         }else if self.textFieldEmail.text?.isEmailFormatted() == false {
             self.showMessage(title: "Thông báo", message: "Xin nhập đúng định dạng Email")
         } else {
-            viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: "", fullName: self.textFieldCompanyName.text!, phone: self.textFieldPhonenumber.text!,companyName: StringUtils.shared.checkEmpty(value: self.textFieldCompanyName.text),mType: 2,contact: StringUtils.shared.checkEmpty(value: self.textFieldContact.text) ,birthday: 0 , success: {
+            viewModel.signup(email: self.textFieldEmail.text!, address: "", carrer: "", fullName: self.textFieldCompanyName.text!, phone: self.textFieldPhonenumber.text!,companyName: StringUtils.checkEmpty(value: self.textFieldCompanyName.text),mType: 2,contact: StringUtils.checkEmpty(value: self.textFieldContact.text) ,birthday: 0 , success: {
                 self.animateIn()
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)

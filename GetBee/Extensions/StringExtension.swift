@@ -29,7 +29,6 @@ extension String {
 //  var localized: String {
 //    return self.localize()
 //  }
-    
   func localize(comment: String = "") -> String {
     return NSLocalizedString(self, comment: comment)
   }
@@ -62,24 +61,6 @@ extension String {
     let startIndex  = index(at: r.lowerBound)
     let endIndex    = index(at: r.upperBound)
     return substring(with: startIndex..<endIndex)
-  }
-  func currencyInputFormatting() -> String {
-    var number: NSNumber!
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .decimal
-    formatter.locale = Locale.current
-    formatter.usesGroupingSeparator = true
-    formatter.maximumFractionDigits = 2
-    formatter.minimumFractionDigits = 2
-    var amountWithPrefix = self
-    let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-    amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
-    let double = (amountWithPrefix as NSString).doubleValue
-    number = NSNumber(value: (double / 100))
-    if let formattedTipAmount = formatter.string(from: number as NSNumber) {
-      return formattedTipAmount
-    }
-    return ""
   }
   var html2Attributed: NSAttributedString? {
     do {

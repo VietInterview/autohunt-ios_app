@@ -60,7 +60,7 @@ class WelfareTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "WelfareCell", for: indexPath) as? WelfareCell
         cell!.lblWelfare.text = "   \(dataArr[indexPath.row])"
         cell!.lblWelfare.addRadius()
-        cell!.lblWelfare.addBorder(color: StringUtils.shared.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
+        cell!.lblWelfare.addBorder(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         cell!.isUserInteractionEnabled = false
         return cell!
     }

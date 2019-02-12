@@ -26,7 +26,7 @@ class ChangePasswordController: BaseViewController {
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+        self.navigationController?.navigationBar.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
         
         textFieldOldPass.font = UIFont(name: "Roboto-Regular", size: 20)
         textFieldNewPass.font = UIFont(name: "Roboto-Regular", size: 20)
@@ -42,12 +42,12 @@ class ChangePasswordController: BaseViewController {
         textFieldRetypePass.rightViewMode = UITextFieldViewMode.never
         textFieldRetypePass.rightView = imageView
     }
-    @objc func tappedMe(sender: UITapGestureRecognizer){
+    @objc override func tappedMe(sender: UITapGestureRecognizer){
         let newpass = self.textFieldNewPass.text!
         let oldpass = self.textFieldOldPass.text!
         let retypepass = self.textFieldRetypePass.text!
         if oldpass.count < 6 || newpass.count < 6 || retypepass.count < 6{
-            self.showToast(title: NSLocalizedString("min_6_character", comment: ""))
+            self.showToast(title: "min_6_character".localize())
         } else if oldpass == newpass {
             let toast = Toast(text: NSLocalizedString("compare_old_new_pass", comment: ""))
             toast.show()

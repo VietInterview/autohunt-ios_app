@@ -131,10 +131,10 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
             cell.lblName.text = self.cvListByJobCustomer[indexPath.row-1].fullName!
             cell.lblDateSubmit.text = self.cvListByJobCustomer[indexPath.row-1].countDay! == 0 ? "Vừa gửi" : "\(self.cvListByJobCustomer[indexPath.row-1].countDay!) ngày trước"
             cell.delegate = self
-            cell.btnStatus.setTitleColor(StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
-            cell.btnStatus.addBorder(color: StringUtils.shared.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), weight: 1)
+            cell.btnStatus.setTitleColor(StringUtils.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
+            cell.btnStatus.addBorder(color: StringUtils.genColor(valueStatus: self.cvListByJobCustomer[indexPath.row-1].status!), weight: 1)
             cell.btnStatus.addRadius(weight: 12)
-            cell.btnStatus.setTitle(StringUtils.shared.genStringStatus(valueStatus:  self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
+            cell.btnStatus.setTitle(StringUtils.genStringStatus(valueStatus:  self.cvListByJobCustomer[indexPath.row-1].status!), for: .normal)
             cell.contentView.shadowView(opacity: 8/100, radius: 10)
             return cell
         }
@@ -181,9 +181,9 @@ extension ResumesEmployerController: SwipeTableViewCellDelegate {
         action.image = UIImage(named: "view_cv")
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

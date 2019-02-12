@@ -37,11 +37,11 @@ class ResetPasswordController: BaseViewController, UITextFieldDelegate {
     @objc func textFieldEmailDidChange(_ textField: UITextField) {
         imgNoteEmail.isHidden = false
         imgNoteEmail.visible()
-        imgNoteEmail.image = StringUtils.shared.isValidEmail(testStr: self.textFieldEmail.text!) ? UIImage(named: "tickok") : UIImage(named: "note")
+        imgNoteEmail.image = StringUtils.isValidEmail(testStr: self.textFieldEmail.text!) ? UIImage(named: "tickok") : UIImage(named: "note")
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.imgMail.image = textField == textFieldEmail.self ? UIImage(named: "mail_focus") : UIImage(named: "mail")
-        lineEmail.layer.backgroundColor = textField == textFieldEmail.self ? StringUtils.shared.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.shared.hexStringToUIColor(hex: "#D2D2E1").cgColor
+        lineEmail.layer.backgroundColor = textField == textFieldEmail.self ? StringUtils.hexStringToUIColor(hex: "#FFD215").cgColor : StringUtils.hexStringToUIColor(hex: "#D2D2E1").cgColor
     }
     func animateIn() {
         self.view.addSubview(viewPopup)
@@ -82,7 +82,7 @@ class ResetPasswordController: BaseViewController, UITextFieldDelegate {
     @IBAction func resetPassTouch() {
         if self.textFieldEmail.text == "" {
             self.imgNoteEmail.isHidden = false
-            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#DC4444")])
+            textFieldEmail.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_email", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
         } else {
             viewModel.resetPass(email: self.textFieldEmail.text!, success: {
                 self.animateIn()

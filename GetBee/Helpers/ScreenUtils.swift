@@ -9,10 +9,10 @@ import UIKit
 
 class ScreenUtils:NSObject {
     static let shared = ScreenUtils()
-    func getScreenWidth() -> CGFloat? {
+    class func getScreenWidth() -> CGFloat? {
         return UIScreen.main.bounds.width
     }
-    func getScreenHeight() -> CGFloat? {
+    class func getScreenHeight() -> CGFloat? {
         return UIScreen.main.bounds.height
     }
 }

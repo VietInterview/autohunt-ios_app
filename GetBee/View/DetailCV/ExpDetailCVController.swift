@@ -56,9 +56,9 @@ extension ExpDetailCVController: ExpandableDelegate {
     func expandableTableView(_ expandableTableView: ExpandableTableView, expandedCellsForRowAt indexPath: IndexPath) -> [UITableViewCell]? {
         let cell1 = self.mExpTableView.dequeueReusableCell(withIdentifier: ExpandedCell.ID) as! ExpandedCell
         cell1.lblCompanyName.text = self.detailCV.lstEmploymentHis![indexPath.row].companyName
-        cell1.lblQuantityEmp.text = StringUtils.shared.genStringHumanResource(value: self.detailCV.lstEmploymentHis![indexPath.row].humanResources!)
+        cell1.lblQuantityEmp.text = StringUtils.genStringHumanResource(value: self.detailCV.lstEmploymentHis![indexPath.row].humanResources!)
         cell1.lblJobTitle.text = self.detailCV.lstEmploymentHis![indexPath.row].title!
-        cell1.lblTimeWork.text = "\(DateUtils.shared.convertFormatDate(dateString: "\(self.detailCV.lstEmploymentHis![indexPath.row].fromMonth!)")) - \(DateUtils.shared.convertFormatDate(dateString: "\(self.detailCV.lstEmploymentHis![indexPath.row].toMonth!)"))"
+        cell1.lblTimeWork.text = "\(DateUtils.convertFormatDate(dateString: "\(self.detailCV.lstEmploymentHis![indexPath.row].fromMonth!)")) - \(DateUtils.convertFormatDate(dateString: "\(self.detailCV.lstEmploymentHis![indexPath.row].toMonth!)"))"
         if let isCurrent = self.detailCV.lstEmploymentHis![indexPath.row].isCurrent {
             if isCurrent == 0{
                 cell1.lblIsCurrentJob.isHidden = true
@@ -69,15 +69,15 @@ extension ExpDetailCVController: ExpandableDelegate {
         } else {
             cell1.lblIsCurrentJob.isHidden = true
         }
-        cell1.lblSalary.text = StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salary)) + StringUtils.shared.genStringCurrency(value:StringUtils.shared.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salaryCurency))
+        cell1.lblSalary.text = StringUtils.currencyFormat(value: StringUtils.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salary)) + StringUtils.genStringCurrency(value:StringUtils.checkEmptyInt(value: self.detailCV.lstEmploymentHis![indexPath.row].salaryCurency))
         cell1.lblJobDes.text = self.detailCV.lstEmploymentHis![indexPath.row].jobDescription!
-        cell1.lblTargetJob.text = StringUtils.shared.checkEmpty(value: self.detailCV.lstEmploymentHis![indexPath.row].achievement)
+        cell1.lblTargetJob.text = StringUtils.checkEmpty(value: self.detailCV.lstEmploymentHis![indexPath.row].achievement)
         cell1.contentView.layoutIfNeeded()
         cell1.lblTargetJob.layoutIfNeeded()
         cell1.lblTargetJob.setNeedsLayout()
         cell1.lblJobDes.layoutIfNeeded()
         cell1.lblJobDes.setNeedsLayout()
-        cell1.heightContentView.constant = ScreenUtils.shared.getScreenWidth() == 414 ?  500 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height : 750 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height
+        cell1.heightContentView.constant = ScreenUtils.getScreenWidth() == 414 ?  500 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height : 750 + cell1.lblTargetJob.frame.size.height + cell1.lblJobDes.frame.size.height
         cell1.contentView.layoutIfNeeded()
         let rectShape = CAShapeLayer()
         rectShape.bounds = cell1.viewContent.frame

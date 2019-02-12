@@ -47,10 +47,10 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.mViewStatus.gone()
         self.tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("cv_saved", comment: ""),NSLocalizedString("cv_submited", comment: ""),"Danh sách file attached"], delegate: self)
         
-        if ScreenUtils.shared.getScreenWidth()! == 414 {
-            self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/10)
+        if ScreenUtils.getScreenWidth()! == 414 {
+            self.tabSwipe!.setTabExtraWidth(ScreenUtils.getScreenWidth()!/10)
         } else {
-            self.tabSwipe!.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
+            self.tabSwipe!.setTabExtraWidth(ScreenUtils.getScreenWidth()!/30)
         }
         self.tabSwipe!.setNormalColor(UIColor.gray)
         self.tabSwipe!.setSelectedColor(UIColor.black)
@@ -120,7 +120,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             vc.vc = self.vc
             return vc
         } else {
-            let vc = storyboard.instantiateViewController(withIdentifier: "MyCVSavedController") as! MyCVSavedController
+            let vc = storyboard.instantiateViewController(withIdentifier: "MyCVAttachedController") as! MyCVAttachedController
             vc.isCarrer = self.isCarrer
             vc.isStatus = self.isStatus
             vc.vc = self.vc

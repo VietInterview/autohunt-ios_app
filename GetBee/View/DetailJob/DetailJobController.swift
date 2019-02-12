@@ -97,15 +97,15 @@ class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate
             }
             let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("info", comment: ""), NSLocalizedString("statistic", comment: ""), NSLocalizedString("cv_submited", comment: "")], delegate: self)
             
-            if ScreenUtils.shared.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
-            } else { tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/20)
+            if ScreenUtils.getScreenWidth()! == 414 { tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/7)
+            } else { tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/20)
             }
             tabSwipe.setNormalColor(UIColor.gray)
             tabSwipe.setSelectedColor(UIColor.black)
             tabSwipe.setIndicatorColor(UIColor.clear)
             tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         }, failure: {error in
-            LoadingOverlay.shared.hideOverlayView()
+            UIApplication.hideNetworkActivity()
             self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
         })
     }
@@ -126,19 +126,19 @@ class DetailJobController: BaseViewController , CarbonTabSwipeNavigationDelegate
             vc.level = self.jobDetail.jobLevelName!
             vc.location = self.jobDetail.listcityName!
             vc.delegate = self
-            vc.datePublic = DateUtils.shared.UTCToLocal(date: self.jobDetail.submitDate!)
-            vc.dateExpiration = DateUtils.shared.UTCToLocal(date: self.jobDetail.expireDate!)
+            vc.datePublic = DateUtils.UTCToLocal(date: self.jobDetail.submitDate!)
+            vc.dateExpiration = DateUtils.UTCToLocal(date: self.jobDetail.expireDate!)
             if self.jobDetail.status! == 1 {
                 vc.status = NSLocalizedString("hiring", comment: "")
             } else {
                 vc.status = NSLocalizedString("closed", comment: "")
             }
-            vc.salaryCandidate = "\(StringUtils.shared.currencyFormat(value: self.jobDetail.fromSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!)) -  \(StringUtils.shared.currencyFormat(value: self.jobDetail.toSalary!)) \(StringUtils.shared.genStringCurrency(value: self.jobDetail.currency!))"
-            vc.collaboratorsReward = "\(StringUtils.shared.currencyFormat(value:self.jobDetail.fee!)) VND"
+            vc.salaryCandidate = "\(StringUtils.currencyFormat(value: self.jobDetail.fromSalary!)) \(StringUtils.genStringCurrency(value: self.jobDetail.currency!)) -  \(StringUtils.currencyFormat(value: self.jobDetail.toSalary!)) \(StringUtils.genStringCurrency(value: self.jobDetail.currency!))"
+            vc.collaboratorsReward = "\(StringUtils.currencyFormat(value:self.jobDetail.fee!)) VND"
             vc.quantityCVSend = "\(self.jobDetail.countCv!)"
             vc.quantityHiring = "\(self.jobDetail.quantity!)"
-            vc.jobDescription = StringUtils.shared.stringFromHtml(string: self.jobDetail.jobDescription!)!
-            vc.requireJobContent = StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: self.jobDetail.jobRequirements))!
+            vc.jobDescription = StringUtils.stringFromHtml(string: self.jobDetail.jobDescription!)!
+            vc.requireJobContent = StringUtils.stringFromHtml(string: StringUtils.checkEmpty(value: self.jobDetail.jobRequirements))!
             return vc
         } else if index == 1{
             let vc = storyboard.instantiateViewController(withIdentifier: "StatisticalController") as! StatisticalController

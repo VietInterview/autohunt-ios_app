@@ -44,7 +44,7 @@ class CreateEditGoToWorkController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let gotowork = self.gotoworkDTO {
-            self.textFieldDateTime.text = StringUtils.shared.checkEmpty(value: gotowork.startWorkDate)
+            self.textFieldDateTime.text = StringUtils.checkEmpty(value: gotowork.startWorkDate)
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -107,7 +107,7 @@ class CreateEditGoToWorkController: BaseViewController {
                 self.showMessageFull(title: NSLocalizedString("noti_title", comment: ""), message: "Bạn có chắc chắn muốn cập nhập bản ghi này", handler: {UIAlertAction in
                     self.viewModel.gotoWorkUpdate(cvId: self.detailProcessResume!.cvID!, id: self.gotoworkDTO == nil ? -1 : self.gotoworkDTO!.id == nil ? -1 : self.gotoworkDTO!.id!, countUpdate: self.gotoworkDTO == nil ? 0 : self.gotoworkDTO!.countUpdate == nil ? 0 : self.gotoworkDTO!.countUpdate!, jobId: self.detailProcessResume!.jobID!, startWorkDate: date, success: {gotoworkDTO in
                         if let delegate = self.sendGoToWorkDelegate {
-                            delegate.onSendGotowork(gotoworkDTO: JobCvGotoWorkDto.init(countUpdate: gotoworkDTO.countUpdate!, cvID: gotoworkDTO.cvID!, id: gotoworkDTO.id!, jobID: gotoworkDTO.jobID!, note: StringUtils.shared.checkEmpty(value: gotoworkDTO.note) , numDayWarranty: gotoworkDTO.numDayWarranty!, startWorkDate: gotoworkDTO.startWorkDate!, updateBy: StringUtils.shared.checkEmptyInt(value: gotoworkDTO.updateBy), updateDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.updateDate), warrantyExpireDate: StringUtils.shared.checkEmpty(value: gotoworkDTO.warrantyExpireDate)))
+                            delegate.onSendGotowork(gotoworkDTO: JobCvGotoWorkDto.init(countUpdate: gotoworkDTO.countUpdate!, cvID: gotoworkDTO.cvID!, id: gotoworkDTO.id!, jobID: gotoworkDTO.jobID!, note: StringUtils.checkEmpty(value: gotoworkDTO.note) , numDayWarranty: gotoworkDTO.numDayWarranty!, startWorkDate: gotoworkDTO.startWorkDate!, updateBy: StringUtils.checkEmptyInt(value: gotoworkDTO.updateBy), updateDate: StringUtils.checkEmpty(value: gotoworkDTO.updateDate), warrantyExpireDate: StringUtils.checkEmpty(value: gotoworkDTO.warrantyExpireDate)))
                             for controller in self.navigationController!.viewControllers as Array {
                                 if controller.isKind(of: ProcessResumeController.self) {
                                     self.navigationController!.popToViewController(controller, animated: true)

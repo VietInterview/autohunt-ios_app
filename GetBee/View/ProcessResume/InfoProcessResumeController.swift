@@ -34,17 +34,17 @@ class InfoProcessResumeController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: InfoProcessResumeController.onReceiveRejectInfo, object: nil)
-        self.lblFullname.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.fullName)
+        self.lblFullname.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.fullName)
         self.imgResume.showImage(imgUrl: self.detailProcessResume.cvProcessInfo!.pictureURL, imageNullName: "ava_null")
-        self.lblDateOfBirth.text = DateUtils.shared.convertFormatDateFull(dateString: "\(self.detailProcessResume.cvProcessInfo!.birthday!)")
-        self.lblAcademicLevel.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.educationLevelName)
-        self.lblPositionWish.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.positionName)
-        self.lblWorkPLace.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.workAddress)
-        self.lblExpYear.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.yearsExperienceName)
-        self.lblSalary.text = "\(StringUtils.shared.checkEmpty(value: StringUtils.shared.currencyFormat(value: self.detailProcessResume.cvProcessInfo!.salary!))) \(StringUtils.shared.genStringCurrency(value: self.detailProcessResume.cvProcessInfo!.currencyID!))"
-        self.lblFullnameColl.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collName)
-        self.lblEmailColl.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collEmail)
-        self.lblPhonenumberColl.text = StringUtils.shared.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collPhone)
+        self.lblDateOfBirth.text = DateUtils.convertFormatDateFull(dateString: "\(self.detailProcessResume.cvProcessInfo!.birthday!)")
+        self.lblAcademicLevel.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.educationLevelName)
+        self.lblPositionWish.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.positionName)
+        self.lblWorkPLace.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.workAddress)
+        self.lblExpYear.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.yearsExperienceName)
+        self.lblSalary.text = "\(StringUtils.checkEmpty(value: StringUtils.currencyFormat(value: self.detailProcessResume.cvProcessInfo!.salary!))) \(StringUtils.genStringCurrency(value: self.detailProcessResume.cvProcessInfo!.currencyID!))"
+        self.lblFullnameColl.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collName)
+        self.lblEmailColl.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collEmail)
+        self.lblPhonenumberColl.text = StringUtils.checkEmpty(value: self.detailProcessResume.cvProcessInfo!.collPhone)
         
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.imgSeeInfoResume.isUserInteractionEnabled = true

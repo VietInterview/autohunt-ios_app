@@ -36,7 +36,7 @@ extension UIImageView {
     }
     func showImage(imgUrl:String?, imageNullName:String){
         if let imgurl = imgUrl {
-            Alamofire.request("\(App.imgUrl)\(StringUtils.shared.checkEmpty(value: imgurl))").responseImage { response in
+            Alamofire.request("\(App.imgUrl)\(StringUtils.checkEmpty(value: imgurl))").responseImage { response in
                 if let image = response.result.value {
                     self.layer.masksToBounds = true
                     self.image = image

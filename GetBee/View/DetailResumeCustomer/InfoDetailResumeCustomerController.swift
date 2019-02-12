@@ -32,26 +32,26 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.arrContent[0] = DateUtils.shared.convertFormatDateFull(dateString: "\(StringUtils.shared.checkEmptyInt(value: self.resumeDetailCustomer.birthday))")
-        self.arrContent[1] = StringUtils.shared.checkEmptyInt(value: self.resumeDetailCustomer.sex) == 1 ? "Nam" : "Nữ"
-        self.arrContent[2] = StringUtils.shared.checkEmptyInt(value: self.resumeDetailCustomer.maritalStatus) == 1 ? "Chưa kết hôn" : "Đã kết hôn"
+        self.arrContent[0] = DateUtils.convertFormatDateFull(dateString: "\(StringUtils.checkEmptyInt(value: self.resumeDetailCustomer.birthday))")
+        self.arrContent[1] = StringUtils.checkEmptyInt(value: self.resumeDetailCustomer.sex) == 1 ? "Nam" : "Nữ"
+        self.arrContent[2] = StringUtils.checkEmptyInt(value: self.resumeDetailCustomer.maritalStatus) == 1 ? "Chưa kết hôn" : "Đã kết hôn"
         if let city = self.resumeDetailCustomer.city {
-            self.arrContent[3] = StringUtils.shared.checkEmpty(value: city.name)
+            self.arrContent[3] = StringUtils.checkEmpty(value: city.name)
         }
-        self.arrContent[4] = StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.desiredPosition)
+        self.arrContent[4] = StringUtils.checkEmpty(value: self.resumeDetailCustomer.desiredPosition)
         if let currentLevel = self.resumeDetailCustomer.currentLevel {
-            self.arrContent[5] = StringUtils.shared.checkEmpty(value: currentLevel.name)
+            self.arrContent[5] = StringUtils.checkEmpty(value: currentLevel.name)
         }
         if let desiredLevel = self.resumeDetailCustomer.desiredLevel {
-            self.arrContent[6] = StringUtils.shared.checkEmpty(value: desiredLevel.name)
+            self.arrContent[6] = StringUtils.checkEmpty(value: desiredLevel.name)
         }
         if let lstCarrer = self.resumeDetailCustomer.lstCareer {
             var carrer:String = ""
             for i in 0...lstCarrer.count-1 {
                 if i == lstCarrer.count-1 {
-                    carrer.append(StringUtils.shared.checkEmpty(value: lstCarrer[i].name))
+                    carrer.append(StringUtils.checkEmpty(value: lstCarrer[i].name))
                 } else {
-                    carrer.append("\(StringUtils.shared.checkEmpty(value: lstCarrer[i].name)), ")
+                    carrer.append("\(StringUtils.checkEmpty(value: lstCarrer[i].name)), ")
                 }
             }
             self.arrContent[7] = carrer
@@ -70,13 +70,13 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
             self.arrContent[8] = ""
         }
         if let educationLevel = self.resumeDetailCustomer.educationLevel {
-            self.arrContent[9] = StringUtils.shared.checkEmpty(value: educationLevel.name)
+            self.arrContent[9] = StringUtils.checkEmpty(value: educationLevel.name)
         }
         if let expYear = self.resumeDetailCustomer.experienceYear{
-            self.arrContent[10] = StringUtils.shared.checkEmpty(value: expYear.name)
+            self.arrContent[10] = StringUtils.checkEmpty(value: expYear.name)
         }
-        self.arrContent[11] = "\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: self.resumeDetailCustomer.desiredSalary))) VND"
-        self.arrContent[12] = StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.careerObjectives)
+        self.arrContent[11] = "\(StringUtils.currencyFormat(value: StringUtils.checkEmptyInt(value: self.resumeDetailCustomer.desiredSalary))) VND"
+        self.arrContent[12] = StringUtils.checkEmpty(value: self.resumeDetailCustomer.careerObjectives)
         if let lstEmploy = self.resumeDetailCustomer.lstEmploymentHis {
             self.lstEmploymentHis = lstEmploy
         }
@@ -143,12 +143,12 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
         } else if positionTab == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell") as! NormalTableCell
             cell.lblTitle.text = self.lstEmploymentHis[indexPath.row].companyName!
-            cell.lblContent.text = "\(StringUtils.shared.checkEmpty(value:self.lstEmploymentHis[indexPath.row].title))\n\(StringUtils.shared.genStringHumanResource(value:StringUtils.shared.checkEmptyInt(value:  self.lstEmploymentHis[indexPath.row].humanResources)))\nTháng \(DateUtils.shared.convertFormatDate(dateString: "\(StringUtils.shared.checkEmptyInt(value: self.lstEmploymentHis[indexPath.row].fromMonth))")) - \(DateUtils.shared.convertFormatDate(dateString: "\(StringUtils.shared.checkEmptyInt(value: self.lstEmploymentHis[indexPath.row].toMonth))"))\n\(StringUtils.shared.checkEmpty(value:  self.lstEmploymentHis[indexPath.row].jobDescription))"
+            cell.lblContent.text = "\(StringUtils.checkEmpty(value:self.lstEmploymentHis[indexPath.row].title))\n\(StringUtils.genStringHumanResource(value:StringUtils.checkEmptyInt(value:  self.lstEmploymentHis[indexPath.row].humanResources)))\nTháng \(DateUtils.convertFormatDate(dateString: "\(StringUtils.checkEmptyInt(value: self.lstEmploymentHis[indexPath.row].fromMonth))")) - \(DateUtils.convertFormatDate(dateString: "\(StringUtils.checkEmptyInt(value: self.lstEmploymentHis[indexPath.row].toMonth))"))\n\(StringUtils.checkEmpty(value:  self.lstEmploymentHis[indexPath.row].jobDescription))"
             return cell
         } else if positionTab == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell") as! NormalTableCell
             cell.lblTitle.text = self.lstEducationHi[indexPath.row].subject!
-            cell.lblContent.text = "\(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].school))\nChuyên ngành: \(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].career))\nTốt nghiệp loại: \(StringUtils.shared.checkEmpty(value: self.lstEducationHi[indexPath.row].graduationTypeName))"
+            cell.lblContent.text = "\(StringUtils.checkEmpty(value: self.lstEducationHi[indexPath.row].school))\nChuyên ngành: \(StringUtils.checkEmpty(value: self.lstEducationHi[indexPath.row].career))\nTốt nghiệp loại: \(StringUtils.checkEmpty(value: self.lstEducationHi[indexPath.row].graduationTypeName))"
             
             return cell
         } else if positionTab == 3 {
@@ -158,10 +158,10 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
             cell.lblTitle2.text = "Nói:"
             cell.lblTitle3.text = "Đọc:"
             cell.lblTitle4.text = "Viết:"
-            cell.lblContent1.text = StringUtils.shared.genStringLan(value: self.lstLanguage[indexPath.row].listen!)
-            cell.lblContent2.text = StringUtils.shared.genStringLan(value: self.lstLanguage[indexPath.row].speak!)
-            cell.lblContent3.text = StringUtils.shared.genStringLan(value: self.lstLanguage[indexPath.row].read!)
-            cell.lblContent4.text = StringUtils.shared.genStringLan(value: self.lstLanguage[indexPath.row].write!)
+            cell.lblContent1.text = StringUtils.genStringLan(value: self.lstLanguage[indexPath.row].listen!)
+            cell.lblContent2.text = StringUtils.genStringLan(value: self.lstLanguage[indexPath.row].speak!)
+            cell.lblContent3.text = StringUtils.genStringLan(value: self.lstLanguage[indexPath.row].read!)
+            cell.lblContent4.text = StringUtils.genStringLan(value: self.lstLanguage[indexPath.row].write!)
             return cell
         } else if positionTab == 4 {
             if indexPath.row == 0 {
@@ -173,10 +173,10 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
                 cell.lblTitle4.text = "Microsoft Outlook:"
                 if let comSkill = self.resumeDetailCustomer.lstComputerSkill {
                     if comSkill.count > 0 {
-                        cell.lblContent1.text = StringUtils.shared.genStringLan(value: comSkill[0].msWord!)
-                        cell.lblContent2.text = StringUtils.shared.genStringLan(value: comSkill[0].msExcel!)
-                        cell.lblContent3.text = StringUtils.shared.genStringLan(value: comSkill[0].msPowerPoint!)
-                        cell.lblContent4.text = StringUtils.shared.genStringLan(value: comSkill[0].msOutlook!)
+                        cell.lblContent1.text = StringUtils.genStringLan(value: comSkill[0].msWord!)
+                        cell.lblContent2.text = StringUtils.genStringLan(value: comSkill[0].msExcel!)
+                        cell.lblContent3.text = StringUtils.genStringLan(value: comSkill[0].msPowerPoint!)
+                        cell.lblContent4.text = StringUtils.genStringLan(value: comSkill[0].msOutlook!)
                     }
                 }
                 return cell
@@ -184,7 +184,7 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
                 let cell = tableView.dequeueReusableCell(withIdentifier: "normalCell") as! NormalTableCell
                 cell.lblTitle.text = "Phần mềm khác"
                 if let comSkill = self.resumeDetailCustomer.lstComputerSkill {
-                    cell.lblContent.text = StringUtils.shared.checkEmpty(value: comSkill[0].other)
+                    cell.lblContent.text = StringUtils.checkEmpty(value: comSkill[0].other)
                 }
                 return cell
             }
@@ -193,7 +193,7 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
             if indexPath.row == 0 {
                 cell.lblTitle.text = "Kỹ năng chính"
                 if let skill = self.resumeDetailCustomer.cvSkill {
-                    cell.lblContent.text = StringUtils.shared.checkEmpty(value: skill.primarySkill)
+                    cell.lblContent.text = StringUtils.checkEmpty(value: skill.primarySkill)
                 }
             } else if indexPath.row == 1 {
                 cell.lblTitle.text = "Kỹ năng khác"
@@ -201,7 +201,7 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
                 if let skill = self.resumeDetailCustomer.cvSkill {
                     if let otherSkill = skill.lstOtherSkillName{
                         for i in 0...otherSkill.count-1 {
-                            other.append("\(StringUtils.shared.checkEmpty(value: self.resumeDetailCustomer.cvSkill!.lstOtherSkillName![i]))\n")
+                            other.append("\(StringUtils.checkEmpty(value: self.resumeDetailCustomer.cvSkill!.lstOtherSkillName![i]))\n")
                         }
                         cell.lblContent.text = other
                     }
@@ -209,7 +209,7 @@ class InfoDetailResumeCustomerController: BaseViewController, UITableViewDelegat
             } else if indexPath.row == 2 {
                 cell.lblTitle.text = "Sở thích"
                 if let skill = self.resumeDetailCustomer.cvSkill {
-                    cell.lblContent.text = StringUtils.shared.checkEmpty(value: skill.hobby)
+                    cell.lblContent.text = StringUtils.checkEmpty(value: skill.hobby)
                 }
             }
             return cell

@@ -22,8 +22,8 @@ class SkillDetailCVController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let cvSkill = self.detailCV.cvSkill{
-            lblPrimarySkill.text = StringUtils.shared.checkEmpty(value: self.detailCV.cvSkill!.primarySkill)
-            lblHobby.text = StringUtils.shared.checkEmpty(value: self.detailCV.cvSkill!.hobby)
+            lblPrimarySkill.text = StringUtils.checkEmpty(value: self.detailCV.cvSkill!.primarySkill)
+            lblHobby.text = StringUtils.checkEmpty(value: self.detailCV.cvSkill!.hobby)
             if let skillOther = self.detailCV.cvSkill!.lstOtherSkillName{
                 var appendString = ""
                 for i in 0...(self.detailCV.cvSkill!.lstOtherSkillName!.count - 1) {

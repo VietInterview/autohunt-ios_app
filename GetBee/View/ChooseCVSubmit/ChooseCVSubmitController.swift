@@ -89,7 +89,7 @@ class ChooseCVSubmitController: BaseViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "CVSubmitTableViewCell", for: indexPath) as! CVSubmitTableViewCell
         cell.lblName.text = self.cvList[indexPath.row].fullName!
         cell.lblCarrer.text = self.cvList[indexPath.row].careerName!
-        cell.lblDateUpdate.text = DateUtils.shared.UTCToLocal(date: self.cvList[indexPath.row].updatedDate!)
+        cell.lblDateUpdate.text = DateUtils.UTCToLocal(date: self.cvList[indexPath.row].updatedDate!)
         if indexPath.row == 0 {
             cell.mViewQuantity.isHidden = false
             cell.mViewQuantity.visible()
@@ -99,9 +99,9 @@ class ChooseCVSubmitController: BaseViewController, UITableViewDelegate, UITable
             cell.mViewQuantity.gone()
         }
         if indexPath.row % 2 != 0 {
-            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#F7FAFF")
+            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F7FAFF")
         } else {
-            cell.backgroundColor = StringUtils.shared.hexStringToUIColor(hex: "#FFFFFF")
+            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFFFFF")
         }
         return cell
     }

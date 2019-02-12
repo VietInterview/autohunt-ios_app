@@ -33,12 +33,12 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             self.lblCompanyName.text = self.profileCustomer!.companyName!
             for i in 0...self.numberOfCells-1 {
                 if i == 6 {
-                    self.arrContent.append("\(StringUtils.shared.checkEmpty(value: self.profileCustomer!.descripstion))")
+                    self.arrContent.append("\(StringUtils.checkEmpty(value: self.profileCustomer!.descripstion))")
                 } else if i == 2 {
                     if let humanresource = self.profileCustomer!.humanResources {
                         if humanresource.count > 0 {
                             for i in 0...humanresource.count-1 {
-                                self.arrContent.append(StringUtils.shared.checkEmpty(value: self.profileCustomer!.humanResources![i].name))
+                                self.arrContent.append(StringUtils.checkEmpty(value: self.profileCustomer!.humanResources![i].name))
                             }
                         } else {
                             self.arrContent.append("")
@@ -54,9 +54,9 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
                         if carrerSelectedItems.count > 0 {
                             for i in 0...carrerSelectedItems.count-1 {
                                 if i == carrerSelectedItems.count-1{
-                                    carrer.append("\(StringUtils.shared.checkEmpty(value: carrerSelectedItems[i].name))")
+                                    carrer.append("\(StringUtils.checkEmpty(value: carrerSelectedItems[i].name))")
                                 }else {
-                                    carrer.append("\(StringUtils.shared.checkEmpty(value: carrerSelectedItems[i].name)), ")
+                                    carrer.append("\(StringUtils.checkEmpty(value: carrerSelectedItems[i].name)), ")
                                 }
                             }
                             self.arrContent.append(carrer)
@@ -68,7 +68,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
                     }
                 }else if i == 4{
                     var address:String = ""
-                    address.append("\(StringUtils.shared.checkEmpty(value: self.profileCustomer!.address)) ")
+                    address.append("\(StringUtils.checkEmpty(value: self.profileCustomer!.address)) ")
                     if let country = self.profileCustomer!.country {
                         if country.count > 0 {
                             for i in 0...country.count-1 {
@@ -133,8 +133,8 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             let currentSource = preparedSources()[0]
             let cell = tableView.dequeueReusableCell(withIdentifier: "expanedCell", for: indexPath)as? ExpandableDetailJobCell
             cell?.expandableLabel.delegate = self
-            let greenColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7") 
-            let attributedStringColor = [NSAttributedStringKey.foregroundColor : StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")];
+            let greenColor = StringUtils.hexStringToUIColor(hex: "#3C84F7") 
+            let attributedStringColor = [NSAttributedStringKey.foregroundColor : StringUtils.hexStringToUIColor(hex: "#3C84F7")];
             let attributedString = NSAttributedString(string: "Xem thêm", attributes: attributedStringColor)
             cell?.expandableLabel.collapsedAttributedLink = attributedString
             cell?.expandableLabel.setLessLinkWith(lessLink: "Rút gọn", attributes: [.foregroundColor: greenColor], position: currentSource.textAlignment)
@@ -166,7 +166,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             return cell!
         } else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "videocell", for: indexPath) as? VideoViewCell
-            if let myVideoURL = NSURL(string: StringUtils.shared.checkEmpty(value: self.profileCustomer!.videoLink)) {
+            if let myVideoURL = NSURL(string: StringUtils.checkEmpty(value: self.profileCustomer!.videoLink)) {
                 if self.verifyUrl(urlString: self.profileCustomer!.videoLink) {
                     cell!.imgReject.isHidden = true
                     cell!.videoPlayer.isHidden = false
@@ -195,7 +195,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
             if let customerWelfare = self.profileCustomer!.customerWelfare {
                 if customerWelfare.count > 0 {
                     for i in 0...customerWelfare.count-1 {
-                        mDataArr.append("\(StringUtils.shared.checkEmpty(value: customerWelfare[i].name)) - \(StringUtils.shared.checkEmpty(value: customerWelfare[i].note))")
+                        mDataArr.append("\(StringUtils.checkEmpty(value: customerWelfare[i].name)) - \(StringUtils.checkEmpty(value: customerWelfare[i].note))")
                     }
                 }
             }
@@ -205,7 +205,7 @@ class CustomerProfileController: BaseViewController,UITableViewDelegate, UITable
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "emailcell", for: indexPath) as? EmailCell
             cell!.lblEmail.font = UIFont.italicSystemFont(ofSize: 16)
-            cell!.lblEmail.text = StringUtils.shared.checkEmpty(value: self.profileCustomer!.contactEmail)
+            cell!.lblEmail.text = StringUtils.checkEmpty(value: self.profileCustomer!.contactEmail)
             cell!.isUserInteractionEnabled = false
             return cell!
         }

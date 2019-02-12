@@ -72,13 +72,13 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 self.lblDeadline.text = "Ngưng tuyển"
             }
             if let currentlevel = jobDetailCustomer.currentLevel{
-                self.arrContent.append(StringUtils.shared.checkEmpty(value: currentlevel.name))
+                self.arrContent.append(StringUtils.checkEmpty(value: currentlevel.name))
             }else {
                 self.arrContent.append("")
             }
             
             if let workingForm = jobDetailCustomer.workingForm {
-                self.arrContent.append(StringUtils.shared.checkEmpty(value: workingForm.name))
+                self.arrContent.append(StringUtils.checkEmpty(value: workingForm.name))
             }else {
                 self.arrContent.append("")
             }
@@ -87,9 +87,9 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 var lstCareer:String = ""
                 for i in 0...lstCarrer.count-1 {
                     if i == lstCarrer.count-1 {
-                        lstCareer.append("\(StringUtils.shared.checkEmpty(value: lstCarrer[i].name))")
+                        lstCareer.append("\(StringUtils.checkEmpty(value: lstCarrer[i].name))")
                     } else {
-                        lstCareer.append("\(StringUtils.shared.checkEmpty(value: lstCarrer[i].name)), ")
+                        lstCareer.append("\(StringUtils.checkEmpty(value: lstCarrer[i].name)), ")
                     }
                 }
                 self.arrContent.append(lstCareer)
@@ -97,8 +97,8 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 self.arrContent.append("")
             }
             
-            self.arrContent.append(StringUtils.shared.checkEmpty(value: StringUtils.shared.genStringExperience(value: jobDetailCustomer.workExperience!)))
-            self.arrContent.append(StringUtils.shared.genStringSex(value: jobDetailCustomer.sex!))
+            self.arrContent.append(StringUtils.checkEmpty(value: StringUtils.genStringExperience(value: jobDetailCustomer.workExperience!)))
+            self.arrContent.append(StringUtils.genStringSex(value: jobDetailCustomer.sex!))
             if let lstCountrys = jobDetailCustomer.lstJobCountry {
                 if let lstCitys = jobDetailCustomer.lstJobCity {
                     var lstCity:String = ""
@@ -106,9 +106,9 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                         for i in 0...lstCitys.count-1 {
                             if lstCitys[i].countryID! == lstCountrys[j].id!{
                                 if i == lstCitys.count-1 {
-                                    lstCity.append("\(StringUtils.shared.checkEmpty(value: lstCitys[i].name)) - \(StringUtils.shared.checkEmpty(value: lstCountrys[j].name))")
+                                    lstCity.append("\(StringUtils.checkEmpty(value: lstCitys[i].name)) - \(StringUtils.checkEmpty(value: lstCountrys[j].name))")
                                 } else {
-                                    lstCity.append("\(StringUtils.shared.checkEmpty(value: lstCitys[i].name)) - \(StringUtils.shared.checkEmpty(value: lstCountrys[j].name)), ")
+                                    lstCity.append("\(StringUtils.checkEmpty(value: lstCitys[i].name)) - \(StringUtils.checkEmpty(value: lstCountrys[j].name)), ")
                                 }
                             }
                         }
@@ -119,25 +119,25 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
                 }
             }
             
-            self.arrContent.append("\(StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.quantity))")
+            self.arrContent.append("\(StringUtils.checkEmptyInt(value: jobDetailCustomer.quantity))")
             
             if let educationLevel = jobDetailCustomer.educationLevel{
-                self.arrContent.append(StringUtils.shared.checkEmpty(value: educationLevel.name))
+                self.arrContent.append(StringUtils.checkEmpty(value: educationLevel.name))
             }else{
                 self.arrContent.append("")
             }
             
-            self.arrContent.append("\(StringUtils.shared.genStringAge(value: jobDetailCustomer.age!))")
+            self.arrContent.append("\(StringUtils.genStringAge(value: jobDetailCustomer.age!))")
             
-            self.arrContent.append("\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fromSalary))) - \(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.toSalary))) \(StringUtils.shared.genStringCurrency(value: jobDetailCustomer.currency!))")
+            self.arrContent.append("\(StringUtils.currencyFormat(value: StringUtils.checkEmptyInt(value: jobDetailCustomer.fromSalary))) - \(StringUtils.currencyFormat(value: StringUtils.checkEmptyInt(value: jobDetailCustomer.toSalary))) \(StringUtils.genStringCurrency(value: jobDetailCustomer.currency!))")
             
-            self.arrContent.append("\(StringUtils.shared.currencyFormat(value: StringUtils.shared.checkEmptyInt(value: jobDetailCustomer.fee))) VND")
+            self.arrContent.append("\(StringUtils.currencyFormat(value: StringUtils.checkEmptyInt(value: jobDetailCustomer.fee))) VND")
             
-            self.arrContent.append(DateUtils.shared.convertFormatDateFull(dateString: StringUtils.shared.checkEmpty(value: jobDetailCustomer.submitDate)))
+            self.arrContent.append(DateUtils.convertFormatDateFull(dateString: StringUtils.checkEmpty(value: jobDetailCustomer.submitDate)))
             
-            self.arrContent.append(DateUtils.shared.convertFormatDateFull(dateString: StringUtils.shared.checkEmpty(value: jobDetailCustomer.expireDate)))
+            self.arrContent.append(DateUtils.convertFormatDateFull(dateString: StringUtils.checkEmpty(value: jobDetailCustomer.expireDate)))
             
-            self.arrContent.append(StringUtils.shared.checkEmpty(value: jobDetailCustomer.tag))
+            self.arrContent.append(StringUtils.checkEmpty(value: jobDetailCustomer.tag))
             
             if let language = jobDetailCustomer.language{
                 self.arrContent.append("\(language)")
@@ -146,17 +146,17 @@ class DetailJobCustomerController: BaseViewController,ExpandableLabelDelegate,UI
             }
             
             if let customer = jobDetailCustomer.customers{
-                self.arrContent.append(StringUtils.shared.checkEmpty(value: customer.contactName))
-                self.arrContent.append(StringUtils.shared.checkEmpty(value: customer.contactEmail))
+                self.arrContent.append(StringUtils.checkEmpty(value: customer.contactName))
+                self.arrContent.append(StringUtils.checkEmpty(value: customer.contactEmail))
             }else{
                 self.arrContent.append("")
                 self.arrContent.append("")
             }
             
-            self.arrContent.append(StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: jobDetailCustomer.jobDescription))!)
+            self.arrContent.append(StringUtils.stringFromHtml(string: StringUtils.checkEmpty(value: jobDetailCustomer.jobDescription))!)
             
-            self.arrContent.append(StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: jobDetailCustomer.jobRequirements))!)
-            self.arrContent.append(StringUtils.shared.stringFromHtml(string: StringUtils.shared.checkEmpty(value: jobDetailCustomer.specialTreatment))!)
+            self.arrContent.append(StringUtils.stringFromHtml(string: StringUtils.checkEmpty(value: jobDetailCustomer.jobRequirements))!)
+            self.arrContent.append(StringUtils.stringFromHtml(string: StringUtils.checkEmpty(value: jobDetailCustomer.specialTreatment))!)
             self.states = [Bool](repeating: true, count: self.numberOfCells)
             self.tableView.estimatedRowHeight = 76
             self.tableView.rowHeight = UITableViewAutomaticDimension

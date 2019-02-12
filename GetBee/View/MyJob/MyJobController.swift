@@ -25,10 +25,10 @@ class MyJobController: BaseViewController, CarbonTabSwipeNavigationDelegate, Cho
         mViewCondition.isHidden = true
         mViewCondition.gone()
         let tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("job_saved_tit", comment: ""), NSLocalizedString("job_applyed_tit", comment: "")], delegate: self)
-        if ScreenUtils.shared.getScreenWidth()! == 414 {
-            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/7)
+        if ScreenUtils.getScreenWidth()! == 414 {
+            tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/7)
         } else {
-            tabSwipe.setTabExtraWidth(ScreenUtils.shared.getScreenWidth()!/30)
+            tabSwipe.setTabExtraWidth(ScreenUtils.getScreenWidth()!/30)
         }
         tabSwipe.insert(intoRootViewController: self, andTargetView: self.mViewTab)
         tabSwipe.setNormalColor(UIColor.gray)

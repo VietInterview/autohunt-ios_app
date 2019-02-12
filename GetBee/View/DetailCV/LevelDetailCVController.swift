@@ -60,7 +60,7 @@ extension LevelDetailCVController: ExpandableDelegate {
         cell1.viewContent.layer.mask = rectShape
         cell1.lblCer.text = self.detailCV.lstEducationHis![indexPath.row].subject!
         cell1.lblSchool.text = self.detailCV.lstEducationHis![indexPath.row].school!
-        cell1.lblTime.text = "\(DateUtils.shared.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].fromMonth!)")) - \(DateUtils.shared.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].toMonth!)"))"
+        cell1.lblTime.text = "\(DateUtils.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].fromMonth!)")) - \(DateUtils.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].toMonth!)"))"
         cell1.lblSpecialized.text = self.detailCV.lstEducationHis![indexPath.row].career!
         cell1.lblGraduationType.text = self.detailCV.lstEducationHis![indexPath.row].graduationTypeName!
         return [cell1]
@@ -102,7 +102,7 @@ extension LevelDetailCVController: ExpandableDelegate {
         cell.viewHeader.layer.borderWidth = 1
         cell.viewHeader.layer.mask = rectShape
         cell.lblTitle.text = self.detailCV.lstEducationHis![indexPath.row].school!
-        cell.lblSubTitle.text = "\(DateUtils.shared.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].fromMonth!)")) - \(DateUtils.shared.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].toMonth!)"))"
+        cell.lblSubTitle.text = "\(DateUtils.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].fromMonth!)")) - \(DateUtils.convertFormatDate(dateString: "\(self.detailCV.lstEducationHis![indexPath.row].toMonth!)"))"
         return cell
     }
     

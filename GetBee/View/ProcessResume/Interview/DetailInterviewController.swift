@@ -32,7 +32,7 @@ class DetailInterviewController: BaseViewController {
         self.lblRound.text = self.lstInterviewHi?.round!
         self.lblDateInterview.text = self.lstInterviewHi?.interviewDate!
         self.lblAdd.text = self.lstInterviewHi?.interviewAddress!
-        self.lblNote.text = StringUtils.shared.checkEmpty(value: self.lstInterviewHi?.note) 
+        self.lblNote.text = StringUtils.checkEmpty(value: self.lstInterviewHi?.note) 
         self.lblResult.text = self.switchStatus(value: self.lstInterviewHi!.status!)
     }
     func switchStatus(value:Int) -> String {

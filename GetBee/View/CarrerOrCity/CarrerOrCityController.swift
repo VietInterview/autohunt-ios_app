@@ -32,20 +32,20 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         button.setTitle(NSLocalizedString("choose", comment: ""), for: .normal)
-        button.setTitleColor(StringUtils.shared.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
+        button.setTitleColor(StringUtils.hexStringToUIColor(hex: "#3C84F7"), for: .normal)
         button.addTarget(self, action:#selector(self.chon(sender:)), for:.touchUpInside)
         button.frame = CGRect.init(x: 40, y: 00, width: 60, height: 30)
         button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 16)
         let barButton = UIBarButtonItem.init(customView: button)
         barButton.setTitleTextAttributes([
             NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 18.0)!,
-            NSAttributedStringKey.foregroundColor: StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")], for: .normal)
+            NSAttributedStringKey.foregroundColor: StringUtils.hexStringToUIColor(hex: "#3C84F7")], for: .normal)
         self.navigationItem.rightBarButtonItem = barButton
         
         let yourBackImage = UIImage(named: "back")
         self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.tintColor = StringUtils.shared.hexStringToUIColor(hex: "#3C84F7")
+        self.navigationController?.navigationBar.tintColor = StringUtils.hexStringToUIColor(hex: "#3C84F7")
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
     }
