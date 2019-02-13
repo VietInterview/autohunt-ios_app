@@ -7,6 +7,7 @@
 import UIKit
 
 class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
     var listCVSubmit = ListCVSubmit()
     var listCVServer = [CvListSubmit]()
     var cvListSubmit = [CvListSubmit]()
@@ -20,13 +21,16 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
     let refreshControl = UIRefreshControl()
     var vc = CarrerOrCityController()
     static let notificationName = Notification.Name("myNotificationName")
+    
     @IBOutlet weak var mCVSubmitTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl.addTarget(self, action:  #selector(refresh), for: UIControlEvents.valueChanged)
         if #available(iOS 10.0, *) {
             self.mCVSubmitTableView.refreshControl = refreshControl
         } else {
+            mCVSubmitTableView.addSubview(refreshControl)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(onNotification(notification:)), name: MyCVAppliedController.notificationName, object: nil)
     }

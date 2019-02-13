@@ -6,11 +6,17 @@ Copyright (c) 2018 Vietinterview. All rights reserved.
 
 import UIKit
 import MobileCoreServices
+import Alamofire
 
-class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate {
+class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate, ChooseDelegate {
 
     @IBOutlet weak var viewAttach: UIView!
     @IBOutlet weak var lblNameFileUpload: UILabel!
+    @IBOutlet weak var textFieldCarrer: UITextField!
+    @IBOutlet weak var textFieldNumberPhone: UITextField!
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var textFieldFullName: UITextField!
+    @IBOutlet weak var viewCarrer: UIView!
     
     var downloadTask: URLSessionDownloadTask?
     var backgroundSession: URLSession?
@@ -30,8 +36,39 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
         showRightButton()
         self.viewAttach.addBorder(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         self.viewAttach.addRadius()
+        
+        self.textFieldCarrer.rightViewMode = UITextFieldViewMode.always
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(named: "arrow_right")
+        imageView.image = image
+        imageView.contentMode = .center
+        self.textFieldCarrer.rightView = imageView
+        let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
+        self.viewCarrer.isUserInteractionEnabled = true
+        self.viewCarrer.addGestureRecognizer(gestureSwift2AndHigher2)
     }
-
+    @objc func someAction2(sender:UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
+        vc.title = NSLocalizedString("carrer", comment: "")
+        vc.isCarrer = true
+        vc.isStatus = false
+        vc.isAttached = true
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    func didChoose(mychoose: MyChoose) {
+        if self.lstCarrer != nil {
+            if self.lstCarrer!.count == 0 {
+                lstCarrer!.append(LstCareerCVDto.init(id: mychoose.id, name: mychoose.name))
+            } else {
+                lstCarrer![0] = LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)
+            }
+        } else {
+            lstCarrer = [LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)]
+        }
+        self.textFieldCarrer.text = mychoose.name
+    }
     @IBAction func chooseFileTouch() {
         let importMenu = UIDocumentMenuViewController(documentTypes: [String(kUTTypePDF), "com.microsoft.word.doc",kUTTypeSpreadsheet as String, "org.openxmlformats.wordprocessingml.document"], in: .import)
         importMenu.delegate = self
@@ -42,12 +79,59 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+    var lstCarrer:[LstCareerCVDto]?
     @objc override func tappedMe(sender: UITapGestureRecognizer){
-        
+        if !self.textFieldFullName.text!.isEmpty && !self.textFieldEmail.text!.isEmpty && !self.textFieldNumberPhone.text!.isEmpty {
+            let cvDto = CVDto(email: self.textFieldEmail.text, fullName: self.textFieldFullName.text, id: nil, lstCareer: lstCarrer!, phone: self.textFieldNumberPhone.text)
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try! jsonEncoder.encode(cvDto)
+            let json = String(data: jsonData, encoding: String.Encoding.utf8)
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                
+                let parameters = [
+                    "cvDto": json!
+                    ] as [String : Any]
+                debugLog(object: parameters)
+                for (key, value) in parameters {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
+                let pdfData = try! Data(contentsOf: self.mURL!)
+                let data : Data = pdfData
+                multipartFormData.append(data, withName: "file", fileName: "\(self.lblNameFileUpload.text!)", mimeType:"text/plain")
+                
+            }, to: "\(App.baseUrl)/svccollaborator/api/cv-uploads/save", method: .post, headers: ["Authorization": "Bearer \(SessionManager.currentSession!.accessToken!)"],
+               encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.response { [weak self] response in
+                        guard self != nil else {
+                            return
+                        }
+                        UIApplication.hideNetworkActivity()
+                        debugLog(object: response.response!)
+                        if response.response!.statusCode == 201 {
+                            self?.showMessage(title: "Thông báo", message: "Upload thành công",handler:{ (action: UIAlertAction!) in
+                                self!.navigationController?.backToViewController(vc: MyCVController.self)
+                            }
+                            )
+                        } else {
+                            self?.showMessage(title: "Thông báo", message: "Upload không thành công")
+                        }
+                    }
+                case .failure(let encodingError):
+                    UIApplication.hideNetworkActivity()
+                    self.showMessage(title: "Thông báo", message: "Không kết nối được đến máy chủ, vui lòng thử lại sau.")
+                    debugLog(object: encodingError)
+                }
+            })
+        } else {
+            self.showMessage(title: "noti_title".localize(), message: "Hãy điền đầy đủ thông tin")
+        }
     }
+    var mURL:URL?
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let myURL = url as URL
+        self.mURL = myURL
 //        downloadFile(documentUrl: myURL)
 //        openDocument(fileUrl: myURL)
         let size = sizeForLocalFilePath(filePath: url.path)
@@ -145,7 +229,7 @@ extension AttachFileController: URLSessionDownloadDelegate {
             
             // Mở file đã download được
             debugLog(object: destinationURL)
-//            openDocument(fileUrl: destinationURL)
+            openDocument(fileUrl: destinationURL)
         } catch {
             debugLog(object: error)
         }

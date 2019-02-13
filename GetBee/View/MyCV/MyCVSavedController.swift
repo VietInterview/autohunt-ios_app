@@ -133,7 +133,8 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DetailResumeOriginalController") as! DetailResumeOriginalController
         vc.title = "Chi tiết hồ sơ gốc"
-//        vc.cvId = self.listCV2[indexPath.row].id!
+        vc.isAttached = false
+        vc.cvOrigin = self.listCV2[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

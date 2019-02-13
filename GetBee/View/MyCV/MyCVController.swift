@@ -17,6 +17,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     @IBOutlet weak var btnStatus: UIButton!
     @IBOutlet weak var imgAttachFile: UIImageView!
     @IBOutlet weak var viewChooseDateTime: UIView!
+    @IBOutlet weak var textFieldSearch: DesignableUITextField!
     
     var isShowCondition: Bool = false
     var isShowStatus: Bool = false
@@ -61,6 +62,12 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.imgAttachFile.isUserInteractionEnabled = true
         self.imgAttachFile.addGestureRecognizer(gestureSwift2AndHigher2)
+        
+        self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        self.page = 0
+        NotificationCenter.default.post(name: MyCVAttachedController.notificationName, object: nil,userInfo: ["id": self.isCarrer ? self.carrerId : self.isStatus ? self.statusId : self.cityId, "name": self.textFieldSearch.text!, "fromDate": somedateString, "toDate": somedateString2, "isCarrer": self.isCarrer, "isStatus": self.isStatus, "isCity": self.isCity])
     }
     @objc func someAction2(sender:UITapGestureRecognizer){
         self.pushViewController(controller: AttachFileController.init().setArgument())
@@ -173,6 +180,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         vc.isCarrer = self.isCarrer
         vc.isStatus = self.isStatus
         vc.isCity = self.isCity
+        vc.isListAttach = self.positionTab == 2 ? true : false
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -202,6 +210,8 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             datePicker.isHidden = true
             viewChooseDateTime.isHidden = true
             self.toolBar!.isHidden = true
+            
+            NotificationCenter.default.post(name: MyCVAttachedController.notificationName, object: nil,userInfo: ["id":  self.isCarrer ? self.carrerId : self.isStatus ? self.statusId : self.cityId, "name": self.textFieldSearch.text!, "fromDate": somedateString, "toDate": somedateString2, "isCarrer": false, "isStatus": false, "isCity":true])
         }
     }
     
@@ -234,7 +244,11 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         toolBar!.isHidden = false
     }
     func didChoose(mychoose: MyChoose) {
-        NotificationCenter.default.post(name: MyCVAppliedController.notificationName, object: nil,userInfo: ["id": mychoose.id, "name":mychoose.name, "isCarrer": mychoose.isCarrer, "isStatus":mychoose.isStatus, "isCity":mychoose.isCity])
+        if self.positionTab == 1 {
+            NotificationCenter.default.post(name: MyCVAppliedController.notificationName, object: nil,userInfo: ["id": mychoose.id, "name":mychoose.name, "isCarrer": mychoose.isCarrer, "isStatus":mychoose.isStatus, "isCity":mychoose.isCity])
+        } else if self.positionTab == 2 {
+            NotificationCenter.default.post(name: MyCVAttachedController.notificationName, object: nil,userInfo: ["id": mychoose.id, "name": self.textFieldSearch.text!, "fromDate": somedateString, "toDate": somedateString2, "isCarrer": mychoose.isCarrer, "isStatus": mychoose.isStatus, "isCity":mychoose.isCity])
+        }
         if self.isCarrer {
             self.carrerId = mychoose.id
             self.btnCarrer.setTitle(mychoose.name, for: .normal)

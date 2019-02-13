@@ -24,6 +24,8 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     var isCity: Bool = false
     var isCustomer:Bool = false
     var isCountry: Bool = false
+    var isAttached: Bool = false
+    var isListAttach: Bool = false
     var isResumeCustomer:Bool = false
     var isMultiChoice: Bool = false
     
@@ -100,7 +102,12 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         } else if self.isStatus == true {
-            if self.isCustomer {
+            if self.isListAttach {
+                self.viewModel.items.removeAll()
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: -1, name: "Tất cả hồ sơ")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 1, name: "Chưa hỗ trợ")))
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 2, name: "Đã hỗ trợ")))
+            } else if self.isCustomer {
                 self.viewModel.items.removeAll()
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 11, name: "Tất cả")))
                 self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: "Nháp")))
@@ -157,7 +164,11 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                             self.navigationController!.popToViewController(controller, animated: true)
                             break
                         } else if controller is MyCVController {
-                            self.navigationController!.popToViewController(controller, animated: true)
+                            if self.isAttached {
+                                self.navigationController?.backToViewController(vc: AttachFileController.self)
+                            } else {
+                                self.navigationController?.backToViewController(vc: MyCVController.self)
+                            }
                             break
                         } else if controller is MyJobController {
                             self.navigationController!.popToViewController(controller, animated: true)
@@ -195,18 +206,5 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     }
     
     
-    
-}
-extension UINavigationController {
-    
-    func backToViewController(vc: Any) {
-        // iterate to find the type of vc
-        for element in viewControllers as Array {
-            if "\(type(of: element)).Type" == "\(type(of: vc))" {
-                self.popToViewController(element, animated: true)
-                break
-            }
-        }
-    }
     
 }

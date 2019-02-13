@@ -184,6 +184,17 @@ class HomeViewModel {
             }
         })
     }
+    func getListCVUploaded(careerId:Int,fullName:String,page: Int,status:Int,strToDate:String,strfromDate:String,success: @escaping (SaveResumeUpload) -> Void, failure: @escaping (String) -> Void) {
+        CvsAPI.getCVUploaded(careerId: careerId, fullName: fullName, page: page, status: status, strToDate: strToDate, strfromDate: strfromDate, {listCV in
+            success(listCV)
+        }, failure: {error in
+            if (error as NSError).code == 0 {
+                failure("Đường truyền bị gián đoan. Vui lòng kiểm tra kết nối mạng.")
+            } else {
+                failure("Không kết nối tới server, bạn vui lòng thử lại.")
+            }
+        })
+    }
     func getListCVSubmit(carrerId: Int, cityId: Int, statusId: Int, page: Int,success: @escaping (ListCVSubmit) -> Void, failure: @escaping (String) -> Void) {
         CvsAPI.getCVSubmit(carrerID: carrerId, cityId: cityId, statusId: statusId, page: page, {listCVSubmit in
             success(listCVSubmit)

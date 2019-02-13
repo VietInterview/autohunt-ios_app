@@ -78,6 +78,9 @@
 		7A6F9EF62192E1050081862E /* JobAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF52192E1050081862E /* JobAPI.swift */; };
 		7A6F9EF82192E6B20081862E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF72192E6B20081862E /* Job.swift */; };
 		7A6F9EFA2192F1570081862E /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F9EF92192F1570081862E /* JobTableViewCell.swift */; };
+		7A7204212213BB7200719602 /* SaveResumeUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7204202213BB7200719602 /* SaveResumeUpload.swift */; };
+		7A7204232213BBBE00719602 /* CVDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7204222213BBBE00719602 /* CVDto.swift */; };
+		7A7204252213D2C200719602 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7204242213D2C200719602 /* UINavigationController.swift */; };
 		7A73770621E72EEF00C57919 /* MyCustomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73770521E72EEF00C57919 /* MyCustomTitleView.swift */; };
 		7A73770821E72EF500C57919 /* MyCustomTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A73770721E72EF500C57919 /* MyCustomTitleView.xib */; };
 		7A73F58B21A82AC800DC67D2 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */; };
@@ -288,6 +291,9 @@
 		7A6F9EF52192E1050081862E /* JobAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAPI.swift; sourceTree = "<group>"; };
 		7A6F9EF72192E6B20081862E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		7A6F9EF92192F1570081862E /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		7A7204202213BB7200719602 /* SaveResumeUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveResumeUpload.swift; sourceTree = "<group>"; };
+		7A7204222213BBBE00719602 /* CVDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDto.swift; sourceTree = "<group>"; };
+		7A7204242213D2C200719602 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		7A73770521E72EEF00C57919 /* MyCustomTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomTitleView.swift; sourceTree = "<group>"; };
 		7A73770721E72EF500C57919 /* MyCustomTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomTitleView.xib; sourceTree = "<group>"; };
 		7A73F58A21A82AC800DC67D2 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
@@ -521,6 +527,7 @@
 				7AEDB28F21F857E600723F8D /* ErrorRegister.swift */,
 				7AEDB29121F85C1B00723F8D /* ErrorResetPass.swift */,
 				7A59FCDD2201CB520074319B /* CityList.swift */,
+				7A7204202213BB7200719602 /* SaveResumeUpload.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -919,6 +926,7 @@
 				9B77E0721E2FB6350020E450 /* User.swift */,
 				7A1D970F21990D48007A4200 /* MyChoose.swift */,
 				7A1D9711219921B9007A4200 /* CarrerCityStatus.swift */,
+				7A7204222213BBBE00719602 /* CVDto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -972,6 +980,7 @@
 				9B8D306F20AB47E90050697F /* JSONEncodingExtension.swift */,
 				9B8574D8212C84130063A3E2 /* UIImageExtension.swift */,
 				7A7A3D002202ABE40064621D /* iOSDevCenters+GIF.swift */,
+				7A7204242213D2C200719602 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1040,7 +1049,7 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 2R9P8RBGBJ;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 9B5AFAD91C7205EB002347D6;
 					};
 					9B5AFAD91C7205EB002347D6 = {
@@ -1261,6 +1270,7 @@
 				7A2E7A7721E36573006DD1BA /* ProfileCustomer.swift in Sources */,
 				7AA530A621CDF88D0087B65A /* GoToWorkProcessController.swift in Sources */,
 				7AA7021E219CFEEE00566F43 /* CvsAPI.swift in Sources */,
+				7A7204212213BB7200719602 /* SaveResumeUpload.swift in Sources */,
 				7A86E13C21DF06CD00707E74 /* SendOffer.swift in Sources */,
 				9B3AA3991ED35007005A4D26 /* SignInViewController.swift in Sources */,
 				7A17F3BC21A3A9AC000B4D1F /* MyCVTableViewCell.swift in Sources */,
@@ -1338,6 +1348,7 @@
 				7A471AAC2202E61F007DB5FD /* DetailResumeOriginalController.swift in Sources */,
 				7A60B02B21BF91220048F4C4 /* ResumesEmployerController.swift in Sources */,
 				9BE3669F1F10175E007CAECD /* Base64Media.swift in Sources */,
+				7A7204232213BBBE00719602 /* CVDto.swift in Sources */,
 				7A39977F21DE05E100F9591F /* SendInterviewResponse.swift in Sources */,
 				7AA7021C219CFE8900566F43 /* MyCV.swift in Sources */,
 				7AEC5ADD21DC4AFD0086CD6C /* DetailProcessResume.swift in Sources */,
@@ -1352,6 +1363,7 @@
 				7A772996219A8A2200A0CB97 /* CVSendTableViewCell.swift in Sources */,
 				7A06ADA1217456AF00E3CDAA /* DetailJobController.swift in Sources */,
 				7A955E2721A8013B00D402D4 /* IntroThreeController.swift in Sources */,
+				7A7204252213D2C200719602 /* UINavigationController.swift in Sources */,
 				7A47BB512204239E001D1530 /* AttachFileController.swift in Sources */,
 				7A99AA5D21719A8B00E3B0DC /* LeftViewController.swift in Sources */,
 				7AC6DA8121A2784900BD5C10 /* MyCVSavedController.swift in Sources */,
@@ -1488,6 +1500,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = HAHZPWB354;
@@ -1539,6 +1552,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HAHZPWB354;
@@ -1643,6 +1657,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = HAHZPWB354;

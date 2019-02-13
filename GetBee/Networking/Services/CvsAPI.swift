@@ -63,6 +63,19 @@ class CvsAPI{
             failure(error)
         })
     }
+    class func getCVUploaded(careerId:Int,fullName:String,page: Int,status:Int,strToDate:String,strfromDate:String,_ success: @escaping (_ detailCV: SaveResumeUpload) -> Void, failure: @escaping (_ error: Error) -> Void){
+        let url = cvsUrl + "/searchCvUpload?itemPerPage=30&page=\(page)&careerId=\(careerId)&fullName=\(fullName)&status=\(status)&strToDate=\(strToDate)&strfromDate=\(strfromDate)"
+        UIApplication.showNetworkActivity()
+        APIClient.request(.get, url: url, success: {response, _,status in
+            if let listCV = try? newJSONDecoder().decode(SaveResumeUpload.self, from: response){
+                UIApplication.hideNetworkActivity()
+                success(listCV)
+            }
+        }, failure: {error,response,status in
+            UIApplication.hideNetworkActivity()
+            failure(error)
+        })
+    }
     class func getCVSubmit(carrerID: Int, cityId: Int, statusId: Int, page: Int,_ success: @escaping (_ listCVSubmit: ListCVSubmit) -> Void, failure: @escaping (_ error: Error) -> Void) {
         var url:String = ""
         if statusId == 11 {
