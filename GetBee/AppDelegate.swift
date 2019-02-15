@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if update {
           let alert = UIAlertController(title:"Thông báo", message: "Getbee đã có phiên bản mới nhất \(self.onlineVersion != nil ? self.onlineVersion! : ""). Vui lòng cập nhật để được sử dụng các tính năng ưu việt!", preferredStyle: .alert)
           alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {UIAlertAction in
-            let urlStr = "itms://itunes.apple.com/us/app/getbee/id1445847756?ls=1&mt=8"
+            let urlStr = "itms-apps://itunes.apple.com/us/app/getbee/id1445847756?ls=1&mt=8"
             if #available(iOS 10.0, *) {
               UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
             } else {

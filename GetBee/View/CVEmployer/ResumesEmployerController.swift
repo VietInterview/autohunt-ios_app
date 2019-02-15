@@ -145,6 +145,7 @@ class ResumesEmployerController: BaseViewController, UITableViewDataSource, UITa
         let vc = storyboard.instantiateViewController(withIdentifier: "ProcessResumeController") as! ProcessResumeController
         vc.jobId = self.mID
         vc.cvId = self.cvListByJobCustomer[indexPath.row-1].id!
+        vc.isDetailResume = false
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

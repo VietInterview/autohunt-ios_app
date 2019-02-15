@@ -81,13 +81,15 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
     }
     var lstCarrer:[LstCareerCVDto]?
     @objc override func tappedMe(sender: UITapGestureRecognizer){
-        if !self.textFieldFullName.text!.isEmpty && !self.textFieldEmail.text!.isEmpty && !self.textFieldNumberPhone.text!.isEmpty {
-            let cvDto = CVDto(email: self.textFieldEmail.text, fullName: self.textFieldFullName.text, id: nil, lstCareer: lstCarrer!, phone: self.textFieldNumberPhone.text)
+        if self.lstCarrer == nil {
+            self.lstCarrer = [LstCareerCVDto]()
+        }
+        if !self.textFieldFullName.text!.isEmpty && !self.textFieldEmail.text!.isEmpty && !self.textFieldNumberPhone.text!.isEmpty && self.mURL != nil {
+            let cvDto = CVDto(email: self.textFieldEmail.text, fullName: self.textFieldFullName.text, id: nil, lstCareer: self.lstCarrer!, phone: self.textFieldNumberPhone.text)
             let jsonEncoder = JSONEncoder()
             let jsonData = try! jsonEncoder.encode(cvDto)
             let json = String(data: jsonData, encoding: String.Encoding.utf8)
             Alamofire.upload(multipartFormData: { multipartFormData in
-                
                 let parameters = [
                     "cvDto": json!
                     ] as [String : Any]

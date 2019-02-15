@@ -36,9 +36,8 @@ class DetailResumeOriginalController: BaseViewController,UITableViewDelegate,UIT
             arrContent.append(StringUtils.checkEmpty(value: cvUpload.email))
             arrContent.append(StringUtils.checkEmpty(value: cvUpload.phone))
             arrContent.append(StringUtils.checkEmpty(value: cvUpload.careerName))
-            let fullName    = StringUtils.checkEmpty(value: cvUpload.fileURL)
+            let fullName = StringUtils.checkEmpty(value: cvUpload.fileURL)
             let fullNameArr = fullName.components(separatedBy: "/")
-            
             arrContent.append(StringUtils.checkEmpty(value: fullNameArr[fullNameArr.count-1]))
             arrContent.append(StringUtils.checkEmpty(value: cvUpload.createdDate))
         } else if let cvOrigin = self.cvOrigin {

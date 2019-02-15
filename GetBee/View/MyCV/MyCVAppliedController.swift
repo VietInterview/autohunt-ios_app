@@ -104,19 +104,20 @@ class MyCVAppliedController: UIViewController, UITableViewDelegate, UITableViewD
             cell.mQuantityView.isHidden = true
             cell.mQuantityView.gone()
         }
-        if indexPath.row % 2 != 0 {
-            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F7FAFF")
-        } else {
-            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFFFFF")
-        }
+//        if indexPath.row % 2 != 0 {
+//            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F7FAFF")
+//        } else {
+//            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFFFFF")
+//        }
+        cell.viewContent.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 190
+            return 170
         } else {
-            return 130
+            return 135
         }
     }
     @objc func onNotification(notification:Notification)

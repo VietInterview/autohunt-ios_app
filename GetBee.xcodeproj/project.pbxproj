@@ -1056,7 +1056,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = HAHZPWB354;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1586,9 +1586,9 @@
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
@@ -1598,7 +1598,7 @@
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = GetBeeDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1616,9 +1616,9 @@
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
@@ -1628,7 +1628,7 @@
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = GetBeeDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1697,9 +1697,9 @@
 				BUNDLE_DOMAIN = com.rootstrap;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GetBee/GetBee.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Thang Tran (HAHZPWB354)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HAHZPWB354;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GetBee/Info.plist";
@@ -1708,7 +1708,7 @@
 				PRODUCT_NAME = GetBee;
 				PROJECT_BASE_NAME = "ios-base";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = GetBeeDistribution;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

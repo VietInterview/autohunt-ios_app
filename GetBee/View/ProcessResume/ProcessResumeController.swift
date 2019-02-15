@@ -45,6 +45,7 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
     var effect:UIVisualEffect!
     var listReasonReject = ListRejectReason()
     var rejectStepSend:Int = 0
+    var isDetailResume:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,60 +206,70 @@ class ProcessResumeController: BaseViewController, CarbonTabSwipeNavigationDeleg
                 self.detailProcessResume = detailProcessResume
                 var status:Int
                 var rejectStep:Int = -1
-                status = self.detailProcessResume!.cvProcessInfo!.status!
-                if let rejectstep = self.detailProcessResume!.cvProcessInfo!.rejectStep{
-                    rejectStep = rejectstep
+                if self.detailProcessResume!.cvProcessInfo != nil {
+                    status = self.detailProcessResume!.cvProcessInfo!.status!
+                    if let rejectstep = self.detailProcessResume!.cvProcessInfo!.rejectStep{
+                        rejectStep = rejectstep
+                    }
+                    if status == 3 || (status == 4 && rejectStep == 1) {
+                        self.Step = 0
+                        self.StepClick = 0
+                        self.lblStep.text = "Bước \(self.Step+1)/5"
+                        self.lblStepName.text = self.switchStepName(step: self.Step)
+                        self.position = UInt(self.Step)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.progressBarWithoutLastState.currentIndex = self.Step
+                    } else if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
+                        self.Step = 1
+                        self.StepClick = 1
+                        self.lblStep.text = "Bước \(self.Step+1)/5"
+                        self.lblStepName.text = self.switchStepName(step: self.Step)
+                        self.position = UInt(self.Step)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.progressBarWithoutLastState.currentIndex = self.Step
+                    } else if status == 7 || (status == 4 && rejectStep == 3) {
+                        self.Step = 2
+                        self.StepClick = 2
+                        self.lblStep.text = "Bước \(self.Step+1)/5"
+                        self.lblStepName.text = self.switchStepName(step: self.Step)
+                        self.position = UInt(self.Step)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.progressBarWithoutLastState.currentIndex = self.Step
+                    } else if status == 8 || (status == 4 && rejectStep == 4) {
+                        self.Step = 3
+                        self.StepClick = 3
+                        self.lblStep.text = "Bước \(self.Step+1)/5"
+                        self.lblStepName.text = self.switchStepName(step: self.Step)
+                        self.position = UInt(self.Step)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.progressBarWithoutLastState.currentIndex = self.Step
+                    } else if status == 9 || (status == 4 && rejectStep == 5) {
+                        self.Step = 4
+                        self.StepClick = 4
+                        self.lblStep.text = "Bước \(self.Step+1)/5"
+                        self.lblStepName.text = self.switchStepName(step: self.Step)
+                        self.position = UInt(self.Step)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.progressBarWithoutLastState.currentIndex = self.Step
+                    } else if let rejectStep = self.detailProcessResume!.cvProcessInfo!.rejectStep {
+                        self.Step = rejectStep
+                        self.StepClick = rejectStep
+                        self.lblStep.text = "Bước \(self.Step+1)/5"
+                        self.lblStepName.text = self.switchStepName(step: self.Step)
+                        self.position = UInt(self.Step-1)
+                        self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
+                        self.progressBarWithoutLastState.currentIndex = self.Step-1
+                    }
+                    self.setupTabSwipe(pos: self.position)
+                } else {
+                    self.showMessage(title: "noti_title".localize(), message: "nodata".localize(), handler: {(UIAlertAction) in
+                        if self.isDetailResume {
+                            self.navigationController?.backToViewController(vc: DetailResumeCustomerController.self)
+                        } else {
+                            self.navigationController?.backToViewController(vc: ResumesEmployerController.self)
+                        }
+                    })
                 }
-                if status == 3 || (status == 4 && rejectStep == 1) {
-                    self.Step = 0
-                    self.StepClick = 0
-                    self.lblStep.text = "Bước \(self.Step+1)/5"
-                    self.lblStepName.text = self.switchStepName(step: self.Step)
-                    self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    self.progressBarWithoutLastState.currentIndex = self.Step
-                } else if status == 5 || status == 6 || (status == 4 && rejectStep == 2) {
-                    self.Step = 1
-                    self.StepClick = 1
-                    self.lblStep.text = "Bước \(self.Step+1)/5"
-                    self.lblStepName.text = self.switchStepName(step: self.Step)
-                    self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    self.progressBarWithoutLastState.currentIndex = self.Step
-                } else if status == 7 || (status == 4 && rejectStep == 3) {
-                    self.Step = 2
-                    self.StepClick = 2
-                    self.lblStep.text = "Bước \(self.Step+1)/5"
-                    self.lblStepName.text = self.switchStepName(step: self.Step)
-                    self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    self.progressBarWithoutLastState.currentIndex = self.Step
-                } else if status == 8 || (status == 4 && rejectStep == 4) {
-                    self.Step = 3
-                    self.StepClick = 3
-                    self.lblStep.text = "Bước \(self.Step+1)/5"
-                    self.lblStepName.text = self.switchStepName(step: self.Step)
-                    self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    self.progressBarWithoutLastState.currentIndex = self.Step
-                } else if status == 9 || (status == 4 && rejectStep == 5) {
-                    self.Step = 4
-                    self.StepClick = 4
-                    self.lblStep.text = "Bước \(self.Step+1)/5"
-                    self.lblStepName.text = self.switchStepName(step: self.Step)
-                    self.position = UInt(self.Step)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    self.progressBarWithoutLastState.currentIndex = self.Step
-                } else if let rejectStep = self.detailProcessResume!.cvProcessInfo!.rejectStep {
-                    self.Step = rejectStep
-                    self.StepClick = rejectStep
-                    self.lblStep.text = "Bước \(self.Step+1)/5"
-                    self.lblStepName.text = self.switchStepName(step: self.Step)
-                    self.position = UInt(self.Step-1)
-                    self.tabSwipe.setCurrentTabIndex(self.position, withAnimation: false)
-                    self.progressBarWithoutLastState.currentIndex = self.Step-1
-                }
-                self.setupTabSwipe(pos: self.position)
             }, failure: {error in
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })

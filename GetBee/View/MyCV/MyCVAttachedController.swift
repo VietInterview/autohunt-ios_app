@@ -128,7 +128,7 @@ class MyCVAttachedController: BaseViewController, UITableViewDelegate, UITableVi
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "quantitycell", for: indexPath) as! SimpleCell
                 if let total = saveResumeUpload.total {
-                    cell.lblQuantity.text = "\(total) công việc được tìm thấy"
+                    cell.lblQuantity.text = "\(total) hồ sơ được tìm thấy"
                     
                 }
             cell.isUserInteractionEnabled = false
