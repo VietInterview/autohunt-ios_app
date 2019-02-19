@@ -16,9 +16,15 @@ extension UIView {
     layer.borderColor = color.cgColor
     layer.borderWidth = weight
   }
-  func addRadius( weight: CGFloat = 5, isBound:Bool = true){
+  func addRadius(weight: CGFloat = 5, isBound:Bool = true){
     layer.masksToBounds = isBound
     layer.cornerRadius = weight
+  }
+  func addBorderRadius(color: UIColor = UIColor.black, weight: CGFloat = 0.5, weightRadius: CGFloat = 5) {
+    layer.borderColor = color.cgColor
+    layer.borderWidth = weight
+    layer.masksToBounds = true
+    layer.cornerRadius = weightRadius
   }
   func setRoundBorders(_ cornerRadius: CGFloat = 5.0) {
     clipsToBounds = true

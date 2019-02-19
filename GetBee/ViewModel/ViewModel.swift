@@ -28,8 +28,11 @@ class ViewModelItem {
 }
 
 class ViewModel: NSObject {
+    var lastContentOffset: CGFloat = 0
     var items = [ViewModelItem]()
+    var vc:CarrerOrCityController?
     var isMulti = Bool()
+    var isAttached = Bool()
     var didToggleSelection: ((_ hasSelection: Bool) -> ())? {
         didSet {
             didToggleSelection?(!selectedItems.isEmpty)
@@ -44,8 +47,9 @@ class ViewModel: NSObject {
         super.init()
         items = dataArray.map { ViewModelItem(item: $0) }
     }
-    init(isMulti: Bool) {
+    init(isMulti: Bool, isAttached:Bool) {
         self.isMulti = isMulti
+        self.isAttached = isAttached
     }
 }
 
@@ -95,7 +99,21 @@ extension ViewModel: UITableViewDelegate {
         }
         didToggleSelection?(!selectedItems.isEmpty)
     }
+    // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
     
+    // while scrolling this delegate is being called so you may now check which direction your scrollView is being scrolled to
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            self.vc!.view.endEditing(true)
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+            self.vc!.view.endEditing(true)
+        } else {
+            self.vc!.view.endEditing(true)
+        }
+    }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         // update ViewModel item
@@ -105,9 +123,11 @@ extension ViewModel: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        //        if selectedItems.count > 2 {
-        //            return nil
-        //        }
+        if self.isAttached {
+            if selectedItems.count > 2 {
+                return nil
+            }
+        }
         return indexPath
     }
 }

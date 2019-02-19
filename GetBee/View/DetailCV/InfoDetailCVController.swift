@@ -44,7 +44,7 @@ class InfoDetailCVController: UIViewController {
             }
         }
         lblAdd.text = StringUtils.checkEmpty(value: self.detailCV.address)
-        lblCity.text = StringUtils.checkEmpty(value: self.detailCV.city!.name)
+        lblCity.text = StringUtils.checkEmpty(value:self.detailCV.city == nil ? "" : self.detailCV.city!.name)
         if let marialStatus = self.detailCV.maritalStatus{
             lblMarried.text = self.detailCV.maritalStatus! == 1 ? NSLocalizedString("have_married", comment: "") : NSLocalizedString("not_have_married", comment: "")
         }

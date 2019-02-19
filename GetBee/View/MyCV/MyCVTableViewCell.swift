@@ -17,6 +17,8 @@ class MyCVTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var lblDateUpdate: UILabel!
     @IBOutlet weak var lblCarrer: UILabel!
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblFile: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

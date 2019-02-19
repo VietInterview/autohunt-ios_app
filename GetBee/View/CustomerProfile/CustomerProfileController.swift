@@ -326,7 +326,7 @@ extension CustomerProfileController: UICollectionViewDelegate, UICollectionViewD
              return 219
          } else if indexPath.row == 7{
             if let customerWelfare = self.profileCustomer!.customerWelfare {
-                return CGFloat(customerWelfare.count * 60 + 40)
+                return CGFloat(customerWelfare.count * 80 + 40)
             }else {
                 return 0
             }

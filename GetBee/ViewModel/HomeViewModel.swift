@@ -239,6 +239,13 @@ class HomeViewModel {
             }
         })
     }
+    func deleteCVUpload(cvId: Int,success: @escaping (Int) -> Void, failure: @escaping (Int) -> Void){
+        CvsAPI.deleteCVUpload(cvId: cvId, {status in
+            success(status)
+        }, failure: {status in
+            failure(status)
+        })
+    }
     func searchMySavedJob(carrerId: Int, cityId: Int, jobTitle: String, page: Int, success: @escaping (MyJobSaved) -> Void, failure: @escaping (String) -> Void){
         JobAPI.getMySavedJobs(carrerId: carrerId, cityId: cityId, jobTitle: jobTitle, page: page, success: { myJobSaved in
             success(myJobSaved)

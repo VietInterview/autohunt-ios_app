@@ -17,6 +17,7 @@ class DetailResumeOriginalController: BaseViewController,UITableViewDelegate,UIT
     var isAttached:Bool = false
     var cvUploadDetail:CvListUpload?
     var cvOrigin:CvList2?
+    var isHave:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +27,47 @@ class DetailResumeOriginalController: BaseViewController,UITableViewDelegate,UIT
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.isAttached {
-            arrTitle = ["","Họ tên ứng viên","Email","Số điện thoại","Lĩnh vực","Hồ sơ đính kèm","Thời gian"]
+            for i in 0...AccountManager.currentAccount!.lstMenuAuthority!.count - 1 {
+                if AccountManager.currentAccount!.lstMenuAuthority![i].code! == "CMS_CTV" {
+                    isHave = true
+                    break
+                }
+            }
+            if isHave {
+                arrTitle = ["","Họ tên ứng viên","Email","Số điện thoại","Lĩnh vực","Hồ sơ đính kèm","Người tạo file","Thời gian"]
+            } else {
+                arrTitle = ["","Họ tên ứng viên","Email","Số điện thoại","Lĩnh vực","Hồ sơ đính kèm","Thời gian"]
+            }
         } else {
             arrTitle = ["","Mã hồ sơ","Vị trí ứng tuyển","Email","Số điện thoại","Loại hồ sơ","Ngày đăng"]
         }
         if let cvUpload = self.cvUploadDetail {
-            arrContent.append(StringUtils.checkEmpty(value: cvUpload.fullName))
-            arrContent.append(StringUtils.checkEmpty(value: cvUpload.fullName))
-            arrContent.append(StringUtils.checkEmpty(value: cvUpload.email))
-            arrContent.append(StringUtils.checkEmpty(value: cvUpload.phone))
-            arrContent.append(StringUtils.checkEmpty(value: cvUpload.careerName))
-            let fullName = StringUtils.checkEmpty(value: cvUpload.fileURL)
-            let fullNameArr = fullName.components(separatedBy: "/")
-            arrContent.append(StringUtils.checkEmpty(value: fullNameArr[fullNameArr.count-1]))
-            arrContent.append(StringUtils.checkEmpty(value: cvUpload.createdDate))
+            if self.isHave {
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.fullName))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.fullName))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.email))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.phone))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.careerName))
+                let fullName = StringUtils.checkEmpty(value: cvUpload.fileURL)
+                let fullNameArr = fullName.components(separatedBy: "/")
+                arrContent.append(StringUtils.checkEmpty(value: fullNameArr[fullNameArr.count-1]))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.createdByName))
+                let time = StringUtils.checkEmpty(value: cvUpload.createdDate)
+                let timeArr = time.components(separatedBy: " ")
+                arrContent.append(StringUtils.checkEmpty(value: "\(timeArr[timeArr.count-1]) \(timeArr[0])"))
+            } else {
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.fullName))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.fullName))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.email))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.phone))
+                arrContent.append(StringUtils.checkEmpty(value: cvUpload.careerName))
+                let fullName = StringUtils.checkEmpty(value: cvUpload.fileURL)
+                let fullNameArr = fullName.components(separatedBy: "/")
+                arrContent.append(StringUtils.checkEmpty(value: fullNameArr[fullNameArr.count-1]))
+                let time = StringUtils.checkEmpty(value: cvUpload.createdDate)
+                let timeArr = time.components(separatedBy: " ")
+                arrContent.append(StringUtils.checkEmpty(value: "\(timeArr[timeArr.count-1]) \(timeArr[0])"))
+            }
         } else if let cvOrigin = self.cvOrigin {
             arrContent.append(StringUtils.checkEmpty(value: cvOrigin.fullName))
             arrContent.append(StringUtils.checkEmpty(value: "cvOrigin.id"))

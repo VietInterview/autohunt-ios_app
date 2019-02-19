@@ -279,7 +279,7 @@
 "Ro4-Ko-aa4.text" = "13";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "SGW-mB-J78"; */
-"SGW-mB-J78.placeholder" = "Bạn vui lòng nhập email";
+"SGW-mB-J78.placeholder" = "Tên đăng nhập*";
 
 /* Class = "UILabel"; text = "13"; ObjectID = "STB-B6-HKO"; */
 "STB-B6-HKO.text" = "13";
@@ -303,7 +303,7 @@
 "Utg-90-bWw.text" = "Địa điểm";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "VXP-E8-PA8"; */
-"VXP-E8-PA8.placeholder" = "Bạn vui lòng nhập mật khẩu";
+"VXP-E8-PA8.placeholder" = "Mật khẩu*";
 
 /* Class = "UILabel"; text = "Senior C/C++"; ObjectID = "VXw-Bv-dEE"; */
 "VXw-Bv-dEE.text" = "Senior C/C++";
@@ -561,7 +561,7 @@
 "y7v-TH-rNp.normalTitle" = "Nộp CV";
 
 /* Class = "UILabel"; text = "Bạn đã đăng ký tài khoản Cộng tác viên. Chúng tôi sẽ gửi thông tin email và mật khẩu qua hòm thư mà bạn đã đăng ký"; ObjectID = "yI3-ym-zH8"; */
-"yI3-ym-zH8.text" = "Bạn đã đăng ký tài khoản Cộng tác viên. Chúng tôi sẽ gửi thông tin email và mật khẩu qua hòm thư mà bạn đã đăng ký";
+"yI3-ym-zH8.text" = "Bạn đã đăng ký tài khoản Cộng tác viên thành công. Bạn vui lòng kiểm tra hòm thư để nhận thông tin đăng nhập tài khoản";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "yte-a5-P1D"; */
 "yte-a5-P1D.text" = "Label";

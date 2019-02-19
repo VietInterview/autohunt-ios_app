@@ -18,6 +18,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     @IBOutlet weak var imgAttachFile: UIImageView!
     @IBOutlet weak var viewChooseDateTime: UIView!
     @IBOutlet weak var textFieldSearch: DesignableUITextField!
+    @IBOutlet weak var chooseCalendar: UIImageView!
     
     var isShowCondition: Bool = false
     var isShowStatus: Bool = false
@@ -37,16 +38,18 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     var vc = CarrerOrCityController()
     var datePicker : UIDatePicker!
     var toolBar:UIToolbar?
+    var statusName:String?
+    var statusNameAttached:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("mycv", comment: "")
+        self.title = "Hồ sơ đã ứng tuyển"
         self.showHideView(view: self.imgAttachFile, isHidden: true)
         mViewCondition.isHidden = true
         mViewCondition.gone()
         self.mViewStatus.isHidden = true
         self.mViewStatus.gone()
-        self.tabSwipe = CarbonTabSwipeNavigation(items: [NSLocalizedString("cv_saved", comment: ""),NSLocalizedString("cv_submited", comment: ""),"Danh sách file attached"], delegate: self)
+        self.tabSwipe = CarbonTabSwipeNavigation(items: ["Danh sách hồ sơ gốc","Hồ sơ đã lưu","Danh sách file attached"], delegate: self)
         
         if ScreenUtils.getScreenWidth()! == 414 {
             self.tabSwipe!.setTabExtraWidth(ScreenUtils.getScreenWidth()!/10)
@@ -64,6 +67,10 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.imgAttachFile.addGestureRecognizer(gestureSwift2AndHigher2)
         
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        let gestureSwift2AndHigher3 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction3))
+        self.chooseCalendar.isUserInteractionEnabled = true
+        self.chooseCalendar.addGestureRecognizer(gestureSwift2AndHigher3)
     }
     @objc func textFieldDidChange(_ textField: UITextField) {
         self.page = 0
@@ -71,6 +78,11 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     }
     @objc func someAction2(sender:UITapGestureRecognizer){
         self.pushViewController(controller: AttachFileController.init().setArgument())
+    }
+    @objc func someAction3(sender:UITapGestureRecognizer){
+        self.showChooseDateTime()
+        self.somedateString = ""
+        self.somedateString2 = ""
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
@@ -81,11 +93,13 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         self.positionTab = index
         print("positionTab1 \(self.positionTab)")
         if index == 0 {
+            self.btnStatus.setTitle(self.statusName != nil ? self.statusName : "Mặc định", for: .normal)
             self.showHideView(view: self.imgAttachFile, isHidden: true)
             self.isShowStatus = false
             self.mViewStatus.isHidden = true
             self.mViewStatus.gone()
         } else if index == 1{
+            self.btnStatus.setTitle(self.statusName != nil ? self.statusName : "Mặc định", for: .normal)
             self.showHideView(view: self.imgAttachFile, isHidden: true)
             if self.isShowCondition == true {
                 self.isShowStatus = true
@@ -97,6 +111,7 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
                 self.mViewStatus.gone()
             }
         } else {
+            self.btnStatus.setTitle(self.statusNameAttached != nil ? self.statusNameAttached : "Tất cả hồ sơ", for: .normal)
             if self.isShowCondition == true {
                 self.isShowStatus = true
                 self.mViewStatus.isHidden = false
@@ -184,7 +199,8 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
-    @IBAction func chooseCityTouch(_ sender: Any) {view.endEditing(true)
+    @IBAction func chooseCityTouch(_ sender: Any) {
+        view.endEditing(true)
         self.showChooseDateTime()
         self.somedateString = ""
         self.somedateString2 = ""
@@ -257,6 +273,11 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
             self.btnCity.setTitle(mychoose.name, for: .normal)
         } else if self.isStatus {
             self.statusId = mychoose.id
+            if self.positionTab == 1 {
+                self.statusName = mychoose.name
+            } else if self.positionTab == 2 {
+                self.statusNameAttached = mychoose.name
+            }
             self.btnStatus.setTitle(mychoose.name, for: .normal)
         }
     }

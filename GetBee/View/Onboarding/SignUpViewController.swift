@@ -227,8 +227,6 @@ class SignUpViewController: BaseViewController, UITextFieldDelegate {
         } else if phone.count == 0 {
             self.imgNotePhone.isHidden = false
             textFieldPhone.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("input_phone", comment: ""), attributes: [NSAttributedString.Key.foregroundColor: StringUtils.hexStringToUIColor(hex: "#DC4444")])
-        } else if self.somedateString2 == 0 {
-            self.showMessage(title: "Thông báo", message: "Hãy chọn ngày sinh nhật")
         } else if self.isAgree == false {
             self.showMessage(title: "Thông báo", message: "Bạn phải đồng ý với điều khoản")
         }else if self.textFieldEmail.text?.isEmailFormatted() == false {

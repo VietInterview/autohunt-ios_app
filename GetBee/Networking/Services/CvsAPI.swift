@@ -120,6 +120,17 @@ class CvsAPI{
             failure(error)
         })
     }
+    class func deleteCVUpload(cvId: Int,_ success: @escaping (_ status:Int) -> Void, failure: @escaping (_ status: Int) -> Void){
+        UIApplication.showNetworkActivity()
+        let url = "/svccollaborator/api/cv-uploads/\(cvId)"
+        APIClient.request(.delete, url: url, success: {response, _,status in
+            UIApplication.hideNetworkActivity()
+            success(status)
+        }, failure: {error,response,status in
+            UIApplication.hideNetworkActivity()
+            failure(status)
+        })
+    }
     class func getResumesByJobCustomer(cvName:String, id:Int, page:Int, status:Int,_ success: @escaping (_ resumesByJobCustomer: ResumesByJobCustomer) -> Void, failure: @escaping (_ error: Error) -> Void){
         UIApplication.showNetworkActivity()
         let url = status != 11 ? cvsUrlCus + "searchCusHomeCvByJob?itemPerPage=30&page=\(page)&id=\(id)&cvName=\(cvName)&status=\(status)" : cvsUrlCus + "searchCusHomeCvByJob?itemPerPage=30&page=\(page)&id=\(id)&cvName=\(cvName)"

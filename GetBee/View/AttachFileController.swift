@@ -8,7 +8,7 @@ import UIKit
 import MobileCoreServices
 import Alamofire
 
-class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate, ChooseDelegate {
+class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate, ChooseMultiDelegate {
 
     @IBOutlet weak var viewAttach: UIView!
     @IBOutlet weak var lblNameFileUpload: UILabel!
@@ -20,6 +20,7 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
     
     var downloadTask: URLSessionDownloadTask?
     var backgroundSession: URLSession?
+    var documentInteractionController: UIDocumentInteractionController?
     
     convenience init() {
         self.init(nibName: "AttachFileController", bundle: nil)
@@ -36,7 +37,6 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
         showRightButton()
         self.viewAttach.addBorder(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         self.viewAttach.addRadius()
-        
         self.textFieldCarrer.rightViewMode = UITextFieldViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         let image = UIImage(named: "arrow_right")
@@ -46,28 +46,55 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
         let gestureSwift2AndHigher2 = UITapGestureRecognizer(target: self, action:  #selector (self.someAction2))
         self.viewCarrer.isUserInteractionEnabled = true
         self.viewCarrer.addGestureRecognizer(gestureSwift2AndHigher2)
+        debugLog(object: "Điều đáng sợ trong đời".utf8DecodedString())
+        debugLog(object: "Điều đáng sợ trong đời".utf8EncodedString())
     }
+    
     @objc func someAction2(sender:UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CarrerOrCityController") as! CarrerOrCityController
         vc.title = NSLocalizedString("carrer", comment: "")
         vc.isCarrer = true
         vc.isStatus = false
+        vc.isMultiChoice = true
         vc.isAttached = true
-        vc.delegate = self
+        vc.delegateMulti = self
         navigationController?.pushViewController(vc, animated: true)
     }
-    func didChoose(mychoose: MyChoose) {
+//    func didChoose(mychoose: MyChoose) {
+//        if self.lstCarrer != nil {
+//            if self.lstCarrer!.count == 0 {
+//                lstCarrer!.append(LstCareerCVDto.init(id: mychoose.id, name: mychoose.name))
+//            } else {
+//                lstCarrer![0] = LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)
+//            }
+//        } else {
+//            lstCarrer = [LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)]
+//        }
+//        self.textFieldCarrer.text = mychoose.name
+//    }
+    
+    func didChooseMulti(mychooseMulti: [MyChoose]) {
         if self.lstCarrer != nil {
-            if self.lstCarrer!.count == 0 {
-                lstCarrer!.append(LstCareerCVDto.init(id: mychoose.id, name: mychoose.name))
-            } else {
-                lstCarrer![0] = LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)
+            self.lstCarrer!.removeAll()
+            for i in 0...mychooseMulti.count-1 {
+                self.lstCarrer!.append(LstCareerCVDto.init(id: mychooseMulti[i].id, name:  mychooseMulti[i].name))
             }
         } else {
-            lstCarrer = [LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)]
+            self.lstCarrer = [LstCareerCVDto]()
+            for i in 0...mychooseMulti.count-1 {
+                self.lstCarrer!.append(LstCareerCVDto.init(id: mychooseMulti[i].id, name:  mychooseMulti[i].name))
+            }
         }
-        self.textFieldCarrer.text = mychoose.name
+        var appenString: String = ""
+        for i in 0...mychooseMulti.count - 1 {
+            if i == mychooseMulti.count - 1{
+                appenString.append(mychooseMulti[i].name)
+            } else {
+                appenString.append("\(mychooseMulti[i].name), ")
+            }
+        }
+        self.textFieldCarrer.text = appenString
     }
     @IBAction func chooseFileTouch() {
         let importMenu = UIDocumentMenuViewController(documentTypes: [String(kUTTypePDF), "com.microsoft.word.doc",kUTTypeSpreadsheet as String, "org.openxmlformats.wordprocessingml.document"], in: .import)
@@ -84,11 +111,12 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
         if self.lstCarrer == nil {
             self.lstCarrer = [LstCareerCVDto]()
         }
-        if !self.textFieldFullName.text!.isEmpty && !self.textFieldEmail.text!.isEmpty && !self.textFieldNumberPhone.text!.isEmpty && self.mURL != nil {
+        if !self.textFieldFullName.text!.isEmpty && !self.textFieldEmail.text!.isEmpty && !self.textFieldNumberPhone.text!.isEmpty && self.mURL != nil && self.textFieldEmail.text!.isEmailFormatted() {
             let cvDto = CVDto(email: self.textFieldEmail.text, fullName: self.textFieldFullName.text, id: nil, lstCareer: self.lstCarrer!, phone: self.textFieldNumberPhone.text)
             let jsonEncoder = JSONEncoder()
             let jsonData = try! jsonEncoder.encode(cvDto)
             let json = String(data: jsonData, encoding: String.Encoding.utf8)
+            UIApplication.showNetworkActivity()
             Alamofire.upload(multipartFormData: { multipartFormData in
                 let parameters = [
                     "cvDto": json!
@@ -99,6 +127,7 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
                 }
                 let pdfData = try! Data(contentsOf: self.mURL!)
                 let data : Data = pdfData
+//                debugLog(object: self.lblNameFileUpload.text!)
                 multipartFormData.append(data, withName: "file", fileName: "\(self.lblNameFileUpload.text!)", mimeType:"text/plain")
                 
             }, to: "\(App.baseUrl)/svccollaborator/api/cv-uploads/save", method: .post, headers: ["Authorization": "Bearer \(SessionManager.currentSession!.accessToken!)"],
@@ -127,21 +156,26 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
                 }
             })
         } else {
-            self.showMessage(title: "noti_title".localize(), message: "Hãy điền đầy đủ thông tin")
+            self.showMessage(title: "noti_title".localize(), message: self.textFieldEmail.text! == "" ? "Nhập thông tin bắt buộc" : !self.textFieldEmail.text!.isEmailFormatted() ? "Hãy điền đúng định dạng Email" : self.mURL == nil ? "Hãy chọn tệp đính kèm" : "Nhập thông tin bắt buộc")
+            self.textFieldFullName.addBorderRadius(color: self.textFieldFullName.text == "" ? StringUtils.hexStringToUIColor(hex: "#FF5A5A") : UIColor.clear, weight: 1)
+            self.textFieldEmail.addBorderRadius(color: self.textFieldEmail.text == "" ? StringUtils.hexStringToUIColor(hex: "#FF5A5A") : UIColor.clear, weight: 1)
+            self.textFieldEmail.addBorderRadius(color: !self.textFieldEmail.text!.isEmailFormatted() ? StringUtils.hexStringToUIColor(hex: "#FF5A5A") : UIColor.clear, weight: 1)
+            self.textFieldNumberPhone.addBorderRadius(color: self.textFieldNumberPhone.text == "" ? StringUtils.hexStringToUIColor(hex: "#FF5A5A") : UIColor.clear, weight: 1)
+            self.viewAttach.addBorderRadius(color: self.mURL == nil ? StringUtils.hexStringToUIColor(hex: "#FF5A5A") : StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
         }
     }
     var mURL:URL?
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let myURL = url as URL
         self.mURL = myURL
-//        downloadFile(documentUrl: myURL)
-//        openDocument(fileUrl: myURL)
         let size = sizeForLocalFilePath(filePath: url.path)
         var convertedValue: Double = Double(size)
         convertedValue /= 1024
         if convertedValue > 1024 {
+            self.viewAttach.addBorderRadius(color: StringUtils.hexStringToUIColor(hex: "#FF5A5A"), weight: 1)
             self.showMessage(title: "noti_title".localize(), message: "Tệp đính kèm phải dưới 1MB")
         }else{
+            self.viewAttach.addBorderRadius(color: StringUtils.hexStringToUIColor(hex: "#D6E1EA"), weight: 1)
             self.lblNameFileUpload.text = myURL.lastPathComponent
         }
     }
@@ -154,7 +188,6 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
         debugLog(object: "view was cancelled")
         dismiss(animated: true, completion: nil)
     }
-    var documentInteractionController: UIDocumentInteractionController?
     
     func openDocument(fileUrl: URL) {
         documentInteractionController = UIDocumentInteractionController(url: fileUrl)
@@ -176,19 +209,15 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
     }
 }
 extension AttachFileController {
-    
     func downloadFile(documentUrl: URL) {
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: "backgroundSession")
-        backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self,
-                                                  delegateQueue: OperationQueue.main)
+        backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
         let request = URLRequest(url: documentUrl)
         downloadTask = backgroundSession?.downloadTask(with: request)
         downloadTask?.resume()
-        // Show loading ở đây nhé
         UIApplication.showNetworkActivity()
     }
     
-    // Hàm này để lưu file dựa theo tên file mà server trả về
     fileprivate func getDestinationFileUrl(response: URLResponse) -> URL {
         var docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let filename = response.suggestedFilename ?? "file.pdf"
@@ -209,27 +238,21 @@ extension AttachFileController: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let progress = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
         debugLog(object: "progress: \(progress)")
-        // Hiển thị progress nếu thích :D
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        // Ẩn loading
         UIApplication.hideNetworkActivity()
         guard let response = downloadTask.response else {
             debugLog(object: downloadTask.error?.localizedDescription ?? "Loading file error.")
             return
         }
         let destinationURL = getDestinationFileUrl(response: response)
-        
-        // Đoạn này mình xoá file cũ đi nếu có (logic app mình thế ;) )
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: destinationURL.path) {
             try? fileManager.removeItem(at: destinationURL)
         }
         do {
             try fileManager.moveItem(at: location, to: destinationURL)
-            
-            // Mở file đã download được
             debugLog(object: destinationURL)
             openDocument(fileUrl: destinationURL)
         } catch {
@@ -238,7 +261,6 @@ extension AttachFileController: URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        // Ẩn loading
         UIApplication.hideNetworkActivity()
         debugLog(object: error != nil ? error!.localizedDescription : "not have error")
     }

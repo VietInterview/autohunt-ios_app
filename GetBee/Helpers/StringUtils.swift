@@ -188,6 +188,10 @@ class StringUtils:NSObject {
         }
         return statusString
     }
+    class func deAccent(value:String) -> String {
+        let bar = value.folding(options: .diacriticInsensitive, locale: .current)
+        return bar
+    }
     class func currencyFormat(value: Int) -> String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current

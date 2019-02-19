@@ -139,10 +139,14 @@ class MyCVAttachedController: BaseViewController, UITableViewDelegate, UITableVi
             cell.btnStatus.setTitleColor(StringUtils.hexStringToUIColor(hex: self.listCVUpload[indexPath.row-1].status! == 1 ? "#FF5A5A" : "#3C84F7"), for: .normal)
             cell.btnStatus.addBorder(color: StringUtils.hexStringToUIColor(hex: self.listCVUpload[indexPath.row-1].status! == 1 ? "#FF5A5A" : "#3C84F7"), weight: 1)
             cell.btnStatus.addRadius(weight: 12, isBound: true)
-            
             cell.lblName.text = self.listCVUpload[indexPath.row-1].fullName!
             cell.lblCarrer.text = StringUtils.checkEmpty(value:  self.listCVUpload[indexPath.row-1].careerName)
-            cell.lblDateUpdate.text = self.listCVUpload[indexPath.row-1].createdDate!
+            let fullName = StringUtils.checkEmpty(value: self.listCVUpload[indexPath.row-1].fileURL)
+            let fullNameArr = fullName.components(separatedBy: "/")
+            cell.lblFile.text = fullNameArr[fullNameArr.count-1]
+            let time = StringUtils.checkEmpty(value: self.listCVUpload[indexPath.row-1].createdDate)
+            let timeArr = time.components(separatedBy: " ")
+            cell.lblDateUpdate.text = "\(timeArr[timeArr.count-1]) \(timeArr[0])"
             cell.delegate = self
             cell.contentView.shadowView(opacity: 8/100, radius: 10)
             return cell
@@ -158,7 +162,6 @@ class MyCVAttachedController: BaseViewController, UITableViewDelegate, UITableVi
         documentInteractionController?.delegate = self
         documentInteractionController?.presentPreview(animated: true)
     }
-//}
 }
 extension MyCVAttachedController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -166,7 +169,7 @@ extension MyCVAttachedController: SwipeTableViewCellDelegate {
         let deleteAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "NotifyConfirmAlert") as! NotifyConfirmAlert
             customAlert.id = self.listCVUpload[indexPath.row-1].id!
-            customAlert.position = indexPath.row
+            customAlert.position = indexPath.row - 1
             customAlert.providesPresentationContextTransitionStyle = true
             customAlert.definesPresentationContext = true
             customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -179,7 +182,10 @@ extension MyCVAttachedController: SwipeTableViewCellDelegate {
         let copy = SwipeAction(style: .default, title: nil) { action, indexPath in
             let url:String = "\(App.imgUrl)\(self.listCVUpload[indexPath.row-1].fileURL!)"
             debugLog(object: url)
-            self.downloadFile(documentUrl: NSURL(string: url) as! URL)
+            guard let encodedURL = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
+                return
+            }
+            self.downloadFile(documentUrl: NSURL(string: encodedURL)! as URL)
         }
         copy.hidesWhenSelected = true
         let descriptorCopy: ActionDescriptor = .read
@@ -189,19 +195,28 @@ extension MyCVAttachedController: SwipeTableViewCellDelegate {
     
     
     func okButtonTapped(id: Int, position: Int) {
-        self.viewModel.deleteCV(cvId: id, success: { deleteCV in
-            if deleteCV.count! > 0 {
-                self.listCV2.remove(at: position)
+        self.viewModel.deleteCVUpload(cvId: id, success: { status in
+            if status == 200 {
                 let toast = Toast(text: NSLocalizedString("delete_cv_success", comment: ""))
                 toast.show()
+                self.getResumeUploaded()
             } else {
                 let toast = Toast(text: NSLocalizedString("delete_cv_fail", comment: ""))
                 toast.show()
                 self.page = 0
                 self.getResumeUploaded()
             }
-        }, failure: {error in
-            self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
+        }, failure: {status in
+            if status == 200 {
+                let toast = Toast(text: NSLocalizedString("delete_cv_success", comment: ""))
+                toast.show()
+                self.getResumeUploaded()
+            } else {
+                let toast = Toast(text: NSLocalizedString("delete_cv_fail", comment: ""))
+                toast.show()
+                self.page = 0
+                self.getResumeUploaded()
+            }
         })
     }
     
@@ -237,19 +252,15 @@ extension MyCVAttachedController: SwipeTableViewCellDelegate {
 }
 
 extension MyCVAttachedController {
-    
     func downloadFile(documentUrl: URL) {
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: "backgroundSession")
-        backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self,
-                                                  delegateQueue: OperationQueue.main)
+        backgroundSession = Foundation.URLSession(configuration: backgroundSessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
         let request = URLRequest(url: documentUrl)
         downloadTask = backgroundSession?.downloadTask(with: request)
         downloadTask?.resume()
-        // Show loading ở đây nhé
         UIApplication.showNetworkActivity()
     }
     
-    // Hàm này để lưu file dựa theo tên file mà server trả về
     fileprivate func getDestinationFileUrl(response: URLResponse) -> URL {
         var docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let filename = response.suggestedFilename ?? "file.pdf"
@@ -259,38 +270,33 @@ extension MyCVAttachedController {
     
 }
 extension MyCVAttachedController: UIDocumentInteractionControllerDelegate {
-    
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return self
+//        UINavigationBar.appearance().barTintColor = StringUtils.hexStringToUIColor(hex: "#042E51")
+//        UINavigationBar.appearance().tintColor = UIColor.black
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)]
+        return self.navigationController ?? self
     }
     
 }
 extension MyCVAttachedController: URLSessionDownloadDelegate {
-    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let progress = CGFloat(totalBytesWritten) / CGFloat(totalBytesExpectedToWrite)
         debugLog(object: "progress: \(progress)")
-        // Hiển thị progress nếu thích :D
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        // Ẩn loading
         UIApplication.hideNetworkActivity()
         guard let response = downloadTask.response else {
             debugLog(object: downloadTask.error?.localizedDescription ?? "Loading file error.")
             return
         }
         let destinationURL = getDestinationFileUrl(response: response)
-        
-        // Đoạn này mình xoá file cũ đi nếu có (logic app mình thế ;) )
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: destinationURL.path) {
             try? fileManager.removeItem(at: destinationURL)
         }
         do {
             try fileManager.moveItem(at: location, to: destinationURL)
-            
-            // Mở file đã download được
             debugLog(object: destinationURL)
             openDocument(fileUrl: destinationURL)
         } catch {
@@ -299,7 +305,6 @@ extension MyCVAttachedController: URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        // Ẩn loading
         UIApplication.hideNetworkActivity()
         debugLog(object: error != nil ? error!.localizedDescription : "not have error")
     }

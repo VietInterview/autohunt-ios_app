@@ -71,8 +71,8 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         tableView?.estimatedRowHeight = 100
         tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.allowsMultipleSelection = self.isMultiChoice
-        viewModel = ViewModel(isMulti: self.isMultiChoice)
-        filterData = ViewModel(isMulti: self.isMultiChoice)
+        viewModel = ViewModel(isMulti: self.isMultiChoice, isAttached: self.isAttached)
+        filterData = ViewModel(isMulti: self.isMultiChoice, isAttached: self.isAttached)
         if self.isCountry == true {
             jobModel.getCountry(success: {cities in
                 self.viewModel.items.removeAll()
@@ -88,12 +88,12 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         } else if self.isCarrer == true {
-                jobModel.getCarrer(success: {carrers in
-                    self.viewModel.items.removeAll()
-                    self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
-                    for i in 0...carrers.count-1 {
-                        let viewModelItem = ViewModelItem(item: carrers[i])
-                        self.viewModel.items.append(viewModelItem)
+            jobModel.getCarrer(success: {carrers in
+                self.viewModel.items.removeAll()
+                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
+                for i in 0...carrers.count-1 {
+                    let viewModelItem = ViewModelItem(item: carrers[i])
+                    self.viewModel.items.append(viewModelItem)
                     }
                     self.filterData.items = self.viewModel.items
                     self.tableView?.dataSource = self.filterData
@@ -147,11 +147,20 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.showMessage(title: NSLocalizedString("noti_title", comment: ""), message: error)
             })
         }
+        filterData.vc = self
         tableView?.delegate = filterData
         tableView?.separatorStyle = .singleLine
     }
     var mCities:CityList?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.isAttached {
+            if filterData.selectedItems.count < 3 {
+                self.tableView!.isUserInteractionEnabled = true
+            } else {
+                self.tableView!.isUserInteractionEnabled = false
+            }
+        }
+        
     }
     @objc func chon(sender: UIBarButtonItem) {
         if filterData.selectedItems.count > 0 {
@@ -198,13 +207,13 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                         if controller.isKind(of: InfoAccountController.self) {
                             self.navigationController!.popToViewController(controller, animated: true)
                             break
+                        } else {
+                            self.navigationController?.backToViewController(vc: AttachFileController.self)
+                            break
                         }
                     }
                 }
             }
         }
     }
-    
-    
-    
 }
