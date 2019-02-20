@@ -43,13 +43,13 @@ class MyCVController: BaseViewController , CarbonTabSwipeNavigationDelegate, Cho
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Hồ sơ đã ứng tuyển"
+        self.title = "Hồ sơ của tôi"
         self.showHideView(view: self.imgAttachFile, isHidden: true)
         mViewCondition.isHidden = true
         mViewCondition.gone()
         self.mViewStatus.isHidden = true
         self.mViewStatus.gone()
-        self.tabSwipe = CarbonTabSwipeNavigation(items: ["Danh sách hồ sơ gốc","Hồ sơ đã lưu","Danh sách file attached"], delegate: self)
+        self.tabSwipe = CarbonTabSwipeNavigation(items: ["Danh sách hồ sơ gốc","Hồ sơ đã ứng tuyển","Danh sách file attached"], delegate: self)
         
         if ScreenUtils.getScreenWidth()! == 414 {
             self.tabSwipe!.setTabExtraWidth(ScreenUtils.getScreenWidth()!/10)

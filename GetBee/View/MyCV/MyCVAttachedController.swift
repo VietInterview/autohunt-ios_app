@@ -231,7 +231,7 @@ extension MyCVAttachedController: SwipeTableViewCellDelegate {
         case .backgroundColor:
             action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = UIColor.clear
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default
@@ -241,9 +241,9 @@ extension MyCVAttachedController: SwipeTableViewCellDelegate {
         action.image = UIImage(named: "delete_resume")!
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = UIColor.clear
         case .circular:
-            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = UIColor.clear
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

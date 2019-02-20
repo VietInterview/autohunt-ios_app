@@ -151,11 +151,6 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.lblName.text = self.listCV.cvList![indexPath.row].fullName!
         cell.lblDateUpdate.text = "\(NSLocalizedString("update", comment: "")) \(DateUtils.convertToShowFormatDate(dateString: self.listCV.cvList![indexPath.row].updatedDate!))"
         cell.lblCarrer.text = self.listCV.cvList![indexPath.row].careerName!
-//        if indexPath.row % 2 != 0 {
-//            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F7FAFF")
-//        } else {
-//            cell.backgroundColor = StringUtils.hexStringToUIColor(hex: "#FFFFFF")
-//        }
         cell.viewContent.shadowView(opacity: 8/100, radius: 10, color: "#042E51")
         return cell
     }
@@ -163,8 +158,7 @@ class MyCVSavedController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 104
     }
-    @objc func onNotification(notification:Notification)
-    {
+    @objc func onNotification(notification:Notification) {
         var dict : Dictionary = notification.userInfo!
         let isCarrer : Bool = dict["isCarrer"] as? Bool ?? true
         let isCity : Bool = dict["isCity"] as? Bool ?? true
@@ -233,7 +227,7 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         case .backgroundColor:
             action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
         case .circular:
-            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = UIColor.clear
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default
@@ -243,9 +237,9 @@ extension MyCVSavedController: SwipeTableViewCellDelegate {
         action.image = UIImage(named: "delete_resume")!
         switch buttonStyle {
         case .backgroundColor:
-            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = UIColor.clear
         case .circular:
-            action.backgroundColor = StringUtils.hexStringToUIColor(hex: "#F2F9FF")
+            action.backgroundColor = UIColor.clear
             action.textColor = descriptor.color
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default

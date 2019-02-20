@@ -142,7 +142,7 @@ class LeftViewController: UITableViewController {
             cell.icon.gone()
             cell.isUserInteractionEnabled = false
             cell.bageLabel.isHidden = true
-            cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.getScreenWidth() == 414 ? 30 : 28)
+            cell.titleLabel.font = cell.titleLabel.font.withSize(ScreenUtils.getScreenWidth() == 414 ? 30 : 26)
             cell.titleLabel.frame = CGRect(x: 0, y: 8, width:220, height: 60)
         }
         if indexPath.row == (self.totalCountMenu-3){
@@ -191,7 +191,7 @@ class LeftViewController: UITableViewController {
         if indexPath.row == 0  {
             return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count+10))
         } else if indexPath.row == (self.totalCountMenu-3) {
-             return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
+            return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
         } else {
             return (ScreenUtils.getScreenHeight()!/CGFloat(self.dynamicTitlesArray.count))
         }

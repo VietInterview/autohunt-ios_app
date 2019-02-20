@@ -84,17 +84,19 @@ extension ViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         items[indexPath.row].isSelected = true
         if isMulti {
-            if indexPath.row == 0 {
-                items[0].isSelected = false
-                if items.count > 1 {
-                    for i in 1...items.count-1 {
-                        items[i].isSelected = true
+            if !self.isAttached {
+                if indexPath.row == 0 {
+                    items[0].isSelected = false
+                    if items.count > 1 {
+                        for i in 1...items.count-1 {
+                            items[i].isSelected = true
+                        }
+                    } else {
+                        
                     }
                 } else {
-                    
+                    items[0].isSelected = false
                 }
-            } else {
-                items[0].isSelected = false
             }
         }
         didToggleSelection?(!selectedItems.isEmpty)

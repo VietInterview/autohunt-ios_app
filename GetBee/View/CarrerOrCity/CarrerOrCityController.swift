@@ -14,6 +14,7 @@ protocol ChooseMultiDelegate{
     func didChooseMulti(mychooseMulti: [MyChoose])
 }
 class CarrerOrCityController: BaseViewController,UITableViewDelegate {
+    
     var viewModel = ViewModel()
     var button = UIButton.init(type: .custom)
     var delegate: ChooseDelegate?
@@ -28,9 +29,11 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
     var isListAttach: Bool = false
     var isResumeCustomer:Bool = false
     var isMultiChoice: Bool = false
+    var filterData = ViewModel()
     
     @IBOutlet weak var textFieldSearch: UITextField!
     @IBOutlet weak var tableView: UITableView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         button.setTitle(NSLocalizedString("choose", comment: ""), for: .normal)
@@ -39,9 +42,7 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         button.frame = CGRect.init(x: 40, y: 00, width: 60, height: 30)
         button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 16)
         let barButton = UIBarButtonItem.init(customView: button)
-        barButton.setTitleTextAttributes([
-            NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 18.0)!,
-            NSAttributedStringKey.foregroundColor: StringUtils.hexStringToUIColor(hex: "#3C84F7")], for: .normal)
+        barButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 18.0)!, NSAttributedStringKey.foregroundColor: StringUtils.hexStringToUIColor(hex: "#3C84F7")], for: .normal)
         self.navigationItem.rightBarButtonItem = barButton
         
         let yourBackImage = UIImage(named: "back")
@@ -51,7 +52,6 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         self.textFieldSearch.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 20)!]
     }
-    var filterData = ViewModel()
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField.text! != "" {
             filterData.items = self.viewModel.items.filter {item in
@@ -90,11 +90,13 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
         } else if self.isCarrer == true {
             jobModel.getCarrer(success: {carrers in
                 self.viewModel.items.removeAll()
-                self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
+                if !self.isAttached {
+                    self.viewModel.items.append(ViewModelItem(item: CarrerListElement(id: 0, name: NSLocalizedString("all_carrer", comment: ""))))
+                }
                 for i in 0...carrers.count-1 {
                     let viewModelItem = ViewModelItem(item: carrers[i])
                     self.viewModel.items.append(viewModelItem)
-                    }
+                }
                     self.filterData.items = self.viewModel.items
                     self.tableView?.dataSource = self.filterData
                 self.tableView?.reloadData()
@@ -160,7 +162,6 @@ class CarrerOrCityController: BaseViewController,UITableViewDelegate {
                 self.tableView!.isUserInteractionEnabled = false
             }
         }
-        
     }
     @objc func chon(sender: UIBarButtonItem) {
         if filterData.selectedItems.count > 0 {

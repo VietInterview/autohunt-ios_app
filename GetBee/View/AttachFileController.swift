@@ -61,19 +61,6 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
         vc.delegateMulti = self
         navigationController?.pushViewController(vc, animated: true)
     }
-//    func didChoose(mychoose: MyChoose) {
-//        if self.lstCarrer != nil {
-//            if self.lstCarrer!.count == 0 {
-//                lstCarrer!.append(LstCareerCVDto.init(id: mychoose.id, name: mychoose.name))
-//            } else {
-//                lstCarrer![0] = LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)
-//            }
-//        } else {
-//            lstCarrer = [LstCareerCVDto.init(id: mychoose.id, name: mychoose.name)]
-//        }
-//        self.textFieldCarrer.text = mychoose.name
-//    }
-    
     func didChooseMulti(mychooseMulti: [MyChoose]) {
         if self.lstCarrer != nil {
             self.lstCarrer!.removeAll()
@@ -143,8 +130,7 @@ class AttachFileController: BaseViewController,UIDocumentMenuDelegate,UIDocument
                         if response.response!.statusCode == 201 {
                             self?.showMessage(title: "Thông báo", message: "Upload thành công",handler:{ (action: UIAlertAction!) in
                                 self!.navigationController?.backToViewController(vc: MyCVController.self)
-                            }
-                            )
+                            })
                         } else {
                             self?.showMessage(title: "Thông báo", message: "Upload không thành công")
                         }
